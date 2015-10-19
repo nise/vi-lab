@@ -27,13 +27,18 @@
 	background-color:#fff;
 	border:green;
 	color:green;
-	padding:4px 6px;
+	padding:2px 4px;
 	font-size:22px;
 	opacity: 0.8;
 	border: solid green 1px;
 }
 
-.overlay.hyperlink-standard{
+.hyperlink-standard:hover{
+	opacity:1;
+	color:#003366;
+	border: solid #003366 1px;
+}
+
 	/* background: url(../img/link-standard.png) 2px 2px no-repeat #fff; */
 	
 }

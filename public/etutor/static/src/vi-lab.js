@@ -196,8 +196,18 @@ var ViLab = $.inherit({
 			markupType:'html',  
 			thumbnail: _this.db.getMetadataById(_this.currentVideo).thumbnail
 		};
-		$('#overlay').css('width', options.videoWidth - 35);
-	
+		// single solution for slide only presentations !!! xxx
+		$('#overlay').css('width', $( '.slide' ).width() );
+		
+		/**/
+		$(window).resize(function() { //alert($( options.selector ).width())
+			// Needs to be a timeout function so it doesn't fire every ms of resize
+			setTimeout(function() {
+	      $('#overlay').css('width', $( '.slide' ).width() );
+	    //  $('#overlay').css('height', $( options.selector ).height() );
+			}, 120);
+		});
+		
 		
 		// extract media fragment window.location
 		var seek = 0;
@@ -207,7 +217,7 @@ var ViLab = $.inherit({
 			seek = location.split('t=npt:')[1].split(',')[0];	
 		}
 		
-		_this.observer = new Vi2.Observer(options); 
+		_this.observer = new Vi2.Observer( options ); 
 	 	_this.observer.init(seek);	 
 		 
 		metadataa = new Vi2.Metadata( { metatags: true, render: false } );  

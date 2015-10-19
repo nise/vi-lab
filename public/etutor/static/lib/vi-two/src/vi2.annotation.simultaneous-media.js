@@ -164,7 +164,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		/* -- */
 		begin : function(e, id, obj){ 
 			if( this.options.sync ){
-				this.placeMedia( e, id, obj )
+				this.placeMedia( e, id, obj );
 			} 
 		},
 
@@ -213,6 +213,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 					.unbind('load')
 					.bind('load', function(e){ //alert(JSON.stringify(t))
 							$(_this.options.selector).html(o);
+							$('#overlay').css('width', $( '.slide' ).width() );
 					});
 			}
 		},	

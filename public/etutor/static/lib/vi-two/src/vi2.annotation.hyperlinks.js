@@ -215,7 +215,7 @@
 				@param {String} id
 				@param {Object} obj		
 		*/
-		begin : function(e, id, obj){  
+		begin : function(e, id, obj){  alert(obj)
 				this.currLinkId = id;
 				var _this = this;
 				var pos = this.relativePos(obj.displayPosition); 
@@ -223,10 +223,10 @@
 					.text(obj.content.title)
 					//.attr('href', obj.content.target)
 					.attr('id', 'ov'+id)
-					.addClass('overlay ov-'+id)
-					.addClass('hyperlink-'+obj.linktype)
 					.attr('href', obj.content.target )
-	 				.bind('click', {}, function(data){
+					.attr('title', obj.content.description )
+					.addClass('overlay ov-'+id+' hyperlink-'+obj.linktype)
+					.bind('click', {}, function(data){
 	 					// distinguish link types
 	 					switch(obj.linktype){
 	 						case 'standard' : 	// called xlink
@@ -258,7 +258,7 @@
 								break;
 							case 'x':
 								break;	
-						}
+						};
 						// load Video
 						_this.loadVideo(vi2.observer.vid_arr[0]['url'], obj.seek);
 						// log something
@@ -266,12 +266,20 @@
 						// remove link ancshor after click 
 						$(this).remove();
 					});
+				
+				
+				// distinguish link types as icons
+				var ltype = $('<span></span>').prependTo(o);
+				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+				var regex = new RegExp(expression);
+				if (obj.content.target.match(regex) ){
+					 ltype.addClass('glyphicon glyphicon-share-alt');
+				 } else {
+					 ltype.addClass('glyphicon glyphicon-link');
+				 }
+					
 				$(this.options.displaySelector ).append(o);
-				// positioning object AFTER appending it to its parent // buggy
-				// ($(this.options.displaySelector).offset()).left+
-				//alert($(this.options.displaySelector).offset().left+'  '+pos.x);
-				o.css({left: pos.x, top: pos.y, position:'absolute'});		
-		//	}	
+				o.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'});
 		},
 	
 		/* End of annotion time. The link anchor will disapear from screen. */
@@ -310,11 +318,19 @@
 				<span class='input-group-addon' id='hyperlinks-form3'>Wiedergabezeit</span>\
 				<input type='text' class='form-control' value='<%= time %>' name='hyperlinks-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
-			";
-			if( data ){
+			"; 
+			if( data.content !== '' ){
 				return ejs.render(str, data);
 			}	else{
-				return ejs.render(str, { content:'', description:'',  time:'0:00', date: (new Date().getTime()) });	
+				return ejs.render(str, { 
+					content: { 
+						description:'', 
+						target:'', 
+						label:''
+					}, 
+					time:'0:00', 
+					date: (new Date().getTime()) 
+				});	
 			}	
 		},
 		

@@ -3,7 +3,6 @@
 ---------------------------------------------
 # VI-TWO
 ## this release
-- repair git
 - @hyperlink
 	- duration
 	- place on screen

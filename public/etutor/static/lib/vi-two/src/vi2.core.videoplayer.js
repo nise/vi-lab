@@ -199,7 +199,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		var playbackSpeed = new Vi2.PlaybackSpeed();
 		vi2.observer.addWidget( playbackSpeed );  
 		
-		var temporalBookmarks = new Vi2.TemporalBookmarks( {} );
+		var temporalBookmarks = new Vi2.TemporalBookmarks();
 		vi2.observer.addWidget( temporalBookmarks );
 		
 		//var zoom = new Vi2.Zoom();
