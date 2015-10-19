@@ -57,8 +57,9 @@
 						name: val.title, 
 						occ:[val.t1], 
 						target: val.target,
-						descriptio: val.description, 
-						time :[val.t1], 
+						description: decodeURIComponent( val.description ), 
+						time :[val.t1],
+						duration: val.t2, 
 						date: val.date, 
 						author: val.author });
 				}
@@ -93,7 +94,7 @@
 				.attr('seek', vi2.utils.deci2seconds(this.seek))
 				.attr('duration2', vi2.utils.deci2seconds(this.duration2))
 				.attr('target', val.target)
-				.attr('description', val.description)
+				.attr('description', encodeURIComponent( val.description) )
 				.attr('author', val.author)
 				.attr('date', val.date)
 				.text( val.title )
@@ -105,13 +106,13 @@
 		
 		/*
 		**/
-		updateDOMElement : function( obj ){
+		updateDOMElement : function( obj ){ 
 			$(vi2.dom)
 				.find('[date="'+ obj.date +'"]')
 				.attr('author', vi2.wp_user )
 				.attr('date', new Date().getTime())
 				.attr('starttime', obj.time )
-				.attr('description', obj.content.description)
+				.attr('description', encodeURIComponent( obj.content.description ) )
 				.attr('duration', obj.content.duration === undefined ? '10' : obj.content.duration )
 				.attr('posx', obj.content.x === undefined ? '20' : obj.content.x  )
 				.attr('posy', obj.content.y === undefined ? '80' : obj.content.y  )
@@ -137,7 +138,7 @@
 				.attr('seek', 0 )// obj.conetnt.seek
 				.attr('duration2', 0 )//obj.content.duration2
 				.attr('target', obj.content.target)
-				.attr('description', obj.content.description)
+				.attr('description', encodeURIComponent( obj.content.description ))
 				.text( obj.content.label )
 				.appendTo( vi2.dom );
 		},
@@ -215,16 +216,15 @@
 				@param {String} id
 				@param {Object} obj		
 		*/
-		begin : function(e, id, obj){  alert(obj)
+		begin : function(e, id, obj){  
 				this.currLinkId = id;
 				var _this = this;
-				var pos = this.relativePos(obj.displayPosition); 
 				var o = $('<a></a>')
 					.text(obj.content.title)
 					//.attr('href', obj.content.target)
 					.attr('id', 'ov'+id)
 					.attr('href', obj.content.target )
-					.attr('title', obj.content.description )
+					.attr('title', decodeURIComponent( obj.content.description ) )
 					.addClass('overlay ov-'+id+' hyperlink-'+obj.linktype)
 					.bind('click', {}, function(data){
 	 					// distinguish link types
@@ -318,15 +318,21 @@
 				<span class='input-group-addon' id='hyperlinks-form3'>Wiedergabezeit</span>\
 				<input type='text' class='form-control' value='<%= time %>' name='hyperlinks-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
+			<div class='input-group'>\
+				<span class='input-group-addon' id='hyperlinks-form66'>Anzeigedauer</span>\
+				<input type='text' class='form-control' value='<%= content.duration %>' name='hyperlinks-entry-duration' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
+			</div>\
 			"; 
 			if( data.content !== '' ){
+				data.content.description = decodeURIComponent( data.content.description );
 				return ejs.render(str, data);
 			}	else{
 				return ejs.render(str, { 
 					content: { 
 						description:'', 
 						target:'', 
-						label:''
+						label:'',
+						duration:10
 					}, 
 					time:'0:00', 
 					date: (new Date().getTime()) 
@@ -338,7 +344,7 @@
 		/*
 		*
 		**/
-		getAnnotationFormData : function( selector ){
+		getAnnotationFormData : function( selector ){ 
 			return {
 				time: $( selector ).find('[name="hyperlinks-entry-time"]').attr('value'),
 				content: {
@@ -354,16 +360,6 @@
 			};
 		},
 		
-		
-		/** Returns position of link anchores relativ to the dedicated representation area 
-		* 		@param {Object} obj Contains an annotation object including its spatial elements.
-		* 		@returns {Object} 
-		*/
-		relativePos : function(obj){ 
-			//var pplayer = observer.widget_list['seq']; // IWRM only fix xxx // bugy
-			//return {x: Math.floor((obj.x/100)*pplayer.width()), y: Math.floor((obj.y/100)*pplayer.height())};
-			return {x: Math.floor((obj.x/100)*615), y: Math.floor((obj.y/100)*450)};
-		},
 		
 		/** Loads video from url and seeks to a dedicated position in time. 
 		*		@param {String} url 

@@ -400,7 +400,7 @@ var ViLab = $.inherit({
 									time: formData.time, 
 									content: formData.content 
 								}); 
-							}else{		 
+							}else{	
 								// updated existing annotation in dom
 								widget.updateDOMElement({ 
 									date: data.date, 
@@ -534,7 +534,7 @@ INPUT:
 				r = comments;
 				break;
 				
-			case 'hyperlinks' : var hyperlinks = [];
+			case 'hyperlinks' : var hyperlinks = []; alert(encodeURIComponent( $(this).attr('description') ))
 				// input: <div type="hyperlinks" starttime="666" duration="55.7" posx="2" posy="95" seek="0" duration2="0" target="#!cullmann" author="admin" date="1416312331209">flood types</div>
 				// output: {"type":"hyperlinks","author":"admin","date": "1416312331209","x": 2, "y": 90, "start": "555",  "duration": "37", "title": "details on participation", "target": "newig"},
 				$(vi2.dom).find("div[type='hyperlinks']").each(function(i, val){

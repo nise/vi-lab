@@ -52,6 +52,7 @@ exports.setResults = function ( req, res ){
   		console.log(err)
   	}else{
   		console.log('SAVED test results');
+  		console.log();
   	}
     //res.redirect( '/assessment' );
     res.send({done:true});

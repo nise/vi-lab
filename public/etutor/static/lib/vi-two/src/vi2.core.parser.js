@@ -100,7 +100,7 @@ var Parser = $.inherit(/** @lends Parser# */
 						obj.t1 = $(this).attr('starttime') == undefined ? 0 : $(this).attr('starttime');
 						obj.t2 = $(this).attr('duration') == undefined ? 0 : $(this).attr('duration');
 						obj.seek = $(this).attr('seek');
-						obj.duration = $(this).attr('duration2'); 
+						obj.duration2 = $(this).attr('duration2'); 
 
 						// distinguish link types
 						if(obj.target.match(/(^http:)(^https:)/)){ obj.linktype = 'external'; } // external link

@@ -75,6 +75,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 						content: {
 								title: obj.title, 
 								target:obj.target,
+								description:obj.description,
 								note:obj.note
 							}, 
 						linktype:obj.linktype, 

@@ -3,10 +3,9 @@
 ---------------------------------------------
 # VI-TWO
 ## this release
+
 - @hyperlink
-	- duration
-	- place on screen
-	- display 
+	- save ... decode kram
 - @assesment
 	- validation
 	- displayc
@@ -16,12 +15,22 @@
 	- Benutzerbenachrichtigung
 	
 - bug @ player: autoplay ?
-- bug @ aufabe muss je video, statt je Phase angezeigt werden
-
-	
-- vortest integrieren
+- bug @ aufgabe muss je video, statt je Phase angezeigt werden
 
 - correct slide presenation	
+
+### Einleitungstextanpassen
+
+### Media experience. 
+For the assessment of the partici- pants’ media experience, participants filled in seven items asking for the frequency of their usage of different media such as video, DVD or computers. The participants gave their answers on a 5-point scale with the labels nearly everyday, several times a week, between once a week and once a month, less than once a month, and never. The items were coded so that 0 marked the minimum (never) and 4 marked the maximum (nearly everyday). However, an a of 0.38 in the two reported studies has to be considered very low, not to say unacceptable.
+
+
+### http://econtent.hogrefe.com/doi/full/10.1026/1617-6383.19.2.68
+Subjective appraisal of the learning process with the medium. Paechter, Maier, and Grabensberger (2007) devel- oped a questionnaire to assess an individual’s appraisal of learning processes with media. We adapted several items of
+this questionnaire for our purpose. Six items (a ¼ .67 for the two reported studies) assessed media-supported expertise acquisition in the knowledge domain (e.g., “I think the inter- active video supports individual learning processes.”) and five
+items (a ¼ .84 for the two reported studies) assessed expertise acquisition in using the medium (e.g., “I think I have learned something about interactive media”.). The participants rated the items on a 5-point scale from 1 (fully agree) to 5 (fully disagree).
+
+
 
 
 ## Script
