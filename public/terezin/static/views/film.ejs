@@ -1,0 +1,27 @@
+
+	<script type="text/javascript">	
+		var 
+			observer = undefined, 
+			vi2 = undefined, 
+			ocr = undefined;  
+		jQuery(document).ready(function(e) {  
+			vi2 = new ViLab(server, "SCM2"); 
+		}); 
+	</script>
+	<div id="main">
+		<div id="dialog" title="Dialog Title" hidden></div>		
+		<div class="header" hidden >
+			<h2 class="meta-title"></h2>
+			<div class="meta-desc"></div>
+		</div>
+		<div id="container">
+			<div id="meta">
+				<div id="screen"></div>
+				<div id="accordion"></div>	
+			</div>
+			<div id="seq"></div>
+			<div id="overlay"></div>
+		</div>
+		<div class="sitepanel-right" hidden ></div>
+	</div>
+

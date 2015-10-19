@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "211",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f7",
+    "__v": 0,
+    "videos": [
+      "433",
+      "450"
+    ]
+  },
+  {
+    "id": "212",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f8",
+    "__v": 0,
+    "videos": [
+      "433",
+      "451"
+    ]
+  },
+  {
+    "id": "213",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2f9",
+    "__v": 0,
+    "videos": [
+      "433",
+      "452"
+    ]
+  },
+  {
+    "id": "215",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2fb",
+    "__v": 0,
+    "videos": [
+      "433",
+      "454"
+    ]
+  },
+  {
+    "id": "216",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2fc",
+    "__v": 0,
+    "videos": [
+      "433",
+      "455"
+    ]
+  },
+  {
+    "id": "218",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2fe",
+    "__v": 0,
+    "videos": [
+      "433",
+      "457"
+    ]
+  },
+  {
+    "id": "220",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde300",
+    "__v": 0,
+    "videos": [
+      "433",
+      "459"
+    ]
+  },
+  {
+    "id": "221",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde301",
+    "__v": 0,
+    "videos": [
+      "433",
+      "460"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde302",
+    "description": "Phase 3",
+    "ep_group_id": "g.a8849qPolMhdfKDn",
+    "ep_group_pad_id": "g.a8849qPolMhdfKDn$phase3pad-301",
+    "hs": "g",
+    "id": "301",
+    "persons": 3,
+    "videos": [
+      "433",
+      "440",
+      "540"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde303",
+    "description": "Phase 3",
+    "ep_group_id": "g.zNchHPTuAXg8qeI3",
+    "ep_group_pad_id": "g.zNchHPTuAXg8qeI3$phase3pad-302",
+    "hs": "g",
+    "id": "302",
+    "persons": 3,
+    "videos": [
+      "433",
+      "441",
+      "541"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde304",
+    "description": "Phase 3",
+    "ep_group_id": "g.17xU7lgRz5XtLpkM",
+    "ep_group_pad_id": "g.17xU7lgRz5XtLpkM$phase3pad-303",
+    "hs": "g",
+    "id": "303",
+    "persons": 3,
+    "videos": [
+      "433",
+      "442",
+      "542"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde305",
+    "description": "Phase 3",
+    "ep_group_id": "g.kRtIDBtd9HI36Zsb",
+    "ep_group_pad_id": "g.kRtIDBtd9HI36Zsb$phase3pad-304",
+    "hs": "g",
+    "id": "304",
+    "persons": 3,
+    "videos": [
+      "433",
+      "443",
+      "543"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde2eb",
+    "description": "Testgruppe",
+    "ep_group_id": "g.pxkRf3BAZxxKyk8T",
+    "ep_group_pad_id": "g.pxkRf3BAZxxKyk8T$phase3pad-1000",
+    "hs": "g",
+    "id": "1000",
+    "persons": 5,
+    "videos": [
+      "433",
+      "439",
+      "539",
+      "600",
+      "739"
+    ]
+  },
+  {
+    "id": "100",
+    "description": "Phase 1",
+    "persons": 54,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2ec",
+    "__v": 0,
+    "videos": [
+      "433"
+    ]
+  },
+  {
+    "id": "201",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2ed",
+    "__v": 0,
+    "videos": [
+      "433",
+      "440"
+    ]
+  },
+  {
+    "id": "202",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2ee",
+    "__v": 0,
+    "videos": [
+      "433",
+      "441"
+    ]
+  },
+  {
+    "id": "203",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2ef",
+    "__v": 0,
+    "videos": [
+      "433",
+      "442"
+    ]
+  },
+  {
+    "id": "204",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f0",
+    "__v": 0,
+    "videos": [
+      "433",
+      "443"
+    ]
+  },
+  {
+    "id": "205",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f1",
+    "__v": 0,
+    "videos": [
+      "433",
+      "444"
+    ]
+  },
+  {
+    "id": "206",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f2",
+    "__v": 0,
+    "videos": [
+      "433",
+      "445"
+    ]
+  },
+  {
+    "id": "207",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f3",
+    "__v": 0,
+    "videos": [
+      "433",
+      "446"
+    ]
+  },
+  {
+    "id": "208",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f4",
+    "__v": 0,
+    "videos": [
+      "433",
+      "447"
+    ]
+  },
+  {
+    "id": "209",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f5",
+    "__v": 0,
+    "videos": [
+      "433",
+      "448"
+    ]
+  },
+  {
+    "id": "210",
+    "description": "Phase 2",
+    "persons": 3,
+    "hs": "g",
+    "_id": "5458c17016715a5e48fde2f6",
+    "__v": 0,
+    "videos": [
+      "433",
+      "449"
+    ]
+  },
+  {
+    "id": "214",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2fa",
+    "__v": 0,
+    "videos": [
+      "433",
+      "453"
+    ]
+  },
+  {
+    "id": "217",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2fd",
+    "__v": 0,
+    "videos": [
+      "433",
+      "456"
+    ]
+  },
+  {
+    "id": "219",
+    "description": "Phase 2",
+    "persons": 2,
+    "hs": "z",
+    "_id": "5458c17016715a5e48fde2ff",
+    "__v": 0,
+    "videos": [
+      "433",
+      "458"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde307",
+    "description": "Phase 3",
+    "ep_group_id": "g.8HOmd7Kbfi8k2W7l",
+    "ep_group_pad_id": "g.8HOmd7Kbfi8k2W7l$phase3pad-306",
+    "hs": "g",
+    "id": "306",
+    "persons": 3,
+    "videos": [
+      "433",
+      "445",
+      "545"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde308",
+    "description": "Phase 3",
+    "ep_group_id": "g.qq5USLYYemyO1uFM",
+    "ep_group_pad_id": "g.qq5USLYYemyO1uFM$phase3pad-307",
+    "hs": "g",
+    "id": "307",
+    "persons": 3,
+    "videos": [
+      "433",
+      "446",
+      "546"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde306",
+    "description": "Phase 3",
+    "ep_group_id": "g.KuPRifwSVSSAnFta",
+    "ep_group_pad_id": "g.KuPRifwSVSSAnFta$phase3pad-305",
+    "hs": "g",
+    "id": "305",
+    "persons": 3,
+    "videos": [
+      "433",
+      "444",
+      "544"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde309",
+    "description": "Phase 3",
+    "ep_group_id": "g.s3teqE4Kma7wqSiP",
+    "ep_group_pad_id": "g.s3teqE4Kma7wqSiP$phase3pad-308",
+    "hs": "g",
+    "id": "308",
+    "persons": 3,
+    "videos": [
+      "433",
+      "447",
+      "547"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30b",
+    "description": "Phase 3",
+    "ep_group_id": "g.9HhqJP4XYZYZsfB8",
+    "ep_group_pad_id": "g.9HhqJP4XYZYZsfB8$phase3pad-310",
+    "hs": "g",
+    "id": "310",
+    "persons": 3,
+    "videos": [
+      "433",
+      "449",
+      "549"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30a",
+    "description": "Phase 3",
+    "ep_group_id": "g.QJkX6aKvSfDGBpXT",
+    "ep_group_pad_id": "g.QJkX6aKvSfDGBpXT$phase3pad-309",
+    "hs": "g",
+    "id": "309",
+    "persons": 3,
+    "videos": [
+      "433",
+      "448",
+      "548"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30d",
+    "description": "Phase 3",
+    "ep_group_id": "g.Otp64SYA3PS9Y5ct",
+    "ep_group_pad_id": "g.Otp64SYA3PS9Y5ct$phase3pad-312",
+    "hs": "g",
+    "id": "312",
+    "persons": 3,
+    "videos": [
+      "433",
+      "451",
+      "551"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30e",
+    "description": "Phase 3",
+    "ep_group_id": "g.u4sifawxF5oLiTO3",
+    "ep_group_pad_id": "g.u4sifawxF5oLiTO3$phase3pad-313",
+    "hs": "z",
+    "id": "313",
+    "persons": 2,
+    "videos": [
+      "433",
+      "452",
+      "552"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30f",
+    "description": "Phase 3",
+    "ep_group_id": "g.TSoHy1rNkSDekzVR",
+    "ep_group_pad_id": "g.TSoHy1rNkSDekzVR$phase3pad-314",
+    "hs": "z",
+    "id": "314",
+    "persons": 2,
+    "videos": [
+      "433",
+      "453",
+      "553"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde30c",
+    "description": "Phase 3",
+    "ep_group_id": "g.gnOaH8rM7v7fEQ3P",
+    "ep_group_pad_id": "g.gnOaH8rM7v7fEQ3P$phase3pad-311",
+    "hs": "g",
+    "id": "311",
+    "persons": 3,
+    "videos": [
+      "433",
+      "450",
+      "550"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde310",
+    "description": "Phase 3",
+    "ep_group_id": "g.mI26xGB4MLAkRIvM",
+    "ep_group_pad_id": "g.mI26xGB4MLAkRIvM$phase3pad-315",
+    "hs": "z",
+    "id": "315",
+    "persons": 2,
+    "videos": [
+      "433",
+      "454",
+      "554"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde311",
+    "description": "Phase 3",
+    "ep_group_id": "g.LncZFrKGh7oDD9su",
+    "ep_group_pad_id": "g.LncZFrKGh7oDD9su$phase3pad-316",
+    "hs": "z",
+    "id": "316",
+    "persons": 2,
+    "videos": [
+      "433",
+      "455",
+      "555"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde312",
+    "description": "Phase 3",
+    "ep_group_id": "g.gU4n5TtJXLW3RZ1x",
+    "ep_group_pad_id": "g.gU4n5TtJXLW3RZ1x$phase3pad-317",
+    "hs": "z",
+    "id": "317",
+    "persons": 2,
+    "videos": [
+      "433",
+      "456",
+      "556"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde313",
+    "description": "Phase 3",
+    "ep_group_id": "g.YORoqB6lEjfngmrg",
+    "ep_group_pad_id": "g.YORoqB6lEjfngmrg$phase3pad-318",
+    "hs": "z",
+    "id": "318",
+    "persons": 2,
+    "videos": [
+      "433",
+      "457",
+      "557"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde314",
+    "description": "Phase 3",
+    "ep_group_id": "g.ysPYoU07oyaGpT4G",
+    "ep_group_pad_id": "g.ysPYoU07oyaGpT4G$phase3pad-319",
+    "hs": "z",
+    "id": "319",
+    "persons": 2,
+    "videos": [
+      "433",
+      "458",
+      "558"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde315",
+    "description": "Phase 3",
+    "ep_group_id": "g.5yvKruao9Mwzg9Tm",
+    "ep_group_pad_id": "g.5yvKruao9Mwzg9Tm$phase3pad-320",
+    "hs": "z",
+    "id": "320",
+    "persons": 2,
+    "videos": [
+      "433",
+      "459",
+      "559"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde316",
+    "description": "Phase 3",
+    "ep_group_id": "g.LpMEYTF8tuw6FNLk",
+    "ep_group_pad_id": "g.LpMEYTF8tuw6FNLk$phase3pad-321",
+    "hs": "z",
+    "id": "321",
+    "persons": 3,
+    "videos": [
+      "433",
+      "460",
+      "560"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "5458c17016715a5e48fde317",
+    "description": "Phase 4",
+    "ep_group_id": "g.lQC1U4RUZcJm6ha2",
+    "ep_group_pad_id": "g.lQC1U4RUZcJm6ha2$phase3pad-400",
+    "hs": "g",
+    "id": "400",
+    "persons": 54,
+    "videos": [
+      "433",
+      "444",
+      "455",
+      "466"
+    ]
+  },
+  {
+    "id": "401",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.a8849qPolMhdfKDn",
+    "ep_group_pad_id": "g.a8849qPolMhdfKDn$phase3pad-301",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb22",
+    "__v": 0,
+    "videos": [
+      "433",
+      "440",
+      "540",
+      "600"
+    ]
+  },
+  {
+    "id": "402",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.zNchHPTuAXg8qeI3",
+    "ep_group_pad_id": "g.zNchHPTuAXg8qeI3$phase3pad-302",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb23",
+    "__v": 0,
+    "videos": [
+      "433",
+      "441",
+      "541",
+      "600"
+    ]
+  },
+  {
+    "id": "403",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.17xU7lgRz5XtLpkM",
+    "ep_group_pad_id": "g.17xU7lgRz5XtLpkM$phase3pad-303",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb24",
+    "__v": 0,
+    "videos": [
+      "433",
+      "442",
+      "542",
+      "600"
+    ]
+  },
+  {
+    "id": "404",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.kRtIDBtd9HI36Zsb",
+    "ep_group_pad_id": "g.kRtIDBtd9HI36Zsb$phase3pad-304",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb25",
+    "__v": 0,
+    "videos": [
+      "433",
+      "443",
+      "543",
+      "600"
+    ]
+  },
+  {
+    "id": "405",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.KuPRifwSVSSAnFta",
+    "ep_group_pad_id": "g.KuPRifwSVSSAnFta$phase3pad-305",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb26",
+    "__v": 0,
+    "videos": [
+      "433",
+      "444",
+      "544",
+      "600"
+    ]
+  },
+  {
+    "id": "406",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.8HOmd7Kbfi8k2W7l",
+    "ep_group_pad_id": "g.8HOmd7Kbfi8k2W7l$phase3pad-306",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb27",
+    "__v": 0,
+    "videos": [
+      "433",
+      "445",
+      "545",
+      "600"
+    ]
+  },
+  {
+    "id": "407",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.qq5USLYYemyO1uFM",
+    "ep_group_pad_id": "g.qq5USLYYemyO1uFM$phase3pad-307",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb28",
+    "__v": 0,
+    "videos": [
+      "433",
+      "446",
+      "546",
+      "600"
+    ]
+  },
+  {
+    "id": "408",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.s3teqE4Kma7wqSiP",
+    "ep_group_pad_id": "g.s3teqE4Kma7wqSiP$phase3pad-308",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb29",
+    "__v": 0,
+    "videos": [
+      "433",
+      "447",
+      "547",
+      "600"
+    ]
+  },
+  {
+    "id": "409",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.QJkX6aKvSfDGBpXT",
+    "ep_group_pad_id": "g.QJkX6aKvSfDGBpXT$phase3pad-309",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb2a",
+    "__v": 0,
+    "videos": [
+      "433",
+      "448",
+      "548",
+      "600"
+    ]
+  },
+  {
+    "id": "410",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.9HhqJP4XYZYZsfB8",
+    "ep_group_pad_id": "g.9HhqJP4XYZYZsfB8$phase3pad-310",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb2b",
+    "__v": 0,
+    "videos": [
+      "433",
+      "449",
+      "549",
+      "600"
+    ]
+  },
+  {
+    "id": "411",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.gnOaH8rM7v7fEQ3P",
+    "ep_group_pad_id": "g.gnOaH8rM7v7fEQ3P$phase3pad-311",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb2c",
+    "__v": 0,
+    "videos": [
+      "433",
+      "450",
+      "550",
+      "600"
+    ]
+  },
+  {
+    "id": "412",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.Otp64SYA3PS9Y5ct",
+    "ep_group_pad_id": "g.Otp64SYA3PS9Y5ct$phase3pad-312",
+    "hs": "g",
+    "_id": "545b680d9771121476d0cb2d",
+    "__v": 0,
+    "videos": [
+      "433",
+      "451",
+      "551",
+      "600"
+    ]
+  },
+  {
+    "id": "413",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.u4sifawxF5oLiTO3",
+    "ep_group_pad_id": "g.u4sifawxF5oLiTO3$phase3pad-313",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb2e",
+    "__v": 0,
+    "videos": [
+      "433",
+      "452",
+      "552",
+      "600"
+    ]
+  },
+  {
+    "id": "414",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.TSoHy1rNkSDekzVR",
+    "ep_group_pad_id": "g.TSoHy1rNkSDekzVR$phase3pad-314",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb2f",
+    "__v": 0,
+    "videos": [
+      "433",
+      "453",
+      "553",
+      "600"
+    ]
+  },
+  {
+    "id": "415",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.mI26xGB4MLAkRIvM",
+    "ep_group_pad_id": "g.mI26xGB4MLAkRIvM$phase3pad-315",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb30",
+    "__v": 0,
+    "videos": [
+      "433",
+      "454",
+      "554",
+      "600"
+    ]
+  },
+  {
+    "id": "416",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.LncZFrKGh7oDD9su",
+    "ep_group_pad_id": "g.LncZFrKGh7oDD9su$phase3pad-316",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb31",
+    "__v": 0,
+    "videos": [
+      "433",
+      "455",
+      "555",
+      "600"
+    ]
+  },
+  {
+    "id": "417",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.gU4n5TtJXLW3RZ1x",
+    "ep_group_pad_id": "g.gU4n5TtJXLW3RZ1x$phase3pad-317",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb32",
+    "__v": 0,
+    "videos": [
+      "433",
+      "456",
+      "556",
+      "600"
+    ]
+  },
+  {
+    "id": "418",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.YORoqB6lEjfngmrg",
+    "ep_group_pad_id": "g.YORoqB6lEjfngmrg$phase3pad-318",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb33",
+    "__v": 0,
+    "videos": [
+      "433",
+      "457",
+      "557",
+      "600"
+    ]
+  },
+  {
+    "id": "419",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.ysPYoU07oyaGpT4G",
+    "ep_group_pad_id": "g.ysPYoU07oyaGpT4G$phase3pad-319",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb34",
+    "__v": 0,
+    "videos": [
+      "433",
+      "458",
+      "558",
+      "600"
+    ]
+  },
+  {
+    "id": "420",
+    "description": "Phase 4",
+    "persons": 2,
+    "ep_group_id": "g.5yvKruao9Mwzg9Tm",
+    "ep_group_pad_id": "g.5yvKruao9Mwzg9Tm$phase3pad-320",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb35",
+    "__v": 0,
+    "videos": [
+      "433",
+      "459",
+      "559",
+      "600"
+    ]
+  },
+  {
+    "id": "421",
+    "description": "Phase 4",
+    "persons": 3,
+    "ep_group_id": "g.LpMEYTF8tuw6FNLk",
+    "ep_group_pad_id": "g.LpMEYTF8tuw6FNLk$phase3pad-321",
+    "hs": "z",
+    "_id": "545b680d9771121476d0cb36",
+    "__v": 0,
+    "videos": [
+      "433",
+      "460",
+      "560",
+      "600"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a74",
+    "description": "Phase 5",
+    "ep_group_id": "g.iCu28g9J3vy5pImK",
+    "ep_group_pad_id": "g.iCu28g9J3vy5pImK$phase5pad-501",
+    "hs": "g",
+    "id": "501",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "701",
+      "440",
+      "540",
+      "441",
+      "541"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a75",
+    "description": "Phase 5",
+    "ep_group_id": "g.9gNS5Lo3VNXVMt0l",
+    "ep_group_pad_id": "g.9gNS5Lo3VNXVMt0l$phase5pad-502",
+    "hs": "g",
+    "id": "502",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "702",
+      "442",
+      "542",
+      "443",
+      "543"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a76",
+    "description": "Phase 5",
+    "ep_group_id": "g.L9N9Au5L8LK9g7v3",
+    "ep_group_pad_id": "g.L9N9Au5L8LK9g7v3$phase5pad-503",
+    "hs": "g",
+    "id": "503",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "703",
+      "444",
+      "544",
+      "445",
+      "545"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a77",
+    "description": "Phase 5",
+    "ep_group_id": "g.Skl46f0iC9kbUWPZ",
+    "ep_group_pad_id": "g.Skl46f0iC9kbUWPZ$phase5pad-504",
+    "hs": "g",
+    "id": "504",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "704",
+      "446",
+      "546",
+      "447",
+      "547"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a78",
+    "description": "Phase 5",
+    "ep_group_id": "g.hMDzNdNwSvrVgzN1",
+    "ep_group_pad_id": "g.hMDzNdNwSvrVgzN1$phase5pad-505",
+    "hs": "g",
+    "id": "505",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "705",
+      "448",
+      "548",
+      "449",
+      "549"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a79",
+    "description": "Phase 5",
+    "ep_group_id": "g.FmfNxUfTGYmBweRX",
+    "ep_group_pad_id": "g.FmfNxUfTGYmBweRX$phase5pad-506",
+    "hs": "g",
+    "id": "506",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "706",
+      "450",
+      "550",
+      "451",
+      "551"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7a",
+    "description": "Phase 5",
+    "ep_group_id": "g.TAliV0IXcPlW6I9L",
+    "ep_group_pad_id": "g.TAliV0IXcPlW6I9L$phase5pad-507",
+    "hs": "g",
+    "id": "507",
+    "persons": 5,
+    "videos": [
+      "433",
+      "600",
+      "707",
+      "452",
+      "552",
+      "453",
+      "553"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7b",
+    "description": "Phase 5",
+    "ep_group_id": "g.FQKy8lEQhVHaPIQE",
+    "ep_group_pad_id": "g.FQKy8lEQhVHaPIQE$phase5pad-508",
+    "hs": "g",
+    "id": "508",
+    "persons": 4,
+    "videos": [
+      "433",
+      "600",
+      "708",
+      "454",
+      "554",
+      "455",
+      "555"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7c",
+    "description": "Phase 5",
+    "ep_group_id": "g.cm7rBK0OgQstmiNu",
+    "ep_group_pad_id": "g.cm7rBK0OgQstmiNu$phase5pad-509",
+    "hs": "g",
+    "id": "509",
+    "persons": 4,
+    "videos": [
+      "433",
+      "600",
+      "709",
+      "456",
+      "556",
+      "457",
+      "557"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7d",
+    "description": "Phase 5",
+    "ep_group_id": "g.Y1yRST4vYor4P6DX",
+    "ep_group_pad_id": "g.Y1yRST4vYor4P6DX$phase5pad-510",
+    "hs": "g",
+    "id": "510",
+    "persons": 4,
+    "videos": [
+      "433",
+      "600",
+      "710",
+      "458",
+      "558",
+      "459",
+      "559"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7e",
+    "description": "Phase 5",
+    "ep_group_id": "g.hS5vVRAW5JCIJpeJ",
+    "ep_group_pad_id": "g.hS5vVRAW5JCIJpeJ$phase5pad-511",
+    "hs": "g",
+    "id": "511",
+    "persons": 4,
+    "videos": [
+      "433",
+      "600",
+      "711",
+      "460",
+      "560",
+      "461",
+      "561"
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "546522d55142ef5625eb0a7f",
+    "description": "Phase 5",
+    "ep_group_id": "g.gj0TUSi7kBkwRMGR",
+    "ep_group_pad_id": "g.gj0TUSi7kBkwRMGR$phase5pad-512",
+    "hs": "g",
+    "id": "512",
+    "persons": 4,
+    "videos": [
+      "433",
+      "600",
+      "712",
+      "462",
+      "562",
+      "463",
+      "563"
+    ]
+  }
+  
+]

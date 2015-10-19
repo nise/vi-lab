@@ -1,0 +1,558 @@
+	{
+"test":[
+		{
+    	"related-video":433,
+    	"id":0,
+			"question":"Was verbirgt sich hinter dem Konzept des Virtual-Collaborative Learning (kurz: VCL)? Bitte schreiben Sie Ihre eigene Defintion.", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "In VCL-Projekten bearbeiten studentische Kleingruppen (4 bis 6 Mitglieder) komplexe, realitätsnahe Problemstellungen in Form von Fallstudien. Die Kommunikation untereinander und sowie die Dokumentation der Arbeitsergebnisse erfolgt unter Einsatz von Social Media. Während der Zusammenarbeit haben sich die Gruppen eigenständig zu organisieren, sie tragen die gemeinsame Verantwortung für das Arbeitsergebnis und übernehmen vorgegebene Rollen. Um auftretende Fragen und Probleme besser bewältigen zu können, steht jeder Gruppe ein geschulter E-Tutor zur Seite.",	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":1,
+			"question":"Nennen Sie die drei Dimensionen der beruflichen Handlungskompetenz:", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution":"Die berufliche Handlungskompetenz erwächst aus den Dimensionen: Sozialkompetenz, Humankompetenz und Fachkompetenz.",	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":2,
+			"question":"Was meint Kollaboration in Zusammenhang mit VCL-Projekten?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Gemeinsame Bearbeitung unstrukturierter Aufgaben",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Synchrone + asynchrone Kommunikation",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Strategische und organisatorische Planungen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Gemeinsame Verantwortung für das Arbeitsergebnis",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ2", "answ4"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":3,
+			"question":"Was ist unter Blended Learning zu verstehen?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Online-Lernen ohne direkte Präsenzveranstaltungen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Didaktisch sinnvolle Verknüpfung von traditionellem Klassenzimmerlernen und virtuellem Online-Lernen",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Virtuelle Lehre in einem virtuellen Seminarraum",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Einsatz klassischer Präsenzlehrmethoden und neuer Informations- und Kommunikationstechnologien",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ5",
+    	  	"answ":"Ausschließliche Präsenzlehre an einer Universität",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ2", "answ4"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":4,
+			"question":"Was ist Grounding?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Einsatz von Moderationstechniken in Gruppenprozessen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Gemeinsames Verständnis einer Gruppe: (z.B. wie ein Ziel erreicht werden soll)",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Gruppendynamische Prozesse",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Bewältigung von Gruppenkonflikten",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ2"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":5,
+			"question":"Welche drei Dimensionen werden beim Blended Learning nach Schoop et al. (2006) unterschieden?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Persönliche Dimensionen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Inhaltliche Dimension",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Physische Dimensionen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Zeitliche Dimensionen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ5",
+    	  	"answ":"Meta-Dimensionen",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ3","answ4"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":6,
+			"question":"Welche Aufgaben werden dem E-Tutor zugeschrieben?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Unterstützung der Lernenden bei einer wirksamen und reflektierten Lösung",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Übernahme der Tätigkeit eines Lehrenden",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Hilfe bei der Entwicklung einer Handlungskompetenz",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Begleitung von Lernprozessen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ5",
+    	  	"answ":"Aktive Beteiligung am Lernprozess",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ6",
+    	  	"answ":"Betreuung der Gruppenmitglieder bei Problemen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ7",
+    	  	"answ":"Benotung der Gruppenmitglieder",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ8",
+    	  	"answ":"Unterstützung aus der Distanz",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ9",
+    	  	"answ":"Vermeidung einer Überforderung der Lernenden",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ10",
+    	  	"answ":"Evaluation der Gruppenmitglieder",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ3","answ4","answ6","answ8","answ9"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":7,
+			"question":"Welches sind die vier Merkmale des VCL?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Selbstorganisation",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Rollenübernahme durch die Teilnehmer",
+    	  	"questiontype":"mc"
+    	  }, 
+    	  { "id":"answ3",
+    	  	"answ":"Beschränkung auf einen Termin",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ4",
+    	  	"answ":"Kommunikation",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ5",
+    	  	"answ":"Kollaboration",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ6",
+    	  	"answ":"Ausschließliche Präsenzlehre",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ2","answ4","answ5"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":8,
+			"question":"Was wird unter Split-Tutor-Concept nach Kerres et al. (2005) verstanden?", 
+			"type":"sc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Trennung von fachbezogener und Personen- bzw. gruppenbezogene Betreuung",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Einsatz verschiedener Tutoren in verschiedenen Gruppen",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":9,
+			"question":"In welcher Reihenfolge sind die Formen von Interaktivität nach Bair (1989) sortiert, wenn man mit dem höchsten Interaktivitätsgrad beginnt.", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Cooperating, Collaborating, Coordinating, Informing",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Collaborating, Cooperating, Coordinating, Informing",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Collaborating, Coordinating, Cooperating, Informing",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Informing, Cooperating, Coordinating, Collaborating",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":10,
+			"question":"Welche Zuordnungen von Aufgaben und Kollaborations- bzw. Kooperationsprozess ist richtig?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Kollaboration: Kollaboration, Separieren von Teilaufgaben mit einem späteren Zusammenfügen zu einer Gesamtaufgabe",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Kooperation: Kollaboration, Separieren von Teilaufgaben mit einem späteren Zusammenfügen zu einer Gesamtaufgabe",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Kollaboration: Gemeinschaftliches Arbeiten an Aufgabe, Diskussion und Modifikation von Ergebnissen durch die Beteiligung aller Gruppenmitglieder, gemeinschaftliche Konstruktion von Arbeitsergebnissen und Wissen, gegenseitige Abhängigkeit im Lernen",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Kooperation: Gemeinschaftliches Arbeiten an Aufgabe, Diskussion und Modifikation von Ergebnissen durch die Beteiligung aller Gruppenmitglieder, gemeinschaftliche Konstruktion von Arbeitsergebnissen und Wissen, gegenseitige Abhängigkeit im Lernen",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":11,
+			"question":"Bitte nennen Sie die Merkmale des kollaborativen Lernens.", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution":"- hohes Maß an Selbststeuerung,<br>- Ablauf von Kommunikationsprozessen und <br>- Koordinationsprozessen,<br>- Schaffung eines gemeinsamen Verständnisses (Grounding),<br>- Aufgabenvielfalt,<br>- Berücksichtigung gruppendynamischer Prozesse,<br>- Erfordernis von Motivation und aktiver Partizipation.",	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":12,
+			"question":"Wie kann die Rolle des E-Tutors charakterisiert werden? Wählen Sie die richtigen Antworten aus.", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Aktiv in Gruppenabläufe eingreifend",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Begleitend und beobachtend",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Neutral",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Bestimmend bei den zu bearbeitenden Inhalten",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ5",
+    	  	"answ":"Unterstützend in verfahrenen Situationen (Sackgassen)",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ6",
+    	  	"answ":"Festlegen der Gruppenregeln",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ2","answ3","answ5"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":13,
+			"question":"Wann sollte ein E-Tutor in Gruppenprozesse eingreifen?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Wenn die Gruppe zu schnell ihre Verantwortlichkeiten verteilt.",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Bei Fragestellungen, die von den Teilnehmern nicht beantwortet werden können.",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Sobald die Gruppe eine Lösung entwickelt, die ihm nicht gefällt.",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Bei Problemen, die zum Stillstand der Gruppenarbeit führen.",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ5",
+    	  	"answ":"Gleich bei der ersten Diskussion der Gruppenregeln",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ2","answ4"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":14,
+			"question":"Welche zwei Aufgaben werden dem E-Tutor gleich zu Beginn seiner Betreuungsarbeit zugeschrieben?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Ansprechpartner für Fragen aus der Gruppe",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Moderator von Gruppentreffen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Vermittler bei Problemen",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Festlegen der Gruppenregeln",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ5",
+    	  	"answ":"Vorgeben der konkreten Inhalte",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ3"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":15,
+			"question":"In welcher Reihenfolge läuft ein idealtypisches VCL-Projekt ab?", 
+			"type":"sc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Kick-Off, Gruppenbildung/-findung, Fallstudienarbeit, Ergebnis- und Prozessdokumentation, Präsentation",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Kick-Off, Gruppenbildung/-findung, Fallstudienarbeit, Präsentation, Ergebnis- und Prozessdokumentation",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Gruppenbildung/-findung, Kick-Off, Fallstudienarbeit, Präsentation, Ergebnis- und Prozessdokumentation",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Gruppenbildung/-findung, Kick-Off, Fallstudienarbeit, Ergebnis- und Prozessdokumentation, Präsentation",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":16,
+			"question":"Wie viele Gruppen kann ein E-Tutor bei einer Gruppenstärke von 5 Personen max. gleichzeitig betreuen, bis die Kapazitätsgrenze für eine adäquate Betreuungsarbeit erreicht ist?", 
+			"type":"sc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "1",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"2-3",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"3-4",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"4-5",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ2"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":17,
+			"question":"Welche drei Werkzeugklassen werden bei der Bearbeitung von Fallstudien von Gruppenmitgliedern eingesetzt?", 
+			"type":"mc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Werkzeuge für Zusammenarbeit und Awareness",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Werkzeuge für die Benotung von Ergebnissen",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Werkzeuge für Collective Notetaking",
+    	  	"questiontype":"mc"
+    	  },
+    	  { "id":"answ4",
+    	  	"answ":"Werkzeuge für kollaborative Erstellung von Inhalten",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ1","answ3","answ4"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":18,
+			"question":"Welcher Dimension der beruflichen Handlungskompetenz werden die Selbständigkeit, Zuverlässigkeit und Kritikfähigkeit einer Person zugeordnet?", 
+			"type":"sc",
+    	"answ":[ 
+    		{ "id":"answ1",
+    	  	"answ": "Sozialkompetenz",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ2",
+    	  	"answ":"Fachkompetenz",
+    	  	"questiontype":"mc"
+    	  },	 
+    	  { "id":"answ3",
+    	  	"answ":"Humankompetenz",
+    	  	"questiontype":"mc"
+    	  }
+    	 ],	
+		  "correct":["answ3"],	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":19,
+			"question":"Bitte zählen Sie auf: Welche Aufgaben hat ein E-Tutor im Rahmen der Personen- und gruppenbezogenen Betreuung zu erfüllen?", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],	
+		  "solution":"1. (Unterstützung bei der) Organisation von Lernaktivitäten; 2. Rückmeldung zum Lernverhalten des Einzelnen/der Gruppe; 3) Unterstützung bei Konflikten; 4) Betreuung bei Lernproblemen des Einzelnen/der Gruppe.",
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":433,
+    	"id":20,
+			"question":"Bitte schreiben Sie auf: Worin liegt der Unterscheid zwischen Kollaboration und Kooperation? (Eine Antwort in Stichpunkten ist ausreichend.)", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution" :"Der Begriff 'Kollaboration' bezeichnet die gemeinsame Bearbeitung von unstrukturierten Aufgaben, wobei kein arbeitsteiliges, sondern ein gemeinsames Ergebnis erstellt wird. Das Ergebnis entsteht durch aktive Teilnahme und häufige Interaktion der beteiligten Individuen und liegt in deren Verantwortung. Der Begriff 'Kooperation' bezeichnet den Prozess der arbeitsteiligen Zusammenarbeit mit einem gemeinsamen Ziel.",	
+		  "start": "0",
+		  "author": "23",
+		  "date": "1386669183595"
+  	}
+  	
+	]
+}
+      

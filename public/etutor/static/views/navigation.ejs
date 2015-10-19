@@ -1,0 +1,101 @@
+<!-- Navbar
+  ================================================== -->
+	<header class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand vi-lab-tooltip" title="Startseite" data-toggle="tooltip" data-placement="bottom" href="/home">Qualifikation von E-Tutoren</a>
+			</div>
+			<nav class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="vi-lab-tooltip" title="j" data-toggle="tooltip" data-placement="bottom" href="javascript:render('videos', true, '#page');">Themen & Videos</a></li>
+					<li><a data-toggle="tooltip" data-placement="bottom" href="javascript:render('about', false, '#page');" class="">About</a></li>
+					<li style="display:none;"><a class="" href="/videos/view/52a13d2e2aa9d35f24000074" class="sr-only">Film</a></li>
+					
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div id="userpanel">
+		<span class="group-area"></span>
+		<span class="user-area"></span>
+	</div>
+	<script type="text/javascript"> 
+	var socket = {};
+	
+	$(window).load(function () {
+		
+		// load components
+		render('group-data', true, '.group-area');
+		render('user-data', true, '.user-area'); 
+		
+		$(function () {
+  		$('[data-toggle="tooltip"]').tooltip()
+		});
+				
+		
+		// handle sockets	
+		socket = io('http://127.0.0.1:3033'/*, { rememberTransport: false }*/);//, {'transports': ['websocket', 'polling']});
+		//socket = io.connect('http://localhost:3033', { rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling']});
+		/*socket = io(":3030", {
+        'force new connection': true,
+        'auto connect': false
+    });*/
+		//socket = io('http://176.10.37.68:3033');
+	
+		// recognize user that just logged in
+		socket.on('user.goes.online', function(data){ //alert('conn'+data.user)
+			$('#user'+data.user).addClass('online');
+		});
+	
+		socket.on('user.goes.offline', function(data){ //alert('disconn'+data.user)
+			$('#user'+data.user).removeClass('online');
+		});
+			
+		
+	}); 
+
+
+$(window).on('beforeunload', function(){ 
+    //socket.close();
+}); 
+	
+	
+	
+	var server = '';
+
+	/*
+	**/
+	var render = function(template, remote, selector, json){
+			if( json === undefined){ json = template; } 
+			require(['text!../views/'+template+'.ejs', 'ejs'], function(thetemplate) {  
+				if(remote){        
+					$.ajax({
+				    type: "get",
+				    beforeSend: function(xhr){  
+								if (xhr.overrideMimeType){
+								  xhr.overrideMimeType("application/json");
+								}
+						},
+				    url: server+'/json/'+json,
+				    dataType: 'json',
+				    success: function(data){  // alert( JSON.stringify(data))
+							var html = ejs.render(thetemplate, { items: data });
+							$(selector).html(html);
+						
+						},
+						error : function(e){ alert('ERROR at '+template+':'+JSON.stringify(e)); }		  
+					});
+			
+				}else{ 
+					var html = ejs.render(thetemplate, {items:0});
+					$(selector).html(html);
+				}	
+		}); // end require
+	};	// end render
+	
+	</script> 

@@ -1,0 +1,29 @@
+<% layout('video-layout') -%>
+
+
+ <div class="jumbotron">
+	<div class="container">
+  <h2><span class="glyphicon glyphicon-user"> <%= item.username %></span></h2>
+  <p>
+    <div class="edit-form">
+    	<label>Benutzername:</label> <%= item.username %> <img width="20" src="/static/img/user-icons/user-<%= item.id %>_big.png" /><br/>
+  	 	<label>Name:</label> <%= item.firstname %> <%= item.name %><br/>
+  	 	<label>Gruppe:</label><div class="group-area2">...</div>
+  	</div>
+  	
+  	<br>
+  </p>
+  </div>
+</div>  
+
+
+<div class="container">
+	
+</div>
+
+<script type="text/javascript"> 
+//$('.markdown').each(function(i, val){ $(this).html( markdown.toHTML($(this).text()) );});
+$(window).load(function () {
+	render('group-overview', true, '.group-area2', 'group-data');
+});
+</script>

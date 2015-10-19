@@ -1,0 +1,13 @@
+[submodule "public/vi-lab/lib/vi-two"]
+	path = public/vi-lab/lib/vi-two
+	url = https://nise:qwertz12@github.com/nise/vi-two
+	
+[submodule "public/vi-lab/lib/popcorn-maker"]
+	path = public/vi-lab/lib/popcorn-maker
+	url = https://nise:qwertz12@github.com/nise/vi-two
+	ignore = all
+	
+[submodule "public/vi-lab/views/popcorn-maker"]
+	path = public/vi-lab/views/popcorn-maker
+	url = https://nise:qwertz12@github.com/nise/vi-two
+	ignore = all	

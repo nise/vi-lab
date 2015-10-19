@@ -1,0 +1,10 @@
+{
+  "title": "Chroma/Luma Key",
+  "thumbnail": "thumbnail.png",
+  "template": "template.html",
+  "defaultMedia": "http://mozillapopcorn.org/participant/knell.webm",
+  "files": [
+    "template.html",
+    "thumbnail.gif"
+  ]
+}

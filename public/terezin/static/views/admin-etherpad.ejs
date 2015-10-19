@@ -1,0 +1,96 @@
+<% layout('admin-layout') -%>
+
+<script type="text/javascript"> 
+	$.get('/json/etherpad', function(data){ 
+		$.each(data.etherpad, function(i, val){ 
+			var head = $('<h4></h4>').text('Group-ID: '+val.group )
+			var content = $('<div></div>')
+				.append(val.text.html);
+			var feedback = getFeedback();	
+			var item = $('<div></div>')
+				.addClass('null')
+				.append(head)
+				.append(content)
+				.appendTo('.admin-pads');
+		});
+	});
+	
+	function getFeedback(){
+	
+		/*
+		var _this = this;
+				var pos = this.relativePos(obj.displayPosition);
+				
+				$.get('/assessment/fill-in/'+vi2.currentVideo+'-'+obj.content.title, function(data){
+					if(! data.empty){
+						data[0].contents.sort(function(m1, m2) { return moment(m2.updated_at) - moment(m1.updated_at); }); 
+					}
+					if(data.empty == true){}	
+					var newInput = document.createElement("input"); 	
+					$(newInput)
+						.attr('type', 'text')
+						.attr('name', 'field-'+obj.content.title)
+						.attr('id', obj.content.title)
+						.css('width', obj.width)
+						.val(data.empty ? '' : data[0].contents[0].text)
+						.focus(function(e){ 
+							_this.player.pause();
+						});
+				
+					var btn = $('<div></div>')
+						.text('speichern')
+						.css('border-left','solid 1px #003366')
+						//.button()
+						.addClass('submit-fill-in')
+						.click(function(e){
+							vi2.observer.log(_this.player.url+' save-fill-in: '+obj.content.title); 
+							$.post('/assessment/fill-in/'+vi2.currentVideo+'-'+obj.content.title, {"text": $(newInput).val() }, function(dat){
+								//alert('saved'); // ot working xxx
+								_this.player.play();
+								$(btn).tooltip({delay: 0, showURL: false, bodyHandler: function() { return $('<span></span>').text('Eingabe gespeichert');} })
+							});
+						});
+						$(btn).css('display','none');
+								 
+					var o = $('<span></span>')
+						.append(newInput)
+						.append(btn)
+						
+						.attr('id', 'ov'+id)
+						.addClass('overlay ov-'+id)
+						.addClass('assessment-fill-in')
+		 				.bind('mouseenter', function(dataa){
+		 					_this.player.pause();
+		 					$(btn).css('display','inline');
+							$(rev).css('display','inline');
+		 					//$.get('/assessment/fill-in/'+id, function(data){ _this.showRevisions(data, o); });
+						})
+						.bind('mouseleave', function(data){ 
+							//_this.player.play();
+							$(btn).css('display','none');
+							$(rev).css('display','none');
+							$('.revisions').remove(); 
+						})
+						.appendTo(_this.options.selector);
+					
+					// positioning object AFTER appending it to its parent // buggy
+					// ($(this.options.selector).offset()).left+
+					//alert($(this.options.selector).offset().left+'  '+pos.x);
+					o.css({left: pos.x+280, top: pos.y, position:'absolute'});		
+					
+					//$(btn).css('display','inline');
+					//$(rev).css('display','inline');
+					//document.getElementById('thediv').style['display'] = "inline";	
+			
+			});
+			*/
+	}
+		
+</script>
+
+<h2>Etherpad contet per Group</h2>
+
+
+<div class="admin-pads"></div>
+
+

@@ -1,0 +1,22 @@
+
+<script>
+	$('.group-menu .user-menu-icon').tooltip({delay: 0, showURL: false, bodyHandler: function() { 
+			return $('<span></span>').text($('.'+$(this).attr('id')).text());
+		}
+	});
+	
+</script>
+<% if(items.user) { %>
+	<div class="group-menu">
+	<% if ( items.group.length <= 16 ) { %>			
+		<% items.group.forEach( function ( user ){ %>
+			<% if (user.username != items.username) { %>
+				<a href="/users/view/<%= user.username %>">
+					<img class="user-menu-icon user<%= user.id %>" id="user<%= user.id %>" src="/static/img/user-icons/user-<%= user.id %>_big.png" />
+					<span hidden class="user<%= user.id %>"><%= user.firstname %> <%= user.name %> ist in Ihrer Gruppe.</span>
+				</a>				
+			<% } %>
+		<% }); %>
+	<% } %>	
+	</div>
+<% } %>		

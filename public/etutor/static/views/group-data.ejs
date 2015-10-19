@@ -1,0 +1,20 @@
+
+<% if(items.user) { %>
+	<div class="group-menu">
+	<% if ( items.group.length <= 16 ) { %>			
+		<% items.group.forEach( function ( user ){ %>
+			<% if (user.username != items.username) { %>
+				<a class="navbar-brand" data-toggle="tooltip" data-placement="bottom" title="<%= user.username %> ist Mitglied in Ihrer Gruppe." href="/users/view/<%= user.username %>">
+					<img class="user-menu-icon <% if( user.status.online ){ %> online <% } %>" id="user<%= user.id %>" src="/static/img/user-icons/user-<%= user.id %>_big.png" />
+				</a>				
+			<% } %>
+		<% }); %>
+	<% } %>	
+	</div>
+<% } %>		
+	<script>
+		// enable tooltips
+		$(function () {
+  		$('.group-menu[data-toggle="tooltip"]').tooltip()
+		});
+	</script>

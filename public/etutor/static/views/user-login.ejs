@@ -1,0 +1,29 @@
+<% layout('layout-blank') -%>
+
+
+<div class="col-md-6">
+	<h3>Login</h3> 
+	<% if (message.length > 0) { %>
+	<p class="warning"><%= message %></p>
+	<% } %>
+
+  <p>
+    <div class="edit-form">
+			<form action="/login" method="post">
+				<div class="input-group input-group-xs">
+					<span class="input-group-addon" id="sizing-addon1">Benutzernamen</span>
+					<input type="input" class="form-control" placeholder="Benutzername" aria-describedby="Username" name="username" value="<% if (username) { %><%= username %><% } %>">
+		    </div>
+		    <br>
+		    <div class="input-group input-group-xs">
+					<span class="input-group-addon" id="sizing-addon1">Passwort</span>
+					<input type="password" class="form-control" placeholder="Passwort" aria-describedby="Password" name="password" value="">
+		    </div>
+		    <br>
+		   <div class="buttons">
+				<button type="submit" class="btn-default btn">Login</button>  
+			</div>
+			</form>
+		</div>
+	</p>	
+</div>

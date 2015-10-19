@@ -1,0 +1,230 @@
+<% layout( 'layout' ) -%>
+
+<h2>Selbsttest</h2> 
+  <p style="width:500px;">
+  Dieser Test dient der Kontrolle des aktuellen Wissensstandes zu den Videoinhalten. Er wird nicht benotet und nicht in die Abschlussnote einbezogen. Nutzen Sie ihn als optimale Vorbereitung auf die Fallstudienphase! Der Test kann mehrfach absolviert werden und gibt Ihnen damit ein Feedback zur Entwicklung Ihrer Leistungen.
+  Alle abgesendeten Lösungen werden gespeichert und können miteinander verglichen werden.</p>
+  <div id="assessment-accordion">
+  	<h3 class="test-head">Test</h3>
+  	<div id="testt" class="edit-form assessment-test"></div>
+  	<h3>Ergebnisse der Selbsttests</h3>
+  	<div id="res" class="assessment-results">Bislang liegen noch keine Testergebnisse vor.</div>
+  </div>
+  
+<script>
+	var t1 = (new Date()).getTime();
+	$.ajax({
+		type: 'GET',
+  	dataType : 'json',
+  	url: '/json/assessment',
+  	success: function(res) {   
+			$.each(res.test, function(j,val){ 
+				var task = $('<div></div>')
+					.addClass('question question-'+(j))
+					//.addClass('edit-form')
+					.appendTo('.edit-form');
+				
+				var question = $('<strong></strong>')
+					.addClass('ass-question')
+					.text('A'+(j+1)+': '+val.question)
+					.appendTo(task);
+				
+				var answ = $('<div></div>')
+					.addClass('assessment-answers assessment-answers-'+j)
+					.appendTo(task);	
+					
+				var answer = $('<div></div>');
+				if(val.type == "mc" || val.type == "sc"){	
+					$.each(val.answ, function(i, vall){ 
+						var ttype = val.type == "mc" ? "checkbox" : "radio";
+						var options = $('<span></span>')
+							.addClass('answer-options')
+							.append('<input type="'+ttype+'" name="quest'+j+'" id="'+j+vall.id+'" value="1" />')
+							.append('<label class="assessment" for="'+j+vall.id+'">'+vall.answ+'</label>')
+							.append('<br/>');
+						answer
+							//.attr('id', vall.id)
+							.addClass('assessment-answer')
+							.append(options)
+							//.click(function(){ $(this).find('input[type="checkbox"]').attr('checked',true) })
+							
+							.appendTo(answ);
+					});
+				}else{
+					// fill-in task
+					answer
+					.attr('id', 'answ0')
+  				.addClass('assessment-answer')
+  				.append('<textarea name="quest"></textarea>')
+  				.append('<br/>')
+  				.appendTo(answ);
+				}
+				
+				// shuffle answer options
+				$('div.assessment-answer span.answer-options').tsort({order:'rand'});
+				
+				// feedback
+				var fb = $('<div></div>')
+					.addClass('question-feedback-'+j)
+					.addClass('assessment-feedback')
+					.appendTo(task);	
+				
+			});
+			
+			var solve = $('<button></button>')
+				.addClass('assessment-btn')
+				.text('abschicken')
+				.attr('type','submit')
+				.click(function(){
+					$('.assessment-btn').hide();
+					evaluateTest(res);
+				})
+				.appendTo('.edit-form')
+				;
+			
+			$('#assessment-accordion').accordion({
+				autoHeight: false, 
+  			collapsible: true, 
+  			fillSpace: false
+  		});
+  		$('#assessment-accordion').bind('accordionchange', function() {
+  			if($(this).accordion('option', 'active') == 1){
+  				plotResults(res);
+  			}
+        
+    	});	
+			
+		},
+		error: function(e){
+			alert(e)
+		}	
+	});
+
+
+
+function setFeedback(code, id, solution){
+	if(code == 'incomplete'){
+		$('.question-feedback-'+id)
+			.addClass('warning')
+			.html("Diese Aufgabe wurde noch nicht (oder nur teilweise) bearbeitet.");
+	}else if (code == 'done'){
+		$('.question-feedback-'+id)
+			.addClass('well-done')
+			.html("Vielen Dank für die abgegebene Lösung. Unsere Musterlösung lautet wie folgt:<br>"+solution);
+	}
+	
+}
+
+/*
+
+**/
+function evaluateTest(data){
+	// data = raw data to construc a test
+	var correct = [];
+	var fillincount = 0;
+	var full_results = new Object(); 
+	$.each(data.test, function(j,val){
+		correct[val.id] = 0;
+		full_results['Task-'+val.id] = new Array();
+		if(val.type == "mc" || val.type == "sc"){
+			// collect all test data
+			$('.assessment-answers-'+val.id+' > .assessment-answer').find("span.answer-options").each(function(l, option){ 
+				var obj = {option: $(option).find('input').attr('id'), value: $(option).find('input:checked').val() }
+				full_results['Task-'+val.id].push(obj);
+			});
+			// mc/sc
+			if($('div.question-'+val.id).find("input[name='quest"+val.id+"']:checked").first().val() == 1){ //if(j==4){alert(9)}
+				// check wether the correct options were selected
+				$.each(val.correct, function(k, corr){ 
+					var el = $('div.question-'+val.id).find("input[id='"+val.id+corr+"']");
+					if(el.val() == 1){
+						el.next().css('border','solid 2px green');
+						correct[val.id]++;
+					}else{
+						el.next().css('border','solid 2px red');
+					}
+				});
+			}else{ // if no option has been selected the question is incomplete
+				setFeedback('incomplete', val.id, null);
+			}
+		}else{
+			// fill-in task
+			fillincount++;
+			input = $('div.question-'+val.id).find('textarea').val();
+			full_results['Task-'+val.id]['input'] = input;
+			if(input.length < 10){
+				setFeedback('incomplete', val.id, null);
+			}else{
+				setFeedback('done', val.id, val.solution);
+			}
+		}
+		
+	});
+	
+	// save user input and test results
+	$.ajax({
+		type: 'POST',
+  	dataType : 'json',
+  	data : {results: correct, user_results: [full_results], process_time: ((new Date()).getTime() - t1)},
+  	url: '/assessment/results',
+  	success: function(res) {
+  		$('.test-head').text('Test + Feedback')
+  		   
+  		plotResults(data, correct);
+  		$('#assessment-accordion').accordion({active:1});
+  	},
+  	error: function(err){
+  		//alert(JSON.stringify(err))
+  	}	
+  });
+}
+
+
+function plotResults(data, corr){ 
+	//$('.assessment-results').append('<h2>Testergebnisse</h2>');
+	$.ajax({
+		type: 'GET',
+  	//dataType : 'json',
+  	url: '/assessment/results',
+  	success: function(res) {
+  		if(res != 0){
+				$('.assessment-results').empty();
+				var table = $('<table></table>')
+					.css('font-size','10px')
+					.append('<thead><th>Datum</th><th>A1</th><th>A2</th><th>A3</th><th>A4</th><th>A5</th><th>A6</th><th>A7</th><th>A8</th><th>A9</th><th>A10</th><th>A11</th><th>A12</th><th>A13</th><th>A14</th><th>A15</th><th>A16</th><th>A17</th><th>A18</th><th>A19</th><th>A20</th><th>A21</th><th>SUMME</th></thead>')
+					.appendTo('.assessment-results');
+				
+				$.each(res, function(i, val){
+					var row = $('<tr></tr>')
+						.append('<td>'+val.updated_at+'</td>')
+						.appendTo(table);
+					var sum_vall = 0, sum_maxp = 0;	
+					$.each(val.results, function(j,vall){
+				 		var maxp = Number(data.test[j].correct.length); 
+				 		sum_maxp += Number(maxp);
+				 		sum_vall += Number(vall);
+				 		if(maxp === 0){
+				 			row.append('<td>--</td>');
+				 		}else if(maxp == vall){
+				 			row.append('<td style="color:green;">'+vall+'/'+maxp+'</td>');
+				 		}else{
+				 			row.append('<td style="color:red;">'+vall+'/'+maxp+'</td>');
+				 		}
+					});
+					row.append('<td style="font-weight:bold">'+sum_vall+'/'+sum_maxp+'</td>');
+					if(res.length-1 == i){
+						$('.assessment-results')
+							.prepend('<br/><br/>')
+							.prepend($('<a href="/assessment"></a>').text('Test jetzt wiederholen.').addClass('button').css('color','#fff'))
+							.prepend('<strong>Sie haben im letzten Testdurchlauf '+sum_vall+' von '+sum_maxp+' Punkten der Multiple-Choice-Aufgaben erreicht.</strong><br><br><br>');
+								
+					}  		
+  			});
+  		}	
+		},
+		error: function(err){}	
+  });
+}
+
+</script>  
+  

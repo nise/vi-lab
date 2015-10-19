@@ -1,0 +1,9 @@
+{
+  "title": "Testing",
+  "thumbnail": "thumbnail.gif",
+  "template": "template.html",
+  "files": [
+    "template.html",
+    "thumbnail.gif"
+  ]
+}

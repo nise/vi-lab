@@ -1,0 +1,1158 @@
+[
+ {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000074",
+    "id": "111",
+    "progress": "3",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "X",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "25:22:00",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000046",
+    "id": "222",
+    "progress": "3",
+    "video": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "X",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "49:56:00",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {
+            "t": "Medium"
+          },
+          {
+            "t": "computervermittelte Kommunikation"
+          },
+          {
+            "t": "VCL-Projekt"
+          },
+          {
+            "t": "Werkzeuge"
+          },
+          {
+            "t": "Auswahl"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "duration": "25.9",
+        "starttime": "0.0",
+        "img": "video2/e2script_2-0.jpg",
+        "id": "Seminar zur Qualifizierung von eTutoren – Kommunikation und Kommunikationsmedien im virtuellen Raum –",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "25.9",
+        "img": "video2/e2script_2-1.jpg",
+        "id": "Agenda",
+        "type": "seq"
+      },
+      {
+        "duration": "64.5",
+        "starttime": "58.4",
+        "img": "video2/e2script_2-2.jpg",
+        "id": "Agenda",
+        "type": "seq"
+      },
+      {
+        "duration": "142.0",
+        "starttime": "122.9",
+        "img": "video2/e2script_2-3.jpg",
+        "id": "1 Computervermittelte Kommunikation",
+        "type": "seq"
+      },
+      {
+        "duration": "223.7",
+        "starttime": "264.9",
+        "img": "video2/e2script_2-4.jpg",
+        "id": "1 Computervermittelte Kommunikation",
+        "type": "seq"
+      },
+      {
+        "duration": "423.4",
+        "starttime": "488.6",
+        "img": "video2/e2script_2-5.jpg",
+        "id": "1 Computervermittelte Kommunikation",
+        "type": "seq"
+      },
+      {
+        "duration": "202.6",
+        "starttime": "912.0",
+        "img": "video2/e2script_2-6.jpg",
+        "id": "1 Computervermittelte Kommunikation",
+        "type": "seq"
+      },
+      {
+        "duration": "125.5",
+        "starttime": "1114.6",
+        "img": "video2/e2script_2-7.jpg",
+        "id": "1 Computervermittelte Kommunikation",
+        "type": "seq"
+      },
+      {
+        "duration": "104.4",
+        "starttime": "1240.1",
+        "img": "video2/e2script_2-8.jpg",
+        "id": "2 Kommunikationsprozesse in VCL-Projekten",
+        "type": "seq"
+      },
+      {
+        "duration": "173.2",
+        "starttime": "1344.5",
+        "img": "video2/e2script_2-9.jpg",
+        "id": "2 Kommunikationsprozesse in VCL-Projekten",
+        "type": "seq"
+      },
+      {
+        "duration": "40.1",
+        "starttime": "1517.7",
+        "img": "video2/e2script_2-10.jpg",
+        "id": "2 Kommunikationsprozesse in VCL-Projekten",
+        "type": "seq"
+      },
+      {
+        "duration": "43.7",
+        "starttime": "1557.8",
+        "img": "video2/e2script_2-11.jpg",
+        "id": "2 Kommunikationsprozesse in VCL-Projekten",
+        "type": "seq"
+      },
+      {
+        "duration": "63.6",
+        "starttime": "1601.5",
+        "img": "video2/e2script_2-12.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "21.2",
+        "starttime": "1665.1",
+        "img": "video2/e2script_2-13.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "110.8",
+        "starttime": "1686.3",
+        "img": "video2/e2script_2-14.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "100.4",
+        "starttime": "1797.1",
+        "img": "video2/e2script_2-15.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "125.9",
+        "starttime": "1897.5",
+        "img": "video2/e2script_2-16.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "41.3",
+        "starttime": "2023.4",
+        "img": "video2/e2script_2-17.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "102.9",
+        "starttime": "2064.7",
+        "img": "video2/e2script_2-18.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "11.8",
+        "starttime": "2167.6",
+        "img": "video2/e2script_2-19.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "81.9",
+        "starttime": "2179.4",
+        "img": "video2/e2script_2-20.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "14.6",
+        "starttime": "2261.3",
+        "img": "video2/e2script_2-21.jpg",
+        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "type": "seq"
+      },
+      {
+        "duration": "29.1",
+        "starttime": "2275.9",
+        "img": "video2/e2script_2-22.jpg",
+        "id": "Seite",
+        "type": "seq"
+      },
+      {
+        "duration": "10.4",
+        "starttime": "2305.0",
+        "img": "video2/e2script_2-23.jpg",
+        "id": "Seite",
+        "type": "seq"
+      },
+      {
+        "duration": "2.3",
+        "starttime": "2315.4",
+        "img": "video2/e2script_2-24.jpg",
+        "id": "Seite",
+        "type": "seq"
+      },
+      {
+        "duration": "2.9",
+        "starttime": "2317.7",
+        "img": "video2/e2script_2-25.jpg",
+        "id": "Seite",
+        "type": "seq"
+      },
+      {
+        "duration": "14.2",
+        "starttime": "2320.6",
+        "img": "video2/e2script_2-26.jpg",
+        "id": "Seite",
+        "type": "seq"
+      },
+      {
+        "duration": "160.7",
+        "starttime": "2334.8",
+        "img": "video2/e2script_2-27.jpg",
+        "id": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "type": "seq"
+      },
+      {
+        "duration": "321.3",
+        "starttime": "2495.5",
+        "img": "video2/e2script_2-28.jpg",
+        "id": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "type": "seq"
+      },
+      {
+        "duration": "137.6",
+        "starttime": "2816.8",
+        "img": "video2/e2script_2-29.jpg",
+        "id": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "type": "seq"
+      },
+      {
+        "duration": "12.3",
+        "starttime": "2954.4",
+        "img": "video2/e2script_2-30.jpg",
+        "id": "Quellen",
+        "type": "seq"
+      },
+      {
+        "duration": "21.7",
+        "starttime": "2966.7",
+        "img": "video2/e2script_2-31.jpg",
+        "id": "Quellen",
+        "type": "seq"
+      },
+      {
+        "duration": "8.3",
+        "starttime": "2988.4",
+        "img": "video2/e2script_2-32.jpg",
+        "id": "Quellen",
+        "type": "seq"
+      }
+    ],
+    "toc": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},
+	{
+    "_id": "52a13d2e2aa9d35f24000548",
+    "video": "/static/videos/e2script_lecture3_improved.mp4",
+    "id": "333",
+    "progress": "3",
+    "__v": 0,
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Arbeiten und Lernen in Gruppen",
+        "category": "X",
+        "abstract": "Das dritte Video thematisiert das Arbeiten und Lernen in Gruppen sowie deren Besonderheiten im virtuellen Raum. Sie erfahren Details zu den Merkmalen von Gruppen und verschiedene Definitionsansätze zum Begriff des Selbstgesteuerten Lernens. Weiterhin werden anhand eines Modells die idealtypischen Phasen der Gruppenentwicklung vorgestellt und mögliche Auswirkungen der Zusammenarbeit auf das Verhalten der Gruppenmitglieder sowie deren Umgang mit Informationen aufgezeigt. Praktische Tipps zur Vergabe von Feedback zur Förderung der Motivation in einer Gruppe schließen das Video ab.",
+        "length": "49:56:00",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video3_poster.jpg",
+        "_id": "54547be3568b77107d437b65",
+        "tags": [
+          {
+            "t": "Gruppe"
+          },
+          {
+            "t": "Selbstgesteuertes Lernen"
+          },
+          {
+            "t": "Gruppenentwicklung"
+          },
+          {
+            "t": "Auswirkungen"
+          },
+          {
+            "t": "Feedback"
+          }
+        ]
+      }
+    ],
+    "assessment": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "comments": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": "0",
+        "duration": "45"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": "45",
+        "duration": "38"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": "83",
+        "duration": "35"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": "118",
+        "duration": "279"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": "397",
+        "duration": "205"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": "602",
+        "duration": "62"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": "664",
+        "duration": "417"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": "1081",
+        "duration": "262"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": "1343",
+        "duration": "13"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": "1356",
+        "duration": "25"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": "1381",
+        "duration": "264"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": "1645",
+        "duration": "441"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": "2086",
+        "duration": "162"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": "2248",
+        "duration": "270"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": "2518",
+        "duration": "192"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": "2710",
+        "duration": "108"
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": "1818",
+        "duration": "400"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000600",
+    "video": "/static/videos/e2script_lecture4_improved.mp4",
+    "id": "444",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "43:46:00",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ],
+    "progress": "4",
+    "tags": [],
+    "toc": [],
+    "comments": [],
+    "assessment": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "toc_org": [
+      {
+        "label": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "start": 0,
+        "_id": "545b680c9771121476d0caa2"
+      },
+      {
+        "label": "Agenda",
+        "start": 9,
+        "_id": "545b680c9771121476d0caa1"
+      },
+      {
+        "label": "Einordnung",
+        "start": 121.9,
+        "_id": "545b680c9771121476d0caa0"
+      },
+      {
+        "label": "Definition I",
+        "start": 152,
+        "_id": "545b680c9771121476d0ca9f"
+      },
+      {
+        "label": "Definition II",
+        "start": 209.7,
+        "_id": "545b680c9771121476d0ca9e"
+      },
+      {
+        "label": "1 Kontext der Moderation in VCL-Projekten",
+        "start": 273,
+        "_id": "545b680c9771121476d0ca9d"
+      },
+      {
+        "label": "2 Was ist virtuelle Moderation?",
+        "start": 523.4,
+        "_id": "545b680c9771121476d0ca9c"
+      },
+      {
+        "label": "3 Die Rolle(n) der eModeration",
+        "start": 888.3,
+        "_id": "545b680c9771121476d0ca9b"
+      },
+      {
+        "label": "4 Moderation in einer Gesprächssituation",
+        "start": 1260.9,
+        "_id": "545b680c9771121476d0ca9a"
+      },
+      {
+        "label": "4.1 Handwerkszeug",
+        "start": 1411.8,
+        "_id": "545b680c9771121476d0ca99"
+      },
+      {
+        "label": "4.2 Moderation in ausgewählten  Tools",
+        "start": 2023.5,
+        "_id": "545b680c9771121476d0ca98"
+      },
+      {
+        "label": "4.3 Moderation in  Konfliktsituationen",
+        "start": 2244.7,
+        "_id": "545b680c9771121476d0ca97"
+      },
+      {
+        "label": "Quellen",
+        "start": 2607.7,
+        "_id": "545b680c9771121476d0ca96"
+      }
+    ]
+  },
+  {
+    "_id": "52a13d2e2aa9d35f24000701",
+    "video": "/static/videos/e2script_lecture5_improved.mp4",
+    "id": "555",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "42:56:00",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Konflikt",
+            "t": "Diagnose",
+             "t": "Intervention"
+          }
+        ]
+      }
+    ],
+    "progress": "5",
+    "comments": [],
+    "hyperlinks": [],
+    "assessment":[],
+    "tags": [],
+    "toc": [],
+    "slides": [
+		  {"type":"seq","id":"","img":"700/e2script_5-0.jpg","starttime":"0.0","duration":"54.7"},
+		  {"type":"seq","id":"","img":"700/e2script_5-1.jpg","starttime":"54.7","duration":"38.9"},
+		  {"type":"seq","id":"","img":"700/e2script_5-2.jpg","starttime":"93.6","duration":"31.4"},
+		  {"type":"seq","id":"","img":"700/e2script_5-3.jpg","starttime":"125.0","duration":"164.3"},
+		  {"type":"seq","id":"","img":"700/e2script_5-4.jpg","starttime":"289.3","duration":"176.6"},
+		  {"type":"seq","id":"","img":"700/e2script_5-5.jpg","starttime":"465.9","duration":"199.3"},
+		  {"type":"seq","id":"","img":"700/e2script_5-6.jpg","starttime":"665.2","duration":"277.4"},
+		  {"type":"seq","id":"","img":"700/e2script_5-7.jpg","starttime":"942.6","duration":"164.0"},
+		  {"type":"seq","id":"","img":"700/e2script_5-8.jpg","starttime":"1106.6","duration":"200.4"},
+		  {"type":"seq","id":"","img":"700/e2script_5-9.jpg","starttime":"1307.0","duration":"59.2"},
+		  {"type":"seq","id":"","img":"700/e2script_5-10.jpg","starttime":"1366.2","duration":"29.1"},
+		  {"type":"seq","id":"","img":"700/e2script_5-11.jpg","starttime":"1395.3","duration":"20.0"},
+		  {"type":"seq","id":"","img":"700/e2script_5-12.jpg","starttime":"1415.3","duration":"61.5"},
+		  {"type":"seq","id":"","img":"700/e2script_5-13.jpg","starttime":"1476.8","duration":"260.9"},
+		  {"type":"seq","id":"","img":"700/e2script_5-14.jpg","starttime":"1737.7","duration":"145.2"},
+		  {"type":"seq","id":"","img":"700/e2script_5-15.jpg","starttime":"1882.9","duration":"27.8"},
+		  {"type":"seq","id":"","img":"700/e2script_5-16.jpg","starttime":"1910.7","duration":"81.7"},
+		  {"type":"seq","id":"","img":"700/e2script_5-17.jpg","starttime":"1992.4","duration":"84.0"},
+		  {"type":"seq","id":"","img":"700/e2script_5-18.jpg","starttime":"2076.4","duration":"263.6"},
+		  {"type":"seq","id":"","img":"700/e2script_5-19.jpg","starttime":"2340.0","duration":"41.5"},
+		  {"type":"seq","id":"","img":"700/e2script_5-20.jpg","starttime":"2381.5","duration":"92.2"},
+		  {"type":"seq","id":"","img":"700/e2script_5-21.jpg","starttime":"2473.7","duration":"27.1"},
+		  {"type":"seq","id":"","img":"700/e2script_5-22.jpg","starttime":"2500.8","duration":"18.1"},
+		  {"type":"seq","id":"","img":"700/e2script_5-23.jpg","starttime":"2518.9","duration":"39.6"},
+		  {"type":"seq","id":"","img":"700/e2script_5-24.jpg","starttime":"2558.5","duration":"7.0"},
+		  {"type":"seq","id":"","img":"700/e2script_5-25.jpg","starttime":"2565.5","duration":"6.1"},
+		  {"type":"seq","id":"","img":"700/e2script_5-26.jpg","starttime":"2571.6","duration":"6.3"}
+		 ],
+    "toc_org": [
+    	{"label":"Konfliktdiagnostik und -intervention im virtuellen Klassenraum","duration":1,"start":"0.0"},
+    	{"label":"Agenda","duration":1,"start":"54.7"},
+    	{"label":"1 Was ist ein Konflikt?","duration":1,"start":"125.0"},
+    	{"label":"2 Konfliktarten","duration":1,"start":"289.3"},
+    	{"label":"3 Konfliktursachen im  virtuellen Raum","duration":1,"start":"665.2"},
+    	{"label":"4 Effekte von Konflikten","duration":1,"start":"942.6"},
+    	{"label":"5 Diagnoseprozess","duration":1,"start":"1307.0"},
+    	{"label":"5.1 Grobe Einschätzung","duration":1,"start":"1395.3"},
+    	{"label":"5.2 Fremddiagnose","duration":1,"start":"1882.9"},
+    	{"label":"5.3 Konfrontation","duration":1,"start":"1992.4"},
+    	{"label":"6 Konfliktintervention","duration":1,"start":"2076.4"},
+    	{"label":"Tipp: Üben Sie an weiteren  Beispielen!","duration":1,"start":"2381.5"},
+    	{"label":"Quellen","duration":1,"start":"2558.5"}
+    ]
+  }  
+]

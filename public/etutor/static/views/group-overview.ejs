@@ -1,0 +1,16 @@
+
+<% if ( items.group.length > 0 ) { %>			
+		<ul>
+		<% items.group.forEach( function ( member ){ %>
+			<% if (member.username != items.username) { %><% } %>
+				
+				<a href="/users/view/<%= member.username %>">
+					
+					<li class="user<%= member.id %>" style="font-size:14px; list-style:none;margin-left:120px;">
+						<img width="20" src="/static/img/user-icons/user-<%= member.id %>_big.png" /> <%= member.firstname %> <%= member.name %>
+					</li>
+				</a>				
+			
+		<% }); %>
+		</ul>
+	<% } %>

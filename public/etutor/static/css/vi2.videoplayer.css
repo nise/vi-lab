@@ -1,0 +1,188 @@
+/*
+author: niels.seidel@nise81.com
+*/
+
+
+/* Overlay above the video frame*/
+#overlay {
+	width:10px;
+	height:10px;
+	display:block;
+	position:relative;
+	z-index:20;
+}
+
+
+/* player controls */
+.video-controls {
+	width: 100vw;
+	height: 84px;
+	position: absolute;
+	display:inline;
+	clear:both;
+	bottom: 0px !important;
+	left:0;
+	z-index:25;
+ 	background-color:rgba(0, 0, 0, 0.4);
+ 	-moz-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.video-controls:hover{
+	bottom:0 !important;
+}
+
+.open-controls {
+	bottom:0 !important;
+}
+
+
+.control-bar{
+	position:relative;
+	display:block;
+	float:left;
+	padding:0 10px;
+	margin:0;
+	width:100vw;
+	height:35px;
+}
+
+.control-bar > div {	
+	vertical-align: text-top;
+	margin: 0px 4px 0px 6px;
+}
+
+
+
+
+/* play, pause */
+.vi2-video-play-pause{
+	float:left;
+	padding: 0px 4px;
+	width:29px;
+  height:29px; 
+  font-size:20px;
+  text-align: center;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  background-color:#555;
+  color:#fff;
+  cursor: pointer;
+}
+
+.vi2-video-play-pause:hover{
+	background-color:#fff;
+	color:#003366;
+}
+
+
+
+
+/* Volume Controls */
+
+.vi2-volume-box {
+	display:inline-block;
+	position:relative;
+	width: 40px;
+	height: 30px;
+	color: #555;
+	border:0 none;
+	padding: 4px 8px;
+	float:right;
+	-moz-transition: all 0.3s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.3s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.3s ease-in-out;  /* Opera */
+	transition: all 0.3s ease-in-out; 
+}
+
+.vi2-volume-box:hover {	
+	width: 130px;	
+}
+.vi2-volume-box:hover .vi2-volume-slider{
+display:inline;
+}
+																																																																																																																																																																																																									
+
+.vi2-volume-box .vi2-volume-slider {
+	display:none;	
+	position:absolute;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
+	height: 14px;
+	width: 80px;
+	top:3px;
+	left:30px;
+	padding:0;
+	margin: 4px 4px;
+	background-color:#555;
+	-moz-transition: all 0.2s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.2s ease-in-out;  /* Opera */
+	transition: all 0.2s ease-in-out; 
+}
+
+
+.vi2-volume-box .vi2-volume-slider .ui-slider-handle {
+	display:block;
+	position:absolute;
+	top:0; 
+	width:0px; 
+	height:inherit;
+	background: #eee;
+	border:0 none;
+	padding:0;
+	margin:0;	
+}
+.vi2-volume-box .vi2-volume-slider .ui-slider-handle:hover {
+	background-color: #fff;	
+}
+
+.vi2-volume-box .vi2-volume-slider .ui-slider-handle .ui-state-hover {	background-color: orange; }
+
+
+.vi2-volume-box .vi2-volume-slider .ui-slider-range {
+	display:inline-block;
+	height:inherit;
+	background-color: #fff;
+	position:absolute;
+	top:-1;
+	border:0 none;
+	padding:0;
+	margin:0;
+	cursor: pointer;
+}
+
+
+/* volume button */
+.vi2-volume-button {
+	display:inline-block;
+	width: 22px;
+	height: 22px;
+	font-size:20px;
+	color:#fff;
+}
+
+.vi2-volume-button:hover {
+	opacity: 1;
+}
+
+.vi2-volume-mute {
+	width: 22px;
+	height: 22px;
+	font-size:20px;
+	color:#fff;
+}
+
+
+
+/* timer */
+.vi2-video-timer {
+	display:inline-block;
+	height:12px;
+	width:102px;
+	color: #fff;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+

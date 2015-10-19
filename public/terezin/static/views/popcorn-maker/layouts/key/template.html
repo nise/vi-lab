@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<!-- Set your own title here -->
+		<title>Popcorn.js Key</title>
+		<!--
+		The base tag makes all relative URLs point to Mozillas server where
+		all the extra scripts and images are hosted.
+
+		If you want to add any of your own files, either remove the base tag
+		and make sure all the scripts refer to the right absolute URLs, or
+		set your own references to be absolute URLs on your server.
+		-->
+		<!--
+		<base href="http://mozillapopcorn.org/maker/layouts/key/"/>
+		-->
+		<style type="text/css">
+
+		/*
+			Fonts
+		*/
+		@import url(http://fonts.googleapis.com/css?family=Bevan|Oswald);
+
+		/*
+			styles borrowed from takepart.com
+		*/
+
+		body {
+			background: none repeat scroll 0 0 #FFFFFF;
+			color: #333333;
+			font-family: Helvetica,Arial,sans-serif;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+		}
+
+		#page-wrapper {
+			margin: 0 auto;
+			width: 980px;
+		}
+
+		.page {
+			padding: 35px 20px;
+		}
+
+		.clearfix {
+			display: block;
+		}
+
+		/*
+			begin custom styles for Popcorn/Seriously
+		*/
+
+		#scale-buttons {
+			position: fixed;
+			right: 35px;
+			background-color: #eee;
+			padding: 20px;
+			z-index: 1000;
+		}
+
+		#video-container {
+			position: relative;
+		}
+
+		#video-container #canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			z-index: 100;
+			width: 100%;
+		}
+
+		#video-container .vjs-big-play-button,
+		#video-container .vjs-controls,
+		#video-container .vjs-styles-check {
+			z-index: 202;
+		}
+
+		#video-container .vjs-spinner {
+			z-index: 201;
+		}
+
+		/* disable full screen button */
+		#video-container .vjs-fullscreen-control {
+			display: none;
+		}
+		#video-container .vjs-volume-control {
+			right: 10px;
+		}
+		#video-container .vjs-time-control {
+			right: 65px;
+		}
+		#video-container .vjs-progress-control {
+			right: 140px;
+		}
+
+		#video-container video {
+			display: none;
+		}
+
+		#share-title {
+			color: #666666;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 8px;
+		}
+
+		.popcorn-tweet-chapter > p {
+			border: 4px solid #CACACA;
+			border-radius: 8px 8px 8px 8px;
+			font-size: 16px;
+			margin: 2px 68px 2px 0;
+			padding: 17px;
+		}
+
+		.popcorn-tweet-chapter > p > a {
+			text-decoration: none;
+			color: #222;
+		}
+
+		.popcorn-tweet-chapter > .twitter-share-button {
+			float: right;
+		}
+
+		#video-container {
+			font-family: 'Bevan', serif;
+			font-size: 40px;
+			line-height: normal;
+			color: #cc3333;
+		}
+
+		#video-container > div {
+			line-height: normal;
+		}
+
+		#video-container a:visited {
+			color: #cc3333;
+		}
+
+		#video-container a {
+			text-decoration: underline;
+		}
+
+		#front > div, #back > div {
+			position: absolute;
+		}
+
+		#front > div {
+			z-index: 200;
+			border: solid 2px rgb(253,171,48);
+			font-size: 33px;
+			font-family: 'Oswald', sans-serif;
+			font-weight: bold;
+			padding: 2px 6px;
+			background-color: white;
+			color: black;
+		}
+
+		#front a:visited {
+			color: black;
+		}
+
+		#front > div.title {
+			border-left: none;
+		}
+
+		.popcorn-lightbox-link {
+			text-decoration: underline;
+		}
+
+		body .popcorn-lightbox-lightbox {
+			color: black;
+			background-color: white;
+			border: 4px solid rgba(0, 0, 0, 0.6);
+		}
+
+		.popcorn-lightbox-lightbox a,
+		.popcorn-lightbox-lightbox a:visited {
+			color: #0099CC;
+		}
+
+		</style>
+		<link rel="stylesheet" href="css/video-js.css" type="text/css" media="screen" title="Video JS">
+		<script data-butter="project-data" type="application/json"></script>
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<div id="page" class="page clearfix">
+				<div id="video-container" class="video-js-box" data-butter="target">
+					<div id="back" data-butter="target"></div>
+					<div id="front" data-butter="target"></div>
+					<canvas id="canvas"></canvas>
+					<video id="video" preload class="video-js" data-butter="media">
+					</video>
+				</div>
+				<p id="share-title">Share this link with your followers</p>
+				<div id="tweet" data-butter="target"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="external/seriously.js"></script>
+	<script type="text/javascript" src="external/seriously.lumakey.js"></script>
+	<script type="text/javascript" src="external/seriously.chroma.js"></script>
+	<script type="text/javascript" src="external/video.js"></script>
+	<script type="text/javascript" src="../../lib/popcorn/popcorn.js"></script>
+	<script type="text/javascript" src="../../lib/popcorn/popcorn.youtube.js"></script>
+	<script type="text/javascript" src="../../lib/popcorn/popcorn.vimeo.js"></script>
+	<script type="text/javascript" src="../shared/js/popcorn.words.js"></script>
+	<script type="text/javascript" src="../shared/js/popcorn.lightbox.js"></script>
+	<script type="text/javascript" src="../shared/js/popcorn.tweet-chapter.js"></script>
+	<script type="text/javascript" src="js/popcorn.key.js"></script>
+  <script type="text/javascript" src="../../butter/src/previewer/butter.previewer.js"></script>
+	<script type="text/javascript" src="template.js"></script>
+</html>

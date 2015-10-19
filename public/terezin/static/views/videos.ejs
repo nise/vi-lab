@@ -1,0 +1,50 @@
+<% layout( 'layout' ) -%>
+
+
+<div class="jumbotron">
+	<div class="container">
+  <h2>Theresenstadt explained</h2>
+  <p>--- Bemerkungen zur Auswahl an Protagonisten  ---</p>
+  </div>
+</div> 
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+
+<% items.forEach(function(item){  %>
+  
+<div class="scene-view">
+	<h3><a href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h3>
+  <div class="bim">
+  	<% if (item.thumbnail != "") { %> 
+  		<a href="/videos/view/<%= item._id %>">
+  			<img class="still-images" src="<%= item.metadata[0].thumbnail %>" width="180" />
+  		</a>	
+  	<% }else{ %>
+  		<a href="/videos/view/<%= item._id %>">
+	  		<img class="still-images" src="/static/img/placeholder.jpg" width="180" />
+	  	</a>	
+  	<% }%>	
+  </div>
+  <div class="bam">
+		<span class="lecturer">Dozentin: <%= item.metadata[0].author %></span><br>
+		<div class="description">
+			<%= item.metadata[0].abstract %>
+		</div>
+		<div class="controls" hidden>
+			<a class="button" href="/videos/edit/<%= item._id %>" title="Update this item">edit</a>
+		</div>	
+		<span class="tags"><strong>Tags:</strong>
+		<% item.metadata[0].tags.forEach( function ( tag ){ %>
+			<%= tag.t %>,
+		<% }); %>
+		 </span>
+  </div> 
+</div>
+<% }); %>
+
+
+	</div>	
+</div>
+

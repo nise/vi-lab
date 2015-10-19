@@ -1,0 +1,178 @@
+
+<script >
+
+$(document).ready (function () { 
+
+	// animated gif as visual summary
+	$('.still-images')
+  	.hover(function () { 
+    		var source = $(this).attr('src');
+        $(this).attr('src', source.replace('.jpg', '.gif'));
+		} ,function () {
+    		var source = $(this).attr('src');
+        $(this).attr('src', source.replace('.gif', '.jpg'));
+	});
+});
+	
+	function openGallery(i){ 
+		jQuery('a.gallery'+i).colorbox({ 
+			opacity:0.5 , 
+			rel:'group'+i, 
+			maxHeight: '470px', 
+			maxWidth:'800px', 
+			fadeout:500, 
+			transition:'none', 
+			photo:true
+		});
+	}	
+	
+</script>
+
+<!-- 
+<textarea id="text-input" oninput="this.editor.update()"
+              rows="6" cols="60">Type **Markdown** here.</textarea>
+    <div id="preview"> </div>
+
+
+<script src="js/markdown.js"></script>
+
+<script>
+      function Editor(input, preview) { return;
+        this.update = function () {
+          preview.innerHTML = markdown.toHTML(input.value);
+        };
+        input.editor = this;
+        this.update();
+      }
+      var $ = function (id) { return document.getElementById(id); };
+      new Editor($("text-input"), $("preview"));
+    </script>
+-->
+
+<div class="jumbotron">
+	<div class="container">
+  <h2>Szenen des Films</h2>
+  <p >-- Bemerkung zur Vollständigkeit und der Erhaltung der Szenen -- </p>
+  </div>
+</div>  
+
+
+<div class="container">
+<div class="row">
+	<% i = 0 %>
+	<div class="col-md-8">
+		<% items.forEach( function ( item ){ %>
+		<% i++ %>
+		<div id="scene-<%= i %>" class="scene-view">
+			<h3>
+				<% if( item.status != "verschollen"){ %>
+					<a aria-hidden="false" class="hidden-link glyphicon glyphicon-play" href="/static/#!t=npt:<%= item.start %>" title="Play this scene"> <%= item.title %></a>
+				<% }else{ %>
+					<%= item.title %>
+				<% } %>
+				<small>
+					<div class="scene-controls">
+					<button type="button" class="btn btn-default btn-xs">
+						<a aria-hidden="true" class="glyphicon glyphicon-pencil" href="/scenes/edit/<%= item._id %>" title="Update this item item"></a>
+					</button> 
+				</div>
+				</small>
+			</h3>
+			<div class="bim col-md-4">
+				<a href="/static/#!t=npt:<%= item.start %>" onclick="javascript:render('film', true);">
+					<img class="img-responsive still-images" src="/static/img/stills/ani/scene<%= i %>.jpg" />
+				</a>
+				<div class="metadata">
+						<label>Länge:</label> <%= item.length %> Minuten 
+					 	<% if (item.music != "") { %>
+					 	<br><label>Musik:</label> <%= item.music %> 
+					 	<% } %>
+					 	<% if (item.locations != "") { %>
+					 	<br><label>Ort:</label> <%= item.locations %> <% } %>
+				<!--    Quelle: <%= item.source %> <br/>-->
+						<br><label>Erhaltungszustand:</label> <%= item.status %>
+					<% if ( item.protagonists.length > 1) { %> 
+						<br><label>Bekannte Darsteller:</label>  
+					<% item.protagonists.forEach( function ( person ){ %>
+						<a href="/persons/<%=: person | replace:' ','_' %>"><%= person %></a>, 
+					<% }); %>
+					<% } %>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="scene-description mark"><%= item.description %></div>
+				<div class="scene-resources">
+					<% ii = 0 %>
+					<% if(item.images.length > 0 ){ %>
+					<a href="<%= item.images[0] %>" class="gallery<%= i %>" onclick="javascript:openGallery(<%= i %>);">Einzelbilder</a>
+					<% item.images.forEach( function ( image ){ %>
+						<% if( ii != 0) { %>
+							<a class="gallery<%= i %>" hidden href="<%= image %>">Photo_1</a>
+						<% } %>	
+						<% ii++ %>
+					<% }); %>
+					<% } %>
+					<a hidden href="#">Zusatzmaterial</a>
+				</div>
+			</div><!-- end sub column -->	
+		</div><!-- end scene-view -->
+		<% if(item.images.length > 0 ){ %>
+		
+		<% } %>
+		<% }); %>
+		
+	</div> <!-- end column -->
+	
+	<% j = 0 %>
+	<div class="col-md-4 affix-top" id="myScrollspy">
+		<ul id="scene-menu" class="nav nav-tabs nav-stacked"  data-spy="affix">
+			<% items.forEach( function ( item ){ %>
+			<% j++ %>
+			<li><a href="#scene-<%= j %>"><%= item.title %></a></li>
+			<% }); %>
+		</ul>
+		<a class="back-to-top" href="#top">Back to top</a>
+	</div>
+
+
+</div><!-- end row -->
+
+</div><!-- end container -->
+
+<script>
+jQuery(document).ready(function() {
+   setTimeout(updateScrollSpy, 5000);
+   
+		// handle broken images
+		$('img').error(function(){
+				    $(this).attr('src', '/static/img/placeholder.jpg').css('opacity',0.3);
+		});
+
+		// render markdown
+		$('.mark').each(function(i, val){
+				$(val).html(markdown.toHTML($(val).text()))
+		});
+
+
+		$('#scene-menu').affix({
+			offset: {
+				top: 200,
+				bottom:10
+			}
+		});
+
+		$('#scene-menu').on('affixed.bs.affix', function(){
+				$(this).removeAttr('style');
+		});
+		
+		
+});
+function updateScrollSpy() { 
+    jQuery('[data-spy="scroll"]').each(function () {
+      var $spy = jQuery(this).scrollspy('refresh')
+    });
+}
+
+</script>
+
+

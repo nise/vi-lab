@@ -1,0 +1,3 @@
+vorname,name,pass,HS,Kurs,Altgruppe,Gruppe-P1,Peer-Group,Gruppe-P2,Gruppe-P3,Exper,mail,role,user
+Robert,Bob,secret,Z,iii,0,x,x,x,x,,bob@example.com,student,bob
+Jochen,Joe,birthday,Z,iii,0,x,x,x,x,,joe@example.com,student,joe
