@@ -19,7 +19,7 @@
 
 - correct slide presenation	
 
-### Einleitungstextanpassen
+### Einleitungstextanpassend
 
 ### Media experience. 
 For the assessment of the partici- pants’ media experience, participants filled in seven items asking for the frequency of their usage of different media such as video, DVD or computers. The participants gave their answers on a 5-point scale with the labels nearly everyday, several times a week, between once a week and once a month, less than once a month, and never. The items were coded so that 0 marked the minimum (never) and 4 marked the maximum (nearly everyday). However, an a of 0.38 in the two reported studies has to be considered very low, not to say unacceptable.
