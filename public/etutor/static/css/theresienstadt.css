@@ -26,7 +26,7 @@ a, a:hover {
   border-color: #080808;
 	border-width: 0 0 1px;
 	
-overflow:visible;
+	overflow:visible;
 }
 
 .user-menu{
@@ -107,7 +107,6 @@ opacity:0.4;
 border:solid 1px #1C94C4;
 }
 
-s
 .account-data{
 	font-size: 12px;
 	float:right; 
@@ -212,14 +211,10 @@ margin-bottom:0;
 
 /***********/
 
-html{
-	
-}
 
 #page {
 	display:block;
 	position:relative;
-	
 }
 
 .move-top{
@@ -803,7 +798,6 @@ font-weight:bold;
 
 html, body {
    max-width: 100%;
-   overflow-x: hidden;
    position: relative;
  	 min-height: 100%;
 }

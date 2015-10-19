@@ -22,7 +22,7 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
   			this.options = $.extend(this.options, options);  
 		},
 		
-		name : 'temoral bookmarks',
+		name : 'temporalBookmarks',
 		type : 'player-widget',
 		options : {
 			selector : '.control-bar',
@@ -32,19 +32,21 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
 		/**
 		* Initializes the bookmark of content and handles options
 		*/
-		init : function(){  alert(1);
+		init : function(){ 
 			// get the url
 			var url = window.location.href.slice(window.location.href.indexOf('#') + 1) + '#!t=npt:'  ;
-			alert(2);
+			
 			// get the title of the video from database
 			var title = vi2.db.getMetadataById( vi2.observer.current_stream ).title;
-			alert(3);
+			
 			// clear selector
 			$( this.options.selector + '> .vi2-bookmark-controls' ).remove();
 		
+			var ico = $('<span></span>').addClass('glyphicon glyphicon-share')
 			// add button to player control bar
 			var container = $('<div></div>')
-				.append($('<div></div>').text( this.options.label ).addClass('vi2-bookmark-label'))
+				.html( ico )
+				//.append($('<div></div>').text( this.options.label ).addClass('vi2-bookmark-label'))
 				.addClass('vi2-bookmark-controls')
 				.bind('mouseenter', function(e){
 					$('.vi2-select-bookmark > input').val( url + vi2.observer.player.currentTime() ); 
@@ -54,23 +56,15 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
 				})*/
 				.appendTo( this.options.selector );
 			
-			var options = $('<div></div>')
+			var options = $('<span></span>')
 				.append( browserBookmark )			
 				.addClass('vi2-select-bookmark')
 				.appendTo( container );
 			
-			var input = $('<input type="text" />')
-				.val( url )
-				.attr('readonly',true)
-				.attr('aria-describedby', 'URL to the current playback position of the video.')
-				.focus(function() { 
-					$(this).select(); 
-				} )
-				.appendTo( options );
 							
 			var browserBookmark = $('<a></a>')
-				.text('bookmark')
-				.addClass('vi2-btn')
+				.text('add to browser')
+				.addClass('vi2-btn vi2-bookmarks-add-to-browser')
 				.attr('rel', 'sidebar')
 				.attr('href','#')
 				.attr('title', title)
@@ -86,5 +80,15 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
 		 		 	return true;
 	 			})
 	 			.appendTo( options );	
+	 			
+	 		var input = $('<input type="text" />')
+				.val( url )
+				.attr('readonly',true)
+				.attr('aria-describedby', 'URL to the current playback position of the video.')
+				.focus(function() { 
+					$(this).select(); 
+				} )
+				.appendTo( options );
+			
 		}
 }); // end class  

@@ -149,10 +149,10 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		
 		// initiate widgets
 		$.each(_this.widget_list, function(j, widget){ 
-			if( widget.type != 'player-widget' ){ 
+			if( widget.type !== 'player-widget' ){ 
 				widget.init( _this.vid_arr[0].annotation );			
-			}else{ alert(widget.name);
-				widget.init();
+			}else{ 
+				widget.init(); 
 			}	
 		});
 	},
