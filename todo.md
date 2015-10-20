@@ -1,6 +1,4 @@
 
-
----------------------------------------------
 # VI-TWO
 ## this release
 
@@ -31,7 +29,7 @@
 - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
 
 
-# Awareness
+## Awareness
 - chat oder komunikation zw. Gruppenmitgliedern
 - explizite Frage an Dozenten
 - bearbeitungsstand anzeigen
@@ -41,7 +39,7 @@
 
 
 
-# last things
+## last things
 - check sync
 - log: change log format
 - log: exact playback logging
@@ -51,7 +49,7 @@
 - video3 toc missing for comparisson
 - fix some tooltip bugs (user-data, group-data)
 
-# bugs
+## bugs
 - logged out members are not gettng disabled in the peers client
 
 
@@ -86,6 +84,32 @@
 - Metadaten in popcorn einpflegen >> IWRM
 - ?? video upload via firefogg? 
 
+
+
+
+# Vorgehensweise beim Einrichten von nginx und node.js
+- node 
+-- sudo apt-get install mongodb nodejs libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev
+
+-- sudo npm install express-validator
+-- npm install mongodb path express socket.io node-fs csv node-schedule ejs-locals passport passport-local connect-flash canvas identicon mongoose csv mv async cookie-parser express-json body-parser method-override express-session
+- nginx
+-- apt-get install nginx
+-- Einstellungen /etc/nginx/sites-available/default  (siehe unten)
+-- sudo /etc/init.d/nginx restart
+- etherpad
+-- über git in einen ordner installieren
+-- Datei settings.json mit port und vor allem mysql-verbindung anpassen
+-- starte: sh ./_tools/etherpad-lite/bin/run.sh -s settings.json
+- Betrieb
+-- node server.js   oder auf dem Server: nodejs server.js  
+--  sudo forever start -a -l forever.log -o out.log -e err.log server.js
+-- sudo forever stop server.js
+-- both: sudo forever stop server.js && sudo forever start -a -l forever.log -o out.log -e err.log server.js
+
+-- run etherpad: sh ./_tools/etherpad-lite/bin/run.sh -s settings.json &
+
+=> auto update bei crah oder update: http://stackoverflow.com/questions/11084279/node-js-setup-for-easy-deployment-and-updating
 
 
 

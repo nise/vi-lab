@@ -39,13 +39,16 @@
 				
 		
 		// handle sockets	
-		socket = io('http://127.0.0.1:3033'/*, { rememberTransport: false }*/);//, {'transports': ['websocket', 'polling']});
+		//socket = io('http://127.0.0.1:3033');
+		socket = io('http://185.25.252.55:3033');
+		
+		/*, { rememberTransport: false }*/);//, {'transports': ['websocket', 'polling']});
 		//socket = io.connect('http://localhost:3033', { rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling']});
 		/*socket = io(":3030", {
         'force new connection': true,
         'auto connect': false
     });*/
-		//socket = io('http://176.10.37.68:3033');
+		
 	
 		// recognize user that just logged in
 		socket.on('user.goes.online', function(data){ //alert('conn'+data.user)
