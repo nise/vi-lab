@@ -4,7 +4,7 @@
     "_id": "52a13d2e2aa9d35f24000001",
     "id": "1",
     "progress": "3",
-    "video": "/static/videos/e2script_kickoff.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_kickoff.mp4",
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank, MA Enrico Teich, Dipl.-Inf. Niels Seidel",
@@ -44,7 +44,7 @@
     "_id": "52a13d2e2aa9d35f24000074",
     "id": "111",
     "progress": "3",
-    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -323,7 +323,7 @@
     "_id": "52a13d2e2aa9d35f24000046",
     "id": "222",
     "progress": "3",
-    "video": "/static/videos/e2script_lecture2_improved.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -640,7 +640,7 @@
 	},
 	{
     "_id": "52a13d2e2aa9d35f24000548",
-    "video": "/static/videos/e2script_lecture3_improved.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "333",
     "progress": "3",
     "__v": 0,
@@ -806,7 +806,7 @@
   {
     "__v": 0,
     "_id": "52a13d2e2aa9d35f24000600",
-    "video": "/static/videos/e2script_lecture4_improved.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
     "id": "444",
     "metadata": [
       {
@@ -1120,7 +1120,7 @@
   },
   {
     "_id": "52a13d2e2aa9d35f24000701",
-    "video": "/static/videos/e2script_lecture5_improved.mp4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
     "id": "555",
     "metadata": [
       {
