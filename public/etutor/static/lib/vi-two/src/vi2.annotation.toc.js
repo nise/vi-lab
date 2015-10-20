@@ -228,7 +228,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			if( data ){
 				return ejs.render(str, data);
 			}	else{
-				return ejs.render(str, { content:'', time:'0' });	
+				return ejs.render(str, { content:'', time: vi2.observer.player.currentTime() });	
 			}	
 		},
 		

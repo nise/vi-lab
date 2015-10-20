@@ -491,11 +491,7 @@ INPUT:
 							this.occ.push(Number($(val).attr('starttime')));
 							flag=1;
 						}
-					}); 
-					if(flag == 0){
-						//tags.push( JSON.parse('{"tagname":"'+ encodeURIComponent($(val).text())+'", "occ":['+ Number($(val).attr("starttime"))+'] }'));
-					}
-					//track_tags_1 += '{"id":"TrackEvent'+i+'","type":"tag","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+',"tag":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_tags_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+					});		
 				}); 
 				r = tags;
 				break;
@@ -511,8 +507,7 @@ INPUT:
 					}); 
 					if(flag == 0){
 						highlight.push(JSON.parse('{"tagname":"'+ encodeURIComponent($(val).text())+'", "occ":['+ Number($(val).attr("starttime"))+'] }'));
-					}
-					//track_tags_1 += '{"id":"TrackEvent'+i+'","type":"tag","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+',"tag":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_tags_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+					}		
 				}); 
 				r = highlight;
 				break;
@@ -521,7 +516,6 @@ INPUT:
 				// fetch toc ... {"label":"2. Objectives","duration":1,"start":"195.960"},
 				$(vi2.dom).find("div[type='toc']").each(function(i, val){
 					toc.push(JSON.parse('{"label":"'+ encodeURIComponent($(this).text())+'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'" }'));
-					//track_toc_1 += '{"id":"TrackEvent'+i+'","type":"toc","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+',"toc":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_toc_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 				});
 				r = toc;
 				break;	
@@ -534,27 +528,27 @@ INPUT:
 				r = comments;
 				break;
 				
-			case 'hyperlinks' : var hyperlinks = []; alert(encodeURIComponent( $(this).attr('description') ))
+			case 'hyperlinks' : var hyperlinks = []; 
+			
 				// input: <div type="hyperlinks" starttime="666" duration="55.7" posx="2" posy="95" seek="0" duration2="0" target="#!cullmann" author="admin" date="1416312331209">flood types</div>
 				// output: {"type":"hyperlinks","author":"admin","date": "1416312331209","x": 2, "y": 90, "start": "555",  "duration": "37", "title": "details on participation", "target": "newig"},
-				$(vi2.dom).find("div[type='hyperlinks']").each(function(i, val){
+				$(vi2.dom).find("div[type='hyperlinks']").each(function(i, val){ 
 					hyperlinks.push({
 						type: 'hyperlinks',
-						author: $(this).attr('author'),
-						date: $(this).attr('date'),
-						target: $(this).attr('target'),
-						title: encodeURIComponent( $(this).text() ),
-						description: encodeURIComponent( $(this).attr('description') ),
-						starttime: $(this).attr('starttime'),
-						duration: $(this).attr('duration'),
-						x: $(this).attr('posx'),
-						y: $(this).attr('posy'),
-						seek: $(this).attr('seek'),
-						duration2: $(this).attr('duration2')
-					});
-					//JSON.parse('{"label":"'+ encodeURIComponent($(this).text())+'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'" }'));
-					//track_toc_1 += '{"id":"TrackEvent'+i+'","type":"toc","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+',"toc":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_toc_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+						author: $(val).attr('author'),
+						date: $(val).attr('date'),
+						target: $(val).attr('target'),
+						title: encodeURIComponent( $(val).text() ),
+						description: encodeURIComponent( $(val).attr('description') ),
+						starttime: $(val).attr('starttime'),
+						duration: $(val).attr('duration'),
+						x: $(val).attr('posx'),
+						y: $(val).attr('posy'),
+						seek: $(val).attr('seek'),
+						duration2: $(val).attr('duration2')
+					}); 
 				});
+				//alert(hyperlinks);
 				r = hyperlinks;
 				break;	
 				

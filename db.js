@@ -203,6 +203,7 @@ Assessment
 **/
 var Tests = new Schema({
 	user : String,
+	type: String,
   results : Array,
   user_results : [Schema.Types.Mixed],
   process_time: Number,

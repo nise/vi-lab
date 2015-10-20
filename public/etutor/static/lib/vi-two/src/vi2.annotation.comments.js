@@ -226,7 +226,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			if( data ){
 				return ejs.render(str, data);
 			}	else{
-				return ejs.render(str, { content:'', time:'0:00', date: (new Date().getTime()) });	
+				return ejs.render(str, { content:'', time: vi2.observer.player.currentTime() , date: (new Date().getTime()) });	
 			}	
 		},
 		

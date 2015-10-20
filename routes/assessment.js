@@ -30,10 +30,39 @@ exports.prePostTest = function ( req, res ){
   res.render( 'assessment-prepost', { title : 'Express Videos Example' });
 };
 
+exports.setPrePostResults = function ( req, res ){ 
+  new Tests({
+    user : req.user.username, 
+    type:'prepost',
+    results		: req.body.results,
+    user_results		: req.body.user_results,
+    process_time : req.body.process_time,
+    updated_at : Date.now()
+  }).save( function( err, person, count ){
+  	if(err){
+  		console.log(err)
+  	}else{
+  		console.log('SAVED test results');
+  		console.log();
+  	}
+    //res.redirect( '/assessment' );
+    res.send({done:true});
+  });
+};
+
+exports.getPrePostResults = function(req, res){
+	//Tests.collection.find().toArray(function(err, items) {
+	Tests.find({user: req.user.username, type:'prepost' }).exec(function(err, items) {
+		res.type('application/json');
+		res.jsonp(items);  
+		res.end('done');
+  });
+}	
+
 
 exports.getResults = function(req, res){
 	//Tests.collection.find().toArray(function(err, items) {
-	Tests.find({user: req.user.username}).exec(function(err, items) {
+	Tests.find({user: req.user.username, type:'selftest'}).exec(function(err, items) {
 		res.type('application/json');
 		res.jsonp(items);  
 		res.end('done');
@@ -43,6 +72,7 @@ exports.getResults = function(req, res){
 exports.setResults = function ( req, res ){ 
   new Tests({
     user : req.user.username, 
+    type:'selftest',
     results		: req.body.results,
     user_results		: req.body.user_results,
     process_time : req.body.process_time,

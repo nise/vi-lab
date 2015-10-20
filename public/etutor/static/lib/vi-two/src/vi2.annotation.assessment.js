@@ -264,7 +264,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			if( json !== undefined ){
 				json = json.content;
 			}else{
-				json = {question:'', answ:[], correct:[], time:["300"], date:""};
+				json = {question:'', answ:[], correct:[], time:["300"], date:""}; //vi2.observer.player.currentTime()
 			}
 			
 			var question = $('<textarea></textarea>')

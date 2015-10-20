@@ -414,8 +414,9 @@ text-decoration:none;
 	clear:both;
 }
 
-.modal-form input {
-	width:400px;
+
+.modal-form  #answerbox input {
+
 	font-size:14px;
 	padding:4px;
 	font-family: Arial;
@@ -429,7 +430,10 @@ text-decoration:none;
     vertical-align:middle;
   
     border-radius: 5px;
-	
+}
+
+.modal-form  #answerbox input[type=text] {
+	width:80%;
 }
 
 .modal-form textarea {
@@ -721,7 +725,6 @@ font-weight:bold;
 	float:left;
 	max-width:100%;
 	height:inherit;
-	border:blue solid 2px;
 }
 
 
@@ -731,8 +734,6 @@ font-weight:bold;
 	display:block;
 	position:relative;
 	z-index:20;
-	/*background-color:red;
-	opacity:0.2;*/
 }
 
 .slide {

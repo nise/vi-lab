@@ -8,10 +8,19 @@
 
 <div class="container">
 	 
-  <p style="width:80%;">
-  Dieser Selbsttest eröffnet Ihnen die Möglichkeit, Ihr Vorwissen in den Themengebieten der Lehrveranstaltung „Qualifizierung von E-Tutoren“ zu prüfen. Die Teilnahme ist freiwillig und kann Ihnen Aufschluss darüber geben, welche Inhalte für Sie in den kommenden Wochen besonders interessant sein könnten. Die Fragen des Selbsttests erlauben Ihnen eine freie Antworteingabe. Dafür steht Ihnen ein Zeitfenster von max. 30 Minuten zur Verfügung, im Rahmen dessen Sie beliebig zwischen den Fragen hin- und herspringen können. Eine einfache Selbstauswertung nach Abschluss des Tests ermöglicht Ihnen eine schnelle Rückmeldung zu Ihren Ergebnissen. Die Ergebnisse fließen dabei nicht in Ihre Note für die Lehrveranstaltung ein. Wir wünschen Ihnen viel Erfolg!</p>
+  <p style="width:80%;" class="mark">
+Noch bevor die Videolernphase beginnt, möchten wir Sie bitten, uns einige Fragen zu Ihrer Mediennutzung und ihrem Vorwissen beantworten. Der folgende Fragebogen ist Bestandteil eines Begleitforschungsprojekts in dessen Rahmen zwei der Zittauer Studierenden ihre Masterarbeit schrieben werden. 
+
+Für die Beantwortung der 27 Fragen benötigen Sie ungefähr **30 Minuten**. Sie können den Fragebogen genau einmal absenden. Alle darauffolgenden Einsendungen werden von uns nicht berücksichtigt. Wir bitten Sie jedoch, bei den Fragen zu Ihrem Vorwissen keinerlei Hilfsmittel zu verwenden. Alle Angaben, die Sie hier machen, fließen ausdrücklich **nicht** in die Endnote ein. Alle Daten werden **anonymisiert** erhoben und ausgewertet. Ihre Angaben dienen lediglich zur Verbesserung und Anpassung des Lernangebots. Einige der Fragen werden wir Ihnen nach Ablauf der Videolernphase deshalb noch einmal stellen, um Veränderungen zu erfassen (Vor-/Nachtest). Erst dann werden wir auch die Musterlösungen einblenden.
+
+Die Ergebnisse dieser Untersuchung stellen wir Ihnen auf Anrage gerne zur Verfügung.
+  
+Vielen Dank für Ihre Teilnahme.
+
+
+</p>
   <div id="assessment-accordion" >
-  	<h3 class="test-head">Test</h3>
+  	<h3 class="test-head">Fragen zur Mediennutzung und Vorwissen</h3>
   	<div id="testt" class="edit-form assessment-test"></div>
   	<!--<h3>Ergebnisse der Selbsttests</h3>
   	<div id="res" class="assessment-results">Bislang liegen noch keine Testergebnisse vor.</div>-->
@@ -85,6 +94,9 @@
 				.click(function(){
 					$('.assessment-btn').hide();
 					evaluateTest(res);
+					$('.edit-form')
+						.html('Vielen für die Beantwortung der Fragen! ')
+						.css({'padding':'4px', 'background-color':'green', 'color':'#fff'});
 				})
 				.appendTo('.edit-form')
 				;
@@ -109,7 +121,7 @@
 
 
 
-function setFeedback(code, id, solution){
+function setFeedback(code, id, solution){ return;
 	if(code == 'incomplete'){
 		$('.question-feedback-'+id)
 			.addClass('warning')
@@ -157,10 +169,11 @@ function evaluateTest(data){
 			}
 		}else{
 			// fill-in task
-			fillincount++;
+			fillincount++; 
 			input = $('div.question-'+val.id).find('textarea').val();
+			input = input === undefined ? '' : input;
 			full_results['Task-'+val.id] = { input: encodeURIComponent( input ) };
-			if(input.length < 10){
+			if( input.length < 10){
 				setFeedback('incomplete', val.id, null);
 			}else{
 				setFeedback('done', val.id, val.solution);
@@ -168,21 +181,20 @@ function evaluateTest(data){
 		}
 		
 	});
-	
 	// save user input and test results
 	$.ajax({
 		type: 'POST',
   	dataType : 'json',
   	data : {results: correct, user_results: [full_results], process_time: ((new Date()).getTime() - t1)},
-  	url: '/assessment/results',
+  	url: '/assessment/pre-post-results',
   	success: function(res) {
   		//$('.test-head').text('Test + Feedback')
-  		 
+  		 //alert(JSON.stringify(full_results))
   		//plotResults(data, correct);
   		//$('#assessment-accordion').accordion({active:1});
   	},
   	error: function(err){
-  		
+  		alert(JSON.stringify(err));
   	}	
   });
 }

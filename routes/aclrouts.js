@@ -151,8 +151,10 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.post('/assessment/written/:field', users.ensureAuthenticated, assess.setWrittenAssessment );
 	
 	// post test
-	app.get('/json/assessment-prepost', users.ensureAuthenticated, assess.getPrePostTest);
 	app.get('/prepost', users.ensureAuthenticated, assess.prePostTest );
+	app.get('/json/assessment-prepost', users.ensureAuthenticated, assess.getPrePostTest);
+	app.post('/assessment/pre-post-results', users.ensureAuthenticated , assess.setPrePostResults );
+	app.get('/assessment/pre-post-results', users.ensureAuthenticated , assess.getPrePostResults );
 	// routes related to etherpad
 	var etherpad = require('./etherpad');
 	

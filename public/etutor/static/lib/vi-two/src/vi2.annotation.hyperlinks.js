@@ -53,15 +53,18 @@
 			var events = [];
 			$.each(ann, function(i, val){ 
 				if( val.linktype === 'cycle' || val.linktype === 'standard' ){ // former also  val.linktype == 'standard' ||
-					events.push({ 
+				events.push({ 
 						name: val.title, 
 						occ:[val.t1], 
 						target: val.target,
 						description: decodeURIComponent( val.description ), 
 						time :[val.t1],
 						duration: val.t2, 
+						x:val.x,
+						y:val.y,
 						date: val.date, 
-						author: val.author });
+						author: val.author 
+				});
 				}
 			}); //{"occ":["1690"],"target":"#!moss","time":["1690"],"date":"1416312331209","author":"admin"}
 			
@@ -87,7 +90,7 @@
 			$.each(	vi2.db.getLinksById(id), function(i, val){  
 				var links = $('<div></div>')
 				.attr('type', val.type) // former default: "xlink"
-				.attr('starttime', this.start)//vi2.utils.deci2seconds(this.start))
+				.attr('starttime', val.starttime)//vi2.utils.deci2seconds(this.start))
 				.attr('duration', val.duration)
 				.attr('posx', val.x)
 				.attr('posy', val.y)
@@ -106,7 +109,7 @@
 		
 		/*
 		**/
-		updateDOMElement : function( obj ){ 
+		updateDOMElement : function( obj ){  
 			$(vi2.dom)
 				.find('[date="'+ obj.date +'"]')
 				.attr('author', vi2.wp_user )
@@ -126,12 +129,12 @@
 		/*
 		* { type: type, date: new Date().getTime(), time: formData.time, content: formData.content); 
 		**/
-		addDOMElement : function( obj ){ //alert(obj)
+		addDOMElement : function( obj ){ 
 			$('<div></div>')
 				.attr('type', obj.type)
 				.attr('author', vi2.wp_user )
 				.attr('date', new Date().getTime())
-				.attr('starttime', obj.time )
+				.attr('starttime', obj.starttime )
 				.attr('duration', obj.content.duration === undefined ? '10' : obj.content.duration )
 				.attr('posx', obj.content.x === undefined ? '20' : obj.content.x  )
 				.attr('posy', obj.content.y === undefined ? '80' : obj.content.y  )
@@ -155,7 +158,7 @@
 			
 			$.each(hyperlinksData, function(i, val){  
 					var a = $('<a></a>')
-					.text( val.name )
+					.text( decodeURIComponent( val.name ) )
 					.addClass('id-'+ val.occ[0])
 					.attr('href', '#!/video/' + vi2.observer.current_stream + '/t=npt:' + val.occ[0] + '') // former: main.options.id
 					;				
@@ -168,17 +171,10 @@
 						//.css('list-style-image',  "url('"+_this.options.path+"user-"+val.author+".png')")
 						.html(a)
 						.appendTo( hyperlinks )
-						;
-				
-					// editing		
-					if( _this.options.allowEditing ){		 
-						var edit_btn = $('<a></a>')
-							.addClass('tiny-edit-btn glyphicon glyphicon-pencil tiny-edit-btn-'+ _this.name)
-							.attr('data-toggle', "modal")
-							.attr('data-target', "#myModal")
-							.attr('data-annotationtype', 'hyperlinks')
-							.data('annotationdata', {
+						; 
+					var data = {
 								time: val.occ[0],
+								date: val.date,
 								content : {
 									label: val.name, 
 									date: val.date,
@@ -187,10 +183,19 @@
 									target: val.target,
 									x: val.x,
 									y: val.y,
-									seek: val.seek,
-									duration2: val.duration2 
+									seek: 0,//val.seek,
+									duration2: 0//val.duration2 
 								}
-							})
+							};
+							
+					// editing		
+					if( _this.options.allowEditing ){		 
+						var edit_btn = $('<a></a>')
+							.addClass('tiny-edit-btn glyphicon glyphicon-pencil tiny-edit-btn-'+ _this.name)
+							.attr('data-toggle', "modal")
+							.attr('data-target', "#myModal")
+							.attr('data-annotationtype', 'hyperlinks')
+							.data('annotationdata', data )
 							.appendTo( li )
 							;
 					}
@@ -220,7 +225,7 @@
 				this.currLinkId = id;
 				var _this = this;
 				var o = $('<a></a>')
-					.text(obj.content.title)
+					.text( ( decodeURIComponent( obj.content.title ) ) )
 					//.attr('href', obj.content.target)
 					.attr('id', 'ov'+id)
 					.attr('href', obj.content.target )
@@ -322,9 +327,18 @@
 				<span class='input-group-addon' id='hyperlinks-form66'>Anzeigedauer</span>\
 				<input type='text' class='form-control' value='<%= content.duration %>' name='hyperlinks-entry-duration' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
+			<div class='input-group'>\
+				<span class='input-group-addon' id='hyperlinks-form66'>x (%)</span>\
+				<input type='text' class='form-control' value='<%= content.x %>' name='hyperlinks-entry-x' data-datatype='number' placeholder='' aria-describedby='hyperlinks-form3'>\
+			</div>\
+			<div class='input-group'>\
+				<span class='input-group-addon' id='hyperlinks-form66'>y (%)</span>\
+				<input type='text' class='form-control' value='<%= content.y %>' name='hyperlinks-entry-y' data-datatype='number' placeholder='' aria-describedby='hyperlinks-form3'>\
+			</div>\
 			"; 
 			if( data.content !== '' ){
 				data.content.description = decodeURIComponent( data.content.description );
+				data.content.label = decodeURIComponent( data.content.label );
 				return ejs.render(str, data);
 			}	else{
 				return ejs.render(str, { 
@@ -332,9 +346,11 @@
 						description:'', 
 						target:'', 
 						label:'',
-						duration:10
+						duration:10,
+						x: 50,
+						y: 50
 					}, 
-					time:'0:00', 
+					time: vi2.observer.player.currentTime(), 
 					date: (new Date().getTime()) 
 				});	
 			}	
@@ -344,18 +360,18 @@
 		/*
 		*
 		**/
-		getAnnotationFormData : function( selector ){ 
+		getAnnotationFormData : function( selector ){ //encodeURIComponent
 			return {
 				time: $( selector ).find('[name="hyperlinks-entry-time"]').attr('value'),
 				content: {
-					label: $( selector ).find('[name="hyperlinks-entry-label"]').val(), 					
+					label: ($( selector ).find('[name="hyperlinks-entry-label"]').val() ), 					
 					target: $( selector ).find('[name="hyperlinks-entry-url"]').val(),
-					description: $( selector ).find('[name="hyperlinks-entry-desc"]').val(),// opt	
+					description: ( $( selector ).find('[name="hyperlinks-entry-desc"]').val() ),// opt	
 					duration:  $( selector ).find('[name="hyperlinks-entry-duration"]').val(),
 					x:  $( selector ).find('[name="hyperlinks-entry-x"]').val(),
 					y:  $( selector ).find('[name="hyperlinks-entry-y"]').val(),
-					seek:  $( selector ).find('[name="hyperlinks-entry-seek"]').val(),// opt
-					duration2:  $( selector ).find('[name="hyperlinks-entry-duration2"]').val()// opt						
+					seek:  0,//$( selector ).find('[name="hyperlinks-entry-seek"]').val(),// opt
+					duration2:  0 //$( selector ).find('[name="hyperlinks-entry-duration2"]').val()// opt						
 				}	
 			};
 		},
