@@ -1,4 +1,4 @@
-<% layout('video-layout') -%>
+<% layout('layout') -%>
 
 
  <div class="jumbotron">
@@ -8,16 +8,20 @@
     <div class="edit-form">
     	<label>Benutzername:</label> <%= item.username %> <img width="20" src="/static/img/user-icons/user-<%= item.id %>_big.png" /><br/>
   	 	<label>Name:</label> <%= item.firstname %> <%= item.name %><br/>
-  	 	<label>Gruppe:</label><div class="group-area2">...</div>
   	</div>
-  	
-  	<br>
   </p>
   </div>
 </div>  
 
 
-<div class="container">
+<div class="container" style="overflow:auto;">
+	<div class="row">
+		<div class="col-sm-6 col-md-4">
+			<label>Gruppe:</label>
+			
+			<div class="group-area2">...</div>
+		</div>	
+	</div>
 </div>
 
 <script type="text/javascript"> 

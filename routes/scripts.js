@@ -27,15 +27,55 @@ var
     var script = 
     {
     	current_phase : 0,
-    	slides : true,
+    	slides : false,
     	phases: [
+    		{ /* Anlaufphase */
+    			title: "Anlaufphase",
+    			instruction: "(keine)",
+    			seq : 4,
+    			groupindex: 0,
+    			start : {
+    				year: '2015',
+    				month: '10',
+    				day: '17',
+    				h: '0',
+    				m: '15'
+    			}, 
+    			widgets: [
+		  		 	{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	}
+		  		]	
+    		},//end phase 1
     		{ /* Terezin */
     			title: "Phase 1 - Kollaboration",
     			instruction: "Bitte schauen Sie sich das Video an und notieren sich die aus Ihrer Sicht wichtigsten Punkte. Sie können das Video taggen und kommentieren. Füllen Sie anschließend den <a href='/assessment'>Online-Selbsttest</a> aus.",
     			//title_k: "Aufgabe 4 - Diskussion & Feedback",
     			//instruction_k: "Reflektieren Sie Ihre Ergebnisse auf Basis des bereit gestellten, alternativen Lösungsvorschlags. (Gruppenarbeit, 4-6 Personen)",
     			seq : 4,
-    			groupindex: 4,
+    			groupindex: 0,
     			start : {
     				year: '2015',
     				month: '10',
@@ -111,13 +151,8 @@ var
 								placeholder:'/static/img/placeholder.jpg'
 							}	
 		  		 	}
-		  		//,{ name: 'highlight', accordion:true, annotate:false }
-		  		//{ name: 'tags', accordion:true, annotate:false },
-		  			//,
-		  			//{ name: 'assessment', accordion:false, annotate:false },
-		  			//{ name: 'slides' }
 		  		]	
-    		}
+    		} // end phase 
     	]
     };
 

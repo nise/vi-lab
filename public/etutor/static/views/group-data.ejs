@@ -1,7 +1,7 @@
 
 <% if(items.user) { %>
 	<div class="group-menu">
-	<% if ( items.group.length <= 16 ) { %>			
+	<% if ( items.group.length <= 6 ) { %>			
 		<% items.group.forEach( function ( user ){ %>
 			<% if (user.username != items.username) { %>
 				<a class="navbar-brand" data-toggle="tooltip" data-placement="bottom" title="<%= user.username %> ist Mitglied in Ihrer Gruppe." href="/users/view/<%= user.username %>">

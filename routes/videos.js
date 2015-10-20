@@ -59,21 +59,40 @@ exports.index = function ( req, res ){
 };
 
 
-exports.getJSON = function(req, res) { // console.log(88+'---------------------------')
-/*  Videos
-		.find()
-		.sort( 'id' )
-		.lean()
-		.exec( function ( err, items ){ 
-			if(err){ console.log(err); }
-			res.type('application/json');
-			res.jsonp(items);
-		});*/
+exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
+// get script phase 
+	mongoose.model('Scripts').collection.find().toArray(function(err, script) {
+  	var phase = script[0]['current_phase']; 
+  	// get group of current user
+	  mongoose.model('Users').find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+	  	var group = users[0].groups[Number(phase)];  
+	  	
+			// get video-ids of group
+			mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+				var query = {};
+				query['id'] = { $in: groups[0].videos }; // 
+				console.log('#################################################');
+				console.log(groups[0].videos)
+				// get videos 
+				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){ 
+						res.type('application/json');
+						res.jsonp(videos /*{
+							title : 'Express Videos Example',
+							group : group,
+							items : videos
+						}*/);  
+						res.end('done');
+				});
+			});// end Groups
+		});// end Users
+	});// end Scripts		
+/*
 	Videos.collection.find().toArray(function(err, items) {
     res.type('application/json');
 		res.jsonp(items);  
 		res.end('done');
   });
+*/  
 };
 
 
@@ -110,7 +129,7 @@ exports.create = function ( req, res ){
 
 
 // query db for all person items
-exports.list = function ( req, res ){
+exports.list = function ( req, res ){ console.log('#################################################');
 	// get script phase 
 	mongoose.model('Scripts').collection.find().toArray(function(err, script) {
   	var phase = script[0]['current_phase']; 
@@ -119,9 +138,11 @@ exports.list = function ( req, res ){
 	  	var group = users[0].groups[Number(phase)];  
 	  	
 			// get video-ids of group
-			mongoose.model('Groups').find( { id: group}).select('id videos').setOptions({lean:true}).exec(function ( err, videos ){
+			mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
 				var query = {};
-				query['id'] = { $in: videos[0].videos }; // 
+				query['id'] = { $in: groups[0].videos }; // 
+				console.log('#################################################');
+				console.log(groups[0].videos)
 				// get videos 
 				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){ 
 						res.render( 'videos', {

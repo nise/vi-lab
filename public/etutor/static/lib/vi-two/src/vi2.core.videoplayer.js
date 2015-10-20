@@ -441,6 +441,9 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 					//_this.video_volume = parseFloat(ui.value);
 				},
 				change : function(e,ui){
+					// set video volume
+					_this.video.volume = ui.value;
+					// button states
 					if(ui.value > 0 && ui.value < 0.5 ){ 
 						_this.isMuted = false;
 						_this.volume_btn.addClass('glyphicon-volume-down');
@@ -475,7 +478,8 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			this.volume_btn.addClass('glyphicon glyphicon-volume-up');
 		}
 		
-		
+		// set initial volume
+		// xxx does not work
 			
 	},
 	

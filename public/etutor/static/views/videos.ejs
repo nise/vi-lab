@@ -8,29 +8,35 @@
 <div class="container">
 	<div class="row">
 	<% i=1 %>
-  <% items.forEach(function(item){  %>
-		<div class="col-sm-6 col-md-4" style="min-height:800px;">
-			<div class="thumbnail">
-				<a href="/videos/view/<%= item._id %>"><img width="100%" src="<%= item.metadata[0].thumbnail %>"  />
-				</a>
-				<div class="caption">	
-					<h3><a href="/videos/view/<%= item._id %>">Video <%= i %>: <%= item.metadata[0].title %></a></h3>
-					<p class="lecturer"><span class="glyphicon glyphicon-user"></span> <b>Dozentin:</b> <%= item.metadata[0].author %></p>
+	<% if ( items.length > 0) { %>
+		<% items.forEach(function(item){  %>
+			<div class="col-sm-6 col-md-4" style="min-height:800px;">
+				<div class="thumbnail">
+					<a href="/videos/view/<%= item._id %>"><img width="100%" src="<%= item.metadata[0].thumbnail %>"  />
+					</a>
+					<div class="caption">	
+						<h3><a href="/videos/view/<%= item._id %>">Video <%= i %>: <%= item.metadata[0].title %></a></h3>
+						<p class="lecturer"><span class="glyphicon glyphicon-user"></span> <b>Dozentin:</b> <%= item.metadata[0].author %></p>
 					
-					<p><%= item.metadata[0].abstract %></p>
+						<p><%= item.metadata[0].abstract %></p>
 						
-					<p>
-						<span class="glyphicon glyphicon-tags"></span>
-						<% item.metadata[0].tags.forEach( function ( tag ){ %>
-							<%= tag.t %>,
-						<% }); %>
-						</span>
-					</p>
-				</div>	 
+						<p>
+							<span class="glyphicon glyphicon-tags"></span>
+							<% item.metadata[0].tags.forEach( function ( tag ){ %>
+								<%= tag.t %>,
+							<% }); %>
+							</span>
+						</p>
+					</div>	 
+				</div>
 			</div>
-		</div>
-		<% i=i+1 %>
-		<% }); %>
+			<% i=i+1 %>
+			<% }); %>
+		<% }else{ %>
+			<div class="col-sm-10 col-md-10 mark" style="min-height:800px;">
+			Derzeit sind noch keine Videos verfügbar. 
+			</div>
+		<% } %>	
 	</div>
 </div>
 
