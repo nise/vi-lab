@@ -98,7 +98,8 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 					.addClass('comments-header');
 					
 				$('<span></span>')
-					.text( user.firstname +' '+user.name )
+					//.text( user.firstname +' '+user.name )
+					.text( user.username )
 					.addClass('comments-user')
 					.appendTo( header )
 					; 
@@ -110,8 +111,6 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 					.attr('author', val.author)
 					.attr('date', 'd'+val.date)
 					.attr('id', 't'+_this.formatTime(val.time, '-'))
-					//.attr('title', 'Kommentar von '+ user.firstname +' '+user.name )
-					//.css('list-style-image',  "url('"+_this.options.path+"user-"+ val.author +".png')")
 					.html( header )
 					.append(a)
 					.appendTo(comments)
@@ -214,12 +213,10 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 		createAnnotationForm : function( data ){ 
 			/*jshint multistr: true */
 			var str = "\
+			<textarea name='comments-entry' data-datatype='string' placeholder='' aria-describedby='comments-form1'><%= content %></textarea>\
+			<br>\
 			<div class='input-group'>\
-				<span class='input-group-addon' id='comments-form1'></span>\
-				<textarea name='comments-entry' data-datatype='string' placeholder='' aria-describedby='comments-form1'><%= content %></textarea>\
-			</div><br>\
-			<div class='input-group'>\
-				<span class='input-group-addon' id='comments-form1'>Wiedergabezeit</span>\
+				<span class='input-group-addon' id='comments-form1'>Zeitpunkt (s)</span>\
 				<input type='text' class='form-control' value='<%= time %>' name='comments-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='comments-form1'>\
 			</div>\
 			";

@@ -213,7 +213,7 @@ var Parser = $.inherit(/** @lends Parser# */
 					}else if($(this).attr('type') == "assessment"){ 
 						// assessment
 						obj = {};
-						obj.title = encodeURIComponent( $(this).text() );
+						obj.title = $(this).data('task');
 						obj.author = $(this).attr('author');
 						obj.date = $(this).attr('date');
 						obj.target = $(this).attr('starttime') == undefined ? 0 : $(this).attr('starttime');

@@ -26,10 +26,13 @@ ul.assessmentlist li a { text-decoration:none; padding: 2px 1px 1px 3px; }
 */
 
 .assessment-list{ padding:0px; list-style-type:none;  list-style-position: inside; margin:12px 0 0 10px;}
-.assessment-list li { line-height:160%; display:list-item; margin: 4px 0; padding:2px 4px; cursor:pointer;  }
+.assessment-list li { line-height:160%; display:list-item; margin: 4px 0; padding:2px 4px;   }
 .assessment-list li:hover { }
-.assessment-list li a { text-decoration:none; padding: 2px 1px 1px 3px; color:#111; }
-
+.assessment-list li a { text-decoration:none; padding: 2px 1px 1px 3px; color:#111; cursor:pointer;  }
+.assessment-list li a.assessment-menu-question {
+	width:90%;
+	display:inline-block;
+}
 
 .assessment-header {
 	display:block;
@@ -44,7 +47,7 @@ ul.assessmentlist li a { text-decoration:none; padding: 2px 1px 1px 3px; }
 	color:#fff;
 	margin:0;
 	border:0;
-	padding: 1px 4px;
+	padding: 0px 4px;
 	vertical-align:bottom;
 	height:12px;
 }
@@ -54,26 +57,53 @@ ul.assessmentlist li a { text-decoration:none; padding: 2px 1px 1px 3px; }
 #vi2assessment {
 		background: #efefef none repeat scroll 0 0;
     float: left;
-    height: 100%;
+    height: auto;
+    max-height:80vh;
+    overflow:visible;
     left: 0;
     opacity: 0.98;
     overflow: hidden;
-    padding: 20px;
+    padding: 50px 20px;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 40;
 }
 
-.assessment-question { font-weight:bold; font-size: 28px; color: #1C94C4 }
-.assessment-answer { font-weight:bold; font-size: 14px; margin-bottom:10px; cursor:pointer; width:100%;}
-#vi2assessment div.assessment-answer input {margin-right:5px;}
-#vi2assessment div.assessment-answer:hover { background-color: #1C94C4; color:#fff; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
-#vi2assessment div.assessment-btn { width:80px; cursor:pointer;}
-#vi2assessment div.assessment-btn-proceed { width:150px; cursor:pointer;}
-#vi2assessment p.assessment-msg-correct { padding:4px; background-color: green; color:#fff; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
-#vi2assessment p.assessment-msg-wrong { padding:4px; background-color: red; color:#fff; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
-#vi2assessment p.assessment-msg-warning { padding:4px; background-color: orange; color:#fff; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
+.trash{
+background: -webkit-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* Standard syntax (must be last) */
+}
+
+.assessment-question { font-weight:bold; font-size: 16px; color: #555 }
+.assessment-answer { margin: 6px 0; font-size: 14px; margin-bottom:10px; cursor:pointer; width:70%; }
+.assessment-answer input[type=checkbox] { 
+  padding: 10px;
+	margin-right:5px; 
+}
+.assessment-answer textarea {
+	font-size:14px;
+	padding:4px;
+	width:90%;
+	height:150px;
+	margin-top: 5px 0 5px 0;
+	display:inline-block;
+	*display: inline;     /* for IE7*/
+	zoom:1;              /* for IE7*/
+	vertical-align:top;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color:#fff;
+	color:#000;
+}
+
+
+
+.correct-answ{ padding:4px; height:30%; font-size:10px; display:inline-block; overflow:visible; }
+#vi2assessment p.assessment-msg-wrong { padding:4px; background-color: red; color:#fff; }
+#vi2assessment p.assessment-msg-warning { padding:4px; background-color: orange; color:#fff; }
 
 
 .assessment-user-icon {

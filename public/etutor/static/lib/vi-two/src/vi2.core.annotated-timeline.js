@@ -242,6 +242,9 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 			this.options[ type ] = { markerHasTooltip: true, markerIsClickable:true };
 			var timeline = $( timelineSelector );
 			
+			// remove existing markes of the same type before rewriting them
+			$('.'+type + '-timeline-marker').each(function(i, val){ $(val).remove(); });
+			
 			$.each( data, function(i, val){ 
 				var progress = val.occ[0] / vi2.observer.player.duration();
 				progress = ((progress) * $( timelineSelector ).width());

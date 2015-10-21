@@ -45,6 +45,7 @@
     "id": "111",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",

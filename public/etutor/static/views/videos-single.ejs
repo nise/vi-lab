@@ -1,23 +1,7 @@
 <% layout( 'video-layout' ) -%>
 
- <!-- Subhead
-    ================================================== -->
-    <header class="bs-header" id="overview" style="">
-        <div hidden  class="container">
-            <h1><%= items[0].metadata[0].title %></h1>
-            <p hidden class="lead"><%= items[0].metadata[0].title %></p>
-        </div>
-    </header>
-
- <!-- Content
-    ================================================== -->
-    
- <!--<div align="center" class="embed-responsive" style="width:90%;">
-    <video autoplay loop class="embed-responsive-item" style="width:90%;">
-        <source src="/terezin/videos/theresienstadt.webm?foo=1430689911665" type="video/webm">
-    </video>
-</div>-->
-
+<!-- Storage -->
+<div style="display:none; visibility:hidden;" id="vi2"></div>
 <div id="page">
 	<div class="main">
 		<div id="videowrapper">  
@@ -88,8 +72,6 @@
 		  </div>
 		</div>
 	</div>
-	<!-- Storage -->
-	<div style="display:none; visibility:hidden;" id="vi2"></div>
 	<script>
 		/*
 		* Little helper 

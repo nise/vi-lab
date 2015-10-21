@@ -5,24 +5,24 @@
 - test mit vielen users
 
 - @assesment
-	- validation
-	- display
 	- comment assessment
 	- ass: Aufgabenstatistik
-	- correct assessment
 	- Benutzerbenachrichtigung
+	
+- activity log:: https://www.propublica.org/nerds/item/timelinesetter-easy-timelines-from-spreadsheets-now-open-to-all
+	- log: change log format
+	- log: exact playback logging
+	
 	
 - bug @ player: autoplay ?
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden
 
 - correct slide presenation	
 
+## admin 
+-- user übersich -- links per id, statt per username wg. eindeutigkeit
+-- footer
 
-
-
-## Script
-- script scheduler
-- cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
 
 
 ## Awareness
@@ -31,14 +31,14 @@
 - bearbeitungsstand anzeigen
 	- anzahl items je toc/tags/comments/...
 	- ?gesamtstand anhand von relativer metrik
-- activity log:: https://www.propublica.org/nerds/item/timelinesetter-easy-timelines-from-spreadsheets-now-open-to-all
 
+## Script
+- script scheduler
+- cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
 
 
 ## last things
-- check sync
-- log: change log format
-- log: exact playback logging
+
 - check ACL
 - remove/abstract: http://127.0.0.1:3033
 - guided tour

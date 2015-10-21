@@ -270,9 +270,7 @@ top:40px;
 }
 
 
-h2, h3{ 
-font-family: Palatino,"Times New Roman", Times, serif;
-}
+
 
 .sidepanel h3 {
 	font-size:14px;
@@ -394,6 +392,7 @@ text-decoration:none;
 .add-btn{
 	margin-left:12px;
 	padding:4px;
+	cursor:pointer;
 }
 .add-btn:hover{
 	color:#003366;
@@ -476,7 +475,7 @@ text-decoration:none;
 	text-align:left;
 	padding-top:4px;
 	border-top: solid 2px #555;
-	margin-top:10px;
+	margin:10px 0 20px 0;
 	font-size:13px;
 	display:inline-block;
 }

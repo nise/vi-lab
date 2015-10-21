@@ -164,7 +164,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			$.each(tocData, function(i, val){ 
 					var a = $('<a></a>')
 					.text( val.name )
-					.addClass('id-'+ val.occ[0])
+					.addClass('id-'+ val.occ[0]+' toc-menu-link')
 					.attr('href', '#!/video/' + vi2.observer.current_stream + '/t=npt:' + val.occ[0] + '') // former: main.options.id
 					;				
 					
@@ -173,7 +173,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 					var li = $('<li></li>')
 						.addClass('toc-'+val.occ[0])
 						.attr('id', 'toc'+ val.occ[0])
-						.attr('title', ''+user.firstname +' '+user.name+', ' + moment(Number(val.date), "x").fromNow())
+						.attr('title', user.username+', ' + moment(Number(val.date), "x").fromNow())
 						//.css('list-style-image',  "url('"+_this.options.path+"user-"+val.author+".png')")
 						.html(a)
 						.appendTo( toc )

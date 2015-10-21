@@ -41,7 +41,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			var _this = this;
 			var events = []; 
 			$.each(ann, function(i, val){  
-				if(val.type === 'assessment' && val.title !== '' ){ alert(val.title)
+				if(val.type === 'assessment' && val.title !== '' ){ 
 					//var obj = JSON.parse( decodeURIComponent( val.title ) );  
 					events.push({ 
 						name: val.title,
@@ -70,6 +70,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		**/
 		createMenu : function( assessmentData ){
 			var _this = this;
+			$(this.options.menuSelector).empty();
 			var assess = $('<ul></ul>')
 				.addClass('assessment-list')
 				.appendTo( this.options.menuSelector )
@@ -81,14 +82,14 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 					.addClass('assessment-header');
 					
 				$('<span></span>')
-					.text( user.firstname +' '+user.name )
+					//.text( user.firstname +' '+user.name )
+					.text( user.username )
 					.addClass('assessment-user')
 					.appendTo( header )
 					;  
 				header.append(' ' + moment(Number(val.date), "x").fromNow() );	
 				
 				
-				//var li = function(author, title, target, time, id){ 
 				var userIcon = new Image();
 				$(userIcon)
 				//	.attr('src', _this.options.path+'icon.png')
@@ -98,7 +99,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 					.append( val.name.question )
 					.attr('author', val.author)
 					//.attr('href', '#'+vi2.observer.options.id)
-					.addClass('id-'+ val.time)
+					.addClass('id-'+ val.time+' assessment-menu-question')
 					.click(function(){
 						vi2.observer.log('clickassessmentfromlist:'+ val.name.question +' '+val.author+' '+ val.time +' '+ val.date);
 						vi2.observer.player.currentTime( val.time );
@@ -107,18 +108,9 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				var li = $('<li></li>')
 					.attr('id', 't'+ val.time)
 					.attr('author', val.author)
-					//.attr('title', 'Frage von '+user.firstname+' '+user.name)
-					.attr('data-toggle', "modal")
-					.attr('data-target', "#myModal")
-					.attr('data-annotationtype', 'assessment')
-					.data('annotationdata', { 
-						content: val.name, 
-						time: val.time[0], 
-						date: val.date 
-					} )
-					.addClass('assessment-user-icon list-item')
+					.addClass('list-item')
 					//.css('list-style-image',  "url('"+_this.options.path+"user-"+author+".png')")
-					.html( header)
+					.html( header )
 					.append( a )
 					.appendTo( assess )
 					;	
@@ -130,7 +122,11 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 						.attr('data-toggle', "modal")
 						.attr('data-target', "#myModal")
 						.attr('data-annotationtype', 'assessment')
-						.data('annotationdata', { content: val.name, time: val.time, date: val.date } )
+						.data('annotationdata', { 
+							content: val.name, 
+							time: val.time[0], 
+							date: val.date 
+						} )
 						.appendTo( header )
 						;
 				}		
@@ -161,9 +157,9 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		
 			/*
 		**/
-		updateDOMElement : function( obj ){
+		updateDOMElement : function( obj ){ 
 			$(vi2.dom)
-				.find('[date="'+ obj.identifer +'"]') // .date
+				.find('[date="'+ obj.date +'"]') // .date
 				.attr('author', vi2.wp_user )
 				.attr('date', new Date().getTime())
 				.attr('starttime', obj.time )
@@ -175,7 +171,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		/*
 		* { type: type, date: new Date().getTime(), time: formData.time, content: formData.content); 
 		**/
-		addDOMElement : function( obj ){ alert(obj)
+		addDOMElement : function( obj ){ 
 			$('<div></div>')
 				.attr('type', obj.type)
 				.attr('author', vi2.wp_user )
@@ -188,8 +184,9 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		
 				
 		/* ... */
-		begin : function(e, id, obj){ 
-			obj = obj.content.title;  
+		begin : function(e, id, obj){
+			$('body').unbind('keydown'); 
+			obj = obj.content.title; 
 			var _this = this;
 			var question_selector = 'vi2assessment'+id;
 			vi2.observer.player.pause();
@@ -201,48 +198,57 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				.html('')
 				.show();
 				
-			var quest = $('<h2></h2>')
+			var head = $('<h3></h3>')
+				.text('Testfrage');
+			var quest = $('<div></div>')
 				.addClass('assessment-question')
 				.text(''+obj.question);	
 			var answ = $('<div></div>')
 				.addClass('assessment-answers');
 			
-			// fill in answers box
-			if(obj.answ.length === 1 && obj.answ[0].questiontype == 'fill-in'){ 
-				var answer = $('<div></div>')
-					.attr('id', 'answ0')
-  				.addClass('assessment-answer')
-  				.append('<textarea name="quest"></textarea>')
-  				.append('<br/>')
-  				.appendTo(answ);
-			}else{ // mc answer options
-				$.each(obj.answ, function(i, val){ 
+			
+			if( obj.answ.length > 0 ){
+				
+				if(obj.answ.length === 1 && obj.answ[0].questiontype === 'fi'){
+					// fill in answers box 
 					var answer = $('<div></div>')
-						.attr('id', val.id)
+						.attr('id', 'answ0')
 						.addClass('assessment-answer')
-						.append('<input type="checkbox" name="quest" value="1" />')
-						.append(val.answ)
-						.click(function(){ $(this).find('input[type="checkbox"]').attr('checked',true) })
+						.append('<textarea name="quest"></textarea>')
 						.append('<br/>')
 						.appendTo(answ);
-				});
-			}	
+				}else{ 
+					// mc answer options
+					$.each(obj.answ, function(i, val){
+						var answer = $('<div></div>')
+							.attr('id', val.id)
+							.addClass('assessment-answer')
+							.append('<input type="checkbox" name="quest" value="1" />')
+							.append(val.answ)
+							.click(function(){ 
+								$(this).find('input[type="checkbox"]').trigger('click'); 
+							})	
+							.append('<br/>')
+							.appendTo(answ);
+							
+					});
+				}
+			}		
 			
-			var solve = $('<div></div>')
-				.addClass('assessment-btn')
+			var solve = $('<button></button>')
+				.addClass('btn btn-default')
 				.text('abschicken')
-				.button()
 				.click(function(){
-					$('.assessment-btn').hide();
+					$(this).hide();
 					vi2.observer.log('submitassessmenttask:'+id);
 					_this.evaluateAnswer('.'+question_selector, obj)
 				});
 				
-			$(o).append(quest).append(answ).append(solve); 
+			$(o).append(head).append(quest).append(answ).append(solve); 
 			$(this.options.displaySelector).append(o);
 	
 			/*
-			if(this.currImgId == obj.content.target){
+			if(this.currImgId === obj.content.target){
 				return false;
 			}else{
 				// reset highlight
@@ -264,22 +270,25 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		* * {"content":{"question":"Eine Frage","answ":[{"id":"answ78","answ":"Antwort a","questiontype":"mc"},{"id":"answ32","answ":"Antwort b","questiontype":"mc"},{"id":"answ43","answ":"Antwort c","questiontype":"mc"}],"correct":["answ43"]},"time":["300"],"date":"1386505607283"}
   	**/
 		createAnnotationForm : function(json){ 
-			//add question
-			if( json.content !== '' ){
-				json = json.content; 
-			}else{
+			
+			if( json.content === '' ){ // form with existing data
 				json = {
-					question:'', 
-					answ:[], 
-					correct:[], 
-					time: vi2.observer.player.currentTime(), 
-					date: (new Date().getTime())
+					time: vi2.observer.player.currentTime(),
+					date: (new Date().getTime()),
+					author : vi2.wp_user,
+					content: {
+						question:'', 
+						answ:[], 
+						correct:[], 
+						time: vi2.observer.player.currentTime(), 
+						date: (new Date().getTime())
+					}	
 				}; 
 			}
 			
 			var question = $('<textarea></textarea>')
 				.attr('id', 'annotationQuestion')
-				.val(json.question);
+				.val(json.content.question);
 			var answer_box = $('<div></div>').attr('id','answerbox');
 		
 				var ii = 0;
@@ -293,7 +302,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							.attr('title', 'Antwortoption entfernen')
 							.click(function(){ 
 								$(this).parent().remove();
-								if($('.answer').length == 0){
+								if($('.answer').length === 0){
 									$('.fi-question').show();
 									$('.mc-question').show();
 								}else{
@@ -308,7 +317,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							.attr('id', idd)
 							.addClass('answer')
 							.append('<input id="'+idd+'" type="checkbox" title="Setze ein Häckchen für richtige Lösungen" name="quest" value="1" />')
-							.append('<input type="text" class="mc-option" value=""/>')
+							.append('<input id="'+idd+'" type="text" class="mc-option" value=""/>')
 							.append(rm)
 							.append('<br/>');
 						ii++;
@@ -326,7 +335,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							.attr('title', 'Lösung entfernen')
 							.click(function(){ 
 								$(this).parent().remove();
-								if($('.answer').length == 0){
+								if($('.answer').length === 0){
 									$('.fi-question').show();
 									$('.mc-question').show();
 								}else{
@@ -351,16 +360,16 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		
 		
 			// handle existing answers
-			if( json.answ.length > 0 ){
-				if(json.answ[0].questiontype === 'mc'){
+			if( json.content.answ.length > 0 ){
+				if(json.content.answ[0].questiontype === 'mc'){
 					// add existing answers
-					$.each(json.answ, function(i, val){ 
+					$.each(json.content.answ, function(i, val){ 
 						var rm = $('<span></span>')
 							.addClass('close-btn glyphicon glyphicon-remove-circle')
 							.attr('title', 'Antwortoption entfernen')
 							.click(function(){ 
 								$(this).parent().remove(); 
-								if($('.answer').length == 0){
+								if($('.answer').length === 0){
 									$('.fi-question').show();
 									$('.mc-question').show();
 								}else{
@@ -370,28 +379,31 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							});
 						var checkbox = $('<input type="checkbox" title="Setze ein Häckchen für richtige Lösungen" name="quest" value="1" />')
 							.attr('id', val.id);
-						$.each(json.correct, function(j, el){
-							if(el == val.id){ 
-								checkbox.attr('checked', true);
-							}
-						});
+							
+						if( json.content.correct.indexOf( val.id ) !== -1 ){
+//							checkbox.attr('checked', 'checked');
+							checkbox.attr('checked', true);
+						}	
 						var answ = $('<div></div>')
 							.attr('id', val.id)
 							.addClass('answer')
 							.append(checkbox)
-							.append($('<input type="text" class="mc-option" />').val(val.answ))
+							.append($('<input type="text" class="mc-option" />')
+								.attr('id', val.id)
+								.val(val.answ)
+							)
 							.append(rm)
 							.append('<br/>')
 							.appendTo(answer_box)
 							;
 					}); 
-				}else if(json.answ[0].questiontype === 'fill-in'){ 
+				}else if(json.content.answ[0].questiontype === 'fi'){ 
 					var rm = $('<span></span>')
 						.addClass('close-btn glyphicon glyphicon-remove-circle')
 						.attr('title', 'Lösung entfernen')
 						.click(function(){ 
 							$(this).parent().remove();
-							if($('.answer').length == 0){
+							if($('.answer').length === 0){
 								$('.fi-question').show();
 								$('.mc-question').show();
 							}else{
@@ -404,17 +416,17 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							.attr('id', 'answ'+Math.ceil(Math.random()*100))
 							.addClass('answer fi-answer')
 							.append($('<label></label>').text('Lösung:'))
-							.append($('<textarea></textarea>').val(json.answ[0].answ))
+							.append($('<textarea></textarea>').val(json.content.answ[0].answ))
 							.append(rm)
 							.append('<br/>')
-							.appendTo(answer_box);
-						//var height = Number(selector.dialog( "option", "height")); 
+							.appendTo(answer_box)
+							;	 
 				}
 			}
 			
 			var time_field = "\
 				<div class='input-group'>\
-					<span class='input-group-addon' id='hyperlinks-form3'>Wiedergabezeit</span>\
+					<span class='input-group-addon' id='hyperlinks-form3'>Zeitpunkt (s)</span>\
 					<input type='text' class='form-control' value='" + json.time + "' name='assessment-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 				</div>"
 		
@@ -427,11 +439,11 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			.append(add2)
 			.append( time_field )
 			;
-			if( answer_box.has('input.mc-option') && json.answ !== undefined){
-				add2.hide();
+			if( answer_box.has('input.mc-option') && json.content.answ !== undefined){
+				//add2.hide();
 			}
-			if( answer_box.has('textarea') && json.answ != undefined ){
-				//add.hide();
+			if( answer_box.has('textarea') && json.content.answ !== undefined ){
+				add.hide();
 				add2.hide();
 			}
 			return form;
@@ -515,24 +527,23 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		* example: {"content":{"question":"Eine Frage","answ":[{"id":"answ78","answ":"Antwort a","questiontype":"mc"},{"id":"answ32","answ":"Antwort b","questiontype":"mc"},{"id":"answ43","answ":"Antwort c","questiontype":"mc"}],"correct":["answ43"]},"time":["300"],"date":"1386505607283"}
 		**/
 		getAnnotationFormData : function( selector ){
-			var obj = {};
-			obj.content = $( selector ).find('[name="assessment-entry"]').attr('value');
-			obj.time = $( selector ).find('[name="assessment-entry-time"]').attr('value');
-			
-			obj.content = {};
-			obj.content.question = $('#annotationQuestion').val();
-			obj.content.time = $('#annotationTime').attr('value');
-			obj.content.date = String( new Date().getTime() );
-			obj.content.answ = [];
-			obj.content.correct = [];
-			
+			var obj = {
+				time : $( selector ).find('[name="assessment-entry-time"]').val(),
+				content : {
+					question : $('#annotationQuestion').val(),
+					time : $('#annotationTime').attr('value'),
+					date : String( new Date().getTime() ),
+					answ : [],
+					correct : []
+				}	
+			};
 			// get fill-in solution
 			$('#answerbox').find('textarea').each(function(i,val){
 					obj.content.answ[i] = { id: $(val).attr('id'), answ: $(val).val(), questiontype:"fi" };
 			});
 			
 			// get multiple choice answer options
-			$('#answerbox').find('input[type=text]').each(function(i,val){
+			$('#answerbox').find('input[type=text]').each(function(i,val){ 
 					obj.content.answ[i] = { id: $(val).attr('id'), answ: $(val).val(), questiontype:"mc" };	
 			});
 			
@@ -541,7 +552,6 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			$('#answerbox').find(':checked').each(function(i, val){ 
 					obj.content.correct.push( $(val).attr('id') );
 			});
-			
 			return obj;
 			/*
 			{	"content": {
@@ -566,18 +576,25 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		* Evaluates the quizz results provided by the user. 
 		**/
 		evaluateAnswer : function(question_selector, obj){
-			if(obj.answ[0].questiontype == 'fill-in'){
-				$(question_selector).append($('<p>Vielen Dank für die Bearbeitung der Frage.</p>').addClass('assessment-msg-correct'));
+			if(obj.answ[0].questiontype === 'fi'){
+				$(question_selector)
+					.append($('<p><strong>Vielen Dank für die Bearbeitung der Frage. Folgende Musterlösung wurde für diese Frage hinterlegt:</strong></p>'))
+					.addClass('assessment-msg-correct');
+				$('<span></span>')
+					.text( obj.answ[0].answ )
+					.addClass('correct-answ')
+					.appendTo(question_selector)
+					;
 			}else{ 
 				var one_checked = false, correct = true;
 				obj.checked = [];
 				$('.assessment-msg-warning').hide();
 				$('.assessment-answers').find('div.assessment-answer').each(function(i, val){
-					if($(this).find("input[name='quest']:checked").val() == 1){
+					if($(this).find("input[name='quest']:checked").val() === 1){
 						obj.checked.push($(this).text())
-						one_checked = true;
+						one_checked = true; 
 						$.each(obj.correct, function(j, corr){ 
-							if(corr == $(val).attr('id')){	
+							if(corr === $(val).attr('id')){	
 								obj.correct[j] = true; 
 							}
 						});
@@ -595,12 +612,12 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			
 				// CORRECT?
 				$.each(obj.correct, function(i, val){ 
-					if( val != true ) {
+					if( val !== true ) {
 						vi2.observer.log('assessmentwrong');
 						correct = false;
 					}
 				});
-				if(correct == true){
+				if(correct === true){
 					vi2.observer.log('assessmentcorrect');
 					$(question_selector).append($('<p>Ihre Antwort ist richtig.</p>').addClass('assessment-msg-correct'));
 					//vi2.observer.log('[call:run_assessment, result:correct]');
@@ -616,7 +633,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				correct: correct,
 				question : encodeURIComponent(obj.question),
 				answ : obj.answ,
-				res : obj.type == 'mc' ? encodeURIComponent(obj.checked) : encodeURIComponent($('.assessment-answers').find('textarea').val()),
+				res : obj.type === 'mc' ? encodeURIComponent(obj.checked) : encodeURIComponent($('.assessment-answers').find('textarea').val()),
 				videoid : vi2.currentVideo
 			}; 
 			var question_result = {
@@ -629,16 +646,25 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		  	title : 'Result: '+encodeURIComponent(obj.question),
 		  	content : result 
     	};
+			/*
 			$.post('/messages', {"data":question_result}, function(res){ 
         //alert('Has been saved: '+ JSON.stringify(res)); 
     	});
+    	*/
 		
 			// proceed	
-			$(question_selector).append($('<div></div>').addClass('assessment-btn-proceed').text('proceed playback').button().click(function(){
-				$(question_selector).remove();
-				vi2.observer.log('[call:finish_assessment]');
-				vi2.observer.player.play();
-			}))
+			$(question_selector).append($('<button></button>')
+				.addClass('btn btn-default')
+				.text('Video fortsetzen')
+				.click(function(){
+					$(question_selector).remove();
+					vi2.observer.log('[call:finish_assessment]');
+					vi2.observer.player.play();
+					$('body').unbind('keydown').bind('keydown', function(e) { 
+						vi2.observer.player.keyboardCommandHandler(e); 
+					});
+				})
+			);	
 		}
 		
 	

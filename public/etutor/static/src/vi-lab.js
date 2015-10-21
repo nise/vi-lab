@@ -244,8 +244,6 @@ var ViLab = $.inherit({
 				.append('<a class="accordion-title" href="#">Aufgabe: ' + pp.title + '</a>')
 				.prependTo('#accordion');
 		
-		
-		
 		// misc configurations	
 		$('#accordion').accordion({
 			collapsible: false,
@@ -255,6 +253,100 @@ var ViLab = $.inherit({
 				//$.each(_this.loadedWidgets, function(i, val){ _this.enableEditing(val); });
 			} 
 		});
+		
+		// setup modal dialog
+		var modal_settings = {
+					'toc' : { type: 'toc', title: 'Kapitelmarke hinzufügen', tooltip: 'Kapitel hinzufügen'},
+					'comments' : { type: 'comments', title: 'Kommentar hinzufügen', tooltip: 'Kommentar hinzufügen'},
+					'hyperlinks' : { type: 'hyperlinks', title: 'Link hinzufügen', tooltip: 'Link hinzufügen'},
+					'assessment' : { type: 'assessment', title: 'Aufgabe hinzufügen', tooltip: 'Aufgabe hinzufügen'}
+				};
+		// mute keydown events for text input
+				$('#myModal').on('hide.bs.modal', function(event){
+					$('body').unbind('keydown').bind('keydown', function(e) { 
+						vi2.observer.player.keyboardCommandHandler(e); 
+					});
+				});
+				
+				$('#myModal').on('show.bs.modal', function (event) {  
+				 
+					// pause video
+					_this.observer.player.pause(); 
+					$('body').unbind('keydown');
+					
+					var button = $(event.relatedTarget) // Button that triggered the modal
+					var type = button.data('annotationtype'); 
+					var data = button.data('annotationdata'); 
+					var modal = $(this);  
+					var widget = vi2.observer.widget_list[ type ]; 
+					modal.find('.modal-title').html( modal_settings[ type ].title );
+					
+					// prepare forms ...
+					if( $.isEmptyObject( data ) ){ 
+						// ... for a new annotation
+						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: vi2.observer.player.currentTime() } ) );
+						modal.find('.btn-remove-data').hide();
+					}else if( data.content.length === 0){ 
+						// for adding a reply, e.g. to a comment
+						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: data.time } ) );
+						modal.find('.btn-remove-data').hide();						
+					}else{ 
+						// ... for editing an existing annotation
+						modal.find('.modal-body').html( widget.createAnnotationForm( data ) );
+						modal.find('.btn-remove-data').show();
+					}
+					
+					// subit form data
+					modal.find('.btn-sava-data').unbind('click');
+					modal.find('.btn-sava-data').click( function(event){ 
+						var msg = widget.validateAnnotationForm( modal.find('.modal-body'), type );
+						var formData = widget.getAnnotationFormData( modal.find('.modal-body') ); 
+						if( msg.length === 0 ){ 
+							if( $.isEmptyObject( data ) || data.content.length === 0 ){
+								// add new annotation to dom
+								widget.addDOMElement({ 
+									type: type, 
+									date: new Date().getTime(), 
+									time: formData.time, 
+									content: formData.content 
+								}); 
+							}else{	//alert('update:'+data.date)
+								// updated existing annotation in dom
+								widget.updateDOMElement({  
+									date: data.date, 
+									time: formData.time, 
+									content: formData.content 
+								}); 
+							}
+							// save to database
+							_this.savePopcorn( type );	
+							vi2.observer.log('saveannotation:' + type + ' ' + formData.time );
+							vi2.observer.player.play(); // restart playback
+							modal.modal('hide');
+						}else{ 
+							modal.find('.modal-validation').html( msg );
+						}	
+					}); // end save
+					
+					// remove annotation
+					modal.find('.btn-remove-data').unbind('click');
+					modal.find('.btn-remove-data').click( function(event){
+						if( type == 'tags' || type == 'highlight'){ 
+								$( vi2.dom ).find(':contains("'+data.content+'")').each(function(i,val){
+									$(this).remove();
+								});
+							}else{
+								$( vi2.dom )
+									.find('[date="'+data.date+'"]')
+									.remove();
+							}	
+							_this.savePopcorn( type );
+							vi2.observer.log('del:'+type +' '+data.time);
+							vi2.observer.player.play(); // restart playback
+							modal.modal('hide');
+					}); // end remove
+					
+				});	// end modal
 		
   },
   
@@ -337,106 +429,16 @@ var ViLab = $.inherit({
 				*/
 				
 				//xxx variable should be part of widgets
-				var modal_settings = {
-					'toc' : { type: 'toc', title: 'Kapitelmarke hinzufügen', tooltip: 'Kapitel hinzufügen'},
-					'comments' : { type: 'comments', title: 'Kommentar hinzufügen', tooltip: 'Kommentar hinzufügen'},
-					'hyperlinks' : { type: 'hyperlinks', title: 'Link hinzufügen', tooltip: 'Link hinzufügen'},
-					'assessment' : { type: 'assessment', title: 'Aufgabe hinzufügen', tooltip: 'Aufgabe hinzufügen'}
-				};
 				
 				var link = $('<span></span>')
 					.addClass('glyphicon glyphicon-plus add-btn add-btn-'+widget_name )
 					.attr('data-toggle', "modal")
 					.attr('data-target', "#myModal")
 					.attr('data-annotationtype', widget_name)
-					.attr('title', modal_settings[ widget_name ].tooltip )
+					.attr('title', 'Neu hinzufügen' )
 					.appendTo(h3)	
 					;
 				
-				// mute keydown events for text input
-				$('#myModal').on('hide.bs.modal', function(event){
-					$('body').unbind('keydown').bind('keydown', function(e) { 
-						vi2.observer.player.keyboardCommandHandler(e); 
-					});
-				});
-				
-				$('#myModal').on('show.bs.modal', function (event) {  
-				 
-					// pause video
-					_this.observer.player.pause(); 
-					$('body').unbind('keydown');
-					
-					var button = $(event.relatedTarget) // Button that triggered the modal
-					var type = button.data('annotationtype'); 
-					var data = button.data('annotationdata'); 
-					var modal = $(this);  
-					var widget = vi2.observer.widget_list[ type ]; 
-					modal.find('.modal-title').html( modal_settings[ type ].title );
-					
-
-					// prepare forms ...
-					if( $.isEmptyObject( data ) ){ // ... for a new annotation
-						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: vi2.observer.player.currentTime() } ) );
-						modal.find('.btn-remove-data').hide();
-					}else if( data.content.length === 0){ // for adding a reply, e.g. to a comment
-						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: data.time } ) );
-						modal.find('.btn-remove-data').hide();						
-					}else{ // ... for editing an existing annotation
-						modal.find('.modal-body').html( widget.createAnnotationForm( data ) );
-						modal.find('.btn-remove-data').show();
-					}
-					
-					// subit form data
-					modal.find('.btn-sava-data').unbind('click');
-					modal.find('.btn-sava-data').click( function(event){ 
-						var msg = widget.validateAnnotationForm( modal.find('.modal-body'), type );
-						var formData = widget.getAnnotationFormData( modal.find('.modal-body') ); 
-						if( msg.length === 0 ){ 
-							if( $.isEmptyObject( data ) || data.content.length === 0 ){
-								// add new annotation to dom
-								widget.addDOMElement({ 
-									type: type, 
-									date: new Date().getTime(), 
-									time: formData.time, 
-									content: formData.content 
-								}); 
-							}else{	
-								// updated existing annotation in dom
-								widget.updateDOMElement({ 
-									date: data.date, 
-									time: formData.time, 
-									content: formData.content 
-								}); 
-							}
-							// save to database
-							_this.savePopcorn( type );	
-							vi2.observer.log('saveannotation:' + type + ' ' + formData.time );
-							vi2.observer.player.play(); // restart playback
-							modal.modal('hide');
-						}else{ 
-							modal.find('.modal-validation').html( msg );
-						}	
-					}); // end save
-					
-					// remove annotation
-					modal.find('.btn-remove-data').unbind('click');
-					modal.find('.btn-remove-data').click( function(event){
-						if( type == 'tags' || type == 'highlight'){ 
-								$( vi2.dom ).find(':contains("'+data.content+'")').each(function(i,val){
-									$(this).remove();
-								});
-							}else{
-								$( vi2.dom )
-									.find('[date="'+data.date+'"]')
-									.remove();
-							}	
-							_this.savePopcorn( type );
-							vi2.observer.log('del:'+type +' '+data.time);
-							vi2.observer.player.play(); // restart playback
-							modal.modal('hide');
-					}); // end remove
-					
-				});	// end modal
 			}
 			$('<div></div>')
 				.attr('id', widget_name)
@@ -548,16 +550,18 @@ INPUT:
 				
 			case 'assessment' : 
 				// fetch question
-				$(vi2.dom).find("div[type='assessment']").each(function(i, val){ alert($(val).text())
+				$(vi2.dom).find("div[type='assessment']").each(function(i, val){ 
 					arr.push({
 					 type: 'assessment',
 					 title: $(val).data('task'),
 					 starttime: $(val).attr('starttime'),
+					 start: $(val).attr('starttime'),
+					 time: $(val).attr('starttime'),
 					 author: $(val).attr('author'),
 					 date: $(val).attr('date')
 					});
 					//track_questions_1 += '{"id":"TrackEvent'+i+'","type":"question","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+', "question":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_comments_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';			
-				}); alert(arr)
+				}); 
 				break;
 		}
 		

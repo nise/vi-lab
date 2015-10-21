@@ -41,6 +41,7 @@
   	__constructor : function(options) { 
   			var _this = this;
   			this.options = $.extend(this.options, options); 
+  			this.userAgent = this.getUserAgent();
   			// get client IP
   			if(this.options.logger_path !== '-1'){ 
 					$.ajax({
@@ -72,9 +73,39 @@
 		
 		/* -- */
 		add : function(msg){
-			//var logEntry = this.getLogTime()+', '+this.options.prefix+', '+this.getIP()+', '+msg+', '+this.getUser()+'\n';
-			var logEntry = this.getLogTime()+', '+vi2.currentVideo+', '+', '+vi2.currentGroup+', '+vi2.userData.id+', '+msg+', '+this.getUser()+'\n'; 
+			//var logEntry = this.getLogTime()+', '+this.options.prefix+', '+this.getIP()+', '+msg+', '+this.getUserAgent()+'\n';
+			
+			//var logEntry = this.getLogTime()+', '+vi2.currentVideo+', '+', '+vi2.currentGroup+', '+vi2.userData.id+', '+msg+', '+this.getUserAgent()+'\n'; 
 			// buggy ::: vi2.userData.id
+			var t = this.getLogTime();
+			var logEntry = {
+				utc: 							t.utc, 
+				phase: 						t.,
+				//date:  						String, 
+				//time:  						String, 
+		
+				group:  					vi2.currentGroup, 
+				user:  						vi2.userData.id,   
+				//user_name:  			String,
+				//user_gender:			String,
+				//user_culture:			String,
+				//user_session:			Number,
+				
+				video_id:  				vi2.currentVideo,
+				//video_file:  			String,
+				//video_length:  		String,
+				//video_language:  	String,
+				
+				actio_c:						
+				action:  					String,
+				action_details: 	[Schema.Types.Mixed],
+				playback_time:		vi2.observer.player.currentTime(),
+		
+				user_agent:  			this.userAgent(),
+				ip: 							String,
+			
+			};
+			
 			this.writeLog(logEntry);
 			
 			return;
@@ -110,8 +141,11 @@
 			var d = date.getDate();
     	var m = date.getMonth()+1;
     	var y = date.getFullYear();
-    	return date.getTime()+', ' + y +'-'+ (m<=9?'0'+m:m) +'-'+ (d<=9?'0'+d:d)+', '+(h<=9?'0'+h:h)+':'+(mi<=9?'0'+mi:mi)+':'+(s<=9?'0'+s:s)+':'+date.getMilliseconds();
-			//return date.getTime();
+    	//return date.getTime()+', ' + y +'-'+ (m<=9?'0'+m:m) +'-'+ (d<=9?'0'+d:d)+', '+(h<=9?'0'+h:h)+':'+(mi<=9?'0'+mi:mi)+':'+(s<=9?'0'+s:s)+':'+date.getMilliseconds();
+			return { 
+				utc: date.getTime(), 
+				date: y +'-'+ (m<=9?'0'+m:m) +'-'+ (d<=9?'0'+d:d),
+				time: (h<=9?'0'+h:h)+':'+(mi<=9?'0'+mi:mi)+':'+(s<=9?'0'+s:s)+':'+date.getMilliseconds()
 		},
 		
 		/* -- */
@@ -120,7 +154,7 @@
 		},
 						
 		/* -- */
-		getUser : function(){
+		getUserAgent : function(){
 		 var ua = $.browser; 
   		return	navigator.userAgent.replace(/,/g,';');
 		},
@@ -129,7 +163,7 @@
 		writeLog : function (entry){ 
 			//$.post('php/log.php', { entry:entry });
 			if(this.options.logger_path !== '-1'){ 
-				$.post(this.options.logger_path, { data:entry }, function(data){}); 
+				$.post(this.options.logger_path, { data: entry }, function(data){}); 
 			}
 		}					
 				

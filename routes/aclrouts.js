@@ -104,17 +104,50 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	//	app.get('/messages', users.ensureAuthenticated, wine.getMessages);
 	//	app.post('/messages', users.ensureAuthenticated, wine.addMessage);
 	
-	// routes for system purpose	
+	/*
+	Logging
+	**/	
+	Log  = mongoose.model( 'Log' )
 	app.post('/log', users.ensureAuthenticated, function(req, res) {
-		log.write(req.param('data'));	
+		var d = req.param('data');
+		Log.save({
+			utc: 							Number, 
+			phase: 						Number,
+			date:  						String, 
+			time:  						String, 
+		
+			group:  					String, 
+			user:  						Number, 
+			//user_name:  			String,
+			//user_gender:			String,
+			//user_culture:			String,
+			//user_session:			Number,
+				
+			video_id:  				String,
+			video_file:  			String,
+			//video_length:  		String,
+			//video_language:  	String,
+		
+			action:  					String,
+			action_details: 	[Schema.Types.Mixed],
+			playback_time:		Number,
+		
+			user_agent:  			[Schema.Types.Mixed],
+			ip: 							String,
+			//flag: 						Boolean
+		});
+		
+		
+		// write to logfile
+		//log.write( req.param('data') );	
 		res.send('terminated logging');
 	});
-	app.get('/log',  function(req, res) { // users.authCallback(['editor']), xxx
-		//console.log(req.headers.toString()+'__________________'+String(req.headers['X-Forwarded-For']).split('-')[0]);
-		//log.write(req.param('data'));	
-		//res.type('text/text');
+	app.get('/log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
+		
 		res.send('terminated request');
 	});	
+	
+	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	
 
 	// routes related to User Management and Passport - Local Authentication
@@ -163,10 +196,6 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.get('/json/etherpad', etherpad.getJSON )
 	app.get('/admin/etherpad', users.ensureAuthenticated, etherpad.listPadInput )
 
-	/*
-	Logging
-	**/
-	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 
 
 } // end module

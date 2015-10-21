@@ -167,7 +167,7 @@
 					var li = $('<li></li>')
 						.addClass('hyperlinks-'+val.occ[0])
 						.attr('id', ''+ val.occ[0])
-						.attr('title', ''+user.firstname +' '+user.name+', ' + moment(Number(val.date), "x").fromNow())
+						.attr('title', user.username+', ' + moment(Number(val.date), "x").fromNow())
 						//.css('list-style-image',  "url('"+_this.options.path+"user-"+val.author+".png')")
 						.html(a)
 						.appendTo( hyperlinks )
@@ -285,6 +285,7 @@
 					
 				$(this.options.displaySelector ).append(o);
 				o.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'});
+				o.effect( "highlight", 2000 ); // could be improved
 		},
 	
 		/* End of annotion time. The link anchor will disapear from screen. */
@@ -320,19 +321,19 @@
 				<textarea name='hyperlinks-entry-desc' data-datatype='string' placeholder='' aria-describedby='hyperlinks-form2'><%= content.description %></textarea>\
 			</div><br>\
 			<div class='input-group'>\
-				<span class='input-group-addon' id='hyperlinks-form3'>Wiedergabezeit</span>\
+				<span class='input-group-addon' id='hyperlinks-form3'>Zeitpunkt (s)</span>\
 				<input type='text' class='form-control' value='<%= time %>' name='hyperlinks-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
 			<div class='input-group'>\
-				<span class='input-group-addon' id='hyperlinks-form66'>Anzeigedauer</span>\
+				<span class='input-group-addon' id='hyperlinks-form66'>Anzeigedauer (s)</span>\
 				<input type='text' class='form-control' value='<%= content.duration %>' name='hyperlinks-entry-duration' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
 			<div class='input-group'>\
-				<span class='input-group-addon' id='hyperlinks-form66'>x (%)</span>\
+				<span class='input-group-addon' id='hyperlinks-form66'>Position x (%)</span>\
 				<input type='text' class='form-control' value='<%= content.x %>' name='hyperlinks-entry-x' data-datatype='number' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
 			<div class='input-group'>\
-				<span class='input-group-addon' id='hyperlinks-form66'>y (%)</span>\
+				<span class='input-group-addon' id='hyperlinks-form66'>Position y (%)</span>\
 				<input type='text' class='form-control' value='<%= content.y %>' name='hyperlinks-entry-y' data-datatype='number' placeholder='' aria-describedby='hyperlinks-form3'>\
 			</div>\
 			"; 
