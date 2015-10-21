@@ -76,11 +76,11 @@
 			//var logEntry = this.getLogTime()+', '+this.options.prefix+', '+this.getIP()+', '+msg+', '+this.getUserAgent()+'\n';
 			
 			//var logEntry = this.getLogTime()+', '+vi2.currentVideo+', '+', '+vi2.currentGroup+', '+vi2.userData.id+', '+msg+', '+this.getUserAgent()+'\n'; 
-			// buggy ::: vi2.userData.id
-			var t = this.getLogTime();
+			//'clickcommentfromlist:'+val.name +' '+val.author+' '+ val.time 
+			
 			var logEntry = {
-				utc: 							t.utc, 
-				phase: 						t.,
+				utc: 							date.getTime(), 
+				//phase: 						vi2.current,
 				//date:  						String, 
 				//time:  						String, 
 		
@@ -96,9 +96,12 @@
 				//video_length:  		String,
 				//video_language:  	String,
 				
-				actio_c:						
-				action:  					String,
-				action_details: 	[Schema.Types.Mixed],
+				action:{
+					context: msg.context,
+					action: msg.action,
+					values: msg.values
+				},						
+				
 				playback_time:		vi2.observer.player.currentTime(),
 		
 				user_agent:  			this.userAgent(),

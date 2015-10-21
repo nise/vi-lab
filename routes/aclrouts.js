@@ -107,38 +107,43 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	/*
 	Logging
 	**/	
-	Log  = mongoose.model( 'Log' )
+	var 
+		Log  = mongoose.model( 'Log' ),
+	 	get_ip = require('ipware')().get_ip
+	 	;
+	
 	app.post('/log', users.ensureAuthenticated, function(req, res) {
-		var d = req.param('data');
-		Log.save({
-			utc: 							Number, 
-			phase: 						Number,
-			date:  						String, 
-			time:  						String, 
-		
-			group:  					String, 
-			user:  						Number, 
+		var 
+			d = req.param('data')
+			;
+		var entry = {
+			utc: 							d.utc, 
+			//phase: 						Number,
+			//date:  						String, 
+			//time:  						String, 
+			group:  					d.group, 
+			user:  						d.user, 
 			//user_name:  			String,
 			//user_gender:			String,
 			//user_culture:			String,
 			//user_session:			Number,
-				
-			video_id:  				String,
-			video_file:  			String,
+			video_id:  				d.video_id,
+			//video_file:  			String,
 			//video_length:  		String,
 			//video_language:  	String,
-		
-			action:  					String,
-			action_details: 	[Schema.Types.Mixed],
-			playback_time:		Number,
-		
-			user_agent:  			[Schema.Types.Mixed],
-			ip: 							String,
+			action:  					d.user_agent,
+			//action_details: 	[Schema.Types.Mixed],
+			playback_time:		d.playback_time,
+			user_agent:  			d.user_agent,
+			ip: 							get_ip(req)
 			//flag: 						Boolean
 		});
-		
+		// todo: complete missing fields
+		// save it
+		Log.save( entry )
 		
 		// write to logfile
+		// todo: transform log into flat log file
 		//log.write( req.param('data') );	
 		res.send('terminated logging');
 	});

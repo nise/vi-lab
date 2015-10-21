@@ -215,9 +215,14 @@ var Log = new Schema({
 		video_length:  		String,
 		video_language:  	String,
 		
-		action:  					String,
+		action:{
+					context: String,
+					action: String,
+					values: [Schema.Types.Mixed]
+		}
+		/*action:  					String,
 		action_details: 	[Schema.Types.Mixed],
-		playback_time:		Number,
+		playback_time:		Number,*/
 		
 		user_agent:  			[Schema.Types.Mixed],
 		ip: 							String,
