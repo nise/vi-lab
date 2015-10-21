@@ -480,9 +480,9 @@ INPUT:
   * todo: xxx needs to be abstracted or put into widgets
   **/
   vitwo2json : function(type){
-  	var r = []; 
+  	var arr = []; 
   	switch(type){
-  		case 'tags' : var tags = [];
+  		case 'tags' : var tags = []; // xxx bugy
 				// fetch tags ... {"tagname":"El Nino","occ":[0]},
 				$(vi2.dom).find("div[type='tags']").each(function(i, val){
 					var flag = 0;
@@ -495,7 +495,7 @@ INPUT:
 				}); 
 				r = tags;
 				break;
-			case 'highlight' : var highlight = [];
+			case 'highlight' : 
 				// fetch highlight ... {"tagname":"El Nino","occ":[0]},
 				$(vi2.dom).find("div[type='highlight']").each(function(i, val){
 					var flag = 0;
@@ -506,34 +506,30 @@ INPUT:
 						}
 					}); 
 					if(flag == 0){
-						highlight.push(JSON.parse('{"tagname":"'+ encodeURIComponent($(val).text())+'", "occ":['+ Number($(val).attr("starttime"))+'] }'));
+						arr.push(JSON.parse('{"tagname":"'+ encodeURIComponent($(val).text())+'", "occ":['+ Number($(val).attr("starttime"))+'] }'));
 					}		
 				}); 
-				r = highlight;
 				break;
 				
-			case 'toc' : var toc = [];
+			case 'toc' : 
 				// fetch toc ... {"label":"2. Objectives","duration":1,"start":"195.960"},
 				$(vi2.dom).find("div[type='toc']").each(function(i, val){
-					toc.push(JSON.parse('{"label":"'+ encodeURIComponent($(this).text())+'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'" }'));
+					arr.push(JSON.parse('{"label":"'+ encodeURIComponent($(this).text())+'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'" }'));
 				});
-				r = toc;
 				break;	
 				
-			case 'comments' : var comments = [];
+			case 'comments' : 
 				// fetch comments .. {"comment":"hallo welt", "start":"65","author":"thum.daniel", "date":"29.09.2013"}
 				$(vi2.dom).find("div[type='comments']").each(function(i, val){
-					comments.push(JSON.parse('{"comment":"'+ encodeURIComponent($(this).text()) +'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'"}'));					
+					arr.push(JSON.parse('{"comment":"'+ encodeURIComponent($(this).text()) +'", "start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'"}'));					
 				});
-				r = comments;
 				break;
 				
-			case 'hyperlinks' : var hyperlinks = []; 
-			
+			case 'hyperlinks' : 
 				// input: <div type="hyperlinks" starttime="666" duration="55.7" posx="2" posy="95" seek="0" duration2="0" target="#!cullmann" author="admin" date="1416312331209">flood types</div>
 				// output: {"type":"hyperlinks","author":"admin","date": "1416312331209","x": 2, "y": 90, "start": "555",  "duration": "37", "title": "details on participation", "target": "newig"},
 				$(vi2.dom).find("div[type='hyperlinks']").each(function(i, val){ 
-					hyperlinks.push({
+					arr.push({
 						type: 'hyperlinks',
 						author: $(val).attr('author'),
 						date: $(val).attr('date'),
@@ -548,24 +544,24 @@ INPUT:
 						duration2: $(val).attr('duration2')
 					}); 
 				});
-				//alert(hyperlinks);
-				r = hyperlinks;
 				break;	
 				
-			case 'assessment' : var questions = [];
+			case 'assessment' : 
 				// fetch question
-				$(vi2.dom).find("div[type='assessment']").each(function(i, val){ 
-					questions.push(JSON.parse('{"title":"'+encodeURIComponent($(this).text())+'","start":"'+$(this).attr('starttime')+'", "author":"'+$(this).attr('author')+'", "date":"'+$(this).attr('date')+'"}'));
+				$(vi2.dom).find("div[type='assessment']").each(function(i, val){ alert($(val).text())
+					arr.push({
+					 type: 'assessment',
+					 title: $(val).data('task'),
+					 starttime: $(val).attr('starttime'),
+					 author: $(val).attr('author'),
+					 date: $(val).attr('date')
+					});
 					//track_questions_1 += '{"id":"TrackEvent'+i+'","type":"question","popcornOptions": {"start":'+$(this).attr('starttime')+',"end":'+(Number($(this).attr('starttime'))+10)+', "question":"'+encodeURIComponent($(this).text())+'", "date":"'+$(this).attr('date')+'", "author":"'+$(this).attr('author')+'", "target":"Area1"}, "track":"Track_comments_1","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';			
-				});
-				r = questions;
+				}); alert(arr)
 				break;
 		}
 		
-		//json = JSON.parse(json);
-		
-
-		return r;
+		return arr;
   },  	
 	
 	

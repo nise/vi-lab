@@ -10,6 +10,7 @@ a, a:hover {
 	background-color:orange;
 	padding:2px 4px;
 	margin:10px 0;
+	color:#fff;
 }
 
 /* USER MANAGEMENT / AWARENESS */
@@ -619,9 +620,6 @@ Design of Control Elements
 	cursor: pointer;
 }
 
-.warning{
-	color:orange;
-}
 
 .well-done{
 	color:green;

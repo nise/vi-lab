@@ -4,27 +4,27 @@
     	"related-video":44,
     	"id":0,
 			"question":"Wie häufig betrachten Sie Videos (z.B. bei YouTube) im Web?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -36,27 +36,27 @@
     	"related-video":44,
     	"id":1,
 			"question":"Wie häufig stellen Sie Videos (z.B. bei YouTube) ins Web?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -68,27 +68,27 @@
     	"related-video":44,
     	"id":2,
 			"question":"Wie häufig nutzen Sie Foto-Sharing-Dienste wie z.B. Flickr oder Instagram?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -100,27 +100,27 @@
     	"related-video":44,
     	"id":3,
 			"question":"Wie häufig nutzen Sie Soziale Netzwerke wie z.B. facebook, Google+, Xing oder LinkedIn?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -132,27 +132,27 @@
     	"related-video":44,
     	"id":4,
 			"question":"Wie häufig verfolgen Sie das Geschehen in Microblogs wie z.B. twitter?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -164,27 +164,27 @@
     	"related-video":44,
     	"id":5,
 			"question":"Wie häufig schreiben sie Kurznachrichten in Microblogs wie z.B. twitter?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -196,27 +196,27 @@
     	"related-video":44,
     	"id":6,
 			"question":"Wie häufig lesen Sie Artikel in Wikis (z.B. bei Wikipedia oder in einem Firmenwiki)?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -228,27 +228,27 @@
     	"related-video":44,
     	"id":7,
 			"question":"Wie häufig schreiben oder bearbeiten Sie selbst Wiki-Artikel (z.B. bei Wikipedia oder in einem Firmenwiki)?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -260,27 +260,27 @@
     	"related-video":44,
     	"id":8,
 			"question":"Wie häufig lesen Sie Beiträge in Blogs?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -292,27 +292,27 @@
     	"related-video":44,
     	"id":9,
 			"question":"Wie häufig schreiben Sie selbst Blog-Beiträge?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -324,27 +324,27 @@
     	"related-video":44,
     	"id":10,
 			"question":"Wie häufig nutzen Sie kollaborative Schreibwerkzeuge wie z.B. Google Docs oder Etherpad?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	
@@ -356,27 +356,27 @@
     	"related-video":44,
     	"id":11,
 			"question":"Wie häufig nutzen Sie sonstige Content Sharing bzw. Cloud-Dienste (z.B. Dropbox, Owncloud, Slideshare)?", 
-			"type":"mc",
+			"type":"sc",
     	"answ":[ 
     		{ "id":"answ1",
     	  	"answ": "täglich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ2",
     	  	"answ":"mehrmals wöchentlich",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }, 
     	  { "id":"answ3",
     	  	"answ":"zwischen einmal pro Woche und einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ4",
     	  	"answ":"weniger als einmal pro Monat",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  },	 
     	  { "id":"answ5",
     	  	"answ":"nie",
-    	  	"questiontype":"mc"
+    	  	"questiontype":"sc"
     	  }
     	 ],	
 		  "correct":["answ1", "answ2", "answ3", "answ4", "answ5"],	

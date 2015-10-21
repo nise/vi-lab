@@ -1,6 +1,6 @@
 "vorname","name","pass","HS","Einwilligung","Altgruppe","Gruppe-P1","Gruppe-P2","Gruppe-P3","Gruppe-P4","Gruppe-5","mail","role","user","course","nationality","null","xmail"
-"User","Test","birthday","Z",1,0,"x","x","x","x","x","joe@example.com","student","joe",,,,
-"Bob","Secret","secret","Z",1,0,"x","x","x","x","x","bob@example.com","editor","bob",,,,
+"User","Test","birthday","Z",1,0,"x","x","x","x","x","niels.seidel@tu-dresden.de","student","joe",,,,
+"Bob","Secret","secret","Z",1,0,"x","x","x","x","x","niels.seidel@tu-dresden.de","editor","bob",,,,
 "Corinna","Hetmank","20te15iv+","Z",1,0,"init","x","x","x","x","corinna.hetmank@tu-dresden.de","editor","HETMANK",,,,
 "Niels","Seidel","secret","Z",1,0,"init",,,,,"niels.seidel@tu-dresden.de","editor","SEIDEL",,,,
 "Enrico","Teich","20te14iv+","Z",1,0,"init","x","x","x","x","enrico.teich@tu-dresden.de","editor","TEICH",,,,
@@ -26,5 +26,5 @@
 "Steven","von Roden","dsKF5+1q90","DD",1,,"init",,,,,"steven.von_roden@mailbox.tu-dresden.de","student","Steven",,,,
 "Alexander","Kempter","dsKF5+ap90","Z",1,,"init",,,,,"alexander.kempter@mailbox.tu-dresden.de","student","Alexander",,,,
 "Karolina","Szyposzynska","ddKF5+lo90","Z",1,,"init",,,,,"karolina.szyposzynska@mailbox.tu-dresden.de","student","Karolina",,,,
-"Klara","Vagundova","LK4F5+z690","Z",1,,"init",,,,,"klara.vagundowa@mailbox.tu-dresden.de","student","Klara",,,,
+"Klara","Vagundova","LK4F5+z690","Z",1,,"init",,,,,"klara.vagundova@mailbox.tu-dresden.de","student","Klara",,,,
 "Slawomir","Mankowski","EWKF5+fw90","Z",1,,"init",,,,,"slawomir_janusz.mankowski@mailbox.tu-dresden.de","student","Slawomir",,,,

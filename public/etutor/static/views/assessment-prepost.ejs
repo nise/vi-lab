@@ -52,7 +52,7 @@ Vielen Dank für Ihre Teilnahme.
 				var answer = $('<div></div>');
 				if(val.type == "mc" || val.type == "sc"){	
 					$.each(val.answ, function(i, vall){ 
-						var ttype = val.type == "mc" ? "checkbox" : "radio";
+						var ttype = val.type == "mc" ? "checkbox" : "radio"; 
 						var options = $('<span></span>')
 							.addClass('answer-options')
 							.append('<input type="'+ttype+'" name="quest'+j+'" id="'+j+vall.id+'" value="1" />')
@@ -76,15 +76,13 @@ Vielen Dank für Ihre Teilnahme.
   				.appendTo(answ);
 				}
 				
-				// shuffle answer options
-				$('div.assessment-answer span.answer-options').tsort({order:'rand'});
-				
+			
 				// feedback
 				var fb = $('<div></div>')
 					.addClass('question-feedback-'+j)
 					.addClass('assessment-feedback')
 					.appendTo(task);	
-				
+				var up = $('<a style="float:right;" href="#top" title="Gehe an den Seitenanfang"><span class="glyphicon glyphicon-arrow-up"></span></a>').appendTo(task);
 			});
 			
 			var solve = $('<button></button>')

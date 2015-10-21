@@ -1,8 +1,8 @@
 
 
 # Vi-Lab
-Vi-Lab is a video labratory for interacting and communication with videografic reources as well as other users.
-Currently it is work in progress because many administartion facilities need to be implemented.
+Vi-Lab is a video labratory for interaction and communication with videografic resources as well as other users.
+Currently it is work in progress because many administration facilities need to be implemented.
 
 
 # Example: Theresienstadt explained
@@ -10,7 +10,7 @@ Currently it is work in progress because many administartion facilities need to 
 ## Basic features
 * true HTML video player
 * real full screen video that includes all synchonized contents
-* aprpriate content delivery: 
+* apropriate content delivery 
 
 ## Enrich Videos
 * spatio temporal highlighting of areas inside the video
@@ -19,7 +19,7 @@ Currently it is work in progress because many administartion facilities need to 
 
 
 ## Communicate with other users
-* user comments
+* time-based user comments
 * 
 
 ## Make video content accessible
