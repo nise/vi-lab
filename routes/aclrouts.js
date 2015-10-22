@@ -41,8 +41,8 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' }); });
 
 	// routes related to admin area
-	app.get(	'/admin', 			admin.index )
-	app.get(	'/admin/users', admin.getUsers );
+	app.get(	'/admin', 	users.authCallback(['editor']),		admin.index )
+	app.get(	'/admin/users', users.authCallback(['editor']), admin.getUsers );
 
 
 	// routes for scenes
@@ -155,7 +155,9 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		//log.write( req.param('data') );	
 		res.send('terminated logging');
 	});
-	app.get('/log',  function(req, res) { // users.authCallback(['editor']), xxx
+	
+	
+	app.get('/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
 		Log.find().select('action utc').sort( 'utc' ).exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
@@ -172,18 +174,18 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 
 	// routes related to User Management and Passport - Local Authentication
-	app.get(	'/users/view/:username', 	users.show );// showAccountDetails);
-	app.get(	'/admin/users/new', 						users.addUserForm ); // opens input form
-	app.get(	'/users/register', 				users.registrationForm ); // opens input form
-	app.post(	'/users/register', 				users.registerUser ); // saves user
-	app.post(	'/users/create', 					users.create ); // saves user
+	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.show );// showAccountDetails);
+	app.get(	'/admin/users/new', users.authCallback(['editor']),						users.addUserForm ); // opens input form
+	app.get(	'/users/register', 	users.authCallback(['editor']),			users.registrationForm ); // opens input form
+	app.post(	'/users/register', 	users.authCallback(['editor']),			users.registerUser ); // saves user
+	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
 	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
-	app.post(	'/admin/users/destroy/:id',		users.destroy );
-	app.get(	'/admin/users/edit/:username', 	users.edit );
+	app.post(	'/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
+	app.get(	'/admin/users/edit/:username', users.authCallback(['editor']),	users.edit );
 //	app.post(	'/users/online/:username', 	users.setOnlineStatus );
 	app.get(	'/users/online/:username', 	users.getOnlineStatus );
 	// api
-	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
+	app.get('/json/users', users.authCallback(['editor']), users.getJSON);
 	app.get('/json/user-data', users.getUserData );
 	app.get('/json/group-data', users.getGroupData );
 
@@ -195,8 +197,8 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 	// routes related to E-Assessment
 	var assess = require('./assessment');
-	app.get('/json/assessment', assess.getTest);
-	app.get('/assessment', assess.index);
+	app.get('/json/assessment', users.ensureAuthenticated, assess.getTest);
+	app.get('/assessment', users.ensureAuthenticated,assess.index);
 	app.get('/assessment/results', users.ensureAuthenticated, assess.getResults );
 	app.post('/assessment/results', users.ensureAuthenticated , assess.setResults );
 	app.get('/assessment/fill-in/:field', users.ensureAuthenticated, assess.getFillins );

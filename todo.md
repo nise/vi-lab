@@ -3,10 +3,13 @@
 ## this release
 
 - correct slide presenation	
-- add videos and define tasks and the script
 
 - check ACL
+
+# to befor production mode
 - remove/abstract: http://127.0.0.1:3033
+
+
 - guided tour
 
 - activity log
