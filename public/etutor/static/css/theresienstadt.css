@@ -710,8 +710,8 @@ font-weight:bold;
 
 
 #videowrapper{
-	height: 100vw !important;
-	width: 75vw;
+	height: auto ;
+	width: 75vw !important;
 	display:block;
 	overflow:hidden;
 }
@@ -738,8 +738,6 @@ font-weight:bold;
 	border:solid 1px #eee;
 	padding: 0;
 	margin: 0;
-	max-width:auto;
-	height:100vh;
 }
 
 
@@ -747,14 +745,12 @@ font-weight:bold;
 #accordion {
 	background-color:#ddd;
 	margin-top:0px;
-	width: 100%;
-  min-width: 300px;
 	
-	height: -moz-calc( 100vh - 50px);
-	max-height:100vh;
+  width:100%
+	height:100%
 	overflow:hidden;
 	position:absolute;
-	display:inline;
+	display:inline-block;
 	clear:both;
 	top:0;
 	right:0;	
@@ -764,8 +760,7 @@ font-weight:bold;
 	position:absolute;
 	top:50px;
 	right:0 !important; /* -273px */
-  width: 35%;
-  min-width: 300px;
+  width: 25vw !important;
  	height: 80vh;
  	overflow:hidden;
 /* 	-moz-transition: all 0.3s ease-out;

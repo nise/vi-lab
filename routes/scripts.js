@@ -71,7 +71,7 @@ var
     		},
     		{ /* Phase 2 */
     			title: "Phase 1 - Auftakt",
-    			instruction: "Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernressourcen im WWW ein. Mittels der Kommentare können Sie sich untereinander austauschen. Jeder einzelne ist angehalten, das Video  durch sinnvolle Überprüfungsfragen anzureichen.<br> Abschließend absolvieren Sie bitte den <a href='/assessment'>Online-Selbsttest</a>, deren Fragen Sie übrigens nicht in das Video integrieren müssen.",
+    			instruction: "Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.<br><br> Um Ihr gelerntes Wissen darüber hinaus zu überprüfen, steht Ihnen ein <a href='/assessment'>Selbsttest</a> zur Verfügung. Die Fragen dieses Tests sollten Sie jedoch nicht in das Video übertragen.",
     			//title_k: "Aufgabe 4 - Diskussion & Feedback",
     			//instruction_k: "Reflektieren Sie Ihre Ergebnisse auf Basis des bereit gestellten, alternativen Lösungsvorschlags. (Gruppenarbeit, 4-6 Personen)",
     			seq : 4,
@@ -79,9 +79,9 @@ var
     			start : {
     				year: '2015',
     				month: '10',
-    				day: '17',
-    				h: '0',
-    				m: '15'
+    				day: '22',
+    				h: '23',
+    				m: '00'
     			}, 
     			widgets: [
 		  		 	{ name: 'toc', 
@@ -155,6 +155,7 @@ var
     		} // end phase 
     	]
     };
+
 
     Scripts.remove(function(err, o){
     	if(err){
