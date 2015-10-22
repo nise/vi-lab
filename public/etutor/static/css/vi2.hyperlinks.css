@@ -23,7 +23,7 @@
 }
 
 
-.hyperlink-standard {
+.hyperlink-standard, .hyperlink-external {
 	background-color:#9CBA7F;
 	border:green;
 	color:#222;
@@ -33,7 +33,7 @@
 	border: solid green 1px;
 }
 
-.hyperlink-standard:hover{
+.hyperlink-standard:hover, .hyperlink-external:hover{
 	opacity:1;
 	color:#003366;
 	border: solid #003366 1px;

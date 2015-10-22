@@ -77,57 +77,43 @@
 			
 			//var logEntry = this.getLogTime()+', '+vi2.currentVideo+', '+', '+vi2.currentGroup+', '+vi2.userData.id+', '+msg+', '+this.getUserAgent()+'\n'; 
 			//'clickcommentfromlist:'+val.name +' '+val.author+' '+ val.time 
+			if(typeof msg === 'string'){
+				console.log(msg);
+				return;
+			}else{
+				console.log(msg.context);
+			}
+			var pt = vi2.observer.player.currentTime();
 			
 			var logEntry = {
-				utc: 							date.getTime(), 
+				utc: 								(new Date()).getTime(), 
 				//phase: 						vi2.current,
 				//date:  						String, 
 				//time:  						String, 
-		
-				group:  					vi2.currentGroup, 
+				//group:  					vi2.currentGroup, 
 				user:  						vi2.userData.id,   
 				//user_name:  			String,
 				//user_gender:			String,
 				//user_culture:			String,
 				//user_session:			Number,
-				
 				video_id:  				vi2.currentVideo,
 				//video_file:  			String,
 				//video_length:  		String,
 				//video_language:  	String,
-				
-				action:{
+				action: msg,  /*{
 					context: msg.context,
 					action: msg.action,
 					values: msg.values
-				},						
-				
-				playback_time:		vi2.observer.player.currentTime(),
-		
-				user_agent:  			this.userAgent(),
-				ip: 							String,
+				},						*/
+				playback_time:		pt === undefined ? -1 : pt,
+				user_agent:  			this.getUserAgent(),
+				//ip: 							String,
 			
 			};
 			
-			this.writeLog(logEntry);
+			this.writeLog( logEntry );
 			
 			return;
-			/*
-			// handle output
-			switch(this.options.output){
-				case 'debug' :
-					$(this.options.debug_selector).append(logEntry);
-					break;
-				case 'logfile' :
-					this.writeLog(logEntry);
-					break;
-				default :
-					console.log(logEntry);	
-			}
-			
-			// fill bucket for internal usage	
-			this.bucket += logEntry;
-			*/
 		},
 		
 		/* -- */
@@ -149,6 +135,7 @@
 				utc: date.getTime(), 
 				date: y +'-'+ (m<=9?'0'+m:m) +'-'+ (d<=9?'0'+d:d),
 				time: (h<=9?'0'+h:h)+':'+(mi<=9?'0'+mi:mi)+':'+(s<=9?'0'+s:s)+':'+date.getMilliseconds()
+			};	
 		},
 		
 		/* -- */

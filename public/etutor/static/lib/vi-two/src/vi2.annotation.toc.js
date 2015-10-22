@@ -195,7 +195,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 						li.addClass('toc-disabled');
 					}else{
 						li.click(function(){
-							vi2.observer.log('clicktocfromlist:'+val.name.replace(/,/g,'##') +' '+val.author+' '+ val.occ[0]); 
+							vi2.observer.log({context:'toc',action:'menu-click',values: [val.name.replace(/,/g,'##'), val.author,  val.occ[0]] } ); 
 							vi2.observer.player.currentTime( val.occ[0] );
 							_this.currentTocElement = i;
 						});	
@@ -251,7 +251,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			//$('.toc-'+ (this.currentTocElement + 1) ).click();
 			this.currentTocElement = this.currentTocElement < this.elements.length ? this.currentTocElement + 1 : this.currentTocElement;
 			vi2.observer.player.currentTime( this.elements[ this.currentTocElement ] );
-			//
+			vi2.observer.log({context:'toc',action:'jump-next',values:[this.currentTocElement]});
 		},
 		
 		
@@ -261,6 +261,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 		previousElement : function(){
 			this.currentTocElement = this.currentTocElement === 0 ? this.currentTocElement : this.currentTocElement -1 ;
 			vi2.observer.player.currentTime( this.elements[ this.currentTocElement ] );
+			vi2.observer.log( {context:'toc',action:'jump-back',values: [this.currentTocElement ]} );
 		}
 		
 	}); // end class

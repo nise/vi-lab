@@ -8,7 +8,7 @@
 *  - jquery.inherit-1.1.1.js
 *	 - jquery.panzoom.js
 * todo:
-*  - 
+*  - needs event logging
 */
 
 

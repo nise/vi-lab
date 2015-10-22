@@ -179,7 +179,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	  }
 	  this.video.pause();
 		this.startSpinning(); 
-		vi2.observer.log('loadvideo:'+url);
+		
 		var supportedCodec = this.detectVideoSupport();
 		this.video = $.extend( this.video, {
 			loop: false,
@@ -194,7 +194,6 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		
 		// add timeline
 		this.timeline = new Vi2.AnnotatedTimeline( this.video, {}, this.seek );
-		
 		
 		var playbackSpeed = new Vi2.PlaybackSpeed();
 		vi2.observer.addWidget( playbackSpeed );  
@@ -276,14 +275,18 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 
 		// prefer mp4 over webm over ogv 
 		if (dummy_video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"') !== '') {
+			vi2.observer.log({context:'player',action:'video-support-mp4', values:['1'] });
 			return 'video/mp4'; 		
 		}else if (dummy_video.canPlayType('video/webm; codecs="vp8, vorbis"') !== '') {
+			vi2.observer.log({context:'player',action:'video-support-webm', values:['1'] });
 			return 'video/webm'; 
 		}else	 if(dummy_video.canPlayType('video/ogg; codecs="theora, vorbis"') !== ''){
+			vi2.observer.log({context:'player',action:'video-support-ogv', values:['1'] });
 			return 'video/ogv';
 		}else{
 			// no suitable video format is avalable
-			$('#content').html('<h3>We appologize that video application is currently not supported by your browser.</h3>The provided video material can be played on Mozilla Firefox, Google Chrome and Opera. If you prefer Internet Explorer 9 you need to install a <a href="https://tools.google.com/dlpage/webmmf">webm video extension</a> provided by Google. In the near future we are going to server further video formats which will be supported by all major browsers.<br /><br /> Thank you for your understanding.');
+			vi2.observer.log({context:'player',action:'video-support-none', values:['1'] }); 
+			$('#page').html('<h3>We appologize that video application is currently not supported by your browser.</h3>The provided video material can be played on Mozilla Firefox, Google Chrome and Opera. If you prefer Internet Explorer 9 you need to install a <a href="https://tools.google.com/dlpage/webmmf">webm video extension</a> provided by Google. In the near future we are going to server further video formats which will be supported by all major browsers.<br /><br /> Thank you for your understanding.');
 		}
 		return '';
 	},
@@ -380,7 +383,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		this.play_btn = $('.vi2-video-play-pause');
 		
 		
-		this.play_btn.bind('click', function() {  
+		this.play_btn.bind('click', function() {
 			_this.play(); 
 		});
 
@@ -490,13 +493,16 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		return this.volume.slider('value');//this.video_volume;
 	},
 	
+	
 	/**
 	* Set volume
 	* @param volume {Number} Number in the range of 0 and 1. Every value outside that rang will be changed to the boundaries. 
 	*/
 	setVolume : function(volume){
+		vi2.observer.log({context:'player',action:'set-volume', values:[volume] }); 
 		this.volume.slider('value', volume);
 	},
+	
 	
 	/** 
 	* Increases audio volume by 5 percent 
@@ -505,12 +511,14 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		$(this.volume).slider('value', $(this.volume).slider('value') + 0.05 );
 	},
 	
+	
 	/** 
 	* Decreases audio volume by 5 percent 
 	*/
 	decreaseVolume : function(){
 		$(this.volume).slider('value', $(this.volume).slider('value') - 0.05 );
 	},
+
 
 	tmp_volume : 0,
 	/** 
@@ -519,14 +527,10 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	muteVolume: function() { 
 		if( ! this.isMuted) {
 			tmp_volume = this.volume.slider('value');
-			this.volume.slider('value', 0);
-			//this.volume_btn.removeClass('glyphicon-volume-up');
-			//this.volume_btn.addClass('glyphicon-volume-off');
+			this.setVolume(0);
 			this.isMuted = true;
 		}else {
-			this.volume.slider('value', tmp_volume);
-			//this.volume_btn.addClass('glyphicon-volume-up');
-			//this.volume_btn.removeClass('glyphicon-volume-off');
+			this.setVolume( tmp_volume );
 			this.isMuted = false;
 		}
 	},
@@ -611,7 +615,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	* event handler: on ended
 	**/
 	endedHandler: function(e) { 
-		vi2.observer.log('videoended:'+this.url);
+		vi2.observer.log({context:'player',action:'video-ended', values:[ this.url ]});
 		vi2.observer.ended();
 		this.video.removeEventListener('ended', arguments.callee, false);
 		//this.play_btn.removeClass('vi2-video-pause');
@@ -680,14 +684,14 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			this.isPlaying(false);
 			$(vi2.observer.player).trigger('player.pause', []);
 			vi2.observer.clock.stopClock();
-			vi2.observer.log('videopaused:'+this.url);
-			
+			vi2.observer.log({context:'player',action:'pause-click', values:['1'] }); 
 		} else {  
 			this.video.play(); 
 			this.isPlaying(true);
 			$(vi2.observer.player).trigger('player.play', []);
 			vi2.observer.clock.startClock();
-			vi2.observer.log('videoplayed:'+this.url);
+			vi2.observer.log({context:'player',action:'play-click', values:['1'] }); 
+			
 		}
 	},
 
@@ -696,6 +700,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		this.video.pause();
 		this.isPlaying(false);
 		$(vi2.observer.player).bind('player.pause');
+		vi2.observer.log({context:'player',action:'pause2-click', values:['1'] }); 
 	},
 	
 	/*

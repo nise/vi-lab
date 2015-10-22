@@ -116,14 +116,15 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		var 
 			d = req.param('data')
 			;
+			
 		var entry = {
 			utc: 							d.utc, 
 			//phase: 						Number,
 			//date:  						String, 
 			//time:  						String, 
-			group:  					d.group, 
+			//group:  					d.group, 
 			user:  						d.user, 
-			//user_name:  			String,
+			user_name:  			req.user.username,
 			//user_gender:			String,
 			//user_culture:			String,
 			//user_session:			Number,
@@ -131,25 +132,40 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 			//video_file:  			String,
 			//video_length:  		String,
 			//video_language:  	String,
-			action:  					d.user_agent,
+			action:  					{
+				context: d.action.context,
+				action: d.action.action,
+				values: d.action.values
+			},	
 			//action_details: 	[Schema.Types.Mixed],
-			playback_time:		d.playback_time,
+			playback_time:		d.playback_time === undefined ? '-99' : d.playback_time,
 			user_agent:  			d.user_agent,
-			ip: 							get_ip(req)
+			ip: 							get_ip(req).clientIp
 			//flag: 						Boolean
-		});
+		}
 		// todo: complete missing fields
 		// save it
-		Log.save( entry )
-		
+		new Log(entry).save( function( err, logs, count ){
+			console.log(logs);
+			res.end('done');
+		} );
+	
 		// write to logfile
 		// todo: transform log into flat log file
 		//log.write( req.param('data') );	
 		res.send('terminated logging');
 	});
 	app.get('/log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
-		
-		res.send('terminated request');
+		Log.find().select('action utc').sort( 'utc' ).exec(function (err, logs) {
+			if(err){ 
+				console.log(err); 
+			}else{
+				res.type('application/json');
+				res.jsonp( logs );
+				res.end('done');
+			}	
+		});
+		//res.send('terminated request');
 	});	
 	
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file

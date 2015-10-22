@@ -201,7 +201,7 @@
 					}
 					
 					li.click(function(){
-						vi2.observer.log('clicktocfromlist:'+val.name.replace(/,/g,'##') +' '+val.author+' '+ val.occ[0]); 
+						vi2.observer.log({context:'hyperlinks',action:'menu-click',values:[val.name,val.author,val.occ[0]]} ); 
 						vi2.observer.player.currentTime( val.occ[0] );
 						_this.currentTocElement = i;
 					});	
@@ -224,14 +224,28 @@
 		begin : function(e, id, obj){  
 				this.currLinkId = id;
 				var _this = this;
+				
+				// distinguish link types as icons
+				var ltype = $('<span></span>');
+				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+				var regex = new RegExp(expression);
+				if (obj.content.target.match(regex) ){
+					obj.linktype = 'external';
+					ltype.addClass('glyphicon glyphicon-share-alt');
+				} else {
+					obj.linktype = 'standard';
+					ltype.addClass('glyphicon glyphicon-link');
+				}
+				
 				var o = $('<a></a>')
-					.text( ( decodeURIComponent( obj.content.title ) ) )
-					//.attr('href', obj.content.target)
+					.text(' ' +( decodeURIComponent( obj.content.title ) ) )
 					.attr('id', 'ov'+id)
 					.attr('href', obj.content.target )
 					.attr('title', decodeURIComponent( obj.content.description ) )
 					.addClass('overlay ov-'+id+' hyperlink-'+obj.linktype)
-					.bind('click', {}, function(data){
+					.bind('click', function(data){ 
+						// log click
+						vi2.observer.log({context:'hyperlinks',action:'link-'+obj.linktype+'-click',values:[obj.content.target, obj.author, obj.displayPosition.t1]} );
 	 					// distinguish link types
 	 					switch(obj.linktype){
 	 						case 'standard' : 	// called xlink
@@ -266,26 +280,15 @@
 						};
 						// load Video
 						_this.loadVideo(vi2.observer.vid_arr[0]['url'], obj.seek);
-						// log something
-						vi2.observer.log(_this.player.url+' link_click: '+obj.content.target+', seek_to: '+obj.displayPosition.t1);
+						
 						// remove link ancshor after click 
 						$(this).remove();
-					});
-				
-				
-				// distinguish link types as icons
-				var ltype = $('<span></span>').prependTo(o);
-				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-				var regex = new RegExp(expression);
-				if (obj.content.target.match(regex) ){
-					 ltype.addClass('glyphicon glyphicon-share-alt');
-				 } else {
-					 ltype.addClass('glyphicon glyphicon-link');
-				 }
-					
-				$(this.options.displaySelector ).append(o);
-				o.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'});
-				o.effect( "highlight", 2000 ); // could be improved
+					})
+					.prepend( ltype )
+					.appendTo( this.options.displaySelector )
+					.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'})
+					.effect( "highlight", 2000 ) // could be improved
+					; 
 		},
 	
 		/* End of annotion time. The link anchor will disapear from screen. */

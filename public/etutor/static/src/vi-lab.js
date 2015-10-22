@@ -158,15 +158,10 @@ var ViLab = $.inherit({
 			this.viLog = new Vi2.Log({ logger_path:this.server_url+'/log' }); 
   		$(this).bind('log', function(e, msg){ _this.viLog.add(msg); }); 
   			
-  		
   		vi2.utils = new Vi2.Utils();
-			
 			
 			this.setupVideo( 1 );
 			
-   		//var t = $('#container').html();
-   		//$('#container').parent().remove();
-   		//$('.header').after(t);
   	},
 
 
@@ -230,9 +225,13 @@ var ViLab = $.inherit({
 			_this.enableWidget( widget.name, widget); 
 		}); 
 		_this.observer.parse(vi2.dom, 'html');
-		vi2.observer.player.play();		
 		
-
+		
+		// autoplay
+		vi2.observer.player.video.oncanplay = function(e){ 
+			vi2.observer.player.play();	
+		};	
+		
 		// set instruction menu
 		var pp = this.script[0]['phases'][this.current_phase]; 
 		$('<div></div>')
@@ -256,20 +255,23 @@ var ViLab = $.inherit({
 		
 		// setup modal dialog
 		var modal_settings = {
-					'toc' : { type: 'toc', title: 'Kapitelmarke hinzufügen', tooltip: 'Kapitel hinzufügen'},
-					'comments' : { type: 'comments', title: 'Kommentar hinzufügen', tooltip: 'Kommentar hinzufügen'},
-					'hyperlinks' : { type: 'hyperlinks', title: 'Link hinzufügen', tooltip: 'Link hinzufügen'},
-					'assessment' : { type: 'assessment', title: 'Aufgabe hinzufügen', tooltip: 'Aufgabe hinzufügen'}
-				};
-		// mute keydown events for text input
-				$('#myModal').on('hide.bs.modal', function(event){
-					$('body').unbind('keydown').bind('keydown', function(e) { 
-						vi2.observer.player.keyboardCommandHandler(e); 
-					});
-				});
+			'toc' : { type: 'toc', title: 'Kapitelmarke hinzufügen', tooltip: 'Kapitel hinzufügen'},
+			'comments' : { type: 'comments', title: 'Kommentar hinzufügen', tooltip: 'Kommentar hinzufügen'},
+			'hyperlinks' : { type: 'hyperlinks', title: 'Link hinzufügen', tooltip: 'Link hinzufügen'},
+			'assessment' : { type: 'assessment', title: 'Aufgabe hinzufügen', tooltip: 'Aufgabe hinzufügen'}
+		};
+		
+		// HIDE MODAL
+		$('#myModal').on('hide.bs.modal', function(event){
+			$('body').unbind('keydown').bind('keydown', function(e) { 
+				vi2.observer.player.keyboardCommandHandler(e); 
+			});
+		});
+		
+		// SHOW MODAL DIALOG FOR ANNOTATIONS		
+		$('#myModal').on('show.bs.modal', function (event) {  
+				 // mute keydown events for text input
 				
-				$('#myModal').on('show.bs.modal', function (event) {  
-				 
 					// pause video
 					_this.observer.player.pause(); 
 					$('body').unbind('keydown');
@@ -280,18 +282,22 @@ var ViLab = $.inherit({
 					var modal = $(this);  
 					var widget = vi2.observer.widget_list[ type ]; 
 					modal.find('.modal-title').html( modal_settings[ type ].title );
+					modal.find('.modal-validation').empty();
 					
 					// prepare forms ...
 					if( $.isEmptyObject( data ) ){ 
 						// ... for a new annotation
+						vi2.observer.log({context:type ,action:'open-form-new-annotation', values:['1'] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: vi2.observer.player.currentTime() } ) );
 						modal.find('.btn-remove-data').hide();
 					}else if( data.content.length === 0){ 
 						// for adding a reply, e.g. to a comment
+						vi2.observer.log({context:type ,action:'open-form-reply-annotation', values:['1'] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: data.time } ) );
 						modal.find('.btn-remove-data').hide();						
 					}else{ 
 						// ... for editing an existing annotation
+						vi2.observer.log({context:type ,action:'open-form-edit-annotation', values:['1'] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( data ) );
 						modal.find('.btn-remove-data').show();
 					}
@@ -304,6 +310,7 @@ var ViLab = $.inherit({
 						if( msg.length === 0 ){ 
 							if( $.isEmptyObject( data ) || data.content.length === 0 ){
 								// add new annotation to dom
+								vi2.observer.log({context:type ,action:'added-new-annotation', values:['1'] });
 								widget.addDOMElement({ 
 									type: type, 
 									date: new Date().getTime(), 
@@ -312,6 +319,7 @@ var ViLab = $.inherit({
 								}); 
 							}else{	//alert('update:'+data.date)
 								// updated existing annotation in dom
+								vi2.observer.log({context:type ,action:'updated-annotation', values:['1'] });
 								widget.updateDOMElement({  
 									date: data.date, 
 									time: formData.time, 
@@ -341,7 +349,7 @@ var ViLab = $.inherit({
 									.remove();
 							}	
 							_this.savePopcorn( type );
-							vi2.observer.log('del:'+type +' '+data.time);
+							vi2.observer.log({context:type ,action:'removed-annotation', values:['1'] });
 							vi2.observer.player.play(); // restart playback
 							modal.modal('hide');
 					}); // end remove

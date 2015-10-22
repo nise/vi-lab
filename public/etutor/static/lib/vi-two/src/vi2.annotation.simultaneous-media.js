@@ -124,7 +124,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 							// return to initial presentation mode
 							
 							// log something
-							vi2.observer.log('clicktagfromlist:'+ val.tagname ); 
+							vi2.observer.log({context:'syncMedia',action:'menu-click',values:[val.tagname,'',val.occ]} ); 
 					})
 				).appendTo( ul ); 
 			});

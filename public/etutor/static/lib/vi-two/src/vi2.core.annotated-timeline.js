@@ -73,34 +73,39 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 			}		
 		
 			// initiate event listeners, vi2.observer.log('loadingtime--video:'+url);
-			var t0 = 0;
+			var 
+				t0 = 0, 
+				t1 = 0
+				;
 			this.video.onloadstart = function(e){
 				// 1. event called 
-				t0 = Date.now();
+				t0 = Date.now()
 			};
 			this.video.ondurationchange = function(){ 
 				// 2. event called
-				console.log('duration '+ ( Date.now() - t0 ) );
+				t1 = ( Date.now() - t0 );
+				//console.log('duration '+ ( Date.now() - t0 ) );
 				_this.handleDurationChange();  
 			}; 
 			this.video.onloadedmetadata = function(e){ 
 				// 3. event called
-				console.log('load meta '+ ( Date.now() - t0 ) );  
+				//console.log('load meta '+ ( Date.now() - t0 ) );  
 			};
 			this.video.onloadeddata = function(e){ 
 				// 4. event called
-				console.log('load data '+ ( Date.now() - t0 ) ); 
+				vi2.observer.log({context:'player', action:'video-loading-time', values:[t1, ( Date.now() - t0 )]})
+				//console.log('load data '+ ( Date.now() - t0 ) ); 
 			};
 			this.video.onprogress = function(e){ 
 				// 5. event called  
 			};
 			this.video.oncanplay = function(e){ 
 				// 6. event called
-				console.log('can play '+ ( Date.now() - t0 ) );  
+				//console.log('can play '+ ( Date.now() - t0 ) );  
 			};
 			this.video.oncanplaythrough = function(e){ 
 				// 7. event called
-				console.log('can play through '+ ( Date.now() - t0 ) ); 
+				//console.log('can play through '+ ( Date.now() - t0 ) ); 
 			};
 			
 			
@@ -131,12 +136,12 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 							_this.seeksliding = true;
 					},
 					start: function(event, ui) { 
-						vi2.observer.log(_this.url+' seek_start: '+ vi2.observer.player.currentTime()+'   '+ui.value);
+						vi2.observer.log({context:'player',action:'seek-start',values: [ui.value]} );
 						_this.buffclick++;
 						_this.seeksliding = true;
 					},
 					stop: function(event, ui) { 
-						vi2.observer.log(_this.url+' seek_end: '+ui.value);
+						vi2.observer.log({context:'player',action:'seek-stop',values:[ui.value]}	);
 						_this.seeksliding = false;
 						$(_this.video).trigger('play');
 						//if(_this.percentLoaded > (ui.value / _this.duration())){
@@ -159,6 +164,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		
 		/*
 		* Add Video preview on timeline
+		* todo: event could be logged
 		**/
 		createTimelineVideoPreview : function(){ 
 			var 
@@ -198,6 +204,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 
 		/*
 		* Add Video preview on timeline
+		* todo: event could be logged
 		**/
 		createTimelineSlidePreview : function(){ return;
 			var 
@@ -234,7 +241,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		* Displays markers on the timeline
 		* options: hasTooltip, clickable, type, 
 		*/
-		addTimelineMarkers : function(type, data, timelineSelector){   //alert(type); alert(data)
+		addTimelineMarkers : function(type, data, timelineSelector){   
 			var _this= this; 
 			if( timelineSelector === undefined ){
 				timelineSelector = this.options.timelineSelector;
@@ -262,7 +269,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 				if( _this.options[ type ].markerIsClickable ){	
 					sp.bind('click', function(event){ 
 							vi2.observer.player.currentTime( val.occ[0] );
-							vi2.observer.log( vi2.observer.player.url+' timeline_link_seek: '+ val.occ[0]);
+							vi2.observer.log( {context:type,action:'timeline-link-click',values:[val.name,val.author,val.occ[0]]});
 					});
 				}
  				timeline.append(sp); // val.title

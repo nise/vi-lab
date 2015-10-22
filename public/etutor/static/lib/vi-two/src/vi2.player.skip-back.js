@@ -22,7 +22,7 @@ Vi2.SkipBack = $.inherit(/** @lends Vi2.SkipBack# */{ //
   			this.options = $.extend(this.options, options);  
 		},
 		
-		name : 'temoral bookmarks',
+		name : 'skipBack',
 		type : 'player-widget',
 		options : {
 			selector : '.control-bar',
@@ -46,8 +46,12 @@ Vi2.SkipBack = $.inherit(/** @lends Vi2.SkipBack# */{ //
 				)
 				.addClass('vi2-skipback-controls vi2-btn')
 				.attr('title', this.options.step+'s zurückspringen')
-				.bind('click', function(e){
-					vi2.observer.player.currentTime( vi2.observer.player.currentTime() - _this.options.step ); 
+				.bind('click', function(e){ 
+					var current = vi2.observer.player.currentTime();
+					var next = Number(Number(current) - Number(_this.options.step));
+					alert(next)
+					vi2.observer.log({context:'skipBack',action:'skip-back',values: [current, String(next) ]});
+					vi2.observer.player.currentTime( next ); 
 				})
 				.prependTo( this.options.selector );
 		}

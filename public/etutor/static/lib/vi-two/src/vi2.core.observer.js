@@ -46,7 +46,10 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	seek : 0,
 	parser : '',
 	
-	/* .. */
+	
+	/*
+	*
+	**/
 	setCurrentStream : function(stream, seek){  
 		this.current_stream = stream;
 		this.seek = seek; 
@@ -71,7 +74,10 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		this.parse(vi2.dom, 'html'); 
 	},
 
-	/* -- */
+
+	/*
+	*
+	**/
 	parse : function(selector, markupType){ 
 		this.parseSelector = selector;
 		this.parser = new Parser(selector, markupType === null ? this.markupType : markupType);
@@ -79,12 +85,13 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		this.vid_arr = this.parser.run(); 
 		this.clock.stopClock(); 
 		this.clock.reset();  
-		this.player.loadSequence(this.vid_arr, 0, this.seek );  
-					
+		this.player.loadSequence(this.vid_arr, 0, this.seek );  				
 	},
 	
 
-	/* -- */
+	/*
+	*
+	**/
 	init : function(seek){  
 		seek = seek === undefined ? 0 : seek;
 		var _this = this;  
@@ -117,7 +124,8 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		});
 	},
 	
-		/* --xxxx */
+	
+		/* --xxxx 
 	init2 : function(seek){  
 		seek = seek === undefined ? 0 : seek;
 		var _this = this; 
@@ -133,6 +141,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 			.html(videoo); 
 	
 	},
+	*/
 	
 	
 	/**
@@ -158,7 +167,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	},
   		
   		
-	/** -- */
+	/** -
 	checkVideo : function(){
 		// proof against available videos
 		if(!!document.createElement('video').canPlayType){
@@ -186,17 +195,20 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 			console.log("Sorry. No video support. xx");
 		}
 	}, 
-			
-			
-	/* -- */
+		*/	
+		
+		
+	/*
+	*
+	**/
 	updateLocation : function(identifier, value){ 
 		window.location.replace(window.location.href.split('#')[0] + '#!'+identifier+':'+value.replace(/\ /g, '_'));
 	},
   		  		
-  		  		
-/* WIDGETS *********/
 
-	/* -- */ // - kill switch()!
+	/*
+	*
+	**/
 	addWidget : function(obj){ 
 		if(this.widget_list[obj.name] !== null){ 
 			//return false;
@@ -227,27 +239,34 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	},
 	
 	
-	/* Returns true or false whether the given string is the name of an registered widget or not. */
+	/* 
+	* Returns true or false whether the given string is the name of an registered widget or not. 
+	**/
 	isWidget : function(widget){
 		return this.widget_list[widget] !== null;	
 	},
 	
-	/* Returns the widget object to the given name. */
+	
+	/* 
+	* Returns the widget object to the given name. 
+	**/
 	getWidget : function(widget_name){
 		return this.widget_list[widget_name];
 	},
 	
-	/* -- */
+	
+	/*
+	*
+	**/
 	removeWidget : function(widget_name){
 		// bugy?
 		this.widget_list[widget_name] = 0;
 	},
 	
 	
-
-
-
-	/* append annotation data of widgets to DOM */
+	/* 
+	* append annotation data of widgets to DOM 
+	**/
 	annotationsToDOM : function(){ 
 		var _this = this; 
 		$.each(this.widget_list, function(i, widget){ 
@@ -257,90 +276,52 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		});
 	},
   		  		
-  		
-  		
 
-			
-	/* -- */
+	/*
+	*
+	**/
 	ended : function(){ 
 		var _this = this;
 		// _this.clock.reset(); // if enabled slide sync does not work after vides has ended.
 	},
 
-	/* -- */
+
+	/*
+	*
+	**/
 	pause : function(){ 
 		var _this = this;
 		_this.clock.stopClock();
 	},
 
-	/* -- */
+
+	/*
+	*
+	**/
 	play : function(){ 
 		var _this = this;
 		_this.clock.startClock();
 	},
 
-	/* -- */
+
+	/*
+	*
+	**/
 	log : function(msg){
 		$(this.player).trigger('log', [msg]);
 	},
 
-	/* -- */
+
+	/*
+	*
+	**/
 	destroy : function(){
 		$('video').stop();
 		this.clock.reset();
 		$('#vi2').empty();
-	},
-			  		
-			
-			
-			  		
-			  		
-/* AUTHORING *********/			  		
+	}
   		
-  		/* -- */
-  		addPieItem : function(_name, _img, _callback){
-  			var item = $('<li></li>')
-  				.append($('<img / >')
-  					.attr('src', _img)
-  					.attr('alt','')
-  					.attr('href','#')
-//  					.bind('mouseup', {}, function(){ window.[_callback]; })
-  				);
-  			this.pieList.append(item);
-  		},  
-  		
-  		/* -- */
-  		openScreen : function(selector){ 
-  			if(selector === undefined){
-  				selector = '.vi2-video-player'; 
-  			}
-  			//this.player.pause();
-  			if($('.screen').length === 0){
-					var screen = $('<div></div>')
-					 .addClass('screen');
-					//.width($(selector).width()-18)
-					//.height($(selector).height()-10)
-				
-					$('.screen')
-						.show()
-						.appendTo(selector);
-			
-  				return screen;
-  			}
-  		},
-  		
-  		/* -- */
-  		closeScreen : function(){
-  			$('.screen').remove();
-  			this.player.play();
-  		}
-  		
-  });
-	
-	
-	
+});// end observer
 	
 	
 		
-	
-	

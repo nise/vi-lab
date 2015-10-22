@@ -69,6 +69,7 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
 				.attr('href','#')
 				.attr('title', title)
 				.click(function() {
+					vi2.observer.log({context:'temporalBookmarks', action:'save-browser-bookmark',values:[''+url+vi2.observer.player.currentTime()]});
 				  if (window.sidebar) { // Mozilla Firefox Bookmark
 				    window.sidebar.addPanel(location.href,document.title,"");
 				  }else if(window.external) { // IE Favorite
@@ -85,6 +86,10 @@ Vi2.TemporalBookmarks = $.inherit(/** @lends Vi2.TemporalBookmarks# */{ //
 				.val( url )
 				.attr('readonly',true)
 				.attr('aria-describedby', 'URL to the current playback position of the video.')
+				.click(function(){
+					vi2.observer.log({context:'temporalBookmarks', action:'copy-bookmark-link',values:[ ''+url + vi2.observer.player.currentTime()]})
+					$(this).focus();
+				})
 				.focus(function() { 
 					$(this).select(); 
 				} )

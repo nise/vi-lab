@@ -44,13 +44,13 @@
     "_id": "52a13d2e2aa9d35f24000074",
     "id": "111",
     "progress": "3",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
     "video": "/static/videos/e2script_lecture1_improved.mp4",
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
         "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "title": "xxx Qualifizierung von eTutoren – Auftaktveranstaltung",
         "category": "X",
         "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
         "length": "25:22:00",

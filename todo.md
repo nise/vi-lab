@@ -2,17 +2,27 @@
 # VI-TWO
 ## this release
 
+- activity log:: https://www.propublica.org/nerds/item/timelinesetter-easy-timelines-from-spreadsheets-now-open-to-all
+	- log: change log format
+	- log: exact playback logging
+
 - test mit vielen users
+
+- bug in Chrome, 
+- test IE
+
+- add groups, videos and define tasks and the script
+
+- slide preview
+- nur urheber dürfen annotation bearbeiten
+- bug: bookmark url fehler
+- zoom log
 
 - @assesment
 	- comment assessment
 	- ass: Aufgabenstatistik
 	- Benutzerbenachrichtigung
-	
-- activity log:: https://www.propublica.org/nerds/item/timelinesetter-easy-timelines-from-spreadsheets-now-open-to-all
-	- log: change log format
-	- log: exact playback logging
-	
+		
 	
 - bug @ player: autoplay ?
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden

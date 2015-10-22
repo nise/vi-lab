@@ -79,11 +79,11 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			
 				var a = $('<a></a>')
 					.text(val.name)
-					.addClass('id-'+ val.time )
+					.addClass('id-'+ val.time+' comments-menu-question' )
 					//.attr('href', '#'+vi2.options.id)
-					.click(function(){
-						vi2.observer.log('clickcommentfromlist:'+val.name +' '+val.author+' '+ val.time );
-						_this.player.currentTime( val.time );
+					.click(function(){  
+						vi2.observer.log({ context:'comments',action:'menu-click',values: [val.name, val.author, val.time[0] ]} );
+						_this.player.currentTime( val.time[0] );
 					})
 					;	
 					
@@ -149,7 +149,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			}); // end each
 		},
 		
-					/* -- */
+		/* -- */
 		//<div type="toc" starttime=83 duration=1 id="">Objectives of the lecture</div>
 		//
 		appendToDOM : function(id){ 
@@ -200,9 +200,9 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 				return false;
 			}else{
 				// reset highlight
-				$(this.options.menuSelector+' li').each(function(i){ $(this).removeClass('highcomment');})
+				$(this.options.menuSelector+' li').each(function(i, val){ $(this).removeClass('highcomment'); })
 				// highlight comment entry
-				$(this.options.menuSelector+' li#t'+this.formatTime(obj.content.target, '-')).addClass('highcomments');
+				$(this.options.menuSelector+' li#t' + obj.displayPosition.t1 ).addClass('highcomments');
 			}
 		},
 		

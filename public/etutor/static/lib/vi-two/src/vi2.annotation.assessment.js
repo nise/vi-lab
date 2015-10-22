@@ -101,7 +101,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 					//.attr('href', '#'+vi2.observer.options.id)
 					.addClass('id-'+ val.time+' assessment-menu-question')
 					.click(function(){
-						vi2.observer.log('clickassessmentfromlist:'+ val.name.question +' '+val.author+' '+ val.time +' '+ val.date);
+						vi2.observer.log({context:'assessment', action:'menu-click', values:[ val.name.question, val.author, val.time ]});
 						vi2.observer.player.currentTime( val.time );
 					});			
 				
@@ -140,7 +140,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		appendToDOM : function(id){ 
 			var _this = this; 
 			$(vi2.dom).find('[type="assessment"]').each(function(i,val){ $(this).remove(); });
-			$.each(	vi2.db.getAssessmentById(id), function( i, val ){   
+			$.each(	vi2.db.getAssessmentById(id), function( i, val ){  
 				var toc = $('<div></div>')
 					.attr('type',"assessment")
 					.attr('starttime', val.start)
@@ -184,13 +184,13 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		
 				
 		/* ... */
-		begin : function(e, id, obj){
+		begin : function(e, id, obj){ 
 			$('body').unbind('keydown'); 
-			obj = obj.content.title; 
+			 
 			var _this = this;
 			var question_selector = 'vi2assessment'+id;
 			vi2.observer.player.pause();
-			vi2.observer.log('assessmentdisplaybegin');
+			vi2.observer.log({context:'assessment', action:'display-question',values:[encodeURIComponent(obj.content.title.question), obj.author, vi2.observer.player.currentTime() ]});
 			//{"question":"bimel","answ":[{"id":"answ0","answ":"hier"},{"id":"answ1","answ":"we"},{"id":"answ2","answ":"go"}],"correct":"answ2"}
 			var o = $('<div></div>')
 				.attr('id', 'vi2assessment')
@@ -202,14 +202,14 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				.text('Testfrage');
 			var quest = $('<div></div>')
 				.addClass('assessment-question')
-				.text(''+obj.question);	
+				.text(''+obj.content.title.question);	
 			var answ = $('<div></div>')
 				.addClass('assessment-answers');
 			
 			
-			if( obj.answ.length > 0 ){
+			if( obj.content.title.answ.length > 0 ){
 				
-				if(obj.answ.length === 1 && obj.answ[0].questiontype === 'fi'){
+				if(obj.content.title.answ.length === 1 && obj.content.title.answ[0].questiontype === 'fi'){
 					// fill in answers box 
 					var answer = $('<div></div>')
 						.attr('id', 'answ0')
@@ -219,11 +219,11 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 						.appendTo(answ);
 				}else{ 
 					// mc answer options
-					$.each(obj.answ, function(i, val){
+					$.each(obj.content.title.answ, function(i, val){
 						var answer = $('<div></div>')
 							.attr('id', val.id)
 							.addClass('assessment-answer')
-							.append('<input type="checkbox" name="quest" value="1" />')
+							.append( $('<input type="checkbox" name="quest" value="1" />').attr('id', val.id))
 							.append(val.answ)
 							.click(function(){ 
 								$(this).find('input[type="checkbox"]').trigger('click'); 
@@ -236,12 +236,11 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			}		
 			
 			var solve = $('<button></button>')
-				.addClass('btn btn-default')
+				.addClass('btn btn-default assessment-btn')
 				.text('abschicken')
 				.click(function(){
-					$(this).hide();
-					vi2.observer.log('submitassessmenttask:'+id);
-					_this.evaluateAnswer('.'+question_selector, obj)
+					$(this).hide();					
+					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author)
 				});
 				
 			$(o).append(head).append(quest).append(answ).append(solve); 
@@ -439,13 +438,17 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			.append(add2)
 			.append( time_field )
 			;
-			if( answer_box.has('input.mc-option') && json.content.answ !== undefined){
-				//add2.hide();
-			}
-			if( answer_box.has('textarea') && json.content.answ !== undefined ){
-				add.hide();
-				add2.hide();
-			}
+			
+			if( json.content.answ !== undefined){
+				if( json.content.answ[0] !== undefined  && json.content.answ[0].questiontype === 'mc'){
+					add2.hide();
+				}
+			
+				if( json.content.answ[0] !== undefined  && json.content.answ[0].questiontype === 'fi'){
+					add.hide();
+					add2.hide();
+				}
+			}	
 			return form;
 			
 		},
@@ -575,76 +578,77 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		/*
 		* Evaluates the quizz results provided by the user. 
 		**/
-		evaluateAnswer : function(question_selector, obj){
+		evaluateAnswer : function(question_selector, obj, author){
+			var one_checked = false, correct = [];
 			if(obj.answ[0].questiontype === 'fi'){
-				$(question_selector)
-					.append($('<p><strong>Vielen Dank für die Bearbeitung der Frage. Folgende Musterlösung wurde für diese Frage hinterlegt:</strong></p>'))
-					.addClass('assessment-msg-correct');
-				$('<span></span>')
-					.text( obj.answ[0].answ )
-					.addClass('correct-answ')
-					.appendTo(question_selector)
-					;
+				if($('.assessment-answers').find('textarea').val().length > 3){
+					correct.push(true);
+					vi2.observer.log({context:'assessment', action:'submited-answer',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime(), encodeURIComponent($('.assessment-answers').find('textarea').val()) ]});
+					$(question_selector)
+						.append($('<p><strong>Vielen Dank für die Bearbeitung der Frage. Folgende Musterlösung wurde für diese Frage hinterlegt:</strong></p>'))
+						.addClass('assessment-msg-correct');
+					$('<span></span>')
+						.text( obj.answ[0].answ )
+						.addClass('correct-answ')
+						.appendTo(question_selector)
+						;
+				}		
 			}else{ 
-				var one_checked = false, correct = true;
+				
 				obj.checked = [];
 				$('.assessment-msg-warning').hide();
-				$('.assessment-answers').find('div.assessment-answer').each(function(i, val){
-					if($(this).find("input[name='quest']:checked").val() === 1){
-						obj.checked.push($(this).text())
-						one_checked = true; 
-						$.each(obj.correct, function(j, corr){ 
-							if(corr === $(val).attr('id')){	
-								obj.correct[j] = true; 
-							}
-						});
+				$('div.assessment-answers').find("input[type='checkbox']:checked").each(function(i, val){ 
+					
+					obj.checked.push( $(val).attr('id') )
+					one_checked = true;
+					if( obj.correct.indexOf( $(val).attr('id') ) > -1 ){
+						correct.push(true); 
+					}else{
+						correct.push(false); 
 					}
 				});
 			
-				// VALIDATION
+				// check whether a option has been selected
 				if( ! one_checked ){
 					//vi2.observer.log('[call:run_assessment, result:empty_selection]'); 
-					//alert('pls select one');
-					$(question_selector).append($('<p>Bitte wählen Sie eine Antwortoption</p>').addClass('assessment-msg-warning'));
+					$(question_selector)
+						.append($('<p>Bitte wählen Sie eine Antwortoption</p>')
+						.addClass('assessment-msg-warning'));
 					$('.assessment-btn').show();
 					return false;
 				}
 			
-				// CORRECT?
-				$.each(obj.correct, function(i, val){ 
-					if( val !== true ) {
-						vi2.observer.log('assessmentwrong');
-						correct = false;
-					}
-				});
-				if(correct === true){
-					vi2.observer.log('assessmentcorrect');
+				
+				// log event
+				vi2.observer.log({context:'assessment', action:'submited-answer',values:[ encodeURIComponent(obj.question), author, vi2.observer.player.currentTime(), (obj.checked).toString() ]});
+				
+				// give feedback to the user
+				if( correct.indexOf(false) === -1){
+					vi2.observer.log({context:'assessment', action:'submited-correct-result',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime() ]});
 					$(question_selector).append($('<p>Ihre Antwort ist richtig.</p>').addClass('assessment-msg-correct'));
-					//vi2.observer.log('[call:run_assessment, result:correct]');
 				}else{ // wrong
-					//vi2.observer.log('[call:run_assessment, result:wrong]');
-					 
+					vi2.observer.log({context:'assessment', action:'submited-incorrect-result',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime() ]});
 					$(question_selector).append($('<p>Ihre Antwort ist leider falsch.</p>').addClass('assessment-msg-wrong'));
 				}
 			}
 			// save result to node
 			obj.type = obj.answ[0].questiontype;
-			var result = {
-				correct: correct,
-				question : encodeURIComponent(obj.question),
-				answ : obj.answ,
-				res : obj.type === 'mc' ? encodeURIComponent(obj.checked) : encodeURIComponent($('.assessment-answers').find('textarea').val()),
-				videoid : vi2.currentVideo
-			}; 
+			
 			var question_result = {
 		  	from : vi2.wp_user, // the user that answered the question
-		  	to : obj.author, // the author of the question
+		  	//to : obj.author, // the author of the question // bug xxx
 		  	date : (new Date()).getTime(),
 		  	type : 'test-result',
 		  	read : false, 
 		  	replied: false,
 		  	title : 'Result: '+encodeURIComponent(obj.question),
-		  	content : result 
+		  	content : {
+					correct: correct,
+					question : encodeURIComponent(obj.question),
+					answ : obj.answ,
+					res : obj.type === 'mc' ? encodeURIComponent(obj.checked) : encodeURIComponent($('.assessment-answers').find('textarea').val()),
+					videoid : vi2.currentVideo
+				} 
     	};
 			/*
 			$.post('/messages', {"data":question_result}, function(res){ 
@@ -658,7 +662,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				.text('Video fortsetzen')
 				.click(function(){
 					$(question_selector).remove();
-					vi2.observer.log('[call:finish_assessment]');
+					vi2.observer.log({context:'assessment', action:'continue-playback',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime() ]});
 					vi2.observer.player.play();
 					$('body').unbind('keydown').bind('keydown', function(e) { 
 						vi2.observer.player.keyboardCommandHandler(e); 
