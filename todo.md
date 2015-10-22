@@ -6,8 +6,6 @@
 
 - check ACL
 
-# to befor production mode
-- remove/abstract: http://127.0.0.1:3033
 
 
 - guided tour
@@ -23,10 +21,15 @@
 ## bugs
 - bug @ logged out members are not gettng disabled in the peers client
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden
-
-## last things
 - video3 toc missing for comparisson
 - fix some tooltip bugs (user-data, group-data)
+
+# to befor production mode
+- remove/abstract: http://127.0.0.1:3033
+
+
+## last things
+
 
 
 
@@ -48,7 +51,7 @@
 	- comment assessment
 	- ass: Aufgabenstatistik
 	- Benutzerbenachrichtigung
-- slide previewr		
+- slide previewr
 - script schedule
 - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
 - bug: bookmark url fehler
