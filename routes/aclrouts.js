@@ -155,7 +155,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		//log.write( req.param('data') );	
 		res.send('terminated logging');
 	});
-	app.get('/log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
+	app.get('/log',  function(req, res) { // users.authCallback(['editor']), xxx
 		Log.find().select('action utc').sort( 'utc' ).exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 

@@ -186,7 +186,12 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 							.attr('data-toggle', "modal")
 							.attr('data-target', "#myModal")
 							.attr('data-annotationtype', 'toc')
-							.data('annotationdata', { content: val.name, time: val.occ[0], date: val.date  } )
+							.data('annotationdata', { 
+								content: val.name, 
+								time: val.occ[0], 
+								date: val.date,
+								author: val.author 
+							} )
 							.appendTo( li )
 							;
 					}
@@ -228,7 +233,12 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			if( data ){
 				return ejs.render(str, data);
 			}	else{
-				return ejs.render(str, { content:'', time: vi2.observer.player.currentTime() });	
+				return ejs.render(str, { 
+					content:'', 
+					time: vi2.observer.player.currentTime(),
+					author: vi2.wp_user,
+					date: (new Date().getTime())	 
+				});	
 			}	
 		},
 		

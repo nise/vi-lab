@@ -29,7 +29,7 @@ var
     	current_phase : 1,
     	slides : false,
     	phases: [
-    		{ /* Anlaufphase */
+    		{ /* Phase 1 */
     			title: "Anlaufphase",
     			instruction: "(keine)",
     			seq : 4,
@@ -68,10 +68,10 @@ var
 		  		 		}
 		  		 	}
 		  		]	
-    		},//end phase 1
-    		{ /* Terezin */
-    			title: "Phase 1 - Kollaboration",
-    			instruction: "Bitte schauen Sie sich das Video an und notieren sich die aus Ihrer Sicht wichtigsten Punkte. Sie können das Video taggen und kommentieren. Füllen Sie anschließend den <a href='/assessment'>Online-Selbsttest</a> aus.",
+    		},
+    		{ /* Phase 2 */
+    			title: "Phase 1 - Auftakt",
+    			instruction: "Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernressourcen im WWW ein. Mittels der Kommentare können Sie sich untereinander austauschen. Jeder einzelne ist angehalten, das Video  durch sinnvolle Überprüfungsfragen anzureichen.<br> Abschließend absolvieren Sie bitte den <a href='/assessment'>Online-Selbsttest</a>, deren Fragen Sie übrigens nicht in das Video integrieren müssen.",
     			//title_k: "Aufgabe 4 - Diskussion & Feedback",
     			//instruction_k: "Reflektieren Sie Ihre Ergebnisse auf Basis des bereit gestellten, alternativen Lösungsvorschlags. (Gruppenarbeit, 4-6 Personen)",
     			seq : 4,

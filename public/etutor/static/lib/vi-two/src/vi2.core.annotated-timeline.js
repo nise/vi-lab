@@ -143,13 +143,8 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 					stop: function(event, ui) { 
 						vi2.observer.log({context:'player',action:'seek-stop',values:[ui.value]}	);
 						_this.seeksliding = false;
-						$(_this.video).trigger('play');
 						//if(_this.percentLoaded > (ui.value / _this.duration())){
-							_this.video.currentTime = parseFloat(Math.ceil(ui.value)); // XXX bugy / webkit fix
-							//_this.video.currentTime = ui.value;
-						//}else{
-							// bugy xxx
-						//}	
+						vi2.observer.player.currentTime( parseFloat(Math.ceil(ui.value)) ); // XXX bugy / webkit fix
 					}
 					
 				});

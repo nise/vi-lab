@@ -12,7 +12,7 @@ json_validator: http://jsonformatter.curiousconcept.com/
 
 **/ 
 
-var Maintain = $.inherit(/** @lends Maintain# */{
+Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		/* @constructs 
 		*/
   __constructor : function() {
@@ -84,7 +84,7 @@ var Maintain = $.inherit(/** @lends Maintain# */{
 
 {"template":"basic","title":"New Project","guid":"E073E685-3ED6-4C5C-A210-A137894E4745","project":
 {"targets":[{"id":8,"name":"Area1"},{"id":9,"name":"Area2"}],
-"media":[{"id":"Media4","name":"Media41327357877524","url":"http://127.0.0.1/elearning/vi2/_attachments/videos/iwrm_cullmann.ogv","target":"main","
+"media":[{"id":"Media4","name":"Media41327357877524","url":"http://127.0.0.1:3033/static/videos/iwrm_cullmann.ogv","target":"main","
 duration":178.378,"tracks":[
 
 {"name":"Track1327357889581","id":"Track6","trackEvents":[
@@ -97,7 +97,11 @@ duration":178.378,"tracks":[
 	*/	
 	generateButter : function(id){
 		var _this = this;
-		var butter = '{"template":"basic","title":"'+id+'","guid":"AA41AB3B-D145-477E-A264-3B42701F1E85", "project": {"targets":[{"id":0,"name":"Area1"},{"id":1,"name":"pop-container"}],"media":[ {"id":"Media0","name":"Media01327337635028","url":"http://127.0.0.1/elearning/vi2/_attachments/videos/iwrm_cullmann.ogv","target":"main","duration":4829.205,"tracks":[';
+		var video_url = vi2.db.getStreamById( id ).video;
+		// local file
+		video_url.replace('http://141.46.8.101/beta/e2script/', 'http://127.0.0.1:3033/static/videos/');
+		video_url =  'http://127.0.0.1:3033' + video_url ;
+		var butter = '{"template":"basic","title":"'+id+'","guid":"AA41AB3B-D145-477E-A264-3B42701F1E85", "project": {"targets":[{"id":0,"name":"Area1"},{"id":1,"name":"pop-container"}],"media":[ {"id":"Media0","name":"Media01327337635028","url":"'+video_url+'","target":"main","duration":4829.205,"tracks":[';
 		var track0 = '',
 		 		track1 = '',
 		 		track2 = '',
@@ -106,25 +110,27 @@ duration":178.378,"tracks":[
 		 		butter3 = '';
 		
 		// fetch slides
-		$.each(this.getStreamById(id, true).slides, function(i, val){
-			//butter += '{"image":{"start": '+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1/elearning/vi2/_attachments/slides/'+id+'/'+this.img+'", "text":"", "target":"image-container", "link":{}, "id":"'+this.img.replace(/.jpg/, '')+'"}},'
+		$.each(vi2.db.getStreamById(id, true).slides, function(i, val){
+			//butter += '{"image":{"start": '+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+id+'/'+this.img+'", "text":"", "target":"image-container", "link":{}, "id":"'+this.img.replace(/.jpg/, '')+'"}},'
 			if(i % 2 == 0 ){
-				butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1/elearning/vi2/_attachments/slides/'+id+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+				butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 			}else{
-				butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1/elearning/vi2/_attachments/slides/'+id+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+				butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+ (Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 			}
 		}); 
 		
 		// fetch hyperlinks 
-		$.each(this.getStreamById(id).links, function(i, val){
+		/*$.each(vi2.db.getStreamById(id).links, function(i, val){
 			butter3 += '{"id":"TrackEventA'+i+'","type":"pop","popcornOptions":{"start":'+Number(_this.deci2seconds(this.start))+',"end":'+(Number(_this.deci2seconds(this.start))+Number(this.duration))+',"exit":"2.5","text":"'+this.id+'", "link":"'+this.text+'","target":"pop-container", "left":"'+this.x+'%", "top":"'+this.y+'%"},"track":"Track1327357889566","name":"Track1327357889'+Math.ceil(Math.random()*1000)+'"},';		
-		});
+		});*/
 		track0 = '{"name":"Track1327337639244","id":"Track0", "trackEvents":['+butter1.substr(0, butter1.length -1)+']},';
-		track1 = '{"name":"Track1327337639255","id":"Track1", "trackEvents":['+butter2.substr(0, butter2.length -1)+']},';
-		track2 = '{"name":"Track1327357889566","id":"Track2", "trackEvents":['+butter3.substr(0, butter3.length -1)+']}';
+		track1 = '{"name":"Track1327337639255","id":"Track1", "trackEvents":['+butter2.substr(0, butter2.length -1)+']}';
+		//track2 = '{"name":"Track1327357889566","id":"Track2", "trackEvents":['+butter3.substr(0, butter3.length -1)+']}';
 		
-		butter += track0 + track1 + track2 + ']}]}}';
-		
+		butter += track0 + track1 + ']}]}}';
+		console.log('-------------------------------');
+		console.log(butter);
+		console.log('-------------------------------');
 		//$('#debug').html(butter);
 		//this.json_import();
 		//this.test();
@@ -205,7 +211,7 @@ duration":178.378,"tracks":[
 	var dataString ='cullmann';
 	if ( dataString ) { 
           		
-          		var butter = '{"template":"basic","title":"'+dataString+'","guid":"AA41AB3B-D145-477E-A264-3B42701F1E85", "project": {"targets":[{"id":0,"name":"Area1"},{"id":1,"name":"pop-container"}],"media":[ {"id":"Media0","name":"Media01327337635028","url":"http://127.0.0.1/elearning/vi2/_attachments/videos/iwrm_'+dataString+'.ogv","target":"main","duration":4829.205,"tracks":[';
+          		var butter = '{"template":"basic","title":"'+dataString+'","guid":"AA41AB3B-D145-477E-A264-3B42701F1E85", "project": {"targets":[{"id":0,"name":"Area1"},{"id":1,"name":"pop-container"}],"media":[ {"id":"Media0","name":"Media01327337635028","url":"http://127.0.0.1:3033/static/videos/iwrm_'+dataString+'.ogv","target":"main","duration":4829.205,"tracks":[';
 							var track0 = '',
 		 					track1 = '',
 		 					track2 = '',
@@ -217,7 +223,7 @@ duration":178.378,"tracks":[
           		$.ajax({
     						type: "POST",
     						dataType: "json",
-    						url: 'http://127.0.0.1/elearning/vi2/_attachments/data-slides.json',
+    						url: 'http://127.0.0.1:3033/static/data-slides.json',
     						success: function(data){  
     							$.each(data._slides, function(j, val){ 
     								//bam += '<option value="'+val.id+'">'+val.id+'</option>'
@@ -225,9 +231,9 @@ duration":178.378,"tracks":[
     									// fetch slides
 											$.each(val.slides, function(i, val){ 
 												if(i % 2 == 0 ){ 
-													butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1/elearning/vi2/_attachments/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+													butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 												}else{
-													butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1/elearning/vi2/_attachments/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
+													butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 												}
 											});
     								}

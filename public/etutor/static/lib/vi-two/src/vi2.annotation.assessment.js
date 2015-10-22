@@ -116,7 +116,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 					;	
 				
 				// edit
-				if( _this.options.allowEditing ){	 
+				if( _this.options.allowEditing && Number(val.author) === Number(vi2.wp_user) ){	 
 					var edit_btn = $('<a></a>')
 						.addClass('tiny-edit-btn glyphicon glyphicon-pencil' )
 						.attr('data-toggle', "modal")
@@ -125,7 +125,8 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 						.data('annotationdata', { 
 							content: val.name, 
 							time: val.time[0], 
-							date: val.date 
+							date: val.date,
+							author: val.author 
 						} )
 						.appendTo( header )
 						;

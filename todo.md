@@ -2,38 +2,34 @@
 # VI-TWO
 ## this release
 
-- activity log:: https://www.propublica.org/nerds/item/timelinesetter-easy-timelines-from-spreadsheets-now-open-to-all
-	- log: change log format
-	- log: exact playback logging
+- correct slide presenation	
+- add videos and define tasks and the script
+
+- check ACL
+- remove/abstract: http://127.0.0.1:3033
+- guided tour
+
+- activity log
 
 - test mit vielen users
-
 - bug in Chrome, 
 - test IE
 
-- add groups, videos and define tasks and the script
 
-- slide preview
-- nur urheber dürfen annotation bearbeiten
-- bug: bookmark url fehler
-- zoom log
-
-- @assesment
-	- comment assessment
-	- ass: Aufgabenstatistik
-	- Benutzerbenachrichtigung
-		
 	
-- bug @ player: autoplay ?
+## bugs
+- bug @ logged out members are not gettng disabled in the peers client
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden
 
-- correct slide presenation	
+## last things
+- video3 toc missing for comparisson
+- fix some tooltip bugs (user-data, group-data)
+
+
 
 ## admin 
 -- user übersich -- links per id, statt per username wg. eindeutigkeit
 -- footer
-
-
 
 ## Awareness
 - chat oder komunikation zw. Gruppenmitgliedern
@@ -43,23 +39,17 @@
 	- ?gesamtstand anhand von relativer metrik
 
 ## Script
-- script scheduler
-- cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
-
-
-## last things
-
-- check ACL
-- remove/abstract: http://127.0.0.1:3033
-- guided tour
-- video3 toc missing for comparisson
-- fix some tooltip bugs (user-data, group-data)
-
-## bugs
-- logged out members are not gettng disabled in the peers client
-
 
 ## next release / nth
+- @assesment
+	- comment assessment
+	- ass: Aufgabenstatistik
+	- Benutzerbenachrichtigung
+- slide previewr		
+- script schedule
+- cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
+- bug: bookmark url fehler
+- zoom log
 - theresienstadt von vi-lab trennen oder umbenennen ? 
 - gzip compression
 - VI-TWO Datenbank auf serverseite verschieben und db-Klasse als Schnittstelle umgestalten

@@ -281,8 +281,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	*
 	**/
 	ended : function(){ 
-		var _this = this;
-		// _this.clock.reset(); // if enabled slide sync does not work after vides has ended.
+		//this.clock.reset(); // if enabled slide sync does not work after vides has ended.
 	},
 
 
@@ -290,8 +289,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	*
 	**/
 	pause : function(){ 
-		var _this = this;
-		_this.clock.stopClock();
+		this.clock.stopClock();
 	},
 
 
@@ -299,8 +297,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	*
 	**/
 	play : function(){ 
-		var _this = this;
-		_this.clock.startClock();
+		this.clock.startClock();
 	},
 
 
@@ -321,7 +318,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		$('#vi2').empty();
 	}
   		
-});// end observer
+});// end 
 	
 	
 		

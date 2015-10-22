@@ -195,11 +195,14 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		// add timeline
 		this.timeline = new Vi2.AnnotatedTimeline( this.video, {}, this.seek );
 		
+		// add playback logger
+		this.logger();
+		
 		var playbackSpeed = new Vi2.PlaybackSpeed();
 		vi2.observer.addWidget( playbackSpeed );  
 		
-		var temporalBookmarks = new Vi2.TemporalBookmarks();
-		vi2.observer.addWidget( temporalBookmarks );
+		//var temporalBookmarks = new Vi2.TemporalBookmarks();
+		//vi2.observer.addWidget( temporalBookmarks );
 		
 		//var zoom = new Vi2.Zoom();
 		//vi2.observer.addWidget( zoom );	
@@ -244,7 +247,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		});
 		
 		// event binding: on ended
-		$(this.video).bind('ended', function(e) { 
+		this.video.addEventListener('ended', function(e) { 
 			_this.endedHandler(e); 
 		}, false);
 
@@ -724,9 +727,9 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			return this.video.currentTime; //$(this.options.selector).attr('currentTime');
 		}else { 
 			$(this.video).trigger('play');
-			//if(this.percentLoaded > ($(this.options.selector).attr('currentTime') / this.duration())){  // xxx bugy
-				this.video.currentTime = x;
-			//}	
+			this.video.currentTime = x;
+			this.play();
+			
 		}
 	},
 
@@ -753,8 +756,86 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	errorHandling: function(e) { //alert(e)
 //		console.log('Error - Media Source not supported: ' + this.video.error.code == this.video.error.MEDIA_ERR_SRC_NOT_SUPPORTED); // true
 //	 	console.log('Error - Network No Source: ' + this.video.networkState == this.video.NETWORK_NO_SOURCE); // true
-	}
+	},
+	
+	
+	/*
+	* Logger
+	**/
+	logger : function(){
+		var
+			_this = this,
+			interval = 5,
+			lastposition = -1, 
+    	interval, 
+    	timer
+    	;
+    	
+		function loop() {
+        var currentinterval;
+        currentinterval = (Math.round( _this.currentTime() ) / interval) >> 0;
+        //console.log("i:" + currentinterval + ", p:" + player.getPosition());
+        if (currentinterval != lastposition) { 
+            vi2.observer.log({context:'player', action:'playback', values:[ currentinterval ]})
+            lastposition = currentinterval;
+        }
+    };
 
+    function start() { 
+        if (timer) {
+            timer = clearInterval(timer);
+        }
+        timer = setInterval(loop, interval * 1000);
+        setTimeout(loop, 100);
+    };
+
+    function restart() {
+        if (timer) {
+            timer = clearInterval(timer);
+        }
+        lasttime = -1;
+        timer = setInterval(loop, interval * 1000);
+        setTimeout(loop, 100);
+    };
+
+    function stop() {
+        timer = clearInterval(timer);
+        loop();
+    };
+/*
+    player.oncanplay(start);
+   	 player.onSeek(restart);
+    player.onPause(stop);
+    	player.onBuffer(stop);
+    player.onIdle(stop);
+    player.onComplete(stop);
+    	player.onError(stop);
+  */  
+    this.video.addEventListener('play', function(e){ 
+			start()	
+		});
+		
+		this.video.addEventListener('pause', function(e){ 
+			stop()
+		});
+		
+		this.video.addEventListener('abort', function(e){  
+			stop()
+		});
+
+		// event binding: on time update
+		this.video.addEventListener('timeupdate', function(e) { 
+						
+		});
+		
+		// event binding: on ended
+		this.video.addEventListener('ended', function(e) { 
+			stop()
+		}, false);
+    
+	}
+	
+	
 }); // end video class
 
 

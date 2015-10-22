@@ -72,15 +72,11 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 				var query = {};
 				query['id'] = { $in: groups[0].videos }; // 
 				console.log('#################################################');
-				console.log(groups[0].videos)
+				//console.log(groups[0].videos)
 				// get videos 
 				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){ 
 						res.type('application/json');
-						res.jsonp(videos /*{
-							title : 'Express Videos Example',
-							group : group,
-							items : videos
-						}*/);  
+						res.jsonp(videos);  
 						res.end('done');
 				});
 			});// end Groups

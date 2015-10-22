@@ -86,12 +86,13 @@ $(window).on('beforeunload', function(){
 						},
 				    url: server+'/json/'+json,
 				    dataType: 'json',
-				    success: function(data){  // alert( JSON.stringify(data))
+				    success: function(data){   //alert( JSON.stringify(data))
 							var html = ejs.render(thetemplate, { items: data });
 							$(selector).html(html);
 						
 						},
-						error : function(e){ alert('ERROR at '+template+':'+JSON.stringify(e)); }		  
+						error : function(e){ 
+							console.error('ERROR at '+template+':'+JSON.stringify(e)); }		  
 					});
 			
 				}else{ 

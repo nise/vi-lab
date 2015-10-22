@@ -46,14 +46,14 @@ exports.csvImport = function ( req, res ){
 							name : data[i][1],
 							password: data[i][2],
 							hs: data[i][3],
-							email: data[i][11],
-							role: data[i][12],
-							username: data[i][13] === '' ? (data[i][0]).replace(/\ /g,'.').toLowerCase() + '.' + (data[i][1]).toLowerCase() : data[i][13],//data[i][13], 
+							email: data[i][12],
+							role: data[i][13],
+							username: data[i][14] === '' ? (data[i][0]).replace(/\ /g,'.').toLowerCase() + '.' + (data[i][1]).toLowerCase() : data[i][14],//data[i][13], 
 							icon : 'img/usericons/user-'+i+'.png', 
 							trace : 1,
 							status: { online:false, location:'default' },
 							experimental: '',
-							groups : [data[i][6], data[i][7], data[i][8],data[i][9], data[i][10]],	
+							groups : [data[i][6], data[i][7], data[i][8],data[i][9], data[i][10], data[i][11]],	
 							updated_at : Date.now()
 						}).save( function( err, todo, count ){
 							//res.redirect( '/users' );

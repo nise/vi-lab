@@ -44,7 +44,13 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			var events = [];
 			$.each(ann, function(i, val){ 
 				if( val.type === _this.name ){  
-					events.push({name: val.title, occ:[val.t1], time :[val.t1], date: val.date, author: val.author }); 
+					events.push({
+						name: val.title, 
+						occ:[val.t1], 
+						time :[val.t1], 
+						date: val.date, 
+						author: val.author 
+					}); 
 				}
 			});
 			
@@ -121,15 +127,20 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 					// re-comments could be sorted desc by date. Solution needed
 					//comments.find('.t'+val.time).tsort({ attr:"date", order:'asc'}); 
 				}	
-			
+
 				// edit
-				if( _this.options.allowEditing ){	 
+				if( _this.options.allowEditing && Number(val.author) === Number(vi2.wp_user) ){	 
 					var edit_btn = $('<a></a>')
 						.addClass('tiny-edit-btn glyphicon glyphicon-pencil' )
 						.attr('data-toggle', "modal")
 						.attr('data-target', "#myModal")
 						.attr('data-annotationtype', 'comments')
-						.data('annotationdata', { content: val.name, time: val.time, date: val.date } )
+						.data('annotationdata', { 
+							content: val.name, 
+							time: val.time, 
+							date: val.date,
+							author: val.author 
+						} )
 						.appendTo( header )
 						;
 				}		
@@ -223,7 +234,12 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			if( data ){
 				return ejs.render(str, data);
 			}	else{
-				return ejs.render(str, { content:'', time: vi2.observer.player.currentTime() , date: (new Date().getTime()) });	
+				return ejs.render(str, { 
+					content:'', 
+					time: vi2.observer.player.currentTime() , 
+					date: (new Date().getTime()), 
+					author: vi2.wp_user
+					});	
 			}	
 		},
 		

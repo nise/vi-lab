@@ -226,6 +226,8 @@ var ViLab = $.inherit({
 		}); 
 		_this.observer.parse(vi2.dom, 'html');
 		
+		var mm = new Vi2.Maintain();
+		mm.generateButter(111);
 		
 		// autoplay
 		vi2.observer.player.video.oncanplay = function(e){ 
@@ -263,8 +265,12 @@ var ViLab = $.inherit({
 		
 		// HIDE MODAL
 		$('#myModal').on('hide.bs.modal', function(event){
+			// restart playback
+			if( _this.observer.player.isPlaying() === false ){
+				_this.observer.player.play(); 
+			}
 			$('body').unbind('keydown').bind('keydown', function(e) { 
-				vi2.observer.player.keyboardCommandHandler(e); 
+				vi2.observer.player.keyboardCommandHandler(e);
 			});
 		});
 		
@@ -273,7 +279,9 @@ var ViLab = $.inherit({
 				 // mute keydown events for text input
 				
 					// pause video
-					_this.observer.player.pause(); 
+					if( _this.observer.player.isPlaying() ){
+						_this.observer.player.pause(); 
+					}
 					$('body').unbind('keydown');
 					
 					var button = $(event.relatedTarget) // Button that triggered the modal
@@ -287,17 +295,17 @@ var ViLab = $.inherit({
 					// prepare forms ...
 					if( $.isEmptyObject( data ) ){ 
 						// ... for a new annotation
-						vi2.observer.log({context:type ,action:'open-form-new-annotation', values:['1'] });
+						vi2.observer.log({context:type ,action:'open-form-new-annotation', values:[ vi2.wp_user ] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: vi2.observer.player.currentTime() } ) );
 						modal.find('.btn-remove-data').hide();
 					}else if( data.content.length === 0){ 
 						// for adding a reply, e.g. to a comment
-						vi2.observer.log({context:type ,action:'open-form-reply-annotation', values:['1'] });
+						vi2.observer.log({context:type ,action:'open-form-reply-annotation', values:[data.author] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( { content:'', time: data.time } ) );
 						modal.find('.btn-remove-data').hide();						
 					}else{ 
 						// ... for editing an existing annotation
-						vi2.observer.log({context:type ,action:'open-form-edit-annotation', values:['1'] });
+						vi2.observer.log({context:type ,action:'open-form-edit-annotation', values:[data.author] });
 						modal.find('.modal-body').html( widget.createAnnotationForm( data ) );
 						modal.find('.btn-remove-data').show();
 					}
@@ -310,7 +318,7 @@ var ViLab = $.inherit({
 						if( msg.length === 0 ){ 
 							if( $.isEmptyObject( data ) || data.content.length === 0 ){
 								// add new annotation to dom
-								vi2.observer.log({context:type ,action:'added-new-annotation', values:['1'] });
+								vi2.observer.log({context:type ,action:'added-new-annotation', values:[ vi2.wp_user  ] });
 								widget.addDOMElement({ 
 									type: type, 
 									date: new Date().getTime(), 
@@ -319,7 +327,7 @@ var ViLab = $.inherit({
 								}); 
 							}else{	//alert('update:'+data.date)
 								// updated existing annotation in dom
-								vi2.observer.log({context:type ,action:'updated-annotation', values:['1'] });
+								vi2.observer.log({context:type ,action:'updated-annotation', values:[data.author] });
 								widget.updateDOMElement({  
 									date: data.date, 
 									time: formData.time, 
@@ -328,8 +336,10 @@ var ViLab = $.inherit({
 							}
 							// save to database
 							_this.savePopcorn( type );	
-							vi2.observer.log('saveannotation:' + type + ' ' + formData.time );
-							vi2.observer.player.play(); // restart playback
+							// restart playback
+							if( _this.observer.player.isPlaying() === false ){
+								_this.observer.player.play(); 
+							} 
 							modal.modal('hide');
 						}else{ 
 							modal.find('.modal-validation').html( msg );
@@ -349,14 +359,16 @@ var ViLab = $.inherit({
 									.remove();
 							}	
 							_this.savePopcorn( type );
-							vi2.observer.log({context:type ,action:'removed-annotation', values:['1'] });
-							vi2.observer.player.play(); // restart playback
+							vi2.observer.log({context:type ,action:'removed-annotation', values:[data.author] });
+							// restart playback
+							if( _this.observer.player.isPlaying() === false ){
+								_this.observer.player.play(); 
+							} // restart playback
 							modal.modal('hide');
 					}); // end remove
 					
-				});	// end modal
-		
-  },
+				});	// end modal	
+  }, // end setup
   
  
   	

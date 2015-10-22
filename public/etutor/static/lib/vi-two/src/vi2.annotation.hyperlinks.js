@@ -175,6 +175,7 @@
 					var data = {
 								time: val.occ[0],
 								date: val.date,
+								author: val.author,
 								content : {
 									label: val.name, 
 									date: val.date,
@@ -189,7 +190,7 @@
 							};
 							
 					// editing		
-					if( _this.options.allowEditing ){		 
+					if( _this.options.allowEditing ){		 // evtl. && Number(val.author) === Number(vi2.wp_user) 
 						var edit_btn = $('<a></a>')
 							.addClass('tiny-edit-btn glyphicon glyphicon-pencil tiny-edit-btn-'+ _this.name)
 							.attr('data-toggle', "modal")
@@ -355,7 +356,8 @@
 						y: 50
 					}, 
 					time: vi2.observer.player.currentTime(), 
-					date: (new Date().getTime()) 
+					date: (new Date().getTime()),
+					author: vi2.wp_user 
 				});	
 			}	
 		},

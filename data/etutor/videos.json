@@ -9,7 +9,7 @@
       {
         "author": "Dipl.-Hdl. Corinna Hetmank, MA Enrico Teich, Dipl.-Inf. Niels Seidel",
         "institution": "TU Dresden",
-        "title": "Auftaktverantstaltung zur ",
+        "title": "Aufzeichnung Kick-Off, 15.10.2015",
         "category": "X",
         "abstract": "-",
         "length": "25:22:00",
@@ -39,10 +39,13 @@
     "hyperlinks": [],
     "slides": []
    },
+   
+   
+   
  {
     "__v": 0,
-    "_id": "52a13d2e2aa9d35f24000074",
-    "id": "111",
+    "_id": "52a13d2e2aa9d35f24000011",
+    "id": "11",
     "progress": "3",
     "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
     "video": "/static/videos/e2script_lecture1_improved.mp4",
@@ -50,10 +53,10 @@
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
         "institution": "TU Dresden, WIIM",
-        "title": "xxx Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "X",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
         "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "25:22:00",
+        "length": "46:31",
         "date": "2015/10/18",
         "weight": 0,
         "source": "",
@@ -319,6 +322,1416 @@
       }
     ]
   },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000012",
+    "id": "12",
+    "progress": "3",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000013",
+    "id": "13",
+    "progress": "3",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000014",
+    "id": "14",
+    "progress": "3",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000015",
+    "id": "15",
+    "progress": "3",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000016",
+    "id": "16",
+    "progress": "3",
+    "video2": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
+    "video": "/static/videos/e2script_lecture1_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-0.jpg",
+        "starttime": "0",
+        "duration": 31.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-1.jpg",
+        "starttime": "31.9",
+        "duration": 32.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-2.jpg",
+        "starttime": "64.2",
+        "duration": 70.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-3.jpg",
+        "starttime": "135",
+        "duration": 203
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-4.jpg",
+        "starttime": "338.1",
+        "duration": 53.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-5.jpg",
+        "starttime": "391.749",
+        "duration": 36.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-6.jpg",
+        "starttime": "428.3",
+        "duration": 63.1
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-7.jpg",
+        "starttime": "491.4",
+        "duration": 62.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-8.jpg",
+        "starttime": "553.9",
+        "duration": 20.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-9.jpg",
+        "starttime": "574.8",
+        "duration": 135.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-10.jpg",
+        "starttime": "710.2",
+        "duration": 87.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-11.jpg",
+        "starttime": "797.5",
+        "duration": 81.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-12.jpg",
+        "starttime": "879.5",
+        "duration": 127.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-13.jpg",
+        "starttime": "1007.1",
+        "duration": 66.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-14.jpg",
+        "starttime": "1074",
+        "duration": 298.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-15.jpg",
+        "starttime": "1372.8",
+        "duration": 97.8
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-16.jpg",
+        "starttime": "1470.6",
+        "duration": 295.4
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-17.jpg",
+        "starttime": "1766",
+        "duration": 235.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-18.jpg",
+        "starttime": "2001.9",
+        "duration": 163.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-19.jpg",
+        "starttime": "2165.1",
+        "duration": 158.6
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-20.jpg",
+        "starttime": "2323.7",
+        "duration": 72
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-21.jpg",
+        "starttime": "2395.7",
+        "duration": 45.9
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-22.jpg",
+        "starttime": "2441.6",
+        "duration": 202.5
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-23.jpg",
+        "starttime": "2644.0",
+        "duration": 99.3
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-24.jpg",
+        "starttime": "2743.4",
+        "duration": 15.2
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-25.jpg",
+        "starttime": "2758.6",
+        "duration": 4.7
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-26.jpg",
+        "starttime": "2763.3",
+        "duration": 3.97
+      },
+      {
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }
+    ],
+   	"toc_org": [
+      {
+        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "start": 0,
+        "_id": "5440dbf90f4e758123ea59f1"
+      },
+      {
+        "label": "Agenda",
+        "start": 31.949,
+        "_id": "5440dbf90f4e758123ea59f0"
+      },
+      {
+        "label": "1 Lernziele",
+        "start": 64.229,
+        "_id": "5440dbf90f4e758123ea59ef"
+      },
+      {
+        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
+        "start": 135.019,
+        "_id": "5440dbf90f4e758123ea59ee"
+      },
+      {
+        "label": "3 Einführung BlendedLearning",
+        "start": 2001.909,
+        "_id": "5440dbf90f4e758123ea59ed"
+      },
+      {
+        "label": "4 Aufgaben von eTutoren",
+        "start": 2323.739,
+        "_id": "5440dbf90f4e758123ea59ec"
+      },
+      {
+        "label": "Quellen",
+        "start": 2743.399,
+        "_id": "5440dbf90f4e758123ea59eb"
+      },
+      {
+        "label": "Kontakt",
+        "start": 2767.309,
+        "_id": "5440dbf90f4e758123ea59ea"
+      }
+    ]
+  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   {
     "__v": 0,
     "_id": "52a13d2e2aa9d35f24000046",
