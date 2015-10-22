@@ -122,7 +122,7 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			
 		}
 		
-		if( application == 'etutor' ){	
+		if( application === 'etutor' ){	
 			videos.csvImport(); // !!! caution
 			users.csvImport();
 			scripts.importScript();
