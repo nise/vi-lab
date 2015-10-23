@@ -49,7 +49,7 @@ Vi2.SkipBack = $.inherit(/** @lends Vi2.SkipBack# */{ //
 				.bind('click', function(e){ 
 					var current = vi2.observer.player.currentTime();
 					var next = Number(Number(current) - Number(_this.options.step));
-					alert(next)
+					
 					vi2.observer.log({context:'skipBack',action:'skip-back',values: [current, String(next) ]});
 					vi2.observer.player.currentTime( next ); 
 				})

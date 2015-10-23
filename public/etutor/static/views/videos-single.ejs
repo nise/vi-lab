@@ -99,6 +99,8 @@
 			});
 			
 	</script>
+	<% test = 1 %>
+	<% if(test){ %>
 	<!-- vi-two core -->
 	<script src="/static/lib/vi-two/src/vi2.core.log.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.database.js"></script>
@@ -109,7 +111,9 @@
 	<script src="/static/lib/vi-two/src/vi2.core.clock.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.metadata.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.annotation.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.core.video-manager.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.utils.js"></script>
+	
 	<script src="/static/lib/vi-two/src/vi2.utils.maintanance.js"></script>
 	<!-- vi-two player-widgets	-->
 	<script src="/static/lib/vi-two/src/vi2.player.temporal-bookmarks.js"></script>
@@ -118,7 +122,7 @@
 	<script src="/static/lib/vi-two/src/vi2.player.sharing.js"></script>-->
 	<script src="/static/lib/vi-two/src/vi2.player.skip-back.js"></script>		
 	<!-- vi-two portal-widgets -->
-	<script src="/static/lib/vi-two/src/vi2.video-manager.js"></script>
+	
 	<!--<script src="/static/lib/vi-two/src/vi2.related-videos.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.viewing-history.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.search.js"></script>-->
@@ -140,7 +144,9 @@
 	<script src="/static/src/vi2.annotation.temporal-tags.js"></script>
 	<script src="/static/src/main.js"></script>
 	-->
-	
+	<% }else{ %>
+	<script src="/static/js/vi-two.min.js"></script>
+	<% } %>
 	<script src="/static/src/vi-lab.js"></script>
 
 

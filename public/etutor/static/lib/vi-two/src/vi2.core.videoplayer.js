@@ -112,7 +112,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		seek:0, 
 		videoControlsSelector: '.video-controls', 
 		thumbnail:'/static/img/placeholder.jpg', 
-		defaultVolume : 0, // 0..1
+		defaultVolume : 0 // 0..1
 	},
 	video: null,
 	timeline : null,
@@ -209,7 +209,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		
 		var skipBack = new Vi2.SkipBack();
 		vi2.observer.addWidget( skipBack );
-		/**/
+		
 		//var sharing = new Vi2.Sharing();
 		//vi2.observer.addWidget( sharing ); // http://localhost/elearning/vi2/vi-two/examples/iwrm/videos/iwrm_seidel1.webm
 		

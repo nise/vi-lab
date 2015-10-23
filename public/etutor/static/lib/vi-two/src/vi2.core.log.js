@@ -83,10 +83,14 @@
 			}else{
 				console.log(msg.context);
 			}
-			var pt = vi2.observer.player.currentTime();
+			var 
+				pt = vi2.observer.player.currentTime()
+				t = new Date()
+				;
+			t = t.getTime();
 			
 			var logEntry = {
-				utc: 								(new Date()).getTime(), 
+				utc: 								t, 
 				//phase: 						vi2.current,
 				//date:  						String, 
 				//time:  						String, 
@@ -106,7 +110,7 @@
 					values: msg.values
 				},						*/
 				playback_time:		pt === undefined ? -1 : pt,
-				user_agent:  			this.getUserAgent(),
+				user_agent:  			this.getUserAgent()
 				//ip: 							String,
 			
 			};

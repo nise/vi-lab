@@ -42,19 +42,27 @@ css_basic =   ${css_srcdir}ui-lightness/jquery-ui-1.7.2.custom.css\
 						${css_srcdir}theresienstadt.css\
 						${css_srcdir}introjs.css\
 
-					
+
+## VI-TWO
+# test vi-two
+test:	${js_files}
+	jshint $^ 					
     
-# Bundle all of the modules into vi-two.js
+# Bundle vi-two, all of the modules into vi-two.js
 js: ${js_files}
-		cat $^ > public/vi-lab/js/vi-two.js
+		cat $^ > public/etutor/static/js/vi-two.js
 
 
-#	Compress al of the modules into vi-two.min.js
+#	Compress vi-two, all of the modules into vi-two.min.js
 js-min: ${js_files}
-		cat $^ > public/vi-lab/js/vi-two.js
-	  java -jar /usr/bin/compiler.jar --js public/vi-lab/js/vi-two.js --js_output_file public/vi-lab/js/vi-two.min.js
+		cat $^ > public/etutor/static/js/vi-two.js
+	  java -jar /usr/bin/compiler.jar --js public/etutor/static/js/vi-two.js --js_output_file public/etutor/static/js/vi-two.min.js
 #	  java -jar tools/yuicompressor-2.4.8.jar public/vi-lab/js/vi-two.js -o public/vi-lab/js/vi-two.min.js	   
 
+
+
+
+# LIB
 #	Compress al of the modules into vi-two.min.js
 js-basic: ${js_basic}
 		cat $^ > public/vi-lab/js/vi-lab-basic.js
@@ -82,8 +90,7 @@ all:
 	make css-basic
 	make js-basic
 	  
-test:	${js_files}
-	jshint $^  
+ 
 	  
 	  
 	  
