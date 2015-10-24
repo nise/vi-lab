@@ -56,7 +56,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			
 			// show comments in a menu
 			if( this.options.hasMenu ){
-				this.createMenu(events)
+				this.createMenu(events);
 			}
 			
 			// map events on the timeline
@@ -211,7 +211,9 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 				return false;
 			}else{
 				// reset highlight
-				$(this.options.menuSelector+' li').each(function(i, val){ $(this).removeClass('highcomment'); })
+				$(this.options.menuSelector+' li').each(function(i, val){ 
+					$(this).removeClass('highcomment'); 
+				});
 				// highlight comment entry
 				$(this.options.menuSelector+' li#t' + obj.displayPosition.t1 ).addClass('highcomments');
 			}

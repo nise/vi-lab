@@ -79,7 +79,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 				;
 			this.video.onloadstart = function(e){
 				// 1. event called 
-				t0 = Date.now()
+				t0 = Date.now();
 			};
 			this.video.ondurationchange = function(){ 
 				// 2. event called
@@ -93,7 +93,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 			};
 			this.video.onloadeddata = function(e){ 
 				// 4. event called
-				vi2.observer.log({context:'player', action:'video-loading-time', values:[t1, ( Date.now() - t0 )]})
+				vi2.observer.log({context:'player', action:'video-loading-time', values:[t1, ( Date.now() - t0 )]});
 				//console.log('load data '+ ( Date.now() - t0 ) ); 
 			};
 			this.video.onprogress = function(e){ 
@@ -201,7 +201,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		* Add Video preview on timeline
 		* todo: event could be logged
 		**/
-		createTimelineSlidePreview : function(){ return;
+		createTimelineSlidePreview : function(){ 
 			var 
 					_this = this,
 					width = $( this.options.timelineSelector ).width(),

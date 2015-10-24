@@ -69,9 +69,9 @@ function removeDuplicates (cat){
 function timeDifference (s, prefix, postfix){
 			//prefix = prefix === undefined ? 'vor ' : prefix;
 			//postfix = postfix === undefined ? ' ago' : postfix; 
-			alert(1)
-			var b = moment( s );  alert(2);
-			var a = moment( s ); alert(3)
+			
+			var b = moment( s );  
+			var a = moment( s ); 
 			
 			
 			var diff = a.diff(b, 'seconds'); 
@@ -99,10 +99,10 @@ function timeDifference (s, prefix, postfix){
 				return prefix + diff.toFixed(1) + 'm' + postfix; 
 			}
 			
-			var diff = a.diff(b, 'years', true);
+			diff = a.diff(b, 'years', true);
 			return prefix + diff.toFixed(1) + 'y' + postfix; 
 			
-};
+}
 
 
 
@@ -111,9 +111,12 @@ function timeDifference (s, prefix, postfix){
 Object.size = function(obj) {
     var 
     	size = 0, 
-    	key = {};
+    	key = {}
+    	;
     for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
+        if (obj.hasOwnProperty(key)){
+        	size++;
+        }	
     }
     return size;
 };

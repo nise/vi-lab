@@ -140,7 +140,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 				
 				if(iTime >= oAnn.displayPosition.t1 && iTime < (Number(oAnn.displayPosition.t1) + Number(oAnn.displayPosition.t2))) {
 					if(!oAnn.active){
-						oAnn.active = true; alert(oAnn.type)
+						oAnn.active = true; alert(oAnn.type);
 	  				$(_this.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
 					}
 				}else {
@@ -185,8 +185,8 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		/* ... */
 		parseTime : function (strTime) { 
 			return strTime;
-			var aTime = strTime.toString().split(":");
-			return parseInt(aTime[0],10) * 60 + parseInt(aTime[1],10) * 1;// + parseFloat(aTime[2]);
+			//var aTime = strTime.toString().split(":");
+			//return parseInt(aTime[0],10) * 60 + parseInt(aTime[1],10) * 1;// + parseFloat(aTime[2]);
 		},
 	
 		/* ... */

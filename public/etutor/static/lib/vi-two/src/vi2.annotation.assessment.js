@@ -241,7 +241,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				.text('abschicken')
 				.click(function(){
 					$(this).hide();					
-					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author)
+					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author);
 				});
 				
 			$(o).append(head).append(quest).append(answ).append(solve); 
@@ -423,12 +423,12 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							;	 
 				}
 			}
-			
+			/*jshint multistr: true */
 			var time_field = "\
 				<div class='input-group'>\
 					<span class='input-group-addon' id='hyperlinks-form3'>Zeitpunkt (s)</span>\
 					<input type='text' class='form-control' value='" + json.time + "' name='assessment-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
-				</div>"
+				</div>";
 		
 			var form =  $('<div></div>')
 			.addClass('questionanswers')
@@ -479,7 +479,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			}
 			
 			if( $('#answerbox').find('div').length === 0 ) {
-				msg += '<br> Bitte definieren Sie für diese Frage entsprechende Antwortoptionen oder Lösungen.'
+				msg += '<br> Bitte definieren Sie für diese Frage entsprechende Antwortoptionen oder Lösungen.';
 			}else{
 				// if its a fill-in task
 				$('#answerbox').find('textarea').each(function(i,val){
@@ -600,7 +600,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				$('.assessment-msg-warning').hide();
 				$('div.assessment-answers').find("input[type='checkbox']:checked").each(function(i, val){ 
 					
-					obj.checked.push( $(val).attr('id') )
+					obj.checked.push( $(val).attr('id') );
 					one_checked = true;
 					if( obj.correct.indexOf( $(val).attr('id') ) > -1 ){
 						correct.push(true); 

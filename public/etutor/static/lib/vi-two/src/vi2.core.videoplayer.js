@@ -767,7 +767,6 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			_this = this,
 			interval = 5,
 			lastposition = -1, 
-    	interval, 
     	timer
     	;
     	
@@ -776,10 +775,10 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         currentinterval = (Math.round( _this.currentTime() ) / interval) >> 0;
         //console.log("i:" + currentinterval + ", p:" + player.getPosition());
         if (currentinterval != lastposition) { 
-            vi2.observer.log({context:'player', action:'playback', values:[ currentinterval ]})
+            vi2.observer.log({context:'player', action:'playback', values:[ currentinterval ]});
             lastposition = currentinterval;
         }
-    };
+    }
 
     function start() { 
         if (timer) {
@@ -787,7 +786,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         }
         timer = setInterval(loop, interval * 1000);
         setTimeout(loop, 100);
-    };
+    }
 
     function restart() {
         if (timer) {
@@ -796,12 +795,12 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         lasttime = -1;
         timer = setInterval(loop, interval * 1000);
         setTimeout(loop, 100);
-    };
+    }
 
     function stop() {
         timer = clearInterval(timer);
         loop();
-    };
+    }
 /*
     player.oncanplay(start);
    	 player.onSeek(restart);
@@ -812,25 +811,23 @@ var Video = $.inherit(/** @lends VideoPlayer# */
     	player.onError(stop);
   */  
     this.video.addEventListener('play', function(e){ 
-			start()	
+			start();	
 		});
 		
 		this.video.addEventListener('pause', function(e){ 
-			stop()
+			stop();
 		});
 		
 		this.video.addEventListener('abort', function(e){  
-			stop()
+			stop();
 		});
 
-		// event binding: on time update
 		this.video.addEventListener('timeupdate', function(e) { 
-						
+							
 		});
 		
-		// event binding: on ended
 		this.video.addEventListener('ended', function(e) { 
-			stop()
+			stop();
 		}, false);
     
 	}

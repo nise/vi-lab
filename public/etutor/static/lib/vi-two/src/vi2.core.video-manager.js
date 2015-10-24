@@ -99,7 +99,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	* This functions process a comma separated list of tags in order to identify the video streams that are related to these tags
 	*/
 	handleTags : function(params){ 
-		var tags = params['tag'].split(/,/); 
+		var tags = params.tag.split(/,/); 
 		var stream_names = '';
 		var streams = [];
 		var inverted = vi2.db.getInvertedTagIndex();
@@ -126,7 +126,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	* This functions process a single given category 
 	*/
 	handleCategory : function(params){ 
-		var category = params['category']; 
+		var category = params.category; 
 		var streams = vi2.db.getStreamsByCategory( category );
 		
 		// render it
@@ -151,14 +151,14 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	*/
 	handleNewStream : function(params){ 
 		var _this = this;
-		var seek = params['time'] === undefined ? 0 : (params['time']).split(/:/)[1];
-  	if( params['stream'] != vi2.observer.current_stream ){ 
+		var seek = params.time === undefined ? 0 : params.time.split(/:/)[1];
+  	if( params.stream != vi2.observer.current_stream ){ 
     	$(vi2.dom).empty(); 
-    	vi2.observer.setCurrentStream( params['stream'], seek ); 
+    	vi2.observer.setCurrentStream( params.stream, seek ); 
 			vi2.observer.player.play(); 
 			_this.loadWidgets();
 		}else{
-			vi2.observer.player.currentTime( seek )
+			vi2.observer.player.currentTime( seek );
 		}	
 	},
 	
@@ -167,7 +167,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	/**
 	*
 	*/
-	loadWidgets : function(){ alert(99)
+	loadWidgets : function(){
 	
 		// Define some annotation widgets
 	 	var toc = new Vi2.TableOfContents( { 

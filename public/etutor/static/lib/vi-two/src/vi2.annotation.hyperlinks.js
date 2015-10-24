@@ -70,7 +70,7 @@
 			
 			// show comments in a menu
 			if( this.options.hasMenu ){
-				this.createMenu(events)
+				this.createMenu(events);
 			}
 			
 			// map events on the timeline
@@ -253,7 +253,7 @@
 	 							return true;
 	 							//var new_stream = obj.content.target.replace(/\#!/,'');
 								//vi2.observer.setCurrentStream(new_stream);
-								break;
+								
 							case 'external' :
 								return true;
 							case 'cycle' : 
@@ -273,14 +273,14 @@
 									duration : 0
 								};	
 								// append that object
-								vi2.observer.vid_arr[0]['annotation'].push(return_obj); 
+								vi2.observer.vid_arr[0].annotation.push(return_obj); 
 								//	_this.loadCycleVideo(obj.content.target, 10, 15, obj.displayPosition.t1); // url, seek time, duration, return_seek
 								break;
 							case 'x':
 								break;	
-						};
+						}
 						// load Video
-						_this.loadVideo(vi2.observer.vid_arr[0]['url'], obj.seek);
+						_this.loadVideo(vi2.observer.vid_arr[0].url , obj.seek);
 						
 						// remove link ancshor after click 
 						$(this).remove();

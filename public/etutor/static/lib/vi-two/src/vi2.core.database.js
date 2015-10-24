@@ -307,7 +307,7 @@
 		if(this.json_data.toc === undefined){
 			return {};
 		}else{ 
-			return this.getStreamById(id).toc
+			return this.getStreamById(id).toc;
 		}
 	},
 	
@@ -328,12 +328,13 @@
 	getSlidesById : function(id){ 
 		//alert(JSON.stringify( this.getStreamById(id)['slides'] ))
 		return this.getStreamById(id).slides; 
-
+		/*
 		if(this.json_data.slides === undefined){
 			return {};
 		}else{
 			return this.json_data.slides;
 		}
+		*/
 		/*
 		var slides = {}; 
 		$.each(this.json_data, function(i, val){ 

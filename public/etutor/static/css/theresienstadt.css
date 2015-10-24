@@ -744,26 +744,25 @@ font-weight:bold;
 /* Accordion panel */
 #accordion {
 	background-color:#ddd;
-	margin-top:0px;
-	
-  width:100%
-	height:100%
-	overflow:hidden;
+	top:50px;
 	position:absolute;
-	display:inline-block;
+	right:0;
+	
+ 	width: 25vw !important;
+ 	height: 80vh;
+	overflow:hidden;
+	display:block;
 	clear:both;
-	top:0;
-	right:0;	
+
 }
 
 #accordion-resizer {
-	position:absolute;
-	top:50px;
-	right:0 !important; /* -273px */
+/*	
+	right:0 !important; 
   width: 25vw !important;
  	height: 80vh;
  	overflow:hidden;
-/* 	-moz-transition: all 0.3s ease-out;
+ 	-moz-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   transition-delay: .8s;*/
@@ -776,14 +775,6 @@ font-weight:bold;
 	line-height:22px;
 }
 
-
-#accordion-resizer:hover{
-	right:0 !important;
-	-moz-transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  transition-delay: .3s;
-}
 
 .ui-widget-content{
 	border:none;

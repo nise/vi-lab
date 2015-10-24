@@ -1,23 +1,15 @@
 
 # VI-TWO
-## this release
-
-- correct slide presenation	
-
-- check ACL
-
-
-
+## urgent
+- check annotation sync
+- popcorn maker @ admin
 - guided tour
-
 - activity log
-
+- display comments / links animated 
 - test mit vielen users
 - bug in Chrome, 
 - test IE
 
-
-	
 ## bugs
 - bug @ logged out members are not gettng disabled in the peers client
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden

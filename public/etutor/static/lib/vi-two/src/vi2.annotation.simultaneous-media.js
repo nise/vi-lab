@@ -37,7 +37,6 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			selector: '.syncMedia', 
 			hasTimelineMarker: true, 
 			controls: true, 
-			hasTimelineMarker: true,
 			timelineSelector : '.vi2-timeline-main',
 			hasMenu: false,
 			menuSelector:'.synMediaMenu',
@@ -48,11 +47,10 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		tag_obj : [],
 		currImgId : -1,
 		
-		width : 0, // not needed
-		height : 0, 
 		
-		
-		/* Initialize */
+		/*
+		* Initialize 
+		**/
 		init : function(ann){  	
   		var _this = this; 
 			this.tag_obj = [];
@@ -71,7 +69,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
  			});
   	
   		// place holder
-  		$(this.options.selector).html(new Image()).addClass(this.options.childtheme);;
+  		$(this.options.selector).html(new Image()).addClass(this.options.childtheme);
   		this.currImgId = -1;
 			var o = new Image(); 
 			$(o)
@@ -85,7 +83,11 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			//if( this.options.hasMenu )	{ this.createMenu(); }
 		},
 		
-		/** ... */
+		
+		/* 
+		* Creates menu of slides
+		* todo: has not been tested 
+		**/
 		createMenu : function(){  
 			$(this.options.selector).empty();
 			var _this = this;
@@ -142,7 +144,9 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			
 		},			
 		
-		/* -- */
+		/* 
+		* Appends anotation object to DOM element 
+		**/
 		// <div type="syncMedia" starttime=1344 duration=165 id=hello>hydro_graefe-11.jpg</div>
 		appendToDOM : function(id){ 
 			$(vi2.dom).find('[type="syncMedia"]').each(function(i,val){ $(this).remove(); });
@@ -241,6 +245,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		},
 		
 		width : function(){ return this.width; },
+		
 		height : function(){ return this.height; }
 			
   	

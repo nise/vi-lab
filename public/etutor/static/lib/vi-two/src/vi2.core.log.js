@@ -84,7 +84,7 @@
 				console.log(msg.context);
 			}
 			var 
-				pt = vi2.observer.player.currentTime()
+				pt = vi2.observer.player.currentTime();
 				t = new Date()
 				;
 			t = t.getTime();

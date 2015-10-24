@@ -7,20 +7,17 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
-
-json_validator: http://jsonformatter.curiousconcept.com/
-
+*	json_validator: http://jsonformatter.curiousconcept.com/
+*
 **/ 
 
 Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		/* @constructs 
 		*/
-  __constructor : function() {
-   // do nothing
-	},
+  __constructor : function() {},
 
-	//
 	
+	/**/
 	validateTags : function(){
 		var tax = [];
 		$.each(this.json_data._taxonomy, function(i, stream){
@@ -32,12 +29,12 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		var tags = [];
 		$.each(this.json_data._stream, function(i, val){
 			$.each(this.tags, function(i, tag){
-				tags.push(tag.tagname)
+				tags.push(tag.tagname);
 			});
 		});
 		
 		$.each(tax, function(i, val){
-				if($.inArray(val, tags) == -1){
+				if($.inArray(val, tags) === -1){
 					$('#debug').append(val+', ');
 				}
 		});
@@ -59,7 +56,7 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		$.each(this.json_data._stream, function(i, val){
 			$('#debug').append('Not found in '+val.id+': ');
 			$.each(this.tags, function(i, tag){
-				if($.inArray(tag.tagname, tax) == -1){
+				if($.inArray(tag.tagname, tax) === -1){
 					$('#debug').append(tag.tagname+', ');
 				}
 			});
@@ -112,7 +109,7 @@ duration":178.378,"tracks":[
 		// fetch slides
 		$.each(vi2.db.getStreamById(id, true).slides, function(i, val){
 			//butter += '{"image":{"start": '+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+id+'/'+this.img+'", "text":"", "target":"image-container", "link":{}, "id":"'+this.img.replace(/.jpg/, '')+'"}},'
-			if(i % 2 == 0 ){
+			if(i % 2 === 0 ){
 				butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 			}else{
 				butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+ (Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
@@ -198,7 +195,7 @@ duration":178.378,"tracks":[
 			var id = lecture.id;
 			err += 'mkdir '+lecture.id;
 			$.each(lecture.slides, function(j, img){
-				err += 'cp ./'+id+'/'+img.img+' /'+lecture.id+' ;'
+				err += 'cp ./'+id+'/'+img.img+' /'+lecture.id+' ;';
 				//err += 'test -e ./'+id+'/'+img.img+' || echo "bad: '+img.img+'"; ';
 			
 			});
@@ -230,7 +227,7 @@ duration":178.378,"tracks":[
     								if(val.id == dataString){  
     									// fetch slides
 											$.each(val.slides, function(i, val){ 
-												if(i % 2 == 0 ){ 
+												if(i % 2 === 0 ){ 
 													butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 												}else{
 													butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
@@ -264,7 +261,8 @@ duration":178.378,"tracks":[
 	chord : function(){
 	var _this = this;
 	var out = '';
-	var links =''
+	var links ='';
+	
 	$.ajax({
     			type: "POST",
     			dataType: "json",
@@ -275,10 +273,10 @@ duration":178.378,"tracks":[
 							$.each(val.links, function(ii,vall){
 								var cat = String(_this.getStreamById(val.id).metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase();
 								links += '"flare.'+cat+'.'+vall.text+'.x",';
-							}) 
+							}); 
 							
-							out += '{"name":"flare.'+String(this.metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase()+'.'+val.id+'.x","size":1699,"imports":['+links.slice(0,links.length-1)+']},'								
-						})
+							out += '{"name":"flare.'+String(this.metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase()+'.'+val.id+'.x","size":1699,"imports":['+links.slice(0,links.length-1)+']},';			
+						});
 					$('#debug').html(out.slice(0,out.length-1));
 					}
 	});
