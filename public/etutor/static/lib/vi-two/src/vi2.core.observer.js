@@ -10,14 +10,14 @@
 *	- clear overlay-container and other at updateVideo()
 *	- allow page back, offer bread crumb menu, ...
 *	- RSS: http://code.google.com/apis/youtube/2.0/reference.html
-*/
+**/
 	
-Vi2.Observer = $.inherit(/** @lends Observer# */{
+Vi2.Observer = $.inherit(/* @lends Observer# **/{
 	
-	/** 
+	/* 
 	*		@constructs
 	*		@params {object} options  
-	*/
+	**/
 	__constructor : function(options) { 
 		this.options = $.extend(this.options, options); 
 		this.widget_list = {}; // Assoc Array is an Object // Object.size(this.widget_list)
@@ -55,7 +55,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		this.seek = seek; 
 		/*$(vi2.dom)
 			.empty()
-			.append(vi2.db.getVideoById(stream)); */
+			.append(vi2.db.getVideoById(stream)); **/
 		// append video
 	  var video = $('<div></div>')
 				.attr('type',"video")
@@ -76,8 +76,8 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 
 
 	/*
-	*
-	**/
+		*
+		**/
 	parse : function(selector, markupType){ 
 		this.parseSelector = selector;
 		this.parser = new Parser(selector, markupType === null ? this.markupType : markupType);
@@ -90,8 +90,8 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	
 
 	/*
-	*
-	**/
+		*
+		**/
 	init : function(seek){  
 		seek = seek === undefined ? 0 : seek;
 		var _this = this;  
@@ -125,28 +125,9 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	},
 	
 	
-		/* --xxxx 
-	init2 : function(seek){  
-		seek = seek === undefined ? 0 : seek;
-		var _this = this; 
-		var videoo = $('<video></video>')
-				.attr('controls', false)
-				.attr('autobuffer', true)
-				.attr('preload', "metadata")
-				.attr('id', this.options.videoSelector.replace(/\#|./,''))
-				.addClass('embed-responsive-item')
-				.text('Your Browser does not support either this video format or videos at all');
-		$(this.options.selector)
-			.addClass('embed-responsive embed-responsive-16by9')
-			.html(videoo); 
-	
-	},
-	*/
-	
-	
-	/**
-	*
-	*/
+	/*
+		*
+		**/
 	setAnnotations : function(){   
 		var _this = this; 
 		this.clock.annotations = [];			 
@@ -155,7 +136,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		$.each(_this.vid_arr[0].annotation, function(i, val){ 		
 			_this.clock.addAnnotation(val); 
 		}); 
-		
+
 		// initiate widgets
 		$.each(_this.widget_list, function(j, widget){ 
 			if( widget.type !== 'player-widget' ){ 
@@ -166,53 +147,19 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 		});
 	},
   		
-  		
-	/** -
-	checkVideo : function(){
-		// proof against available videos
-		if(!!document.createElement('video').canPlayType){
-			var vidTest = document.createElement("video");
-			oggTest = vidTest.canPlayType('video/ogg; codecs="theora, vorbis"');
-			if (!oggTest){
-				h264Test = vidTest.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
-				if (!h264Test){
-					console.log("Sorry. No video support.");
-				}else{
-					if (h264Test === "probably"){
-						//document.getElementById("checkVideoResult").innerHTML="Yeah! Full support!";
-					}else{
-						//document.getElementById("checkVideoResult").innerHTML="Meh. Some support.";
-					}
-				}
-			}else{
-				if (oggTest === "probably"){
-					//document.getElementById("checkVideoResult").innerHTML="Yeah! Full support!";
-				}else{
-					//document.getElementById("checkVideoResult").innerHTML="Meh. Some support.";
-				}
-			}
-		}else{
-			console.log("Sorry. No video support. xx");
-		}
-	}, 
-		*/	
-		
-		
-	/*
-	*
-	**/
+	
+	/* 
+		*
+		**/
 	updateLocation : function(identifier, value){ 
 		window.location.replace(window.location.href.split('#')[0] + '#!'+identifier+':'+value.replace(/\ /g, '_'));
 	},
   		  		
 
-	/*
-	*
-	**/
+	/* 
+		*
+		**/
 	addWidget : function(obj){ 
-		if(this.widget_list[obj.name] !== null){ 
-			//return false;
-		}
 		var _this = this;   	
 		obj.player = this.player; 
 		this.clock.addHook(obj.name, obj);	
@@ -240,24 +187,24 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	
 	
 	/* 
-	* Returns true or false whether the given string is the name of an registered widget or not. 
-	**/
+		* Returns true or false whether the given string is the name of an registered widget or not. 
+		**/
 	isWidget : function(widget){
 		return this.widget_list[widget] !== null;	
 	},
 	
 	
 	/* 
-	* Returns the widget object to the given name. 
-	**/
+		* Returns the widget object to the given name. 
+		**/
 	getWidget : function(widget_name){
 		return this.widget_list[widget_name];
 	},
 	
 	
 	/*
-	*
-	**/
+		* Removes widget from widget_list
+		**/
 	removeWidget : function(widget_name){
 		// bugy?
 		this.widget_list[widget_name] = 0;
@@ -265,8 +212,8 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	
 	
 	/* 
-	* append annotation data of widgets to DOM 
-	**/
+		* appends annotation data of widgets to DOM 
+		**/
 	annotationsToDOM : function(){ 
 		var _this = this; 
 		$.each(this.widget_list, function(i, widget){ 
@@ -302,7 +249,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 
 
 	/*
-	*
+	* Proxy function to trigger the logger
 	**/
 	log : function(msg){
 		$(this.player).trigger('log', [msg]);

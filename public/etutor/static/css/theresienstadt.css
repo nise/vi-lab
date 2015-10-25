@@ -744,30 +744,23 @@ font-weight:bold;
 /* Accordion panel */
 #accordion {
 	background-color:#ddd;
-	top:50px;
-	position:absolute;
-	right:0;
-	
- 	width: 25vw !important;
- 	height: 80vh;
+	width:100%;
 	overflow:hidden;
 	display:block;
 	clear:both;
-
 }
 
 #accordion-resizer {
-/*	
-	right:0 !important; 
-  width: 25vw !important;
- 	height: 80vh;
- 	overflow:hidden;
- 	-moz-transition: all 0.3s ease-out;
+	position:absolute;
+	top:50px;
+	height: 80vh;
+	width: 25vw !important;
+	right:0 !important; /* -273px */
+	-moz-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  transition-delay: .8s;*/
+  transition-delay: .8s;
 }
-
 
 .instructions{
 	padding:10px;

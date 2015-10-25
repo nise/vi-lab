@@ -401,7 +401,7 @@ var ViLab = $.inherit({
 				title = 'Testfragen';			
 				break;
 			case "syncMedia" : 
-				widget = new Vi2.SyncronizeMedia( widget_options.options ); 
+				widget = new Vi2.SyncronizeMedia( widget_options.options );  
 				title = 'Folien';
 				break;
 			case "tags" :
@@ -425,7 +425,7 @@ var ViLab = $.inherit({
 				break;		
 			default : return;			
 		}
-		this.observer.addWidget( widget );
+		this.observer.addWidget( widget ); 
 		this.loadedWidgets.push( widget_name );
 		
 		// add accordion elements

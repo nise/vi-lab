@@ -47,7 +47,9 @@
 		link_list : {},
 		currLinkId :-1,
 
-		/* ... */
+		/** 
+				*
+				*/
 		init : function(ann){
 			this.clear();
 			var events = [];
@@ -79,9 +81,10 @@
 			}		
 		},		
 		
+		
 		/* 
-		* Translated database entry of link into a dom element that the parser will read later on 
-		**/
+			* Translated database entry of link into a dom element that the parser will read later on 
+			**/
 		appendToDOM : function(id){
 			var _this = this;
 			$(vi2.dom).find('[type="hyperlinks"]').each(function(i,val){ $(this).remove(); });
@@ -107,8 +110,10 @@
 			
 		},	
 		
-		/*
-		**/
+		
+		/**
+			*
+			*/
 		updateDOMElement : function( obj ){  
 			$(vi2.dom)
 				.find('[date="'+ obj.date +'"]')
@@ -126,9 +131,9 @@
 		},
 		
 		
-		/*
-		* { type: type, date: new Date().getTime(), time: formData.time, content: formData.content); 
-		**/
+		/**
+			* @todo { type: type, date: new Date().getTime(), time: formData.time, content: formData.content); 
+			*/
 		addDOMElement : function( obj ){ 
 			$('<div></div>')
 				.attr('type', obj.type)
@@ -217,10 +222,11 @@
 		},			
 		
 		
-		/** Begin of XLink annotation. Typically the link anchor will apeare on screen. There are three different link types: standard (target within video collection), external (target elsewhere in the WWW) and cycle (like standard link but with the option to return to the link source).
-				@param {Object} e
-				@param {String} id
-				@param {Object} obj		
+		/** 
+			* Begin of XLink annotation. Typically the link anchor will apeare on screen. There are three different link types: standard (target within video collection), external (target elsewhere in the WWW) and cycle (like standard link but with the option to return to the link source).
+			* @param {Object} e
+			* @param {String} id
+			* @param {Object} obj		
 		*/
 		begin : function(e, id, obj){  
 				this.currLinkId = id;
@@ -292,19 +298,26 @@
 					; 
 		},
 	
-		/* End of annotion time. The link anchor will disapear from screen. */
+	
+		/** 
+				*
+				* End of annotion time. The link anchor will disapear from screen. 
+				*/
 		end : function(e, id){ 	 
 			$( this.options.displaySelector + ' .ov-'+id ).hide();
 		},
 		
 		
-		// ?
+		/** 
+				*
+				*/
 		clear : function(){
 			$( this.options.displaySelector ).html('');
 			// xxx static, stands in relative with template of videoplayer
 			$('.vi2-video-seeklink').html('');
 			
 		},
+		
 		
 		/*
 		* 
@@ -391,7 +404,10 @@
 	  	this.player.loadVideo(url, seek);  			
   	},
   	
-  	/** ... */
+  	
+  	/** 
+				*
+				*/
   	loadCycleVideo : function(url, seek, duration, return_seek){
 	  	this.player.loadCycleVideo(url, seek, duration, return_seek);  			
   	}

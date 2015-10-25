@@ -241,7 +241,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				.text('abschicken')
 				.click(function(){
 					$(this).hide();					
-					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author)
+					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author);
 				});
 				
 			$(o).append(head).append(quest).append(answ).append(solve); 
@@ -423,12 +423,12 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 							;	 
 				}
 			}
-			
+			/*jshint multistr: true */
 			var time_field = "\
 				<div class='input-group'>\
 					<span class='input-group-addon' id='hyperlinks-form3'>Zeitpunkt (s)</span>\
 					<input type='text' class='form-control' value='" + json.time + "' name='assessment-entry-time' data-datatype='decimal-time' placeholder='' aria-describedby='hyperlinks-form3'>\
-				</div>"
+				</div>";
 		
 			var form =  $('<div></div>')
 			.addClass('questionanswers')
@@ -479,7 +479,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			}
 			
 			if( $('#answerbox').find('div').length === 0 ) {
-				msg += '<br> Bitte definieren Sie für diese Frage entsprechende Antwortoptionen oder Lösungen.'
+				msg += '<br> Bitte definieren Sie für diese Frage entsprechende Antwortoptionen oder Lösungen.';
 			}else{
 				// if its a fill-in task
 				$('#answerbox').find('textarea').each(function(i,val){
@@ -600,7 +600,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 				$('.assessment-msg-warning').hide();
 				$('div.assessment-answers').find("input[type='checkbox']:checked").each(function(i, val){ 
 					
-					obj.checked.push( $(val).attr('id') )
+					obj.checked.push( $(val).attr('id') );
 					one_checked = true;
 					if( obj.correct.indexOf( $(val).attr('id') ) > -1 ){
 						correct.push(true); 
@@ -733,7 +733,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			
 			// show comments in a menu
 			if( this.options.hasMenu ){
-				this.createMenu(events)
+				this.createMenu(events);
 			}
 			
 			// map events on the timeline
@@ -888,7 +888,9 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 				return false;
 			}else{
 				// reset highlight
-				$(this.options.menuSelector+' li').each(function(i, val){ $(this).removeClass('highcomment'); })
+				$(this.options.menuSelector+' li').each(function(i, val){ 
+					$(this).removeClass('highcomment'); 
+				});
 				// highlight comment entry
 				$(this.options.menuSelector+' li#t' + obj.displayPosition.t1 ).addClass('highcomments');
 			}
@@ -1006,7 +1008,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 			
 			// show comments in a menu
 			if( this.options.hasMenu ){
-				this.createMenu(events)
+				this.createMenu(events);
 			}
 			
 			// map events on the timeline
@@ -1189,7 +1191,7 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 	 							return true;
 	 							//var new_stream = obj.content.target.replace(/\#!/,'');
 								//vi2.observer.setCurrentStream(new_stream);
-								break;
+								
 							case 'external' :
 								return true;
 							case 'cycle' : 
@@ -1209,14 +1211,14 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 									duration : 0
 								};	
 								// append that object
-								vi2.observer.vid_arr[0]['annotation'].push(return_obj); 
+								vi2.observer.vid_arr[0].annotation.push(return_obj); 
 								//	_this.loadCycleVideo(obj.content.target, 10, 15, obj.displayPosition.t1); // url, seek time, duration, return_seek
 								break;
 							case 'x':
 								break;	
-						};
+						}
 						// load Video
-						_this.loadVideo(vi2.observer.vid_arr[0]['url'], obj.seek);
+						_this.loadVideo(vi2.observer.vid_arr[0].url , obj.seek);
 						
 						// remove link ancshor after click 
 						$(this).remove();
@@ -1374,7 +1376,6 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			selector: '.syncMedia', 
 			hasTimelineMarker: true, 
 			controls: true, 
-			hasTimelineMarker: true,
 			timelineSelector : '.vi2-timeline-main',
 			hasMenu: false,
 			menuSelector:'.synMediaMenu',
@@ -1385,11 +1386,10 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		tag_obj : [],
 		currImgId : -1,
 		
-		width : 0, // not needed
-		height : 0, 
 		
-		
-		/* Initialize */
+		/*
+		* Initialize 
+		**/
 		init : function(ann){  	
   		var _this = this; 
 			this.tag_obj = [];
@@ -1408,7 +1408,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
  			});
   	
   		// place holder
-  		$(this.options.selector).html(new Image()).addClass(this.options.childtheme);;
+  		$(this.options.selector).html(new Image()).addClass(this.options.childtheme);
   		this.currImgId = -1;
 			var o = new Image(); 
 			$(o)
@@ -1422,7 +1422,11 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			//if( this.options.hasMenu )	{ this.createMenu(); }
 		},
 		
-		/** ... */
+		
+		/* 
+		* Creates menu of slides
+		* todo: has not been tested 
+		**/
 		createMenu : function(){  
 			$(this.options.selector).empty();
 			var _this = this;
@@ -1479,7 +1483,9 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 			
 		},			
 		
-		/* -- */
+		/* 
+		* Appends anotation object to DOM element 
+		**/
 		// <div type="syncMedia" starttime=1344 duration=165 id=hello>hydro_graefe-11.jpg</div>
 		appendToDOM : function(id){ 
 			$(vi2.dom).find('[type="syncMedia"]').each(function(i,val){ $(this).remove(); });
@@ -1578,6 +1584,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		},
 		
 		width : function(){ return this.width; },
+		
 		height : function(){ return this.height; }
 			
   	
@@ -1942,7 +1949,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 				;
 			this.video.onloadstart = function(e){
 				// 1. event called 
-				t0 = Date.now()
+				t0 = Date.now();
 			};
 			this.video.ondurationchange = function(){ 
 				// 2. event called
@@ -1956,7 +1963,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 			};
 			this.video.onloadeddata = function(e){ 
 				// 4. event called
-				vi2.observer.log({context:'player', action:'video-loading-time', values:[t1, ( Date.now() - t0 )]})
+				vi2.observer.log({context:'player', action:'video-loading-time', values:[t1, ( Date.now() - t0 )]});
 				//console.log('load data '+ ( Date.now() - t0 ) ); 
 			};
 			this.video.onprogress = function(e){ 
@@ -2064,7 +2071,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		* Add Video preview on timeline
 		* todo: event could be logged
 		**/
-		createTimelineSlidePreview : function(){ return;
+		createTimelineSlidePreview : function(){ 
 			var 
 					_this = this,
 					width = $( this.options.timelineSelector ).width(),
@@ -2468,7 +2475,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 				
 				if(iTime >= oAnn.displayPosition.t1 && iTime < (Number(oAnn.displayPosition.t1) + Number(oAnn.displayPosition.t2))) {
 					if(!oAnn.active){
-						oAnn.active = true; alert(oAnn.type)
+						oAnn.active = true; alert(oAnn.type);
 	  				$(_this.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
 					}
 				}else {
@@ -2513,8 +2520,8 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		/* ... */
 		parseTime : function (strTime) { 
 			return strTime;
-			var aTime = strTime.toString().split(":");
-			return parseInt(aTime[0],10) * 60 + parseInt(aTime[1],10) * 1;// + parseFloat(aTime[2]);
+			//var aTime = strTime.toString().split(":");
+			//return parseInt(aTime[0],10) * 60 + parseInt(aTime[1],10) * 1;// + parseFloat(aTime[2]);
 		},
 	
 		/* ... */
@@ -2631,7 +2638,8 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		}else{
 			return this.json_data;
 		}
-		/// old:
+		// old:
+		/*
 		var stream = {};  
 		$.each(this.json_data, function(i, val){ 
 			if (val._id === id){  
@@ -2640,6 +2648,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		});
 		
 		return stream;
+		*/
 	},
 			
 
@@ -2834,7 +2843,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		if(this.json_data.toc === undefined){
 			return {};
 		}else{ 
-			return this.getStreamById(id).toc
+			return this.getStreamById(id).toc;
 		}
 	},
 	
@@ -2855,12 +2864,13 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 	getSlidesById : function(id){ 
 		//alert(JSON.stringify( this.getStreamById(id)['slides'] ))
 		return this.getStreamById(id).slides; 
-
+		/*
 		if(this.json_data.slides === undefined){
 			return {};
 		}else{
 			return this.json_data.slides;
 		}
+		*/
 		/*
 		var slides = {}; 
 		$.each(this.json_data, function(i, val){ 
@@ -3078,7 +3088,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 				console.log(msg.context);
 			}
 			var 
-				pt = vi2.observer.player.currentTime()
+				pt = vi2.observer.player.currentTime();
 				t = new Date()
 				;
 			t = t.getTime();
@@ -3450,9 +3460,7 @@ Vi2.Observer = $.inherit(/** @lends Observer# */{
 	*
 	**/
 	addWidget : function(obj){ 
-		if(this.widget_list[obj.name] !== null){ 
-			//return false;
-		}
+
 		var _this = this;   	
 		obj.player = this.player; 
 		this.clock.addHook(obj.name, obj);	
@@ -3980,9 +3988,9 @@ function removeDuplicates (cat){
 function timeDifference (s, prefix, postfix){
 			//prefix = prefix === undefined ? 'vor ' : prefix;
 			//postfix = postfix === undefined ? ' ago' : postfix; 
-			alert(1)
-			var b = moment( s );  alert(2);
-			var a = moment( s ); alert(3)
+			
+			var b = moment( s );  
+			var a = moment( s ); 
 			
 			
 			var diff = a.diff(b, 'seconds'); 
@@ -4010,10 +4018,10 @@ function timeDifference (s, prefix, postfix){
 				return prefix + diff.toFixed(1) + 'm' + postfix; 
 			}
 			
-			var diff = a.diff(b, 'years', true);
+			diff = a.diff(b, 'years', true);
 			return prefix + diff.toFixed(1) + 'y' + postfix; 
 			
-};
+}
 
 
 
@@ -4022,9 +4030,12 @@ function timeDifference (s, prefix, postfix){
 Object.size = function(obj) {
     var 
     	size = 0, 
-    	key = {};
+    	key = {}
+    	;
     for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
+        if (obj.hasOwnProperty(key)){
+        	size++;
+        }	
     }
     return size;
 };
@@ -4164,7 +4175,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	* This functions process a comma separated list of tags in order to identify the video streams that are related to these tags
 	*/
 	handleTags : function(params){ 
-		var tags = params['tag'].split(/,/); 
+		var tags = params.tag.split(/,/); 
 		var stream_names = '';
 		var streams = [];
 		var inverted = vi2.db.getInvertedTagIndex();
@@ -4191,7 +4202,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	* This functions process a single given category 
 	*/
 	handleCategory : function(params){ 
-		var category = params['category']; 
+		var category = params.category; 
 		var streams = vi2.db.getStreamsByCategory( category );
 		
 		// render it
@@ -4216,14 +4227,14 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	*/
 	handleNewStream : function(params){ 
 		var _this = this;
-		var seek = params['time'] === undefined ? 0 : (params['time']).split(/:/)[1];
-  	if( params['stream'] != vi2.observer.current_stream ){ 
+		var seek = params.time === undefined ? 0 : params.time.split(/:/)[1];
+  	if( params.stream != vi2.observer.current_stream ){ 
     	$(vi2.dom).empty(); 
-    	vi2.observer.setCurrentStream( params['stream'], seek ); 
+    	vi2.observer.setCurrentStream( params.stream, seek ); 
 			vi2.observer.player.play(); 
 			_this.loadWidgets();
 		}else{
-			vi2.observer.player.currentTime( seek )
+			vi2.observer.player.currentTime( seek );
 		}	
 	},
 	
@@ -4232,7 +4243,7 @@ Vi2.VideoManager = $.inherit(/** @lends Vi2.VideoManager# */{ //
 	/**
 	*
 	*/
-	loadWidgets : function(){ alert(99)
+	loadWidgets : function(){
 	
 		// Define some annotation widgets
 	 	var toc = new Vi2.TableOfContents( { 
@@ -5084,7 +5095,6 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			_this = this,
 			interval = 5,
 			lastposition = -1, 
-    	interval, 
     	timer
     	;
     	
@@ -5093,10 +5103,10 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         currentinterval = (Math.round( _this.currentTime() ) / interval) >> 0;
         //console.log("i:" + currentinterval + ", p:" + player.getPosition());
         if (currentinterval != lastposition) { 
-            vi2.observer.log({context:'player', action:'playback', values:[ currentinterval ]})
+            vi2.observer.log({context:'player', action:'playback', values:[ currentinterval ]});
             lastposition = currentinterval;
         }
-    };
+    }
 
     function start() { 
         if (timer) {
@@ -5104,7 +5114,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         }
         timer = setInterval(loop, interval * 1000);
         setTimeout(loop, 100);
-    };
+    }
 
     function restart() {
         if (timer) {
@@ -5113,12 +5123,12 @@ var Video = $.inherit(/** @lends VideoPlayer# */
         lasttime = -1;
         timer = setInterval(loop, interval * 1000);
         setTimeout(loop, 100);
-    };
+    }
 
     function stop() {
         timer = clearInterval(timer);
         loop();
-    };
+    }
 /*
     player.oncanplay(start);
    	 player.onSeek(restart);
@@ -5129,25 +5139,23 @@ var Video = $.inherit(/** @lends VideoPlayer# */
     	player.onError(stop);
   */  
     this.video.addEventListener('play', function(e){ 
-			start()	
+			start();	
 		});
 		
 		this.video.addEventListener('pause', function(e){ 
-			stop()
+			stop();
 		});
 		
 		this.video.addEventListener('abort', function(e){  
-			stop()
+			stop();
 		});
 
-		// event binding: on time update
 		this.video.addEventListener('timeupdate', function(e) { 
-						
+							
 		});
 		
-		// event binding: on ended
 		this.video.addEventListener('ended', function(e) { 
-			stop()
+			stop();
 		}, false);
     
 	}
@@ -5349,7 +5357,7 @@ Vi2.SkipBack = $.inherit(/** @lends Vi2.SkipBack# */{ //
 				.bind('click', function(e){ 
 					var current = vi2.observer.player.currentTime();
 					var next = Number(Number(current) - Number(_this.options.step));
-					alert(next)
+					
 					vi2.observer.log({context:'skipBack',action:'skip-back',values: [current, String(next) ]});
 					vi2.observer.player.currentTime( next ); 
 				})
@@ -5365,20 +5373,20 @@ Vi2.SkipBack = $.inherit(/** @lends Vi2.SkipBack# */{ //
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
-
-json_validator: http://jsonformatter.curiousconcept.com/
-
+*	json_validator: http://jsonformatter.curiousconcept.com/
+*
 **/ 
 
 Vi2.Maintain = $.inherit(/** @lends Maintain# */{
-		/* @constructs 
+		/** @constructs 
+		* 
 		*/
-  __constructor : function() {
-   // do nothing
-	},
+  __constructor : function() {},
 
-	//
 	
+	/**
+	*
+	*/
 	validateTags : function(){
 		var tax = [];
 		$.each(this.json_data._taxonomy, function(i, stream){
@@ -5390,12 +5398,12 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		var tags = [];
 		$.each(this.json_data._stream, function(i, val){
 			$.each(this.tags, function(i, tag){
-				tags.push(tag.tagname)
+				tags.push(tag.tagname);
 			});
 		});
 		
 		$.each(tax, function(i, val){
-				if($.inArray(val, tags) == -1){
+				if($.inArray(val, tags) === -1){
 					$('#debug').append(val+', ');
 				}
 		});
@@ -5403,7 +5411,9 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 	},
 
 
-	//
+	/*
+	*
+	**/
 	validateTags2 : function(){
 	
 		var tax = [];
@@ -5417,7 +5427,7 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 		$.each(this.json_data._stream, function(i, val){
 			$('#debug').append('Not found in '+val.id+': ');
 			$.each(this.tags, function(i, tag){
-				if($.inArray(tag.tagname, tax) == -1){
+				if($.inArray(tag.tagname, tax) === -1){
 					$('#debug').append(tag.tagname+', ');
 				}
 			});
@@ -5470,7 +5480,7 @@ duration":178.378,"tracks":[
 		// fetch slides
 		$.each(vi2.db.getStreamById(id, true).slides, function(i, val){
 			//butter += '{"image":{"start": '+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+id+'/'+this.img+'", "text":"", "target":"image-container", "link":{}, "id":"'+this.img.replace(/.jpg/, '')+'"}},'
-			if(i % 2 == 0 ){
+			if(i % 2 === 0 ){
 				butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 			}else{
 				butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+ (Number(this.starttime) + Number(this.duration)) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
@@ -5556,7 +5566,7 @@ duration":178.378,"tracks":[
 			var id = lecture.id;
 			err += 'mkdir '+lecture.id;
 			$.each(lecture.slides, function(j, img){
-				err += 'cp ./'+id+'/'+img.img+' /'+lecture.id+' ;'
+				err += 'cp ./'+id+'/'+img.img+' /'+lecture.id+' ;';
 				//err += 'test -e ./'+id+'/'+img.img+' || echo "bad: '+img.img+'"; ';
 			
 			});
@@ -5588,7 +5598,7 @@ duration":178.378,"tracks":[
     								if(val.id == dataString){  
     									// fetch slides
 											$.each(val.slides, function(i, val){ 
-												if(i % 2 == 0 ){ 
+												if(i % 2 === 0 ){ 
 													butter1 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639244","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
 												}else{
 													butter2 += '{"id":"TrackEvent'+i+'","type":"image","popcornOptions": {"start":'+this.starttime+',"end":'+(this.starttime + this.duration) +',"href":"","src":"http://127.0.0.1:3033/static/slides/'+dataString+'/'+this.img+'","text":"","target":"Area1"}, "track":"Track1327337639255","name":"Track1327337639'+Math.ceil(Math.random()*1000)+'"},';		
@@ -5622,7 +5632,8 @@ duration":178.378,"tracks":[
 	chord : function(){
 	var _this = this;
 	var out = '';
-	var links =''
+	var links ='';
+	
 	$.ajax({
     			type: "POST",
     			dataType: "json",
@@ -5633,10 +5644,10 @@ duration":178.378,"tracks":[
 							$.each(val.links, function(ii,vall){
 								var cat = String(_this.getStreamById(val.id).metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase();
 								links += '"flare.'+cat+'.'+vall.text+'.x",';
-							}) 
+							}); 
 							
-							out += '{"name":"flare.'+String(this.metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase()+'.'+val.id+'.x","size":1699,"imports":['+links.slice(0,links.length-1)+']},'								
-						})
+							out += '{"name":"flare.'+String(this.metadata[0].category).replace(/\ /g, '').replace(/\_/g, '').replace(/\-/g, '').toLowerCase()+'.'+val.id+'.x","size":1699,"imports":['+links.slice(0,links.length-1)+']},';			
+						});
 					$('#debug').html(out.slice(0,out.length-1));
 					}
 	});

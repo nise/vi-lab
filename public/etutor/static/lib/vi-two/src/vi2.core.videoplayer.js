@@ -334,7 +334,6 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		this.createVolumeControl();
 		this.createVideoHiding();
 		
-		
 		// show/hide video controls
 		$(_this.options.videoControlsSelector).addClass("open-controls");
 		$("#video1, #overlay, #seq").hover(

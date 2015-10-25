@@ -56,9 +56,9 @@ js: ${js_files}
 #	Compress vi-two, all of the modules into vi-two.min.js
 js-min: ${js_files}
 		cat $^ > public/etutor/static/js/vi-two.js
-	  java -jar /usr/bin/compiler.jar --js public/etutor/static/js/vi-two.js --js_output_file public/etutor/static/js/vi-two.min.js
+	  #java -jar /usr/bin/compiler.jar --js public/etutor/static/js/vi-two.js --js_output_file public/etutor/static/js/vi-two.min.js
 #	  java -jar tools/yuicompressor-2.4.8.jar public/vi-lab/js/vi-two.js -o public/vi-lab/js/vi-two.min.js	   
-
+		gjslint --nojsdoc -r  public/etutor/static/js/vi-two.js
 
 
 

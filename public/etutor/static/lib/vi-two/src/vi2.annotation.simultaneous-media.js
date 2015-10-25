@@ -51,7 +51,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		/*
 		* Initialize 
 		**/
-		init : function(ann){  	
+		init : function(ann){  	alert(33);
   		var _this = this; 
 			this.tag_obj = [];
 			$.each(ann, function(i, val){  
@@ -128,7 +128,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 							// log something
 							vi2.observer.log({context:'syncMedia',action:'menu-click',values:[val.tagname,'',val.occ]} ); 
 					})
-				).appendTo( ul ); 
+				).appendTo( ul );  
 			});
 			$( vi2.observer.player ).on('player.play', function(e){ //alert()
 				$('#video1').removeClass('split');
@@ -160,7 +160,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 				.attr('id', val.id)
 				.attr('path', val.img ) // val.path
 				.text(this.tagname )
-				.appendTo( vi2.dom );
+				.appendTo( vi2.dom );  
 			}); 
 			
 		},
@@ -202,7 +202,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		
 		
 		/* */
-		placeMedia: function( e, id, obj ){
+		placeMedia: function( e, id, obj ){ 
 			if(this.currImgId == obj.content.target){
 				return false;
 			}else{  
@@ -223,7 +223,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		},	
 		
 		/** -- */
-		get_tag_by_name : function(name){
+		get_tag_by_name : function(name){  
 			var out = -1;
 			$.each(this.tag_obj, function(i, val){
 				if(val.tagname == name){

@@ -104,7 +104,8 @@
 		}else{
 			return this.json_data;
 		}
-		/// old:
+		// old:
+		/*
 		var stream = {};  
 		$.each(this.json_data, function(i, val){ 
 			if (val._id === id){  
@@ -113,6 +114,7 @@
 		});
 		
 		return stream;
+		*/
 	},
 			
 

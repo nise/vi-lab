@@ -12,12 +12,15 @@
 **/ 
 
 Vi2.Maintain = $.inherit(/** @lends Maintain# */{
-		/* @constructs 
+		/** @constructs 
+		* 
 		*/
   __constructor : function() {},
 
 	
-	/**/
+	/**
+	*
+	*/
 	validateTags : function(){
 		var tax = [];
 		$.each(this.json_data._taxonomy, function(i, stream){
@@ -42,7 +45,9 @@ Vi2.Maintain = $.inherit(/** @lends Maintain# */{
 	},
 
 
-	//
+	/*
+	*
+	**/
 	validateTags2 : function(){
 	
 		var tax = [];

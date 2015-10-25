@@ -158,7 +158,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 	
 	app.get('/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
-		Log.find().select('action utc').sort( 'utc' ).exec(function (err, logs) {
+		Log.find().select('action utc user').sort( 'utc' ).exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
 			}else{
