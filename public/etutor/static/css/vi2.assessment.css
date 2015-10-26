@@ -58,7 +58,7 @@ ul.assessmentlist li a { text-decoration:none; padding: 2px 1px 1px 3px; }
 		background: #efefef none repeat scroll 0 0;
     float: left;
     height: auto;
-    max-height:80vh;
+    max-height:80%;
     overflow:visible;
     left: 0;
     opacity: 0.98;
@@ -70,12 +70,6 @@ ul.assessmentlist li a { text-decoration:none; padding: 2px 1px 1px 3px; }
     z-index: 40;
 }
 
-.trash{
-background: -webkit-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /* Standard syntax (must be last) */
-}
 
 .assessment-question { font-weight:bold; font-size: 16px; color: #555 }
 .assessment-answer { margin: 6px 0; font-size: 14px; margin-bottom:10px; cursor:pointer; width:70%; }
@@ -88,10 +82,8 @@ background: -webkit-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /
 	padding:4px;
 	width:90%;
 	height:150px;
-	margin-top: 5px 0 5px 0;
+	margin: 5px 0px 5px 0px;
 	display:inline-block;
-	*display: inline;     /* for IE7*/
-	zoom:1;              /* for IE7*/
 	vertical-align:top;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -105,8 +97,4 @@ background: -webkit-linear-gradient(rgba(100,100,100,1), rgba(100,100,100,0)); /
 #vi2assessment p.assessment-msg-wrong { padding:4px; background-color: red; color:#fff; }
 #vi2assessment p.assessment-msg-warning { padding:4px; background-color: orange; color:#fff; }
 
-
-.assessment-user-icon {
-padding-top: -15px;
-}
 

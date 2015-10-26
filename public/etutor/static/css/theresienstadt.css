@@ -153,7 +153,7 @@ border:solid 1px #1C94C4;
 }
 
 	#scene-menu{
-		 max-height: calc( 100vh - 100px);
+		 max-height: 80%;
 		 overflow-y: auto; 
 	}
 
@@ -301,7 +301,7 @@ height:40px;
 
 }
 
-.scene-view .bim, {
+.scene-view .bim {
 padding:0;
 margin:0;
 display:inline-block;
@@ -425,8 +425,6 @@ text-decoration:none;
   margin-left:5px;
    border: 1px solid  #ccc;
     display:inline-block;
-    *display: inline;     /* for IE7*/
-    zoom:1;              /* for IE7*/
     vertical-align:middle;
   
     border-radius: 5px;
@@ -444,8 +442,6 @@ text-decoration:none;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	display:inline-block;
-	*display: inline;     /* for IE7*/
-	zoom:1;              /* for IE7*/
 	vertical-align:top;
 	margin-left:5px;
 	border: 1px solid #ccc;
@@ -466,7 +462,7 @@ text-decoration:none;
 	display:inline-block;
 	position:relative;
 	margin-left:2px;
-	vertical-align:center;
+	vertical-align:middle;
 	padding: 2px 4px;
 	font-size:18px;
 }
@@ -496,8 +492,6 @@ text-decoration:none;
 	 margin-top: 5px;
     margin-bottom: 5px;
     display:inline-block;
-    *display: inline;     /* for IE7*/
-    zoom:1;              /* for IE7*/
     vertical-align:middle;
     margin-left:20px;
    border: 1px solid  #ccc;
@@ -516,8 +510,6 @@ text-decoration:none;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	display:inline-block;
-	*display: inline;     /* for IE7*/
-	zoom:1;              /* for IE7*/
 	vertical-align:top;
 	margin-left:20px;
 	border: 1px solid #ccc;
@@ -619,6 +611,10 @@ Design of Control Elements
 	cursor: pointer;
 }
 
+.vi2-btn{
+	cursor: pointer;
+}
+
 
 .well-done{
 	color:green;
@@ -685,7 +681,7 @@ font-weight:bold;
 .main{
 	background-color:#000;
 	width:100%;
-	height: 100vh !important;
+	height: 100% !important;
 }
 
 #video1 {
@@ -699,8 +695,8 @@ font-weight:bold;
 	position:absolute;
 	top:0;
 	left:0;
-	width:50vw;
-	max-height:80vh;
+	width:50%;
+	max-height:80%;
 	display:block;
 	padding-bottom:100px;
 	padding-top:0;
@@ -711,7 +707,7 @@ font-weight:bold;
 
 #videowrapper{
 	height: auto ;
-	width: 75vw !important;
+	width: 75% !important;
 	display:block;
 	overflow:hidden;
 }
@@ -727,7 +723,7 @@ font-weight:bold;
 
 #overlay {
 	width:100%;
-	height: 100vh;
+	height: 100%;
 	display:block;
 	position:relative;
 	z-index:20;
@@ -753,8 +749,8 @@ font-weight:bold;
 #accordion-resizer {
 	position:absolute;
 	top:50px;
-	height: 80vh;
-	width: 25vw !important;
+	height: 80%;
+	width: 25% !important;
 	right:0 !important; /* -273px */
 	-moz-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;

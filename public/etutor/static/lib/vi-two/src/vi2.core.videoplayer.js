@@ -331,11 +331,15 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	*	@returns: video source element including src and type attribute
 	*/
 	createSource: function(src, mime_type) { 
-  	var source = document.createElement('source'); 
+  	var
+  		ext, 
+  		source = document.createElement('source'); 
   	if( this.detectBrowser() === 'Firefox'){
   		ext = '.mp4';
+  		mime_type = "video/mp4";
   	}else if( this.detectBrowser() === 'Chrome'){
   		ext = '.webm';
+  		mime_type = "video/webm";
   	}
   	
   	// extract file type out of mime type

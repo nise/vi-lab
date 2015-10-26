@@ -46,9 +46,16 @@ css_basic =   ${css_srcdir}ui-lightness/jquery-ui-1.7.2.custom.css\
 ## VI-TWO
 # test vi-two
 test:	${js_files}
-	#jshint $^ 	
-	cat $^ | grep -H 'alert('				
-    
+	@echo "***************************************";\
+	@echo "**** find alerts *********";\
+	@echo "***************************************";\
+	cat -n $^ | grep -H 'alert(' | sed '/\/\/alert/g'	;\
+	@echo "***************************************";\
+	@echo "**** jshint *********";\
+	@echo "***************************************";\
+	jshint $^;\
+
+
 # Bundle vi-two, all of the modules into vi-two.js
 js: ${js_files}
 		cat $^ > public/etutor/static/js/vi-two.js

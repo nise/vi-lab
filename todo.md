@@ -1,16 +1,16 @@
 
 # VI-TWO
 ## urgent
-
-- check annotation sync
 - test mit vielen users
 - test IE
+- css bugs in opera
 
 - guided tour
 - display comments / links animated 
+- activity log
 
 - popcorn maker @ admin
-- activity log
+- suche
 
 ## bugs
 - bug @ logged out members are not gettng disabled in the peers client

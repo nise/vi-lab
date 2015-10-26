@@ -5,6 +5,7 @@
 
 directory="$(find ../public/etutor/static/slides/* -type d)"
 out='{ "ocr": ['
+break='\n'
 
 for dir in $directory
 do
@@ -17,15 +18,16 @@ do
 	do
 		# /usr/local/lib /usr/local/bin/
   	base="${page%.jpg}"
-    LD_LIBRARY_PATH=cuneiform -f text -l eng -o ./ocr.txt "$page"
+    cuneiform -f text -l ger -o ./ocr.txt "$page"
    	value=`cat ./ocr.txt`
-   	value=$(echo "$value" | sed s'/[0-9]//g' | tr '\n' ' ' | sed "s/[^a-z|0-9| ]//g;" | sed s'/ [a-zA-Z] / /g' | sed s'/ [a-zA-Z][a-zA-Z] / /g' | sed s'/  */\ /g' | sed s'/[a-zA-Z]!//g') 
+   	value=$(echo "$value" | sed s'/[0-9]//g' | tr '\n' ' ' | sed "s/[^a-zA-Z|0-9| ]//g;" | sed s'/ [a-zA-Z] / /g' | sed s'/ [a-zA-Z][a-zA-Z] / /g' | sed s'/  */\ /g' | sed s'/[a-zA-Z]!//g') 
    	image=$(echo $base | sed 's/.\/slides\///g')
-    echo "$id _________ $value"
-    stream="$stream { 	\"source\":\"$image.jpg\",	\"text\": \"$value\"}," 
+    echo "_________ $value"
+    echo "\n"
+    stream="$stream { 	\"source\":\"$image.jpg\",	\"text\": \"$value\"},$break" 
 	done
 	stream=$(echo "$stream" | sed '$s/.$//')
-	out="$out  $stream	]},"
+	out="$out  $stream	]},$break"
 done
 out=$(echo "$out" | sed '$s/.$//')
 out="$out ]}"	
@@ -50,37 +52,6 @@ exit
 
 
 
-
-
-directory="$(find ./test/* -type d)"
-out='{ \n "ocr": ['
-
-for dir in $directory
-do
-	echo $dir
-	id=$(echo $dir | sed 's/.\/test\///g')
-	out="$out \n  { \"id\":\"$id\", \"slides\": [ "
-	var="$(find $dir/ -type f -iname '*2.jpg')"
-	stream=""
-	for page in $var
-	do
-  	base="${page%.jpg}"
-    LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/cuneiform -f text -l eng -o ./ocr.txt "$page"
-   	value=`cat ./ocr.txt`
-   	value=$(echo "$value" | sed s'/[0-9]//g' | tr '\n' ' ' | sed "s/[^a-z|0-9| ]//g;" | sed s'/ [a-zA-Z] / /g' | sed s'/ [a-zA-Z][a-zA-Z] / /g' | sed s'/  */\ /g' | sed s'/[a-zA-Z]!//g') 
-   	image=$(echo $base | sed 's/.\/test\///g')
-    echo $image
-    stream="$stream \n		{ \n	 	\"source\":\"$image.jpg\", \n		\"text\": \"$value\"\n		}," 
-	done
-	stream=$(echo "$stream" | sed '$s/.$//')
-	out="$out \n $stream	\n	]},"
-done
-out=$(echo "$out" | sed '$s/.$//')
-out="$out \n]}"	
-
-echo "$out" > ./ocr.json
-#rm ./ocr.txt
-#echo $out
 
 
 

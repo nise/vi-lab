@@ -15,7 +15,7 @@ author: niels.seidel@nise81.com
 
 /* player controls */
 .video-controls {
-	width: 100vw;
+	width: 100%;
 	height: 84px;
 	position: absolute;
 	display:inline;
@@ -46,7 +46,7 @@ author: niels.seidel@nise81.com
 	float:left;
 	padding:0 10px;
 	margin:0;
-	width:100vw;
+	width:100%;
 	height:35px;
 }
 
@@ -147,7 +147,7 @@ display:inline;
 	height:inherit;
 	background-color: #fff;
 	position:absolute;
-	top:-1;
+	top:0;
 	border:0 none;
 	padding:0;
 	margin:0;

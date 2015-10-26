@@ -66,6 +66,8 @@ Vi2.Metadata = $.inherit(/** @lends Vi2.Metadata# */
 				$('head')
 					.prepend('<meta content="text/html;charset=utf-8" http-equiv="Content-Type">')
 					.prepend('<meta content="utf-8" http-equiv="encoding">')
+					.prepend('<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>')
+					.prepend('<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />')
 					.prepend('<meta itemprop="duration" content="'+this.metadata.length+'" />')
 					.prepend('<meta itemprop="height" content="'+ vi2.observer.player.height() +'" />')
 					.prepend('<meta itemprop="width" content="'+ vi2.observer.player.width() +'" />')
