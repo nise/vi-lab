@@ -39,7 +39,7 @@ var ViLab = $.inherit({
 					//io.set('transports', ['xhr-polling']);
 					// refresh database if broadcast message comes i
 					
-					socket.on('video.refresh.annotations', function(io_data){  //alert('got update notice'+io_data.video)
+					socket.on('video.refresh.annotations', function(io_data){  //console.log('got update notice'+io_data.video)
 						_this.init('updateApp', the_video_id);//data.videoid);
 					});
 					
@@ -132,14 +132,11 @@ var ViLab = $.inherit({
 		 	}*/
 			
 		 	this.currentGroup = this.userData.groups[this.currentGroupVideoNum];   
-		 	this.groupData = this.db.getGroupById( this.currentGroup ); //alert('group:'+this.currentGroup)
-		 	//this.currentVideo = this.groupData.videos[this.currentGroupVideoNum]; //alert('group-video-index::'+this.currentGroupVideoNum)
-			//alert(this.currentVideo)
+		 	this.groupData = this.db.getGroupById( this.currentGroup ); 
+		 	//this.currentVideo = this.groupData.videos[this.currentGroupVideoNum];
+			
 			this.videoData = this.db.getStreamById( this.currentVideo );
 		 
-		 
-		 	//alert(JSON.stringify(this.groupData.videos[this.currentGroupVideoNum]))
-		 	//alert(this.videoData.video)
 		 	var video = $('<div></div>')
 				.attr('type',"video")
 				.attr('starttime',0)
@@ -195,7 +192,7 @@ var ViLab = $.inherit({
 		$('#overlay').css('width', $( '.slide' ).width() );
 		
 		/**/
-		$(window).resize(function() { //alert($( options.selector ).width())
+		$(window).resize(function() { 
 			// Needs to be a timeout function so it doesn't fire every ms of resize
 			setTimeout(function() {
 	      $('#overlay').css('width', $( '.slide' ).width() );
@@ -325,9 +322,9 @@ var ViLab = $.inherit({
 									time: formData.time, 
 									content: formData.content 
 								}); 
-							}else{	//alert('update:'+data.date)
+							}else{	
 								// updated existing annotation in dom
-								vi2.observer.log({context:type ,action:'updated-annotation', values:[data.author] });
+								vi2.observer.log({context:type, action:'updated-annotation', values:[ data.author ] });
 								widget.updateDOMElement({  
 									date: data.date, 
 									time: formData.time, 
@@ -476,8 +473,8 @@ var ViLab = $.inherit({
   savePopcorn : function(type){ 
   	var _this = this; 
   	// vi-two DOM to popcorn_json
-  	var data = this.vitwo2json( type );
- 		vi2.observer.log('save:'+type +' '); //alert('/update-'+type+'/'+this.videoData._id)
+  	var data = this.vitwo2json( type ); 
+ 		//vi2.observer.log('save:'+type +' '); //console.log('/update-'+type+'/'+this.videoData._id)
  		//
  		$.post('/videos/annotate', {"data":data, annotationtype:type, videoid:_this.videoData._id}, function(res2){ 
  			socket.emit('video.updated', { videoid: _this.videoData._id });

@@ -1,7 +1,7 @@
 
 # VI-TWO
 ## urgent
-- bug in Chrome, 
+
 - check annotation sync
 - test mit vielen users
 - test IE

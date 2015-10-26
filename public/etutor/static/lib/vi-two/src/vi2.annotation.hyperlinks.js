@@ -54,7 +54,7 @@
 			this.clear();
 			var events = [];
 			$.each(ann, function(i, val){ 
-				if( val.linktype === 'cycle' || val.linktype === 'standard' ){ // former also  val.linktype == 'standard' ||
+				if( val.linktype === 'cycle' || val.linktype === 'standard' || val.linktype === 'external'){ // former also  val.linktype == 'standard' ||
 				events.push({ 
 						name: val.title, 
 						occ:[val.t1], 
@@ -71,7 +71,7 @@
 			}); //{"occ":["1690"],"target":"#!moss","time":["1690"],"date":"1416312331209","author":"admin"}
 			
 			// show comments in a menu
-			if( this.options.hasMenu ){
+			if( this.options.hasMenu ){ 
 				this.createMenu(events);
 			}
 			
@@ -168,7 +168,7 @@
 					.attr('href', '#!/video/' + vi2.observer.current_stream + '/t=npt:' + val.occ[0] + '') // former: main.options.id
 					;				
 					var user = vi2.db.getUserById( val.author );	
-				
+			
 					var li = $('<li></li>')
 						.addClass('hyperlinks-'+val.occ[0])
 						.attr('id', ''+ val.occ[0])

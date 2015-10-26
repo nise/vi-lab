@@ -111,7 +111,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			$(vi2.dom)
 				.find('[date="'+ obj.date +'"]')
 				.attr('author', vi2.wp_user )
-				.attr('date', obj.date)  // its the creation date
+				.attr('date', obj.date )  // its the creation date
 				.attr('starttime', obj.time )
 				.text( obj.content ); 
 		},	
@@ -123,7 +123,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 			$('<div></div>')
 				.attr('type', obj.type)
 				.attr('author', vi2.wp_user )
-				.attr('date', new Date().getTime())
+				.attr('date', obj.date )
 				.attr('starttime', obj.time )
 				.text( obj.content ) 
 				.appendTo( vi2.dom );

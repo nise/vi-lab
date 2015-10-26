@@ -85,7 +85,7 @@ var Parser = $.inherit(/** @lends Parser# */
   				t = new Date()
   				obj = {};	
   				obj.author = $(this).attr('author') === undefined ? '' : $(this).attr('author');
-  				obj.date = $(this).attr('date') === undefined ? '' : t.getTime();
+  				obj.date = $(this).attr('date') === undefined ? t.getTime() : $(this).attr('date');
   				obj.type = $(this).attr('type') === undefined ? 'none' : $(this).attr('type');
   				
   				if($(this).attr('type') === "video"){ 
