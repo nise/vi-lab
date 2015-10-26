@@ -39,7 +39,8 @@ var ViLab = $.inherit({
 					//io.set('transports', ['xhr-polling']);
 					// refresh database if broadcast message comes i
 					
-					socket.on('video.refresh.annotations', function(io_data){  //console.log('got update notice'+io_data.video)
+					socket.on('video.refresh.annotations', function(io_data){  
+						//console.log('got update notice'+io_data.video)
 						_this.init('updateApp', the_video_id);//data.videoid);
 					});
 					
@@ -72,6 +73,7 @@ var ViLab = $.inherit({
 			{name: 'assessment-writing'}
 		]
 	},
+	widgetOptions : {},
 	ajaxurl : '',
 	userData : {},
 	observer : '',
@@ -166,8 +168,8 @@ var ViLab = $.inherit({
   	updateApp : function(){
 			var _this = this; 
 			$.each(this.loadedWidgets, function(i, val){ 
-				_this.loadedWidgets[i]='';
-				_this.enableWidget(val, { hasMenu: false});
+				_this.loadedWidgets[i] = '';
+				_this.enableWidget(val, _this.widgetOptions[ val ], { refresh:true} ); // 
 			});
 			this.observer.setAnnotations();
 		},
@@ -219,7 +221,8 @@ var ViLab = $.inherit({
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
 		
 		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
-			_this.enableWidget( widget.name, widget); 
+			_this.enableWidget( widget.name, widget);
+			_this.widgetOptions[widget.name] = widget; 
 		}); 
 		_this.observer.parse(vi2.dom, 'html');
 		
@@ -372,7 +375,7 @@ var ViLab = $.inherit({
 	/* 
 	* build player dialog by widget definitions 
 	**/
-	enableWidget : function(widget_name, widget_options){ 
+	enableWidget : function(widget_name, widget_options, refresh ){ 
 		var _this = this; 
 		var widget = '';
 		var title = widget_name; 
@@ -426,27 +429,12 @@ var ViLab = $.inherit({
 		this.loadedWidgets.push( widget_name );
 		
 		// add accordion elements
-		if( widget_options.options.hasMenu ){ 
+		if( widget_options.options.hasMenu && ! refresh ){ 
 			var h3 = $('<h3 class="ui-accordion-header ui-corner-all"></h3>')
 				.append('<a class="accordion-title" href="#">' + title + '</a>')
 				.appendTo('#accordion');
 			if( widget_options.canBeAnnotated ){
-				
-				/*
-					switch(widget['name']){  
-						// args: type, dialog label, short icon name
-						case 'comments' : _this.prepareDialog('comments', 'Kommentar hinzufügen', '+ Kommentar');  break;
-						case 'tags' :  _this.prepareDialog('tags', 'Schlüsselwort (tag) hinzufügen', '+ Tag'); break;
-						case 'highlight' : _this.prepareDialog('highlight', 'Schlüsselwort (tag) hinzufügen', '+ Tag'); break;
-						case 'toc' : _this.prepareDialog('toc', 'Kapitelmarke für das Inhaltsverzeichnis hinzufügen', '+ Kapitel'); break;
-						case 'assessment' :  _this.prepareDialog('assessment', 'Frage hinzufügen', '+ Frage'); break;
-						case 'assessment-fill-in' :  _this.prepareDialog('assessment-fill-in', 'Lücke hinzufügen', '+ Frage'); break;
-						case 'assessment-writing' :  _this.prepareDialog('assessment-writing', 'Frage hinzufügen', '+ Frage'); break;
-					}	
-				*/
-				
-				//xxx variable should be part of widgets
-				
+				// define 'add'-link
 				var link = $('<span></span>')
 					.addClass('glyphicon glyphicon-plus add-btn add-btn-'+widget_name )
 					.attr('data-toggle', "modal")
@@ -455,7 +443,6 @@ var ViLab = $.inherit({
 					.attr('title', 'Neu hinzufügen' )
 					.appendTo(h3)	
 					;
-				
 			}
 			$('<div></div>')
 				.attr('id', widget_name)
@@ -476,7 +463,7 @@ var ViLab = $.inherit({
   	var data = this.vitwo2json( type ); 
  		//vi2.observer.log('save:'+type +' '); //console.log('/update-'+type+'/'+this.videoData._id)
  		//
- 		$.post('/videos/annotate', {"data":data, annotationtype:type, videoid:_this.videoData._id}, function(res2){ 
+ 		$.post('/videos/annotate', {"data":data, annotationtype:type, videoid: _this.videoData._id}, function(res2){ 
  			socket.emit('video.updated', { videoid: _this.videoData._id });
  			_this.observer.setAnnotations();
       //_this.enableEditing(type);

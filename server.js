@@ -147,7 +147,7 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 * Setup socket.io 
 **/
 var 
-	io = require('socket.io'/*, { rememberTransport: false }*/).listen(server)
+	io = require('socket.io')(server) /*, { rememberTransport: false }*/
 	events = require('events'),
 	serverEmitter = new events.EventEmitter(),
 	ioConnected = false
@@ -168,13 +168,41 @@ io.sockets.on('connection', function (client) {
 		console.log('++ user.disconnected ' + data.id );
 		client.broadcast.emit( 'user.goes.offline', {user: data.id, online:false } );
 	});
-
-	client.on('video.updated', function (data) { 
+	
+	serverEmitter.on('video.updated', function (data) {
+    console.log('++ video.updated ' + data.videoid);
+    client.broadcast.emit('video.refresh.annotations',{ video: data.videoid });
+  });
+	
+	// not working ?
+	client.on('video.updated', function (data) { console.log(data)
 		console.log('++ video.updated ' + data.videoid);
 		client.broadcast.emit('video.refresh.annotations',{ video: data.videoid }); 
 	});	
 	}
-});					
+});		
+
+/*
+io.on('connection', function (client) { 
+	if( ! ioConnected ){
+	ioConnected=true;
+	serverEmitter.on('user.connected', function (data) {
+    console.log('++ user.connected ' + data.id );
+    client.broadcast.emit( 'user.goes.online', {user: data.id, online:true } );
+  });
+	
+	serverEmitter.on('user.disconnected', function (data) { 
+		console.log('++ user.disconnected ' + data.id );
+		client.broadcast.emit( 'user.goes.offline', {user: data.id, online:false } );
+	});
+
+	client.on('video.updated', function (data) { console.log(data)
+		console.log('++ video.updated ' + videoid);
+		client.broadcast.emit('video.refresh.annotations',{ video: videoid }); 
+	});	
+	}
+});			
+*/	
 
 var port = 3033;
 server.listen(port);

@@ -266,16 +266,12 @@ exports.annotate = function(req, res) {
 		  if (err){
 		  	console.log('****************** ERROR')
 		  	console.log(err);
-		  } 
-		  console.log('Updated annotation '+req.body.annotationtype+ ' of video '+req.body.id);
-		  	
-		  	console.log('fin saving: ')
-		  	//res.type('application/json');
-		  	//res.jsonp({msg:"succesfully saved"});
-		  	res.send({"msg":"succesfully saved"});
-		  	//res.end("bye")
-		  	//res.redirect( '/videos/view/'+req.params.id );
-		  	//return res.end();
+		  	res.send({"msg":"error"});
+		  }else{
+		  	require('../server').serverEmitter().emit('video.updated', { videoid: req.body.videoid }); 
+		  	console.log('@Videos: Updated annotation '+req.body.annotationtype+ ' of video '+req.body.videoid );
+	  		res.send({"msg":"succesfully saved"});
+	  	}
 	});
 
 
