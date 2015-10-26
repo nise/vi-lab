@@ -40,7 +40,8 @@
 		
 		// handle sockets	
 		//socket = io('http://127.0.0.1:3033');
-		socket = io('http://185.25.252.55:3033');
+		//socket = io('http://185.25.252.55:3033');
+		socket = io( window.location.host );
 		
 		/*, { rememberTransport: false }*///, {'transports': ['websocket', 'polling']});
 		//socket = io.connect('http://localhost:3033', { rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling']});
