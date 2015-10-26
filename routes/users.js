@@ -101,13 +101,12 @@ exports.openLoginPage = function(req, res){
   	});
 };
 
-exports.handleLogout = function(req, res){ //console.log(req.user)
+exports.handleLogout = function(req, res){
 	req.session.regenerate(function(){
     setOnlineStatus( req.user._id, { online: false, location:'video' } );
+    console.log('OK: User logged out: '+req.user._id);
     req.logout();
-    //console.log('OK: User logged out: ');
-    res.redirect('/login');  
-    
+    res.redirect('/login');   
   })
 }; 
 

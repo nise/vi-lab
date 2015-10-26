@@ -1,14 +1,16 @@
 
 # VI-TWO
 ## urgent
-- check annotation sync
-- popcorn maker @ admin
-- guided tour
-- activity log
-- display comments / links animated 
-- test mit vielen users
 - bug in Chrome, 
+- check annotation sync
+- test mit vielen users
 - test IE
+
+- guided tour
+- display comments / links animated 
+
+- popcorn maker @ admin
+- activity log
 
 ## bugs
 - bug @ logged out members are not gettng disabled in the peers client
