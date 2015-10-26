@@ -105,7 +105,7 @@ exports.handleLogout = function(req, res){ //console.log(req.user)
 	req.session.regenerate(function(){
     setOnlineStatus( req.user._id, { online: false, location:'video' } );
     req.logout();
-    console.log('OK: User logged out: '+req.user._id);
+    //console.log('OK: User logged out: ');
     res.redirect('/login');  
     
   })
