@@ -115,7 +115,7 @@ var Parser = $.inherit(/** @lends Parser# */
 						// distinguish external links
 						var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 						var regex = new RegExp(expression);
-						if (obj.content.target.match(regex) ){ 
+						if ( (obj.target).match(regex) ){ 
 							obj.linktype = 'external'; 
 						}
   					_this.vid_arr[v_id]['annotation'].push(obj);

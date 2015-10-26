@@ -51,7 +51,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		/*
 		* Initialize 
 		**/
-		init : function(ann){  	alert(33);
+		init : function(ann){ // 	alert(33);
   		var _this = this; 
 			this.tag_obj = [];
 			$.each(ann, function(i, val){  

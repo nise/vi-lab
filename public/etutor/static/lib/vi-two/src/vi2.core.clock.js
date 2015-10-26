@@ -140,7 +140,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 				
 				if(iTime >= oAnn.displayPosition.t1 && iTime < (Number(oAnn.displayPosition.t1) + Number(oAnn.displayPosition.t2))) {
 					if(!oAnn.active){
-						oAnn.active = true; alert(oAnn.type);
+						oAnn.active = true; //alert(oAnn.type);
 	  				$(_this.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
 					}
 				}else {

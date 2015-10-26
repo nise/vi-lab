@@ -216,7 +216,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		this.play_btn = $('.vi2-video-play-pause');
 		
 		this.video.addEventListener('play', function(e){ 
-			vi2.observer.clock.startClock();
+			//vi2.observer.clock.startClock();
 			$('header').hide();
 			_this.play_btn.find('.glyphicon-pause').show();
 			_this.play_btn.find('.glyphicon-play').hide();
@@ -347,7 +347,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		//$('#overlay').css('height', $('video').height() );
 		//$('#overlay').css('width', $('#video1').width() );
 		
-		
+		/*
 		// hide cursor and controls if inactive
 		var mouseTimer = null, cursorVisible = true;
 
@@ -369,7 +369,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		    }
 		    mouseTimer = window.setTimeout(disappearCursor, 1000);
 		};
-		
+		*/
 		$('body').unbind('keydown').bind('keydown', function(e) { 
 			//_this.keyboardCommandHandler(e); 
 		});
@@ -693,7 +693,6 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 			$(vi2.observer.player).trigger('player.play', []);
 			vi2.observer.clock.startClock();
 			vi2.observer.log({context:'player',action:'play-click', values:['1'] }); 
-			
 		}
 	},
 

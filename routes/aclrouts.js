@@ -185,7 +185,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 //	app.post(	'/users/online/:username', 	users.setOnlineStatus );
 	app.get(	'/users/online/:username', 	users.getOnlineStatus );
 	// api
-	app.get('/json/users', users.authCallback(['editor']), users.getJSON);
+	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
 	app.get('/json/user-data', users.getUserData );
 	app.get('/json/group-data', users.getGroupData );
 

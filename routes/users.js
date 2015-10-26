@@ -105,6 +105,7 @@ exports.handleLogout = function(req, res){ //console.log(req.user)
 	req.session.regenerate(function(){
     setOnlineStatus( req.user._id, { online: false, location:'video' } );
     req.logout();
+    console.log('OK: User logged out: '+req.user._id);
     res.redirect('/login');  
     
   })
@@ -124,7 +125,7 @@ exports.getUserData = function(req, res, next) {
 					if(err){
 						console.log(err);
 					}else if(item.length === 0){
-						console.log('ERROR: empty user');
+						console.log('ERROR: empty user @ getUserData');
 						res.redirect('/login')
 					}else{	
 						res.type('application/json');
@@ -270,7 +271,7 @@ exports.ensureAuthenticated = function(req, res, next) {
   	setOnlineStatus( req.user._id, { online: true, location:'video' }); 
   	return next(); 
   }else{
-  	console.log(req)
+  	console.log('Error: User tried to access contents that requires an authentication')
   	res.redirect('/login');
   }
 }

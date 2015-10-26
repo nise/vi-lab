@@ -125,11 +125,11 @@ var ViLab = $.inherit({
 		 	this.userData = this.db.getUserById( this.wp_user );
 		 	
 		 	
-		 	if(this.userData.trace == 1){
+		 	/*if(this.userData.trace == 1){
 		 		$('input#tracing').attr('checked','checked');
 		 	}else{
 		 		$('#tracing').removeAttr('checked');
-		 	}
+		 	}*/
 			
 		 	this.currentGroup = this.userData.groups[this.currentGroupVideoNum];   
 		 	this.groupData = this.db.getGroupById( this.currentGroup ); //alert('group:'+this.currentGroup)

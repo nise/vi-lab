@@ -364,7 +364,7 @@
 	/**
 	
 	*/
-	getUserById : function(id){ 
+	getUserById : function(id){  //alert(id); alert(this.json_user_data)
 		var user = {}; 
 		$.each(this.json_user_data, function(i, val){ 
 			if( Number(val.id) === Number(id) ){  
