@@ -227,7 +227,7 @@ var ViLab = $.inherit({
 		_this.observer.parse(vi2.dom, 'html');
 		
 		var mm = new Vi2.Maintain();
-		//mm.generateButter(111);
+		mm.generateButter(222);
 		
 		// autoplay
 		vi2.observer.player.video.oncanplay = function(e){ 

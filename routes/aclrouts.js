@@ -18,6 +18,11 @@ module.exports = function(db, app) {
 	// terzin specific
 	scenes = require('./scenes'),
 	persons = require('./persons')
+	// mongoose models
+	Videos  = mongoose.model( 'Videos' ),
+	Users  = mongoose.model( 'Users' ),
+	Scripts  = mongoose.model( 'Scripts' ),
+	Groups  = mongoose.model( 'Groups' )
 	;
 	
 
@@ -86,7 +91,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 
 	// routes for images
 	app.get( '/json/images' , images.getJSON );
-	images.folderImport();
+	//images.folderImport();
 	
 	
 	
@@ -157,7 +162,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	});
 	
 	
-	app.get('/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
+	app.get('/json/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
 		Log.find().select('action utc user').sort( 'utc' ).exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
@@ -169,6 +174,74 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		});
 		//res.send('terminated request');
 	});	
+	
+	
+	/**
+		* @todo need to distinguish the groups per phase
+		* log per current group
+		* log per group over all phases, if group constellation does not change
+		*/
+	app.get('/json/group-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
+		if (req.user !== undefined ) {
+		  // get current script phase
+		  Scripts.find().select('current_phase').exec(function(err, script) {
+		  	var phase = script[0].current_phase; 
+		  	// get group of current user // req.user.username
+			  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){
+			  	var group = groups[0].groups[Number(phase)]; 
+			  	var query = {};
+					query['groups.'+phase] = group;
+					// gext users of group 
+					Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
+			  		query=[];
+			  		for(var i=0; i <users.length; i++){
+			  			query.push( users[i].id );
+			  		}
+			  		// get final log 
+		  			Log.find( { user: { $in: query } } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
+							if(err){ 
+								console.log(err); 
+							}else{
+								res.type('application/json');
+								res.jsonp( logs );
+								res.end('done');
+							}	
+						});
+			  	});
+		  	});
+		  });
+		}else {
+		  res.type('application/json');
+		  res.jsonp({user:false, msg:'you are not logged in'});
+		  res.end();
+		}
+	});
+	
+	
+	/**
+		* @todo need to distinguish the groups per phase
+		* log per current group
+		* log per group over all phases, if group constellation does not change
+		*/
+	app.get('/json/user-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
+		if (req.user !== undefined ) {
+		  // filt log for entries of the given user	
+			Log.find( { user: req.user.id } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
+				if(err){ 
+					console.log(err); 
+				}else{
+					res.type('application/json');
+					res.jsonp( logs );
+					res.end('done');
+				}	
+			});
+
+		}else {
+		  res.type('application/json');
+		  res.jsonp({user:false, msg:'you are not logged in'});
+		  res.end();
+		}
+	});
 	
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	

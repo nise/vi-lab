@@ -127,13 +127,15 @@
         min: 1,
         max: 7,
         step: 1,
-        slide: function( event, ui ) {
+        slide: function( event, ui ) { //alert(slideValue+' - '+ui.value)
           slideValue = zoom( slideValue - ui.value );
         }
       });
       
-      var zoom = function( delta ) {
-				//delta = 1;
+      
+      
+      var zoom = function( delta ) { 
+				
         if ( pm.mediaAccessAllowed ) {
           var newZoom = butter.timeline.zoom( delta ),
               scrubberLeft = checkScrubber();
@@ -157,7 +159,6 @@
 					
           event.preventDefault();
           slideValue = zoom( event.detail || event.wheelDelta );
-        //  alert(slideValue);
           sliderElement.slider( "value", slideValue );
         }
       };

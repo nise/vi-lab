@@ -8,9 +8,9 @@
           buttonManager = pm.buttonManager
           popupManager = pm.popupManager;
 
-      var previewIframe = document.getElementById( 'main' ),
-          header = document.getElementsByTagName( 'header' )[ 0 ];
-      previewIframe.style.height = window.innerHeight - header.clientHeight - 15 + "px";
+      var previewIframe = document.getElementById( 'main' );
+          //header = document.getElementsByTagName( 'header' )[ 0 ];
+      previewIframe.style.height = '800px';//window.innerHeight - header.clientHeight - 15 + "px";
 
       // force the iframe's source to be nothing
       previewIframe.src = '';

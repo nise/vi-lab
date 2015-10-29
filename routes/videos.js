@@ -72,12 +72,22 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 				var query = {};
 				query['id'] = { $in: groups[0].videos }; // 
 				console.log('#################################################');
-				//console.log(groups[0].videos)
 				// get videos 
-				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){ 
-						res.type('application/json');
-						res.jsonp(videos);  
-						res.end('done');
+				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+					// calc status
+					for(var i = 0; i < videos.length; i++){ 
+						// calc duration in Minutes
+						duration = ( videos[i].metadata[0].length ).split(':');
+						duration = Number( Number(duration[0])*60 + Number(duration[1]) );
+						videos[i].status = Number(videos[i].comments.length ) + Number(videos[i].toc.length ) + Number(videos[i].assessment.length ) + Number(videos[i].hyperlinks.length );
+						// normalize regarding video duration
+						videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
+						
+					} 
+					console.log(videos)
+					res.type('application/json');
+					res.jsonp(videos);  
+					res.end('done');
 				});
 			});// end Groups
 		});// end Users
@@ -124,7 +134,7 @@ exports.create = function ( req, res ){
 };
 
 
-// query db for all person items
+// query db for all video items
 exports.list = function ( req, res ){ console.log('#################################################');
 	// get script phase 
 	mongoose.model('Scripts').collection.find().toArray(function(err, script) {
@@ -139,8 +149,10 @@ exports.list = function ( req, res ){ console.log('#############################
 				query['id'] = { $in: groups[0].videos }; // 
 				console.log('#################################################');
 				console.log(groups[0].videos)
-				// get videos 
-				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){ 
+				// get videos
+				var duration = 1; 
+				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){  
+						
 						res.render( 'videos', {
 							title : 'Express Videos Example',
 							group : group,
@@ -195,11 +207,10 @@ exports.editMetadata = function ( req, res ){
 Load popcorn maker to annotatate the requested video
 **/
 exports.editAnnotations = function ( req, res ){
-  Videos.find({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, videos ){
+  Videos.findOne({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, videos ){
     res.render( 'popcorn-maker/popcorn-maker', {
         title   : 'Express Videos Example',
-        items   : videos,
-        current : req.params.id,
+        video   : videos,
         bim: "hello"
     });
     res.end('done');

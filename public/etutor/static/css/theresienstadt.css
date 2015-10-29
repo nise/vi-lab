@@ -16,25 +16,26 @@ a, a:hover {
 /* USER MANAGEMENT / AWARENESS */
 
 #userpanel{
-	z-index:1040;
+	z-index:13010;
 	position: fixed;
 	top:0;
 	right:0;
-	width: 400px;
+	width: 25%;
+	min-width:80px;
 	height:50px;
 	display:inline-block;
 	background-color: #222;
   border-color: #080808;
 	border-width: 0 0 1px;
-	
-	overflow:visible;
+	overflow:hidden;
 }
 
 .user-menu{
-	position:absolute;
-	right:0px;
-	padding: 15px 10px 0 0;
-	overflow:visible;
+	position:inline;
+	display:inline;
+	padding:15px 4px;
+	float:right;
+	
 }
 
 
@@ -68,11 +69,8 @@ a, a:hover {
 
 
 .group-menu{
-	width:300px;
-	position:absolute;
-	z-index:13010;
-	right: 100px;
-	float:right;
+	position:relative;
+	display:inline;
 }
 
 .group-menu .navbar-brand {
@@ -272,17 +270,7 @@ top:40px;
 
 
 
-.sidepanel h3 {
-	font-size:14px;
-	padding-left:10px;
-	padding-bottom:5px;
-	margin:0;
-	border-bottom: 1px #555 dotted;
-}
 
-.sidepanel h3.ui-state-default{
-	border-bottom: 1px #555 dotted;
-}
 
 
 .scene-view {
@@ -372,7 +360,7 @@ label {
 /*************************/
 .hidden-link {
 	color:#555;
-	font-family:bold;
+	font-weight:bold;
 }
 
 .hidden-link:hover{
@@ -384,6 +372,7 @@ text-decoration:none;
 .tiny-edit-btn{
 	float:right;
 	color:#555;
+	cursor:pointer;
 }
 .tiny-edit-btn:hover{
 	color:#003366;
@@ -410,7 +399,6 @@ text-decoration:none;
 /**/
 
 .modal-form{
-	font-family: Arial;
 	clear:both;
 }
 
@@ -419,7 +407,6 @@ text-decoration:none;
 
 	font-size:14px;
 	padding:4px;
-	font-family: Arial;
 	margin-top: 5px;
   margin-bottom: 5px;
   margin-left:5px;
@@ -480,7 +467,6 @@ text-decoration:none;
 
 /**/
 .edit-form{
-	font-family: Arial;
 	clear:both;
 }
 
@@ -488,7 +474,6 @@ text-decoration:none;
 	width:500px;
 	font-size:18px;
 	padding:4px;
-	font-family: Arial;
 	 margin-top: 5px;
     margin-bottom: 5px;
     display:inline-block;
@@ -506,7 +491,6 @@ text-decoration:none;
 	padding:4px;
 	width:500px;
 	height:300px;
-	font-family: Arial;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	display:inline-block;
@@ -632,6 +616,8 @@ padding-left:40px;
 background-color:#999;
 }
 
+
+
 /***************/
 
 .admin-menu-item{
@@ -681,7 +667,10 @@ font-weight:bold;
 .main{
 	background-color:#000;
 	width:100%;
-	height: 100% !important;
+	height: 100vh !important;
+	min-height: 500px !important;
+	margin:0;
+	display:block;
 }
 
 #video1 {
@@ -749,7 +738,7 @@ font-weight:bold;
 #accordion-resizer {
 	position:absolute;
 	top:50px;
-	height: 80%;
+	height: 80vh;
 	width: 25% !important;
 	right:0 !important; /* -273px */
 	-moz-transition: all 0.3s ease-out;
@@ -757,6 +746,59 @@ font-weight:bold;
   transition: all 0.3s ease-out;
   transition-delay: .8s;
 }
+
+#accordion-resizer h3 {
+	font-size:14px;
+	padding-left:10px;
+	padding-bottom:5px;
+	margin:0;
+	border-radius:0px;
+	
+}
+
+#accordion-resizer h3.ui-state-default{
+	border-bottom: 1px #555 dotted;
+	font-weight:bold;
+	font-size:15px;
+}
+
+#accordion-resizer div.ui-accordion-content{
+	padding:10px  10px 15px 10px;
+	margin: 0 0 10px 0;
+}
+
+#accordion-resizer div.ui-accordion-content p{
+	padding-bottom:10px;
+	margin:0;
+}
+
+#accordion-resizer .ui-icon{
+	background:none;
+}
+
+#accordion-resizer .ui-corner-all{
+	border-radius:0px;
+}
+
+/* unknown */
+.screen{
+	position:absolute;
+	top:0;
+	width:600px; 
+	height:450px;
+	overflow:auto; 
+	overflow-x: hidden; 
+	opacity: 0.95;
+	text-align:left;
+	color:#000;
+	z-index:99;
+	margin:10px 0;
+}
+
+.screen div{
+padding:10px;
+}
+
 
 .instructions{
 	padding:10px;
@@ -774,7 +816,6 @@ font-weight:bold;
     border: none;
     color: #fff;
     font-weight: normal;
-    font-family:Arial;
 }
 
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
@@ -798,6 +839,37 @@ font-weight:bold;
 }
 
 
+/* Video Manager */
+.work-progress-bar{
+	width:inherit;
+	height:16px;
+	display:block;
+	background-color:#777;
+	position:relative;
+	overflow:hidden;
+}
+
+.work-progress{
+	width:50px;
+	height:inherit;
+	display:inline-block;
+	background-color:green;
+	z-index:9;
+	position:absolute;
+	left:0;
+}
+
+.work-progress-status {
+	color:#eee;
+	font-size:10px;
+	z-index:1000;
+	display:inline;
+	position:absolute;
+	left:4px;
+	top:1px;
+}
+
+
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -813,6 +885,15 @@ body > .container {
   display:block;
   border:red solid 1px;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight:700;
+}
+p, div, textarea, input {
+    font-family: 'Lato', sans-serif;
+}
+
 .container .text-muted {
   margin: 20px 0;
 }

@@ -101,8 +101,8 @@ duration":178.378,"tracks":[
 		var _this = this;
 		var video_url = vi2.db.getStreamById( id ).video;
 		// local file
-		video_url.replace('http://141.46.8.101/beta/e2script/', 'http://127.0.0.1:3033/static/videos/');
-		video_url =  'http://127.0.0.1:3033' + video_url ;
+		video_url = video_url.replace('http://141.46.8.101/beta/e2script/', 'http://127.0.0.1:3033/static/videos/');
+		//video_url =  'http://127.0.0.1:3033' + video_url ;
 		var butter = '{"template":"basic","title":"'+id+'","guid":"AA41AB3B-D145-477E-A264-3B42701F1E85", "project": {"targets":[{"id":0,"name":"Area1"},{"id":1,"name":"pop-container"}],"media":[ {"id":"Media0","name":"Media01327337635028","url":"'+video_url+'","target":"main","duration":4829.205,"tracks":[';
 		var track0 = '',
 		 		track1 = '',

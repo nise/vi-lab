@@ -1,60 +1,3 @@
-/* add styles here */
-@CHARSET "UTF-8"; 
-
-
-
-
-
-/************************************************/
-
-
-
-
-
-.edit{
-	display:block;
-	width:500px;
-	margin:0;
-	padding:5px;
-	background-color:#ccc;
-}
-
-
-
-	
-.screen{
-	position:absolute;
-	top:0;
-	width:600px; 
-	height:450px;
-	overflow:auto; 
-	overflow-x: hidden; 
-	opacity: 0.95;
-	text-align:left;
-	color:#000;
-	z-index:99;
-	margin:10px 0;
-}
-
-.screen div{
-padding:10px;
-}
-
-.close-btn {
-	position:absolute;
-	top:0;
-	right:0;
-	margin:0;
-	cursor:pointer;
-}
-
-
-
-
-
-
-
-
 
 
 .tagslist { padding:0px; list-style-type:none; margin:2px 0 0 0; }
@@ -81,13 +24,5 @@ span.timetag.tmedia{ width:4px; background-color: blue;}
 
 span.timetag.tlink{ width:7px; height:14px; bottom:11px; background-color: lightblue; opacity:0.7;}
 span.timetag.taccessment{ width:7px; height:8px; bottom:15px; background-color: green; opacity:0.7;}
-
-
-
-
-
-
-
-
 
 

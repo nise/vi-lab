@@ -14,6 +14,8 @@ var
 	flash = require('connect-flash'),
 	server = require('http').createServer(app),
 	fs = require('node-fs'),
+	application = 'etutor', // default 
+	mongoose = require( 'mongoose' ),
 
 	// database entities
 	videos = require('./routes/videos'),
@@ -27,25 +29,32 @@ var
 	;
 
 
-/* run server with some arguments */
-// test: $ node process-2.js one two=three four
-process.argv.forEach(function (val, index, array) {
-  //console.log(index + ': ' + val);
-});	
-	
-	
-	
+	/* 
+		* catch arguments 
+		* test: $ node process-2.js one two=three four
+		**/ 
+	process.argv.forEach(function (val, index, array) {
+		if( array.length > 2 ){
+			application = array[3];
+		}
+		//console.log(index + ': ' + val);
+	});
 
-	
-	exports.server = function ( req, res ){
-		return server;
-	};
-	// make it a plattform for multiple applications
-	var application = 'etutor'; //'terezin'; 'etutor'
+
+	/* 
+		*	make it a plattform for multiple applications
+		**/
 	exports.application = function ( req, res ){
 			return application;
 	};
 
+	/*
+		*
+		**/
+	exports.server = function ( req, res ){
+		return server;
+	};
+	
 
 /* configure application **/
  	app.set('port', process.env.PORT || port);
@@ -78,29 +87,23 @@ process.argv.forEach(function (val, index, array) {
    }));
 	
 	app.use(flash());
-	// Initialize Passport!  Also use passport.session() middleware, to support
-	// persistent login sessions (recommended).
 	app.use(users.passport.initialize());
 	app.use(users.passport.session());
-	//app.use(app.router);
+	//app.use(app.router); // ?
 	app.set("jsonp callback", true); // ?????
 
 
-console.log('\n\n************************************************');
-console.log('Started server for application '+ application +' on port: '+ port);	
-console.log('************************************************\n\n');
 
-
-
-/* Init database, load data, and init ACL */
-var mongoose = require( 'mongoose' );
+/* 
+	* Init database, load data, and init ACL 
+	**/
 var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err, db){
 	if(err){
 		console.log(err);
 	}else{
 		/* Import data */
 		
-		if( application == 'terezin' ){
+		if( application === 'terezin' ){
 			persons.csvImport();
 			scenes.csvImport();
 			videos.csvImport(); // !!! caution
@@ -110,7 +113,7 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			//groups.csvImportFromJSON();
 			//require('./routes/etherpad').generatePadGroups(); // !!!
 			
-			var ffmpeg = require('fluent-ffmpeg');
+			/*var ffmpeg = require('fluent-ffmpeg');
 			var proc = new ffmpeg('/home/abb/Documents/www2/theresienstadt-explained/public/terezin/static/videos/theresienstadt.mp4')
 				.takeScreenshots({
 						count: 3,
@@ -118,20 +121,35 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 				}, '/home/abb/Documents/www2/theresienstadt-explained/public/terezin/static/img/video-stills/theresienstadt', function(err) {
 						console.log('screenshots were saved')
 			});
-			
-			
+			*/
 		}
 		
 		if( application === 'etutor' ){	
-			//videos.csvImport(); // !!! caution
+			videos.csvImport(); // !!! caution
 			users.csvImport();
 			scripts.importScript();
 			groups.csvImport();
 			//groups.csvImportFromJSON();
+			// 
+			//var lec = require('./utils/lecturnity');
+
 		}
 		
 		/* Access Control List */
 		var ACL = require('./routes/aclrouts')(db, app, io);
+		
+		//
+		/*
+		var e =	require('exec');
+		exec('sh ./utils/ocr.sh',
+				function (error, stdout, stderr) {
+					console.log('stdout: ' + stdout);
+					console.log('stderr: ' + stderr);
+					if (error !== null) {
+						console.log('exec error: ' + error);
+					}
+		});
+		*/			
 	}	
 });
 
@@ -176,7 +194,7 @@ io.sockets.on('connection', function (client) {
 	
 	// not working ?
 	client.on('video.updated', function (data) { console.log(data)
-		console.log('++ video.updated ' + data.videoid);
+		console.log('+++++ video.updated ' + data.videoid +'__received by the client');
 		client.broadcast.emit('video.refresh.annotations',{ video: data.videoid }); 
 	});	
 	}
@@ -208,6 +226,11 @@ var port = 3033;
 server.listen(port);
 server.setMaxListeners(0); // xxx: untested: unfinite number of listeners, default: 10;
 // http://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n
+	
+console.log('\n\n************************************************');
+console.log('Started server for application '+ application +' on port: '+ port);	
+console.log('************************************************\n\n');
+	
 	
 
 
@@ -251,8 +274,6 @@ exports.socketio = function (event, data){ }
 				
 
 
-// 
-//var lec = require('./utils/lecturnity');
 
 
 

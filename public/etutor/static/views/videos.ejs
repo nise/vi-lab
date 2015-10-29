@@ -14,7 +14,12 @@
 				<div class="thumbnail">
 					<a href="/videos/view/<%= item._id %>"><img width="100%" src="<%= item.metadata[0].thumbnail %>"  />
 					</a>
+					<div class="work-progress-bar progress-<%= item._id %>">
+							<div class="work-progress-status">Bearbeitungsstand: <%= item.progress %>%</div>
+							<div class="work-progress" style="width:<%= item.progress %>%"></div>
+						</div>
 					<div class="caption">	
+						
 						<h3><a href="/videos/view/<%= item._id %>">Video <%= i %>: <%= item.metadata[0].title %></a></h3>
 						<p class="lecturer"><span class="glyphicon glyphicon-user"></span> <b>Dozentin:</b> <%= item.metadata[0].author %></p>
 					

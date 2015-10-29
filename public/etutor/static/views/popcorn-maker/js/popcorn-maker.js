@@ -1,7 +1,7 @@
 (function(){
 
   require.config({
-    baseUrl: "/vi-lab/views/popcorn-maker/js"
+    baseUrl: "/static/views/popcorn-maker/js"
   });
 
   define([
@@ -17,8 +17,8 @@
     ],
     function( ButtonManager, TemplateManager, EditorManager, PopupManager, Menu, Timeline, Preview, Editor, utils ) {
 
-    var LAYOUTS_DIR = "/vi-lab/views/popcorn-maker/layouts",
-        EDITORS_DIR = "/vi-lab/views/popcorn-maker/editors",
+    var LAYOUTS_DIR = "/static/views/popcorn-maker/layouts",
+        EDITORS_DIR = "/static/views/popcorn-maker/editors",
         TEMPLATES_CONFIG = LAYOUTS_DIR + "/conf.json",
         EDITORS_CONFIG = EDITORS_DIR + "/conf.json",
         PACKAGE_SERVER_ADDR = "http://localhost:8888";
@@ -68,7 +68,7 @@
         }
       });
 
-      var init = function( e ) {
+      var init = function( e ) { 
         _butter = e.data;
 
         _templateManager = new TemplateManager({

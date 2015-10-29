@@ -3,7 +3,7 @@
 
  <div class="jumbotron">
 	<div class="container">
-  <h2><span class="glyphicon glyphicon-user"> <%= item.username %></span></h2>
+  <h2><span class="glyphicon glyphicon-user"></span> <%= item.username %></h2>
   <p>
     <div class="edit-form">
     	<label>Benutzername:</label> <%= item.username %> <img width="20" src="/static/img/user-icons/user-<%= item.id %>_big.png" /><br/>
@@ -17,9 +17,12 @@
 <div class="container" style="overflow:auto;">
 	<div class="row">
 		<div class="col-sm-6 col-md-4">
-			<label>Gruppe:</label>
-			
-			<div class="group-area2">...</div>
+			<label>Gruppemitglieder:</label>
+			<div class="group-area2"></div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<label>Aktivitäten:</label>
+			<div class="activity-log">(comming soon)</div>
 		</div>	
 	</div>
 </div>
@@ -29,4 +32,12 @@
 $(window).load(function () {
 	render('group-overview', true, '.group-area2', 'group-data');
 });
+
+
+
+/*$.get('/json/user-activity-log', function(data){ alert(data[3].utc)
+	$( '.activity-log' ).html( ejs.render(template, {items: data}) );
+});
+*/
+
 </script>

@@ -19,7 +19,7 @@
 }
 
 /* menu entries */
-.toc-list{ padding:0px; list-style-type:none;  list-style-position: inside; margin:12px 0 0 10px; }
+.toc-list{ padding:0px; list-style-type:none;  list-style-position: inside; margin:0; }
 .toc-list li { line-height:16px; display:list-item; margin: 0; padding:6px 4px;  }
 .toc-list li:hover { background-color:#aaa;  }
 .toc-list li a { text-decoration:none; padding: 2px 1px 1px 3px;  color:#111;  }

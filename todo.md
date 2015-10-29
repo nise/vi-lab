@@ -1,20 +1,25 @@
 
+
+
 # VI-TWO
 ## urgent
+- new video instances
+
 - test mit vielen users
 - test IE
+- test safari
 - css bugs in opera
-
-- guided tour
+- bug @ logged out members are not gettng disabled in the peers client
+- bug @ aufgabe muss je video, statt je Phase angezeigt werden
+- change fonts- guided tour
 - display comments / links animated 
 - activity log
 
 - popcorn maker @ admin
 - suche
+- session mgmg?
 
 ## bugs
-- bug @ logged out members are not gettng disabled in the peers client
-- bug @ aufgabe muss je video, statt je Phase angezeigt werden
 - video3 toc missing for comparisson
 - fix some tooltip bugs (user-data, group-data)
 
@@ -41,6 +46,23 @@
 ## Script
 
 ## next release / nth
+- popcorn-editor
+ - open slides as popcorn annotations
+ - open toc, tags, links, assessment
+- settings per appliction
+ - placeholder definieren
+- workflow für video upload
+ 1. select locale file
+ 2. convert different codecs & sizes
+ 3. define metadata
+ 4. extract stills
+ 5. extract text from stills
+ 5. select poster from stills
+ 
+- @timeline: zustand für inaktive marker
+- was passiert am videoende?
+- @zoom: relative zoom/pan position 
+- feedback für keyboard commands : insb. playback speed, zoom
 - @assesment
 	- comment assessment
 	- ass: Aufgabenstatistik

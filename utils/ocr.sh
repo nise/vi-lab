@@ -19,10 +19,18 @@ do
 		# /usr/local/lib /usr/local/bin/
   	base="${page%.jpg}"
     cuneiform -f text -l ger -o ./ocr.txt "$page"
+    # remove unwanted characters
    	value=`cat ./ocr.txt`
-   	value=$(echo "$value" | sed s'/[0-9]//g' | tr '\n' ' ' | sed "s/[^a-zA-Z|0-9| ]//g;" | sed s'/ [a-zA-Z] / /g' | sed s'/ [a-zA-Z][a-zA-Z] / /g' | sed s'/  */\ /g' | sed s'/[a-zA-Z]!//g') 
+   	value=$(echo "$value" | sed s'/[0-9]//g')  # replace digits
+   	value=$(echo "$value" | tr '\n' ' ') # remove linebreaks
+   	value=$(echo "$value" | sed "s/[^a-zA-Z|0-9| ]//g;") 
+#   	value=$(echo "$value" | sed s'/ [a-zA-Z] / /g')
+#   	value=$(echo "$value" | sed s'/ [a-zA-Z][a-zA-Z] / /g')
+   	value=$(echo "$value" | sed s'/  */\ /g') # remove multiple blancs
+   	value=$(echo "$value" | sed s'/[a-zA-Z]!//g') # remove special characters
+   	 
    	image=$(echo $base | sed 's/.\/slides\///g')
-    echo "_________ $value"
+    #echo "$id _________ $value"
     echo "\n"
     stream="$stream { 	\"source\":\"$image.jpg\",	\"text\": \"$value\"},$break" 
 	done
