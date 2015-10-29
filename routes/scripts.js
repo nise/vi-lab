@@ -26,10 +26,10 @@ var
  
     var script = 
     {
-    	current_phase : 1,
+    	current_phase : 2,
     	slides : false,
     	phases: [
-    		{ /* Phase 1 */
+    		{ /* Phase 0 */
     			title: "Anlaufphase",
     			instruction: "(keine)",
     			seq : 4,
@@ -69,12 +69,10 @@ var
 		  		 	}
 		  		]	
     		},
-    		{ /* Phase 2 */
+    		{ /* Phase 1 */
     			title: "Phase 1 - Auftakt",
     			instruction: "<p>Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.</p><p>Um Ihr gelerntes Wissen darüber hinaus zu überprüfen, steht Ihnen ein <a href='/assessment'>Selbsttest</a> zur Verfügung. Die Fragen dieses Tests sollten Sie jedoch nicht in das Video übertragen.</p>",
-    			//title_k: "Aufgabe 4 - Diskussion & Feedback",
-    			//instruction_k: "Reflektieren Sie Ihre Ergebnisse auf Basis des bereit gestellten, alternativen Lösungsvorschlags. (Gruppenarbeit, 4-6 Personen)",
-    			seq : 4,
+    			seq : 0,
     			groupindex: 0,
     			start : {
     				year: '2015',
@@ -82,6 +80,88 @@ var
     				day: '22',
     				h: '23',
     				m: '00'
+    			}, 
+    			widgets: [
+		  		 	{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},	
+	  		 		{ name: 'hyperlinks', 
+							canBeAnnotated:true, 
+					 		options: {
+					 			displaySelector: '#overlay',
+					 			hasTimelineMarker: true,
+					 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#hyperlinks',
+								minDuration: 5, // seconds
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+					 		}
+					 	},	
+					 	{ name: 'assessment', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#assessment',
+								allowComments : true,
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},
+		  		 	{ 
+		  		 		name: 'syncMedia', 
+							canBeAnnotated:true,
+							options: { 
+						 		selector: '#seq', 
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								controls: true, 
+								hasMenu: false,
+								menuSelector:'.synMediaMenu',
+								prefix_path: '/static/slides/', 
+								sync: true, 
+								placeholder:'/static/img/placeholder.jpg'
+							}	
+		  		 	}
+		  		]	
+    		}, // end phase 
+    		{ /* Phase 2 */
+    			title: "Phase 2 - Kommunikation und Kommunikationsmedien im virtuellen Raum",
+    			instruction: "<p>Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.</p>",
+    			seq : 2,
+    			groupindex: 2,
+    			start : {
+    				year: '2015',
+    				month: '10',
+    				day: '29',
+    				h: '23',
+    				m: '30'
     			}, 
     			widgets: [
 		  		 	{ name: 'toc', 
