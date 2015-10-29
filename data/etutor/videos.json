@@ -16,7 +16,7 @@
         "date": "2015/10/15",
         "weight": 0,
         "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
+        "thumbnail": "/static/img/video0_poster.jpg",
         "_id": "5440dbf90f4e758123ea59f5",
         "tags": [
           {
@@ -39,48 +39,198 @@
     "hyperlinks": [],
     "slides": []
    },
-   
-   
-   
  {
     "__v": 0,
     "_id": "52a13d2e2aa9d35f24000011",
     "id": "11",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
       {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
+        "date": "1446061389646",
+        "author": "6",
+        "time": "2748.806483",
+        "start": "2748.806483",
+        "starttime": "2748.806483",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "4 Kategorien : Didaktische, soziale, organisatorische, technische. "
+            }
+          ],
+          "date": "1446061389567",
+          "question": "1) Nennen Sie bitte Kategorien der Aufgabendimensionen nach Zwacki-Richter?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446108327781",
+        "author": "18",
+        "time": "2322.406281",
+        "start": "2322.406281",
+        "starttime": "2322.406281",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Persönliche Dimension, Physische Dimension und Zeitliche Dimension"
+            }
+          ],
+          "date": "1446108327724",
+          "question": "Was sind die drei Dimensionen des Blended Learning?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446108173200",
+        "author": "18",
+        "time": "427.980068",
+        "start": "427.980068",
+        "starttime": "427.980068",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Damit alle Beteiligten die für die notwendigen Informationen bekommen. "
+            }
+          ],
+          "date": "1446108173148",
+          "question": "Warum wird mit einem synchronen kick off gestartet?\n"
+        },
+        "type": "assessment"
       }
     ],
-    "comments": [],
-    "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [
+      {
+        "date": "1445946251191",
+        "author": "9",
+        "start": "235.090657",
+        "comment": "Rollen%20k%C3%B6nnten%20bspw.%20sein%3A%0A-%20Projektmanager%0A-%20Informationsmanager%0A-%20Kommunikationsmanager%0A-%20Researcher%0A-%20Kritiker"
+      },
+      {
+        "date": "1445946352010",
+        "author": "9",
+        "start": "269.510544",
+        "comment": "E-Tutor%20sollte%20nicht%20zwingend%20in%20Lernprozess%20eingreifen%2C%20ist%20eher%20passiver%20Beobachter%2C%20erst%20dann%20eingreifen%20wenn%20Lernende%20nicht%20mehr%20weiter%20kommen%0AKann%20auch%20zu%20Verwirrung%20unter%20den%20Lernenden%20f%C3%BChren%2C%20da%20sie%20denken%20k%C3%B6nnten%20ihr%20Tutor%20ist%20gar%20nicht%20da"
+      },
+      {
+        "date": "1445946629188",
+        "author": "9",
+        "start": "365.203832",
+        "comment": "synchrones%20Kick-Off%3A%20alle%20Lernenden%20sind%20entw.%20in%20einem%20Raum%20oder%20per%20Videokonferenz%20zusammengeschalten"
+      },
+      {
+        "date": "1445950648120",
+        "author": "9",
+        "start": "463.069568",
+        "comment": "Es%20werden%20Gruppen%20gebildet.%20Das%20k%C3%B6nnen%20die%20Lernenden%20entweder%20selber%20machen%20oder%20die%20Tutoren%20teilen%20ein"
+      },
+      {
+        "date": "1445950738415",
+        "author": "9",
+        "start": "477.952494",
+        "comment": "Auch%20bei%20Verteilung%20der%20Rollen%3A%20entweder%20Gruppe%20entscheidet%20oder%20die%20Tutoren%20verteilen%20die%20Rollen"
+      },
+      {
+        "date": "1445950765866",
+        "author": "9",
+        "start": "487.142448",
+        "comment": "M%C3%B6glichst%20interdisziplin%C3%A4re%20Gruppen%20--%3E%20gro%C3%9Fe%20Perspektivenvielfalt%20innerhalb%20der%20Gruppen"
+      },
+      {
+        "date": "1445950935477",
+        "author": "9",
+        "start": "544.444444",
+        "comment": "Ein%20E-Tutor%20sollte%20maximal%202-3%20Gruppen%20gleichzeitig%20betreuen"
+      },
+      {
+        "date": "1445952287478",
+        "author": "9",
+        "start": "686.160452",
+        "comment": "Es%20soll%20deutlich%20werden%2C%20dass%20es%20eine%20sehr%20abstrakte%2C%20weit%20gefasste%20Aufgabenstellung%20ist%2C%20da%205%20Personen%20intensiv%20daran%20arbeiten%20sollen%2C%20es%20gibt%20auch%20keine%20Musterl%C3%B6sung%2C%20es%20gibt%20verschiedene%20L%C3%B6sungswege%2C%20muss%20nur%20nachvollziehbar%20und%20gut%20begr%C3%BCndet%20sein"
+      },
+      {
+        "date": "1445952890565",
+        "author": "9",
+        "start": "909.502585",
+        "comment": "Dokumentation%20kann%20sein%20in%20Form%20von%20Projektpl%C3%A4nen%2C%20Protokollen%2C%20Bearbeitungshistorien%20--%3E%20um%20als%20E-Tutor%20bewerten%20zu%20k%C3%B6nnen%2C%20was%20hat%20der%20einzelne%20dazu%20beigetragen%2C%20was%20hat%20die%20Gruppe%20dazu%20beigetragen%2C%20um%20indiv.%20Noten%20generieren%20zu%20k%C3%B6nnen"
+      },
+      {
+        "date": "1446037672306",
+        "author": "9",
+        "start": "977.807346",
+        "comment": "Abschlusspr%C3%A4si%20synchron%20(realer%20Raum%20in%20Uni%20oder%20Videokonferenz)"
+      },
+      {
+        "date": "1446038081252",
+        "author": "9",
+        "start": "1104.489274",
+        "comment": "Arbeitnehmer%20haben%20hohe%20Inforationsflut%20in%20ihrem%20Arbeitsalltag%2C%20Information%20hat%20allerdings%20nur%20sehr%20geringe%20Halbwertszeit%20--%3E%20ANs%20m%C3%BCssen%20in%20Lage%20sein%2C%20sich%20regelm%C3%A4%C3%9Fig%20auf%20aktuellem%20Stand%20zu%20halten%2C%20selbst%20recherchieren%2C%20bewerten%20(Passen%20sie%20zu%20meinem%20Arbeitsfeld%2Fvorliegendem%20Problem%3F)"
+      },
+      {
+        "date": "1446038589085",
+        "author": "9",
+        "start": "1188.226802",
+        "comment": "wenn%20alle%203%20Dimensionen%20erf%C3%BCllt%20sind%2C%20ist%20derjenige%20Handlungskompetent"
+      },
+      {
+        "date": "1446038675886",
+        "author": "9",
+        "start": "1202.413786",
+        "comment": "Definition%20FACHKOMPETENZ%3A%20%22Beschreibt%20die%20Bereitschaft%20und%20F%C3%A4higkeit%20des%20Einzelnen%2C%20sich%20auf%20der%20Grundlage%20fachlichen%20Wissens%20und%20K%C3%B6nnens%20Aufgaben%20und%20Probleme%20zu%20l%C3%B6sen%20und%20das%20Ergebnis%20zu%20beurteilen.%22"
+      },
+      {
+        "date": "1446038841476",
+        "author": "9",
+        "start": "1271.257346",
+        "comment": "Definition%20SOZIALKOMPETENZ%3A%20%22Beschreibt%20die%20Bereitschaft%20und%20F%C3%A4higkeit%20soziale%20Beziehungen%20zu%20leben%2C%20mit%20anderen%20sich%20auseinanderzusetzen%20und%20zu%20verst%C3%A4ndigen.%20Man%20soll%20soziale%20Verantwortung%20%C3%BCbernehmen%20und%20eine%20Solidarit%C3%A4t%20aufweisen.%22"
+      },
+      {
+        "date": "1446039208570",
+        "author": "9",
+        "start": "1333.010067",
+        "comment": "Definition%20HUMANKOMPETENZ%20(auch%20Selbstkompetenz)%3A%20%22Beschreibt%20eine%20vorliegende%20Selbst%C3%A4ndigkeit%2C%20Verantwortungs-%20und%20Pflichtbewusstsein%22"
+      },
+      {
+        "date": "1446040189951",
+        "author": "9",
+        "start": "1400.946937",
+        "comment": "Im%20Zsh.%20mit%20Bologna%20werden%203%20Unterziele%20benannt"
+      },
+      {
+        "date": "1446107310805",
+        "author": "18",
+        "start": "1791.089092",
+        "comment": "Ein%20wichtiger%20Punkt%20ist%20die%20Selbststeuerung%2C%20sehr%20aktive%20Rolle%20der%20Lernenden%20und%20der%20e-Tutor%20als%20Beobachtungsperson"
+      },
+      {
+        "date": "1446108472785",
+        "author": "18",
+        "start": "1569.332698",
+        "comment": "Informing%3A%20Es%20gibt%20keine%2Fwenige%20Kontakte%20zu%20Aktoren%20und%20die%20Information%20steht%20im%20Mittelpunkt%2C%20bsp.%20Newsletter%20oder%20Lehrbuch.%20Es%20erfolgt%20aber%20keine%20Diskussion%20oder%20Austausch.%20"
+      },
+      {
+        "date": "1446108731454",
+        "author": "18",
+        "start": "1596.799296",
+        "comment": "Coordinating%3A%20Kommunikationspartner%20kennen%20sich%20und%20stehen%20im%20engen%20Kontakt.%20Informationen%20werden%20geteilt.%20Direkte%20Interaktion%20erkennbar.%20%0A"
+      },
+      {
+        "date": "1446108917859",
+        "author": "18",
+        "start": "1616.051632",
+        "comment": "Collaborating%3A%20Die%20Beteiligen%20Sprechen%20miteinander%20und%20bringen%20sich%20in%20einen%20gemeinsamen%20Prozess%20ein%20um%20ein%20gemeinsames%20Ziel%20zu%20erreichen.%20Aufgabe%20soll%20gemeinsam%20gel%C3%B6st%20werden.%20Kommunikation%20findet%20unregelm%C3%A4%C3%9Fig%20statt.%20Sehr%20stark%20individuell%20gepr%C3%A4gt.%20"
+      },
+      {
+        "date": "1446109074116",
+        "author": "18",
+        "start": "1655.64111",
+        "comment": "Cooperating%3A%20Pers%C3%B6nliche%20Ziele%20werden%20untergeordnet.%20Entscheidungen%20werden%20im%20Konsens%20getroffen.%20Direkte%20pers%C3%B6nliche%20Interaktion.%20"
+      }
+    ],
     "slides": [
       {
         "type": "seq",
@@ -279,46 +429,143 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
+        "date": "1445945594275",
+        "author": "9",
+        "start": "64.919229",
+        "label": "1%20Lernziele"
       },
       {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
+        "date": "1445945832210",
+        "author": "9",
+        "start": "136.898185",
+        "label": "2%20Virtual%20Collaborative%20Learning%20(VCL)-Projekte"
       },
       {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
+        "date": "1445948901765",
+        "author": "9",
+        "start": "339.632947",
+        "label": "2.1%20Grunds%C3%A4tzlicher%20Ablauf"
       },
       {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
+        "date": "1445948939173",
+        "author": "9",
+        "start": "359.883514",
+        "label": "2.1.1%20Kick-Off"
       },
       {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
+        "date": "1445950514827",
+        "author": "9",
+        "start": "431.629954",
+        "label": "2.1.2%20Gruppenbildung%2F-findung"
       },
       {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
+        "date": "1445951001041",
+        "author": "9",
+        "start": "559.007709",
+        "label": "2.1.3%20Bearbeitung%20der%20Fallstudie"
       },
       {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
+        "date": "1445952817502",
+        "author": "9",
+        "start": "881.410861",
+        "label": "2.3.4%20Abgabe%20der%20Ergebnisse%20inkl.%20Prozessdokumentation"
       },
       {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "date": "1445953031405",
+        "author": "9",
+        "start": "965.539433",
+        "label": "2.3.5%20Abschlusspr%C3%A4sentation"
+      },
+      {
+        "date": "1446037870675",
+        "author": "9",
+        "start": "1011.070045",
+        "label": "2.2%20Konzept"
+      },
+      {
+        "date": "1446037999410",
+        "author": "9",
+        "start": "1078.230975",
+        "label": "2.3%20Ziele"
+      },
+      {
+        "date": "1446107150402",
+        "author": "18",
+        "start": "1473.341587",
+        "label": "2.4%20Kollaborative%20Zusammenarbeit"
+      },
+      {
+        "date": "1446107422493",
+        "author": "18",
+        "start": "2004.96882",
+        "label": "3%20Blended%20Learning"
+      },
+      {
+        "date": "1446107556846",
+        "author": "18",
+        "start": "2325.168775",
+        "label": "4%20Aufgaben%20von%20eTutoren"
+      },
+      {
+        "date": "1446107582073",
+        "author": "18",
+        "start": "2337.10916",
+        "label": "4.1%20Grunds%C3%A4tzlicher%20Fokus"
+      },
+      {
+        "date": "1446107619845",
+        "author": "18",
+        "start": "2398.034331",
+        "label": "4.2%20Aufgabendimensionen"
+      },
+      {
+        "date": "1446107675991",
+        "author": "18",
+        "start": "2445.118594",
+        "label": "4.3%20Split-Tutor-Concept"
+      },
+      {
+        "date": "1446107738693",
+        "author": "18",
+        "start": "2648.413083",
+        "label": "4.4%20Verst%C3%A4ndnis%20im%20Qualifizierungsvorhaben"
+      },
+      {
+        "date": "1446107763513",
+        "author": "18",
+        "start": "2746.33297",
+        "label": "Quellen"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },
@@ -328,39 +575,216 @@
     "id": "12",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
       {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
+        "date": "1446030202162",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Grundsätzlicher Ablauf\n- Kick-Off:\n- Ausgabe der Fallstudie inkl. Aufgabenstellung\n- Kommunikation von Deadlines und weiteren Vorgaben\n- Gruppenbildung/-findung:\n- Anmeldung auf der Lern-/Social-Service-Plattform\n(Ning, Mixxed)\n- Verteilung der Rollen\n- Bearbeitung der Fallstudie\n- Gruppen- und Einzelarbeit\n- evtl. Gliederung in Teilaufgaben\n- Abgabe der Ergebnisse inkl. der Prozessdokumentation\n- Abschlusspräsentation"
+            }
+          ],
+          "date": "1446030202137",
+          "question": "Wie sieht der grundsätzliche Ablauf bei einem VCL-Arrangement aus?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446042269678",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die Problemstellung sollte so komplex gestaltet werden, dass sie von einer einzelnen Person aufgrund der Zeit- und Fachkomplexität nicht gelöst werden kann. Dadurch wird die Notwendigkeit des Austauschs in der Gruppe forciert. Das Problem sollte dabei in den Kontext eines fiktiven, aber auf reellen Begebenheiten basierenden, Rahmenunternehmen eingeordnet werden, sodass man den Bezug zur Realität nachvollziehen kann. Die Aufgabenstellung sollte dabei bewusst abstrakt und weitgefasst formuliert werden, um eine intensive Beschäftigung mit dem Themenkomplex hervorzurufen."
+            }
+          ],
+          "date": "1446042269658",
+          "question": "Wie sollten Fallstudien für VCL in der Wirtschaft gestaltet sein?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446042496490",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Für Fallstudien wird in der Regel keine Musterlösung gegeben. Da es sich um eine komplexe Aufgabenstellung handelt, können mehrere Wege zum Ziel führen. Die Lösung muss dann nach Begründung und Nachvollziehbarkeit bewertet werden. Auch das Feststellen einer Unlösbarkeit des Problems kann bei richtiger Argumentation eine valide Lösung darstellen."
+            }
+          ],
+          "date": "1446042496473",
+          "question": "Wodurch zeichnet sich die Lösung einer Fallstudie aus?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446042612958",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Werkzeuge für Zusammenarbeit und Awareness (Foren,\nkoll. Plattformen, Microblogging)\n- Werkzeuge für Collective Notetaking (Tagging,\nBookmarking, Notes)\n- Werkzeuge für kollaborative Erstellung von Inhalten\n(Wikis, Blogs)"
+            }
+          ],
+          "date": "1446042612941",
+          "question": "In welche Klassen lassen sich die Werkzeuge für die Bearbeitung von Fallstudien einteilen? Nenne jeweils ein Beispiel."
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446042945679",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die Bewertung kann dadurch gewährleistet werden, dass die Teilnehmer neben der anzufertigenden Lösung zusätzlich eine Dokumentation ihres Arbeitsprozesses erstellen. Durch Dokumente wie Projektpläne, Diskussionsverläufe und Historien von bearbeiteten Dokumenten können die Bewertenden anhand des Autors sehen wie sich einzelne Teilnehmer engagiert und zur Lösung beigetragen haben."
+            }
+          ],
+          "date": "1446042945656",
+          "question": "Wodurch können bei der Benotung eines VCL-Projekts die indiviuellen Leistungen nachvollzogen werden?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446043020024",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Fachkompetenz\n- Sozialkompetenz\n- Humankompetenz"
+            }
+          ],
+          "date": "1446043020010",
+          "question": "Nenne die Dimensionen aus denen sich die Handlungskompetenz zusammensetzt."
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446043332589",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die Teilnehmer sollen auf eine globalisierte und sich ständig verändernde Arbeitswelt vorbereitet werden. Sie sollen auch die Kompetenz ausbilden sich innerhalb der Flut an Informationen mit teils geringen Halbwertszeiten zurechtzufinden, da sie ständig Informationen recherchieren und in Hinsicht auf ihre Aufgabe bewerten müssen."
+            }
+          ],
+          "date": "1446043332574",
+          "question": "Wodurch wird der Einsatz von VCL-Arrangements motiviert?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446043805538",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die Fachkompetenz wird durch das anwendungsorientierte Setting des Problems im VCL angesprochen. So müssen die Teilnehmer ihr Fachwissen auf die Problemstellung anwenden und können dieses dabei erproben und bei Bedarf vertiefen. Auch können durch den Austausch in der Gruppe und die unterschiedlichen Perspektiven neue Erkenntnisse gewonnen werden.\nDie Sozialkompetenz wird durch die Kollaboration abgedeckt, da die Teilnehmer aufeinander angewiesen sind und sich miteinander auseinandersetzen müssen um zu einer Lösung zu kommen.\nDie Human- bzw. Selbstkompetenz wird durch das hohe Maß an Selbstorganisation, das von den Teilnehmern verlangt wird, gefördert. Die Teilnehmer sind nicht nur für den eigenen Erfolg sondern auch für den der anderen Gruppenmitglieder verantwortlich."
+            }
+          ],
+          "date": "1446043805522",
+          "question": "Inwiefern werden die 3 Dimensionen der Handlungskompetenz in VCL-Arrangements adressiert?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446044339371",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die drei Unterziele sind Skills, Adaptability und Mobility. Die Skills werden durch die zumeist interdisziplinäre Gruppenarbeit und den Einsatz der unterschiedlichen Kommunikationstechnologien aufgrund verteilter Standorte gefördert. Durch die komplexe Problemstellung werden die Lernenden dazu bewegt sich miteinander dem Problem zu stellen und eventuell vorhandene Schwächen zu identifizieren und zu korrigieren, was der Adaptibility entspricht. Die Mobility wird durch die vereinfachte Zusammenarbeit von Leuten an unterschiedlichen Standorten gefördert, da die Teilnehmer über das Internet mit Menschen über Grenzen hinweg zusammenarbeiten können und sich dabei auf die kulturellen Unterschiede einstellen müssen."
+            }
+          ],
+          "date": "1446044339349",
+          "question": "Welche Unterziele werden innerhalb der Bologna-Ziele definiert und wie werden sie in VCLs abgedeckt?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446045819519",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Blended Learning bezeichnet die „didaktisch sinnvolle\nVerknüpfung von traditionellem Klassenzimmerlernen und\nvirtuellem bzw. Online-Lernen auf der Basis neuer\nInformations- und Kommunikationstechnologien"
+            }
+          ],
+          "date": "1446045819504",
+          "question": "Definiere den Begriff des Blended Learning."
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446046162417",
+        "author": "11",
+        "time": "0",
+        "start": "0",
+        "starttime": "0",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die drei Dimensionen sind die physische, persönliche und zeitliche Dimension und VCL lässt sich meiner Meinung nach in der Mitte der Blöcke 2, 4, 6 und 8 auf Folie 20 einordnen."
+            }
+          ],
+          "date": "1446046162395",
+          "question": "Nenne die drei Dimensionen des Blended Learning nach Schoop und ordne VCL dort ein."
+        },
+        "type": "assessment"
       }
     ],
-    "comments": [],
-    "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [
+      {
+        "date": "1446027756130",
+        "author": "11",
+        "start": "0",
+        "comment": "http%3A%2F%2Fwww.eassessment.uni-bremen.de%2Fdocuments%2FFr-10-00-Buecking-WS-Handout.pdf%0A%0A%0AIn%20dem%20verlinkten%20Dokument%20wird%20eine%20%C3%9Cbersicht%20gegeben%20wie%20man%20Pr%C3%BCfungsfragen%20gestalten%20kann.%20Das%20k%C3%B6nnte%20hilfreich%20sein%20f%C3%BCr%20die%20Erstellung%20der%20%C3%9Cbungsfragen%2C%20die%20wir%20uns%20%C3%BCberlegen%20sollen."
+      }
+    ],
     "slides": [
       {
         "type": "seq",
@@ -559,46 +983,77 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
+        "date": "1446031467452",
+        "author": "11",
+        "start": "79.747256",
+        "label": "Einf%C3%BChrung%20in%20die%20Veranstaltungsziele%20%26%20Vorstellung%20von%20VCL"
       },
       {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
+        "date": "1446032137514",
+        "author": "11",
+        "start": "355.491428",
+        "label": "Ablauf%20von%20VCL-Arrangements%20%26%20Fallstudien-Design"
       },
       {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
+        "date": "1446033605101",
+        "author": "11",
+        "start": "1070",
+        "label": "Motivation%20f%C3%BCr%20VCL-Projekte"
       },
       {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
+        "date": "1446041849217",
+        "author": "11",
+        "start": "1474.94306",
+        "label": "Charakteristika%20von%20Kollaborationen"
       },
       {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
+        "date": "1446044849539",
+        "author": "11",
+        "start": "1770",
+        "label": "Merkmale%20kollaborativen%20Lernens"
       },
       {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
+        "date": "1446045504424",
+        "author": "11",
+        "start": "2000",
+        "label": "Einf%C3%BChrung%20Blended%20Learning"
       },
       {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
-      },
+        "date": "1446046313847",
+        "author": "11",
+        "start": "2320",
+        "label": "eTutoren%20-%20Fokus%20und%20Aufgaben"
+      }
+    ],
+    "metadata": [
       {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },
@@ -608,39 +1063,79 @@
     "id": "13",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
       {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
+        "date": "1445870840340",
+        "author": "13",
+        "time": "2635.296394",
+        "start": "2635.296394",
+        "starttime": "2635.296394",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Im Split-Tutor-Concept ist eine Trennung von fach- und personen-/gruppenbezogener Betreuung vorgesehen. \nEine fachbezogene Betreuung (z.B. durch Professor) beantwortet inhaltliche Fragen bei Verständnisproblemen, gibt Hinweise zu weiterführenden Informationen sowie Rückmeldung zu erarbeiteten Lösungen im Lernprozess. \nDie personen-/gruppenbezogene Betreuung (z.B. durch SHK) dient der Organisation von Lernaktivitäten, fördert die Reflexion des Lernverhaltens durch Rückmeldung und unterstützt Lernende bei Konflikten und Lernproblemen. \n"
+            }
+          ],
+          "date": "1445870840328",
+          "question": "Was versteht man unter dem Split-Tutor-Concept nach Kerres et al. (2005)?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1445873607178",
+        "author": "13",
+        "time": "1688.521678",
+        "start": "1688.521678",
+        "starttime": "1688.521678",
+        "title": {
+          "correct": [
+            "answ49",
+            "answ96"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Übermittlung von Informationen",
+              "id": "answ45"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "gemeinschaftliches Ergebnis",
+              "id": "answ49"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Kommunikation im unregelmäßigen Rhythmus",
+              "id": "answ96"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Unterordnung persönlicher Ziele",
+              "id": "answ99"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Entscheidungsfindung nur im Konsenz",
+              "id": "answ84"
+            }
+          ],
+          "date": "1445873607162",
+          "question": "Was sind zentrale Aspekte der Kollaboration nach Bair (1989)?"
+        },
+        "type": "assessment"
       }
     ],
-    "comments": [],
-    "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [
+      {
+        "date": "1445866687493",
+        "author": "13",
+        "start": "1703.979365",
+        "comment": "hi%2C%20ich%20habe%20schon%20mal%20ein%20paar%20Links%20zu%20weiterf%C3%BChrender%20Literatur%20(VCL%2C%20Kollaboration%2C%20Blended%20Learning)%20sowie%20Testfragen%20eingef%C3%BCgt."
+      }
+    ],
     "slides": [
       {
         "type": "seq",
@@ -839,46 +1334,77 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "starttime": "0",
+        "description": "Balazs%252525252525252525252525252C%2525252525252525252525252520I.%2525252525252525252525252520(2004)%252525252525252525252525253A%2525252525252525252525252520Konzeption%2525252525252525252525252520von%2525252525252525252525252520Virtual%2525252525252525252525252520Collaborative%2525252525252525252525252520Learning%2525252525252525252525252520Projekten%252525252525252525252525252C%2525252525252525252525252520Dissertation.",
+        "title": "Balasz%2520(2004)%2520Konzeption%2520von%2520VCL%2520Projekten",
+        "target": "http://nbn-resolving.de/urn:nbn:de:swb:14-1111134624957-21292",
+        "date": "1445873768880",
+        "author": "13",
+        "type": "hyperlinks"
       },
       {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "starttime": "0",
+        "description": "Stoller-Schai%252525252525252525252C%2525252525252525252520D.%2525252525252525252520(2003)%252525252525252525253A%2525252525252525252520E-Collaboration%252525252525252525253A%2525252525252525252520Die%2525252525252525252520Gestaltung%2525252525252525252520internetgest%25252525252525252525C3%25252525252525252525BCtzter%2525252525252525252520kollaborativer%2525252525252525252520Handlungsfelder%252525252525252525252C%2525252525252525252520Dissertation.",
+        "title": "Stoller-Schai%25252520(2003)%2525253A%25252520E-Collaboration",
+        "target": "http://verdi.unisg.ch/www/edis.nsf/wwwDisplayIdentifier/2767/$FILE/dis2767.pdf",
+        "date": "1445866406283",
+        "author": "13",
+        "type": "hyperlinks"
       },
       {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
-      },
+        "duration2": "0",
+        "seek": "0",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "starttime": "0",
+        "description": "E-Learning%252525252C%2525252520VCL%252525252C%2525252520Blended%2525252520Learning",
+        "title": "Schoop%20(2009)%20Blended%20Learning",
+        "target": "http://www.qucosa.de/recherche/frontdoor/cache.off?tx_slubopus4frontend[id]=urn%3Anbn%3Ade%3Absz%3A14-qucosa-26183",
+        "date": "1445873798321",
+        "author": "13",
+        "type": "hyperlinks"
+      }
+    ],
+    "tags": [],
+    "toc": [],
+    "metadata": [
       {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
-      },
-      {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
-      },
-      {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
-      },
-      {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
-      },
-      {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },
@@ -888,39 +1414,10 @@
     "id": "14",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
-      {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
-      }
-    ],
-    "comments": [],
+    "assessmentwriting": [],
+    "assessmentfillin": [],
     "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [],
     "slides": [
       {
         "type": "seq",
@@ -1119,46 +1616,47 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
+        "date": "1446115385159",
+        "author": "14",
+        "start": "67.251292",
+        "label": "1.%20Lernziele"
       },
       {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
-      },
+        "date": "1446115521697",
+        "author": "14",
+        "start": "146.466349",
+        "label": "2.%20Virtual%20Collaborative%20Learning%20(VCL)"
+      }
+    ],
+    "metadata": [
       {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
-      },
-      {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
-      },
-      {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
-      },
-      {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
-      },
-      {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
-      },
-      {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },
@@ -1168,39 +1666,10 @@
     "id": "15",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
-      {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
-      }
-    ],
-    "comments": [],
+    "assessmentwriting": [],
+    "assessmentfillin": [],
     "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [],
     "slides": [
       {
         "type": "seq",
@@ -1399,46 +1868,34 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
-      },
-      {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
-      },
-      {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
-      },
-      {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
-      },
-      {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
-      },
-      {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
-      },
-      {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
-      },
-      {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },
@@ -1448,39 +1905,10 @@
     "id": "16",
     "progress": "3",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture1_improved.mp4",
-    "video2": "/static/videos/e2script_lecture1_improved.mp4",
-    "metadata": [
-      {
-        "author": "Dipl.-Hdl. Corinna Hetmank",
-        "institution": "TU Dresden, WIIM",
-        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "category": "Qualifikation E-Tutoren",
-        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
-        "length": "0:46:31",
-        "date": "2015/10/18",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/video1_poster.jpg",
-        "_id": "5440dbf90f4e758123ea59f2",
-        "tags": [
-          {
-            "t": "Virtual Collaborative Learning"
-          },
-          {
-            "t": "Blended Learning"
-          },
-          {
-            "t": "E-Tutoren"
-          }
-        ]
-      }
-    ],
-    "comments": [],
+    "assessmentwriting": [],
+    "assessmentfillin": [],
     "assessment": [],
-    "highlight": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
+    "comments": [],
     "slides": [
       {
         "type": "seq",
@@ -1679,46 +2107,34 @@
         "duration": 22.2
       }
     ],
-   	"toc_org": [
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
       {
-        "label": "Qualifizierung von eTutoren – Auftaktveranstaltung",
-        "start": 0,
-        "_id": "5440dbf90f4e758123ea59f1"
-      },
-      {
-        "label": "Agenda",
-        "start": 31.949,
-        "_id": "5440dbf90f4e758123ea59f0"
-      },
-      {
-        "label": "1 Lernziele",
-        "start": 64.229,
-        "_id": "5440dbf90f4e758123ea59ef"
-      },
-      {
-        "label": "2 VirtualCollaborativeLearning (VCL)-Projekte",
-        "start": 135.019,
-        "_id": "5440dbf90f4e758123ea59ee"
-      },
-      {
-        "label": "3 Einführung BlendedLearning",
-        "start": 2001.909,
-        "_id": "5440dbf90f4e758123ea59ed"
-      },
-      {
-        "label": "4 Aufgaben von eTutoren",
-        "start": 2323.739,
-        "_id": "5440dbf90f4e758123ea59ec"
-      },
-      {
-        "label": "Quellen",
-        "start": 2743.399,
-        "_id": "5440dbf90f4e758123ea59eb"
-      },
-      {
-        "label": "Kontakt",
-        "start": 2767.309,
-        "_id": "5440dbf90f4e758123ea59ea"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Qualifizierung von eTutoren – Auftaktveranstaltung",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Das erste Video gibt einen Überblick über das Konzept von Virtual Collaborative Learning (VCL)-Projekten – dem potenziellen Einsatzszenario der qualifizierten E-Tutoren. Sie erfahren Details über das zugrunde liegende didaktische Konzept, den Ablauf, die Ziele sowie die Merkmale der darin ablaufenden Lernprozesse. Weiterhin wird aufgezeigt, wie VCL-Projekte in komplexe Blended Learning-Arrangements eingebettet werden können und welche Rolle die E-Tutoren einnehmen. Letzteres mündet in ein komplexes Anforderungsprofil für E-Tutoren, welches die Basis für alle nachfolgenden Videos/Lerninhalte der E-Tutorenqualifikation darstellt.",
+        "length": "46:31",
+        "date": "2015/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video1_poster.jpg",
+        "_id": "5440dbf90f4e758123ea59f2",
+        "tags": [
+          {
+            "t": "Virtual Collaborative Learning"
+          },
+          {
+            "t": "Blended Learning"
+          },
+          {
+            "t": "E-Tutoren"
+          }
+        ]
       }
     ]
   },

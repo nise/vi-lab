@@ -58,6 +58,9 @@
  4. extract stills
  5. extract text from stills
  5. select poster from stills
+
+- admin
+ - number of currently online users (to prepare a restart)
  
 - @timeline: zustand für inaktive marker
 - was passiert am videoende?
