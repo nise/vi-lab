@@ -85,6 +85,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.post(	'/videos/create' , 		videos.create );
 	app.post(	'/videos/annotate', users.ensureAuthenticated, videos.annotate);
 	app.get( 	'/json/videos' , 			videos.getJSON );
+	app.get( 	'/json/admin/videos' , 	users.authCallback(['editor']),		videos.getAllJSON );
 	app.get( 	'/json/videos/:id' , 	videos.getOneJSON );
 	app.get( 	'/json/film' , 				videos.getJSON );
 

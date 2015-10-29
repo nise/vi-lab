@@ -1722,21 +1722,11 @@
       }
     ]
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   {
     "__v": 0,
-    "_id": "52a13d2e2aa9d35f24000046",
-    "id": "222",
-    "progress": "3",
+    "_id": "52a13d2e2aa9d35f24000021",
+    "id": "21",
+    "progress": "0",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
     "video2": "/static/videos/e2script_lecture2_improved.mp4",
     "metadata": [
@@ -1744,7 +1734,7 @@
         "author": "Dipl.-Hdl. Corinna Hetmank",
         "institution": "TU Dresden, WIIM",
         "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
-        "category": "X",
+        "category": "Qualifikation E-Tutoren",
         "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
         "length": "0:49:58",
         "date": "2014/10/18",
@@ -1753,21 +1743,7 @@
         "thumbnail": "/static/img/video2_poster.jpg",
         "_id": "544912f15af16809456b7074",
         "tags": [
-          {
-            "t": "Medium"
-          },
-          {
-            "t": "computervermittelte Kommunikation"
-          },
-          {
-            "t": "VCL-Projekt"
-          },
-          {
-            "t": "Werkzeuge"
-          },
-          {
-            "t": "Auswahl"
-          }
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
         ]
       }
     ],
@@ -1778,239 +1754,9 @@
     "toc": [],
     "hyperlinks": [],
     "slides": [
-      {
-        "duration": "25.9",
-        "starttime": "0.0",
-        "img": "video2/e2script_2-0.jpg",
-        "id": "Seminar zur Qualifizierung von eTutoren – Kommunikation und Kommunikationsmedien im virtuellen Raum –",
-        "type": "seq"
-      },
-      {
-        "duration": "32.5",
-        "starttime": "25.9",
-        "img": "video2/e2script_2-1.jpg",
-        "id": "Agenda",
-        "type": "seq"
-      },
-      {
-        "duration": "64.5",
-        "starttime": "58.4",
-        "img": "video2/e2script_2-2.jpg",
-        "id": "Agenda",
-        "type": "seq"
-      },
-      {
-        "duration": "142.0",
-        "starttime": "122.9",
-        "img": "video2/e2script_2-3.jpg",
-        "id": "1 Computervermittelte Kommunikation",
-        "type": "seq"
-      },
-      {
-        "duration": "223.7",
-        "starttime": "264.9",
-        "img": "video2/e2script_2-4.jpg",
-        "id": "1 Computervermittelte Kommunikation",
-        "type": "seq"
-      },
-      {
-        "duration": "423.4",
-        "starttime": "488.6",
-        "img": "video2/e2script_2-5.jpg",
-        "id": "1 Computervermittelte Kommunikation",
-        "type": "seq"
-      },
-      {
-        "duration": "202.6",
-        "starttime": "912.0",
-        "img": "video2/e2script_2-6.jpg",
-        "id": "1 Computervermittelte Kommunikation",
-        "type": "seq"
-      },
-      {
-        "duration": "125.5",
-        "starttime": "1114.6",
-        "img": "video2/e2script_2-7.jpg",
-        "id": "1 Computervermittelte Kommunikation",
-        "type": "seq"
-      },
-      {
-        "duration": "104.4",
-        "starttime": "1240.1",
-        "img": "video2/e2script_2-8.jpg",
-        "id": "2 Kommunikationsprozesse in VCL-Projekten",
-        "type": "seq"
-      },
-      {
-        "duration": "173.2",
-        "starttime": "1344.5",
-        "img": "video2/e2script_2-9.jpg",
-        "id": "2 Kommunikationsprozesse in VCL-Projekten",
-        "type": "seq"
-      },
-      {
-        "duration": "40.1",
-        "starttime": "1517.7",
-        "img": "video2/e2script_2-10.jpg",
-        "id": "2 Kommunikationsprozesse in VCL-Projekten",
-        "type": "seq"
-      },
-      {
-        "duration": "43.7",
-        "starttime": "1557.8",
-        "img": "video2/e2script_2-11.jpg",
-        "id": "2 Kommunikationsprozesse in VCL-Projekten",
-        "type": "seq"
-      },
-      {
-        "duration": "63.6",
-        "starttime": "1601.5",
-        "img": "video2/e2script_2-12.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "21.2",
-        "starttime": "1665.1",
-        "img": "video2/e2script_2-13.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "110.8",
-        "starttime": "1686.3",
-        "img": "video2/e2script_2-14.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "100.4",
-        "starttime": "1797.1",
-        "img": "video2/e2script_2-15.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "125.9",
-        "starttime": "1897.5",
-        "img": "video2/e2script_2-16.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "41.3",
-        "starttime": "2023.4",
-        "img": "video2/e2script_2-17.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "102.9",
-        "starttime": "2064.7",
-        "img": "video2/e2script_2-18.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "11.8",
-        "starttime": "2167.6",
-        "img": "video2/e2script_2-19.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "81.9",
-        "starttime": "2179.4",
-        "img": "video2/e2script_2-20.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "14.6",
-        "starttime": "2261.3",
-        "img": "video2/e2script_2-21.jpg",
-        "id": "3 Verschiedene Werkzeuge und ihre Wirkung",
-        "type": "seq"
-      },
-      {
-        "duration": "29.1",
-        "starttime": "2275.9",
-        "img": "video2/e2script_2-22.jpg",
-        "id": "Seite",
-        "type": "seq"
-      },
-      {
-        "duration": "10.4",
-        "starttime": "2305.0",
-        "img": "video2/e2script_2-23.jpg",
-        "id": "Seite",
-        "type": "seq"
-      },
-      {
-        "duration": "2.3",
-        "starttime": "2315.4",
-        "img": "video2/e2script_2-24.jpg",
-        "id": "Seite",
-        "type": "seq"
-      },
-      {
-        "duration": "2.9",
-        "starttime": "2317.7",
-        "img": "video2/e2script_2-25.jpg",
-        "id": "Seite",
-        "type": "seq"
-      },
-      {
-        "duration": "14.2",
-        "starttime": "2320.6",
-        "img": "video2/e2script_2-26.jpg",
-        "id": "Seite",
-        "type": "seq"
-      },
-      {
-        "duration": "160.7",
-        "starttime": "2334.8",
-        "img": "video2/e2script_2-27.jpg",
-        "id": "4 Zusammenspiel von Lernumgebung und Nutzer",
-        "type": "seq"
-      },
-      {
-        "duration": "321.3",
-        "starttime": "2495.5",
-        "img": "video2/e2script_2-28.jpg",
-        "id": "5 Theorien zur Auswahl von Kommunikationsmedien",
-        "type": "seq"
-      },
-      {
-        "duration": "137.6",
-        "starttime": "2816.8",
-        "img": "video2/e2script_2-29.jpg",
-        "id": "5 Theorien zur Auswahl von Kommunikationsmedien",
-        "type": "seq"
-      },
-      {
-        "duration": "12.3",
-        "starttime": "2954.4",
-        "img": "video2/e2script_2-30.jpg",
-        "id": "Quellen",
-        "type": "seq"
-      },
-      {
-        "duration": "21.7",
-        "starttime": "2966.7",
-        "img": "video2/e2script_2-31.jpg",
-        "id": "Quellen",
-        "type": "seq"
-      },
-      {
-        "duration": "8.3",
-        "starttime": "2988.4",
-        "img": "video2/e2script_2-32.jpg",
-        "id": "Quellen",
-        "type": "seq"
-      }
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
     ],
-    "toc": [
+    "toc_org": [
       {
         "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
         "start": 0,
@@ -2054,6 +1800,388 @@
     ]
 	},
 	{
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000022",
+    "id": "22",
+    "progress": "0",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
+    "video2": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "0:49:58",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
+    ],
+    "toc_org": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},{
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000023",
+    "id": "23",
+    "progress": "0",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
+    "video2": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "0:49:58",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
+    ],
+    "toc_org": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},{
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000024",
+    "id": "24",
+    "progress": "0",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
+    "video2": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "0:49:58",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
+    ],
+    "toc_org": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},{
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000025",
+    "id": "25",
+    "progress": "0",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
+    "video2": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "0:49:58",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
+    ],
+    "toc_org": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},{
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000026",
+    "id": "26",
+    "progress": "0",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
+    "video2": "/static/videos/e2script_lecture2_improved.mp4",
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "category": "Qualifikation E-Tutoren",
+        "abstract": "Im zweiten Video richten wir den Blick auf die Besonderheiten der Kommunikation im virtuellen Raum und die Frage, wie der Austausch zwischen Individuen durch den Einsatz geeigneter Werkzeuge unterstützt werden kann. Sie erfahren Details zu den Charakteristika und Gefahren computervermittelter Kommunikation und erhalten einen Überblick über die Kommunikationsprozesse speziell in VCL-Projekten. Anschließend werden ausgewählte Werkzeuge mit ihren zentralen Eigenschaften, ihren Vor- und Nachteilen sowie typischen Anwendungsszenarien vorgestellt. Die Erläuterung verschiedener Theorien und Modelle zur Unterstützung einer systematischen Werkzeugauswahl rundet das Video ab.",
+        "length": "0:49:58",
+        "date": "2014/10/18",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video2_poster.jpg",
+        "_id": "544912f15af16809456b7074",
+        "tags": [
+          {"t": "Medium"},{"t": "computervermittelte Kommunikation"},{"t": "VCL-Projekt"},{"t": "Werkzeuge"},{"t": "Auswahl"}
+        ]
+      }
+    ],
+    "comments": [],
+    "assessment": [],
+    "highlight": [],
+    "tags": [],
+    "toc": [],
+    "hyperlinks": [],
+    "slides": [
+    	{ "id":"slide0", "type":"seq", "img":"video2/e2script_2-0.jpg", "starttime":0, "duration":25.9 },{ "id":"slide1", "type":"seq", "img":"video2/e2script_2-2.jpg", "starttime":58.4, "duration":64.5 },{ "id":"slide2", "type":"seq", "img":"video2/e2script_2-4.jpg", "starttime":264.21402335456474, "duration":203.7312951167728 },{ "id":"slide3", "type":"seq", "img":"video2/e2script_2-6.jpg", "starttime":840.3915923566879, "duration":272.1722770700637 },{ "id":"slide4", "type":"seq", "img":"video2/e2script_2-8.jpg", "starttime":1240.1, "duration":104.40000000000009 },{ "id":"slide5", "type":"seq", "img":"video2/e2script_2-10.jpg", "starttime":1517.7, "duration":40.09999999999991 },{ "id":"slide6", "type":"seq", "img":"video2/e2script_2-12.jpg", "starttime":1601.5, "duration":63.59999999999991 },{ "id":"slide7", "type":"seq", "img":"video2/e2script_2-14.jpg", "starttime":1686.3, "duration":110.79999999999995 },{ "id":"slide8", "type":"seq", "img":"video2/e2script_2-16.jpg", "starttime":1897.5, "duration":125.90000000000009 },{ "id":"slide9", "type":"seq", "img":"video2/e2script_2-18.jpg", "starttime":2064.7, "duration":102.90000000000009 },{ "id":"slide10", "type":"seq", "img":"video2/e2script_2-20.jpg", "starttime":2179.4, "duration":81.90000000000009 },{ "id":"slide11", "type":"seq", "img":"video2/e2script_2-22.jpg", "starttime":2275.9, "duration":29.09999999999991 },{ "id":"slide12", "type":"seq", "img":"video2/e2script_2-24.jpg", "starttime":2315.4, "duration":2.300000000000182 },{ "id":"slide13", "type":"seq", "img":"video2/e2script_2-26.jpg", "starttime":2320.6, "duration":14.199999999999818 },{ "id":"slide14", "type":"seq", "img":"video2/e2script_2-28.jpg", "starttime":2495.5, "duration":321.3000000000002 },{ "id":"slide15", "type":"seq", "img":"video2/e2script_2-30.jpg", "starttime":2954.103779193206, "duration":16.977607926397923 },{ "id":"slide16", "type":"seq", "img":"video2/e2script_2-32.jpg", "starttime":2984.8756935598017, "duration":11.672105449398714 },{ "id":"slide17", "type":"seq", "img":"video2/e2script_2-1.jpg", "starttime":25.9, "duration":32.5 },{ "id":"slide18", "type":"seq", "img":"video2/e2script_2-3.jpg", "starttime":122.9, "duration":141.99999999999997 },{ "id":"slide19", "type":"seq", "img":"video2/e2script_2-5.jpg", "starttime":466.3536677282378, "duration":377.2212261146497 },{ "id":"slide20", "type":"seq", "img":"video2/e2script_2-7.jpg", "starttime":1114.6, "duration":125.5 },{ "id":"slide21", "type":"seq", "img":"video2/e2script_2-9.jpg", "starttime":1344.5, "duration":173.20000000000005 },{ "id":"slide22", "type":"seq", "img":"video2/e2script_2-11.jpg", "starttime":1557.8, "duration":43.700000000000045 },{ "id":"slide23", "type":"seq", "img":"video2/e2script_2-13.jpg", "starttime":1665.1, "duration":21.200000000000045 },{ "id":"slide24", "type":"seq", "img":"video2/e2script_2-15.jpg", "starttime":1797.1, "duration":100.40000000000009 },{ "id":"slide25", "type":"seq", "img":"video2/e2script_2-17.jpg", "starttime":2023.4, "duration":41.30000000000018 },{ "id":"slide26", "type":"seq", "img":"video2/e2script_2-19.jpg", "starttime":2167.6, "duration":11.800000000000182 },{ "id":"slide27", "type":"seq", "img":"video2/e2script_2-21.jpg", "starttime":2261.3, "duration":14.599999999999909 },{ "id":"slide28", "type":"seq", "img":"video2/e2script_2-23.jpg", "starttime":2305, "duration":10.400000000000091 },{ "id":"slide29", "type":"seq", "img":"video2/e2script_2-25.jpg", "starttime":2317.7, "duration":2.900000000000091 },{ "id":"slide30", "type":"seq", "img":"video2/e2script_2-27.jpg", "starttime":2334.8, "duration":160.69999999999982 },{ "id":"slide31", "type":"seq", "img":"video2/e2script_2-29.jpg", "starttime":2816.8, "duration":137.5999999999999 },{ "id":"slide32", "type":"seq", "img":"video2/e2script_2-31.jpg", "starttime":2970.020286624204, "duration":14.855406935597784 }
+    ],
+    "toc_org": [
+      {
+        "label": "Kommunikation und Kommunikationsmedien im virtuellen Raum",
+        "start": 0,
+        "_id": "544912f15af16809456b70d6"
+      },
+      {
+        "label": "Agenda",
+        "start": 25.9,
+        "_id": "544912f15af16809456b70d5"
+      },
+      {
+        "label": "1 Computervermittelte Kommunikation",
+        "start": 122.9,
+        "_id": "544912f15af16809456b70d4"
+      },
+      {
+        "label": "2 Kommunikationsprozesse in VCL-Projekten",
+        "start": 1240.1,
+        "_id": "544912f15af16809456b70d3"
+      },
+      {
+        "label": "3 Verschiedene Werkzeuge und ihre Wirkung",
+        "start": 1601.5,
+        "_id": "544912f15af16809456b70d2"
+      },
+      {
+        "label": "4 Zusammenspiel von Lernumgebung und Nutzer",
+        "start": 2334.8,
+        "_id": "544912f15af16809456b70d1"
+      },
+      {
+        "label": "5 Theorien zur Auswahl von Kommunikationsmedien",
+        "start": 2495.5,
+        "_id": "544912f15af16809456b70d0"
+      },
+      {
+        "label": "Quellen",
+        "start": 2954.4,
+        "_id": "544912f15af16809456b70cf"
+      }
+    ]
+	},
+  
+  {
     "_id": "52a13d2e2aa9d35f24000548",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "333",

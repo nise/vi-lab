@@ -91,16 +91,18 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 				});
 			});// end Groups
 		});// end Users
-	});// end Scripts		
-/*
-	Videos.collection.find().toArray(function(err, items) {
-    res.type('application/json');
-		res.jsonp(items);  
-		res.end('done');
-  });
-*/  
+	});// end Scripts		 
 };
 
+
+exports.getAllJSON = function(req, res) { 
+	// get videos 
+	Videos.find().sort( 'id' ).exec( function ( err, videos ){
+		res.type('application/json');
+		res.jsonp(videos);  
+		res.end('done');
+	});
+};
 
 //
 exports.getOneJSON = function(req, res) { 
