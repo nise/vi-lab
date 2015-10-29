@@ -136,6 +136,21 @@ duration":178.378,"tracks":[
 		//$('#debug').html(butter);
 		//this.json_import();
 		//this.test();
+		
+				/* 
+{
+        "type": "seq",
+        "id": "",
+        "img": "video1/e2script_1-27.jpg",
+        "starttime": "2767.3",
+        "duration": 22.2
+      }*/
+      var ss = '';
+      for(var i=0; i < u.length;i++){
+       ss =+ '{ "id":"slide'+i+'", "type":"seq", "img":"'+ u[i].popcornOptions.src.replace('http://127.0.0.1:3033/static/slides/','') +'", "starttime":'+ u[i].popcornOptions.start +', "duration":'+ (Number(u[i].popcornOptions.end) - Number(u[i].popcornOptions.start)) +' },';      	
+      }
+		console.log(ss);	
+		
 	},	
 
 	//
