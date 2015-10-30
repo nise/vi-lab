@@ -24,7 +24,7 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 		this.widget_list = {}; // Assoc Array is an Object // Object.size(this.widget_list)
 		this.clock = new Vi2.Clock({}, this.options.clockInterval);
 		vi2.observer.clock = this.clock; 
-		vi2.observer.log = vi2.log; 
+		//vi2.observer.log = vi2.log; 
 		//this.init();	
 
 		//this.testing();

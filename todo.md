@@ -3,7 +3,6 @@
 
 # VI-TWO
 ## urgent
-- new video instances
 
 - test mit vielen users
 - test IE
@@ -11,7 +10,7 @@
 - css bugs in opera
 - bug @ logged out members are not gettng disabled in the peers client
 - bug @ aufgabe muss je video, statt je Phase angezeigt werden
-- change fonts- guided tour
+- guided tour
 - display comments / links animated 
 - activity log
 
