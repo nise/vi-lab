@@ -149,13 +149,6 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 					
 				});
 				
-				// add event for other timelines
-				$('.vi2-timeline-top, vi2-timeline-bottom').click(function(e){
-					var posX = $(this).position().left,posY = $(this).position().top; //alert( (e.pageX - posX) / $(this).width())
-					//vi2.observer.player.currentTime( _this.pixelInTime( (e.pageX - posX) / $(this).width() ) ); 
-        	// (e.pageX - posX) + ' , ' + (e.pageY - posY) 
-				});
-				
 			} else {
 				// try reinitiate the slider as long the ...? 
 				this.interval = setInterval(function() { _this.createTimelineControl(); }, 150);
