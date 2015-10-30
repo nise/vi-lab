@@ -192,13 +192,13 @@ var ViLab = $.inherit({
 		};
 		// single solution for slide only presentations !!! xxx
 		$('#overlay').css('width', $( '.slide' ).width() );
-		//$('#overlay').css('height', $( '.slide' ).height() );
+		$('#overlay').css('height', $( '.slide' ).height() );
 		/**/
 		$(window).resize(function() { 
 			// Needs to be a timeout function so it doesn't fire every ms of resize
-			setTimeout(function() {
+			setTimeout(function() { 
 	      $('#overlay').css('width', $( '.slide' ).width() );
-	    	$('#overlay').css('height', $( options.selector ).height() );
+	    	$('#overlay').css('height', $('.slide' ).height() );
 			}, 120);
 		});
 		

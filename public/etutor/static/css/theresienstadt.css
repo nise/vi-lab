@@ -716,16 +716,12 @@ font-weight:bold;
 
 
 #overlay {
-/*	max-width:100%;
-	height: auto;*/
-	max-width:100%;
+	background-color: none 0;
+	display: block;
+	opacity: 1;
+	width: 100%;
+	z-index: 200;
 	height: 100vh;
-	height:inherit;
-	display:block;
-	position:relative;
-	z-index:20;
-	background-color:red;
-	opacity:0.5;
 	/* */
 }
 

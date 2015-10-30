@@ -149,6 +149,13 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 					
 				});
 				
+				// add event for other timelines
+				$('.vi2-timeline-top, vi2-timeline-bottom').click(function(e){
+					var posX = $(this).position().left,posY = $(this).position().top; //alert( (e.pageX - posX) / $(this).width())
+					//vi2.observer.player.currentTime( _this.pixelInTime( (e.pageX - posX) / $(this).width() ) ); 
+        	// (e.pageX - posX) + ' , ' + (e.pageY - posY) 
+				});
+				
 			} else {
 				// try reinitiate the slider as long the ...? 
 				this.interval = setInterval(function() { _this.createTimelineControl(); }, 150);
@@ -328,10 +335,14 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		**/
 		handleTimeupdate : function(e) { 
 			if (!this.seeksliding) {
-				this.video_seek.slider('value', vi2.observer.player.currentTime() );
+				this.video_seek.slider('value', vi2.observer.player.currentTime() ); // / vi2.observer.player.duration()
 			}
 			//this.video_timer.text( vi2.utils.seconds2decimal( vi2.observer.player.currentTime() ) + ' / ' + vi2.utils.seconds2decimal( vi2.observer.player.duration() ));
-		}
+		},
+		
+		
+		/**/
+		pixelInTime : function(){}
 		
 		
 	

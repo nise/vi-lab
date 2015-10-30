@@ -363,7 +363,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		
 		// show/hide video controls
 		$(_this.options.videoControlsSelector).addClass("open-controls");
-		$("#video1, #overlay, #seq").hover(
+		$("#overlay, #seq, #video-controls").hover(
 			function() {  
 		  	$(_this.options.videoControlsSelector).addClass("open-controls");
 			}, 
@@ -371,10 +371,11 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		  	$(_this.options.videoControlsSelector).removeClass("open-controls");
 			}
 		);
+		// ??
 		//$('#overlay').css('height', $('video').height() );
 		//$('#overlay').css('width', $('#video1').width() );
 		
-		/*
+	
 		// hide cursor and controls if inactive
 		var mouseTimer = null, cursorVisible = true;
 
@@ -396,7 +397,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		    }
 		    mouseTimer = window.setTimeout(disappearCursor, 1000);
 		};
-		*/
+		
 		$('body').unbind('keydown').bind('keydown', function(e) { 
 			//_this.keyboardCommandHandler(e); 
 		});
