@@ -3,19 +3,17 @@
 	<a class="account-data" href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a>			
 <% } else { %>
 	<div class="user-menu">			 
-		<a class="user-menu-entry vi-lab-tooltip" href="/users/view/<%= items.username %>" title="Benutzerprofil von <%= items.username %> ansehen" data-toggle="tooltip" data-placement="bottom" >
+		<a class="user-menu-entry navbar-brand" href="/users/view/<%= items.username %>" title="Benutzerprofil von <%= items.username %> ansehen" data-toggle="tooltip" data-placement="bottom" >
 			<img class="user-menu-icon" src="/static/img/user-icons/user-<%= items.id %>_big.png" />
 			<%= items.username %>
 		</a>
-		<a class="user-menu-entry vi-lab-tooltip" id="logoutbtn" title="log out" data-toggle="tooltip" data-placement="bottom" href="/logout">
+		<a class="user-menu-entry navbar-brand" id="logoutbtn" title="log out" data-toggle="tooltip" data-placement="bottom" href="/logout">
 			<span class="glyphicon glyphicon-log-out"></span>
 		</a>	
 	</div>
 	<script>
 		// enable tooltips
 		$(window).load(function () {
-		
-  		$('[data-toggle="tooltip"]').tooltip();
 		
 			$('a#logoutbtn').click(function(e){
 				socket.disconnect();

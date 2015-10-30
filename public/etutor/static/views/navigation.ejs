@@ -1,44 +1,64 @@
 <!-- Navbar
   ================================================== -->
-	<header class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand vi-lab-tooltip" title="Startseite" data-toggle="tooltip" data-placement="bottom" href="/home">Qualifikation von E-Tutoren</a>
-			</div>
-			<nav class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a class="vi-lab-tooltip" title="Übersicht über alle Themenblöcke und den dazugehörigen Videos" data-toggle="tooltip" data-placement="bottom" href="javascript:render('videos', true, '#page');">Themen & Videos</a></li>
-					<li><a data-toggle="tooltip" data-placement="bottom" href="javascript:render('about', false, '#page');" class="">About</a></li>
-					<li style="display:none;"><a href="/videos/view/52a13d2e2aa9d35f24000074" class="sr-only">Film</a></li>
-					
-				</ul>
-			</nav>
+  <div class="row">
+		<header class="navbar navbar-inverse navbar-fixed-top col-md-9">
+			<div class="container">
+
+				<div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand vi-lab-tooltip" title="Startseite" data-toggle="tooltip" data-placement="right" href="/home">Qualifikation von E-Tutoren</a>
+        </div>
+				
+				 <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar">
+            <li><a class="vi-lab-tooltip" title="Übersicht über alle Themen und Videos" data-toggle="tooltip" data-placement="right" href="javascript:render('videos', true, '#page');">Themen & Videos</a></li>
+						<li><a data-toggle="tooltip" data-placement="right" href="javascript:render('about', false, '#page');" class="">About</a></li>
+						<li style="display:none;"><a href="/videos/view/52a13d2e2aa9d35f24000074" class="sr-only">Film</a></li>
+        </div><!-- /.navbar-collapse -->
+				
+			</div><!-- end container-->
+		</header>
+		<div id="userpanel" class="col-md-3">
+			<span class="group-area hidden-xs"></span>
+			<span class="user-area visible-md-block"></span>
 		</div>
-	</header>
-	<div id="userpanel">
-		<span class="group-area"></span>
-		<span class="user-area"></span>
-	</div>
+	</div>	
+	
 	<script type="text/javascript"> 
-	var socket = {};
+	
+	var 
+		socket = {}
+		server = ''
+			;
 	
 	$(window).load(function () {
 		
-		// load components
+		/*
+		* Load user and group ware components
+		**/
 		render('group-data', true, '.group-area');
 		render('user-data', true, '.user-area'); 
 		
-		$(function () {
-  		$('[data-toggle="tooltip"]').tooltip()
+		/*
+		* Tooltip enabler
+		**/
+		$(document).on('mouseenter','[data-toggle="tooltip"]', function(){
+				$(this).tooltip('show');
 		});
-				
+
+		$(document).on('mouseleave','[data-toggle="tooltip"]', function(){
+				$(this).tooltip('hide');
+		});
 		
-		// handle sockets	
+		/*
+		* Socket event handling
+		**/	
 		socket = io( window.location.host ); // http://185.25.252.55:3033 http://127.0.0.1:3033
 			
 		// recognize user that just logged in
@@ -50,20 +70,20 @@
 			$('#user'+data.user).removeClass('online');
 		});
 			
-		
 	}); 
 
 
-$(window).on('beforeunload', function(){ 
-    //socket.close();
-}); 
-	
-	
-	
-	var server = '';
+	/*
+		*
+		**/
+	$(window).on('beforeunload', function(){ 
+		  //socket.close();
+	}); 
+
 
 	/*
-	**/
+		*
+		**/
 	var render = function(template, remote, selector, json){
 			if( json === undefined){ json = template; } 
 			require(['text!../views/'+template+'.ejs', 'ejs'], function(thetemplate) {  

@@ -192,13 +192,13 @@ var ViLab = $.inherit({
 		};
 		// single solution for slide only presentations !!! xxx
 		$('#overlay').css('width', $( '.slide' ).width() );
-		
+		//$('#overlay').css('height', $( '.slide' ).height() );
 		/**/
 		$(window).resize(function() { 
 			// Needs to be a timeout function so it doesn't fire every ms of resize
 			setTimeout(function() {
 	      $('#overlay').css('width', $( '.slide' ).width() );
-	    //  $('#overlay').css('height', $( options.selector ).height() );
+	    	$('#overlay').css('height', $( options.selector ).height() );
 			}, 120);
 		});
 		
@@ -245,12 +245,9 @@ var ViLab = $.inherit({
 		// misc configurations	
 		$('#accordion').accordion({
 			collapsible: false,
-			heightStyle: "fill",
-			change: function( event, ui ) { 
-				//_this.enableEditing($('#accordion').find('.ui-accordion-content-active').attr('id'));
-				//$.each(_this.loadedWidgets, function(i, val){ _this.enableEditing(val); });
-			} 
+			heightStyle: "fill" 
 		});
+		
 		
 		// setup modal dialog
 		var modal_settings = {

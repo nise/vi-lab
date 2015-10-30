@@ -213,7 +213,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 				$(o) // vi2.observer.current_stream
 					.attr('src', this.options.prefix_path+'/'+obj.content.target)
 					.addClass('slide ov-'+id)
-					.css({ height:'100vh' })
+					//.css({ height:'100vh' })
 					.unbind('load')
 					.bind('load', function(e){ //alert(JSON.stringify(t))
 							$(_this.options.selector).html(o);

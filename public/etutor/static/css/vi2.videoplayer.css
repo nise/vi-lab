@@ -3,16 +3,6 @@ author: niels.seidel@nise81.com
 */
 
 
-/* Overlay above the video frame*/
-#overlay {
-	width:10px;
-	height:10px;
-	display:block;
-	position:relative;
-	z-index:20;
-}
-
-
 /* player controls */
 .video-controls {
 	width: 100%;

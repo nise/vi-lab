@@ -3,7 +3,8 @@
 
 # VI-TWO
 ## urgent
-
+- test #overlay size
+- 
 - test mit vielen users
 - test IE
 - test safari
@@ -45,6 +46,7 @@
 ## Script
 
 ## next release / nth
+- fully use require.js to load files
 - popcorn-editor
  - open slides as popcorn annotations
  - open toc, tags, links, assessment

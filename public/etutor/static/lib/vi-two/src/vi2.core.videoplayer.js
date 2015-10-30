@@ -216,7 +216,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		this.play_btn = $('.vi2-video-play-pause');
 		
 		this.video.addEventListener('play', function(e){ 
-			//vi2.observer.clock.startClock();
+			vi2.observer.clock.startClock();
 			$('header').hide();
 			_this.play_btn.find('.glyphicon-pause').show();
 			_this.play_btn.find('.glyphicon-play').hide();
