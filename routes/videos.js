@@ -60,7 +60,7 @@ exports.index = function ( req, res ){
 
 
 exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
-	if( req.user.username !== undefined )
+	if( req.user.username !== undefined ){
 		// get script phase 
 		mongoose.model('Scripts').collection.find().toArray(function(err, script) {
 			var phase = script[0]['current_phase']; 
@@ -95,7 +95,7 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 			});// end Users
 		});// end Scripts	
 	}		 
-};
+}
 
 
 exports.getAllJSON = function(req, res) { 
