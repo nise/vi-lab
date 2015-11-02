@@ -232,7 +232,7 @@ var ViLab = $.inherit({
 		};	
 		
 		// set instruction menu
-		var pp = this.script[0]['phases'][this.current_phase]; 
+		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
 		$('<div></div>')
 			.html( pp.instruction )
 			.addClass('instructions')
