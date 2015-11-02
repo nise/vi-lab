@@ -60,38 +60,41 @@ exports.index = function ( req, res ){
 
 
 exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
-// get script phase 
-	mongoose.model('Scripts').collection.find().toArray(function(err, script) {
-  	var phase = script[0]['current_phase']; 
-  	// get group of current user
-	  mongoose.model('Users').find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-	  	var group = users[0].groups[Number(phase)];  
-	  	
-			// get video-ids of group
-			mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-				var query = {};
-				query['id'] = { $in: groups[0].videos }; // 
-				console.log('#################################################');
-				// get videos 
-				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
-					// calc status
-					for(var i = 0; i < videos.length; i++){ 
-						// calc duration in Minutes
-						duration = ( videos[i].metadata[0].length ).split(':');
-						duration = Number( Number(duration[0])*60 + Number(duration[1]) );
-						videos[i].status = Number(videos[i].comments.length ) + Number(videos[i].toc.length ) + Number(videos[i].assessment.length ) + Number(videos[i].hyperlinks.length );
-						// normalize regarding video duration
-						videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
+	if( req.user.username !== undefined )
+		// get script phase 
+		mongoose.model('Scripts').collection.find().toArray(function(err, script) {
+			var phase = script[0]['current_phase']; 
+			// get group of current user
+			
+			mongoose.model('Users').find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+				var group = users[0].groups[Number(phase)];  
+				
+				// get video-ids of group
+				mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+					var query = {};
+					query['id'] = { $in: groups[0].videos }; // 
+					console.log('#################################################');
+					// get videos 
+					Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+						// calc status
+						for(var i = 0; i < videos.length; i++){ 
+							// calc duration in Minutes
+							duration = ( videos[i].metadata[0].length ).split(':');
+							duration = Number( Number(duration[0])*60 + Number(duration[1]) );
+							videos[i].status = Number(videos[i].comments.length ) + Number(videos[i].toc.length ) + Number(videos[i].assessment.length ) + Number(videos[i].hyperlinks.length );
+							// normalize regarding video duration
+							videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
 						
-					} 
-					console.log(videos)
-					res.type('application/json');
-					res.jsonp(videos);  
-					res.end('done');
-				});
-			});// end Groups
-		});// end Users
-	});// end Scripts		 
+						} 
+						console.log(videos)
+						res.type('application/json');
+						res.jsonp(videos);  
+						res.end('done');
+					});
+				});// end Groups
+			});// end Users
+		});// end Scripts	
+	}		 
 };
 
 

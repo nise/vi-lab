@@ -3,8 +3,6 @@
 
 # VI-TWO
 ## urgent
-- test #overlay size
-- 
 - test mit vielen users
 - test IE
 - test safari

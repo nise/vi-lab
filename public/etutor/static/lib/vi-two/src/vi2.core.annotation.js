@@ -39,6 +39,18 @@ Vi2.Annotation = $.inherit(/** @lends Annotation# */{
 		
 		
 		/*
+			* 
+			**/
+		animation : function(selector, effect){
+			$( selector ).animate({
+				left: 100
+			}, {
+				duration: 1000
+				
+			});
+		},
+		
+		/*
 		* todo: 
 		*  - check data types: string, number, decimal-time, ... from .data('datatype', 'decimal-time')
 		*  - change messages
