@@ -155,6 +155,22 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 
 
 
+/*
+* Vi-Analytics
+
+var va = require('../vi-analytics/index.js');
+
+
+va.init( { 
+		app: app, 
+		path:'/analytics/perception-per-video'
+	}, null, function(data){
+		console.log( data ); 	
+	});
+
+	**/
+
+
 
 
 
@@ -200,27 +216,7 @@ io.sockets.on('connection', function (client) {
 	}
 });		
 
-/*
-io.on('connection', function (client) { 
-	if( ! ioConnected ){
-	ioConnected=true;
-	serverEmitter.on('user.connected', function (data) {
-    console.log('++ user.connected ' + data.id );
-    client.broadcast.emit( 'user.goes.online', {user: data.id, online:true } );
-  });
-	
-	serverEmitter.on('user.disconnected', function (data) { 
-		console.log('++ user.disconnected ' + data.id );
-		client.broadcast.emit( 'user.goes.offline', {user: data.id, online:false } );
-	});
 
-	client.on('video.updated', function (data) { console.log(data)
-		console.log('++ video.updated ' + videoid);
-		client.broadcast.emit('video.refresh.annotations',{ video: videoid }); 
-	});	
-	}
-});			
-*/	
 
 var port = 3033;
 server.listen(port);
@@ -233,40 +229,6 @@ console.log('************************************************\n\n');
 	
 	
 
-
-/*
-client.on('user.connected22', function (data) { 
-		console.log('++ user.connected ' + data.id );
-		client.broadcast.emit( 'user.goes.online', {user: data.id, online:true } );
-	});	
-	
-*/
-//var io = require('socket.io', { rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling'] })(server);
-//io.set('transports', ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
-//io.set('heartbeat interval', 1);
-//io.set('transports', ['xhr-polling']);
-//{ rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling'] }).listen(server),
-
-exports.socketio = function (event, data){ }
-	//var io = require('socket.io')(server);//, {'transports': ['websocket', 'polling']});
-	//	io.sockets.setMaxListeners(0); 
-	//io.set('heartbeat interval', 1);
-	//io.set('transports', ['xhr-polling']);
-			/*
-		switch(event){
-			case "user.connected" : 
-				console.log('got conn from ' + data.id);
-				client.broadcast.emit( event, {user: data.id, online:true, bla:'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh' } );
-				//require('routes/users').setOnlineStatus({params:{ id: data[0].id}, body:{online_status:true, online_location:'index'}}, {});
-				break;
-			case "user.disconnected" :  console.log('drin2 '+event)
-				console.log('got disconn from ');
-				client.broadcast.emit( event, {user: data.id, online:false, bla:'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh' } );
-				//require('routes/users').setOnlineStatus({params:{ id: data[0].id}, body:{online_status:true, online_location:'index'}}, {});
-				break;	
-		}
-		*/
-	
 	
 
 

@@ -86,6 +86,8 @@ var Users = new Schema({
   name: String,
   firstname: String,
   hs: String,
+  gender: String,
+  culture: String,
   role: String,
   status: {
   	online: Boolean,

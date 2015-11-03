@@ -59,7 +59,7 @@
 						name: val.title, 
 						occ:[val.t1], 
 						target: val.target,
-						description: decodeURIComponent( val.description ), 
+						description: ( val.description ), 
 						time :[val.t1],
 						duration: val.t2, 
 						x:val.x,
@@ -100,10 +100,10 @@
 				.attr('seek', vi2.utils.deci2seconds(this.seek))
 				.attr('duration2', vi2.utils.deci2seconds(this.duration2))
 				.attr('target', val.target)
-				.attr('description', encodeURIComponent( val.description) )
+				.attr('description', decodeURIComponent( val.description) )
 				.attr('author', val.author)
 				.attr('date', val.date)
-				.text( val.title )
+				.text( decodeURIComponent(val.title) )
 				.appendTo( vi2.dom )
 				;
 			});
@@ -120,14 +120,14 @@
 				.attr('author', vi2.wp_user )
 				.attr('date', new Date().getTime())
 				.attr('starttime', obj.time )
-				.attr('description', encodeURIComponent( obj.content.description ) )
+				.attr('description', decodeURIComponent( obj.content.description ) )
 				.attr('duration', obj.content.duration === undefined ? '10' : obj.content.duration )
 				.attr('posx', obj.content.x === undefined ? '20' : obj.content.x  )
 				.attr('posy', obj.content.y === undefined ? '80' : obj.content.y  )
 				.attr('seek', 0 )// obj.conetnt.seek
 				.attr('duration2', 0 )//obj.content.duration2
 				.attr('target', obj.content.target)
-				.text( obj.content.label ); 
+				.text( decodeURIComponent(obj.content.label) ); 
 		},
 		
 		
@@ -146,8 +146,8 @@
 				.attr('seek', 0 )// obj.conetnt.seek
 				.attr('duration2', 0 )//obj.content.duration2
 				.attr('target', obj.content.target)
-				.attr('description', encodeURIComponent( obj.content.description ))
-				.text( obj.content.label )
+				.attr('description', decodeURIComponent( obj.content.description ))
+				.text( decodeURIComponent(obj.content.label) )
 				.appendTo( vi2.dom );
 		},
 		
@@ -248,7 +248,7 @@
 					.text(' ' +( decodeURIComponent( obj.content.title ) ) )
 					.attr('id', 'ov'+id)
 					.attr('href', obj.content.target )
-					.attr('title', decodeURIComponent( obj.content.description ) )
+					.attr('title', ( obj.content.description ) )
 					.addClass('overlay ov-'+id+' hyperlink-'+obj.linktype)
 					.bind('click', function(data){ 
 						// log click
