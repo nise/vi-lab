@@ -852,7 +852,7 @@ padding:10px;
 .work-progress-bar{
 	width:inherit;
 	height:16px;
-	display:block;
+	display:none;
 	background-color:#777;
 	position:relative;
 	overflow:hidden;
