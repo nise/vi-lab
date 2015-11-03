@@ -60,7 +60,7 @@ exports.index = function ( req, res ){
 
 
 exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
-	//if( req.user.username !== undefined ){
+	if( req.user.username !== undefined ){
 		// get script phase 
 		mongoose.model('Scripts').collection.find().toArray(function(err, script) {
 			var phase = script[0]['current_phase']; 
@@ -81,7 +81,19 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 							// calc duration in Minutes
 							duration = ( videos[i].metadata[0].length ).split(':');
 							duration = Number( Number(duration[0])*60 + Number(duration[1]) );
-							videos[i].status = Number(videos[i].comments.length ) + Number(videos[i].toc.length ) + Number(videos[i].assessment.length ) + Number(videos[i].hyperlinks.length );
+							
+							if( videos[i].comments !== undefined )
+							videos[i].status += Number(videos[i].comments.length );
+							
+							if( videos[i].assessment !== undefined )
+							videos[i].status += Number(videos[i].assessment.length );
+							
+							if( videos[i].toc !== undefined ) 
+							videos[i].status += Number(videos[i].toc.length );
+							
+							if( videos[i].hyperlinks !== undefined ) 
+							videos[i].status += Number(videos[i].hyperlinks.length );
+							
 							// normalize regarding video duration
 							videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
 						
@@ -94,7 +106,7 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 				});// end Groups
 			});// end Users
 		});// end Scripts	
-	//}		 
+	}		 
 }
 
 
