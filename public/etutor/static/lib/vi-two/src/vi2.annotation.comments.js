@@ -39,7 +39,10 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 		player : null,
 
 		/* ... */
-		init : function(ann){ 
+		init : function(ann){
+			if( ann === null ){
+				ann = {};
+			} 
 			var _this = this;
 			var events = [];
 			$.each(ann, function(i, val){ 

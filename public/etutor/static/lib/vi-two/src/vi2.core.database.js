@@ -201,7 +201,11 @@
 	
 	/* returns all comments related to an video **/
 	getCommentsById : function(id){
-		return this.getStreamById(id).comments;
+		if( this.getStreamById(id).comments === null ){
+			return {}
+		}else{
+			return this.getStreamById(id).comments;
+		}	
 	},
 		
 	/* returns all tags related to the whole video collection **/

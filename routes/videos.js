@@ -82,8 +82,11 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 							duration = ( videos[i].metadata[0].length ).split(':');
 							duration = Number( Number(duration[0])*60 + Number(duration[1]) );
 							
-							if( videos[i].comments !== null )
-							videos[i].status += Number(videos[i].comments.length );
+							if( videos[i].comments !== null ){
+								videos[i].status += Number(videos[i].comments.length );
+							}else{
+								 videos[i].comments = {};
+							}	
 							
 							if( videos[i].assessment !== null )
 							videos[i].status += Number(videos[i].assessment.length );

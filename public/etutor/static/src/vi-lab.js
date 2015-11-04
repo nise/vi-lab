@@ -390,7 +390,7 @@ var ViLab = $.inherit({
 				title = 'Links';
 				break;	
 			case "comments" : 
-				//widget = new Vi2.Comments( widget_options.options );  
+				widget = new Vi2.Comments( widget_options.options );  
 				title = 'Kommentare';
 				break;
 			case "assessment" : 
