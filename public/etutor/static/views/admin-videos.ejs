@@ -84,7 +84,7 @@ jQuery(document).ready(function(e) {
 			<% if ( item.tags.length > 1) { %>tags (<%=item.tags.length%>), <%}%> 
 			<% if ( item.highlight.length > 1) { %>highlight (<%=item.highlight.length%>), <%}%>
 			<% if ( item.slides.length > 1) { %>slides (<%=item.slides.length%>), <%}%>
-			<% if ( item.comments.length > 1) { %>comments (<%=item.comments.length%>), <%}%>
+			<% if ( item.comments !== null) { %>comments (<%=item.comments.length%>), <%}%>
 			<% if ( item.assessmentfillin.length > 1) { %>fill-in tasks (<%=item.assessmentfillin.length%>), <%}%>
 			<% if ( item.assessment.length > 1) { %>questions (<%=item.assessment.length%>), <%}%>
 			<% if ( item.assessmentwriting.length > 1) { %>on demand tasks (<%=item.assessmentwriting.length%>), <%}%>
