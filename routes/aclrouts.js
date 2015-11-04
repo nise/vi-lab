@@ -164,7 +164,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 	
 	app.get('/json/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
-		Log.find().sort( 'utc' ).exec(function (err, logs) {
+		Log.find().exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
 			}else{
