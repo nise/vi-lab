@@ -1,3 +1,125 @@
+<% layout( 'admin-layout' ) -%>
 
-<br><br><br><br><br>
-hello
+<h2>Peer Assessment Stats</h2>
+
+
+<div id="stats"></div>
+<div id="table"></div>
+
+
+<script>
+window.onload = function () {
+		var res = {}, video = {}, tmp = {}, ass = {}, flat = [], s='';
+		jQuery.ajax({
+      type: "get",
+      beforeSend: function(xhr){ 
+  				if (xhr.overrideMimeType){
+				    xhr.overrideMimeType("application/json");
+  				}
+			},
+      url: '/json/stats/assessment',
+      dataType: 'json',
+      success: function(data){ 
+      	res = [];
+				for(var i=0; i<data.videos.length; i++){
+					video = { 
+						id: data.videos[i].id, 
+						file: (data.videos[i].video).replace('http://141.46.8.101/beta/e2script/e2script_','').replace('_improved.mp4',''),
+						assessment: [] 
+					};
+					for(var j=0; j<data.videos[i].assessment.length; j++){
+						tmp = data.videos[i].assessment[j];
+						ass = {
+							author: tmp.author,
+							question: tmp.title.question,
+							type: tmp.title.answ[0].questiontype,
+							start:  tmp.start
+						}
+						if( ass.type === 'fi'){
+							ass.fi_attr = tmp.title.answ[0].answ.length
+						}else if( ass.type === 'mc'){
+							ass.mc_attr = ''+tmp.title.correct.length+'/'+tmp.title.answ.length
+						}// end questions
+						video.assessment.push( ass );
+						// flat
+						ass.id = data.videos[i].id;
+						ass.file = (data.videos[i].video).replace('http://141.46.8.101/beta/e2script/e2script_','').replace('_improved.mp4','');
+						ass.edits = 0;
+						ass.clicks = 0;
+						ass.submits = 0;
+						ass.results = 0;
+						flat.push( ass )
+					}// end ass
+					res.push( video )
+				}// end video
+				
+				// match questions with log activities
+				s='';
+				for(var k = 0; k < flat.length; k++){
+					for(var l = 0; l < data.logs.length; l++){
+						if( Number(flat[k].start) === Number(data.logs[l].playback_time) && data.logs[l].action.context === 'assessment'){
+							switch( data.logs[l].action.action ){
+								case "open-form-new-annotation" : 
+									flat[k].edits++;
+									break;
+							}
+						}else if( data.logs[l].action.context === 'assessment' ){
+							s += data.logs[l].action.action + ', ';
+						}	
+					}
+				}
+				console.log(s);	
+				
+				//console.log( JSON.stringify( res ));
+				
+				// bootstrap table
+				$('#table').bootstrapTable({
+					columns: [
+					{ field: 'id', title: 'ID'}, 
+					{ field: 'file', title: 'Video'},
+					{ field: 'author', title: 'Autor'},
+					{ field: 'question', title: 'Frage', width:'100px'},  
+					{ field: 'type', title: 'Type'},
+					{ field: 'fi_attr', title: 'fi-Länge'},
+					{ field: 'mc_attr', title: 'mc-Opt.'},
+					{ field: 'edits', title: '#Bearbeitungen'},
+					{ field: 'clicks', title: '#Aufrufen'},
+					{ field: 'submits', title: '#Einreichungen'},
+					{ field: 'results', title: 'Ergebnisse'}
+					],
+					data: flat
+			});
+				
+				
+				
+			},
+			error : function(e){ console.log('ERROR'); }		  
+		});
+};
+
+
+JSON.flatten = function(data) {
+    var result = {};
+    function recurse (cur, prop) {
+        if (Object(cur) !== cur) {
+            result[prop] = cur;
+        } else if (Array.isArray(cur)) {
+             for(var i=0, l=cur.length; i<l; i++)
+                 recurse(cur[i], prop + "[" + i + "]");
+            if (l == 0)
+                result[prop] = [];
+        } else {
+            var isEmpty = true;
+            for (var p in cur) {
+                isEmpty = false;
+                recurse(cur[p], prop ? prop+"."+p : p);
+            }
+            if (isEmpty && prop)
+                result[prop] = {};
+        }
+    }
+    recurse(data, "");
+    return result;
+}
+
+</script>

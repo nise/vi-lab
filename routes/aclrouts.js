@@ -176,6 +176,31 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		//res.send('terminated request');
 	});	
 	
+	app.get('/stats/assessment', function ( req, res ){ res.render( 'admin-analytics', {}); });
+	app.get('/json/stats/assessment', function ( req, res ){ // xxx editor
+		Videos
+			.find( {"assessment": {$exists: true, $not: {$size: 0}}} )
+			.select( 'id metadata assessment video' )
+			.sort( 'id' )
+			.exec( function ( err, videos ){
+				// obtain log
+				var query = {};
+				query['action.context'] = { $in: ['player','assessment'] }; // 
+				Log.find( query ).select('utc user user_name video_id playback_time action').exec(function (err, logs) {
+					if(err){ 
+						console.log(err); 
+					}else{
+						res.type('application/json');
+						res.jsonp( {
+							videos:	videos,
+							logs: logs
+						});
+						res.end('done');
+					}	
+				});				
+			});
+	});	
+	
 	
 	/**
 		* @todo need to distinguish the groups per phase

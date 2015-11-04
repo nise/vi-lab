@@ -12,7 +12,6 @@ exports.index = function ( req, res ){
 	  //items : items
 	});
 	res.end('done');
-
 };
 
 exports.getVideos = function ( req, res ){ 
@@ -37,3 +36,4 @@ exports.getUsers = function ( req, res ){
 			});
 		});
 };
+
