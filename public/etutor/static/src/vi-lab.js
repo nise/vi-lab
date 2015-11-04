@@ -230,9 +230,10 @@ var ViLab = $.inherit({
 		vi2.observer.player.video.oncanplay = function(e){ 
 			vi2.observer.player.play();	
 		};	
-		
+		console.log(_this.currentVideo);
 		// set instruction menu
 		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
+		console.log( JSON.stringify( pp ) );
 		$('<div></div>')
 			.html( pp.instruction )
 			.addClass('instructions')
