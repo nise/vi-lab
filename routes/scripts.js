@@ -232,6 +232,252 @@ var
 							}	
 		  		 	}
 		  		]	
+    		}, // end phase 
+    		{ /* Phase 3 */
+    			title: "Phase 3 - Arbeiten und Lernen in Gruppen",
+    			instruction: "<p>Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.</p>",
+    			seq : 3,
+    			groupindex: 3,
+    			start : {
+    				year: '2015',
+    				month: '11',
+    				day: '5',
+    				h: '23',
+    				m: '30'
+    			}, 
+    			widgets: [
+		  		 	{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},	
+	  		 		{ name: 'hyperlinks', 
+							canBeAnnotated:true, 
+					 		options: {
+					 			displaySelector: '#overlay',
+					 			hasTimelineMarker: true,
+					 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#hyperlinks',
+								minDuration: 5, // seconds
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+					 		}
+					 	},	
+					 	{ name: 'assessment', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#assessment',
+								allowComments : true,
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},
+		  		 	{ 
+		  		 		name: 'syncMedia', 
+							canBeAnnotated:true,
+							options: { 
+						 		selector: '#seq', 
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								controls: true, 
+								hasMenu: false,
+								menuSelector:'.synMediaMenu',
+								prefix_path: '/static/slides/', 
+								sync: true, 
+								placeholder:'/static/img/placeholder.jpg'
+							}	
+		  		 	}
+		  		]	
+    		}, // end phase 
+    		{ /* Phase 4 */
+    			title: "Phase 4 - Moderation und Arbeitsstrukturierung im VCL-Projekt",
+    			instruction: "<p>Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.</p>",
+    			seq : 4,
+    			groupindex: 4,
+    			start : {
+    				year: '2015',
+    				month: '11',
+    				day: '12',
+    				h: '23',
+    				m: '30'
+    			}, 
+    			widgets: [
+		  		 	{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},	
+	  		 		{ name: 'hyperlinks', 
+							canBeAnnotated:true, 
+					 		options: {
+					 			displaySelector: '#overlay',
+					 			hasTimelineMarker: true,
+					 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#hyperlinks',
+								minDuration: 5, // seconds
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+					 		}
+					 	},	
+					 	{ name: 'assessment', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#assessment',
+								allowComments : true,
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},
+		  		 	{ 
+		  		 		name: 'syncMedia', 
+							canBeAnnotated:true,
+							options: { 
+						 		selector: '#seq', 
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								controls: true, 
+								hasMenu: false,
+								menuSelector:'.synMediaMenu',
+								prefix_path: '/static/slides/', 
+								sync: true, 
+								placeholder:'/static/img/placeholder.jpg'
+							}	
+		  		 	}
+		  		]	
+    		}, // end phase 
+    		{ /* Phase 5 */
+    			title: "Phase 5 - Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+    			instruction: "<p>Bitte schauen Sie sich das Video aufmerksam an. Sie arbeiten in der ersten Phase in einer Gruppe von vier Personen. Erstellen Sie gemeinsam ein Inhaltsverzeichnis und betten Sie sinnvolle Links zu weiterführenen Lernmaterialien in das Video ein. Jeder in der Gruppe ist zudem aufgefordert, sinnvolle und nicht zu leichte Überprüfungsfragen für die übrigen Gruppenmitglieder im Video zu verankern. Außerdem sollen Sie die von den anderen Gruppenmitgliedern definierten Testfragen/-aufgaben selbst bearbeiten/lösen. <br> Mit Hilfe der Kommentare können Sie sich untereinander austauschen.</p>",
+    			seq : 5,
+    			groupindex: 5,
+    			start : {
+    				year: '2015',
+    				month: '11',
+    				day: '19',
+    				h: '23',
+    				m: '30'
+    			}, 
+    			widgets: [
+		  		 	{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},	
+	  		 		{ name: 'hyperlinks', 
+							canBeAnnotated:true, 
+					 		options: {
+					 			displaySelector: '#overlay',
+					 			hasTimelineMarker: true,
+					 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#hyperlinks',
+								minDuration: 5, // seconds
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+					 		}
+					 	},	
+					 	{ name: 'assessment', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-top', 
+								hasMenu : true,
+								menuSelector: '#assessment',
+								allowComments : true,
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	},
+		  		 	{ 
+		  		 		name: 'syncMedia', 
+							canBeAnnotated:true,
+							options: { 
+						 		selector: '#seq', 
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								controls: true, 
+								hasMenu: false,
+								menuSelector:'.synMediaMenu',
+								prefix_path: '/static/slides/', 
+								sync: true, 
+								placeholder:'/static/img/placeholder.jpg'
+							}	
+		  		 	}
+		  		]	
     		} // end phase 
     	]
     };

@@ -101,7 +101,7 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 							videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
 						
 						} 
-						console.log(videos)
+						
 						res.type('application/json');
 						res.jsonp(videos);  
 						res.end('done');
@@ -168,7 +168,7 @@ exports.list = function ( req, res ){ console.log('#############################
 				var query = {};
 				query['id'] = { $in: groups[0].videos }; // 
 				console.log('#################################################');
-				console.log(groups[0].videos)
+				
 				// get videos
 				var duration = 1; 
 				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){  
