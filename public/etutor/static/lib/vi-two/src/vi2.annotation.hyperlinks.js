@@ -51,9 +51,9 @@
 				*
 				*/
 		init : function(ann){
-			this.clear();
+			this.clear();  console.log(ann)
 			var events = [];
-			$.each(ann, function(i, val){ 
+			$.each(ann, function(i, val){ console.log(99+'__'+i)
 				if( val.linktype === 'cycle' || val.linktype === 'standard' || val.linktype === 'external'){ // former also  val.linktype == 'standard' ||
 				events.push({ 
 						name: val.title, 
