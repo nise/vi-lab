@@ -729,6 +729,7 @@ font-weight:bold;
 	background-color: #222;
 	width:99%;
 	height:auto;
+	max-height:100vh;
 	padding: 0;
 	margin: 0;
 }

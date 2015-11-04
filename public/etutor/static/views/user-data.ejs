@@ -19,8 +19,15 @@
 				socket.disconnect();
 				//socket.emit('user.disconnected', {id: '<%= items.id %>'} );
 			});
-		});	
+			
+		});
 	</script>
+	
+	<% if (items.role === 'editor') { %>
+		<script>
+			$('.navbar-nav').append('<li><a href="/admin">Admin</a></li>');
+		</script>		
+			<% } %>
 <% } %>		
 
 

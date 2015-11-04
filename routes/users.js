@@ -128,8 +128,9 @@ exports.getUserData = function(req, res, next) {
 						console.log('ERROR: empty user @ getUserData');
 						res.redirect('/login')
 					}else{	
+						
 						res.type('application/json');
-		  			res.jsonp({user:true, username: req.user.username, id: req.user.id, videoid: item[0].videos});
+		  			res.jsonp({user:true, username: req.user.username, role: req.user.role, id: req.user.id, videoid: item[0].videos});
 		  			res.end();
 					}
 				});

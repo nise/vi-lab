@@ -93,6 +93,7 @@ var show_bio = function(cl){
 	<th>groups</th>
 </thead>
 <tbody>
+	<% onliner = 0 %>
 	<% if (items.length) { %>
 	<% i=0 %>	
 		<% items.forEach(function(item){ i++ %>
@@ -104,11 +105,12 @@ var show_bio = function(cl){
 				<td><%=: item.role %></td>
 				<td><%= item.groups %></td>
 		</tr>
+		<% if( item.status.online ){ onliner++ }%>
      <% }) %>
  	<% } %>
       
   </tbody>
 </table>
-
+ONLINE: <%= onliner %>
 </div> 
     

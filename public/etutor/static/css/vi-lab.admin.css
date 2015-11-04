@@ -1,12 +1,19 @@
 
 /* HEADER */
 #page{
-	position:relative; 
-	height:100%;
 	display:block;
 	padding-bottom: 48px;
   padding-top: 48px; 
 }
+
+.admin-menu{
+	padding: 50px 10px;
+}
+
+.admin-panel{
+	border-left: 2px solid #ccc;
+}
+
 
 .warning {
 	background-color:orange;
