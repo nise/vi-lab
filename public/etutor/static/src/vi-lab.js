@@ -386,11 +386,11 @@ var ViLab = $.inherit({
 				title = 'Kapitel'; // Szenen 
 				break
 			case "hyperlinks" :		
-				//widget = new Vi2.Hyperlinks( widget_options.options );
+				widget = new Vi2.Hyperlinks( widget_options.options );
 				title = 'Links';
 				break;	
 			case "comments" : 
-				widget = new Vi2.Comments( widget_options.options );  
+				//widget = new Vi2.Comments( widget_options.options );  
 				title = 'Kommentare';
 				break;
 			case "assessment" : 
