@@ -220,6 +220,8 @@ var ViLab = $.inherit({
 		//$('#screen').empty();
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
 		console.log(15);
+		console.log(this.current_phase);
+		console.log(JSON.stringify(this.script[0]['phases'][this.current_phase]['widgets']))
 		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
 			_this.enableWidget( widget.name, widget);
 			_this.widgetOptions[widget.name] = widget; 
