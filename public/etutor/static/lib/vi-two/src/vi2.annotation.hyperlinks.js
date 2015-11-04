@@ -160,8 +160,8 @@
 			var hyperlinks = $('<ul></ul>')
 				.addClass('hyperlinks-list');
 			$( this.options.menuSelector ).html( hyperlinks );	 
-			
-			$.each(hyperlinksData, function(i, val){  
+			console.log('a');
+			$.each(hyperlinksData, function(i, val){  console.log('a'+i);
 					var a = $('<a></a>')
 					.text( decodeURIComponent( val.name ) )
 					.addClass('id-'+ val.occ[0])
@@ -193,7 +193,7 @@
 									duration2: 0//val.duration2 
 								}
 							};
-							
+							console.log('b');
 					// editing		
 					if( _this.options.allowEditing ){		 // evtl. && Number(val.author) === Number(vi2.wp_user) 
 						var edit_btn = $('<a></a>')
@@ -205,7 +205,7 @@
 							.appendTo( li )
 							;
 					}
-					
+					console.log('c');
 					li.click(function(){
 						vi2.observer.log({context:'hyperlinks',action:'menu-click',values:[val.name,val.author,val.occ[0]]} ); 
 						vi2.observer.player.currentTime( val.occ[0] );
