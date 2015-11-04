@@ -221,7 +221,7 @@ var ViLab = $.inherit({
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
 		console.log(15);
 		console.log(this.current_phase);
-		console.log(JSON.stringify(this.script[0]['phases'][this.current_phase]['widgets']))
+		
 		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
 			_this.enableWidget( widget.name, widget);
 			_this.widgetOptions[widget.name] = widget; 
@@ -378,7 +378,7 @@ var ViLab = $.inherit({
 		var title = widget_name; 
 		if(this.loadedWidgets.indexOf( widget_name ) != -1){ 
 			return;
-		}
+		} console.log(widget_name)
 		// invoke widgets
 		switch(widget_name){
 			case "toc" : 
