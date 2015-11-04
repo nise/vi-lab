@@ -168,9 +168,14 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 			if(err){ 
 				console.log(err); 
 			}else{
-				res.type('application/json');
+				var jsonfile = require('jsonfile')
+				var file = './log.json';
+				jsonfile.writeFile(file, logs, function (err) {
+					console.error(err)
+				});
+				/*res.type('application/json');
 				res.jsonp( logs );
-				res.end('done');
+				res.end('done');*/
 			}	
 		});
 		//res.send('terminated request');
