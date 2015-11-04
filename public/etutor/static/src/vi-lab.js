@@ -386,7 +386,7 @@ var ViLab = $.inherit({
 				title = 'Kapitel'; // Szenen 
 				break
 			case "hyperlinks" :		
-				widget = new Vi2.Hyperlinks( widget_options.options );
+				//widget = new Vi2.Hyperlinks( widget_options.options );
 				title = 'Links';
 				break;	
 			case "comments" : 
@@ -422,9 +422,10 @@ var ViLab = $.inherit({
 				break;		
 			default : return;			
 		}
-		this.observer.addWidget( widget ); 
-		this.loadedWidgets.push( widget_name );
-		
+		if( widget !== ''){
+			this.observer.addWidget( widget ); 
+			this.loadedWidgets.push( widget_name );
+		}
 		// add accordion elements
 		if( widget_options.options.hasMenu && ! refresh ){ 
 			var h3 = $('<h3 class="ui-accordion-header ui-corner-all"></h3>')
