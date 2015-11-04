@@ -173,6 +173,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 				jsonfile.writeFile(file, logs, function (err) {
 					console.error(err)
 				});
+				res.end();
 				/*res.type('application/json');
 				res.jsonp( logs );
 				res.end('done');*/
