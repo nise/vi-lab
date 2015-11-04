@@ -72,17 +72,18 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 		createMenu : function(commentData){
 			var _this = this;
 			var tmp_t = -1;
-			
+			console.log('a');
 			var comments = $('<ul></ul>')
 				.addClass('comments-list');
 			$( this.options.menuSelector ).html( comments );
-			
+			console.log('b');
 			commentData = commentData.sort(function(a, b) {
   			return Number(a.time) > Number(b.time) ? 1 : -1;
 			});
+			console.log('c');
 			moment.locale('de');
 			$.each( commentData, function(i, val){   
-			
+			console.log('d');
 				var a = $('<a></a>')
 					.text(val.name)
 					.addClass('id-'+ val.time+' comments-menu-question' )
@@ -92,14 +93,14 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 						_this.player.currentTime( val.time[0] );
 					})
 					;	
-					
+					console.log('e');
 				if( _this.options.allowEmoticons ){
 					a.emoticonize({ /* delay: 800, animate: false, exclude: 'pre, code, .no-emoticons' */ });
 				}	
 				
 				
 				var user = vi2.db.getUserById( val.author );	
-				
+				console.log('f');
 				var header = $('<span></span>')
 					.addClass('comments-header');
 					
@@ -121,13 +122,13 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 					.append(a)
 					.appendTo(comments)
 					;
-
+console.log('g');
 				if( Number(val.time) === Number(tmp_t) ){ 
 					li.css({ 'margin-left':'15px' }); 
 					// re-comments could be sorted desc by date. Solution needed
 					//comments.find('.t'+val.time).tsort({ attr:"date", order:'asc'}); 
 				}	
-
+console.log('h');
 				// edit
 				if( _this.options.allowEditing && Number(val.author) === Number(vi2.wp_user) ){	 
 					var edit_btn = $('<a></a>')
