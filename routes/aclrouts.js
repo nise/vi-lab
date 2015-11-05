@@ -167,11 +167,12 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		
 		var query = Log.find({}).stream();
 		query.on('data', function (doc) {
-				log.write( doc );
+				log.write( JSON.stringify( doc ) );
 		}).on('error', function (err) {
 				console.log(err);
 		}).on('close', function () {
 				console.log('@Log :: closed stream');
+				res.send('streams data');
 		});
 		/*
 		Log.find().exec(function (err, logs) {
