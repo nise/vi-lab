@@ -168,9 +168,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 			if(err){ 
 				console.log(err); 
 			}else{
-				var jsonfile = require('jsonfile')
-				var file = './log.json';
-				jsonfile.writeFile(file, logs, function (err) {
+				require('jsonfile').writeFile( './log.json', logs, function (err) {
 					console.error(err)
 				});
 				res.end();

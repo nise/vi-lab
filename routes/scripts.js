@@ -26,7 +26,7 @@ var
  
     var script = 
     {
-    	current_phase : 2,
+    	current_phase : 3,
     	slides : false,
     	phases: [
     		{ /* Phase 0 */

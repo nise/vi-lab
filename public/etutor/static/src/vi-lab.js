@@ -22,6 +22,10 @@ var ViLab = $.inherit({
   		this.server_url = server_url; 
   		vi2 = this;
   		vi2.dom = "#vi2"; 
+  		
+  		
+  		//var m = new Vi2.Maintain();
+  		//m.foo();
  
   		//
   		$.get('/json/user-data', function(data){  
@@ -132,13 +136,13 @@ var ViLab = $.inherit({
 		 	}else{
 		 		$('#tracing').removeAttr('checked');
 		 	}*/
-			console.log(1);
+			
 		 	this.currentGroup = this.userData.groups[this.currentGroupVideoNum];   
 		 	this.groupData = this.db.getGroupById( this.currentGroup ); 
 		 	//this.currentVideo = this.groupData.videos[this.currentGroupVideoNum];
 			
 			this.videoData = this.db.getStreamById( this.currentVideo );
-		 console.log(2);
+		 
 		 	var video = $('<div></div>')
 				.attr('type',"video")
 				.attr('starttime',0)
@@ -156,9 +160,8 @@ var ViLab = $.inherit({
 			$('body').find('.some-dialog').each(function(i,val){ $(this).remove(); }); 
 			this.viLog = new Vi2.Log({ logger_path:this.server_url+'/log' }); 
   		$(this).bind('log', function(e, msg){ _this.viLog.add(msg); }); 
-  			console.log(3);
+  			
   		vi2.utils = new Vi2.Utils();
-			console.log(4);
 			this.setupVideo( 1 );
 			
   	},
@@ -180,7 +183,7 @@ var ViLab = $.inherit({
   setupVideo : function(has_parallel_media){  
   	var _this = this; 
 		var phaseHasSlides = _this.db.hasSlides( _this.currentVideo );//res[0].phases[_this.current_phase].slides;  
-		console.log(11);
+		
 		var options = {
 			id : _this.currentVideo,
 			embed:false,
@@ -201,7 +204,6 @@ var ViLab = $.inherit({
 	    	$('#overlay').css('height', $('.slide' ).height() );
 			}, 120);
 		});
-		console.log(12);
 		
 		// extract media fragment window.location
 		var seek = 0;
@@ -210,32 +212,31 @@ var ViLab = $.inherit({
 		if(location.substr(0,6) == 't=npt:'){
 			seek = location.split('t=npt:')[1].split(',')[0];	
 		}
-		console.log(13);
 		_this.observer = new Vi2.Observer( options ); 
 	 	_this.observer.init(seek);	 
-		 console.log(14);
+		
 		metadataa = new Vi2.Metadata( { metatags: true, render: false } );  
 		_this.addEdit_btn(); 
 		_this.observer.addWidget(_this.viLog); 	 
 		//$('#screen').empty();
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
-		console.log(15);
-		console.log(this.current_phase);
+		
+		
 		
 		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
 			_this.enableWidget( widget.name, widget);
 			_this.widgetOptions[widget.name] = widget; 
-		}); console.log(16);
+		});
 		_this.observer.parse(vi2.dom, 'html');
 	
 		// autoplay
 		vi2.observer.player.video.oncanplay = function(e){ 
 			vi2.observer.player.play();	
 		};	
-		console.log(_this.currentVideo);
+		
 		// set instruction menu
 		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
-		console.log( JSON.stringify( pp ) );
+		
 		$('<div></div>')
 			.html( pp.instruction )
 			.addClass('instructions')
@@ -378,7 +379,7 @@ var ViLab = $.inherit({
 		var title = widget_name; 
 		if(this.loadedWidgets.indexOf( widget_name ) != -1){ 
 			return;
-		} console.log(widget_name)
+		} 
 		// invoke widgets
 		switch(widget_name){
 			case "toc" : 

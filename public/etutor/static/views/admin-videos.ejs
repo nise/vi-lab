@@ -75,7 +75,8 @@ jQuery(document).ready(function(e) {
 			<span class="table-menu-entry">
 				id: <%= item.id %> | 
 				<a href="/videos/view/<%= item._id %>">view video</a> | 
-				<a href="javascript:render('admin-videos-edit','/admin/videos/metadata/edit/<%= item._id %>', true, '.admin-panel');">edit metadata</a> 
+				<a href="javascript:render('admin-videos-edit','/admin/videos/metadata/edit/<%= item._id %>', true, '.admin-panel');">edit metadata</a> |
+				<a href="/admin/videos/annotations/edit/<%= item._id %>">edit annotations</a> 
 			</span>
 		</td>
 		<td>
