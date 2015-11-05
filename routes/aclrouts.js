@@ -151,19 +151,29 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		}
 		// todo: complete missing fields
 		// save it
+		log2.write( req.param('data') );	
 		new Log(entry).save( function( err, logs, count ){
 			console.log(logs);
 			res.end('done');
 		} );
-	
 		// write to logfile
 		// todo: transform log into flat log file
-		//log.write( req.param('data') );	
+		
 		res.send('terminated logging');
 	});
 	
 	
 	app.get('/json/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
+		
+		var query = Log.find({}).stream();
+		query.on('data', function (doc) {
+				log.write( doc );
+		}).on('error', function (err) {
+				console.log(err);
+		}).on('close', function () {
+				console.log('@Log :: closed stream');
+		});
+		/*
 		Log.find().exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
@@ -172,11 +182,11 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 					console.error(err)
 				});
 				res.end();
-				/*res.type('application/json');
-				res.jsonp( logs );
-				res.end('done');*/
+				//res.type('application/json');
+				//res.jsonp( logs );
+				//res.end('done');
 			}	
-		});
+		});*/
 		//res.send('terminated request');
 	});	
 	
@@ -274,6 +284,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	});
 	
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
+	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	
 
 	// routes related to User Management and Passport - Local Authentication
