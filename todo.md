@@ -139,6 +139,19 @@ https://github.com/visionmedia/should.js/
 => auto update bei crah oder update: http://stackoverflow.com/questions/11084279/node-js-setup-for-easy-deployment-and-updating
 
 
+## Update from repo
+git fetch --all
+git reset --hard origin/master
+
+## dump and restore mongoDB
+mongodb: mongodb://localhost/module-base
+**dump**
+mongodump --db video-patterns
+**restore**
+mongorestore --db video-patterns ./dump/module-base
+
+
+
 
 
 

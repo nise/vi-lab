@@ -151,7 +151,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		}
 		// todo: complete missing fields
 		// save it
-		log2.write( JSON.stringify(req.param('data')) );	
+		//log2.write( JSON.stringify(req.param('data')) );	
 		new Log(entry).save( function( err, logs, count ){
 			console.log(logs);
 			res.end('done');
