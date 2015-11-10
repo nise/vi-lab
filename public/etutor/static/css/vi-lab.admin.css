@@ -127,6 +127,29 @@ font-weight:bold;
 }
 
 
+/* script table */
+
+.script-table tr td {
+	width: 40px;
+	height:40px;
+	border: solid 1px #555;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.script-table tr td:first-child, .script-table thead td {
+	background-color: #eee;
+	border:0 none;
+	padding:4px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.script-table .visible-cell {
+	background-color: lightblue;
+}
+
+
 
 /* FOOTER */
 footer {

@@ -2,22 +2,26 @@
 
 
 <h2>Script</h2>
-<span id="status">loading ...</span>
-<table id="table1"></table>
+<span id="status"></span>
+<table class="script-table" id="table1"></table>
 
 <script> 
 /*
 	*
 	* @todo
-	* column head = video instance
+	* viz-annotations per video
+	* edit annotations per video
+	* apply settings per row/group and column/instance
 	* sort groups
 	* select phases
+	* save/reset/undo results
 	**/
 
-var phase = 1, data = {}, val = {}, tab = '#table1';
+var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head;
 		jQuery.ajax({
       type: "get",
-      beforeSend: function(xhr){ 
+      beforeSend: function(xhr){
+      	$('#status').text('loading ...'); 
   				if (xhr.overrideMimeType){
 				    xhr.overrideMimeType("application/json");
   				}
@@ -25,22 +29,33 @@ var phase = 1, data = {}, val = {}, tab = '#table1';
       url: '/json/admin/script-info',
       dataType: 'json',
       success: function(the_data){
+      	$('#status').text('');
       	data = the_data 
       	var arr2 = [];
+      	// column header
+    		tab_head = $('<thead></thead>')
+    			.append( $('<td></td>').text( 'Video Instances') )
+    			.appendTo( tab )
+    			;
+    		for(var j = 0; j < data.videos.length; j++){	
+    			tab_cell = $('<td></td>').text( data.videos[j].id ).appendTo( tab_head );
+    		}
+    		// rows
       	for(var i = 0; i < data.groups.length; i++){
       		arr2[i] = [];
       		// first column
-      		var tab_row = $('<tr></tr>')
+      		tab_row = $('<tr></tr>')
       			.append( $('<td></td>').text( 'Group '+data.groups[i].id ) );
       		// cells
       		for(var j = 0; j < data.videos.length; j++){
       			var tab_cell = $('<td></td>')
-							.css({ border:"solid 1px #ccc"})
-							.appendTo( tab_row );	
-      			//val = getVideoOfId( data.videos[j].id, data.groups[i].videos );
-      			//arr2[i][j] = val;
+							.appendTo( tab_row )
+							;	
       			if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
-      				tab_cell.text( data.videos[j].id );
+      				tab_cell
+      					.text( data.videos[j].id )
+      					.addClass('visible-cell')
+      					;
       			}
       		}
       		$(tab).append( tab_row );
