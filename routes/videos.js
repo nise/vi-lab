@@ -26,7 +26,7 @@ exports.csvImport = function ( req, res ){
 					if(err){
 						console.log(err)
 					}else{
-						console.log('Imported video '+video.id+' '+video.id);
+						console.log('Imported video '+video.id);
 					}	
 				});
 		}	
@@ -116,6 +116,16 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 exports.getAllJSON = function(req, res) { 
 	// get videos 
 	Videos.find().sort( 'id' ).exec( function ( err, videos ){
+		res.type('application/json');
+		res.jsonp(videos);  
+		res.end('done');
+	});
+};
+
+exports.getFilesJSON = function(req, res) { 
+	// get videos 
+	Videos.find().distinct('video', function ( err, videos ){
+		console.log(videos);
 		res.type('application/json');
 		res.jsonp(videos);  
 		res.end('done');
@@ -289,10 +299,10 @@ exports.annotate = function(req, res) {
 		case "hyperlinks" : update = { hyperlinks: req.body.data}; break;
 		case "hightlight" : update = { hightlight: req.body.data}; break;
 	}
+	update.updated_at = Date.now();
+	
 	console.log('start saving: '+req.body.annotationtype +' '+req.body.videoid);
 	
-	//res.header("Access-Control-Allow-Origin", "*");
-  //res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	Videos.findOneAndUpdate(query, update, function(err, doc){
 		  if (err){
 		  	console.log('****************** ERROR')

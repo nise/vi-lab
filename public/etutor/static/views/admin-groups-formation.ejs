@@ -118,7 +118,7 @@ $(document).ready (function () {
 		$("input[name='selected-users']").not(':checked').each(function(i, val){
 			arr.push(val);
 		});
-		alert(JSON.stringify(arr));
+		//alert(JSON.stringify(arr));
   	getGroupFormation( $("input[name='form-algo']:checked").val(), number, arr );
   	event.preventDefault();
 	});

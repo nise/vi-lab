@@ -189,7 +189,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 			$('body').unbind('keydown'); 
 			 
 			var _this = this;
-			var question_selector = 'vi2assessment'+id;
+			var question_selector = 'vi2assessment'+id; 
 			vi2.observer.player.pause();
 			vi2.observer.log({context:'assessment', action:'display-question',values:[encodeURIComponent(obj.content.title.question), obj.author, vi2.observer.player.currentTime() ]});
 			//{"question":"bimel","answ":[{"id":"answ0","answ":"hier"},{"id":"answ1","answ":"we"},{"id":"answ2","answ":"go"}],"correct":"answ2"}
@@ -243,8 +243,20 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 					$(this).hide();					
 					_this.evaluateAnswer('.'+question_selector, obj.content.title, obj.author);
 				});
+			
+			// skip test
+			var skip = $('<a></a>')
+				.text(' Frage überspringen')
+				.click(function(){
+					$(question_selector).remove();
+					vi2.observer.log({context:'assessment', action:'skip-question',values:[ encodeURIComponent(obj.content.title.question), obj.author, vi2.observer.player.currentTime() ]});
+					vi2.observer.player.play();
+					$('body').unbind('keydown').bind('keydown', function(e) { 
+						vi2.observer.player.keyboardCommandHandler(e); 
+					});
+				});
 				
-			$(o).append(head).append(quest).append(answ).append(solve); 
+			$(o).append(head).append(quest).append(answ).append(solve).append(skip); 
 			$(this.options.displaySelector).append(o);
 	
 			/*
@@ -306,7 +318,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 									$('.fi-question').show();
 									$('.mc-question').show();
 								}else{
-									$('.fi-question').show();
+									$('.fi-question').hide();
 									$('.mc-question').show();
 								}	
 							})
@@ -374,7 +386,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 									$('.mc-question').show();
 								}else{
 									$('.fi-question').hide();
-									$('.mc-question').hide();
+									$('.mc-question').show();
 								}
 							});
 						var checkbox = $('<input type="checkbox" title="Setze ein Häckchen für richtige Lösungen" name="quest" value="1" />')
@@ -581,14 +593,14 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		**/
 		evaluateAnswer : function(question_selector, obj, author){
 			var one_checked = false, correct = [];
-			if(obj.answ[0].questiontype === 'fi'){
-				if($('.assessment-answers').find('textarea').val().length > 3){
+			if(obj.answ[0].questiontype === 'fi'){ alert($('#answ0').find('textarea').val())
+				if( String($('#answ0 > textarea').val()).length > 3){
 					correct.push(true);
 					vi2.observer.log({context:'assessment', action:'submited-answer',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime(), encodeURIComponent($('.assessment-answers').find('textarea').val()) ]});
 					$(question_selector)
 						.append($('<p><strong>Vielen Dank für die Bearbeitung der Frage. Folgende Musterlösung wurde für diese Frage hinterlegt:</strong></p>'))
 						.addClass('assessment-msg-correct');
-					$('<span></span>')
+					$('<div></div>')
 						.text( obj.answ[0].answ )
 						.addClass('correct-answ')
 						.appendTo(question_selector)
@@ -658,7 +670,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
     	*/
 		
 			// proceed	
-			$(question_selector).append($('<button></button>')
+			var proceed = $('<button></button>')
 				.addClass('btn btn-default')
 				.text('Video fortsetzen')
 				.click(function(){
@@ -669,7 +681,9 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 						vi2.observer.player.keyboardCommandHandler(e); 
 					});
 				})
-			);	
+				.appendTo( question_selector )
+				;
+				
 		}
 		
 	

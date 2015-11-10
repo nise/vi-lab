@@ -7527,5 +7527,497 @@
         ]
       }
     ]
+  },
+ {
+    "_id": "52a13d2e2aa9d35f24000777",
+    "video2": "http://141.46.8.101/beta/interecine/theresienstadt.webm",
+    "video": "/static/videos/theresienstadt.mp4",
+    "id": "777",
+    "comments": [],
+    "hyperlinks":[],
+    "metadata": [
+      {
+        "author": "...",
+        "institution": "...",
+        "title": "Theresienstadt: Dokumentation aus dem Jüdischen Siedlungsgebiet",
+        "category": "Z",
+        "abstract": "",
+        "length": "25:22:00",
+        "date": "2014/04/11",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/placeholder.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Konflikt",
+            "t": "Diagnose",
+             "t": "Intervention"
+          }
+        ]
+      }
+    ],
+    "progress": "",
+    "assessment" : [],
+    "highlight": [
+      {
+        "tagname": "Benjamin Murmelstein",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 237,
+          	"duration":5, 
+          	"x": 58,
+        		"y": 15
+        	}
+        ]
+      },
+      {
+        "tagname": "Emil Utitz",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 1143,
+          	"duration":10, 
+          	"x": 20,
+        		"y": 30
+        	}
+        ]
+      },
+      {
+        "tagname": "Rudolf Saudek",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 704.2, 
+          	"duration":25, 
+          	"x": 15,
+        		"y": 20
+        	}
+        ]
+      },
+      {
+        "tagname": "Hans Krasa",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 1191, 
+          	"duration":25, 
+          	"x": 20,
+        		"y": 20
+        	}
+        ]
+      },
+      {
+        "tagname": "Rabbiner Dr. Leo Baeck",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 1170, 
+          	"duration":25, 
+          	"x": 20,
+        		"y": 20
+        	}
+        ]
+      },
+      {
+        "tagname": "Elly von Bleichröder  ",
+        "author": "5",
+        "occ": [
+          {
+          	"start": 1168, 
+          	"duration":25, 
+          	"x": 55,
+        		"y": 50
+        	}
+        ]
+      }
+    ],
+    "slides" : [
+    	{
+        "tagname": "Gärten der SS",
+        "path": "/vi-lab/img/places/ss-gaerten.png",
+        "occ": [
+          {
+          	"start": 1311,
+          	"duration":10, 
+          	"x": 50,
+        		"y": 50,
+        		"long":0,
+        		"lat":0,
+        		"caption":"Die angeblichen Gärten der Juden in den Gräben der Festung gehörten damals der SS. Heute werden die Gräben nicht mehr genutzt."
+        	}
+        ]
+      },
+      {
+        "tagname": "Vor der Dresdner Kasserne",
+        "path": "/vi-lab/img/places/vorDresdnerKasserne.png",
+        "occ": [
+          {
+          	"start": 916,
+          	"duration":10, 
+          	"x": 50,
+        		"y": 50,
+        		"long":0,
+        		"lat":0,
+        		"caption":""
+        	}
+        ]
+      },
+      {
+        "tagname": "Haus",
+        "path": "/vi-lab/img/places/haus.png",
+        "occ": [
+          {
+          	"start": 399,
+          	"duration":10, 
+          	"x": 50,
+        		"y": 50,
+        		"long":0,
+        		"lat":0,
+        		"caption":"Angebliches Heim für kranke Kinder. Heute befindet sich eine Pension im Haus."
+        	}
+        ]
+      },
+      {
+        "tagname": "Schild am Gericht",
+        "path": "/vi-lab/img/places/IMG_3446_Rathaus.JPG",
+        "occ": [
+          {
+          	"start": 340,
+          	"duration":10, 
+          	"x": 50,
+        		"y": 50,
+        		"long":0,
+        		"lat":0,
+        		"caption":"Das Schild am Eingang des fiktiven Gerichts befand sich am heutigen Rathaus."
+        	}
+        ]
+      }
+    ],
+    "thumbnail": "/static/img/placeholder.png",
+    "toc": [
+      {
+        "label": "Titelsequenz",
+        "number": "1",
+        "start": "0",
+        "_comment": "00:00:00:00",
+        "author": "5",
+        "date": "1386670847661"
+      },
+      {
+        "label": "Entstehungsgeschichte",
+        "number": "2",
+        "start": "32",
+        "_comment": "00:00:32:06",
+        "author": "5",
+        "date": "1386670847663"
+      },
+      {
+        "label": "Jazzband",
+        "number": "3",
+        "start": "82",
+        "_comment": "00:01:22:16",
+        "author": "5",
+        "date": "1386670847663",
+        "note":"animated"
+      },
+      {
+        "label": "Terrasse",
+        "number": "4",
+        "start": "87",
+        "_comment": "00:01:27:16",
+        "author": "5",
+        "date": "1386670847665",
+        "note":"animated"
+      },
+      {
+        "label": "Kaffeehaus",
+        "number": "5",
+        "start": "101",
+        "_comment": "00:01:41:12",
+        "author": "5",
+        "date": "1386670847666",
+        "note":"animated"
+      },
+      {
+        "label": "Freizeit",
+        "number": "6",
+        "start": "107",
+        "_comment": "00:01:47:08",
+        "author": "5",
+        "date": "1386670847667"
+      },
+      {
+        "label": "Sport",
+        "number": "7",
+        "start": "185",
+        "_comment": "00:03:05:11",
+        "author": "5",
+        "date": "1386670847669"
+      },
+      {
+        "label": "Theater",
+        "number": "8",
+        "start": "215",
+        "_comment": "00:03:35:18",
+        "author": "5",
+        "date": "1386670841661",
+        "note":"animated"
+      },
+      {
+        "label": "Beginnender Werktag",
+        "number": "9",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670837662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Selbstverwaltung",
+        "number": "10",
+        "start": "221",
+        "_comment": "00:03:41:18",
+        "author": "5",
+        "date": "1386670247662"
+      },
+      {
+        "label": "Gericht",
+        "number": "11",
+        "start": "340",
+        "_comment": "00:05:40:09",
+        "author": "5",
+        "date": "1386670847632"
+      },
+      {
+        "label": "Bank",
+        "number": "12",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670843662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Läden",
+        "number": "13",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670847762",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Postamt",
+        "number": "14",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386671847662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Gesundheitswesen",
+        "number": "15",
+        "start": "349",
+        "_comment": "00:05:49:11",
+        "author": "5",
+        "date": "1386670847362"
+      },
+      {
+        "label": "Spielplatz",
+        "number": "16",
+        "start": "445",
+        "_comment": "00:07:25:12",
+        "author": "5",
+        "date": "1386670847602"
+      },
+      {
+        "label": "Kinderoper",
+        "number": "17",
+        "start": "511",
+        "_comment": "00:08:31:20",
+        "author": "5",
+        "date": "1386670847600"
+      },
+      {
+        "label": "Feuerwehr",
+        "number": "18",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670807662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Eisenbahner",
+        "number": "19",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670047662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Landwirtschaft",
+        "number": "20",
+        "start": "587",
+        "_comment": "00:09:47:23",
+        "author": "5",
+        "date": "1386670837682",
+        "note":"animated"
+      },
+      {
+        "label": "Verpflegung",
+        "number": "21",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670847612",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Freilichtveriete",
+        "number": "22",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670847262",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Schwimmen",
+        "number": "23",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670848662",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Wäscherei",
+        "number": "24",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670847644",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Maschinentischler",
+        "number": "25",
+        "start": "-1",
+        "_comment": "missing",
+        "date": "1386670847655",
+        "author": "5",
+        "note":"missing"
+      },
+      {
+        "label": "Schmiede",
+        "number": "26",
+        "start": "596",
+        "_comment": "00:09:56:21",
+        "author": "5",
+        "date": "1386670847666"
+      },
+      {
+        "label": "Metallwerkstätten",
+        "number": "27",
+        "start": "619",
+        "_comment": "00:10:19:11",
+        "author": "5",
+        "date": "1386670847677"
+      },
+      {
+        "label": "Töpferei",
+        "number": "28",
+        "start": "681",
+        "_comment": "00:11:21:02",
+        "author": "5",
+        "date": "1386670847688"
+      },
+      {
+        "label": "Werkstätten",
+        "number": "29",
+        "start": "729",
+        "_comment": "00:12:09:12",
+        "author": "5",
+        "date": "1386670847699"
+      },
+      {
+        "label": "Fußballspiel",
+        "number": "30",
+        "start": "915",
+        "_comment": "00:15:15:00",
+        "author": "5",
+        "date": "1386670847533"
+      },
+      {
+        "label": "Zentralbad",
+        "number": "31",
+        "start": "1086",
+        "_comment": "00:18:06:04",
+        "author": "5",
+        "date": "1386670847534"
+      },
+      {
+        "label": "Bücherei",
+        "number": "32",
+        "start": "1113",
+        "_comment": "00:18:33:20",
+        "author": "5",
+        "date": "1386670847535"
+      },
+      {
+        "label": "Vortrag",
+        "number": "33",
+        "start": "1142",
+        "_comment": "00:19:02:04",
+        "author": "5",
+        "date": "1386670847536"
+      },
+      {
+        "label": "Konzert",
+        "number": "34",
+        "start": "1182",
+        "_comment": "00:19:42:12",
+        "author": "5",
+        "date": "1386670847537"
+      },
+      {
+        "label": "Schrebergärten",
+        "number": "35",
+        "start": "1304",
+        "_comment": "00:21:44:15",
+        "author": "5",
+        "date": "1386670847538"
+      },
+      {
+        "label": "Abendfreizeit",
+        "number": "36",
+        "start": "1374",
+        "_comment": "00:22:54:20",
+        "author": "5",
+        "date": "1386670847539"
+      },
+      {
+        "label": "Abendessen",
+        "number": "37",
+        "start": "1489",
+        "_comment": "00:24:49:19",
+        "author": "5",
+        "date": "1386670847530"
+      },
+      {
+        "label": "Schlussmontage",
+        "number": "38",
+        "start": "-1",
+        "_comment": "00:24:16:05",
+        "author": "5",
+        "date": "1386670847444",
+        "note":"missing"
+      }
+    ]
   }
 ]

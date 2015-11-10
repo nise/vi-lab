@@ -236,16 +236,16 @@ var ViLab = $.inherit({
 		
 		// set instruction menu
 		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
-		
-		$('<div></div>')
-			.html( pp.instruction )
-			.addClass('instructions')
-			.prependTo('#accordion');
-		$('<h3 class="ui-accordion-header ui-corner-all ui-helper-reset ui-state-default ui-accordion-icons"></h3>')
-				.css({'padding':'6px 10px', 'background-color':'#003366'})
-				.append('<a class="accordion-title" href="#">Aufgabe: ' + pp.title + '</a>')
+		if( pp !== undefined ){
+			$('<div></div>')
+				.html( pp.instruction )
+				.addClass('instructions')
 				.prependTo('#accordion');
-		
+			$('<h3 class="ui-accordion-header ui-corner-all ui-helper-reset ui-state-default ui-accordion-icons"></h3>')
+					.css({'padding':'6px 10px', 'background-color':'#003366'})
+					.append('<a class="accordion-title" href="#">Aufgabe: ' + pp.title + '</a>')
+					.prependTo('#accordion');
+		}
 		// misc configurations	
 		$('#accordion').accordion({
 			collapsible: false,

@@ -41,11 +41,52 @@ color: #959595;
 }
 
 
+/* Upload */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+/* forms */
+.admin-edit-form {
+	background-color:#E5F2FF;
+	border-bottom:2px solid #ccc;
+	padding:20px;
+	margin-bottom:20px;
+	width:100%;
+}
+
+.panel-heading{
+	font-size:16px;
+}
+
+div > textarea {
+	min-width:400px;
+	min-height:150px;
+	margin-top: 10px;
+}
 
 /* TABLES*/
 
 .xtable{
 	width:100%;
+	margin:50px 0;
 }
 
 .xtable thead th {
@@ -63,6 +104,24 @@ color: #959595;
 td.ep-table-cell {
     vertical-align: top;
 }
+
+.table-detail{
+	display:none;
+	
+}
+
+
+.table-row td {
+	height:60px;
+	vertical-align:top;
+	padding: 4px 0 10px 0;
+}
+
+.table-row:hover .table-detail{
+	display:inline;
+}
+
+
 .bold{
 font-weight:bold;
 }

@@ -85,7 +85,8 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.post(	'/videos/create' , 		videos.create );
 	app.post(	'/videos/annotate', users.ensureAuthenticated, videos.annotate);
 	app.get( 	'/json/videos' , 	users.ensureAuthenticated,		videos.getJSON );
-	app.get( 	'/json/admin/videos' , 	users.authCallback(['editor']),		videos.getAllJSON );
+	app.get( 	'/json/admin/video-instances' , 	users.authCallback(['editor']),		videos.getAllJSON );
+	app.get( 	'/json/admin/video-files' , 	users.authCallback(['editor']),		videos.getFilesJSON );
 	app.get( 	'/json/videos/:id' , 	videos.getOneJSON );
 	app.get( 	'/json/film' , 				videos.getJSON );
 
@@ -162,7 +163,8 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		res.send('terminated logging');
 	});
 	
-	
+	/*
+	// not working with big data !!!
 	app.get('/json/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
 		
 		var query = Log.find({}).stream();
@@ -174,7 +176,8 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 				console.log('@Log :: closed stream');
 				res.send('streams data');
 		});
-		/*
+		return;
+		
 		Log.find().exec(function (err, logs) {
 			if(err){ 
 				console.log(err); 
@@ -187,9 +190,10 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 				//res.jsonp( logs );
 				//res.end('done');
 			}	
-		});*/
+		});
 		//res.send('terminated request');
 	});	
+	*/
 	
 	app.get('/stats/assessment', function ( req, res ){ res.render( 'admin-analytics', {}); });
 	app.get('/json/stats/assessment', function ( req, res ){ // xxx editor
@@ -216,7 +220,30 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 			});
 	});	
 	
+	/*
+	*
+	**/
 	
+	app.get('/json/admin/script-info', function ( req, res ){ // xxx editor
+		Scripts.find({}).exec( function ( err, scripts ){
+			Groups.find({}).exec( function( err, groups){
+				Videos.find({}).select('id metadata video').exec( function( err, videos ){
+					if(err){ 
+						console.log(err); 
+					}else{
+						res.type('application/json');
+						res.jsonp( {
+							scripts : scripts,
+							groups : groups,
+							videos:	videos
+						});
+						res.end('done');
+					}	
+				}); // end video
+			});// end group
+		});//end script	
+	});
+
 	/**
 		* @todo need to distinguish the groups per phase
 		* log per current group

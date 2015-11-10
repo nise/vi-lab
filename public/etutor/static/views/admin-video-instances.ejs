@@ -22,15 +22,27 @@ jQuery(document).ready(function(e) {
 
 
 
-<h2>Videos</h2>
+<h2>Video Instances</h2>
 <a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addVideoPanel" aria-expanded="false" aria-controls="collapseExample">add new video instance</a>
 
 
 <div id="addVideoPanel" class="edit-form collapse admin-edit-form">
-	<div class="panel-heading">Add new video</div>
+	<div class="panel-heading">Add new video instance</div>
 	<div class="panel-body">	 
 		<form action="/videos/create" method="post" accept-charset="utf-8">
 			
+			<div class="form-group">
+			<label for="sel1">Select video file</label>
+			<select class="form-control" id="sel1">
+				<option>lecture1</option>
+				<option>lecture2</option>
+				<option>lecture3</option>
+				<option>lecture4</option>
+			</select>
+		</div>
+			
+			
+			<!--
 			<div class="form-element input-group input-group-xs">
 				<span class="input-group-addon" id="sizing-addon1">Title</span>
 				<input type="text" class="form-control" placeholder="title" aria-describedby="sizing-addon1" name="title" value="">
@@ -52,10 +64,10 @@ jQuery(document).ready(function(e) {
 				<input type="text" class="form-control" placeholder="category" aria-describedby="sizing-addon1" name="category" value="">
 			</div><% id = Math.random()*9999 %>
 			<input type="hidden" name="id" value="" />
-			
+			-->
 			<br>
 			<div class="form-element buttons">
-				<button class="btn btn-default" type="submit">Add video</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
+				<button class="btn btn-default" type="submit">Add video instance</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
 			</div>
 		</form>
 	</div>	
@@ -80,6 +92,21 @@ jQuery(document).ready(function(e) {
 				<a href="javascript:render('admin-videos-edit','/admin/videos/metadata/edit/<%= item._id %>', true, '.admin-panel');">edit metadata</a>
 			</span>
 		</td>
+		<td>
+			<% if ( item.hyperlinks.length > 1) { %>hyperlinks (<%=item.hyperlinks.length%>), <%}%>
+			<% if ( item.toc.length > 1) { %>chaptes (<%=item.toc.length%>), <%}%>
+			<% if ( item.tags.length > 1) { %>tags (<%=item.tags.length%>), <%}%> 
+			<% if ( item.highlight.length > 1) { %>highlight (<%=item.highlight.length%>), <%}%>
+			<% if ( item.slides.length > 1) { %>slides (<%=item.slides.length%>), <%}%>
+			<% if ( item.comments !== null) { %>comments (<%=item.comments.length%>), <%}%>
+			<% if ( item.assessmentfillin.length > 1) { %>fill-in tasks (<%=item.assessmentfillin.length%>), <%}%>
+			<% if ( item.assessment.length > 1) { %>questions (<%=item.assessment.length%>), <%}%>
+			<% if ( item.assessmentwriting.length > 1) { %>on demand tasks (<%=item.assessmentwriting.length%>), <%}%>
+			<br>
+			<span class="table-detail">
+				<a href="/admin/videos/annotations/edit/<%= item._id %>">edit annotations</a> 
+			</span>
+		</td>
 		<td><% if ( item.updated_at !== undefined ){ %><%= item.updated_at %><%}%><br>
 			<span class="">
 				<a href="/analytics/videos/<%= item._id %>">show stats</a> 
@@ -87,7 +114,34 @@ jQuery(document).ready(function(e) {
 		</td>
 		
 	</tr>	
-
+<!--  
+<div class="scene-view">
+	<h3><a href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h3>
+  <div class="bim">
+  	<% if (item.thumbnail != "") { %> 
+  		<a href="/videos/view/<%= item._id %>">
+  			<img class="still-images" src="<%= item.metadata[0].thumbnail %>" width="180" />
+  		</a>	
+  	<% }else{ %>
+  		<a href="/videos/view/<%= item._id %>">
+	  		<img class="still-images" src="/static/img/placeholder.jpg" width="180" />
+	  	</a>	
+  	<% }%>	
+  </div>
+  <div class="bam">
+		<span class="lecturer">Dozentin: <%= item.metadata[0].author %></span><br>
+		<div class="description"><%= item.metadata[0].abstract %></div>
+		<div class="controls" hidden>
+			<a class="button" href="/videos/edit/<%= item._id %>" title="Update this item">edit</a>
+		</div>	
+		<span class="tags"><strong>Tags:</strong>
+		<% item.metadata[0].tags.forEach( function ( tag ){ %>
+			<%= tag.t %>,
+		<% }); %>
+		 </span>
+  </div> 
+</div>
+-->
 <% if (items.length) { %><% } %>
 <% }); %>
 </tbody>

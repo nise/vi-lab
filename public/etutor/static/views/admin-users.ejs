@@ -1,4 +1,16 @@
 
+
+<!--
+todo: 
+- clean code
+- https://github.com/expressjs/multer for upload of files
+- implement field mapping
+ - read header of csv
+ - provide mongoDB model
+ - provide drop down fields for matching
+
+-->
+
 <script type="text/javascript"> 
 //
 var aAsc = [];
@@ -29,11 +41,32 @@ var show_bio = function(cl){
 
 
 <div class="col-md-10">
-<h2>Users 
-<small><a class="button" href="#" data-toggle="collapse" data-target="#addUserPanel" aria-expanded="false" aria-controls="collapseExample">add new</a></small></h2>
+<h2>Users</h2>
+<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addUserPanel" aria-expanded="false" aria-controls="collapseExample">add new user</a>
+<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#importCsvPanel" aria-expanded="false" aria-controls="collapseExample2">import csv</a>
 
-<div id="addUserPanel" class="edit-form collapse">
-		<h3>Add new User</h3>   
+<div id="importCsvPanel" class="edit-form collapse admin-edit-form">
+	<div class="panel-heading">Import users from CSV</div>
+	<form action="/users/import-csv" method="post" accept-charset="utf-8">  
+		<div class="btn btn-xs btn-default btn-file">
+		  Browse File <input type="file">
+		</div>
+		<div class="input-group input-group-xs">
+				<textarea name="user-csv"></textarea>
+		</div>
+		<div class="checkbox">
+			<label><input type="checkbox" name="replace-existing-users" value="">Replace existing users</label>
+		</div>
+		<br>
+		<div class="buttons">
+			<button type="submit" class="btn-default btn">import</button> 
+			<a href="javascript:render('admin-users', '/json/users', true, '.admin-panel');">cancel</a>
+		</div>	
+	</form>	
+</div>
+
+<div id="addUserPanel" class="edit-form collapse admin-edit-form">
+		<div class="panel-heading">Add a new user</div>   
    <form action="/users/create" method="post" accept-charset="utf-8">
     	<div class="input-group input-group-xs">
 				<span class="input-group-addon" id="sizing-addon1">Username</span>

@@ -1,0 +1,88 @@
+
+
+
+<h2>Script</h2>
+<span id="status">loading ...</span>
+<table id="table1"></table>
+
+<script> 
+/*
+	*
+	* @todo
+	* column head = video instance
+	* sort groups
+	* select phases
+	**/
+
+var phase = 1, data = {}, val = {}, tab = '#table1';
+		jQuery.ajax({
+      type: "get",
+      beforeSend: function(xhr){ 
+  				if (xhr.overrideMimeType){
+				    xhr.overrideMimeType("application/json");
+  				}
+			},
+      url: '/json/admin/script-info',
+      dataType: 'json',
+      success: function(the_data){
+      	data = the_data 
+      	var arr2 = [];
+      	for(var i = 0; i < data.groups.length; i++){
+      		arr2[i] = [];
+      		// first column
+      		var tab_row = $('<tr></tr>')
+      			.append( $('<td></td>').text( 'Group '+data.groups[i].id ) );
+      		// cells
+      		for(var j = 0; j < data.videos.length; j++){
+      			var tab_cell = $('<td></td>')
+							.css({ border:"solid 1px #ccc"})
+							.appendTo( tab_row );	
+      			//val = getVideoOfId( data.videos[j].id, data.groups[i].videos );
+      			//arr2[i][j] = val;
+      			if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
+      				tab_cell.text( data.videos[j].id );
+      			}
+      		}
+      		$(tab).append( tab_row );
+      		
+      	}
+				//alert( JSON.stringify(arr2) )
+      	//buildTable( arr2, '#table1' );
+			},
+			error : function(e) {
+				alert(JSON.stringify(e))
+			}
+		}); // end ajax
+
+/*
+**/
+function buildTable(arr, tab){
+	for(var row = 0; row < arr.length; row++ ){
+
+			var tab_row = $('<tr></tr>');
+			for(var cell = 0; cell < arr[row].length; cell++ ){
+					var tab_cell = $('<td></td>')
+						.css({ border:"solid 1px #ccc"})
+						.appendTo( tab_row );	
+					if( ! arr[row][cell].empty ){
+						tab_cell.text('vis');
+					}	
+				
+			}
+			$(tab).append( tab_row );
+	}
+}
+
+/*
+**/
+function getVideoOfId(id){ 
+	for(var i = 0; i < arr.length; i++){ 
+		if( Number(arr[i].id) === Number(id) ){
+			return arr[i]; 
+		}
+	}
+	return { empty:true };
+}
+
+		
+</script>

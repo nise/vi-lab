@@ -66,36 +66,41 @@
 								<li><a href="javascript:render('admin-videos-comments','', false, '.admin-panel');"></a>
 							</ul>
 						</li>
-						<li><a href="javascript:render('admin-scripts', '/json/scripts', true, '.admin-panel');">Script Templates</a>
+						<li><a href="javascript:render('admin-scripts', '/json/scripts', false, '.admin-panel');">CSCL-Script</a>
 							<ul class="nav subnav collapse" id="collapseExample0">
 								<li><a href="javascript:render('admin-script-templates','/json/script-templates', false, '.admin-panel');">Templates</a>
 								<li><a href="javascript:render('admin-script-templates-new','/json/script-templaes-new', false, '.admin-panel');">New Template</a>
 							</ul>
 						
 						</li>
-
-						<li><a data-toggle="collapse" data-target="#collapseExamples1" href="javascript:render('admin-videos', '/json/admin/videos', true, '.admin-panel');">Videos</a>
+						<li><a data-toggle="collapse" data-target="#collapseExamples11" href="javascript:render('admin-videos', '/json/admin/video-files', true, '.admin-panel');">Videos</a>
+							<ul class="nav subnav collapse" id="collapseExamples11">
+								<li><a href="javascript:render('admin-video-stats','', false, '.admin-panel');">Playback Stats</a>
+							</ul>
+						</li>
+						<li><a data-toggle="collapse" data-target="#collapseExamples1" href="javascript:render('admin-video-instances', '/json/admin/video-instances', true, '.admin-panel');">Video Instances</a>
 							<ul class="nav subnav collapse" id="collapseExamples1">
-								<li><a href="javascript:render('admin-videos-comments','', false, '.admin-panel');">Kommentare</a>
+								<li><a href="javascript:render('admin-video-comments','', false, '.admin-panel');">Comments</a>
+								<li><a href="javascript:render('admin-video-assessment','', false, '.admin-panel');">Assessment</a>
 							</ul>
 						</li>
 						<li><a data-toggle="collapse" data-target="#collapseExample2" href="javascript:render('admin-users', '/json/users', true, '.admin-panel');">Users</a>
 							<ul class="nav subnav collapse" id="collapseExample2">
-								<li><a href="javascript:render('admin-users-roles','/json/roles', false, '.admin-panel');">Roles/Permissions</a>
-								<li><a href="javascript:render('admin-users-import','', false, '.admin-panel');">Import CSV</a>
+								<!--<li><a href="javascript:render('admin-users-roles','/json/roles', false, '.admin-panel');">Roles/Permissions</a>
+								<li><a href="javascript:render('admin-users-import','', false, '.admin-panel');">Import CSV</a>-->
 							</ul>
 						</li>
 						<li><a data-toggle="collapse" data-target="#collapseExample3" href="javascript:render('admin-groups', '/json/groups', true, '.admin-panel');">Groups</a>
 							<ul class="nav subnav collapse" id="collapseExample3">
-								<li><a href="javascript:render('admin-groups-new','', false, '.admin-panel');">Add new</a>
+								<!--<li><a href="javascript:render('admin-groups-new','', false, '.admin-panel');">Add new</a>-->
 								<li><a href="javascript:render('admin-groups-formation','/json/users', true, '.admin-panel');">Formation</a>
-								<li><a href="javascript:render('admin-groups-import','', false, '.admin-panel');">Import CSV</a>
+								<!--<li><a href="javascript:render('admin-groups-import','', false, '.admin-panel');">Import CSV</a>-->
 							</ul>
 						</li>
 						
 
-						<li><a href="javascript:render('admin-settings', '', true, '.admin-panel');">Settings</a></li>
-						<li><a href="javascript:render('admin-analytics', '', false, '.admin-panel');">Analytics</a></li>
+						<!--<li><a href="javascript:render('admin-settings', '', true, '.admin-panel');">Settings</a></li>
+						<li><a href="javascript:render('admin-analytics', '', false, '.admin-panel');">Analytics</a></li>-->
 					</ul>	
 					
 				</div>
