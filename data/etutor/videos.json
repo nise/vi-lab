@@ -7039,21 +7039,14 @@
   },
   {
     "__v": 0,
-    "_id": "52a13d2e2aa9d35f24000600",
-    "id": "444",
+    "_id": "52a13d2e2aa9d35f24000641",
+    "id": "41",
     "progress": "4",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
     "assessmentwriting": [],
     "assessmentfillin": [],
     "assessment": [],
-    "comments": [
-      {
-        "date": "1446495026647",
-        "author": "4",
-        "start": "970.001111",
-        "comment": "test"
-      }
-    ],
+    "comments": [],
     "slides": [
       {
         "duration": "9.0",
@@ -7303,9 +7296,1299 @@
     ]
   },
   {
-    "_id": "52a13d2e2aa9d35f24000701",
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000642",
+    "id": "42",
+    "progress": "4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446495034632",
+        "author": "4",
+        "start": "974.800521",
+        "label": "mi"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "0:43:48",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000643",
+    "id": "43",
+    "progress": "4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446495034632",
+        "author": "4",
+        "start": "974.800521",
+        "label": "mi"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "0:43:48",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000644",
+    "id": "44",
+    "progress": "4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446495034632",
+        "author": "4",
+        "start": "974.800521",
+        "label": "mi"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "0:43:48",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000645",
+    "id": "45",
+    "progress": "4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446495034632",
+        "author": "4",
+        "start": "974.800521",
+        "label": "mi"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "0:43:48",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "__v": 0,
+    "_id": "52a13d2e2aa9d35f24000646",
+    "id": "46",
+    "progress": "4",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture4_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "duration": "9.0",
+        "starttime": "0.0",
+        "img": "video4/e2script_4-0.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "112.9",
+        "starttime": "9.0",
+        "img": "video4/e2script_4-1.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "30.1",
+        "starttime": "121.9",
+        "img": "video4/e2script_4-2.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "57.7",
+        "starttime": "152.0",
+        "img": "video4/e2script_4-3.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "63.3",
+        "starttime": "209.7",
+        "img": "video4/e2script_4-4.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "181.0",
+        "starttime": "273.0",
+        "img": "video4/e2script_4-5.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "69.4",
+        "starttime": "454.0",
+        "img": "video4/e2script_4-6.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "153.0",
+        "starttime": "523.4",
+        "img": "video4/e2script_4-7.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "113.6",
+        "starttime": "676.4",
+        "img": "video4/e2script_4-8.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "98.3",
+        "starttime": "790.0",
+        "img": "video4/e2script_4-9.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "188.7",
+        "starttime": "888.3",
+        "img": "video4/e2script_4-10.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "49.3",
+        "starttime": "1077.0",
+        "img": "video4/e2script_4-11.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "15.7",
+        "starttime": "1126.3",
+        "img": "video4/e2script_4-12.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "100.5",
+        "starttime": "1142.0",
+        "img": "video4/e2script_4-13.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "18.4",
+        "starttime": "1242.5",
+        "img": "video4/e2script_4-14.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "150.9",
+        "starttime": "1260.9",
+        "img": "video4/e2script_4-15.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "32.5",
+        "starttime": "1411.8",
+        "img": "video4/e2script_4-16.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "148.6",
+        "starttime": "1444.3",
+        "img": "video4/e2script_4-17.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "35.4",
+        "starttime": "1592.9",
+        "img": "video4/e2script_4-18.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "126.6",
+        "starttime": "1628.3",
+        "img": "video4/e2script_4-19.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "111.6",
+        "starttime": "1754.9",
+        "img": "video4/e2script_4-20.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "157.0",
+        "starttime": "1866.5",
+        "img": "video4/e2script_4-21.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "124.7",
+        "starttime": "2023.5",
+        "img": "video4/e2script_4-22.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "96.5",
+        "starttime": "2148.2",
+        "img": "video4/e2script_4-23.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "233.3",
+        "starttime": "2244.7",
+        "img": "video4/e2script_4-24.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "129.7",
+        "starttime": "2478.0",
+        "img": "video4/e2script_4-25.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "11.4",
+        "starttime": "2607.7",
+        "img": "video4/e2script_4-26.jpg",
+        "id": "",
+        "type": "seq"
+      },
+      {
+        "duration": "7.6",
+        "starttime": "2619.1",
+        "img": "video4/e2script_4-27.jpg",
+        "id": "",
+        "type": "seq"
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446495034632",
+        "author": "4",
+        "start": "974.800521",
+        "label": "mi"
+      }
+    ],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Moderation und Arbeitsstrukturierung im VCL-Projekt",
+        "category": "X",
+        "abstract": "Im vierten Video erfahren Sie wichtige Details zur Tätigkeit als Moderator im virtuellen Raum. Nach einer kurzen Betrachtung des Moderationsbegriffes lernen Sie den Unterschied zwischen der klassischen und der virtuellen Moderation kennen. Es werden Ihnen gängige Herausforderungen und Facetten einer Moderation im virtuellen Raum aufgezeigt. Darüber hinaus üben Sie wichtige Fragetechniken für den Umgang mit Lernenden und erfahren, wie bekannte Moderationstechniken, bspw. das Brainstorming, in den virtuellen Raum überführt werden können. Zum Abschluss wird die Moderation in Konfliktsituationen betrachtet und damit der Übergang zum fünften Video mit dem Thema „Konfliktdiagnostik und -intervention“ geschaffen.",
+        "length": "0:43:48",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video4_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Moderation"
+          },
+          {
+            "t": "klassisch"
+          },
+          {
+            "t": "virtuell"
+          },
+          {
+            "t": "Rolle"
+          },
+          {
+            "t": "Handwerkszeug"
+          },
+          {
+            "t": "Tools"
+          },
+          {
+            "t": "Konfliktsituationen"
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000751",
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
-    "id": "555",
+    "id": "51",
     "progress": "5",
     "__v": 0,
     "assessmentwriting": [],
@@ -7313,195 +8596,197 @@
     "assessment": [],
     "comments": [],
     "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
       {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-0.jpg",
-        "starttime": "0.0",
-        "duration": "54.7"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-1.jpg",
-        "starttime": "54.7",
-        "duration": "38.9"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-2.jpg",
-        "starttime": "93.6",
-        "duration": "31.4"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-3.jpg",
-        "starttime": "125.0",
-        "duration": "164.3"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-4.jpg",
-        "starttime": "289.3",
-        "duration": "176.6"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-5.jpg",
-        "starttime": "465.9",
-        "duration": "199.3"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-6.jpg",
-        "starttime": "665.2",
-        "duration": "277.4"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-7.jpg",
-        "starttime": "942.6",
-        "duration": "164.0"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-8.jpg",
-        "starttime": "1106.6",
-        "duration": "200.4"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-9.jpg",
-        "starttime": "1307.0",
-        "duration": "59.2"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-10.jpg",
-        "starttime": "1366.2",
-        "duration": "29.1"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-11.jpg",
-        "starttime": "1395.3",
-        "duration": "20.0"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-12.jpg",
-        "starttime": "1415.3",
-        "duration": "61.5"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-13.jpg",
-        "starttime": "1476.8",
-        "duration": "260.9"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-14.jpg",
-        "starttime": "1737.7",
-        "duration": "145.2"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-15.jpg",
-        "starttime": "1882.9",
-        "duration": "27.8"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-16.jpg",
-        "starttime": "1910.7",
-        "duration": "81.7"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-17.jpg",
-        "starttime": "1992.4",
-        "duration": "84.0"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-18.jpg",
-        "starttime": "2076.4",
-        "duration": "263.6"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-19.jpg",
-        "starttime": "2340.0",
-        "duration": "41.5"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-20.jpg",
-        "starttime": "2381.5",
-        "duration": "92.2"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-21.jpg",
-        "starttime": "2473.7",
-        "duration": "27.1"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-22.jpg",
-        "starttime": "2500.8",
-        "duration": "18.1"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-23.jpg",
-        "starttime": "2518.9",
-        "duration": "39.6"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-24.jpg",
-        "starttime": "2558.5",
-        "duration": "7.0"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-25.jpg",
-        "starttime": "2565.5",
-        "duration": "6.1"
-      },
-      {
-        "type": "seq",
-        "id": "",
-        "img": "700/e2script_5-26.jpg",
-        "starttime": "2571.6",
-        "duration": "6.3"
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "0:42:58",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Intervention"
+          }
+        ]
       }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000752",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
+    "id": "52",
+    "progress": "5",
+    "__v": 0,
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "0:42:58",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Intervention"
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000753",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
+    "id": "53",
+    "progress": "5",
+    "__v": 0,
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "0:42:58",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Intervention"
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000754",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
+    "id": "54",
+    "progress": "5",
+    "__v": 0,
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "0:42:58",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Intervention"
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000755",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
+    "id": "55",
+    "progress": "5",
+    "__v": 0,
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [],
+    "metadata": [
+      {
+        "author": "Dipl.-Hdl. Corinna Hetmank",
+        "institution": "TU Dresden, WIIM",
+        "title": "Konfliktdiagnostik und -intervention im virtuellen Klassenraum",
+        "category": "X",
+        "abstract": "Im fünften und letzten Video widmen wir uns dem Themenbereich „Konfliktdiagnostik und -intervention“. Zu Beginn wird der Begriff „Konflikt“ definiert und Sie erfahren Details zu möglichen Konfliktarten, Konfliktursachen und Effekten von Konflikten. Der Fokus der Ausführungen liegt dabei auf Konflikten zwischen Individuen in einer Gruppenarbeit. Anschließend lernen Sie den Diagnoseprozess nach Glasl (2004) kennen, welcher Ihnen ein systematisches Vorgehen zur Einschätzung des Eskalationsgrades von Konflikten an die Hand gibt. Diese Einschätzung stellt eine wichtige Basis für die Ableitung einer Interventionsstrategie in der Rolle des E-Tutors dar, deren mögliche Ausgestaltung im letzten Teil des Videos erläutert wird.",
+        "length": "0:42:58",
+        "date": "2014/11/05",
+        "weight": 0,
+        "source": "",
+        "thumbnail": "/static/img/video5_poster.jpg",
+        "_id": "54547be3568b77107d437b5c",
+        "tags": [
+          {
+            "t": "Intervention"
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "_id": "52a13d2e2aa9d35f24000756",
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture5_improved.mp4",
+    "id": "56",
+    "progress": "5",
+    "__v": 0,
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      { "id":"slide0", "type":"seq", "img":"video5/e2script_5-1.jpg", "starttime":54.7, "duration":38.89999999999999 },{ "id":"slide1", "type":"seq", "img":"video5/e2script_5-3.jpg", "starttime":125, "duration":164.3 },{ "id":"slide2", "type":"seq", "img":"video5/e2script_5-5.jpg", "starttime":668.1212462686567, "duration":277.69648507462705 },{ "id":"slide3", "type":"seq", "img":"video5/e2script_5-7.jpg", "starttime":1121.7838208955225, "duration":192.46291044776103 },{ "id":"slide4", "type":"seq", "img":"video5/e2script_5-9.jpg", "starttime":1366.4866641791045, "duration":32.99364179104464 },{ "id":"slide5", "type":"seq", "img":"video5/e2script_5-11.jpg", "starttime":1422.850802238806, "duration":59.113608208955384 },{ "id":"slide6", "type":"seq", "img":"video5/e2script_5-13.jpg", "starttime":1744.5388097014925, "duration":140.22297761194045 },{ "id":"slide7", "type":"seq", "img":"video5/e2script_5-15.jpg", "starttime":1916.380694029851, "duration":81.10936940298507 },{ "id":"slide8", "type":"seq", "img":"video5/e2script_5-17.jpg", "starttime":2084.0983731343285, "duration":111.3535410447762 },{ "id":"slide9", "type":"seq", "img":"video5/e2script_5-19.jpg", "starttime":2354.921182835821, "duration":31.61890671641777 },{ "id":"slide10", "type":"seq", "img":"video5/e2script_5-21.jpg", "starttime":2510.266246268657, "duration":26.11996641791029 },{ "id":"slide11", "type":"seq", "img":"video5/e2script_5-23.jpg", "starttime":2565.2556492537315, "duration":38.49258208955234 },{ "id":"slide12", "type":"seq", "img":"video5/e2script_5-0.jpg", "starttime":0, "duration":54.7 },{ "id":"slide13", "type":"seq", "img":"video5/e2script_5-2.jpg", "starttime":93.6, "duration":31.400000000000006 },{ "id":"slide14", "type":"seq", "img":"video5/e2script_5-4.jpg", "starttime":288.69436567164183, "duration":379.4268805970149 },{ "id":"slide15", "type":"seq", "img":"video5/e2script_5-6.jpg", "starttime":944.4429962686568, "duration":177.3408246268657 },{ "id":"slide16", "type":"seq", "img":"video5/e2script_5-8.jpg", "starttime":1311.49726119403, "duration":54.98940298507455 },{ "id":"slide17", "type":"seq", "img":"video5/e2script_5-10.jpg", "starttime":1399.4803059701492, "duration":23.37049626865678 },{ "id":"slide18", "type":"seq", "img":"video5/e2script_5-12.jpg", "starttime":1479.2149402985076, "duration":263.94913432835824 },{ "id":"slide19", "type":"seq", "img":"video5/e2script_5-14.jpg", "starttime":1879.2628470149255, "duration":37.117847014925474 },{ "id":"slide20", "type":"seq", "img":"video5/e2script_5-16.jpg", "starttime":2000.2395335820895, "duration":83.85883955223903 },{ "id":"slide21", "type":"seq", "img":"video5/e2script_5-18.jpg", "starttime":2191.327708955224, "duration":162.21873880597013 },{ "id":"slide22", "type":"seq", "img":"video5/e2script_5-20.jpg", "starttime":2385.165354477612, "duration":125.10089179104534 },{ "id":"slide23", "type":"seq", "img":"video5/e2script_5-22.jpg", "starttime":2537.760947761194, "duration":24.74523134328365 }
     ],
     "highlight": [],
     "hyperlinks": [],

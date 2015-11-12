@@ -24,8 +24,8 @@ var ViLab = $.inherit({
   		vi2.dom = "#vi2"; 
   		
   		
-  		//var m = new Vi2.Maintain();
-  		//m.foo();
+  		var m = new Vi2.Maintain();
+  		m.foo();
  
   		//
   		$.get('/json/user-data', function(data){  
