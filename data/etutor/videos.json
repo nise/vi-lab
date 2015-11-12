@@ -2477,6 +2477,96 @@
           "question": "Was versteht man unter \"Kollaboration\"?"
         },
         "type": "assessment"
+      },
+      {
+        "date": "1447079887345",
+        "author": "24",
+        "time": "705.448013",
+        "start": "705.448013",
+        "starttime": "705.448013",
+        "title": {
+          "correct": [
+            "answ97"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Ja",
+              "id": "answ65"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Nein",
+              "id": "answ97"
+            }
+          ],
+          "date": "1447079887342",
+          "question": "Gibt es für Fallstudien vorher festgelegte Musterlösungen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447081261112",
+        "author": "24",
+        "time": "1763.286547",
+        "start": "1763.286547",
+        "starttime": "1763.286547",
+        "title": {
+          "correct": [
+            "answ46"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Persönliche Ziele",
+              "id": "answ40"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Gruppenziele",
+              "id": "answ46"
+            }
+          ],
+          "date": "1447081261109",
+          "question": "Welche Ziele stehen bei einer Kooperation im Vordergrund?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447081614949",
+        "author": "24",
+        "time": "2000.145124",
+        "start": "2000.145124",
+        "starttime": "2000.145124",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Die Klärung der Fragen:\nWas wollen wir als Gruppe erreichen? Und wie wollen wir es erreichen?"
+            }
+          ],
+          "date": "1447081614945",
+          "question": "Was versteht man unter Grounding?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447082145525",
+        "author": "24",
+        "time": "2321.75567",
+        "start": "2321.75567",
+        "starttime": "2321.75567",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "1. Physische Dimension\n2. Zeitliche Dimension\n3. Persönliche Dimension"
+            }
+          ],
+          "date": "1447082145521",
+          "question": "Welche 3 Dimensionen können im Kontext von Blended Learning definiert werden?"
+        },
+        "type": "assessment"
       }
     ],
     "comments": null,
@@ -2695,28 +2785,40 @@
         "label": "2.%20Virtual%20Collaborative%20Learning%20%20"
       },
       {
-        "date": "1446663768143",
-        "author": "28",
-        "start": "68.877516",
-        "label": "2.1.%20Merkmale%20kollaborativen%20Lernens"
+        "date": "1447081355324",
+        "author": "24",
+        "start": "1803.526632",
+        "label": "Merkmale%20kollaborativen%20Lernens"
       },
       {
-        "date": "1446663788086",
-        "author": "28",
-        "start": "71.950827",
-        "label": "3.%20Blended%20leraning"
+        "date": "1447081685302",
+        "author": "24",
+        "start": "2008.787316",
+        "label": "Blended%20Learning"
       },
       {
-        "date": "1446663926989",
-        "author": "28",
-        "start": "68.611598",
-        "label": "4.%20Aufgabben%20von%20E%20-%20Tutoren"
+        "date": "1447082203739",
+        "author": "24",
+        "start": "2326.250113",
+        "label": "Aufgaben%20von%20eTutoren"
       },
       {
-        "date": "1446664118252",
-        "author": "28",
-        "start": "130.709806",
-        "label": "4.1.%20Split-Tutor-Concept%20%20"
+        "date": "1447082517222",
+        "author": "24",
+        "start": "2442.435339",
+        "label": "Split-Tutor-Concept"
+      },
+      {
+        "date": "1447140500904",
+        "author": "24",
+        "start": "2752.733508",
+        "label": "Quellen%20und%20Abschlussworte"
+      },
+      {
+        "date": "1447140569203",
+        "author": "24",
+        "start": "32.448003",
+        "label": "Agenda"
       }
     ],
     "metadata": [
@@ -3260,6 +3362,7 @@
         "start": "1234.179182",
         "starttime": "1234.179182",
         "title": {
+          "type": "fi",
           "answ": [
             {
               "questiontype": "fi",
@@ -3268,6 +3371,28 @@
           ],
           "date": "1446636747528",
           "question": "Was verbirgt sich hinter dem Begriff Immersionspotenzial?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446843659953",
+        "author": "6",
+        "time": "2065.208706",
+        "start": "2065.208706",
+        "starttime": "2065.208706",
+        "title": {
+          "correct": [
+            "answ97"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Vorteile: Anregen des Austausch von Wiesen, Förderung sozialer Kompetenz durch Teamarbeit. Nachteile bzw. Schwächen kann nicht direkt zum Austausch innerhalb der Gruppe verwendet werden",
+              "id": "answ97"
+            }
+          ],
+          "date": "1446843659941",
+          "question": "Nennen Sie Vorteile und Nachteile von Wiki ?"
         },
         "type": "assessment"
       }
@@ -3709,7 +3834,44 @@
     "video": "http://141.46.8.101/beta/e2script/e2script_lecture2_improved.mp4",
     "assessmentwriting": [],
     "assessmentfillin": [],
-    "assessment": [],
+    "assessment": [
+      {
+        "date": "1447260891755",
+        "author": "11",
+        "time": "465",
+        "start": "465",
+        "starttime": "465",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Wenn die Nutzer eine entsprechende Medienkompetenz aufweisen können die Nachteile der cvK zur persönlichen  Kommunikation ausgeglichen werden. Dazu müssen sie reflektiert mit den vorhandenen Werkzeugen umgehen können, deren Vor- und Nachteile kennen und wie Inhalte in der entsprechenden Form zu interpretieren sind."
+            }
+          ],
+          "date": "1447260891752",
+          "question": "Unter welchen Gegebenheiten kann die computervermittelte Kommunikation(cvK) nah an die persönliche Kommunikation herankommen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447263352033",
+        "author": "11",
+        "time": "1119.66696",
+        "start": "1119.66696",
+        "starttime": "1119.66696",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Kanalreduktion\n- Flaming\n- eingeschränkte Feedbackmöglichkeiten\n- erschwertes Grounding\n- Lurking\n\nKanalreduktion:\nDie Kanalreduktion wird durch die Entsinnlichung, Entzeitlichung und Entkontextualisierung gekennzeichnet. D.h., dass durch weniger angesprochene Sinne Aussagen schwerer zu interpretieren sind, es zu Verzögerungen im Gesprächsverlauf kommen kann und man nicht so leicht die Motive, die Situation und Stimmung, aus der eine Aussage heraus getätigt wurde, erkennen kann.\nUm dem gegenzusteuern sollten für verschiedene Zwecke verschiedene Medien genutzt werden. Zum Beispiel eignen sich reichhaltige Medien wie Video-Chats besser für ein direktes Feedback oder das Auflösen eines Konflikts als etwa ein Forum.\n\nFlaming:\nDas Flaming entsteht durch einen indirekten Kontakt bei dem die unmittelbare Reaktion nicht ersichtlich ist, sodass die Kommunikation ungehemmter als im persönlichen Gespräch ablaufen kann. Damit man dies verhindern kann, können bspw. Richtlinien für die Kommunikation im Projekt aufgestellt werden.\n\nEingeschränkte Feedbackmöglichkeit:\nDies trifft hauptsächlich für textbasierte Formen der Kommunikation zu, da dort bspw. Mimik und Gestik wegfallen wie etwas ein Lächeln oder Kopfnicken, sodass Feedback nicht wie im persönlichen Kontakt gegeben werden kann. Als Gegenmaßnahmen können hier die Verwendung von Emoticons oder die explizite Aufforderung zu detailliertem Feedback dienen.\n\nErschwertes Grounding:\nWenn den Gruppenmitgliedern ein gemeinsames Verständnis über Ziele und Aufgaben der Gruppenarbeit fehlen, erschwert dies die Zusammenarbeit. Dieses gemeinsame Verständnis ist bei nicht persönlichen Treffen unter Umständen weniger natürlich zu erreichen. Daher kann man als Gegenmaßnahme Rollen verteilen wie die des Projektmanagers, der darauf Acht gibt und den Punkt auch aktiv anspricht.\n\nLurking:\nBeim Lurking zieht sich ein Teilnehmer, aufgrund von mangelnder direkter Kontrolle durch die anderen Teilnehmer, von der Gruppenarbeit zurück und liefert selbst keinen Input mehr. Auch hier kann dies durch aktives Ansprechen des Verhaltens gelöst werden."
+            }
+          ],
+          "date": "1447263352029",
+          "question": "Nenne 3 Gefahren der cvK und erläutere 2 davon genauer und welche Gegenmaßnahmen es dazu gibt."
+        },
+        "type": "assessment"
+      }
+    ],
     "comments": [],
     "slides": [
       {
@@ -3947,7 +4109,56 @@
     "highlight": [],
     "hyperlinks": [],
     "tags": [],
-    "toc": [],
+    "toc": [
+      {
+        "date": "1447174178394",
+        "author": "11",
+        "start": "123.607684",
+        "label": "Computervermittelte%20Kommunikation"
+      },
+      {
+        "date": "1447174733470",
+        "author": "11",
+        "start": "465",
+        "label": "Situationen%20und%20Gefahren%20der%20computergest%C3%BCtzten%20Komm."
+      },
+      {
+        "date": "1447175481682",
+        "author": "11",
+        "start": "1115.168049",
+        "label": "Unterscheidungskriterien%20von%20cvK"
+      },
+      {
+        "date": "1447175561406",
+        "author": "11",
+        "start": "1241.390022",
+        "label": "Kommunikationsprozesse%20in%20VCL-Projekten"
+      },
+      {
+        "date": "1447175691920",
+        "author": "11",
+        "start": "1602.352063",
+        "label": "Werkzeuge%20und%20ihre%20Wirkung"
+      },
+      {
+        "date": "1447175805546",
+        "author": "11",
+        "start": "2276.816575",
+        "label": "Social%20Media%20Flower"
+      },
+      {
+        "date": "1447175836699",
+        "author": "11",
+        "start": "2338.459795",
+        "label": "Zusammenspiel%20von%20Nutzer%20und%20Lernumgebung"
+      },
+      {
+        "date": "1447175903272",
+        "author": "11",
+        "start": "2499.407596",
+        "label": "Theorien%20zur%20Auswahl%20von%20Kommunikationsmedien"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -5875,6 +6086,7 @@
         "start": "2995.390793",
         "starttime": "2995.390793",
         "title": {
+          "type": "fi",
           "answ": [
             {
               "questiontype": "fi",
@@ -5911,6 +6123,10 @@
         "start": "2994.330158",
         "starttime": "2994.330158",
         "title": {
+          "type": "mc",
+          "checked": [
+            "answ34"
+          ],
           "correct": [
             "answ34"
           ],
@@ -6172,11 +6388,11 @@
         "type": "assessment"
       },
       {
-        "date": "1446658771269",
+        "date": "1447173474641",
         "author": "25",
-        "time": "t2996.0",
-        "start": "t2996.0",
-        "starttime": "t2996.0",
+        "time": "2997.000000",
+        "start": "2997.000000",
+        "starttime": "2997.000000",
         "title": {
           "answ": [
             {
@@ -6184,17 +6400,17 @@
               "answ": "• Entsinnlichung\nPerson sitzt mir nicht gegenüber. Dadurch sehe ich sie nicht, sondern  nur was sie schreibt.\nBekomme nur Auszüge mit, von dem was die Person tut.\nIch bekomme weniger Reize, dadurch kann sich die Interpretation erschweren\n\n• Entzeitlichung\nTritt bei einer asynchronen Kommunikation auf. Person schreibt bspw. etwas in ein Forum, es wird jedoch erst einige Tage später gelesen\n\n• Entkontextualisierung\nIch weiß nicht in welcher Situation oder in welchem Gemütszustand die Person zu dem Zeitpunkt war, als sie etwas geschrieben hat. "
             }
           ],
-          "date": "1446658771264",
+          "date": "1447173474639",
           "question": "Nenne und beschreibe drei Merkmale der Kanalreduktion."
         },
         "type": "assessment"
       },
       {
-        "date": "1446658953686",
+        "date": "1447174470679",
         "author": "25",
-        "time": "2996.1",
-        "start": "2996.1",
-        "starttime": "2996.1",
+        "time": "2995.400000",
+        "start": "2995.400000",
+        "starttime": "2995.400000",
         "title": {
           "answ": [
             {
@@ -6202,17 +6418,17 @@
               "answ": "F.8\nNenne:\n• Anzahl und Güte der beteiligten Sinneskanäle\n• Zeitliche Snychronizität und Asynchronizität\n• Anzahl der Empfänger\n\nBeschreibe:\nBspw. Anzahl der Empfänger:\n- one-to-one\n- one-to-many\n- many-to-many\n"
             }
           ],
-          "date": "1446658953683",
+          "date": "1447174470674",
           "question": "Nenne die Unterscheidungskriterien der computervermittelten Kommunikation und beschreibe ein Kriterium genauer"
         },
         "type": "assessment"
       },
       {
-        "date": "1446659049535",
+        "date": "1447173454025",
         "author": "25",
-        "time": "2996.2",
-        "start": "2996.2",
-        "starttime": "2996.2",
+        "time": "2996.200000",
+        "start": "2996.200000",
+        "starttime": "2996.200000",
         "title": {
           "answ": [
             {
@@ -6220,17 +6436,17 @@
               "answ": "Zwischen zwei verschiedenen Gruppe soll kein Austausch stattfinden.\nAufgrund der Bewertungssituation muss davon ausgegangen werden, dass die Ergebnisse von jeder Gruppe eigenständig erstellt wurden."
             }
           ],
-          "date": "1446659049531",
+          "date": "1447173454023",
           "question": "Zwischen welchen Instanzen eines VCL-Projektes soll kein Austausch stattfinden und warum?"
         },
         "type": "assessment"
       },
       {
-        "date": "1446659222926",
+        "date": "1447173458194",
         "author": "25",
-        "time": "2996.3",
-        "start": "2996.3",
-        "starttime": "2996.3",
+        "time": "2996.300000",
+        "start": "2996.300000",
+        "starttime": "2996.300000",
         "title": {
           "answ": [
             {
@@ -6238,17 +6454,17 @@
               "answ": "Es herrscht keine strikt arbeitsteilige Bewältigung einer Aufgabe vor. Teilaufgaben werden demnach NICHT  unabhängig von anderen Mitgliedern bearbeitet und am Ende wie ein Puzzle zu einem Ergebnis zusammengesetzt. \n\nDie Bearbeitung und das Lernen erfolgt stark vernetzt und verworben."
             }
           ],
-          "date": "1446659222922",
+          "date": "1447173458190",
           "question": "Wodurch zeichnet sich eine Kollaboration aus?"
         },
         "type": "assessment"
       },
       {
-        "date": "1446659514649",
+        "date": "1447173482714",
         "author": "25",
-        "time": "2996.4",
-        "start": "2996.4",
-        "starttime": "2996.4",
+        "time": "2996.400000",
+        "start": "2996.400000",
+        "starttime": "2996.400000",
         "title": {
           "answ": [
             {
@@ -6256,17 +6472,17 @@
               "answ": "Bei einem (umfangreichem) Wiki kann der Leser plötzlich \"Lost in Hyperspace\" sein.\n\nDer Leser springt innerhalb eines Artikels zu einem weiteren (bspw. weil er einen Begriff nicht kannte und diesen in einem zusammenhängenden Wiki-Artikel nachschlagen wollte). Passiert dies mehrmals hintereinander, weiß der Leser am Ende nicht mehr von welchem Artikel aus er gestartet  und wie er auf diesen gekommen ist."
             }
           ],
-          "date": "1446659514639",
+          "date": "1447173482712",
           "question": "Bei welchem Werkzeug kann der \"Lost in Hyperspace\"-Effekt auftreten?"
         },
         "type": "assessment"
       },
       {
-        "date": "1446659661826",
+        "date": "1447173469083",
         "author": "25",
-        "time": "2996.5",
-        "start": "2996.5",
-        "starttime": "2996.5",
+        "time": "2996.500000",
+        "start": "2996.500000",
+        "starttime": "2996.500000",
         "title": {
           "answ": [
             {
@@ -6274,7 +6490,7 @@
               "answ": "Innerhalb der Media Richness Theory zeichnet sich ein 'reiches' Medium durch folgende Punkte aus:\n- Direktes Feedback\n- Übermittlung von verbalen und nonverbalen Reizen\n- Personalisierung der Kommunikation (wer hat was wann gesagt?)\n- Sprachvielfalt\n"
             }
           ],
-          "date": "1446659661821",
+          "date": "1447173469081",
           "question": "Wodurch zeichnet sich Medienreichtum aus?"
         },
         "type": "assessment"
@@ -6304,6 +6520,24 @@
         "author": "25",
         "start": "0.0",
         "comment": "Bin%20auch%20(aus%20den%20von%20Silvia%20genannten%20Argumenten)%20daf%C3%BCr%2C%20die%20Testfragen%20erst%20am%20Ende%20des%20Videos%20einzubinden"
+      },
+      {
+        "date": "1446911880506",
+        "author": "20",
+        "start": "0.0",
+        "comment": "Alles%20klar.%20Dann%20werde%20ich%20das%20beibehalten."
+      },
+      {
+        "date": "1446915011563",
+        "author": "20",
+        "start": "0",
+        "comment": "Es%20scheint%20erneut%20Pobleme%20mit%20der%20Technik%20zu%20geben.%20Auf%20der%20rechten%20Bildschirmseite%20kann%20ich%20die%20Fragen%20sehen%2C%20die%20Steven%20zu%20diesem%20Video%20gestellt%20hat.%20Allerdings%20wird%20mir%20im%20Videoverlauf%20nur%20die%20Frage%20%C3%BCber%20den%20''Lost%20in%20Hyperspce''%20Effekt%20angezeigt%20und%20dann%20springt%20das%20Video%20automatisch%20auf%20den%20Ursprung%20zur%C3%BCck.%20Die%20%C3%BCbrigen%20Fragen%20kann%20ich%20auf%20diese%20Weise%20leider%20nicht%20beantworten.%20Wie%20k%C3%B6nnte%20dieses%20Problem%20behoben%20werden%3F"
+      },
+      {
+        "date": "1447174778391",
+        "author": "25",
+        "start": "0",
+        "comment": "So%20richtig%20funktioniert%20es%20bei%20mir%20auch%20nicht.%20%0AVor%20allem%20bei%20den%20Volltext-Fragen%20werden%20mir%20h%C3%A4ufig%20die%20Antworten%20nicht%20angezeigt."
       }
     ],
     "slides": [
@@ -6756,11 +6990,257 @@
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000531",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "31",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
+      {
+        "date": "1446898657044",
+        "author": "6",
+        "time": "1733.761719",
+        "start": "1733.761719",
+        "starttime": "1733.761719",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "1. Soziales Faulenzen 2. Trittbrettfahren 3. Sucker-Effekt"
+            }
+          ],
+          "date": "1446898657034",
+          "question": "Nennen Sie bitte Beispiele für Motivationsverluste ?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447153527964",
+        "author": "9",
+        "time": "1661.448275",
+        "start": "1661.448275",
+        "starttime": "1661.448275",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "1. Forming\n2. Storming\n3. Norming\n4. Performing\n5. Re-Forming"
+            }
+          ],
+          "date": "1447153527959",
+          "question": "Nennen Sie die 4 Phasen der Gruppenentwicklung nach Tuckman (1965). Und welche 5. Phase nach Stahl, kann noch bei einer Gruppenentwicklung von Bedeutung sein?"
+        },
+        "type": "assessment"
+      }
+    ],
+    "comments": [
+      {
+        "date": "1447135808540",
+        "author": "9",
+        "start": "956.065169",
+        "comment": "%22Re-Performing%22%20muss%20%22Re-Forming%22%20hei%C3%9Fen"
+      },
+      {
+        "date": "1447154290974",
+        "author": "9",
+        "start": "1827.358594",
+        "comment": "soziales%20Faulenzen%3A%0AGegenma%C3%9Fnahmen%3A%20entsprechendes%20Lernsetting%20schaffen%3A%0A-%20entsprechend%20komplexe%20Problemstellung%20schaffen%2C%20%0A-%20es%20muss%20klar%20identifizierbar%20sein%2C%20wer%20welchen%20Beitrag%20in%20der%20Gruppe%20geleistet%20hat%0A-%20Selbstbewertung%20am%20Ende%20der%20Arbeit%20einfordern%0A-%20es%20muss%20von%20vorherein%20klar%20sein%2C%20woran%20die%20Bewertung%20festgemacht%20wird%0A-%20Gruppengr%C3%B6%C3%9Fe%20sollte%20nicht%20zu%20gro%C3%9F%20sein%0A-%20es%20sollten%20klare%20Teilaufgaben%20innerhalb%20der%20Gruppe%20zugewiesen%20werden"
+      },
+      {
+        "date": "1447164568100",
+        "author": "9",
+        "start": "1988.108458",
+        "comment": "Trittbrettfahren%3A%20wenige%20Interventionsma%C3%9Fnahmen%3A%0A-%20Person%20direkt%20darauf%20ansprechen%20und%20fragen%2C%20warum%20so%20zur%C3%BCckhaltend%0A-%20wenn%20Gruppenmitglied%20bewusst%20diese%20Entscheidung%20trifft%2C%20besteht%20am%20Ende%20nur%20die%20M%C3%B6glichkeit%2C%20eine%20schlechtere%20Note%20zu%20geben"
+      },
+      {
+        "date": "1447242922796",
+        "author": "9",
+        "start": "3119.196008",
+        "comment": "Welche%20Werkzeuge%20(die%20wir%20letzte%20Veranstaltung%20kennen%20gelernt%20haben)%20k%C3%B6nnen%20die%20einzelnen%20Phasen%20%20nach%20Tuckman%20zielf%C3%BChrend%20unterst%C3%BCtzen%3F%20%0A"
+      },
+      {
+        "date": "1447244607426",
+        "author": "9",
+        "start": "3119.196008",
+        "comment": "Meine%20Gedanken%20dazu%3A%0A%0A-%20Forming%3A%20Kollektive%20Plattform%20zur%20Gruppenfindung%2C%20z.B.%20Opal%3B%20Chat%2C%20um%20ersten%20Smalltalk%20zu%20halten%20und%20sich%20gegenseitige%20kennen%20zu%20lernen%0A-%20Storming%3A%20Auch%20Chat%20evtl.%20in%20Kombination%20mit%20Forum%2C%20um%20eigene%20Ziele%20und%20die%20der%20Anderen%2C%20sowie%20Rollenverst%C3%A4ndnis%20festzuhalten%0A-%20Norming%3A%20Wiki%20oder%20Textdokument%2C%20um%20Gruppenvertrag%20und%20Projektplan%20festzuhalten%0A-%20Performing%3A%20je%20nach%20Fragestellung%20Chat%20in%20Kombination%20mit%20geeignetem%20Arbeitsmedium%20(z.B.%20Wiki%20o.%20Textdokument)%2C%20in%20dem%20die%20Arbeitsergebnisse%20festgehalten%20werden"
+      }
+    ],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446894272336",
+        "author": "9",
+        "start": "131.370272",
+        "label": "1%20Was%20ist%20eine%20Gruppe%3F"
+      },
+      {
+        "date": "1446894894212",
+        "author": "6",
+        "start": "424.28018",
+        "label": "2%20Selbstgesteurtes%20Lernen%20in%20Gruppen%3F"
+      },
+      {
+        "date": "1446898072467",
+        "author": "6",
+        "start": "1652.029543",
+        "label": "3%20Gruppendynamische%20Prozesse%20"
+      },
+      {
+        "date": "1446898124956",
+        "author": "6",
+        "start": "1679.648092",
+        "label": "3.1%20Auswirkungen%20auf%20die%20Motivation%20und%20Partipation"
+      },
+      {
+        "date": "1446899538231",
+        "author": "6",
+        "start": "2254.525574",
+        "label": "3.2%20Auswirkung%20auf%20den%20Umgang%20mit%20Information"
+      },
+      {
+        "date": "1446900161542",
+        "author": "6",
+        "start": "2542.781083",
+        "label": "4%20Hinweise%20zum%20Feedback%20als%20Motivator"
+      },
+      {
+        "date": "1447241869606",
+        "author": "9",
+        "start": "2756.052312",
+        "label": "Quellen"
+      },
+      {
+        "date": "1447241882195",
+        "author": "9",
+        "start": "2758.362675",
+        "label": "Fragerunde"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -6792,22 +7272,198 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000532",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "32",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [],
+    "comments": [],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1447275176867",
+        "author": "11",
+        "start": "119.640181",
+        "label": "Was%20ist%20eine%20Gruppe%3F"
+      },
+      {
+        "date": "1447275519160",
+        "author": "11",
+        "start": "420",
+        "label": "Selbstgesteuertes%20Lernen%20in%20Gruppen"
+      },
+      {
+        "date": "1447275822321",
+        "author": "11",
+        "start": "670",
+        "label": "Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1447276607155",
+        "author": "11",
+        "start": "1084",
+        "label": "Einf%C3%BChrung%20des%20Gruppenvertrages"
+      },
+      {
+        "date": "1447276983146",
+        "author": "11",
+        "start": "1444.312108",
+        "label": "Ziel%20der%20gemeinsamen%20Ko-Konstruktion%20von%20Wissen"
+      },
+      {
+        "date": "1447277199004",
+        "author": "11",
+        "start": "1648.297187",
+        "label": "Gruppendynamische%20Prozesse%20-%20Motivationsverluste"
+      },
+      {
+        "date": "1447277701845",
+        "author": "11",
+        "start": "2104.709614",
+        "label": "Motivationsgewinne"
+      },
+      {
+        "date": "1447277887893",
+        "author": "11",
+        "start": "2256.10315",
+        "label": "Auswirkungen%20auf%20Umgang%20mit%20Infos"
+      },
+      {
+        "date": "1447278184646",
+        "author": "11",
+        "start": "2542.254442",
+        "label": "Gestaltung%20von%20Feedback"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -6839,22 +7495,475 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000533",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "33",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
+      {
+        "date": "1446985131476",
+        "author": "21",
+        "time": "423.978775",
+        "start": "423.978775",
+        "starttime": "423.978775",
+        "title": {
+          "correct": [
+            "answ34",
+            "answ46"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "keine direkte Interaktion",
+              "id": "answ34"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Einsatz von Kommunikationsmedien",
+              "id": "answ46"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Wir-Gefühl",
+              "id": "answ89"
+            }
+          ],
+          "date": "1446985131463",
+          "question": "Was ist die Besonderheit virtueller Gruppen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446985519211",
+        "author": "21",
+        "time": "664.882244",
+        "start": "664.882244",
+        "starttime": "664.882244",
+        "title": {
+          "correct": [
+            "answ31",
+            "answ89",
+            "answ82",
+            "answ24",
+            "answ25"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Lernbedürfnisse indentifizieren",
+              "id": "answ31"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Selbstverwirklichung",
+              "id": "answ18"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Lernziele aufeinander abstimmen & gemeinsamens Lernziel festlegen",
+              "id": "answ89"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "verfügbaren Ressourcen identifizieren",
+              "id": "answ82"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Lernstrategie auswählen und implementieren",
+              "id": "answ24"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Lernergebnisse evaluieren",
+              "id": "answ25"
+            }
+          ],
+          "date": "1446985519194",
+          "question": "Was ist die Aufgabe von Lerngruppen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446987771859",
+        "author": "21",
+        "time": "2089.870143",
+        "start": "2089.870143",
+        "starttime": "2089.870143",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Soziales Faulenzen (social loafing), Trittbrettfahren (free riding), Sucker-Effekt"
+            }
+          ],
+          "date": "1446987771845",
+          "question": "Nenne drei mögliche Gründe für Motivationsverluste bei der Gruppenarbeit."
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447077129120",
+        "author": "13",
+        "time": "605.84195",
+        "start": "605.84195",
+        "starttime": "605.84195",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Kompetenzen: Selbststeuerungsfähigkeit und -bereitschaft\nVerbesserung durch Wiederholung komplexer Lernszenarien (Erfahrung) und durch den Einsatz von E-Tutoren als Motivatoren und Ansprechpartner "
+            }
+          ],
+          "date": "1447077129115",
+          "question": "Welche Kompetenzen werden beim selbstgesteuerten Lernen benötigt und wie lassen sich diese optimieren? "
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447079957497",
+        "author": "13",
+        "time": "1424.847391",
+        "start": "1424.847391",
+        "starttime": "1424.847391",
+        "title": {
+          "correct": [
+            "answ84",
+            "answ93"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "stößt die ersten drei Phasen der Gruppenentwicklung an (forming, storming, norming)",
+              "id": "answ84"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "bildet die Grundlage für eine Zusammenarbeit (performing)",
+              "id": "answ93"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "regelt die Rollenverteilung innerhalb einer Gruppe",
+              "id": "answ15"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "zur Erstellung eines Projektplans",
+              "id": "answ91"
+            }
+          ],
+          "date": "1447079957494",
+          "question": "Wozu dient ein Gruppenvertrag? "
+        },
+        "type": "assessment"
+      }
+    ],
+    "comments": [
+      {
+        "date": "1446806760558",
+        "author": "8",
+        "start": "162.255403",
+        "comment": "bei%20mehr%20als%204%20Personen%20kein%20gr%C3%B6%C3%9Ferer%20Leistungszuwachs"
+      },
+      {
+        "date": "1446806844764",
+        "author": "8",
+        "start": "240.665923",
+        "comment": "starkes%20Abh%C3%A4ngigkeitsverh%C3%A4ltnis%20gegeben%0A"
+      },
+      {
+        "date": "1446806861403",
+        "author": "8",
+        "start": "253.482995",
+        "comment": "informelle%2Finoffizielle%20vs.%20formelle%2Foffizielle%20Rollen%0A%0Amgl.%20Diskrepanzen%20zwischen%20formeller%20Festlegung%20der%20Rollen%20und%20informeller%20Herausbildung%20dieser%20(bspw.%20wenn%20formell%20festgelegter%20Leiter%20die%20Erwartungen%20nicht%20erf%C3%BCllen%20kann%20und%20ein%20anderer%20dies%20dann%20%C3%BCbernimmt)%20%0A"
+      },
+      {
+        "date": "1446807199357",
+        "author": "8",
+        "start": "593.295703",
+        "comment": "ggf.%20tun%20sich%20Leute%20schwer%20damit%20erstmalig%20selbstgesteuert%20zu%20lernen%20%0A%0A-%3E%20e-Tutor%20als%20Unterst%C3%BCtzer%20in%20dieser%20Situation%20relevant%0A"
+      },
+      {
+        "date": "1446807539149",
+        "author": "8",
+        "start": "953.93141",
+        "comment": "Re-Forming%20statt%20Re-Performing"
+      },
+      {
+        "date": "1446807659240",
+        "author": "8",
+        "start": "1114.353784",
+        "comment": "Dann%20sollten%20wir%20uns%20diesem%20Punkt%20wahrscheinlich%20bald%20widmen%20%5E%5E"
+      },
+      {
+        "date": "1446824383507",
+        "author": "8",
+        "start": "1842.701748",
+        "comment": "Vermeidungsstrategien%20-%20Soziales%20Faulenzen%20%0A%0A-%20keine%20zu%20gro%C3%9Fen%20Gruppen%0A-%20hinreichend%20komplexe%20Aufgabe%2C%20damit%20alle%20sich%20beteiligen%20m%C3%BCssen%0A-%20Dokumentation%20der%20Arbeitsprozesse%20-%20Arbeit%20der%20einzelnen%20wird%20ersichtlich%0A-%20klare%20Aufgabenstellung%20-%20siehe%20auch%20Teilaufgaben"
+      },
+      {
+        "date": "1446824876172",
+        "author": "8",
+        "start": "2326.998174",
+        "comment": "Challenger-Ungl%C3%BCck%20als%20Beispiel%20f%C3%BCr%20Groupthink-Ph%C3%A4nomen"
+      },
+      {
+        "date": "1446825532431",
+        "author": "8",
+        "start": "3190.937",
+        "comment": "Reflexionsfrage%20am%20Ende%3A%20Welche%20Tools%2C%20die%20in%20den%20vorangegangenen%20Einheiten%20vorgestellt%20wurden%2C%20k%C3%B6nnen%20zur%20Unterst%C3%BCtzung%20der%20einzelnen%20Gruppenentwicklungsphasen%20(Forming%2C%20Storming%2C%20Norming%2C%20Performing)%20genutzt%20werden%3F%20"
+      },
+      {
+        "date": "1447077528753",
+        "author": "13",
+        "start": "666.881927",
+        "comment": "Bei%20den%20Multiple-Choice-Fragen%20kann%20ich%20irgendwie%20keine%20Antworten%20ausw%C3%A4hlen%2C%20geht%20euch%20das%20auch%20so%3F%20"
+      }
+    ],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [
+      {
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Definition",
+        "title": "Konstruktivismus",
+        "target": "http://wirtschaftslexikon.gabler.de/Definition/konstruktivismus.html",
+        "date": "1446808112437",
+        "author": "8",
+        "type": "hyperlinks"
+      },
+      {
+        "duration2": "0",
+        "seek": "0",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Video",
+        "title": "Soziales%20Faulenzen%20-%20Experiment%20Seilziehen",
+        "target": "http://www.ardmediathek.de/tv/Kopfball/Soziales-Faulenzen/Das-Erste/Video?documentId=24561896&bcastId=443428",
+        "date": "1446824266421",
+        "author": "8",
+        "type": "hyperlinks"
+      }
+    ],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446806471099",
+        "author": "8",
+        "start": "0000",
+        "label": "0%20Einf%C3%BChrung"
+      },
+      {
+        "date": "1446806539954",
+        "author": "8",
+        "start": "47.483886",
+        "label": "0%20Vorstellung%20der%20Gliederung"
+      },
+      {
+        "date": "1446806637406",
+        "author": "8",
+        "start": "124.687061",
+        "label": "1%20Was%20ist%20eine%20Gruppe%3F"
+      },
+      {
+        "date": "1446807046563",
+        "author": "8",
+        "start": "426.117322",
+        "label": "2%20Selbstgesteuertes%20Lernen%20in%20Gruppen"
+      },
+      {
+        "date": "1446807256002",
+        "author": "8",
+        "start": "627.288483",
+        "label": "Konsequenz%20f%C3%BCr%20kollaborative%20Lerngruppen"
+      },
+      {
+        "date": "1446807312047",
+        "author": "8",
+        "start": "671.485665",
+        "label": "Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1446807674901",
+        "author": "8",
+        "start": "1082.293189",
+        "label": "Einf%C3%BChrung%20des%20Gruppenvertrages%20in%20VCL-Projekte"
+      },
+      {
+        "date": "1446808023998",
+        "author": "8",
+        "start": "1439.479262",
+        "label": "Ziel%20der%20gemeinsamen%20Ko-Konstruktion%20von%20Wissen"
+      },
+      {
+        "date": "1446808240047",
+        "author": "8",
+        "start": "1659.354739",
+        "label": "3%20Gruppendynamische%20Prozesse"
+      },
+      {
+        "date": "1446824751105",
+        "author": "8",
+        "start": "2265.003373",
+        "label": "Auswirkungen%20auf%20den%20Umgang%20mit%20Informationen"
+      },
+      {
+        "date": "1446824792413",
+        "author": "8",
+        "start": "1676.780795",
+        "label": "Auswirkungen%20auf%20die%20Motivation%20und%20Partizipation"
+      },
+      {
+        "date": "1446825025346",
+        "author": "8",
+        "start": "2539.385416",
+        "label": "Gestaltung%20von%20Feedback"
+      },
+      {
+        "date": "1446825178941",
+        "author": "8",
+        "start": "2760.584395",
+        "label": "Quellen"
+      },
+      {
+        "date": "1446825185015",
+        "author": "8",
+        "start": "2762.395503",
+        "label": "Fragerunde"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -6886,22 +7995,467 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000534",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "34",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
+      {
+        "date": "1446905625033",
+        "author": "14",
+        "time": "425.354988",
+        "start": "425.354988",
+        "starttime": "425.354988",
+        "title": {
+          "correct": [
+            "answ22"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "1",
+              "id": "answ100"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "2",
+              "id": "answ91"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "3",
+              "id": "answ88"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "4",
+              "id": "answ22"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "5",
+              "id": "answ58"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "6",
+              "id": "answ37"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "7",
+              "id": "answ94"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "8",
+              "id": "answ81"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "9",
+              "id": "answ16"
+            }
+          ],
+          "date": "1446905625029",
+          "question": "Wie ist die optimale Gruppengrößen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446905723445",
+        "author": "14",
+        "time": "425.911043",
+        "start": "425.911043",
+        "starttime": "425.911043",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Nein"
+            }
+          ],
+          "date": "1446905723444",
+          "question": "Haben Sie Erfahrungen im Arbeiten in virtuellen Gruppen?\nBeschreiben Sie Ihre Erfahrungen in ca. 30 Sätzen. "
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446907549583",
+        "author": "14",
+        "time": "1087.001882",
+        "start": "1087.001882",
+        "starttime": "1087.001882",
+        "title": {
+          "type": "mc",
+          "checked": [
+            "answ90"
+          ],
+          "correct": [
+            "answ90"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Performing, Norming, Storming, Forming",
+              "id": "answ90"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Performen, Normen, Storm, Form",
+              "id": "answ83"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Performing, Norming, Storming, Verformt",
+              "id": "answ94"
+            }
+          ],
+          "date": "1446907549579",
+          "question": "Nenne die 4 Phasen des Modells von Tuckman"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446977081639",
+        "author": "10",
+        "time": "1340.130465",
+        "start": "1340.130465",
+        "starttime": "1340.130465",
+        "title": {
+          "correct": [
+            "answ86",
+            "answ22"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Festlegung der Kommunikationsregeln in der Gruppe",
+              "id": "answ86"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Bestimmung, wer für das Scheitern der Gruppe haftet",
+              "id": "answ86"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Klärung individueller Ziele der Gruppenarbeit",
+              "id": "answ22"
+            }
+          ],
+          "date": "1446977081634",
+          "question": "Wozu dient ein Gruppenvertrag?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447001005535",
+        "author": "10",
+        "time": "1625.683016",
+        "start": "1625.683016",
+        "starttime": "1625.683016",
+        "title": {
+          "correct": [
+            "answ55",
+            "answ20"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Klare Verteilung der Aufgaben",
+              "id": "answ40"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Wissen über die Kenntnisse anderer Gruppenmitglieder",
+              "id": "answ55"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Ermunterung der Teammitglieder zur Einbringung ungeteilter Informationen",
+              "id": "answ20"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Konzentration auf das Wesentliche",
+              "id": "answ20"
+            }
+          ],
+          "date": "1447001005532",
+          "question": "Welche Maßnahmen fördern, ungeteiltes Wissen einer Gruppe zur Verfügung zu stellen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447001445047",
+        "author": "10",
+        "time": "1949.976009",
+        "start": "1949.976009",
+        "starttime": "1949.976009",
+        "title": {
+          "correct": [
+            "answ79",
+            "answ88",
+            "answ28"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "geringe Gruppengröße",
+              "id": "answ79"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Ausschluss im Gruppenvertrag",
+              "id": "answ91"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Festlegung eines Strafenkatalogs",
+              "id": "answ96"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "klare Zuteilung der Aufgaben",
+              "id": "answ88"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "hohe Komplexität der Aufgabenstellung",
+              "id": "answ28"
+            }
+          ],
+          "date": "1447001445045",
+          "question": "Wie lässt sich der Effekt des sozialen Faulenzens in einer Gruppe reduzieren?"
+        },
+        "type": "assessment"
+      }
+    ],
+    "comments": [
+      {
+        "date": "1446975437748",
+        "author": "10",
+        "start": "143.188957",
+        "comment": "Dyade%20%3D%20Gruppe%20von%20zwei%20Personen"
+      }
+    ],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446905133974",
+        "author": "14",
+        "start": "36.862675",
+        "label": "Agenda"
+      },
+      {
+        "date": "1446905248279",
+        "author": "14",
+        "start": "123.347936",
+        "label": "1.%20Was%20ist%20eine%20Gruppe%3F%20-%20Begriffsabgrenzung"
+      },
+      {
+        "date": "1446905564923",
+        "author": "14",
+        "start": "424.265102",
+        "label": "Selbstgesteuertes%20Lernen%20in%20%20Gruppen"
+      },
+      {
+        "date": "1446906585274",
+        "author": "14",
+        "start": "442.139818",
+        "label": "Definitionsans%C3%A4tze%20auf%20der%20Ebene%20des%20individuellen%20Lernens"
+      },
+      {
+        "date": "1446906872798",
+        "author": "14",
+        "start": "433.435941",
+        "label": "2.%20Selbstgesteuertes%20Lernen%20in%20der%20Gruppe"
+      },
+      {
+        "date": "1446906955689",
+        "author": "14",
+        "start": "669.660022",
+        "label": "Die%20Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1446907381872",
+        "author": "14",
+        "start": "1082.718548",
+        "label": "Einf%C3%BChrung%20eines%20Gruppenvertrages"
+      },
+      {
+        "date": "1446908049352",
+        "author": "14",
+        "start": "1456.073219",
+        "label": "Ziel%20der%20gemeinsamen%20%20Ko-Konstruktion%20%20von%20Wissen%20"
+      },
+      {
+        "date": "1446908433707",
+        "author": "14",
+        "start": "1668",
+        "label": "3%20Gruppendynamische%20Prozesse"
+      },
+      {
+        "date": "1446908452987",
+        "author": "14",
+        "start": "1671.550544",
+        "label": "Auswirkungen%20auf%20die%20Motivation%20und%20Partizipation"
+      },
+      {
+        "date": "1447001872492",
+        "author": "10",
+        "start": "2250.304417",
+        "label": "Auswirkungen%20auf%20dem%20Umgang%20mit%20Informationen"
+      },
+      {
+        "date": "1447001912992",
+        "author": "10",
+        "start": "2540.063016",
+        "label": "4%20Feedback%20als%20Motivator"
+      },
+      {
+        "date": "1447001933284",
+        "author": "10",
+        "start": "2545.283016",
+        "label": "Gestaltung%20von%20Feedback"
+      },
+      {
+        "date": "1447058237591",
+        "author": "14",
+        "start": "2753.168548",
+        "label": "Quellen"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -6933,22 +8487,291 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000535",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "35",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
+      {
+        "date": "1447277749861",
+        "author": "28",
+        "time": "",
+        "start": "",
+        "starttime": "",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Forming, storming, norming, performing"
+            }
+          ],
+          "date": "1447277749854",
+          "question": "Nennen Sie die einzelnen Phasen der Gruppenentwicklug von Tuckman:"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447277942524",
+        "author": "28",
+        "time": "",
+        "start": "",
+        "starttime": "",
+        "title": {
+          "correct": [
+            "answ55"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "social compensation-Effekt",
+              "id": "answ55"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "social labouring-Effekt",
+              "id": "answ72"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "primary- Effekt",
+              "id": "answ7"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "bystander- Effekt",
+              "id": "answ61"
+            }
+          ],
+          "date": "1447277942520",
+          "question": "Das Phänomen, wenn sich ein Gruppenmitglied besonders bemüht, weil andere keinen wesentlichen Beitrag zum Erfolg der Gruppe leisten, nennt man:\n\n"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447278525025",
+        "author": "28",
+        "time": "467.50273",
+        "start": "467.50273",
+        "starttime": "467.50273",
+        "title": {
+          "correct": [
+            "answ3"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Anzahl der Mitglieder in der Gruppe",
+              "id": "answ66"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Das Bildungsniveau einzelner Mitglieder",
+              "id": "answ3"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Kultureller Hintergrund einzelner Mitglieder",
+              "id": "answ89"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Gruppenkohäsion",
+              "id": "answ83"
+            }
+          ],
+          "date": "1447278525020",
+          "question": "Mit „social loagfing“ häng NICHT zusammen:"
+        },
+        "type": "assessment"
+      }
+    ],
+    "comments": [],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1447260055289",
+        "author": "17",
+        "start": "123.156977",
+        "label": "1%20Was%20ist%20eine%20Gruppe%3F"
+      },
+      {
+        "date": "1447261394433",
+        "author": "17",
+        "start": "424.396229",
+        "label": "2%20Selbstgesteuertes%20Lernen%20in%20Gruppen"
+      },
+      {
+        "date": "1447261541916",
+        "author": "17",
+        "start": "636.834533",
+        "label": "2.1%20Konsequenz%20f%C3%BCr%20kollaborative%20Lerngruppen"
+      },
+      {
+        "date": "1447261582083",
+        "author": "17",
+        "start": "672.555691",
+        "label": "2.2%20Die%20Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1447278010246",
+        "author": "28",
+        "start": "29.971745",
+        "label": "2.3.%20Einf%C3%BChrung%20des%20Gruppenvertrages%20in%20VCL-Projekte"
+      },
+      {
+        "date": "1447278029067",
+        "author": "28",
+        "start": "33.488842",
+        "label": "3%20Gruppendynamische%20Prozesse"
+      },
+      {
+        "date": "1447278047879",
+        "author": "28",
+        "start": "36.979296",
+        "label": "3.1.Auswirkungen%20auf%20die%20Motivation%20und%20Partizipation%20"
+      },
+      {
+        "date": "1447278064644",
+        "author": "28",
+        "start": "39.507074",
+        "label": "3.2Auswirkungen%20auf%20den%20Umgang%20mit%20Informationen"
+      },
+      {
+        "date": "1447278103303",
+        "author": "28",
+        "start": "41.802947",
+        "label": "4%20Feedback%20%20asl%20%22Motivator%22"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -6980,22 +8803,600 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
   {
+    "__v": 0,
     "_id": "52a13d2e2aa9d35f24000536",
-    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
     "id": "36",
     "progress": "3",
-    "__v": 0,
+    "video": "http://141.46.8.101/beta/e2script/e2script_lecture3_improved.mp4",
+    "assessmentwriting": [],
+    "assessmentfillin": [],
+    "assessment": [
+      {
+        "date": "1446902386745",
+        "author": "20",
+        "time": "2706.548643",
+        "start": "2706.548643",
+        "starttime": "2706.548643",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Prozessperspektive (Knowles, 1975)\n- Kompetenzperspektive (Carell, 2006 nach Wild 2000; Weinstein und Meyer, 1986)"
+            }
+          ],
+          "date": "1446902386741",
+          "question": "Selbststeuerung von Lerngruppen kann aus 2 Perspektiven betrachtet werden. Nennen Sie diese!"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446902548209",
+        "author": "20",
+        "time": "2711.088302",
+        "start": "2711.088302",
+        "starttime": "2711.088302",
+        "title": {
+          "type": "mc",
+          "checked": [
+            "answ73"
+          ],
+          "correct": [
+            "answ73"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Forming",
+              "id": "answ93"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Storming",
+              "id": "answ27"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Norming",
+              "id": "answ73"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Performing",
+              "id": "answ99"
+            }
+          ],
+          "date": "1446902548205",
+          "question": "In welcher Phase der Gruppenentwicklung kommt es nach dem Modell von Tuckman (1965) zur Einigung?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446902648442",
+        "author": "20",
+        "time": "2713.04261",
+        "start": "2713.04261",
+        "starttime": "2713.04261",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Stufe des Re-Forming"
+            }
+          ],
+          "date": "1446902648438",
+          "question": "Um welche zusätzliche Stufe hat Stahl (2002) das Modell von Tuckman (1965) erweitert?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446902902613",
+        "author": "20",
+        "time": "2715.620001",
+        "start": "2715.620001",
+        "starttime": "2715.620001",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Auswahl des Tools\n- Regeln zur Kommunikation und Konfliktbewältigung\n- Rollenausdifferenzierung\n- Individuelle Ziele/ Prioritäten in der Projektarbeit\n- Zeitliche Verfügbarkeiten"
+            }
+          ],
+          "date": "1446902902610",
+          "question": "Welche Aspekte sollte ein Gruppenvertrag im Rahmen von VCL-Projekten beinhalten?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446903262995",
+        "author": "20",
+        "time": "2718.126962",
+        "start": "2718.126962",
+        "starttime": "2718.126962",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Wissen über das Wissen beziehungsweise die Informationen der anderen. Dazu gehört vor allem die Information zum Erwerb von Wissen, dessen Herkunft, Anwendung und Verlässlichkeit."
+            }
+          ],
+          "date": "1446903262992",
+          "question": "Was versteht man unter Metawissen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446903576329",
+        "author": "20",
+        "time": "2718.16136",
+        "start": "2718.16136",
+        "starttime": "2718.16136",
+        "title": {
+          "type": "mc",
+          "checked": [
+            "answ12"
+          ],
+          "correct": [
+            "answ47",
+            "answ24",
+            "answ12"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Social loafing",
+              "id": "answ47"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "''Social compensation''-Effekt",
+              "id": "answ24"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Free riding",
+              "id": "answ24"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Sucker-Effekt",
+              "id": "answ12"
+            }
+          ],
+          "date": "1446903576325",
+          "question": "VCL-Projekte können zu Motivationsverlusten bei den Mitgliedern führen. Welche der folgenden Phänomene charakterisieren einen Motivationsverlust?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446903769132",
+        "author": "20",
+        "time": "2720.290407",
+        "start": "2720.290407",
+        "starttime": "2720.290407",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Ein Gruppenmitglied strengt sich besonders an, weil andere keinen wesentlichen Beitrag zum Erfolg der Gruppe leisten (vgl. Wegge, 2006, S.600)."
+            }
+          ],
+          "date": "1446903769129",
+          "question": "Was versteht man unter dem ''social compensation''-Effekt?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446903927070",
+        "author": "20",
+        "time": "2722.840407",
+        "start": "2722.840407",
+        "starttime": "2722.840407",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Groupthink"
+            }
+          ],
+          "date": "1446903927067",
+          "question": "Wie nennt man das sozio-emotionale Gruppenphänomen, bei der der starke Gruppenzusammenhalt (=Kohäsion) zu einseitiger Betrachtung führt?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446904192527",
+        "author": "20",
+        "time": "2725.056937",
+        "start": "2725.056937",
+        "starttime": "2725.056937",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Den Informationen dominierender Gruppenmitglieder wird mehr Beachtung und Akzeptanz beigemessen."
+            }
+          ],
+          "date": "1446904192522",
+          "question": "Was versteht man unter Statusunterschieden (Salomon und Globerson, 1989) im Zusammenhang mit sozio-emotionalen Gruppenphänomenen?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446904336701",
+        "author": "20",
+        "time": "2727.503263",
+        "start": "2727.503263",
+        "starttime": "2727.503263",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Zuhören\n- Ausreden lassen\n- Keine Rechtfertigung\n- Bei ''Nicht-Verstehen'' nachfragen"
+            }
+          ],
+          "date": "1446904336697",
+          "question": "Welche Regeln gelten für den Feedbacknehmer?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447180852129",
+        "author": "25",
+        "time": "2729.941021",
+        "start": "2729.941021",
+        "starttime": "2729.941021",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": " - Forming\n - Storming\n - Norming\n - Performing\n"
+            }
+          ],
+          "date": "1447180852126",
+          "question": "Nenne die Phasen der Gruppenentwicklung nach Tuckman"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447180927935",
+        "author": "25",
+        "time": "2732.561021",
+        "start": "2732.561021",
+        "starttime": "2732.561021",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Übersimplifizierung:\n  • Zu einfache Darstellung\n • Manche Abhängigkeiten werden garnicht dargestellt"
+            }
+          ],
+          "date": "1447180927932",
+          "question": "Beschreibe einen Kritikpunkt für die Phasen der Gruppenentwicklung nach Tuckman"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447180940677",
+        "author": "25",
+        "time": "2734.378708",
+        "start": "2734.378708",
+        "starttime": "2734.378708",
+        "title": {
+          "type": "fi",
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "Gruppenmitglied reduziert seine Anstrengung da es der Meinung ist, dass andere sich nicht gengug einsetzen\n"
+            }
+          ],
+          "date": "1447180940676",
+          "question": "Beschreibe den \"Sucker-Effekt\""
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1447181021326",
+        "author": "25",
+        "time": "2736.098708",
+        "start": "2736.098708",
+        "starttime": "2736.098708",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Leistungen können nicht individuell bewertet werden / werden nicht individuell bewertet\n- Die anderen Gruppenmitglieder erbringen eine gute Leistung (also muss man es selber nicht mehr machen)\n- Gruppe ist zu groß (fällt nicht auf, wenn ich nicht aktiv teilnehme)\n- Die anderen Gruppenmitglieder sind mir nicht bekannt, empfinde daher keine Verpflichtungen ihnen gegenüber\n"
+            }
+          ],
+          "date": "1447181021324",
+          "question": "Nenne drei mögliche Ursachen für das \"Soziale Faulenzen\""
+        },
+        "type": "assessment"
+      }
+    ],
+    "comments": [
+      {
+        "date": "1446911576236",
+        "author": "20",
+        "start": "0",
+        "comment": "Bez%C3%BCglich%20der%20Frage%2C%20welche%20Werkzeuge%20die%20einzelnen%20Phasen%20der%20Gruppenentwicklung%20in%20virtuellen%20Teams%20unterst%C3%BCtzen%20k%C3%B6nnen%2C%20w%C3%BCrde%20ich%20folgendes%20vorschlagen%3A%0AIn%20der%20Kennenlernphase%20(Forming)%20sollte%20man%20auf%20koordinationsunterst%C3%BCtzende%20Werkzeuge%20wie%20kollektive%20Plattformen%20und%20Chats%20zur%C3%BCckgreifen.%20Diese%20kann%20man%20durch%20kooperationsunterst%C3%BCtzende%20Werkzeuge%20wie%20Tagging%2C%20Bookmarking%20und%20Notes%20unterst%C3%BCtzen%2C%20um%20erste%20Erfahrungswerte%20%C3%BCber%20die%20Arbeitsweise%20der%20Gruppenmitglieder%20zu%20erhalten.%0AAb%20der%20Phase%20des%20Storming%20ist%20es%20ratsam%2C%20weitere%20kooperationsunterst%C3%BCtzende%20Werkzeuge%2C%20beispielsweise%20Wikis%20und%20Blogs%20sowie%20Foren%2C%20zur%20Zusammenarbeit%20zu%20nutzen.%20Begr%C3%BCndet%20wird%20dies%20durch%20die%20Tatsache%2C%20dass%20die%20Gruppenmitglieder%20sich%20auf%20diese%20Weise%20besser%20artikulieren%20und%20Ihre%20Interessen%20vertreten%20k%C3%B6nnen.%20Ferner%20eignen%20sich%20diese%20Instrumente%20f%C3%BCr%20den%20Einsatz%20in%20den%20darauffolgenden%20Phasen%2C%20da%20Einigungen%20erzielt%20und%20Ergebnisse%20zusammengetragen%20werden%20k%C3%B6nnen."
+      }
+    ],
+    "slides": [
+      {
+        "id": "slide0",
+        "type": "seq",
+        "img": "video3/e2script_3-0.jpg",
+        "starttime": 0,
+        "duration": 28.7929559447983
+      },
+      {
+        "id": "slide1",
+        "type": "seq",
+        "img": "video3/e2script_3-4.jpg",
+        "starttime": 420.0384161358811,
+        "duration": 201.55069161358813
+      },
+      {
+        "id": "slide2",
+        "type": "seq",
+        "img": "video3/e2script_3-6.jpg",
+        "starttime": 664,
+        "duration": 417
+      },
+      {
+        "id": "slide3",
+        "type": "seq",
+        "img": "video3/e2script_3-8.jpg",
+        "starttime": 1341.4130063694267,
+        "duration": 66.05442834394898
+      },
+      {
+        "id": "slide4",
+        "type": "seq",
+        "img": "video3/e2script_3-10.jpg",
+        "starttime": 1436.2603906581742,
+        "duration": 208.32550477707014
+      },
+      {
+        "id": "slide5",
+        "type": "seq",
+        "img": "video3/e2script_3-14.jpg",
+        "starttime": 2537.1675297239917,
+        "duration": 216.79402123142245
+      },
+      {
+        "id": "slide6",
+        "type": "seq",
+        "img": "video3/e2script_3-2.jpg",
+        "starttime": 82.99146125265393,
+        "duration": 38.95517569002122
+      },
+      {
+        "id": "slide7",
+        "type": "seq",
+        "img": "video3/e2script_3-12.jpg",
+        "starttime": 2088.336157643312,
+        "duration": 159.208109341826
+      },
+      {
+        "id": "slide8",
+        "type": "seq",
+        "img": "video3/e2script_3-16.jpg",
+        "starttime": 2996.161121549894,
+        "duration": 221.87513110403415
+      },
+      {
+        "id": "slide9",
+        "type": "seq",
+        "img": "video3/e2script_3-1.jpg",
+        "starttime": 30.48665923566879,
+        "duration": 52.504802016985145
+      },
+      {
+        "id": "slide10",
+        "type": "seq",
+        "img": "video3/e2script_3-5.jpg",
+        "starttime": 611.4268880042463,
+        "duration": 62.66702176220804
+      },
+      {
+        "id": "slide11",
+        "type": "seq",
+        "img": "video3/e2script_3-7.jpg",
+        "starttime": 1081,
+        "duration": 262
+      },
+      {
+        "id": "slide12",
+        "type": "seq",
+        "img": "video3/e2script_3-9.jpg",
+        "starttime": 1405.7737314225053,
+        "duration": 27.099252653927806
+      },
+      {
+        "id": "slide13",
+        "type": "seq",
+        "img": "video3/e2script_3-11.jpg",
+        "starttime": 1644.5858954352443,
+        "duration": 442.056558917197
+      },
+      {
+        "id": "slide14",
+        "type": "seq",
+        "img": "video3/e2script_3-13.jpg",
+        "starttime": 2247.544266985138,
+        "duration": 281.154746284501
+      },
+      {
+        "id": "slide15",
+        "type": "seq",
+        "img": "video3/e2script_3-3.jpg",
+        "starttime": 118.55923036093418,
+        "duration": 301.4791857749469
+      },
+      {
+        "id": "slide16",
+        "type": "seq",
+        "img": "video3/e2script_3-15.jpg",
+        "starttime": 2752.2678476645433,
+        "duration": 245.5869771762209
+      }
+    ],
+    "highlight": [],
+    "hyperlinks": [
+      {
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "K%C3%B6lblinger%2C%20J.%2C%202004.%20Jenseits%20der%20Regelbarkeit%3F%20Nutzung%20Informeller%20Dynamiken%20von%20Kommunikation%20und%20Gruppenrollen%20zur%20Steuerung%20virtueller%20Gruppen.%20Gruppendynamik%20und%20Organisationsberatung%20(Zeitschrift)%2035(2)%2C%20S.185-203.%20Zugriff%3A%20HSZG%20Bibliothekswebseite.%20(6.%20November%202015).%0A%0A-%20Gruppendynamische%20Ph%C3%A4nomene%20in%20virtuellen%20Teams%0A-%20Erkl%C3%A4rung%20verschiedener%20Tools%20zur%20virtuellen%20Zusammenarbeit%20%0A-%20Begriffserkl%C3%A4rung%3A%20Gruppen-Koh%C3%A4sion%0A-%20Vertrauensph%C3%A4nomene%20in%20virtuellen%20Teams%0A-%20Konfliktmanagement%0A-%20Feedback%0A-%20Beispiel%20f%C3%BCr%20einen%20Gruppenvertrag%0A-%20Gruppenprozesse%0A-%20Motivation%0A-%20Chancen%20und%20Gefahren%20in%20virtuellen%20Teams%0A-%20Schl%C3%BCsselmerkmale%20erfolgreicher%20virtueller%20Teams%0A-%20Kommunikations-%20und%20Gruppenstruktur%20von%20Teams%20in%20virtuellen%20inter-%20und%20intraorganisationalen%20Netzwerken",
+        "title": "Steuerung%20virtueller%20Gruppen",
+        "target": "http://download.springer.com/static/pdf/68/art%253A10.1007%252Fs11612-010-0126-3.pdf?originUrl=http%3A%2F%2Flink.springer.com%2Farticle%2F10.1007%2Fs11612-010-0126-3&token2=exp=1446829263~acl=%2Fstatic%2Fpdf%2F68%2Fart%25253A10.1007%25252Fs11612-010-0126-3.pdf%3ForiginUrl%3Dhttp%253A%252F%252Flink.springer.com%252Farticle%252F10.1007%252Fs11612-010-0126-3*~hmac=03e92652244421ddc8e798dc35dbb9f595c08546258db35f1c7e8d1048a02f76",
+        "date": "1446897056340",
+        "author": "20",
+        "type": "hyperlinks"
+      },
+      {
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Pantelic%2C%20V.%2C%202015.%20Projektmanagementkompetenzen%20im%20Unternehmen%3A%20Wie%20die%20Flexibilit%C3%A4t%20von%20Projektorganisationen%20gesteigert%20werden%20kann.%20Zeitschrift%20F%C3%BChrung%20und%20Organisation%20(Zeitschrift)%2003%2F2015%2C%20S.201ff.%20Zugriff%3A%20HSZG%20Bibliothekswebseite.%20(06.%20November%202015).%0A%0ABeschreibung%20der%20Herausforderungen%20bei%20der%20Arbeit%20in%20virtuellen%20Teams.%20Von%20besonderem%20Interesse%20ist%20Abb.2%3A%20Merkmale%20einer%20virtuellen%20Netzwerkorganisation%20im%20Projekt.",
+        "title": "Virtuelle%20Netzwerkorganisation%20in%20Projekten",
+        "target": "https://www.wiso-net.de/document/ZFO__061503002",
+        "date": "1446897809257",
+        "author": "20",
+        "type": "hyperlinks"
+      },
+      {
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Stangl%2C%20W.%2C%202015.%20Fragen%20und%20Probleme%20in%20Gruppen%20-%20Phasen%20der%20Gruppenentwicklung.%20(online).%20(06.%20November%202015).%0A%0AFragen%20und%20Probleme%20in%20Gruppen%20-%20Phasen%20der%20Gruppenentwicklung",
+        "title": "Phasen%20der%20Gruppenentwicklung",
+        "target": "http://www.stangl-taller.at/ARBEITSBLAETTER/KOMMUNIKATION/Anfangsprobleme.shtml",
+        "date": "1446899267663",
+        "author": "20",
+        "type": "hyperlinks"
+      },
+      {
+        "duration2": "NaN",
+        "seek": "NaN",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Mitchell%2C%20A.%20und%20Zigurs%2C%20I.%2C%202009.%20Trust%20in%20virtual%20teams%3A%20solved%20or%20still%20a%20mystery%3F%20ACM%20(Informationsblatt)%2040(3)%2C%20S.61-83.%20Zugriff%3A%20HSZG%20Bibliothekswebseite.%20(06.%20November%202015).%0A%0AVertrauensph%C3%A4nomene%20und%20-barrieren%20bei%20der%20Arbeit%20in%20virtuellen%20Teams%20(z.B.%20Swift-Trust%20Theorie).",
+        "title": "Die%20Bedeutung%20von%20Vertrauen%20in%20virtuellen%20Teams",
+        "target": "http://delivery.acm.org/10.1145/1600000/1592407/p61-mitchell.pdf?ip=141.46.229.12&id=1592407&acc=ACTIVE%20SERVICE&key=2BA2C432AB83DA15.3B85B5B0808A3505.4D4702B0C3E38B35.4D4702B0C3E38B35&CFID=728157511&CFTOKEN=26366267&__acm__=1446894805_a2a48ed8e0ebb12e92453c1016476936",
+        "date": "1446901054499",
+        "author": "20",
+        "type": "hyperlinks"
+      },
+      {
+        "duration2": "0",
+        "seek": "0",
+        "y": "50",
+        "x": "50",
+        "duration": "10",
+        "description": "Ocker%2C%20R.%2C%20Rosson%2C%20M.B.%2C%20Kracaw%2C%20D.%20und%20Hiltz%2C%20S.R.%2C%202009.%20Training%20Students%20to%20Work%20Effectively%20in%20Partially%20Distributed%20Teams.%20ACM%20Transactions%20on%20Computing%20Education%20(Zeitschrift)%209(1).%20Zugriff%3A%20HSZG%20Bibliothekswebseite.%20(06.%20November%202015).%0A%0ADynamik%20innerhalb%20virtueller%20Teams%20(''ingroup''%20vs.%20''outgroup'')%0A-%20Social%20categorization%20theory%20(Tajfel%201981)%0A-%20Social%20Identity%20Theory%20(Tajfel%201978%3B%20Turner%201981%3B%20Tajfel%20und%20Turner%201986)",
+        "title": "Dynamik%20innerhalb%20virtueller%20Teams",
+        "target": "http://delivery.acm.org/10.1145/1520000/1513599/a6-ocker.pdf?ip=141.46.229.12&id=1513599&acc=ACTIVE%20SERVICE&key=2BA2C432AB83DA15.3B85B5B0808A3505.4D4702B0C3E38B35.4D4702B0C3E38B35&CFID=728157511&CFTOKEN=26366267&__acm__=1446894883_2ae89947a7ef2a1b4d38b7bc17b580fa",
+        "date": "1446901912549",
+        "author": "20",
+        "type": "hyperlinks"
+      }
+    ],
+    "tags": [],
+    "toc": [
+      {
+        "date": "1446897157107",
+        "author": "20",
+        "start": "119.234918",
+        "label": "1.%20Begriffsabgrenzung%20''Gruppe''"
+      },
+      {
+        "date": "1446897906872",
+        "author": "20",
+        "start": "419.182013",
+        "label": "2.%20Selbstgesteuertes%20Lernen%20in%20Gruppen"
+      },
+      {
+        "date": "1446897996340",
+        "author": "20",
+        "start": "421.850152",
+        "label": "2.1%20Definitionsans%C3%A4tze%20auf%20der%20Ebene%20des%20individuellen%20Lernens"
+      },
+      {
+        "date": "1446898270158",
+        "author": "20",
+        "start": "602.475185",
+        "label": "2.2%20Aufgaben%20von%20Lerngruppen"
+      },
+      {
+        "date": "1446898563931",
+        "author": "20",
+        "start": "665.170785",
+        "label": "2.3%20Die%20Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1446899352098",
+        "author": "20",
+        "start": "1076.574115",
+        "label": "2.4%20Gruppenvertrag%20in%20VCL-Projekten"
+      },
+      {
+        "date": "1446899760064",
+        "author": "20",
+        "start": "1402.333752",
+        "label": "2.5%20Die%20Phasen%20der%20Gruppenentwicklung"
+      },
+      {
+        "date": "1446899871632",
+        "author": "20",
+        "start": "1428.332481",
+        "label": "2.6%20Ko-Konstruktion%20von%20Wissen"
+      },
+      {
+        "date": "1446900113174",
+        "author": "20",
+        "start": "1645.889034",
+        "label": "3.%20Gruppendynamische%20Prozesse"
+      },
+      {
+        "date": "1446900190704",
+        "author": "20",
+        "start": "1669.990485",
+        "label": "3.1%20Motivation%20und%20Partizipation"
+      },
+      {
+        "date": "1446901122186",
+        "author": "20",
+        "start": "2248.961844",
+        "label": "3.2%20Umgang%20mit%20Informationen"
+      },
+      {
+        "date": "1446902004453",
+        "author": "20",
+        "start": "2519.631274",
+        "label": "4.%20Hinweise%20zum%20Feedback%20als%20''Motivator''"
+      }
+    ],
     "metadata": [
       {
         "author": "Dipl.-Hdl. Corinna Hetmank",
@@ -7027,17 +9428,9 @@
           }
         ]
       }
-    ],
-    "assessment": [],
-    "tags": [],
-    "toc": [],
-    "hyperlinks": [],
-    "comments": [],
-    "slides": [
-    { "id":"slide0", "type":"seq", "img":"video3/e2script_3-0.jpg", "starttime":0, "duration":28.7929559447983 },{ "id":"slide1", "type":"seq", "img":"video3/e2script_3-4.jpg", "starttime":420.0384161358811, "duration":201.55069161358813 },{ "id":"slide2", "type":"seq", "img":"video3/e2script_3-6.jpg", "starttime":664, "duration":417 },{ "id":"slide3", "type":"seq", "img":"video3/e2script_3-8.jpg", "starttime":1341.4130063694267, "duration":66.05442834394898 },{ "id":"slide4", "type":"seq", "img":"video3/e2script_3-10.jpg", "starttime":1436.2603906581742, "duration":208.32550477707014 },{ "id":"slide5", "type":"seq", "img":"video3/e2script_3-14.jpg", "starttime":2537.1675297239917, "duration":216.79402123142245 },{ "id":"slide6", "type":"seq", "img":"video3/e2script_3-2.jpg", "starttime":82.99146125265393, "duration":38.95517569002122 },{ "id":"slide7", "type":"seq", "img":"video3/e2script_3-12.jpg", "starttime":2088.336157643312, "duration":159.208109341826 },{ "id":"slide8", "type":"seq", "img":"video3/e2script_3-16.jpg", "starttime":2996.161121549894, "duration":221.87513110403415 },{ "id":"slide9", "type":"seq", "img":"video3/e2script_3-1.jpg", "starttime":30.48665923566879, "duration":52.504802016985145 },{ "id":"slide10", "type":"seq", "img":"video3/e2script_3-5.jpg", "starttime":611.4268880042463, "duration":62.66702176220804 },{ "id":"slide11", "type":"seq", "img":"video3/e2script_3-7.jpg", "starttime":1081, "duration":262 },{ "id":"slide12", "type":"seq", "img":"video3/e2script_3-9.jpg", "starttime":1405.7737314225053, "duration":27.099252653927806 },{ "id":"slide13", "type":"seq", "img":"video3/e2script_3-11.jpg", "starttime":1644.5858954352443, "duration":442.056558917197 },{ "id":"slide14", "type":"seq", "img":"video3/e2script_3-13.jpg", "starttime":2247.544266985138, "duration":281.154746284501 },{ "id":"slide15", "type":"seq", "img":"video3/e2script_3-3.jpg", "starttime":118.55923036093418, "duration":301.4791857749469 },{ "id":"slide16", "type":"seq", "img":"video3/e2script_3-15.jpg", "starttime":2752.2678476645433, "duration":245.5869771762209 }
     ]
   },
-  {
+ {
     "__v": 0,
     "_id": "52a13d2e2aa9d35f24000641",
     "id": "41",
@@ -8810,498 +11203,6 @@
             "t": "Intervention"
           }
         ]
-      }
-    ]
-  },
- {
-    "_id": "52a13d2e2aa9d35f24000777",
-    "video2": "http://141.46.8.101/beta/interecine/theresienstadt.webm",
-    "video": "/static/videos/theresienstadt.mp4",
-    "id": "777",
-    "comments": [],
-    "hyperlinks":[],
-    "metadata": [
-      {
-        "author": "...",
-        "institution": "...",
-        "title": "Theresienstadt: Dokumentation aus dem Jüdischen Siedlungsgebiet",
-        "category": "Z",
-        "abstract": "",
-        "length": "25:22:00",
-        "date": "2014/04/11",
-        "weight": 0,
-        "source": "",
-        "thumbnail": "/static/img/placeholder.jpg",
-        "_id": "54547be3568b77107d437b5c",
-        "tags": [
-          {
-            "t": "Konflikt",
-            "t": "Diagnose",
-             "t": "Intervention"
-          }
-        ]
-      }
-    ],
-    "progress": "",
-    "assessment" : [],
-    "highlight": [
-      {
-        "tagname": "Benjamin Murmelstein",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 237,
-          	"duration":5, 
-          	"x": 58,
-        		"y": 15
-        	}
-        ]
-      },
-      {
-        "tagname": "Emil Utitz",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 1143,
-          	"duration":10, 
-          	"x": 20,
-        		"y": 30
-        	}
-        ]
-      },
-      {
-        "tagname": "Rudolf Saudek",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 704.2, 
-          	"duration":25, 
-          	"x": 15,
-        		"y": 20
-        	}
-        ]
-      },
-      {
-        "tagname": "Hans Krasa",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 1191, 
-          	"duration":25, 
-          	"x": 20,
-        		"y": 20
-        	}
-        ]
-      },
-      {
-        "tagname": "Rabbiner Dr. Leo Baeck",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 1170, 
-          	"duration":25, 
-          	"x": 20,
-        		"y": 20
-        	}
-        ]
-      },
-      {
-        "tagname": "Elly von Bleichröder  ",
-        "author": "5",
-        "occ": [
-          {
-          	"start": 1168, 
-          	"duration":25, 
-          	"x": 55,
-        		"y": 50
-        	}
-        ]
-      }
-    ],
-    "slides" : [
-    	{
-        "tagname": "Gärten der SS",
-        "path": "/vi-lab/img/places/ss-gaerten.png",
-        "occ": [
-          {
-          	"start": 1311,
-          	"duration":10, 
-          	"x": 50,
-        		"y": 50,
-        		"long":0,
-        		"lat":0,
-        		"caption":"Die angeblichen Gärten der Juden in den Gräben der Festung gehörten damals der SS. Heute werden die Gräben nicht mehr genutzt."
-        	}
-        ]
-      },
-      {
-        "tagname": "Vor der Dresdner Kasserne",
-        "path": "/vi-lab/img/places/vorDresdnerKasserne.png",
-        "occ": [
-          {
-          	"start": 916,
-          	"duration":10, 
-          	"x": 50,
-        		"y": 50,
-        		"long":0,
-        		"lat":0,
-        		"caption":""
-        	}
-        ]
-      },
-      {
-        "tagname": "Haus",
-        "path": "/vi-lab/img/places/haus.png",
-        "occ": [
-          {
-          	"start": 399,
-          	"duration":10, 
-          	"x": 50,
-        		"y": 50,
-        		"long":0,
-        		"lat":0,
-        		"caption":"Angebliches Heim für kranke Kinder. Heute befindet sich eine Pension im Haus."
-        	}
-        ]
-      },
-      {
-        "tagname": "Schild am Gericht",
-        "path": "/vi-lab/img/places/IMG_3446_Rathaus.JPG",
-        "occ": [
-          {
-          	"start": 340,
-          	"duration":10, 
-          	"x": 50,
-        		"y": 50,
-        		"long":0,
-        		"lat":0,
-        		"caption":"Das Schild am Eingang des fiktiven Gerichts befand sich am heutigen Rathaus."
-        	}
-        ]
-      }
-    ],
-    "thumbnail": "/static/img/placeholder.png",
-    "toc": [
-      {
-        "label": "Titelsequenz",
-        "number": "1",
-        "start": "0",
-        "_comment": "00:00:00:00",
-        "author": "5",
-        "date": "1386670847661"
-      },
-      {
-        "label": "Entstehungsgeschichte",
-        "number": "2",
-        "start": "32",
-        "_comment": "00:00:32:06",
-        "author": "5",
-        "date": "1386670847663"
-      },
-      {
-        "label": "Jazzband",
-        "number": "3",
-        "start": "82",
-        "_comment": "00:01:22:16",
-        "author": "5",
-        "date": "1386670847663",
-        "note":"animated"
-      },
-      {
-        "label": "Terrasse",
-        "number": "4",
-        "start": "87",
-        "_comment": "00:01:27:16",
-        "author": "5",
-        "date": "1386670847665",
-        "note":"animated"
-      },
-      {
-        "label": "Kaffeehaus",
-        "number": "5",
-        "start": "101",
-        "_comment": "00:01:41:12",
-        "author": "5",
-        "date": "1386670847666",
-        "note":"animated"
-      },
-      {
-        "label": "Freizeit",
-        "number": "6",
-        "start": "107",
-        "_comment": "00:01:47:08",
-        "author": "5",
-        "date": "1386670847667"
-      },
-      {
-        "label": "Sport",
-        "number": "7",
-        "start": "185",
-        "_comment": "00:03:05:11",
-        "author": "5",
-        "date": "1386670847669"
-      },
-      {
-        "label": "Theater",
-        "number": "8",
-        "start": "215",
-        "_comment": "00:03:35:18",
-        "author": "5",
-        "date": "1386670841661",
-        "note":"animated"
-      },
-      {
-        "label": "Beginnender Werktag",
-        "number": "9",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670837662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Selbstverwaltung",
-        "number": "10",
-        "start": "221",
-        "_comment": "00:03:41:18",
-        "author": "5",
-        "date": "1386670247662"
-      },
-      {
-        "label": "Gericht",
-        "number": "11",
-        "start": "340",
-        "_comment": "00:05:40:09",
-        "author": "5",
-        "date": "1386670847632"
-      },
-      {
-        "label": "Bank",
-        "number": "12",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670843662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Läden",
-        "number": "13",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670847762",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Postamt",
-        "number": "14",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386671847662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Gesundheitswesen",
-        "number": "15",
-        "start": "349",
-        "_comment": "00:05:49:11",
-        "author": "5",
-        "date": "1386670847362"
-      },
-      {
-        "label": "Spielplatz",
-        "number": "16",
-        "start": "445",
-        "_comment": "00:07:25:12",
-        "author": "5",
-        "date": "1386670847602"
-      },
-      {
-        "label": "Kinderoper",
-        "number": "17",
-        "start": "511",
-        "_comment": "00:08:31:20",
-        "author": "5",
-        "date": "1386670847600"
-      },
-      {
-        "label": "Feuerwehr",
-        "number": "18",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670807662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Eisenbahner",
-        "number": "19",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670047662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Landwirtschaft",
-        "number": "20",
-        "start": "587",
-        "_comment": "00:09:47:23",
-        "author": "5",
-        "date": "1386670837682",
-        "note":"animated"
-      },
-      {
-        "label": "Verpflegung",
-        "number": "21",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670847612",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Freilichtveriete",
-        "number": "22",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670847262",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Schwimmen",
-        "number": "23",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670848662",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Wäscherei",
-        "number": "24",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670847644",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Maschinentischler",
-        "number": "25",
-        "start": "-1",
-        "_comment": "missing",
-        "date": "1386670847655",
-        "author": "5",
-        "note":"missing"
-      },
-      {
-        "label": "Schmiede",
-        "number": "26",
-        "start": "596",
-        "_comment": "00:09:56:21",
-        "author": "5",
-        "date": "1386670847666"
-      },
-      {
-        "label": "Metallwerkstätten",
-        "number": "27",
-        "start": "619",
-        "_comment": "00:10:19:11",
-        "author": "5",
-        "date": "1386670847677"
-      },
-      {
-        "label": "Töpferei",
-        "number": "28",
-        "start": "681",
-        "_comment": "00:11:21:02",
-        "author": "5",
-        "date": "1386670847688"
-      },
-      {
-        "label": "Werkstätten",
-        "number": "29",
-        "start": "729",
-        "_comment": "00:12:09:12",
-        "author": "5",
-        "date": "1386670847699"
-      },
-      {
-        "label": "Fußballspiel",
-        "number": "30",
-        "start": "915",
-        "_comment": "00:15:15:00",
-        "author": "5",
-        "date": "1386670847533"
-      },
-      {
-        "label": "Zentralbad",
-        "number": "31",
-        "start": "1086",
-        "_comment": "00:18:06:04",
-        "author": "5",
-        "date": "1386670847534"
-      },
-      {
-        "label": "Bücherei",
-        "number": "32",
-        "start": "1113",
-        "_comment": "00:18:33:20",
-        "author": "5",
-        "date": "1386670847535"
-      },
-      {
-        "label": "Vortrag",
-        "number": "33",
-        "start": "1142",
-        "_comment": "00:19:02:04",
-        "author": "5",
-        "date": "1386670847536"
-      },
-      {
-        "label": "Konzert",
-        "number": "34",
-        "start": "1182",
-        "_comment": "00:19:42:12",
-        "author": "5",
-        "date": "1386670847537"
-      },
-      {
-        "label": "Schrebergärten",
-        "number": "35",
-        "start": "1304",
-        "_comment": "00:21:44:15",
-        "author": "5",
-        "date": "1386670847538"
-      },
-      {
-        "label": "Abendfreizeit",
-        "number": "36",
-        "start": "1374",
-        "_comment": "00:22:54:20",
-        "author": "5",
-        "date": "1386670847539"
-      },
-      {
-        "label": "Abendessen",
-        "number": "37",
-        "start": "1489",
-        "_comment": "00:24:49:19",
-        "author": "5",
-        "date": "1386670847530"
-      },
-      {
-        "label": "Schlussmontage",
-        "number": "38",
-        "start": "-1",
-        "_comment": "00:24:16:05",
-        "author": "5",
-        "date": "1386670847444",
-        "note":"missing"
       }
     ]
   }
