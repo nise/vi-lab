@@ -108,6 +108,7 @@ mongoose.model( 'Users', Users );
 var Groups = new Schema({
 	id: String,
 	description: String,
+	phase: Number,
 	persons: Number,
 	hs: String, 
 	videos : Array,

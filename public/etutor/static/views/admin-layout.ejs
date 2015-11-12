@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/static/css/bootstrap-table.min.css">
 <link rel="stylesheet" href="/static/css/jquery-ui-1.10.3.custom.css">
-<link rel='stylesheet' href='/static/css/colorbox.css' id='colorboxx' type='text/css' media='all' />
+<link rel="stylesheet" href="/static/css/colorbox.css" />
+<link rel="stylesheet" href="/static/css/hover.min.css" media="all" />
 
 <link rel='stylesheet' href='/static/css/vi-lab.admin.css' id='vi-lab_cust-css' type='text/css' media='all' />
 
@@ -238,6 +239,8 @@ $(window).load(function () {
 	//render('story', false, '#page-history')
 	//render('scenes', true, '#page')
 	//render('persons', true, '#page')
+	
+	render('admin-scripts', '/json/scripts', false, '.admin-panel');
 
 }); 
 

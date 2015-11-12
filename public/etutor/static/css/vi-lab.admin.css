@@ -137,6 +137,10 @@ font-weight:bold;
 	text-align:center;
 }
 
+.script-table tr td:hover {
+	
+}
+
 .script-table tr td:first-child, .script-table thead td {
 	background-color: #eee;
 	border:0 none;
@@ -144,6 +148,7 @@ font-weight:bold;
 	vertical-align:middle;
 	text-align:center;
 }
+
 
 .script-table .visible-cell {
 	background-color: lightblue;

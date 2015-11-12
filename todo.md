@@ -79,6 +79,10 @@ if (screencheck.matches) {
  - bearbeitungsstand anzeigen
   - anzahl items je toc/tags/comments/...
   - ?gesamtstand anhand von relativer metrik
+ - daily reports about group activity send by e-mail 
+
+- Analytics
+ - – http://stats.stackexchange.com/search?q=%22group+comparison%22
 
 - workflow für video upload
  1. select locale file

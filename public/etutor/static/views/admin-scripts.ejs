@@ -1,8 +1,10 @@
 
-
-
 <h2>Script</h2>
 <span id="status"></span>
+<span class="btn btn-default btn-xs" id="add-instance">add new Video instance</span>
+<span class="btn btn-default btn-xs" id="add-group">add new Group</span>
+
+<br/><br/>
 <table class="script-table" id="table1"></table>
 
 <script> 
@@ -14,10 +16,23 @@
 	* apply settings per row/group and column/instance
 	* sort groups
 	* select phases
+	* add/remove phases
+	* group-hover: group-members
 	* save/reset/undo results
+	* what happens if there are no groups or no video instances?
 	**/
 
 var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head;
+	
+$('#add-instance').click(function(){
+	buildNewColumn();
+});	
+
+$('#add-group').click(function(){
+	buildNewRow();
+});
+
+
 		jQuery.ajax({
       type: "get",
       beforeSend: function(xhr){
@@ -48,12 +63,12 @@ var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head
       			.append( $('<td></td>').text( 'Group '+data.groups[i].id ) );
       		// cells
       		for(var j = 0; j < data.videos.length; j++){
-      			var tab_cell = $('<td></td>')
-							.appendTo( tab_row )
-							;	
+      			var tab_cell = getEmptyCell();
+						tab_cell.appendTo( tab_row );
+							
       			if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
       				tab_cell
-      					.text( data.videos[j].id )
+      					.html( buildCell( tab_cell, data.videos[j] ) )
       					.addClass('visible-cell')
       					;
       			}
@@ -62,7 +77,6 @@ var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head
       		
       	}
 				//alert( JSON.stringify(arr2) )
-      	//buildTable( arr2, '#table1' );
 			},
 			error : function(e) {
 				alert(JSON.stringify(e))
@@ -71,22 +85,38 @@ var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head
 
 /*
 **/
-function buildTable(arr, tab){
-	for(var row = 0; row < arr.length; row++ ){
-
-			var tab_row = $('<tr></tr>');
-			for(var cell = 0; cell < arr[row].length; cell++ ){
-					var tab_cell = $('<td></td>')
-						.css({ border:"solid 1px #ccc"})
-						.appendTo( tab_row );	
-					if( ! arr[row][cell].empty ){
-						tab_cell.text('vis');
-					}	
-				
-			}
-			$(tab).append( tab_row );
-	}
+function buildNewColumn(){
+	//var c = $(tab + " tr:first td").length -1;
+	$(tab + " thead").append("<td>l</td>");
+	$(tab + " tr").append( getEmptyCell() );
 }
+
+/*
+**/
+function buildNewRow(){
+
+	var row = $('<tr></tr>').appendTo(tab);
+	for(var i = 0; i < $(tab + ' tr:first td').length; i++){
+    	row.append( getEmptyCell() );
+  }     
+}
+
+/*
+**/
+function getEmptyCell(){
+	var ch = $('<input type="checkbox" value="1" />')
+	return $("<td></td>").append( ch );
+}
+
+/*
+**/
+function buildCell( cell, video ){
+	$(cell).click(function(){
+		alert(2)
+	});
+	return video.id;	
+}
+
 
 /*
 **/
