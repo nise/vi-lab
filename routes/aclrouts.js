@@ -163,13 +163,24 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		res.send('terminated logging');
 	});
 	
-	/*
+	
 	// not working with big data !!!
-	app.get('/json/log',  users.authCallback(['editor']), function(req, res) { // users.authCallback(['editor']), xxx
+	app.get('/json/log', function(req, res) { // users.authCallback(['editor']), xxx
+		
+		Log.find({}, {}, function(err, data){
+			if(err){
+				res.send(err)
+			}
+			res.json( data ); 
+			
+		});
+		
+		return;	
 		
 		var query = Log.find({}).stream();
 		query.on('data', function (doc) {
-				log.write( JSON.stringify( doc ) );
+				console.log(doc)
+				//log.write( JSON.stringify( doc ) );
 		}).on('error', function (err) {
 				console.log(err);
 		}).on('close', function () {
@@ -193,7 +204,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		});
 		//res.send('terminated request');
 	});	
-	*/
+	
 	
 	app.get('/stats/assessment', function ( req, res ){ res.render( 'admin-analytics', {}); });
 	app.get('/json/stats/assessment', function ( req, res ){ // xxx editor
@@ -323,7 +334,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
 	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
 	app.post(	'/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
-	app.get(	'/admin/users/edit/:username', users.authCallback(['editor']),	users.edit );
+	app.get(	'/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
 //	app.post(	'/users/online/:username', 	users.setOnlineStatus );
 	app.get(	'/users/online/:username', 	users.getOnlineStatus );
 	// api

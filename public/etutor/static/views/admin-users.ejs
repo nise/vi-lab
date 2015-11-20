@@ -132,7 +132,7 @@ var show_bio = function(cl){
 		<% items.forEach(function(item){ i++ %>
 			<tr class="meta" num="e<%= i %>">
 				<td><img width="15" src="/static/img/user-icons/user-<%= item.id %>.png" /></td> 
-				<td><a href="javascript:render('admin-users-edit','/admin/users/edit/<%=: item.username %>', true, '.admin-panel');" title=""><%= item.username %></a></td>
+				<td><a href="javascript:render('admin-users-edit','/admin/users/edit/<%=: item._id %>', true, '.admin-panel');" title=""><%= item.username %></a></td>
 				<td><%=: item.name %></td>
 				<td><%= item.firstname %></td>
 				<td><%=: item.role %></td>

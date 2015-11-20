@@ -457,7 +457,7 @@ exports.destroy = function ( req, res ){
 
 
 exports.edit = function ( req, res ){
-  Users.findOne({username: String(req.params.username)}, function ( err, item ){
+  Users.findOne({ _id: String(req.params.id)}, function ( err, item ){
   		res.type('application/json');
 			res.jsonp({item: item});
 			res.end('done')

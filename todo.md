@@ -3,6 +3,8 @@
 
 # VI-TWO
 ## urgent
+- make assessment results visible
+- display comments / links animated 
 - bug @ assessment .. multiple instances loaded
 - test mit vielen users
 - test IE
@@ -11,30 +13,15 @@
 - bug @ logged out members are not gettng disabled in the peers client
 
 - guided tour
-- display comments / links animated 
 
 
-- popcorn maker @ admin
 - suche
 - session mgmg?
 
 ## bugs
-- video3 toc missing for comparisson
 - fix some tooltip bugs (user-data, group-data)
 - Logs are not accessible, not even for an - activity log
 
-# to befor production mode
-- remove/abstract: http://127.0.0.1:3033
-
-
-## last things
-
-
-
-
-## admin 
--- user übersich -- links per id, statt per username wg. eindeutigkeit
--- footer
 
 
 ## next release / nth
@@ -82,8 +69,10 @@ if (screencheck.matches) {
  - daily reports about group activity send by e-mail 
 
 - Analytics
- - – http://stats.stackexchange.com/search?q=%22group+comparison%22
-
+ http://stackoverflow.com/questions/21483530/dc-js-with-node-js-server-side
+ https://github.com/square/crossfilter
+ http://dc-js.github.io/dc.js/
+ found at: https://anmolkoul.wordpress.com/2015/06/05/interactive-data-visualization-using-d3-js-dc-js-nodejs-and-mongodb/
 - workflow für video upload
  1. select locale file
  2. convert different codecs & sizes
