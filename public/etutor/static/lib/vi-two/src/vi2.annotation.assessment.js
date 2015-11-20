@@ -593,7 +593,7 @@ Vi2.Assessment = $.inherit( Vi2.Annotation, /** @lends Vi2.Assessment# */{
 		**/
 		evaluateAnswer : function(question_selector, obj, author){
 			var one_checked = false, correct = [];
-			if(obj.answ[0].questiontype === 'fi'){ alert($('#answ0').find('textarea').val())
+			if(obj.answ[0].questiontype === 'fi'){ //alert($('#answ0').find('textarea').val())
 				if( String($('#answ0 > textarea').val()).length > 3){
 					correct.push(true);
 					vi2.observer.log({context:'assessment', action:'submited-answer',values:[encodeURIComponent(obj.question), author, vi2.observer.player.currentTime(), encodeURIComponent($('.assessment-answers').find('textarea').val()) ]});
