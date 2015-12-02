@@ -21,13 +21,21 @@ exports.index = function ( req, res ){
 };
 
 
-exports.getPrePostTest = function(req, res){
-	var t = require('../data/'+ server.application() +'/assessment-prepost.json');
+exports.getPreTest = function(req, res){
+	var t = require('../data/'+ server.application() +'/assessment-pre-test.json');
+	res.jsonp(t);
+}
+exports.getPostTest = function(req, res){
+	var t = require('../data/'+ server.application() +'/assessment-post-test.json');
 	res.jsonp(t);
 }	
+	
 
-exports.prePostTest = function ( req, res ){
-  res.render( 'assessment-prepost', { title : 'Express Videos Example' });
+exports.renderPreTest = function ( req, res ){
+  res.render( 'assessment-pre-test', {});
+};
+exports.renderPostTest = function ( req, res ){
+  res.render( 'assessment-post-test', {});
 };
 
 exports.setPrePostResults = function ( req, res ){ 
@@ -68,6 +76,15 @@ exports.getResults = function(req, res){
 		res.end('done');
   });
 }	
+
+
+exports.getAllPrePostResult = function(req, res){
+	Tests.find({ type:'prepost'}).exec(function(err, items) {
+		res.type('application/json');
+		res.jsonp(items);  
+		res.end('done');
+  });
+}
 
 exports.setResults = function ( req, res ){ 
   new Tests({

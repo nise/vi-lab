@@ -1,0 +1,204 @@
+<% layout( 'layout' ) -%>
+
+<div class="jumbotron">
+	<div class="container">
+		<h2>Vor-/Nachtest</h2>
+	</div>
+</div> 
+
+<div class="container">
+	 
+  <p style="width:80%;" class="mark">
+Vor beginn der Videolernphasse hatten wir Ihnen einige Frage zu ihrem Vorwissen gestellt. Nach Abschluss der Videolernphase interessiert uns, in wie weit Sie Ihre Wissen ausbauen konnten. Mit Hilfe einiger Wissensfragen möchten wir dies nun herausfinden. Der folgende Fragebogen ist Bestandteil eines Begleitforschungsprojekts in dessen Rahmen zwei der Zittauer Studierenden ihre Masterarbeit schreiben werden. 
+
+Für die Beantwortung der 27 Fragen benötigen Sie ungefähr **30 Minuten**. Sie können den Fragebogen genau einmal absenden. Alle darauffolgenden Einsendungen werden von uns nicht berücksichtigt. Wir bitten Sie jedoch, zur Beantwortung keinerlei Hilfsmittel wie z.B. das Skript oder die Videos zu verwenden. Alle Angaben, die Sie hier machen, fließen ausdrücklich **nicht** in die Endnote ein. Alle Daten werden **anonymisiert** erhoben und ausgewertet. Ihre Angaben dienen lediglich zur Verbesserung und Anpassung des Lernangebots. 
+
+Die Ergebnisse dieser Vor- und Nachtestuntersuchung stellen wir Ihnen auf Anrage gerne zur Verfügung.
+  
+Vielen Dank für Ihre Teilnahme.
+
+
+</p>
+  <div id="assessment-accordion" >
+  	<h3 class="test-head">Fragen zur Mediennutzung und Vorwissen</h3>
+  	<div id="testt" class="edit-form assessment-test"></div>
+  	<!--<h3>Ergebnisse der Selbsttests</h3>
+  	<div id="res" class="assessment-results">Bislang liegen noch keine Testergebnisse vor.</div>-->
+  </div>
+</div>
+  
+<script>
+	var t1 = (new Date()).getTime();
+	$.ajax({
+		type: 'GET',
+  	dataType : 'json',
+  	url: '/json/assessment-posttest',
+  	success: function(res) {   
+			$.each(res.test, function(j,val){ 
+				var task = $('<div></div>')
+					.addClass('question question-'+(j))
+					//.addClass('edit-form')
+					.appendTo('.edit-form');
+				
+				var question = $('<strong></strong>')
+					.addClass('ass-question')
+					.text('A'+(j+1)+': '+val.question)
+					.appendTo(task);
+				
+				var answ = $('<div></div>')
+					.addClass('assessment-answers assessment-answers-'+j)
+					.appendTo(task);	
+					
+				var answer = $('<div></div>');
+				if(val.type == "mc" || val.type == "sc"){	
+					$.each(val.answ, function(i, vall){ 
+						var ttype = val.type == "mc" ? "checkbox" : "radio"; 
+						var options = $('<span></span>')
+							.addClass('answer-options')
+							.append('<input type="'+ttype+'" name="quest'+j+'" id="'+j+vall.id+'" value="1" />')
+							.append('<label class="assessment" for="'+j+vall.id+'">'+vall.answ+'</label>')
+							.append('<br/>');
+						answer
+							//.attr('id', vall.id)
+							.addClass('assessment-answer')
+							.append(options)
+							//.click(function(){ $(this).find('input[type="checkbox"]').attr('checked',true) })
+							
+							.appendTo(answ);
+					});
+				}else{
+					// fill-in task
+					answer
+					.attr('id', 'answ0')
+  				.addClass('assessment-answer')
+  				.append('<textarea name="quest"></textarea>')
+  				.append('<br/>')
+  				.appendTo(answ);
+				}
+				
+			
+				// feedback
+				var fb = $('<div></div>')
+					.addClass('question-feedback-'+j)
+					.addClass('assessment-feedback')
+					.appendTo(task);	
+				var up = $('<a style="float:right;" href="#top" title="Gehe an den Seitenanfang"><span class="glyphicon glyphicon-arrow-up"></span></a>').appendTo(task);
+			});
+			
+			var solve = $('<button></button>')
+				.addClass('btn btn-default')
+				.text('abschicken')
+				.attr('type','button')
+				.click(function(){
+					$('.assessment-btn').hide();
+					evaluateTest(res);
+					$('.edit-form')
+						.html('Vielen für die Beantwortung der Fragen! ')
+						.css({'padding':'4px', 'background-color':'green', 'color':'#fff'});
+				})
+				.appendTo('.edit-form')
+				;
+			
+			/*$('#assessment-accordion').accordion({
+				autoHeight: true, 
+  			collapsible: true, 
+  			fillSpace: false
+  		});
+  		$('#assessment-accordion').bind('accordionchange', function() {
+  			if($(this).accordion('option', 'active') == 1){
+  				plotResults(res);
+  			}
+        
+    	});*/	
+			
+		},
+		error: function(e){
+			console.log('Error while loading pre-test json')
+		}	
+	});
+
+
+
+function setFeedback(code, id, solution){ return;
+	if(code == 'incomplete'){
+		$('.question-feedback-'+id)
+			.addClass('warning')
+			.html("Diese Aufgabe wurde noch nicht (oder nur teilweise) bearbeitet.");
+	}else if (code == 'done'){
+		$('.question-feedback-'+id)
+			.addClass('well-done')
+			.html("Vielen Dank für die abgegebene Lösung. Unsere Musterlösung lautet wie folgt:<br>"+solution);
+	}
+	
+}
+
+/*
+
+**/
+function evaluateTest(data){
+	// data = raw data to construc a test
+	var correct = [];
+	var fillincount = 0;
+	var full_results = {}; 
+	$.each(data.test, function(j,val){
+		correct[val.id] = 0;
+		full_results['Task-'+val.id] = [];
+		// MC Questions
+		if(val.type == "mc" || val.type == "sc"){
+			// collect all test data
+			$('.assessment-answers-'+val.id+' > .assessment-answer').find("span.answer-options").each(function(l, option){ 
+				var obj = {option: $(option).find('input').attr('id'), value: $(option).find('input:checked').val() }
+				full_results['Task-'+val.id].push(obj);
+			});
+			// mc/sc
+			if($('div.question-'+val.id).find("input[name='quest"+val.id+"']:checked").first().val() == 1){ 
+				// check wether the correct options were selected
+				$.each(val.correct, function(k, corr){ 
+					var el = $('div.question-'+val.id).find("input[id='"+val.id+corr+"']");
+					if(el.val() == 1){
+						el.next().css('border','solid 2px green');
+						correct[val.id]++;
+					}else{
+						el.next().css('border','solid 2px red');
+					}
+				});
+			}else{ // if no option has been selected the question is incomplete
+				setFeedback('incomplete', val.id, null);
+			}
+		}else{
+			// fill-in task
+			fillincount++; 
+			input = $('div.question-'+val.id).find('textarea').val();
+			input = input === undefined ? '' : input;
+			full_results['Task-'+val.id] = { input: encodeURIComponent( input ) };
+			if( input.length < 10){
+				setFeedback('incomplete', val.id, null);
+			}else{
+				setFeedback('done', val.id, val.solution);
+			}
+		}
+		
+	});
+	// save user input and test results
+	$.ajax({
+		type: 'POST',
+  	dataType : 'json',
+  	data : {results: correct, user_results: [full_results], process_time: ((new Date()).getTime() - t1)},
+  	url: '/assessment/pre-post-results',
+  	success: function(res) {
+  		//$('.test-head').text('Test + Feedback')
+  		 //alert(JSON.stringify(full_results))
+  		//plotResults(data, correct);
+  		//$('#assessment-accordion').accordion({active:1});
+  	},
+  	error: function(err){
+  		alert(JSON.stringify(err));
+  	}	
+  });
+}
+
+
+
+
+</script>  
+  

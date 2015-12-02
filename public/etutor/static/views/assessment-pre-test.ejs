@@ -9,7 +9,7 @@
 <div class="container">
 	 
   <p style="width:80%;" class="mark">
-Noch bevor die Videolernphase beginnt, möchten wir Sie bitten, uns einige Fragen zu Ihrer Mediennutzung und ihrem Vorwissen beantworten. Der folgende Fragebogen ist Bestandteil eines Begleitforschungsprojekts in dessen Rahmen zwei der Zittauer Studierenden ihre Masterarbeit schrieben werden. 
+Noch bevor die Videolernphase beginnt, möchten wir Sie bitten, uns einige Fragen zu Ihrer Mediennutzung und ihrem Vorwissen beantworten. Der folgende Fragebogen ist Bestandteil eines Begleitforschungsprojekts in dessen Rahmen zwei der Zittauer Studierenden ihre Masterarbeit schreiben werden. 
 
 Für die Beantwortung der 27 Fragen benötigen Sie ungefähr **30 Minuten**. Sie können den Fragebogen genau einmal absenden. Alle darauffolgenden Einsendungen werden von uns nicht berücksichtigt. Wir bitten Sie jedoch, bei den Fragen zu Ihrem Vorwissen keinerlei Hilfsmittel zu verwenden. Alle Angaben, die Sie hier machen, fließen ausdrücklich **nicht** in die Endnote ein. Alle Daten werden **anonymisiert** erhoben und ausgewertet. Ihre Angaben dienen lediglich zur Verbesserung und Anpassung des Lernangebots. Einige der Fragen werden wir Ihnen nach Ablauf der Videolernphase deshalb noch einmal stellen, um Veränderungen zu erfassen (Vor-/Nachtest). Erst dann werden wir auch die Musterlösungen einblenden.
 
@@ -32,7 +32,7 @@ Vielen Dank für Ihre Teilnahme.
 	$.ajax({
 		type: 'GET',
   	dataType : 'json',
-  	url: '/json/assessment-prepost',
+  	url: '/json/assessment-pretest',
   	success: function(res) {   
 			$.each(res.test, function(j,val){ 
 				var task = $('<div></div>')
@@ -198,51 +198,7 @@ function evaluateTest(data){
 }
 
 
-function plotResults(data, corr){ 
-	//$('.assessment-results').append('<h2>Testergebnisse</h2>');
-	$.ajax({
-		type: 'GET',
-  	//dataType : 'json',
-  	url: '/assessment/results',
-  	success: function(res) {
-  		if(res != 0){
-				$('.assessment-results').empty();
-				var table = $('<table></table>')
-					.css('font-size','10px')
-					.append('<thead><th>Datum</th><th>A1</th><th>A2</th><th>A3</th><th>A4</th><th>A5</th><th>A6</th><th>A7</th><th>A8</th><th>A9</th><th>A10</th><th>A11</th><th>A12</th><th>A13</th><th>A14</th><th>A15</th><th>A16</th><th>A17</th><th>A18</th><th>A19</th><th>A20</th><th>A21</th><th>SUMME</th></thead>')
-					.appendTo('.assessment-results');
-				
-				$.each(res, function(i, val){
-					var row = $('<tr></tr>')
-						.append('<td>'+val.updated_at+'</td>')
-						.appendTo(table);
-					var sum_vall = 0, sum_maxp = 0;	
-					$.each(val.results, function(j,vall){
-				 		var maxp = Number(data.test[j].correct.length); 
-				 		sum_maxp += Number(maxp);
-				 		sum_vall += Number(vall);
-				 		if(maxp === 0){
-				 			row.append('<td>--</td>');
-				 		}else if(maxp == vall){
-				 			row.append('<td style="color:green;">'+vall+'/'+maxp+'</td>');
-				 		}else{
-				 			row.append('<td style="color:red;">'+vall+'/'+maxp+'</td>');
-				 		}
-					});
-					row.append('<td style="font-weight:bold">'+sum_vall+'/'+sum_maxp+'</td>');
-					if(res.length-1 == i){
-						$('.assessment-results')
-							.prepend('<br/><br/>')
-							.prepend($('<a href="/assessment"></a>').text('Test jetzt wiederholen.').addClass('button').css('color','#fff'))
-							.prepend('<strong>Sie haben im letzten Testdurchlauf '+sum_vall+' von '+sum_maxp+' Punkten der Multiple-Choice-Aufgaben erreicht.</strong><br><br><br>');
-								
-					}  		
-  			});
-  		}	
-		},
-		error: function(err){}	
-  });
-}
+
 
 </script>  
   

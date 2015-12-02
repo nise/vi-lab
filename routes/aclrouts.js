@@ -360,10 +360,14 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.post('/assessment/written/:field', users.ensureAuthenticated, assess.setWrittenAssessment );
 	
 	// post test
-	app.get('/prepost', users.ensureAuthenticated, assess.prePostTest );
-	app.get('/json/assessment-prepost', users.ensureAuthenticated, assess.getPrePostTest);
+	app.get('/pre-test', users.ensureAuthenticated, assess.renderPreTest );
+	app.get('/post-test', users.ensureAuthenticated, assess.renderPostTest );
+	app.get('/json/assessment-pretest', users.ensureAuthenticated, assess.getPreTest);
+	app.get('/json/assessment-posttest', users.ensureAuthenticated, assess.getPostTest);
 	app.post('/assessment/pre-post-results', users.ensureAuthenticated , assess.setPrePostResults );
 	app.get('/assessment/pre-post-results', users.ensureAuthenticated , assess.getPrePostResults );
+	app.get('/admin/assessment/pre-post-results', users.authCallback(['editor']) , assess.getAllPrePostResult );
+	
 	// routes related to etherpad
 	var etherpad = require('./etherpad');
 	

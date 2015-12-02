@@ -1,0 +1,183 @@
+	{
+"test":[
+		{
+    	"related-video":44,
+    	"id":20,
+			"question":"Was ist charakteristisch für das Konzept des Virtual Collaborative Learnings (kurz: VCL)? Bitte nennen Sie vier Merkmale!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "4 aus 6 möglichen Alternativen: Arbeit in Kleingruppen, komplexe/ realitätsnahe Problemstellungen, Einsatz von Social Media, eigenständige Organisation, gemeinsame Verantwortung, Betreuung durch E-Tutor. Punkte: 2 P. (0,5 P. pro Merkmal",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":21,
+			"question":"Was bedeutet im Rahmen der universitären Lehre der Begriff Blended Learning? Bitte schreiben Sie Ihre eigene Definition!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "Verknüpfung traditionelles Klassenzimmerlernen und virtuelles/ Online-Lernen, didaktisch sinnvoll, Informations- und Kommunikationstechnologien. Punkte: 1,5 P. (0,5 P. pro integriertem Stichpunkt)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":22,
+			"question":"Welche fünf Aufgabenbereiche werden von einem E-Tutor während seiner Tätigkeit adressiert? Bitte zählen Sie diese auf!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "Fachbezogene Betreuung, Personen- und gruppenbezogene Betreuung, Technische Betreuung, Organisatorische Betreuung. Punkte: 2,5 P. (0,5 .P pro Dimension)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":24,
+			"question":"In der Literatur wird wiederholt darauf hingewiesen, dass mit der computervermittelten Kommunikation Probleme einhergehen können. Bitte nennen und erläutern Sie kurz zwei Probleme!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "2 aus 5 möglichen Alternativen: Kanalreduktion: Aufgrund der fehlenden Ko- präsenz der Beteiligten können bei der Kommunikation viele Sinneskanäle nicht einbezogen werden. Dieser Informationsverlust führt zur Entsinnlichung der Kommunikation. Gleichzeitig geht mit der  computervermittelten Kommunikation geht eine Enträumlichung und gegebenenfalls eine Entzeitlichung einher -- was aber paradoxerweise auch gleichzeitig den Vorteil dieser Kommunikationsform darstellt. Teilweise wird soweit gegangen, auch von einer 'Entkontextualisierung', 'Entwirklichung' und sogar 'Entmenschlichung' zu sprechen. Flaming: Personen gehen bei textbasierter computervermittelter Kommunikation im Vergleich zur Face- to-Face-Kommunikation ungehemmter miteinander um. Dies äußert sich, indem sie eine abfällige Sprache verwenden oder spöttische Bemerkungen machen ('Flamme'). Eingeschränkte Feedbackmöglichkeiten: In der computervermittelten Kommunikation sind nonverbale Kommunikation wie Nicken oder Kopfschütteln häufig nicht möglich . Im Zuge der Kanalreduktion und der damit verbundenen verringerten sozialen Hinweisreize ergeben sich auch weniger Feed-backmöglichkeiten. Erschwertes Grounding: Der Begriff Grounding bezeichnet das Kommunizieren und Rückmelden beim kollaborativen Lernen. Dieser Prozess zielt auf ein gemeinsames Aufgabenverständnis bei den Beteiligten und ist aufgrund der Charakteristika der computervermittelten Kommunikation nur verzögert oder gar nicht möglich. Lurking: Bezeichnet als Phänomen im Rahmen technischer Kommunikation den Rückzug von weniger motivierten Teilnehmern aus der Gruppenarbeit. Dies führt dazu, dass nur wenige Personen den Großteil der Beiträge erbringen. Eine zentrale Ursache für das Lurking ist der fehlende Beziehungsaufbau zwischen Beteiligten, u.a. ausgelöst durch fehlendes unmittelbares Feedback, die Depersonalisierung der Kommunikation, zu viele oder unpersönliche Beiträge oder eine zu starke Aufgabenorientierung. Punkte: 3 P. (0,5 P pro Nennung, 1 P. pro richtiger Erläuterung -> bei Erläuterung sind die unterstrichenen Begriffe / Textpassagen entscheidend)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":25,
+			"question":"Der Einsatz eines Forums ist für den Nutzer mit Vor- und Nachteilen verbunden. Bitte nennen Sie vier Nachteile!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "4 aus 5 möglichen Alternativen: Beiträge können durchdacht und präzise verfasst werden, intensiver, zielgerichteter und sachbezogener Austausch, Speicherung der Inhalte für spätere Entscheidungen, Nutzer kann Inhalte vertieft verarbeiten und reflektieren, parallele Teilnahme an mehreren Diskussions- und Meinungsbildungsprozessen. Punkte: 2 P. (0,5 P. pro Vorteil)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":26,
+			"question":"Bei der Auswahl eines Kommunikationsmediums können verschiedene Theorien herangezogen werden. An welchen zwei Kriterien orientiert sich die Medienwahl entsprechend der Media Richness Theory? Bitte benennen Sie die beiden Kriterien!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "Medienreichtum, Komplexität der Aufgabe. Punkte : 1 P. (0,5 P. pro Kriterium)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":27,
+			"question":"Was kennzeichnet eine Gruppe? Bitte nennen Sie vier Merkmale!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "4 aus 7 möglichen Alternativen: Mehrzahl an Personen, zeitlich überdauernd, direkte Interaktion, Rollendifferenzierung, gemeinsame Normen, Wir-Gefühl, gemeinsame Ziele oder Interessen Punkte: 2 P. (0,5 P. pro Merkmal)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":28,
+			"question":"Tuckmann unterscheidet in seinem Modell zur Gruppenentwicklung die Phasen Forming, Storming, Norming und Performing. Bitte erläutern Sie kurz, durch welche Gruppenaktivitäten die Phasen Storming und Norming gekennzeichnet sind!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "Forming: sich kennenlernen, sich einschätzen, Einordung Storming: sich zeigen, sich vertreten, Auseinandersetzung Punkte: 2 P. (1 P. pro Erläuterung, jew. 2 Kennzeichen à 0,5 P.)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":29,
+			"question":"In Gruppen kann es zu Motivationsverlusten bei den beteiligten Personen kommen. Was ist in diesem Zusammengang unter dem Phänomen des Sozialen Faulenzens (social loafing) zu verstehen? Bitte schreiben Sie eine kurze Erklärung!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "Gruppenmitglied nimmt unbewusst sein Engagement zurück aufgrund der Annahme, dass sich seine individuelle Leistung gering auf die Gruppenleistung auswirkt. Punkte: 2 P. (0,5 P. pro unterstrichenem Stichwort)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":30,
+			"question":"Bitte nennen Sie vier mögliche Moderationstechniken!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "4 aus 12 möglichen Alternativen: Ideensammlung/ Brainstorming, Kartenabfrage, Zielscheibe, MindMap/Netzbild, Problem-Analyse-Schema, Ursache-Wirkungs-Diagramm, Mehrpunktabfrage, Zweidimensionales Matrix-diagramm, Sterndiagramm, Momentaufnahme/ Blitzlicht, Handlungsplan, Ziele/Teilziele. Punkte: 2 P. (0,5 P. pro Technik)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":31,
+			"question":"Eine Herausforderung der virtuellen Moderation im Vergleich zur klassischen Face-to-face-Moderation liegt darin, dass sie sich auf einen deutlich längeren Zeitraum beziehen kann (z.B. ein gesamtes Studiensemester). Worin liegen weitere Herausforderungen bei der virtuellen Moderation? Nennen Sie bitte zwei Herausforderungen.", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "2 aus 5 möglichen Alternativen: Kombination verfügbarer Medien Beiträge werden über verschiedene Medien hinweg zusammengeführt Veränderte Bedeutung der Visualisierung (Visualisierung der Kommunikationsprozesse in Form von Zusammenfassungen und Verweisen) Abwesenheit der Beteiligten Aufbau tragfähiger Strukturen fördern. Punkte: 2 P. (1 P. pro Herausforderung)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},
+  	{
+    	"related-video":44,
+    	"id":32,
+			"question":"Die Nachteile von Chats liegen u.a. darin, dass der Kommunikationsverlauf unübersichtlich werden und eine Überschneidung von Beiträgen erfolgen kann. Mit welchen Maßnahmen können Chats übersichtlicher bzw. strukturierter gestaltet werden? Nennen Sie bitte vier Maßnahmen!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "4 aus 6 möglichen Alternativen: Teilnehmer/innen mit Namenansprechen Verschiedene Farben benutzen Angabe von Uhrzeit der Äußerung, auf die sich bezogen wird Zeichen vereinbaren, ob ein Sprecherwechsel gewünscht wird (z.B. '%' für 'bitte kein Sprecherwechsel' Hinweise auf Emoticons Feste Satzeröffnungen vorgeben Punkte: 2 P. (0,5 P. pro Maßnahme)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},{
+    	"related-video":44,
+    	"id":33,
+			"question":"Durch welche 4 Merkmale ist ein sozialer Konflikt gekennzeichnet? Bitte nennen Sie die Merkmale!", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "mind. 2 Personen, jeweils unterschiedliche Interessen (z.B. Ziele, Strategien, Werte), mind. eine Partei erlebt Unvereinbarkeit (zwischen eigenen und anderen Interessen) und möchte ihre Interessen durchsetzen. Punkte: 2 P. (0,5 P. pro Maßnahme)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},{
+    	"related-video":44,
+    	"id":34,
+			"question":"Es gibt verschiedene Merkmale, anhand derer die Art eines Konfliktes bestimmt werden kann. Bspw. kann eine Einordnung nach dem Streitgegenstand erfolgen. Nennen Sie bitte zwei weitere Merkmale zur Einordnung von Konflikten.", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "2 aus 3 möglichen Alternativen: Erscheinungsform, Merkmale Konfliktparteien, Reichweite der Bemühungen. Punkte: 1 P. (0,5 P. pro Merkmal)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	},{
+    	"related-video":44,
+    	"id":35,
+			"question":"Nennen Sie bitte zwei mögliche Maßnahmen zur Konfliktintervention und erläutern Sie diese kurz.", 
+			"type":"fill-in",
+    	"answ":[],	
+		  "correct":[],
+		  "solution": "2 aus 5 möglichen Alternativen: Moderation: Die Parteien sind grundsätzlich in der Lage, den Konflikt selber zu lösen. Der E-Tutor/ Eine gruppenexterne Person übernimmt neutrale Rolle und unterstützt die 'Selbstheilungskräfte', sorgt für strukturierten Ablauf des Konfliktgespräches. Prozessbegleitung: Die Parteien können Konflikt nicht selber lösen. Der E-Tutor/Eine gruppenexterne Person rückt in einem Gespräch Sach- und Beziehungsfragen in den Mittelpunkt. Dabei ist es besonders wichtig, vorab Kommunikationsregeln festzulegen. Vermittlung/ Mediation: Es liegt ein Zusammenbruch der Gesprächsbasis vor. Der E-Tutor/ Eine gruppenexterne Person führt getrennte Gespräche und setzt anschließend gemein-sames Meeting an. Dafür werden vorab Tagesordnung und Spielregeln festgelegt. Der E-Tutor unterstützt die konstruktive Konfliktlösung. Schiedsverfahren: Es kommt zum tragen, wenn die vorgelagerten Interventionsmöglich-keiten gescheitert sind. Zur Lösung des Konflikts wird ein Schiedsgericht eingesetzt, welches strikter Interessensneutralität folgt und die Entscheidung trifft, wie im vorliegenden Konflikt zu verfahren ist. Die Chancen des Verfahrens liegen in der Versachlichung von Konfliktthemen und der Einstellung destruktiver Handlungen. Machteingriff: Es kommt zum Einsatz, wenn alle anderen Verfahren fehlgeschlagen sind. Dabei werden die Konfliktparteien via höherer Gewalt an den Verhandlungstisch zurück gebracht und eine Lösung von außen herbeigeführt. Punkte: 3 P. (0,5 P. pro Maßnahme, 1 P. pro Erläuterung -> bei Erläuterung sind die unterstrichenen Begriffe / Textpassagen entscheidend)",	
+		  "start": "0",
+		  "author": "2",
+		  "date": "1386669183595"
+  	}
+  	
+	]
+}
+      
