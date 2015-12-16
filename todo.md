@@ -10,7 +10,6 @@
 - test IE
 - test safari
 - css bugs in opera
-- bug @ logged out members are not gettng disabled in the peers client
 
 - guided tour
 
@@ -19,12 +18,20 @@
 - session mgmg?
 
 ## bugs
+- bson bug on certain instnces where new versions of mongodb can not be installed
+- logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
 - Logs are not accessible, not even for an - activity log
 
 
 
 ## next release / nth
+
+- @script
+ - script schedule
+ - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
+ - see bug @ aufgabe muss je video, statt je Phase angezeigt werden
+
 
 - fallback: load annotations from dom if DB is not available
 - fully use require.js to load files
@@ -113,10 +120,6 @@ if (screencheck.matches) {
  - ass-fillin: semantische Nähe zw. Feedback und Aufgabe
  - ass-ondemand: scrollbares feld bei aufgabenbearbeitung
  	
-- @script
- - script schedule
- - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
- - see bug @ aufgabe muss je video, statt je Phase angezeigt werden
 
 - @ bookmark 
  - url fehler
