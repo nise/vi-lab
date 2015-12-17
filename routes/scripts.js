@@ -11,11 +11,124 @@ todo:
 var 
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
-	Scripts  = mongoose.model( 'Scripts' )
+	Scripts  = mongoose.model( 'Scripts' ),
+	Template = mongoose.model('ScriptTemplate'),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
 
+
+var templateA = {
+	title : "PAPA Script",
+	description : "A script for peer annotations and peer assessment",
+	tags : "E-Assessment,Tests,Video-Annotation,Video-Assessment", 
+	//created_at 	: { type: Date },
+	//updated_at 	: { type: Date, default: Date.now },
+  slides : true,
+	phases: [
+    		{ 
+    			title: "Phase 1",
+    			instruction: "Legen Sie dies und das an",
+    			seq : 0,
+    			groupindex: 0, 
+    			widgets: [ 
+    				{ name: 'toc', 
+		  		 		canBeAnnotated:true, 
+		  		 		options: {
+								hasTimelineMarker: true, 
+								timelineSelector : '.vi2-timeline-main',
+								hasMenu : true,
+								menuSelector: '#toc',
+								allowEditing : true,
+								allowCreation : true,
+								path: '/static/img/user-icons/'
+							} 
+						},
+						{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		options: {
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}
+		  		 	}
+    			]	
+    		}
+    	]
+}
+
+
+templateA.updated_at = Date.now();
+templateA.created_at = Date.now();
+Template.insert(templateA, {safe:true}, function(err, result) {
+	  	if(err){
+    		console.log(err)
+    	}else{
+    		console.log("added template for a script");
+    	}
+    });
+
+    
+ /*
+ 	* List all Templates
+ 	**/
+ 	 exports.getTemplates = function(req, res) { 
+		Templates.find({}).lean().exec(function (err, templates) {
+			if(err){ 
+				console.log(err); 
+			}else{
+				res.type('application/json');
+				res.jsonp(templates);
+				res.end('done');
+			}	
+		});
+	};
+    
+    
+ /*
+ 	* Get Template by ID
+ 	**/
+ 	exports.getTemplateByID = function(req, res) { 
+		Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
+			if(err){ 
+				console.log(err); 
+			}else{
+				res.type('application/json');
+				res.jsonp(template[0]);
+				res.end('done');
+			}	
+		});
+	};
+
+
+ 	/*
+ 	* Add new Template
+ 	**/
+	exports.addTemplate = function(req, res) {
+	
+	}
+
+
+ /*
+ 	* Update Template
+ 	**/
+	exports.updateTemplate = function(req, res) {
+	
+	}
+	
+	
+	/*
+ 	* Remove Template
+ 	**/
+	exports.removeTemplate = function(req, res) {
+	
+	}
+	
 
 
 

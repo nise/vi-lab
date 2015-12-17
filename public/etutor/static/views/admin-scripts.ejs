@@ -1,10 +1,38 @@
 
 <h2>Script</h2>
+
+<h3>Overview</h3>
+<label>Name:</label> <span class="xeditable" id="scriptname" data-type="text" data-pk="1" data-url="" data-title="Name of the script"></span>
+<br>
+<label>Description:</label> <span class="xeditable" id="scriptdesc" data-placement="bottom" data-type="textarea" data-pk="1" data-url="" data-title="Description of the script">hello</span>
+<br>
+<label>Tags:</label> <a href="#" class="xeditable" id="scripttags" data-type="text" data-pk="1" data-url="" data-title="Tags">hello</a>
+<br>
+<label>Created at:</label>
+<br>
+<label>Updated at:</label>
+<br>	
+  slides : Boolean,
+<br>
+<label>Phases:</label>
+<br>
+    			title: String,
+    			instruction: String,
+    			seq : Number,
+    			groupindex: Number, 
+    			widgets: [ 
+    				{ name: [String], widget_options: [Schema.Types.Mixed], accordion: [Boolean], annotate:[Boolean] }
+    			]	
+
+
+<!-- Details-->
+<h3>Group Access to Video Instances</h3>
+
 <span id="status"></span>
 <span class="btn btn-default btn-xs" id="add-instance">add new Video instance</span>
 <span class="btn btn-default btn-xs" id="add-group">add new Group</span>
-
 <br/><br/>
+
 <table class="script-table" id="table1"></table>
 
 <script> 
@@ -21,6 +49,11 @@
 	* save/reset/undo results
 	* what happens if there are no groups or no video instances?
 	**/
+	$.fn.editable.defaults.mode = 'popup'; // inline
+$(document).ready(function() {
+    $('.xeditable').editable();
+    //$('#scripttags').select2();
+});
 
 var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head;
 	
@@ -53,14 +86,27 @@ $('#add-group').click(function(){
     			.appendTo( tab )
     			;
     		for(var j = 0; j < data.videos.length; j++){	
-    			tab_cell = $('<td></td>').text( data.videos[j].id ).appendTo( tab_head );
+    			tab_cell = $('<td></td>')
+    				.text( data.videos[j].id )
+    				.addClass('xeditable')
+      			.data('type', 'text')
+      			.data('id', data.videos[j].id)
+      			.data('pk', data.videos[j].id)
+    				.appendTo( tab_head );
     		}
     		// rows
       	for(var i = 0; i < data.groups.length; i++){
       		arr2[i] = [];
       		// first column
+      		var row_label = $('<td></td>')
+      			.text( 'Group '+data.groups[i].id )
+      			.addClass('xeditable')
+      			.data('type', 'text')
+      			.data('id', data.groups[i].id)
+      			.data('pk', 1)
+      			;	
       		tab_row = $('<tr></tr>')
-      			.append( $('<td></td>').text( 'Group '+data.groups[i].id ) );
+      			.append( row_label );
       		// cells
       		for(var j = 0; j < data.videos.length; j++){
       			var tab_cell = getEmptyCell();
@@ -76,6 +122,7 @@ $('#add-group').click(function(){
       		$(tab).append( tab_row );
       		
       	}
+      	 $('.xeditable').editable();
 				//alert( JSON.stringify(arr2) )
 			},
 			error : function(e) {

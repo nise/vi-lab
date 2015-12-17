@@ -101,7 +101,11 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 
 	// routes related to scripts	
 	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
-
+	app.get('/json/script-templates', users.ensureAuthenticated, scripts.getTemplates);
+	app.get('/json/script-templates/:id', users.ensureAuthenticated, scripts.getTemplateByID);
+	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate);
+	app.post('/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplate);
+	app.post('/templates/remove/:id', users.ensureAuthenticated, scripts.removeTemplate);
 
 	// routes for user management
 	app.get('/groups', groups.getGroups);

@@ -139,13 +139,13 @@ mongoose.model( 'Scripts', Scripts );
 
 // minlength: 5
 var ScriptTemplate = new Schema({
-	title : { type: String, minlength: 3 },
+	title : { type: String, minlength: 1 },
 	description : String,
 	tags : [String], 
 	created_at 	: { type: Date },
 	updated_at 	: { type: Date, default: Date.now },
 	
-  slides : Boolean,
+  slides : Boolean, // ???
 
   phases: [
     		{ 
@@ -154,11 +154,14 @@ var ScriptTemplate = new Schema({
     			seq : Number,
     			groupindex: Number, 
     			widgets: [ 
-    				{ name: [String], widget_options: [Schema.Types.Mixed], accordion: [Boolean], annotate:[Boolean] }
+    				{ 
+    					name: String, 
+    					widget_options: [Schema.Types.Mixed], 
+    					canBeAnnotated: Boolean 
+    				}
     			]	
     		}
     	]
-  
 });
 mongoose.model( 'ScriptTemplate', Scripts );
 
