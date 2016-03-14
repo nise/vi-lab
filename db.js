@@ -68,7 +68,6 @@ var VideoFile = new Schema({
 	category		: String,
 	tags				: Array,
 // misc
-	weight			: Number,
 	updated_at 	: Date
 });
 mongoose.model( 'VideoFiles', VideoFile );

@@ -68,14 +68,18 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 	// files
 	app.get(	'/admin/videos/files', videos.renderVideoFiles )
+	app.get(	'/admin/videos/files/create', users.authCallback(['user','editor']), videos.renderFileUpload );
+	app.get(	'/admin/videos/files/edit/:id', users.authCallback(['editor']), videos.renderFileEdit );
+	app.post(	'/admin/videos/files/update/:id', users.authCallback(['editor']), videos.updateFile );
+	app.get(	'/admin/videos/files/instantiate/:id', users.authCallback(['editor']), videos.createFileInstance );
+	app.get(	'/admin/videos/files/destroy/:id', users.authCallback(['editor']), videos.destroyFile );
 	app.get( 	'/json/admin/video-files', users.authCallback(['editor']), videos.getAllFilesJSON );
-	app.get(	'/admin/videos/files/new', users.authCallback(['user','editor']), videos.renderNewFileUpload );
 	
 	// ??
 	app.post(	'/admin/videos/create-file',	 				videos.createFile );
 	app.get(	'/admin/videos/destroy/:id',					videos.destroy );
 	app.post(	'/admin/videos/update/:id',						videos.update );
-	app.get(	'/admin/videos/metadata/edit/:id',		videos.editMetadata );
+	app.get(	'/admin/videos/metadata/edit/:id',		videos.editMetadata ); // ??
 	app.get(	'/admin/videos/annotations/edit/:id', videos.editAnnotations );
 	
 	
@@ -311,8 +315,10 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 
 
+
+
 	/************************************************************/
-	/* ASSESSMENT */
+	/* RESULTS */
 		
 	app.get('/admin/results/peer-assessment', users.authCallback(['editor']) , admin.renderResultsPeerAssessment);
 	app.get('/admin/results/comments', users.authCallback(['editor']) , admin.renderResultsComments);

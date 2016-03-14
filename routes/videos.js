@@ -155,62 +155,10 @@ exports.getOneJSON = function(req, res) {
 
 
 
-/*
- * 
- **/
-exports.createFile = function ( req, res ){ 
-	req.body = JSON.parse(req.body);
-	console.log(req.body)
-	var video = {
-  	video				: req.body.video,
-		author			: req.body.author,
-		institution	: req.body.institution,
-		title				: req.body.title,
-		date				: req.body.date, // date of creation
-		source			: req.body.source, 
-		category		: req.body.category,
-		tags				: String(req.body.tags).split(','),
-		language		: req.body.language,
-		abstract		: req.body.abstract,	
-		type 				: req.body.mimetype,
-		duration		: req.body.duration,
-		size				: req.body.size, 
-		formats 		: [ ""+req.body.mimetype ],
-		thumbnail 	: '',
-		weight			: 1,
-		rights			: req.body.license,
-		contributor	: req.user.username,
-    updated_at : Date.now()
-  };
-  // save it
-  new VideoFiles( video ).save( function( err, vid, count ){
-  	if(err) { res.send(err); }
-    //res.redirect( '/videos' );
-    console.log(video);
-    res.send('saved video file	');
-  });
-};
 
 
-/*
- * 
- **/
-exports.upload = function ( req, res ){
-	  // req.files is array of `photos` files
-  // req.body will contain the text fields, if there were any
-  	console.log(req.files)
-  	res.end();
-	/*
-	fs.readFile(req.files.video.path, function (err, data) {
-		if( req.files[0].type === 'image/png' ){
-			console.log('png');
-		}
-		var newPath = __dirname + "/uploads/uploadedFileName";
-		fs.writeFile(newPath, data, function (err) {
-		  res.redirect("back");
-		});
-	});**/
-};
+
+
 
 
 
@@ -246,38 +194,6 @@ exports.list = function ( req, res ){ console.log('#############################
 };
 
 
-/*
- * 
- **/
-exports.renderVideoInstances = function(req, res){
-	Videos.find( ).sort( 'id' ).exec( function ( err, videos ){  					
-		res.render( 'admin/videos-instances', {
-			items : videos
-		});
-		res.end('done');
-	});
-}
-
-/*
- * 
- **/
-exports.renderVideoFiles = function(req, res){
-	VideoFiles.find( ).sort( 'id' ).exec( function ( err, videos ){  					
-		res.render( 'admin/videos', {
-			items : videos
-		});
-		res.end('done');
-	});
-}
-
-
-/*
- *
- **/ 
-exports.renderNewFileUpload = function ( req, res ){
-		res.render( 'admin/videos-new-file', {});
-		res.end('done');
-};
 
 // remove videos item by its id
 exports.destroy = function ( req, res ){
@@ -289,7 +205,7 @@ exports.destroy = function ( req, res ){
   });
 };
 
-
+/// xxxx? löschen
 exports.editMetadata = function ( req, res ){
   Videos.find( function ( err, videos ){
   	res.type('application/json');
@@ -388,75 +304,239 @@ exports.annotate = function(req, res) {
 	  		res.send({"msg":"succesfully saved"});
 	  	}
 	});
-
-
 } 
 
+
+
+
+
+/*********************************************************************/
+/* VIDEO INSTANCES ADMIN */
+
+
 /*
-//
-exports.annotateTags = function(req, res) { 
-    var videodata = req.body.data; 
-    Videos.find({ id:req.params.id}).setOptions({lean:true}).exec(function ( err, video ){
-    	if(!err){ console.log()
-				video.tags = videodata;
-				video.updated_at = Date.now();
-				video.save( function ( err, video, count ){
-				  //res.redirect( '/videos/view/'+req.params.id );
-				});
-			}	
+ * Renders a list of all defined instances of video files
+ * status: done
+ **/
+exports.renderVideoInstances = function(req, res){
+	Videos.find( ).sort( 'id' ).exec( function ( err, videos ){  					
+		if(err){ console.log(err) }else{
+			res.render( 'admin/videos-instances', {
+				items : videos
+			});
+			res.end('done');
+		}
+	});
+}
+
+
+
+
+
+
+
+/*********************************************************************/
+/* VIDEO FILES */
+
+
+/*
+ * Renders a template where all video files are listed 
+ * status: done
+ **/
+exports.renderVideoFiles = function(req, res){
+	VideoFiles.find( ).sort( 'id' ).exec( function ( err, videos ){
+		if(err){ console.log(err) }else{  					
+			res.render( 'admin/videos', {
+				items : videos
+			});
+			res.end('done');
+		}
+	});
+}
+
+
+/*
+ * status: xxx
+ **/
+exports.createFile = function ( req, res ){ 
+	req.body = JSON.parse(req.body);
+	console.log(req.body)
+	var video = {};
+	video.title				= req.body.title;
+	video.creator			= req.body.creator;
+	video.subject	    = req.body.subject;
+	video.description	= req.body.description;
+	video.publisher   = req.body.publisher;	
+	video.contributor = req.body.contributor;
+	//		video.date				= req.body.date; // cast error
+	video.type				= req.body.type;
+	video.mimetype 		= req.body.mimetype;
+	//		video.format			= req.body.format; // handle array
+	video.source			= req.body.source;
+	video.language		= req.body.language;
+	video.relation    = req.body.relation;
+	video.coverage    = req.body.coverage;
+	video.rights      = req.body.rights;
+	video.license     = req.body.license;
+	video.video				= req.body.video;
+	video.length			= req.body.length;
+	video.size				= req.body.size;
+	video.thumbnail 	= req.body.thumbnail; 
+	video.institution	= req.body.institution;
+	video.category		= req.body.category;
+	video.tags				= req.body.tags;
+	video.updated_at 	= Date.now();
+
+  // save it
+  new VideoFiles( video ).save( function( err, vid, count ){
+  	if(err) { res.send(err); }
+    //res.redirect( '/videos' );
+    console.log(video);
+    res.send('saved video file	');
+  });
+};
+
+
+/*
+ * Render dialog to upload videos and defining its meta data
+ * status: done
+ **/ 
+exports.renderFileUpload = function ( req, res ){
+		res.render( 'admin/videos-file-new', {});
+		res.end('done');
+};
+
+
+/*
+ * Edit the meta data of an existing video file
+ * status: done
+ **/
+ exports.renderFileEdit = function ( req, res ){
+ 	VideoFiles.findById( req.params.id, function ( err, videos ){  		
+		if(err){ console.log(err) }else{
+			res.render( 'admin/videos-file-edit', {
+				items : videos
+			});
+			res.end('done');
+		}	
+	});
+};
+
+
+/*
+ * Updates the metadate of a video file.
+ * status: xxx
+ **/
+exports.updateFile = function ( req, res ){ console.log(req.body)
+  VideoFiles.findById( req.params.id, function ( err, video ){ 
+		video.title				= req.body.title;
+		video.creator			= req.body.creator;
+		video.subject	    = req.body.subject;
+		video.description	= req.body.description;
+		video.publisher   = req.body.publisher;	
+		video.contributor = req.body.contributor;
+//		video.date				= req.body.date; // cast error
+		video.type				= req.body.type;
+		video.mimetype 		= req.body.mimetype;
+//		video.format			= req.body.format; // handle array
+		video.source			= req.body.source;
+		video.language		= req.body.language;
+		video.relation    = req.body.relation;
+		video.coverage    = req.body.coverage;
+		video.rights      = req.body.rights;
+		video.license     = req.body.license;
+		video.video				= req.body.video;
+		video.length			= req.body.length;
+		video.size				= req.body.size;
+		video.thumbnail 	= req.body.thumbnail; 
+		video.institution	= req.body.institution;
+		video.category		= req.body.category;
+		video.tags				= req.body.tags;
+		video.updated_at 	= Date.now();
+    video.save( function ( err, video, count ){
+    	if(err){ console.log(err); } else{
+    		res.redirect( '/admin/videos/files' );
+				res.end('done');
+      }
+    });
+  });
+};
+
+
+/*
+ * Destroys a video file 
+ * status: completed
+ **/
+exports.destroyFile = function ( req, res ){
+  VideoFiles.findById( req.params.id, function ( err, video ){
+  	if(err){ console.log(err) }else{
+		  video.remove( function ( err, person ){
+		    res.redirect( '/admin/videos/files' );
+		    res.end('done');
+		  });
+		 } 
+  });
+};
+
+
+/*
+ * Creates an instance of a video file 
+ * status: xxx
+ **/
+exports.createFileInstance = function ( req, res){
+	VideoFiles.findById( req.params.id, function ( err, file ){
+  	if(err){ console.log(err) }else{
+		  // prepare instance
+		  var video = {
+				"id": "1", // ??
+				"progress": "3", // ?
+				"video": file.video,
+				"metadata": [
+				  {
+				    "author": file.creator,
+				    "institution": file.institution,
+				    "title": file.title,
+				    "category": file.category,
+				    "abstract": file.description,
+				    "length": file.length,
+				    "date": file.date,
+				    "source": file.source,
+				    "thumbnail": "/static/img/video0_poster.jpg",
+				    "tags": [
+				      {
+				        "t": "Standortübergreifende Lehrveranstaltung"
+				      },
+				      {
+				        "t": "Kickoff"
+				      },
+				      {
+				        "t": "E-Tutoren"
+				      }
+				    ]
+				  }
+				], // need to become dynamic
+				"assessmentwriting": [],
+				"assessmentfillin": [],
+				"assessment": [],
+				"comments": [],
+				"slides": [],
+				"highlight": [],
+				"hyperlinks": [],
+				"tags": [],
+				"toc": [],
+			},
+		  // save instance
+		  new Video( video ).save( function ( err, person ){
+		    res.redirect( '/admin/videos/files' );
+		    res.end('done');
+		  });
+		 } 
   });
 }
 
 
-exports.annotateComments = function(req, res) { 
-    var videodata = req.body.data; 
-    Videos.findById( req.params.id, function ( err, video ){gr
-    	if(!err){ 
-				video.comments = videodata;
-				video.updated_at = Date.now();
-				video.save( function ( err, video, count ){
-				  res.redirect( '/videos/view/'+req.params.id );
-				});
-			}else{
-				console.log('ERROR: '+err)
-			}	
-  });
-} 
 
-//
-exports.annotateQuestions = function(req, res) { 
-    var videodata = req.body.data; 
-    Videos.findById( req.params.id, function ( err, video ){
-    	if(!err){ 
-				video.assessment = videodata;
-				video.updated_at = Date.now();
-				video.save( function ( err, video, count ){
-				  res.redirect( '/videos/view/'+req.params.id );
-				});
-			}	
-  });
-} 
-*/
-//var mongo = require('mongodb');
-/*var BSON = mongo.BSONPure;
 
-exports.updateVideoTOC = function(req, res) {
-    var id = req.params.id;
-    var video = req.body;
-    console.log('Updating video: ' + id);
-    console.log(JSON.stringify(video));
-    //db.collection('videos', function(err, collection) {
-        Videos.update({'_id':new BSON.ObjectID(id)}, {$set:{toc:video.data}}, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error updating video TOC: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' document(s) updated');
-                res.send(video);
-            }
-        });
-    //});
-} 
-*/
+
 
 

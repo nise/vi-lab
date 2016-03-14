@@ -44,25 +44,28 @@ $(document).ready (function () {
     detailFormatter : function(index, row) {
     	// add preview player
     	var 
-    		video = $('<video></video>')
+    		video = $('<video></video>'),
     		source = $('<source></source>')
-    			.attr('type', row.format[0] )
+    			.attr('type', row.mimetype ) /// xxx: buggy
     			.attr('src', row.video )
     		;
     	video.html( source );
-			return video;
+			return video.html();
 		},
 		//onClickRow : function(row, el){ alert(row._id); },
-    /*onClickCell : function(field, value, row, el){ if(field==='modultitel'){ 
-    	alert(row._id);
-    } },*/
+    /*onClickCell : function(field, value, row, el){ 
+    	if(field==='title'){ 
+    		window.location.href = "/admin/videos/files/edit/"+row._id;
+    	} 
+    },*/
     columns: [
+	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'title', title: 'Title', sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'creator', title: 'Creator', visible:false, sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'creator', title: 'Creator',  sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'subject', title: 'Subject', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'description', title: 'Description', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'publisher', title: 'Publisher', visible:false, sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'contributor', title: 'Contributor',sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'contributor', title: 'Contributor', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'date', title: 'Date of Creation', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'type', title: 'Type', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'format', title: 'File Formats',sortable : true, order: 'asc',searchable : true }, 
@@ -79,17 +82,45 @@ $(document).ready (function () {
 		  { field: 'institution', title: 'Institution',sortable : true, visible:false, order: 'asc',searchable : true }, 
 		  { field: 'category', title: 'Category',sortable : true, visible:false, order: 'asc',searchable : true }, 
 		  { field: 'weight', title: 'Rating', visible:false, sortable : true, visible:false, order: 'asc',searchable : true }, 
-		  { field: 'updated_at', title: 'Updated at',sortable : true, visible:false, order: 'asc',searchable : true }
+		  { field: 'updated_at', title: 'Updated at',sortable : true, visible:false, order: 'asc',searchable : true },
+    	{ field: 'operate', title: '',  align: 'center', /*events: operateEvents,*/ formatter: operateFormatter
+                    }
     ]
 	});
 });
+
+
+function operateFormatter(value, row, index) {
+	return [
+		'<a class="like" href="/admin/videos/files/edit/'+row._id+'" title="Edit file meta data">',
+		'<i class="glyphicon glyphicon-pencil"></i>',
+		'</a>  ',
+		'<a class="remove" href="/admin/videos/files/instantiate/'+row._id+'" title="Create instance of file">',
+		'<i class="glyphicon glyphicon-export"></i>',
+		'</a>'
+		].join('');
+	}
+
+    window.operateEvents = {
+        'click .like': function (e, value, row, index) {
+            alert('You click like action, row: ' + JSON.stringify(row));
+        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+            });
+        }
+    };
+
 </script>
 
 
 
 
 <h2>Video Files</h2>
-<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addVideoPanel" aria-expanded="false" aria-controls="collapseExample">add new video instance</a>
+<a class="btn btn-secondary btn-xs" href="/admin/videos/files/create" aria-expanded="false">add new video file</a>
+<!--<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addVideoPanel" aria-expanded="false" aria-controls="collapseExample">add new video instance</a>
 
 
 <div id="addVideoPanel" class="edit-form collapse admin-edit-form">
@@ -126,7 +157,7 @@ $(document).ready (function () {
 		</form>
 	</div>	
 </div>
-
+-->
 <div id="table1"></div>
 
 </table>
