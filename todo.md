@@ -3,19 +3,48 @@
 
 # VI-TWO
 ## urgent
-- make assessment results visible
+- Editierbare Themenblöcke = Phasen auf Level 1
+
+
+ - Zeitrahmen
+ - Video-Instanzen from video files
+ 
+- player bug
+
+- Features
+ - comments
+ - toc
+ - hyperlinks
+ 
+ - chat / gruppen nachrichten
+ - user notes
+ - playlist
+ - lesezeichen
+ - search
+ - user ratings
+ - media fragments
+ 
+- thinkLets integrieren
+- activity Thread
+	- annotations
+	- messages
+	- viewing history
+	- ...
 - display comments / links animated 
-- bug @ assessment .. multiple instances loaded
-- test mit vielen users
 - test IE
 - test safari
 - css bugs in opera
-
 - guided tour
 
 
 - suche
 - session mgmg?
+
+# For diss
+- caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
+- transcript
+- maps
+- vi2.syncImgaes => conrete version of simultaneous Media
 
 ## bugs
 - bson bug on certain instnces where new versions of mongodb can not be installed
@@ -37,6 +66,17 @@
 - fully use require.js to load files
 - gzip compression
 - usability: tooltip für Funktionen
+
+
+Required for text extraction (recommended):
+tesseract >= 3
+
+Required for hunspell based text filtering (optional):
+hunspell >= 1.2.8
+
+Required for audio normalization (optional):
+sox >= 14.4
+
 
 RESPONSIVE DESIGN
 var screencheck = window.matchMedia("(min-width: 800px)");

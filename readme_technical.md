@@ -35,4 +35,6 @@ mongodb: mongodb://localhost/module-base
 mongodump --db <application name>
 **restore**
 mongorestore --db <application name> ./dump/module-base
+**convert database for inspection**
+bsondump collection.bson > collection.json
 

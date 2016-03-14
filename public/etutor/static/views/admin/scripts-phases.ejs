@@ -1,0 +1,41 @@
+<div class="phase">
+			<h3 class="xeditable phase-title" id="phase-title_<%= phase_i %>" data-type="text" data-pk="1" data-url="" data-title="Phase Title">
+				<%= phase.title %>
+			</h3>
+			<div class="row">
+				<!-- Define Task -->
+				<div class="col-md-6 admin-panel">
+					 <ul class="nav nav-tabs nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#task_<%= phase_i %>" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>
+							<li role="presentation" ><a href="#supplements_<%= phase_i %>" aria-controls="supplements" role="tab" data-toggle="tab">Supplements</a></li>
+					</ul>	  
+					<div class="tab-content">
+						<div class="sec tab-pane active" id="task_<%= phase_i %>">
+							<textarea class="script-form" id="phase-task_<%= phase_i %>">
+								<%= phase.instruction %>
+							</textarea>
+						</div>
+						<div class="sec tab-pane" id="supplements_<%= phase_i %>">
+							<textarea class="script-form" id="phase-supplements_<%= phase_i %>">
+								<%= phase.supplements %>
+							</textarea>
+						</div>
+					</div>
+				</div>
+				<!-- Select Videos -->
+				<div class="col-md-6 admin-panel">
+					<h4>Videos</h4>
+					<div id="videos_<%= phase_i %>" class="phase-video-list"></div>
+				</div>
+			</div>	
+			<!-- Widgets -->
+			<div  class="sec" id="widgets-<%= phase_i %>">	
+				<div class="btn-group">
+					<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="glyphicon glyphicon-plus"> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" id="widgetSelectorDropdown-<%= phase_i %>">
+					</ul>
+				</div>
+			</div>
+		</div>	

@@ -6,6 +6,7 @@ var
 	mongoose = require( 'mongoose' ),
 	server =  require('./../server'),
 	Videos  = mongoose.model( 'Videos' )
+	VideoFiles  = mongoose.model( 'VideoFiles' )
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -77,7 +78,7 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 					// get videos 
 					Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
 						// calc status
-						for(var i = 0; i < videos.length; i++){ 
+						/*for(var i = 0; i < videos.length; i++){ 
 							// calc duration in Minutes
 							duration = ( videos[i].metadata[0].length ).split(':');
 							duration = Number( Number(duration[0])*60 + Number(duration[1]) );
@@ -100,8 +101,8 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 							// normalize regarding video duration
 							videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
 						
-						} 
-						
+						} */
+						console.log(videos)
 						res.type('application/json');
 						res.jsonp(videos);  
 						res.end('done');
@@ -122,15 +123,19 @@ exports.getAllJSON = function(req, res) {
 	});
 };
 
-exports.getFilesJSON = function(req, res) { 
+exports.getAllFilesJSON = function(req, res) { 
 	// get videos 
-	Videos.find().distinct('video', function ( err, videos ){
+	VideoFiles.find()
+		//.distinct('video', function ( err, videos ){
+		.exec( function ( err, videos ){
 		console.log(videos);
 		res.type('application/json');
 		res.jsonp(videos);  
 		res.end('done');
 	});
 };
+
+
 
 //
 exports.getOneJSON = function(req, res) { 
@@ -150,18 +155,63 @@ exports.getOneJSON = function(req, res) {
 
 
 
-//
-exports.create = function ( req, res ){
-  new Videos({
-    title    : req.body.title,
-    number		: req.body.number,
-    description : req.body.description,
+/*
+ * 
+ **/
+exports.createFile = function ( req, res ){ 
+	req.body = JSON.parse(req.body);
+	console.log(req.body)
+	var video = {
+  	video				: req.body.video,
+		author			: req.body.author,
+		institution	: req.body.institution,
+		title				: req.body.title,
+		date				: req.body.date, // date of creation
+		source			: req.body.source, 
+		category		: req.body.category,
+		tags				: String(req.body.tags).split(','),
+		language		: req.body.language,
+		abstract		: req.body.abstract,	
+		type 				: req.body.mimetype,
+		duration		: req.body.duration,
+		size				: req.body.size, 
+		formats 		: [ ""+req.body.mimetype ],
+		thumbnail 	: '',
+		weight			: 1,
+		rights			: req.body.license,
+		contributor	: req.user.username,
     updated_at : Date.now()
-  }).save( function( err, person, count ){
-    res.redirect( '/videos' );
-    res.end('done');
+  };
+  // save it
+  new VideoFiles( video ).save( function( err, vid, count ){
+  	if(err) { res.send(err); }
+    //res.redirect( '/videos' );
+    console.log(video);
+    res.send('saved video file	');
   });
 };
+
+
+/*
+ * 
+ **/
+exports.upload = function ( req, res ){
+	  // req.files is array of `photos` files
+  // req.body will contain the text fields, if there were any
+  	console.log(req.files)
+  	res.end();
+	/*
+	fs.readFile(req.files.video.path, function (err, data) {
+		if( req.files[0].type === 'image/png' ){
+			console.log('png');
+		}
+		var newPath = __dirname + "/uploads/uploadedFileName";
+		fs.writeFile(newPath, data, function (err) {
+		  res.redirect("back");
+		});
+	});**/
+};
+
 
 
 // query db for all video items
@@ -196,19 +246,43 @@ exports.list = function ( req, res ){ console.log('#############################
 };
 
 
-// new 
-exports.new_one = function ( req, res ){
-		res.render( 'admin-videos-new', {
-		  title : 'Express Videos Example',
-//		  items : items
+/*
+ * 
+ **/
+exports.renderVideoInstances = function(req, res){
+	Videos.find( ).sort( 'id' ).exec( function ( err, videos ){  					
+		res.render( 'admin/videos-instances', {
+			items : videos
 		});
+		res.end('done');
+	});
+}
+
+/*
+ * 
+ **/
+exports.renderVideoFiles = function(req, res){
+	VideoFiles.find( ).sort( 'id' ).exec( function ( err, videos ){  					
+		res.render( 'admin/videos', {
+			items : videos
+		});
+		res.end('done');
+	});
+}
+
+
+/*
+ *
+ **/ 
+exports.renderNewFileUpload = function ( req, res ){
+		res.render( 'admin/videos-new-file', {});
 		res.end('done');
 };
 
 // remove videos item by its id
 exports.destroy = function ( req, res ){
-  Videos.findById( req.params.id, function ( err, person ){
-    person.remove( function ( err, person ){
+  Videos.findById( req.params.id, function ( err, video ){
+    video.remove( function ( err, person ){
       res.redirect( '/videos' );
       res.end('done');
     });

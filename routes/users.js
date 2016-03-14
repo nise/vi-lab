@@ -333,10 +333,19 @@ exports.updateUsers = function(req, res) {
 
 
 
-
-
-
-
+/*
+ * Renders a list of all registered users in the admin area
+ **/
+exports.renderIndex = function(req, res) {
+  Users.find().sort( 'username' ).lean().exec(function (err, items) {
+	  if(err){ 
+			console.log(err); 
+		}else{
+			res.render('admin/users-index', {items: items}); 
+			res.end('done');
+		}	 
+  });
+};
 
 
 //

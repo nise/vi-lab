@@ -1,0 +1,40 @@
+<% layout( '../admin-layout' ) -%>
+
+<div class="col-md-10">
+<h2>Groups</h2>
+	
+	<table class="xtable">
+	<thead>
+		<th>ID</th>
+		<th>Description</th>
+		<th>Size</th>
+		<th>Comment</th>
+		<th>Videos</th>
+	</thead>
+	<tbody>
+	<% items.forEach(function(item){  %>
+	<tr>
+		<td><%= item.id %></td>
+		<td><%= item.description %></td>
+		<td><%= item.persons %></td>
+		<td><%= item.hs %></td>
+		<td>
+			<% item.videos.forEach(function(video){  %>
+				<%= video %>,
+			<% }); %>	
+		</td>
+	</tr>
+	<% }); %>
+	</tbody>
+	</table>	
+
+</div>
+
+
+<script>
+$(document).ready (function () { 
+
+	
+
+});
+</script>	

@@ -12,29 +12,40 @@ var
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Scripts  = mongoose.model( 'Scripts' ),
-	Template = mongoose.model('ScriptTemplate'),
+	Templates = mongoose.model('ScriptTemplate'),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
 
 
+/*
+ *
+ **/
+exports.renderIndex = function(req, res) { 
+	res.render( 'admin/scripts', { });
+	res.end('done');
+};
+
+
+/*******************************************************/
+/* SCRIPT TEMPLATES */
+
 var templateA = {
 	title : "PAPA Script",
 	description : "A script for peer annotations and peer assessment",
-	tags : "E-Assessment,Tests,Video-Annotation,Video-Assessment", 
-	//created_at 	: { type: Date },
-	//updated_at 	: { type: Date, default: Date.now },
+	tags : ["E-Assessment","Tests","Video-Annotation","Video-Assessment"],
   slides : true,
 	phases: [
     		{ 
     			title: "Phase 1",
     			instruction: "Legen Sie dies und das an",
+    			supplements: "themenblock",
     			seq : 0,
     			groupindex: 0, 
     			widgets: [ 
     				{ name: 'toc', 
 		  		 		canBeAnnotated:true, 
-		  		 		options: {
+		  		 		widget_options: [{
 								hasTimelineMarker: true, 
 								timelineSelector : '.vi2-timeline-main',
 								hasMenu : true,
@@ -42,11 +53,11 @@ var templateA = {
 								allowEditing : true,
 								allowCreation : true,
 								path: '/static/img/user-icons/'
-							} 
+							}] 
 						},
 						{ name: 'comments', 
 							canBeAnnotated:true, 
-		  		 		options: {
+		  		 		widget_options: [{
 		  		 			hasTimelineMarker: true,
 		  		 			timelineSelector : '.vi2-timeline-bottom', 
 								hasMenu : true,
@@ -55,7 +66,29 @@ var templateA = {
 								allowEditing : true,
 								allowCreation : true, 
 								path: '/static/img/user-icons/'
-		  		 		}
+		  		 		}]
+		  		 	}
+    			]	
+    		}, // phase 2
+    		{ 
+    			title: "Phase 2",
+    			instruction: "Machen Sie mal was",
+    			supplements: "This and that",
+    			seq : 0,
+    			groupindex: 0, 
+    			widgets: [ 
+    				{ name: 'comments', 
+							canBeAnnotated:true, 
+		  		 		widget_options: [{
+		  		 			hasTimelineMarker: true,
+		  		 			timelineSelector : '.vi2-timeline-bottom', 
+								hasMenu : true,
+								menuSelector: '#comments',
+								allowReplies : true, // tipical for comments
+								allowEditing : true,
+								allowCreation : true, 
+								path: '/static/img/user-icons/'
+		  		 		}]
 		  		 	}
     			]	
     		}
@@ -63,27 +96,27 @@ var templateA = {
 }
 
 
-templateA.updated_at = Date.now();
-templateA.created_at = Date.now();
-Template.insert(templateA, {safe:true}, function(err, result) {
-	  	if(err){
-    		console.log(err)
-    	}else{
-    		console.log("added template for a script");
-    	}
-    });
+//
+var t = new Date();
+templateA.created_at = t.getTime();
+templateA.updated_at = t.getTime();
 
-    
+
+      
  /*
  	* List all Templates
+ 	* status: finished
  	**/
- 	 exports.getTemplates = function(req, res) { 
-		Templates.find({}).lean().exec(function (err, templates) {
+ 	 exports.renderTemplates = function(req, res) { 
+		Templates.find({}).exec(function (err, templates) {
 			if(err){ 
 				console.log(err); 
-			}else{
-				res.type('application/json');
-				res.jsonp(templates);
+			}else{ console.log(templates)
+				res.render( 'admin/scripts-template-index', {
+					items : templates
+				});
+				//res.type('application/json');
+				//res.jsonp( templates );
 				res.end('done');
 			}	
 		});
@@ -93,24 +126,62 @@ Template.insert(templateA, {safe:true}, function(err, result) {
  /*
  	* Get Template by ID
  	**/
- 	exports.getTemplateByID = function(req, res) { 
+ 	exports.renderTemplateByID = function(req, res) { 
 		Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
 			if(err){ 
 				console.log(err); 
 			}else{
-				res.type('application/json');
-				res.jsonp(template[0]);
+				res.render( 'admin/scripts-template-edit', {
+					items : template[0]
+				});
+				//res.type('application/json');
+				//res.jsonp( template[0] );
 				res.end('done');
 			}	
 		});
 	};
 
+	
+ /*
+ 	* Duplicates a Template
+ 	**/
+	exports.duplicateTemplateByID = function(req, res) {
+		Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
+			if(err){ 
+				console.log(err); 
+			}else{
+				var template2 = template;//clone(template);
+				template2[0].title = template2[0].title + '-' + Math.floor(Math.random()*100);
+				delete template2[0]["_id"];
+				new Templates( template2[0] )
+					.save( function( err, newtemplate, count ){
+						if(err){ console.log(err); }
+						console.log( 'Duplicated Script Template ' + newtemplate.title )
+						res.redirect( '/admin/scripts/templates' );
+					});
+				
+			}	
+		});
+	}	
+
 
  	/*
  	* Add new Template
  	**/
-	exports.addTemplate = function(req, res) {
-	
+	exports.addTemplate = function(req, res) { 
+		Templates.remove(function(err, o){
+    	if(err){
+    		console.log(err)
+    	}else{
+    	
+    	new Templates( templateA )
+			.save( function( err, template, count ){
+				console.log( 'eeeeeee '+template.title )
+				//res.redirect( '/temp' );
+				//res.end();
+			});
+			
+			}})
 	}
 
 
@@ -123,14 +194,62 @@ Template.insert(templateA, {safe:true}, function(err, result) {
 	
 	
 	/*
- 	* Remove Template
+ 	* Removes a Template
  	**/
-	exports.removeTemplate = function(req, res) {
-	
+	exports.removeTemplateByID = function(req, res) {
+  	Templates.findById( req.params.id, function ( err, template ){
+		  template.remove( function ( err, template ){
+		    res.redirect( '/admin/scripts/templates' );
+		    res.end('done');
+		 	});
+		});
 	}
 	
 
 
+/*************************************************/
+/* SCRIPT MODELING*/
+
+exports.getScriptInfo = function ( req, res ){ // xxx editor
+	Scripts.find({}).exec( function ( err, scripts ){
+		Groups.find({}).exec( function( err, groups){
+			Videos.find({}).select('id metadata video').exec( function( err, videos ){
+				if(err){ 
+					console.log(err); 
+				}else{
+					res.type('application/json');
+					res.jsonp( {
+						scripts : scripts,
+						groups : groups,
+						videos:	videos
+					});
+					res.end('done');
+				}	
+			}); // end video
+		});// end group
+	});//end script	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************/
+/* STATIC SCRIPT */
 
  /*
  
@@ -715,5 +834,27 @@ var j = schedule.scheduleJob(date, function(){
 //var jj = schedule.scheduleJob(rule, function(){
 //    console.log('The answer to life, the universe, and everything!');
 //});
+
+
+
+/*************************************+/
+/* UTILS */
+
+// util to clone an object	
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
+
+
+
+
+
+
+
 
 

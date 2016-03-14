@@ -1,0 +1,225 @@
+<% layout( '../admin-layout' ) -%>
+
+
+<div class="col-md-10">
+<h2>Add New Video File</h2>
+<br>
+
+<script>
+/*
+todo:
+- handle pasted external ressources inc. duration, size, ..., different formats (?)
+- start processing to generate different file types, 
+*/
+$(document).ready(function() {
+	$('#save-btn').prop('disabled', true);
+	var frm = $('#uploadForm');
+	function progress(e){
+	  if(e.lengthComputable){
+		  var max = e.total;
+		  var current = e.loaded;
+
+		  var Percentage = (current * 100)/max;
+		  $("#status").empty().text('Uploaded '+Percentage.toFixed(0)+' %');
+
+			if(Percentage >= 100)
+		  {
+		     $('#save-btn').prop('disabled', false);
+		  }
+	 	}  
+	}
+	frm.submit(function(e) {
+		$.ajax({
+			type: frm.attr('method'),
+			 url: frm.attr('action'),
+			data: new FormData( this ),
+			xhr: function() {
+				var myXhr = $.ajaxSettings.xhr();
+				if(myXhr.upload){
+				    myXhr.upload.addEventListener('progress',progress, false);
+				}
+				return myXhr;
+			},
+			cache:false,
+			processData: false,
+			contentType: false,
+			error: function(xhr) {
+				status('Error: ' + JSON.sringify(xhr.status));
+			},
+			success: function(res) { 
+				res =  JSON.parse(res);
+				//$("#status").empty().html('<a href="/static/uploads/'+res.file.filename+'">uploaded '+ res.file.filename +'</a>' );
+				var video = $('<video id="preview" width="100%" controls><source src="/static/uploads/'+ res.file.filename +'" type="'+ res.file.mimetype +'"/></video>');
+				$('#res').html(video);
+				var vid = document.getElementById("preview");
+				vid.ondurationchange = function() {
+    			$('form#metadataForm [name="length"]').val( vid.duration ); 
+				};
+				$('form#metadataForm [name="video"]').val('/static/uploads/'+res.file.filename);
+				$('form#metadataForm [name="mimetype"]').val( res.file.mimetype );
+				$('form#metadataForm [name="format"]').val( res.file.mimetype );
+				$('form#metadataForm [name="size"]').val( res.file.size ); 
+				
+				//$('<img src="/static/uploads/'+ res.file.filename +'" />').appendTo('#res');
+			}
+		});
+		return false;
+	});
+	
+	/**/
+	var frmMeta = $('#metadataForm');
+	frmMeta.submit(function(e) {
+		$.ajax({
+			type: frmMeta.attr('method'),
+			 url: frmMeta.attr('action'),
+			data: $(this).serialize(),//new FormData( this ),
+			//cache:false,
+			processData: false,
+			contentType: 'json',
+			error: function(xhr) {
+				console.log(xhr)
+			},
+			success: function(res) { alert(res)
+				// redirect 
+				render('admin-video-files', '/json/admin/video-instances', true, '.admin-panel');
+			}
+		});
+		return false;
+	});       
+});
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+
+
+<div class="row">
+	<div class="col-md-4">
+		<form id="uploadForm"
+				 enctype="multipart/form-data"
+				 action="/admin/videos/upload"
+				 method="POST">
+			<input class="btn btn-default" type="file" name="uservideo" />
+			<br>
+			<input class="btn btn-default" type="submit" value="Upload Video" name="submit" />
+			<span id="status"></span>
+		</form><br>
+		<div id="res"></div>
+	</div>
+	<div class="col-md-8 edit-form">
+    <form 
+    	id="metadataForm" 
+    	action="/admin/videos/create-file" 
+    	method="POST" 
+    	accept-charset="utf-8" 
+    	enctype="multipart/form-data">
+		<div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Title</span>
+			<input type="text" class="form-control" placeholder="title" aria-describedby="sizing-addon1" name="title" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Video URL</span>
+			<input id="url" type="text" class="form-control" placeholder="video" aria-describedby="sizing-addon1" name="video" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Creator</span>
+			<input type="text" class="form-control" placeholder="creator" aria-describedby="sizing-addon1" name="creator" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Publisher</span>
+			<input type="text" class="form-control" placeholder="publisher" aria-describedby="sizing-addon1" name="publisher" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Contributor</span>
+			<input type="text" class="form-control" placeholder="contributor" aria-describedby="sizing-addon1" name="contributor" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Institution</span>
+			<input type="text" class="form-control" placeholder="institution" aria-describedby="sizing-addon1" name="institution" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Description</strong></span>
+			<textarea class="form-control" rows="4" id="" name="description"></textarea>
+    </div>
+     <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Subject</strong></span>
+			<input type="text" class="form-control" placeholder="subject" aria-describedby="sizing-addon1" name="subject" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Coverage</strong></span>
+			<input type="text" class="form-control" placeholder="coverage" aria-describedby="sizing-addon1" name="coverage" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Source</strong></span>
+			<input type="text" class="form-control" placeholder="source" aria-describedby="sizing-addon1" name="source" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Rights</strong></span>
+			<input type="text" class="form-control" placeholder="rights" aria-describedby="sizing-addon1" name="rights" value="">
+    </div>
+    <br>
+     <div class="form">
+			<span class="" id="sizing-addon1"><strong>License</strong></span>
+			<select name="license">
+				<option value="cc-by">Creative Commons - attribution (cc-by)</option>
+				<option value="pd">Public Domain (pd)</option>
+				<option value="cr">Copy Right Restricted</option>
+			</select>
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Date</strong></span>
+			<input type="text" class="form-control" placeholder="date" aria-describedby="sizing-addon1" name="date" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Language</strong></span>
+			<input type="text" class="form-control" placeholder="language" aria-describedby="sizing-addon1" name="language" value="">
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Relation</strong></span>
+			<input type="text" class="form-control" placeholder="relation" aria-describedby="sizing-addon1" name="relation" value="">
+    </div> 
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Category</span>
+			<input type="text" class="form-control" placeholder="category" aria-describedby="sizing-addon1" name="category" value="">
+    </div>
+    <br>
+    <div class="input-group input-group-xs">
+			<span class="input-group-addon" id="sizing-addon1">Tags</span>
+			<input type="text" class="form-control" placeholder="tags1, tags2, ..." aria-describedby="sizing-addon1" name="tags" value="">
+    </div>
+    <% id = Math.random()*9999 %>
+    <input type="input" name="mimetype" value="" />
+    <input type="input" name="format" value="" />
+    <input type="input" name="length" value="0" />
+    <input type="input" name="type" value="video" />
+    <input type="input" name="size" value="0" />
+    <br><br>
+    <div class="buttons">
+      <button id="save-btn" class="btn btn-primary" type="submit">save</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
+    </div>
+  </form>
+</div>
+</div>
+
+   	<!--
+	thumbnail 	: String, // url
+
+   	-->
+
+
+
+ 
+

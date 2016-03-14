@@ -2,8 +2,9 @@
 var 
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
-	Groups  = mongoose.model( 'Groups' )
-	Users  = mongoose.model( 'Users' )
+	Groups  = mongoose.model( 'Groups' ),
+	Users  = mongoose.model( 'Users' ),
+	Log  = mongoose.model( 'Log' ),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -65,6 +66,68 @@ exports.csvImport = function ( req, res ){
 	}); // end remove
 };
 
+
+
+
+
+/**
+	* @todo need to distinguish the groups per phase
+	* log per current group
+	* log per group over all phases, if group constellation does not change
+	*/
+	exports.getGroupActivityLog = function(req, res) { // users.authCallback(['editor']), xxx
+		if (req.user !== undefined ) {
+		  // get current script phase
+		  Scripts.find().select('current_phase').exec(function(err, script) {
+		  	var phase = script[0].current_phase; 
+		  	// get group of current user // req.user.username
+			  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){
+			  	var group = groups[0].groups[Number(phase)]; 
+			  	var query = {};
+					query['groups.'+phase] = group;
+					// gext users of group 
+					Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
+			  		query=[];
+			  		for(var i=0; i <users.length; i++){
+			  			query.push( users[i].id );
+			  		}
+			  		Log
+		  				.find( { user: { $in: query }, 'action.action': 'added-new-annotation' } )
+		  				.select('action utc user')
+		  				.sort( 'utc' )
+		  				.exec(function (err, logs) {
+							if(err){ 
+								console.log(err); 
+							}else{
+								res.type('application/json');
+								res.jsonp( logs );
+								res.end('done');
+							}	
+						});
+			  	});
+		  	});
+		  });
+		}else {
+		  res.type('application/json');
+		  res.jsonp({user:false, msg:'you are not logged in'});
+		  res.end();
+		}
+} // end function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 Group formation
 status: unfinished
@@ -74,7 +137,7 @@ status: unfinished
 - formGroups per Phase ... consider merging or splitting groups
 - save groups
 **/
-exports.formGroups = function ( req, res ){
+exports.renderGroupFormation = function ( req, res ){
 	Users.find().exec( function ( err, users ){
 		if(err){ 
 			console.log(err);
@@ -127,8 +190,9 @@ exports.formGroups = function ( req, res ){
 					 // Kohnert2013
 			} 
 			// save Groups
-			res.type('application/json');
-			res.jsonp(groups);
+			//res.type('application/json');
+			res.render('admin/users-groups-formation', {items: groups });
+			res.end()
 		}
 	});
 }
@@ -143,6 +207,7 @@ shuffle = function (array) {
 	}
 	return array;
 }
+
 
 /**************/
 splitGroups = function(){}
@@ -215,7 +280,19 @@ optimizer = function(){}
 
 
 
-
+/*
+ * Renders a list of all groups in the admin area
+ **/
+exports.renderIndex = function(req, res) {
+  Groups.find().sort( 'id' ).lean().exec(function (err, items) {
+	  if(err){ 
+			console.log(err); 
+		}else{
+			res.render('admin/users-groups', {items: items}); 
+			res.end('done');
+		}	 
+  });
+};
 
 
 /*

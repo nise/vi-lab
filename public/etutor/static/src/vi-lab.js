@@ -216,7 +216,7 @@ var ViLab = $.inherit({
 	 	_this.observer.init(seek);	 
 		
 		metadataa = new Vi2.Metadata( { metatags: true, render: false } );  
-		_this.addEdit_btn(); 
+		//_this.addEdit_btn(); 
 		_this.observer.addWidget(_this.viLog); 	 
 		//$('#screen').empty();
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
@@ -570,35 +570,8 @@ INPUT:
 		
 		return arr;
   },  	
-	
-	
-  /** 
-  * Call popcorn-maker by pressing an edit button 
-  */
-  addEdit_btn : function(){
-  	var _this = this;
-    var popcorn_url = this.server_url +'/static/js/popcorn-maker/index.html';
-		var title = $('.entry-title').text();
-		var dialog = $("#dialog");
-		
-    // call popcorn
-    $('<a></a>')
-			.text('edit')
-			.addClass('edit-videolab')
-			.button()
-			.click(function(e){ 
-				vi2.observer.log('[call:open_popcorn]');
-				$("#dialog").empty();
-				var frame = $('<iframe></iframe>')	
-					.attr('src', popcorn_url)// + '?post_id=' + _this.post_id + '&title=' + title)
-					.attr('height', '100%')
-					.attr('width', '100%'); 
-				dialog.append(frame).dialog({height: '650', width: '1000', modal:true, position:['100','40'], zIndex:200000 ,title: title});	
-			})
-		//.appendTo('.meta-desc');
-	},
-	
-	
+
+
 	/* ... */
 	getWidgets : function(){
 		

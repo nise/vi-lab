@@ -1,0 +1,113 @@
+
+
+<!--
+{
+        "date": "1446407445634",
+        "author": "21",
+        "time": "391.988705",
+        "start": "391.988705",
+        "starttime": "391.988705",
+        "title": {
+          "type": "mc",
+          "checked": [
+            "answ69"
+          ],
+          "correct": [
+            "answ69"
+          ],
+          "answ": [
+            {
+              "questiontype": "mc",
+              "answ": "Da eine Bildübertragen vor vielen Jahren noch nicht möglich war",
+              "id": "answ69"
+            },
+            {
+              "questiontype": "mc",
+              "answ": "Da die Benutzer keine Namen haben",
+              "id": "answ24"
+            }
+          ],
+          "date": "1446407445622",
+          "question": "Wieso wird Computervermittelte Kommunikation häufig als anonym beschrieben?"
+        },
+        "type": "assessment"
+      },
+      {
+        "date": "1446409285709",
+        "author": "21",
+        "time": "826.014715",
+        "start": "826.014715",
+        "starttime": "826.014715",
+        "title": {
+          "answ": [
+            {
+              "questiontype": "fi",
+              "answ": "- Gruppenvertrag/ Gesprächsregeln\n- Selbstreflektierung in der Gruppe"
+            }
+          ],
+          "date": "1446409285698",
+          "question": "Was sind geeignete Gegenmaßnahmen gegen das Flaming?"
+        },
+        "type": "assessment"
+      },
+-->
+
+<script>
+$(".down").click(function () {
+    var $parent = $(this).parents(".leg");
+    $parent.insertAfter($parent.next()); 
+});
+
+$(".up").click(function () {
+    var $parent = $(this).parents(".leg");
+    $parent.insertBefore($parent.prev()); 
+});
+</script>
+
+
+<div class="jumbotron">
+	<div class="container">
+		<h2>Gruppenbeiträge</h2>
+	</div>
+</div> 
+
+<div class="container">
+	<div class="row">
+	<% if ( items.length > 0) { %>
+		<% items.forEach(function(item){  %>
+			<div class="col-sm-10 col-md-10" style="">
+				<h3><a href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h3>
+				<div>
+				<% item.assessment.forEach(function(q){  %>
+					<% if ( q.type === 'assessment' ) { %>
+						<!--<%- JSON.stringify(q) %>-->
+						<div class="leg">
+							<div class="up glyphicon glyphicon-arrow-up"></div>
+							<div class="down glyphicon glyphicon-arrow-down"></div>
+							<strong><%= q.title.question %></strong>
+							<% if ( q.title.type === 'mc' ) { %>
+								<ul>
+								<% q.title.answ.forEach(function(a){  %>
+									<li><%= a.answ %></li>
+								<% }); %>
+								</ul>
+							<% }else{ %>
+								<br>(Freitextaufgabe)
+							<% } %>
+							<br><br>					
+							</div>
+							<% } %>
+					<% }); %>
+					
+				</div>
+			</div>
+			<% }); %>
+		<% }else{ %>
+			<div class="col-sm-10 col-md-10 mark" style="min-height:800px;">
+			Derzeit sind noch keine Videos verfügbar. 
+			</div>
+		<% } %>	
+	</div>
+</div>
+
+

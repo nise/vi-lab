@@ -1,0 +1,170 @@
+<% layout( '../admin-layout' ) -%>
+
+
+<div class="col-md-10">
+<h2>Group Formation</h2>
+	
+	<span class="mark">**Choose a group formation algorithm:**</span>
+	<form id="group-form">
+	<div>
+	<input type="radio" name="form-algo" value="method1" aria-label="Distribute the selected users to n groups as they are.">
+	<span>Distribute the selected users to n groups as they are.</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method2" aria-label="Randomly distribute the selected users to n groups.">
+	<span>Randomly distribute the selected users to n groups.</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method3" aria-label="Distribute users in groups of n people as they are.">
+	<span>Distribute users in groups of n people as they are.</span>
+	</div>		
+	
+	<div>
+	<input type="radio" name="form-algo" value="method4" aria-label="Randomly distribute users in groups of n people.">
+	<span>Randomly distribute users in groups of n people.</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method5" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.</span>
+	</div>
+	<!--
+	Users gets an additional array with properties, such as 'nationality', 'gender', 'university', 'course', ...
+	This properties will be listed here. For each of them can be ignored or considered as homogeneous or heterogeneous criteria.
+	-->		
+	
+	<br>		 
+	<div class="input-group input-group-xs">
+  <span class="input-group-addon" id="n">Group size / number of groups</span>
+  <input type="text" class="form-control" id="number" placeholder="n" aria-describedby="sizing-addon3">
+	</div>
+	
+	<div>
+	<input disabled type="checkbox" checked value="limit" aria-label="Consider n as an strict upper limit.">
+	<span>Consider n as an strict upper limit.</span>
+	</div>
+	
+	<a class="button" href="#" data-toggle="collapse" data-target="#userPanel" aria-expanded="false" aria-controls="collapseExample">Select users</a>
+	<table class="xtable collapse" id="userPanel">
+		<thead>
+			<th></th><th></th>
+			<th>user name</th>
+			<th>surename</th>
+			<th>given name</th>
+			<th>role</th>
+			<th>groups</th>
+		</thead>
+		<tbody>
+			<% if (items.length) { %>
+			<% i=0 %>	
+				<% items.forEach(function(item){ i++ %>
+					<tr class="meta" num="e<%= i %>">
+						<td><input type="checkbox" name="selected-users" checked value="<%= item.id %>" aria-label="Select user <%=: item.username %>"></td>
+						<td><img width="15" src="/static/img/user-icons/user-<%= item.id %>.png" /></td> 
+						<td><%= item.username %></td>
+						<td><%=: item.name %></td>
+						<td><%= item.firstname %></td>
+						<td><%=: item.role %></td>
+						<td><%= item.groups %></td>
+				</tr>
+				 <% }) %>
+		 	<% } %>
+		</tbody>
+	</table>		
+	
+	<br>
+	<button class="btn-xs btn-default">Preview group formation</button>
+	</form>	 
+		 
+	<div class="formed-groups mark"></div>	
+
+	<table hidden class="xtable">
+	<thead>
+		<th>Titel</th>
+		<th>Annotations</th>
+		<th>Modified</th>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>		 
+
+</div>
+
+
+<script>
+
+$(document).ready (function () { 
+	$('.mark').each(function(i, val){
+		$(val).html(markdown.toHTML($(val).text()))
+	});
+
+	$("input[name=form-algo]").on("change", function () {
+    if(this.value == 'method1' || this.value == 'method2'){
+    	$('#n').text('Number of groups');
+    }else if (this.value == 'method5'){
+    	
+    }else{
+    	$('#n').text('Group size');
+    }
+	});
+	
+	$('#group-form').submit(function( event ) {
+		var number = $("#number").val();
+		if(number == undefined){
+			console.log('no number');
+			return;
+		}
+		$('.collapse').hide();
+		var arr = [];
+		$("input[name='selected-users']").not(':checked').each(function(i, val){
+			arr.push(val);
+		});
+		//alert(JSON.stringify(arr));
+  	getGroupFormation( $("input[name='form-algo']:checked").val(), number, arr );
+  	event.preventDefault();
+	});
+
+});
+
+
+var the_group_formation = [];
+
+/*
+
+**/
+function getGroupFormation(method, n, excludedUsers){
+	$('.formed-groups').html('');
+	$.ajax({
+		type: "GET",
+		url: '/json/group-formation',
+		data: { "group_algorithm_val": n, "group_algorithm": method, "excluded_users": excludedUsers},
+		success: function(groups){
+			the_group_formation = groups; 
+			$.each(groups, function(i, group){
+				$('.formed-groups').append('\n\n **Group '+ (i+1) +'** ('+ groups[i].length +') \n');
+				 $.each(groups[i], function(j, user){
+				 	$('.formed-groups').append('\n * '+user.username+'');
+				 });
+				//$('#tbody').append('<tr><td>'+group+'</td></tr>')
+			});
+			// render results
+			$('.mark').each(function(i, val){
+					$(val).html(markdown.toHTML($(val).text()))
+			});
+		}	
+	});
+}
+
+/*
+save group formation to the users
+**/
+function saveGroupFormation(phase){
+	// save groups
+	
+	// update users
+	
+}
+
+</script>	

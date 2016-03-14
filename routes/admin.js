@@ -5,15 +5,43 @@ var
 	Users  = mongoose.model( 'Users' )
 	;
 
-exports.index = function ( req, res ){ 
 
-	res.render( 'admin-index', {
-	  title : 'Express Videos Example',
-	  //items : items
-	});
+/*
+ * Renders a introductory page
+ **/
+exports.renderIndex = function ( req, res ){ 
+	res.render( 'admin/index', { });
 	res.end('done');
 };
 
+
+/*
+ * Renders a dashboard
+ **/
+exports.renderDashboard = function(req, res) {
+  res.render('admin/dashboard', {}); 
+	res.end('done');
+};
+
+
+/*
+ * Renders Comments as an Learning Result
+ **/
+exports.renderResultsComments = function(req, res) {
+  res.render('admin/results-comments', {}); 
+	res.end('done');
+};
+
+/*
+ * Renders Peer Assessment as an Learning Result
+ **/
+exports.renderResultsPeerAssessment = function(req, res) {
+  res.render('admin/results-peer-assessment', {}); 
+	res.end('done');
+};
+
+
+/*
 exports.getVideos = function ( req, res ){ 
   Videos
 		.find()
@@ -36,4 +64,4 @@ exports.getUsers = function ( req, res ){
 			});
 		});
 };
-
+*/

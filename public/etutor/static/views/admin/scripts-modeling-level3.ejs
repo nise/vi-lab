@@ -1,0 +1,181 @@
+<% layout( '../admin-layout' ) -%>
+
+<h2>Script</h2>
+
+<h3>Overview</h3>
+<label>Name:</label> <span class="xeditable" id="scriptname" data-type="text" data-pk="1" data-url="" data-title="Name of the script"></span>
+<br>
+<label>Description:</label> <span class="xeditable" id="scriptdesc" data-placement="bottom" data-type="textarea" data-pk="1" data-url="" data-title="Description of the script">hello</span>
+<br>
+<label>Tags:</label> <a href="#" class="xeditable" id="scripttags" data-type="text" data-pk="1" data-url="" data-title="Tags">hello</a>
+<br>
+<label>Created at:</label>
+<br>
+<label>Updated at:</label>
+<br>	
+  slides : Boolean,
+<br>
+<label>Phases:</label>
+<br>
+    			title: String,
+    			instruction: String,
+    			seq : Number,
+    			groupindex: Number, 
+    			widgets: [ 
+    				{ name: [String], widget_options: [Schema.Types.Mixed], accordion: [Boolean], annotate:[Boolean] }
+    			]	
+
+
+<!-- Details-->
+<h3>Group Access to Video Instances</h3>
+
+<span id="status"></span>
+<span class="btn btn-default btn-xs" id="add-instance">add new Video instance</span>
+<span class="btn btn-default btn-xs" id="add-group">add new Group</span>
+<br/><br/>
+
+<table class="script-table" id="table1"></table>
+
+<script> 
+/*
+	*
+	* @todo
+	* viz-annotations per video
+	* edit annotations per video
+	* apply settings per row/group and column/instance
+	* sort groups
+	* select phases
+	* add/remove phases
+	* group-hover: group-members
+	* save/reset/undo results
+	* what happens if there are no groups or no video instances?
+	**/
+	$.fn.editable.defaults.mode = 'popup'; // inline
+$(document).ready(function() {
+    $('.xeditable').editable();
+    //$('#scripttags').select2();
+});
+
+var phase = 1, data = {}, val = {}, tab = '#table1', tab_cell, tab_row, tab_head;
+	
+$('#add-instance').click(function(){
+	buildNewColumn();
+});	
+
+$('#add-group').click(function(){
+	buildNewRow();
+});
+
+
+		jQuery.ajax({
+      type: "get",
+      beforeSend: function(xhr){
+      	$('#status').text('loading ...'); 
+  				if (xhr.overrideMimeType){
+				    xhr.overrideMimeType("application/json");
+  				}
+			},
+      url: '/json/admin/script-info',
+      dataType: 'json',
+      success: function(the_data){
+      	$('#status').text('');
+      	data = the_data 
+      	var arr2 = [];
+      	// column header
+    		tab_head = $('<thead></thead>')
+    			.append( $('<td></td>').text( 'Video Instances') )
+    			.appendTo( tab )
+    			;
+    		for(var j = 0; j < data.videos.length; j++){	
+    			tab_cell = $('<td></td>')
+    				.text( data.videos[j].id )
+    				.addClass('xeditable')
+      			.data('type', 'text')
+      			.data('id', data.videos[j].id)
+      			.data('pk', data.videos[j].id)
+    				.appendTo( tab_head );
+    		}
+    		// rows
+      	for(var i = 0; i < data.groups.length; i++){
+      		arr2[i] = [];
+      		// first column
+      		var row_label = $('<td></td>')
+      			.text( 'Group '+data.groups[i].id )
+      			.addClass('xeditable')
+      			.data('type', 'text')
+      			.data('id', data.groups[i].id)
+      			.data('pk', 1)
+      			;	
+      		tab_row = $('<tr></tr>')
+      			.append( row_label );
+      		// cells
+      		for(var j = 0; j < data.videos.length; j++){
+      			var tab_cell = getEmptyCell();
+						tab_cell.appendTo( tab_row );
+							
+      			if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
+      				tab_cell
+      					.html( buildCell( tab_cell, data.videos[j] ) )
+      					.addClass('visible-cell')
+      					;
+      			}
+      		}
+      		$(tab).append( tab_row );
+      		
+      	}
+      	 $('.xeditable').editable();
+				//alert( JSON.stringify(arr2) )
+			},
+			error : function(e) {
+				alert(JSON.stringify(e))
+			}
+		}); // end ajax
+
+/*
+**/
+function buildNewColumn(){
+	//var c = $(tab + " tr:first td").length -1;
+	$(tab + " thead").append("<td>l</td>");
+	$(tab + " tr").append( getEmptyCell() );
+}
+
+/*
+**/
+function buildNewRow(){
+
+	var row = $('<tr></tr>').appendTo(tab);
+	for(var i = 0; i < $(tab + ' tr:first td').length; i++){
+    	row.append( getEmptyCell() );
+  }     
+}
+
+/*
+**/
+function getEmptyCell(){
+	var ch = $('<input type="checkbox" value="1" />')
+	return $("<td></td>").append( ch );
+}
+
+/*
+**/
+function buildCell( cell, video ){
+	$(cell).click(function(){
+		alert(2)
+	});
+	return video.id;	
+}
+
+
+/*
+**/
+function getVideoOfId(id){ 
+	for(var i = 0; i < arr.length; i++){ 
+		if( Number(arr[i].id) === Number(id) ){
+			return arr[i]; 
+		}
+	}
+	return { empty:true };
+}
+
+		
+</script>

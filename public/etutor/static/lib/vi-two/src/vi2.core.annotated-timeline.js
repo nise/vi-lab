@@ -264,7 +264,8 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 				if( _this.options[ type ].markerIsClickable ){	
 					sp.bind('click', function(event){ 
 							vi2.observer.player.currentTime( val.occ[0] );
-							vi2.observer.log( {context:type,action:'timeline-link-click',values:[val.name,val.author,val.occ[0]]});
+							// xxx bug for type === assessment !!! todo
+							vi2.observer.log( {context:type, action:'timeline-link-click',values:[val.name,val.author,val.occ[0]]});
 					});
 				}
  				timeline.append(sp); // val.title

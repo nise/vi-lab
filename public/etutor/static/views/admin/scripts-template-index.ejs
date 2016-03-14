@@ -1,0 +1,49 @@
+<% layout( '../admin-layout' ) -%>
+
+
+
+<h2>Script Templates</h2>
+	<table class="xtable">
+	<thead>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Phases</th>
+		<th>Actions</th>
+		<th>Created</th>
+		<th>Updated</th>
+	</thead>
+	<tbody>
+		<% if ( items.length) { %>
+			<% i = 0 %>
+			<% items.forEach(function(item){ i++  %>
+				<tr class="meta" num="e<%= i %>">
+					<td><a href="/admin/scripts/templates/edit/<%= item._id %>"><%= item.title %></a>
+					</td>
+					<td><%= item.description %></td>
+					<td><%= item.phases.length %></td>
+					<td>
+						<a href="/admin/scripts/templates/duplicate/<%= item._id %>">duplicate</a>
+					</td>
+					<td class="date"><%= item.created_at %></td>
+					<td class="date"><%= item.updated_at %></td>
+			<% }) %>
+			<% }%>		
+			</tr>
+		</tbody>
+	</table>
+
+<script>
+$(document).ready(function() {
+	moment.locale('en');
+	$('.date').each(function(i, val){ //alert($(this).text()) 
+		var d = new Date( parseInt($(this).text()) )
+		var month = d.getMonth()+1;
+		if(month < 10){
+			month = '0'+month;
+		}
+		var t =  moment( d.getFullYear()+''+month+''+d.getDate(), "YYYYMMDD").fromNow(); 
+		$(this).html( t );
+	});
+});	
+</script>
+

@@ -1,0 +1,157 @@
+<% layout( '../admin-layout' ) -%>
+
+<h2>Peer Assessment Tasks</h2>
+<span id="status">loading ...</span>
+<table id="table1"></table>
+
+<div id="stats"></div>
+
+
+<script>
+//window.onload = function () {
+		var res = {}, video = {}, tmp = {}, ass = {}, flat = [], s='';
+		jQuery.ajax({
+      type: "get",
+      beforeSend: function(xhr){ 
+  				if (xhr.overrideMimeType){
+				    xhr.overrideMimeType("application/json");
+  				}
+			},
+      url: '/json/stats/assessment',
+      dataType: 'json',
+      success: function(data){ 
+      	res = [];
+				for(var i=0; i<data.videos.length; i++){
+				
+					if( data.videos[i].assessment !== null ){
+						for(var j=0; j<data.videos[i].assessment.length; j++){
+							tmp = data.videos[i].assessment[j];
+							ass = {
+								author: tmp.author,
+								question: tmp.title.question,
+								type: tmp.title.answ[0].questiontype,
+								start:  Number(tmp.start).toFixed(2)
+							}
+							if( ass.type === 'fi'){
+								ass.fi_attr = tmp.title.answ[0].answ.length
+							}else if( ass.type === 'mc'){
+								ass.mc_attr = ''+tmp.title.correct.length+'/'+tmp.title.answ.length
+							}// end questions
+							// flat
+							var meta = data.videos[i].metadata[0];
+							ass.video_id = data.videos[i].id;
+							ass.video_title = meta.title;
+							ass.video_duration = meta.duration;
+							ass.video_tags = ( meta.tags ).toString();
+							ass.video_category = meta.category;
+							ass.video_author = meta.author;
+							var file = ( data.videos[i].video ).split('/');
+							ass.video_file = file[ file.length - 1 ];
+							ass.edits = 0;
+							ass.clicks = 0;
+							ass.submits = 0;
+							ass.results = 0;
+							flat.push( ass )
+						}// end ass
+					}	
+				}// end video
+				
+				// match questions with log activities
+				s='';
+				for(var k = 0; k < flat.length; k++){
+					for(var l = 0; l < data.logs.length; l++){
+						if( Number(flat[k].start) === Number(data.logs[l].playback_time) && data.logs[l].action.context === 'assessment'){
+							switch( data.logs[l].action.action ){
+								case "open-form-new-annotation" : 
+									flat[k].edits++;
+									break;
+							}
+						}else if( data.logs[l].action.context === 'assessment' ){
+							s += data.logs[l].action.action + ', ';
+						}	
+					}
+				}
+			
+				// bootstrap table
+				$('#status').hide();
+				$('#table1').bootstrapTable({
+					showColumns : true,
+					checkboxHeader : true,
+				 	showExport:true,
+					exportDataType:'selected',
+					exportOptions: {
+						consoleLog: false,
+						csvEnclosure: '"',
+						csvSeparator: ',',
+						csvUseBOM: true,
+						displayTableName: false,
+						escape: false,
+						excelstyles: [ 'css','properties','to','export','to','excel' ],
+						fileName: 'tableExport',
+						htmlContent: false,
+						ignoreColumn: [],
+						ignoreRow: [],
+						onCellData: null,
+						outputMode: 'file',
+						tbodySelector: 'tr',
+						theadSelector: 'tr',
+						tableName: 'myTableName',
+						type: 'csv',
+						worksheetName: 'xlsWorksheetName'
+					},
+					// search
+					search: true,
+					strictSearch: true,
+					trimOnSearch:true,
+					columns: [
+						{ field: 'video_id', title: 'Video Id', sortable : true, order: 'asc',searchable : true },
+					 	{ field: 'video_file', title: 'File', sortable : true, order: 'asc',searchable : true },
+						{ field: 'author', title: 'Author'},
+						{ field: 'question', title: 'Question', width:'100px'},  
+						{ field: 'start', title: 'Playback Time', sortable : true, order: 'asc',searchable : true },
+						{ field: 'type', title: 'Type'},
+						{ field: 'fi_attr', title: 'fi-length'},
+						{ field: 'mc_attr', title: 'mc-options.'},
+						{ field: 'edits', title: '#edits'},
+						{ field: 'clicks', title: '#Aufrufen'},
+						{ field: 'submits', title: '#Einreichungen'},
+						{ field: 'results', title: 'Results'},
+						{ field: 'video_title', title: 'Video Title', visible:false, sortable : true, order: 'asc',searchable : true },
+						{ field: 'video_tags', title: 'Video Tags', visible:false, sortable : true, order: 'asc',searchable : true },
+						{ field: 'video_category', title: 'Video Category',visible:false, sortable : true, order: 'asc',searchable : true },
+						{ field: 'video_author', title: 'Video Author',visible:false, sortable : true, order: 'asc',searchable : true },
+				 		{ field: 'video_duration', title: 'Video Duration',visible:false, sortable : true, order: 'asc',searchable : true }
+					],
+					data: flat
+				});
+			},
+			error : function(e){ console.log('ERROR'); }		  
+		});
+//};
+
+
+JSON.flatten = function(data) {
+    var result = {};
+    function recurse (cur, prop) {
+        if (Object(cur) !== cur) {
+            result[prop] = cur;
+        } else if (Array.isArray(cur)) {
+             for(var i=0, l=cur.length; i<l; i++)
+                 recurse(cur[i], prop + "[" + i + "]");
+            if (l == 0)
+                result[prop] = [];
+        } else {
+            var isEmpty = true;
+            for (var p in cur) {
+                isEmpty = false;
+                recurse(cur[p], prop ? prop+"."+p : p);
+            }
+            if (isEmpty && prop)
+                result[prop] = {};
+        }
+    }
+    recurse(data, "");
+    return result;
+}
+
+</script>

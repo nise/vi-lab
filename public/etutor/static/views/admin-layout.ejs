@@ -17,114 +17,7 @@
 <link rel="stylesheet" href="/static/css/bootstrap-editable.css" />
 <link rel="stylesheet" href="/static/css/select2.css">
 <link rel="stylesheet" href="/static/css/select2-bootstrap.css">
-
 <link rel='stylesheet' href='/static/css/vi-lab.admin.css' id='vi-lab_cust-css' type='text/css' media='all' />
-
-</head>
-
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
-
-
-
-
-<!-- Navbar
-================================================== -->
-<header class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/admin">Vi-Lab Admin</a>
-        </div>
-        <nav class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar" >
-            	<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Dashboard</a>
-								<ul class="dropdown-menu" >
-									<li><a href="javascript:render('admin-dashboard', '/json/admin/dashboard', true, '.admin-panel');">Dashboard</a></li>
-									<li><a href="javascript:render('admin-videos-comments','', false, '.admin-panel');">sss</a></li>
-								</ul>
-							</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button">CSCL-Script</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:render('admin-scripts', '/json/scripts', false, '.admin-panel');"></a>something</li>
-								<li><a href="javascript:render('admin-script-templates','/json/script-templates', false, '.admin-panel');">Templates</a>
-								<li><a href="javascript:render('admin-script-templates-new','/json/script-templaes-new', false, '.admin-panel');">New Template</a>
-							</ul>
-						
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Videos</a>
-							<ul class="dropdown-menu">
-								<li><a  href="javascript:render('admin-videos', '/json/admin/video-files', true, '.admin-panel');">List all</a></li>
-								<li><a href="javascript:render('admin-video-stats','', false, '.admin-panel');">Playback Stats</a>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Video Instances</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:render('admin-video-instances', '/json/admin/video-instances', true, '.admin-panel');">List all</a></li>
-								<li><a href="javascript:render('admin-video-comments','', false, '.admin-panel');">Comments</a>
-								<li><a href="javascript:render('admin-video-assessment','', false, '.admin-panel');">Assessment</a>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Users</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:render('admin-users', '/json/users', true, '.admin-panel');">List all</a></li>
-								<!--<li><a href="javascript:render('admin-users-roles','/json/roles', false, '.admin-panel');">Roles/Permissions</a>
-								<li><a href="javascript:render('admin-users-import','', false, '.admin-panel');">Import CSV</a>-->
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button" >Groups</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:render('admin-groups', '/json/groups', true, '.admin-panel');">List all</a></li>
-								<!--<li><a href="javascript:render('admin-groups-new','', false, '.admin-panel');">Add new</a>-->
-								<li><a href="javascript:render('admin-groups-formation','/json/users', true, '.admin-panel');">Formation</a>
-								<!--<li><a href="javascript:render('admin-groups-import','', false, '.admin-panel');">Import CSV</a>-->
-							</ul>
-						</li>
-						
-
-						<!--<li><a href="javascript:render('admin-settings', '', true, '.admin-panel');">Settings</a></li>
-						<li><a href="javascript:render('admin-analytics', '', false, '.admin-panel');">Analytics</a></li>-->
-					
-            </ul>
-            <ul class="nav navbar-nav navbar-right" >
-            	<li class="">
-		  					<a class="" href="/home" class="" title="leave admin area"><span class="glyphicon glyphicon-arrow-right"></span></a>
-							</li>
-						</ul>	
-        </nav>
-    </div>
-</header>
-
-<!-- Container
-================================================== -->
-	<div id="page">
-		<div class="container">
-			<div class="row">
-			<% user = 4 %>
-				<% if( user != undefined ) { %>
-				
-				<% } %>
-				<div class="col-md-12 admin-panel">
-					<div style="overflow:visible;">
-						<%- body %>
-					</div>
-					
-				</div>
-				
-		</div>
-	</div><!-- end row -->
-</div><!-- end container -->	
-
-</div><!-- end page -->	
 
 <!-- **********************************************-->
 <script src="/static/lib/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -191,6 +84,11 @@
 <script type='text/javascript' src="/static/lib/jquery-image-loader.js"></script>
 
 
+<link rel="stylesheet" href="/static/lib/wysihtml5/bootstrap-wysihtml5-0.0.2.css" />
+<script src="/static/lib/wysihtml5/wysihtml5-0.3.0.min.js" />
+<script src="/static/lib/wysihtml5/bootstrap-wysihtml5-0.0.2.min.js" />
+<script src="/static/lib/wysihtml5/wysihtml5.js" />
+
 
 <!--<script type='text/javascript' src='/static/lib/jquery-1.5.2.js'></script>-->
 
@@ -209,10 +107,31 @@
 
 
 <script type="text/javascript"> 
- var tt = 9;
-
 var server = '';
 
+/***/
+$(document).ready(function() {
+	var 
+		path = $(location).attr('pathname').split(/\//g),
+		delimiter = ' > ',
+		link = '',
+		li = '',
+		excluded = ['edit', 'view', 'duplicate', 'edit']
+		;
+//	$('.breadcrumb').append()	
+	$.each(path, function(i, val){
+		if(i > 0 && excluded.indexOf( val ) === -1 ){ 
+			link = $('<a></a>').attr('href', '/'+path.slice(1,i+1).toString().replace(/,/g,'/') ).text( val );
+			li = $('<li></li>');
+			if( i < path.length -1 ){
+				li.append(link).addClass('active');//.append(delimiter);
+			}else{
+				li.append( val );
+			}
+			$('.breadcrumb').append(li)
+		}
+	});
+});
 
 /***/
 var render = function(template, path, remote, selector){ 
@@ -251,8 +170,9 @@ $(window).load(function () {
 	//render('scenes', true, '#page')
 	//render('persons', true, '#page')
 	
-	render('admin-scripts', '/json/scripts', false, '.admin-panel');
-
+	//render('admin-scripts', '/json/scripts', false, '.admin-panel');
+	//render('admin-script-templates','/json/script-templates', true, '.admin-panel');
+	render('admin-user-data', '/json/user-data', true, '.user-area'); 
 }); 
 
 
@@ -262,6 +182,106 @@ $(window).load(function () {
 		});
 
 </script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
+
+
+
+
+<!-- Navbar
+================================================== -->
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/admin">Vi-Lab Admin</a>
+        </div>
+        <nav class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav navbar" >
+          	<li class="dropdown">
+							<a class="dropdown-toggle" href="/admin/dashboard">Dashboard</a>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Videos</a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin/videos/instances">Video Instances</a></li>
+								<li><a href="/admin/videos/files">Video Files</a></li>
+								<li><a href="/admin/videos/files/new">Add File</a></li>
+								<!--							
+								<li><a href="javascript:render('admin-video-instances', '/json/admin/video-instances', true, '.admin-panel');">Video Instances</a></li>
+								<li><a href="javascript:render('admin-videos', '/json/admin/video-files', true, '.admin-panel');">Video Files</a></li>
+								<li><a href="javascript:render('admin-videos-new', '', false, '.admin-panel');">Add New Video</a></li>
+								-->
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Users</a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin/users">Users</a></li>
+								<li><a href="/admin/users/groups">Groups</a></li>
+								<li><a href="/admin/users/groups/formation">Group Formation</a>
+								
+								
+								<!--<li><a href="javascript:render('admin-users-roles','/json/roles', false, '.admin-panel');">Roles/Permissions</a>
+								<li><a href="javascript:render('admin-users-import','', false, '.admin-panel');">Import CSV</a>-->
+								<!--<li><a href="javascript:render('admin-groups-new','', false, '.admin-panel');">Add new</a>-->
+								<!--<li><a href="javascript:render('admin-groups-import','', false, '.admin-panel');">Import CSV</a>-->
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">CSCL-Script</a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin/scripts">Scripts</a></li>
+								<li><a href="/admin/scripts/templates">Templates</a>
+								<!--<li><a href="javascript:render('admin-script-templates-new','/json/script-templaes-new', false, '.admin-panel');">New Template</a>-->
+							</ul>
+						
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">Results</a>
+							<ul class="dropdown-menu">
+								<li><a href="/admin/results/comments">Comments</a>
+								<li><a href="/admin/results/peer-assessment">Peer Assessment</a>
+							</ul>
+						</li>
+						
+						<!--<li><a href="javascript:render('admin-settings', '', true, '.admin-panel');">Settings</a></li>
+						<li><a href="javascript:render('admin-analytics', '', false, '.admin-panel');">Analytics</a></li>-->
+					
+            </ul>
+            <ul class="nav navbar-nav navbar-right" >
+            	<li class="">
+		  					<a class="" href="/home" class="" title="leave admin area"><span class="glyphicon glyphicon-arrow-right"> </span></a>
+							</li>
+							<li><span class="user-area visible-md-block"></span></li>
+						</ul>	
+						
+        </nav>
+    </div>
+</header>
+
+
+<!-- Container
+================================================== -->
+	<div id="page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 admin-panel">
+					<ol class="breadcrumb"></ol>
+					<%- body %>
+				</div>
+			</div><!-- end row -->
+		</div><!-- end container -->	
+	</div><!-- end page -->	
+
+
 
 </body>
 </html>

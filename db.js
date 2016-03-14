@@ -6,27 +6,10 @@ var Schema   = mongoose.Schema;
  
  
 
-/*
-Media Elements
-**/
-var VideoMetadata = new Schema({
-			 author				: String,
-       institution	: String,
-       title				: String,
-       category			: String,
-       abstract			: String,
-       length				: String,
-       date					: String,
-       weight				: Number,
-       source				: String
-		});
-//mongoose.model( 'VideoMetadata', VideoMetadata );
-
-
-//
 var Videos = new Schema({
 		video		: String,
 		id				: String,
+		//file 			: VideoFile,
 		metadata 		: [{
 			 author				: String,
        institution	: String,
@@ -40,28 +23,56 @@ var Videos = new Schema({
        thumbnail 		: String,
        source				: String
 		}],
-		 
-	/*	toc					: [{
-        label				: String,
-        number			: Number,
-        start				: Number,
-        _comment		: String,
-        date				: String,
-        note				: String
-    }],*/
-    toc			: [Schema.Types.Mixed],
-		tags				: [Schema.Types.Mixed],
+    toc							: [Schema.Types.Mixed],
+		tags						: [Schema.Types.Mixed],
 		hyperlinks			: [Schema.Types.Mixed],
-		highlight		: [Schema.Types.Mixed],
-		slides			: [Schema.Types.Mixed],
-		comments		: [Schema.Types.Mixed],
-		assessment				: [Schema.Types.Mixed],
+		highlight				: [Schema.Types.Mixed],
+		slides					: [Schema.Types.Mixed],
+		comments				: [Schema.Types.Mixed],
+		assessment			: [Schema.Types.Mixed],
 		assessmentfillin		: [Schema.Types.Mixed],
 		assessmentwriting		: [Schema.Types.Mixed],
-		progress		: String,
-    updated_at 	: Date
+		progress				: String,
+    updated_at 			: Date
 });
 mongoose.model( 'Videos', Videos );
+
+
+// see dublin core: http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#
+var VideoFile = new Schema({
+// dubline core meta data set v1.1
+// identifier : Number, // = _id
+	title				: String,
+	creator			: String,
+	subject	    : String,
+	description	: String, // former abstract	
+	publisher   : String,	
+	contributor : String,
+	date				: Date, // date of creation
+	type				: String,
+	mimetype 		: String,
+	format			: Array,
+	source			: String,
+	language		: String,
+	relation    : String,
+	coverage    : String,
+	rights      : String,
+	license     : String,
+// additional technical things
+	video				: String, // url
+	length			: String,
+	size				: String, // file size
+	thumbnail 	: String, // url
+// additional semantic data	
+	institution	: String,
+	category		: String,
+	tags				: Array,
+// misc
+	weight			: Number,
+	updated_at 	: Date
+});
+mongoose.model( 'VideoFiles', VideoFile );
+
 
 
 // 
@@ -135,15 +146,27 @@ var Scripts = new Schema({
 mongoose.model( 'Scripts', Scripts );
 
 
+//
+var WidgetOptions = new Schema({
+	hasTimelineMarker: Boolean,
+	timelineSelector : String, 
+	hasMenu : Boolean,
+	menuSelector: String,
+	allowReplies : Boolean, // tipical for comments
+	allowEditing : Boolean,
+	allowCreation : Boolean, 
+	path: String
+});
+mongoose.model( 'WidgetOptions', WidgetOptions );
 
 
 // minlength: 5
 var ScriptTemplate = new Schema({
-	title : { type: String, minlength: 1 },
-	description : String,
+	title: String,
+	description: String,
 	tags : [String], 
-	created_at 	: { type: Date },
-	updated_at 	: { type: Date, default: Date.now },
+	created_at 	: { type: Number },
+	updated_at 	: { type: Number },// default: Date.now },
 	
   slides : Boolean, // ???
 
@@ -151,19 +174,23 @@ var ScriptTemplate = new Schema({
     		{ 
     			title: String,
     			instruction: String,
+    			supplements: String, 
     			seq : Number,
     			groupindex: Number, 
     			widgets: [ 
     				{ 
     					name: String, 
-    					widget_options: [Schema.Types.Mixed], 
+    					widget_options: [WidgetOptions],// [Schema.Types.Mixed], 
     					canBeAnnotated: Boolean 
     				}
     			]	
     		}
     	]
 });
-mongoose.model( 'ScriptTemplate', Scripts );
+mongoose.model( 'ScriptTemplate', ScriptTemplate );
+
+
+
 
 
 var ScriptSession = new Schema( {

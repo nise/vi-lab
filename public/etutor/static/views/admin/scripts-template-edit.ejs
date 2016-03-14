@@ -1,0 +1,267 @@
+<% layout( '../admin-layout' ) -%>
+
+
+<h2>Template: <span class="xeditable"><%= items.title %></span></h2>
+
+<!-- Phases -->
+<div class="phases">
+<% if ( items.phases) { 
+	phase_i = -1
+%>
+	<% items.phases.forEach(function( phase ){ 
+		phase_i++
+	%>
+		<% include scripts-phases %>
+	<% }) %>
+<% } %>
+</div>
+<button id="add-phase" type="button" class="btn btn-secondary right" aria-expanded="false">
+<span class="glyphicon glyphicon-plus"> </span> Add Phase
+</button>
+<br><br><br>
+<div class="buttons">
+	<button type="submit" class="btn-default btn">save changes</button>  <a href="/admin/scripts/templates">cancel</a> <a class="alert-btn" href="/admin/scripts/templates/remove/<%= items._id %>" title="Delete this Template">delete</a>
+</div>
+
+
+<script>
+
+/*
+todo
+- collected configured data
+- save data to DB
+- global widgets
+- 
+*/
+
+
+// make it editable
+$.fn.editable.defaults.mode = 'inline'; // popup
+$(document).ready(function() {
+	// make text editable inline
+	$('.xeditable').editable({
+		success: function(response, value) {
+        alert($(this).attr('id') +'__'+value)   
+   	}
+	});
+	
+	// task/supplements tabs
+	$('.nav-tabs a').click(function(){
+    $(this).tab('show');
+})
+	
+	// load widget options
+	var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
+	$.each( data, function(i, phase){
+		// fill dropdown for adding widgets
+		for (var ii = 0; ii < defaultWidgets.length; ii++){  
+			if( getExistingWidgets( phase.widgets ).indexOf(defaultWidgets[ii].name) === -1){ 
+				addWidgetDropDownItem(i, defaultWidgets[ii]);                
+			} 
+		}
+		// list available videos
+		$.get('/json/admin/video-files', function(data){ 
+			$.each(data, function(i, val){
+				$('#videos_'+i).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.contributor+')</label><br>' ) );
+			});
+		});
+		
+		// add widgets
+		$.each( phase.widgets, function(j, widget){ //alert(JSON.stringify(widget.widget_options[0]))
+			$('#widgets-'+i).prepend( buildWidget(widget, i) );
+		});		
+	});
+	
+	// add a new phase
+	$('#add-phase').click(function(){
+		require(['text!../views/admin/scripts-phases.ejs', 'ejs'], function(thetemplate) {
+			var
+				pos = $('.phases > div').length; 
+				html = ejs.render(thetemplate, {phase: {title:'new phase', instruction:'', supplement:''}, phase_i: pos });
+			$('.phases').append(html);
+			// init dropdown
+			for (var ii = 0; ii < defaultWidgets.length; ii++){  
+				addWidgetDropDownItem( pos, defaultWidgets[ii]);                
+			}
+			// list available videos
+			$.get('/json/admin/video-files', function(data){ 
+				$.each(data, function(i, val){
+					$('#videos_'+pos).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.contributor+')</label><br>' ) );
+				});
+			});
+			// make editable
+			$('.xeditable').editable();
+		}); // end require	
+	});
+
+
+	
+});
+
+// convert dates
+$('.date').each(function(i, val){ 
+	var t =  moment($(this).text(), "YYYYMMDD").fromNow(); 
+	$(this).html( t );
+});
+
+
+/*
+ *
+ **/
+function handleDropdownClick(e) {
+	var widget = getWidgetByName( $(e.target).text() );
+	$('#widgets-'+e.data.phase).prepend( buildWidget( widget, e.data.phase) );
+	// remove entry
+	$(e.target).parent().remove();
+	// toggle
+	$('#widgetSelectorDropdown-'+e.data.phase).dropdown('toggle'); 
+	e.preventDefault();
+	return false;
+};
+
+
+/***/
+function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
+	var 
+		dropdown = document.getElementById('widgetSelectorDropdown-' + phase),
+  	li = document.createElement("li"),
+  	link = document.createElement("a"),             
+  	text = document.createTextNode( widget.name )
+  	;
+  link.appendChild(text);
+  link.href = "#";
+  $(link).unbind('click', {phase: phase}, handleDropdownClick ); 
+	$(link).bind('click', {phase: phase}, handleDropdownClick ); 	
+  li.appendChild(link);
+  dropdown.appendChild(li);
+} 
+
+/*
+ **/
+function buildWidget(widget, phase){ 
+	return $('<button></button>')
+				.attr('id', 'widget-'+ phase +'-'+widget.name)
+				.attr('type',"button") 
+				.addClass("btn btn-sm btn-info widget-popover")
+				.text( widget.name )
+				.data('widget', widget)
+				.popover({
+					title : widget.name,
+					html : true,
+					placement: 'top',
+					content : renderWidgetOptions( widget, '#widget-'+ phase +'-'+widget.name, phase)
+				})
+				;			
+}
+
+
+// render widget options
+function renderWidgetOptions(widget, selector, phase){ 
+	var 
+	 keys = ['hasTimelineMarker','hasMenu','allowReplies','allowEditing','allowCreation' ],
+	 html = $('<div></div>')
+	 w = widget.widget_options[0]
+	 ; 
+	for (key in w ){ //alert(keys.indexOf( key ))
+		if( w.hasOwnProperty(key) && keys.indexOf( key ) !== -1 ){
+			html.append( $('<label><input type="checkbox" checked='+(w[key] ? true : false )+' aria-label="'+key+'"> '+key+'</label><br>' ) );
+		}
+	}
+	// add delte btn
+	var del = $('<span class="alert-btn">remove widget</span>')
+		.click(function(){  //alert(JSON.stringify(widget))
+			// append removed widget as item to the dropdown
+			addWidgetDropDownItem( phase, widget);
+			
+			// remove widget
+			$(selector)
+				//.popover('hide')		
+				.popover('destroy')
+				.remove()
+				;
+		});
+	html.append(del) 
+	return html;
+}
+
+$('body').on('hidden.bs.popover', function() {
+    var tooltips = $('.popover').not('.in');
+    if (tooltips) {
+        tooltips.remove();
+    }
+});
+
+
+defaultWidgets = [
+	{ name: 'toc', 
+ 		canBeAnnotated:true, 
+ 		widget_options: [{
+			hasTimelineMarker: true, 
+			timelineSelector : '.vi2-timeline-main',
+			hasMenu : true,
+			menuSelector: '#toc',
+			allowEditing : true,
+			allowCreation : true,
+			path: '/static/img/user-icons/'
+		}] 
+	},
+	{ name: 'hyperlinks', 
+ 		canBeAnnotated:true, 
+ 		widget_options: [{
+			hasTimelineMarker: true, 
+			timelineSelector : '.vi2-timeline-main',
+			hasMenu : true,
+			menuSelector: '#toc',
+			allowEditing : true,
+			allowCreation : true,
+			path: '/static/img/user-icons/'
+		}] 
+	},
+	{ name: 'comments', 
+		canBeAnnotated:true, 
+ 		widget_options: [{
+ 			hasTimelineMarker: true,
+ 			timelineSelector : '.vi2-timeline-bottom', 
+			hasMenu : true,
+			menuSelector: '#comments',
+			allowReplies : true, // tipical for comments
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+ 		}]
+ 	}
+];
+
+
+function getExistingWidgets(arr){
+	var s = [];
+	for(w in arr){
+		if( arr.hasOwnProperty(w) ){ 
+			s.push( arr[w].name )		
+		}
+	}
+	return s;
+}
+
+/*
+ **/
+function getWidgetByName(name){
+	var len = defaultWidgets.length
+	for(var i=0; i < len; i++){
+		if(defaultWidgets[i].name === name){
+			return defaultWidgets[i];
+		}
+	}
+	return undefined;
+} 
+
+
+
+
+
+
+
+
+
+</script>
+

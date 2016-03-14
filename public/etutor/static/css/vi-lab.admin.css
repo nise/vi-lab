@@ -13,6 +13,11 @@
 	margin:10px 0;
 }
 
+.upload-bar {
+    height: 18px;
+    background: green;
+}
+
 .subnav{
 	font-size:12px;
 	padding-left:20px;
@@ -55,6 +60,24 @@ color: #959595;
 }
 
 
+.alert-btn {
+	color:red;
+	float:right;
+	padding: 4px;
+}
+
+.btn-secondary{
+	background-color:#ddd;
+}
+.btn-secondary:hover{
+	background-color:#ccc;
+}
+
+.right{
+	float:right;
+}
+
+
 /* forms */
 .admin-edit-form {
 	background-color:#E5F2FF;
@@ -68,11 +91,13 @@ color: #959595;
 	font-size:16px;
 }
 
-div > textarea {
+/*div > textarea {
 	min-width:400px;
 	min-height:150px;
 	margin-top: 10px;
-}
+}*/
+
+
 
 /* TABLES*/
 
@@ -118,6 +143,70 @@ td.ep-table-cell {
 font-weight:bold;
 }
 
+
+/* script template editor */
+
+.phase{
+	background-color: #eee;
+	margin: 20px 0px;
+	padding:10px;
+}
+
+.phase h3{
+	font-weight:bold;
+	font-size:12pt;
+	margin:0 0 10px 0;
+	padding:0;
+}
+
+.phase button {
+	margin-right:4px;
+}
+
+.phase .popover-title{
+	padding-left: 4px;
+}
+
+.xeditable, .editable-click, a.editable-click, a.editable-click:hover{
+	text-decoration: none;
+	border:none;
+}
+
+textarea.script-form{
+	height:100px;
+	width:100%;
+	
+}
+
+.phase  .nav > li > a {
+	padding: 0px 8px;
+}
+.phase > .nav-tabs {
+	border-bottom:none;
+}
+
+label {
+	font-weight:normal;
+}
+
+.phase-video-list{
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.xeditable:hover:after {
+  font-family: "Glyphicons Halflings";
+  font-size:80%;
+  font-weight:normal;
+  margin-left:4px;
+  content:  "✏";
+  padding:2px 4px;
+  color:#555;
+}
+
+.sec{
+	margin-bottom:10px;
+}
 
 /* script table */
 
@@ -166,5 +255,126 @@ footer img {
 footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+
+
+
+
+/* USER MANAGEMENT / AWARENESS */
+
+#userpanel{
+	z-index:13010;
+	position: fixed;
+	top:0;
+	right:0;
+	height:53px;
+	display:inline-block;
+	background-image: linear-gradient(to bottom, #3c3c3c 0px, #111 100%);
+  background-repeat: repeat-x;
+  border-color: #080808;
+	border-width: 0 0 1px;
+}
+
+.navbar-inverse {
+background-image: linear-gradient(to bottom, #3c3c3c 0px, #111 100%);
+  background-repeat: repeat-x;
+}
+
+.user-menu {
+	display:block !important;
+	float:right;
+	margin:0;
+}
+
+.group-menu {
+	margin-left:6px;
+	display:block;
+	height:auto;
+	width:66%;
+}
+
+
+.users-online-nav{
+	margin-top:4px;
+}
+
+.users-online{
+	display:inline-block;
+	margin-left:4px;
+	padding: 0px 0px 0px 0px;
+}
+
+.user-menu-entry{
+	color:#fff;
+	padding: 0 2px 0 6px;
+	overflow:visible;
+}
+
+.navbar > .container .navbar-brand {
+    margin-left: 0px;
+}
+
+.user-menu-icon{
+	height:20px;
+	margin:0; 
+	padding:0 0 0 0;
+	border:0;
+}
+
+
+
+
+.group-menu .navbar-brand, .user-menu .navbar-brand {
+	padding: 15px 4px;
+	font-size:14px;
+}
+
+
+.group-menu .user-menu-icon{
+	height:20px;
+	padding:0; 
+	margin:0 6px 0 0;
+	border:0;
+	opacity:.1;
+}
+
+
+.group-menu .user-menu-icon:hover{
+	opacity:1;
+}
+
+.group-menu .online{
+	opacity:1;
+	
+}
+
+
+
+.op {
+opacity:0.4;
+}
+
+.on {
+border:solid 1px #1C94C4;
+}
+
+.account-data{
+	font-size: 12px;
+	float:right; 
+	margin:0px 0px;
+}
+
+.account-data a{text-decoration:none; }
+
+.account-data-name {
+	padding: 2px 4px 2px 18px;
+	background: no-repeat scroll 4px 5px rgba(0, 0, 0, 0);
+}
+
+.account-data-name:hover {
+	background-color:#1C94C4;
+	border-radius: 3px;
+	
 }
 

@@ -45,89 +45,189 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	
 		app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' }); });
 
-	// routes related to admin area
-	app.get(	'/admin', 	users.authCallback(['editor']),		admin.index )
-	app.get(	'/admin/users', users.authCallback(['editor']), admin.getUsers );
 
-
-	// routes for scenes
-	app.get(	'/scenes', 						users.ensureAuthenticated, scenes.list );
-	app.get(	'/scenes/new', 				users.ensureAuthenticated, scenes.new_one );
-	app.post(	'/scenes/create', 		users.ensureAuthenticated, scenes.create );
-	app.get(	'/scenes/destroy/:id',users.ensureAuthenticated, scenes.destroy );
-	app.get(	'/scenes/edit/:id', 	users.ensureAuthenticated, scenes.edit );
-	app.post(	'/scenes/update/:id', users.ensureAuthenticated, scenes.update );
-	app.get(	'/json/scenes', 			users.ensureAuthenticated, scenes.getJSON );
-
-
-	// routes for persons
-	app.get( '/persons', 								users.ensureAuthenticated, persons.list );
-	app.get( '/persons/:shortname', 		users.ensureAuthenticated, persons.show );
-	app.get( '/persons/new', 						users.ensureAuthenticated, persons.new_one );
-	app.post( '/persons/create', 				users.ensureAuthenticated, persons.create );
-	app.get( '/persons/destroy/:id',		users.ensureAuthenticated, persons.destroy );
-	app.get( '/persons/edit/:id', 			users.ensureAuthenticated, persons.edit );
-	app.post( '/persons/update/:id',		users.ensureAuthenticated, persons.update );
-	app.get('/json/persons', 						users.ensureAuthenticated, persons.getJSON );
-	app.get( '/json/persons/:shortname',users.ensureAuthenticated, persons.getOneJSON );
 
 	
-	// routes for videos
+
+	/************************************************************/
+	/* VIDEO  */
+
+
 	// http://localhost:3000/popcorn-maker/popcorn-maker/#
 	app.get(	'/videos' , 	users.ensureAuthenticated,		videos.list );
 	app.get(	'/videos/view/:id' , users.ensureAuthenticated, videos.show );
-	app.get(	'/admin/videos',  admin.getVideos )
-	app.get(	'/admin/videos/new' , 	users.authCallback(['user','editor']), videos.new_one );
-	app.get(	'/admin/videos/metadata/edit/:id' , 	videos.editMetadata );
-	app.get(	'/admin/videos/annotations/edit/:id' , 	videos.editAnnotations );
-	app.get(	'/videos/destroy/:id' ,videos.destroy );
-	app.post(	'/videos/update/:id' ,videos.update );
-	app.post(	'/videos/create' , 		videos.create );
-	app.post(	'/videos/annotate', users.ensureAuthenticated, videos.annotate);
+	app.post(	'/videos/annotate', 	users.ensureAuthenticated, videos.annotate);
+	
 	app.get( 	'/json/videos' , 	users.ensureAuthenticated,		videos.getJSON );
-	app.get( 	'/json/admin/video-instances' , 	users.authCallback(['editor']),		videos.getAllJSON );
-	app.get( 	'/json/admin/video-files' , 	users.authCallback(['editor']),		videos.getFilesJSON );
+	app.get( 	'/json/admin/video-instances', users.authCallback(['editor']), videos.getAllJSON );
 	app.get( 	'/json/videos/:id' , 	videos.getOneJSON );
 	app.get( 	'/json/film' , 				videos.getJSON );
-
-
-	// routes for images
-	app.get( '/json/images' , images.getJSON );
-	//images.folderImport();
+	
+	// instances
+	app.get(	'/admin/videos/instances', videos.renderVideoInstances )
+	
+	// files
+	app.get(	'/admin/videos/files', videos.renderVideoFiles )
+	app.get( 	'/json/admin/video-files', users.authCallback(['editor']), videos.getAllFilesJSON );
+	app.get(	'/admin/videos/files/new', users.authCallback(['user','editor']), videos.renderNewFileUpload );
+	
+	// ??
+	app.post(	'/admin/videos/create-file',	 				videos.createFile );
+	app.get(	'/admin/videos/destroy/:id',					videos.destroy );
+	app.post(	'/admin/videos/update/:id',						videos.update );
+	app.get(	'/admin/videos/metadata/edit/:id',		videos.editMetadata );
+	app.get(	'/admin/videos/annotations/edit/:id', videos.editAnnotations );
 	
 	
+	
+	
+	/************************************************************/
+	/* VIDEO UPLOAD */
+	
+	var 
+		multer = require('multer'),
+		crypto = require ("crypto"),
+		mime = require('mime')
+		;
+	var file_types = ['mp4','avi','webm','mov','ogv'];	//xxx part of a settings file/page
+	var upload_path = './public/etutor/static/uploads/';
+	
+	var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+	    cb(null, upload_path)
+		},
+		filename: function (req, file, cb) {
+		  crypto.pseudoRandomBytes(16, function (err, raw) {
+		    if (err) return cb(err);
+		    var ext = mime.extension( file.mimetype );
+		    if( file_types.indexOf( ext ) === -1 ){ return cb('MimeType ' + ext + ' not supported for uploads.'); }
+		    cb(null, raw.toString('hex') + Date.now() + '.' + ext );
+    	});
+    }	
+	});
+	var upload = multer({ storage: storage });
+	// rout
+	app.post('/admin/videos/upload', upload.single('uservideo'), function(req,res){
+    console.log(req.body); // log other form data
+  	console.log( req.file ); // log file data
+  	// processing: geneate thumbnails
+  	// processing: generate differen formats
+  	// respons
+    res.json({ file: req.file, fields: req.body }); // return data about the stored file
+	});
+
+	
+
 	
 	///////xxx todo :: app.get('/related-videos/:id' , users.ensureAuthenticated, wine.getRelatedVideos);
 
+
+
+	
+	/************************************************************/
+	/* SCRIPTS */
+	
+
 	// routes related to scripts	
 	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
-	app.get('/json/script-templates', users.ensureAuthenticated, scripts.getTemplates);
-	app.get('/json/script-templates/:id', users.ensureAuthenticated, scripts.getTemplateByID);
-	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate);
-	app.post('/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplate);
-	app.post('/templates/remove/:id', users.ensureAuthenticated, scripts.removeTemplate);
+	
+	app.get(	'/admin', 	users.authCallback(['editor']),		admin.renderIndex )
+	app.get('/admin/dashboard', users.ensureAuthenticated, admin.renderDashboard );
+	app.get('/admin/scripts', users.ensureAuthenticated, scripts.renderIndex );
+	app.get('/admin/scripts/templates', users.ensureAuthenticated, scripts.renderTemplates );
+	app.get('/admin/scripts/templates/edit/:id', users.ensureAuthenticated, scripts.renderTemplateByID );
+	app.get('/admin/scripts/templates/duplicate/:id', users.ensureAuthenticated, scripts.duplicateTemplateByID );
+	app.get('/admin/scripts/templates/remove/:id', users.ensureAuthenticated, scripts.removeTemplateByID );
+	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
+	app.post('/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplate ); // xxx
+	app.get('/json/admin/script-info', users.ensureAuthenticated, scripts.getScriptInfo ); // xxx
+	
+	
+
+	
+	/************************************************************/
+	/* USERS / Groups */
+		
+	app.get(	'/admin/users', users.authCallback(['editor']),	users.renderIndex );
+	app.get(	'/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
+	app.get(	'/admin/users/groups/formation', users.authCallback(['editor']),	groups.renderGroupFormation );
+	
+	
+	
+	app.get(	'/admin/users/new', users.authCallback(['editor']),	users.addUserForm ); // opens input form
+	app.post(	'/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
+	app.get(	'/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
 
 	// routes for user management
 	app.get('/groups', groups.getGroups);
 	app.get('/json/groups', groups.getGroups);
-	app.get('/json/group-formation', groups.formGroups);
+	//app.get('/json/group-formation', groups.formGroups);
+	app.get('/json/group-activity-log/', groups.getGroupActivityLog );
 	
-	//	app.get('/messages', users.ensureAuthenticated, wine.getMessages);
-	//	app.post('/messages', users.ensureAuthenticated, wine.addMessage);
 	
-	/*
-	Logging
-	**/	
+	/**
+		* @todo need to distinguish the groups per phase
+		* log per current group
+		* log per group over all phases, if group constellation does not change
+		*/
+	app.get('/json/user-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
+		if (req.user !== undefined ) {
+		  // filt log for entries of the given user	
+			Log.find( { user: req.user.id } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
+				if(err){ 
+					console.log(err); 
+				}else{
+					res.type('application/json');
+					res.jsonp( logs );
+					res.end('done');
+				}	
+			});
+
+		}else {
+		  res.type('application/json');
+		  res.jsonp({user:false, msg:'you are not logged in'});
+		  res.end();
+		}
+	});
+
+	// routes related to User Management and Passport - Local Authentication
+	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.show );// showAccountDetails);
+
+	app.get(	'/users/register', 	users.authCallback(['editor']),			users.registrationForm ); // opens input form
+	app.post(	'/users/register', 	users.authCallback(['editor']),			users.registerUser ); // saves user
+	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
+	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
+
+//	app.post(	'/users/online/:username', 	users.setOnlineStatus );
+	app.get(	'/users/online/:username', 	users.getOnlineStatus );
+	// api
+	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
+	app.get('/json/user-data', users.getUserData );
+	app.get('/json/group-data', users.getGroupData );
+
+	// login
+	app.get('/logout', users.ensureAuthenticated, users.handleLogout );
+	app.get('/login',  users.openLoginPage ); //curl -v -d "username=bob&password=secret" http://localhost:3000/login
+	app.post('/login', users.authenticate );
+
+
+
+
+	
+	/************************************************************/
+	/* LOGGING */
+	
 	var 
 		Log  = mongoose.model( 'Log' ),
 	 	get_ip = require('ipware')().get_ip
 	 	;
-	
+	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
+	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
+	 	
 	app.post('/log', users.ensureAuthenticated, function(req, res) {
 		var 
 			d = req.param('data')
 			;
-			
 		var entry = {
 			utc: 							d.utc, 
 			//phase: 						Number,
@@ -209,7 +309,20 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 		//res.send('terminated request');
 	});	
 	
+
+
+	/************************************************************/
+	/* ASSESSMENT */
+		
+	app.get('/admin/results/peer-assessment', users.authCallback(['editor']) , admin.renderResultsPeerAssessment);
+	app.get('/admin/results/comments', users.authCallback(['editor']) , admin.renderResultsComments);
+
+
+
 	
+	/************************************************************/
+	/* ASSESSMENT */
+		
 	app.get('/stats/assessment', function ( req, res ){ res.render( 'admin-analytics', {}); });
 	app.get('/json/stats/assessment', function ( req, res ){ // xxx editor
 		Videos
@@ -234,125 +347,7 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 				});				
 			});
 	});	
-	
-	/*
-	*
-	**/
-	
-	app.get('/json/admin/script-info', function ( req, res ){ // xxx editor
-		Scripts.find({}).exec( function ( err, scripts ){
-			Groups.find({}).exec( function( err, groups){
-				Videos.find({}).select('id metadata video').exec( function( err, videos ){
-					if(err){ 
-						console.log(err); 
-					}else{
-						res.type('application/json');
-						res.jsonp( {
-							scripts : scripts,
-							groups : groups,
-							videos:	videos
-						});
-						res.end('done');
-					}	
-				}); // end video
-			});// end group
-		});//end script	
-	});
 
-	/**
-		* @todo need to distinguish the groups per phase
-		* log per current group
-		* log per group over all phases, if group constellation does not change
-		*/
-	app.get('/json/group-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
-		if (req.user !== undefined ) {
-		  // get current script phase
-		  Scripts.find().select('current_phase').exec(function(err, script) {
-		  	var phase = script[0].current_phase; 
-		  	// get group of current user // req.user.username
-			  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){
-			  	var group = groups[0].groups[Number(phase)]; 
-			  	var query = {};
-					query['groups.'+phase] = group;
-					// gext users of group 
-					Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
-			  		query=[];
-			  		for(var i=0; i <users.length; i++){
-			  			query.push( users[i].id );
-			  		}
-			  		// get final log 
-		  			Log.find( { user: { $in: query } } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
-							if(err){ 
-								console.log(err); 
-							}else{
-								res.type('application/json');
-								res.jsonp( logs );
-								res.end('done');
-							}	
-						});
-			  	});
-		  	});
-		  });
-		}else {
-		  res.type('application/json');
-		  res.jsonp({user:false, msg:'you are not logged in'});
-		  res.end();
-		}
-	});
-	
-	
-	/**
-		* @todo need to distinguish the groups per phase
-		* log per current group
-		* log per group over all phases, if group constellation does not change
-		*/
-	app.get('/json/user-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
-		if (req.user !== undefined ) {
-		  // filt log for entries of the given user	
-			Log.find( { user: req.user.id } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
-				if(err){ 
-					console.log(err); 
-				}else{
-					res.type('application/json');
-					res.jsonp( logs );
-					res.end('done');
-				}	
-			});
-
-		}else {
-		  res.type('application/json');
-		  res.jsonp({user:false, msg:'you are not logged in'});
-		  res.end();
-		}
-	});
-	
-	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
-	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
-	
-
-	// routes related to User Management and Passport - Local Authentication
-	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.show );// showAccountDetails);
-	app.get(	'/admin/users/new', users.authCallback(['editor']),						users.addUserForm ); // opens input form
-	app.get(	'/users/register', 	users.authCallback(['editor']),			users.registrationForm ); // opens input form
-	app.post(	'/users/register', 	users.authCallback(['editor']),			users.registerUser ); // saves user
-	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
-	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
-	app.post(	'/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
-	app.get(	'/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
-//	app.post(	'/users/online/:username', 	users.setOnlineStatus );
-	app.get(	'/users/online/:username', 	users.getOnlineStatus );
-	// api
-	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
-	app.get('/json/user-data', users.getUserData );
-	app.get('/json/group-data', users.getGroupData );
-
-	// login
-	app.get('/logout', users.ensureAuthenticated, users.handleLogout );
-	app.get('/login',  users.openLoginPage ); //curl -v -d "username=bob&password=secret" http://localhost:3000/login
-	app.post('/login', users.authenticate );
-
-	
-	// routes related to E-Assessment
 	var assess = require('./assessment');
 	app.get('/json/assessment', users.ensureAuthenticated, assess.getTest);
 	app.get('/assessment', users.ensureAuthenticated,assess.index);
@@ -380,6 +375,42 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	app.get('/json/etherpad', etherpad.getJSON )
 	app.get('/admin/etherpad', users.ensureAuthenticated, etherpad.listPadInput )
 
+
+
+
+
+
+
+	/************************************************************/
+	/* MISC */
+
+	//	app.get('/messages', users.ensureAuthenticated, wine.getMessages);
+	//	app.post('/messages', users.ensureAuthenticated, wine.addMessage);
+
+	// routes for images
+	app.get( '/json/images' , images.getJSON );
+	//images.folderImport();
+	
+		// routes for scenes
+	app.get(	'/scenes', 						users.ensureAuthenticated, scenes.list );
+	app.get(	'/scenes/new', 				users.ensureAuthenticated, scenes.new_one );
+	app.post(	'/scenes/create', 		users.ensureAuthenticated, scenes.create );
+	app.get(	'/scenes/destroy/:id',users.ensureAuthenticated, scenes.destroy );
+	app.get(	'/scenes/edit/:id', 	users.ensureAuthenticated, scenes.edit );
+	app.post(	'/scenes/update/:id', users.ensureAuthenticated, scenes.update );
+	app.get(	'/json/scenes', 			users.ensureAuthenticated, scenes.getJSON );
+
+
+	// routes for persons
+	app.get( '/persons', 								users.ensureAuthenticated, persons.list );
+	app.get( '/persons/:shortname', 		users.ensureAuthenticated, persons.show );
+	app.get( '/persons/new', 						users.ensureAuthenticated, persons.new_one );
+	app.post( '/persons/create', 				users.ensureAuthenticated, persons.create );
+	app.get( '/persons/destroy/:id',		users.ensureAuthenticated, persons.destroy );
+	app.get( '/persons/edit/:id', 			users.ensureAuthenticated, persons.edit );
+	app.post( '/persons/update/:id',		users.ensureAuthenticated, persons.update );
+	app.get('/json/persons', 						users.ensureAuthenticated, persons.getJSON );
+	app.get( '/json/persons/:shortname',users.ensureAuthenticated, persons.getOneJSON );
 
 
 } // end module
