@@ -290,6 +290,17 @@ exports.renderInstanceByID = function(req, res) {
  **/
 exports.updateInstanceByID = function(req, res){
 	// save instance
+	Instances.findById( req.params.id, function ( err, instance ){
+		var instan = req.body;
+		var t = new Date();
+		instan.updated_at = t.getTime();
+		new Instances( instan ).save( function ( err, instance ){
+		  res.redirect( '/admin/scripts/instances' );
+		  res.end('done');
+	 	});
+	});
+
+	// xxx
 	// define groups considering the video files and group formations
 		// build inverted index
 			var groups= [];

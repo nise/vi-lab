@@ -69,20 +69,42 @@ $(document).ready(function() {
 	
 	/**/
 	var frmMeta = $('#metadataForm');
-	frmMeta.submit(function(e) {
+	frmMeta.submit(function(e) { 
+		
+		var data = {
+				title: $('input[name=title]').val(),
+				creator: $('input[name=creator]').val(),
+				subject: $('input[name=subject]').val(),
+				description: $('textarea#description]').val(),
+				publisher: $('input[name=publisher]').val(),
+				contributor: $('input[name=contributor]').val(),
+				type: $('input[name=type]').val(),
+				mimetype: $('input[name=mimetype]').val(),
+				source: $('input[name=source]').val(),
+				language: $('input[name=language]').val(),
+				relation: $('input[name=relation]').val(),
+				coverage: $('input[name=coverage]').val(),
+				rights: $('input[name=rights]').val(),
+				license: $('input[name=license]').val(),
+				video: $('input[name=video]').val(),
+				length: $('input[name=length]').val(),
+				size: $('input[name=size]').val(),
+				thumbnail: $('input[name=thumbnail]').val(),
+				institution: $('input[name=institution]').val(),
+				category: $('input[name=category]').val(),
+				tags: $('input[name=tags]').val()
+			};
+			
 		$.ajax({
 			type: frmMeta.attr('method'),
-			 url: frmMeta.attr('action'),
-			data: $(this).serialize(),//new FormData( this ),
-			//cache:false,
-			processData: false,
-			contentType: 'json',
+			url: frmMeta.attr('action'),
+			data: data,
 			error: function(xhr) {
 				console.log(xhr)
 			},
 			success: function(res) { alert(res)
 				// redirect 
-				render('admin-video-files', '/json/admin/video-instances', true, '.admin-panel');
+				window.location.href = '/admin/videos/files';
 			}
 		});
 		return false;
@@ -112,7 +134,7 @@ $(document).ready(function() {
     	action="/admin/videos/create-file" 
     	method="POST" 
     	accept-charset="utf-8" 
-    	enctype="multipart/form-data">
+    	>
 		<div class="input-group input-group-xs">
 			<span class="input-group-addon" id="sizing-addon1">Title</span>
 			<input type="text" class="form-control" placeholder="title" aria-describedby="sizing-addon1" name="title" value="">
@@ -135,7 +157,7 @@ $(document).ready(function() {
     <br>
     <div class="form">
 			<span class="" id="sizing-addon1"><strong>Description</strong></span>
-			<textarea class="form-control" rows="4" id="" name="description"></textarea>
+			<textarea class="form-control" rows="4" id="description" name="description"></textarea>
     </div>
     <br>
     <div class="input-group input-group-xs">
@@ -154,6 +176,7 @@ $(document).ready(function() {
 				<option value="cc-by">Creative Commons - attribution (cc-by)</option>
 				<option value="pd">Public Domain (pd)</option>
 				<option value="cr">Copy Right Restricted</option>
+				<option value="nn">(unknown)</option>
 			</select>
     </div>
     <br>
@@ -219,14 +242,10 @@ $(document).ready(function() {
 			</div>
 		</div>
     
-    
-    
-    
-    
-    
+  
     <br><br>
     <div class="buttons">
-      <button id="save-btn" class="btn btn-primary" type="submit">save</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
+      <button id="save-btn" class="btn btn-primary" type="submit">save</button>  <a href="/admin/videos/files">cancel</a>
     </div>
   </form>
 </div>

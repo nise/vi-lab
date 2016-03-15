@@ -359,8 +359,7 @@ exports.renderVideoFiles = function(req, res){
  * status: xxx
  **/
 exports.createFile = function ( req, res ){ 
-	req.body = JSON.parse(req.body);
-	console.log(req.body)
+
 	var video = {};
 	video.title				= req.body.title;
 	video.creator			= req.body.creator;
@@ -390,9 +389,9 @@ exports.createFile = function ( req, res ){
   // save it
   new VideoFiles( video ).save( function( err, vid, count ){
   	if(err) { res.send(err); }
-    //res.redirect( '/videos' );
-    console.log(video);
-    res.send('saved video file	');
+    res.redirect( '/admin/videos/files' );
+    console.log('saved video file')
+    res.end();
   });
 };
 

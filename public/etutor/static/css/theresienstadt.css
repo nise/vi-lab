@@ -6,6 +6,10 @@ a, a:hover {
 	text-decoration:none;
 }
 
+blockquote p{
+	font-size:10pt;
+}
+
 .warning {
 	background-color:orange;
 	padding:2px 4px;

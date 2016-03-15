@@ -1,7 +1,7 @@
 <% layout( '../admin-layout' ) -%>
 
 
-<h2>Instance: <span class="xeditable"><%= items.title %></span></h2>
+<h2>Instance: <span id="instanceTitle" class="xeditable"><%= items.title %></span></h2>
 
 <!-- Phases -->
 <form id="instance-form">
@@ -66,6 +66,9 @@ todo
 
 // make it editable
 $.fn.editable.defaults.mode = 'inline'; // popup
+
+var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
+
 $(document).ready(function() {
 	// make text editable inline
 	$('.xeditable').editable({
@@ -77,7 +80,6 @@ $(document).ready(function() {
 	$('.datetimepicker').datetimepicker();
 	
 	// load group formations
-	var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
 	$.each( data, function(i, phase){
 		// list available videos
 		$.get('/json/admin/groups/formations', function(data){ 
@@ -87,19 +89,38 @@ $(document).ready(function() {
 		});
 	});
 	
+	/*
+		template : [ScriptTemplate],
+		phases : [ 
+			{ 
+				start : Date,
+				end: Date,
+				seq : Number,
+    		groupindex: Number,
+    		groupformation: Number
+			}
+		],
+		
+		updated_at 	: { type: Date, default: Date.now },
+	*/
 	
 	// save input
 	$('#instance-form').submit(function( event ) {
 		event.preventDefault();	
 		// collect data from form
+		var res = data;
+		res.title = $('#instanceTitle').text();
+		res.title = 'ready';
 		
+		
+		$.each( data, function(i, phase){
+			
+		});
 		// send it
 		$.ajax({
 			type: "POST",
 			url: '/admin/scripts/instances/update',
-			data: { 
-				
-				},
+			data: res,
 			success: function(res){ 
 				window.location.href = '/admin/scripts/instances';
 			},
