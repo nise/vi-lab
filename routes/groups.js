@@ -1,10 +1,11 @@
 
 var 
 	mongoose = require( 'mongoose' ),
-	server =  require('../server'),
-	Groups  = mongoose.model( 'Groups' ),
-	Users  = mongoose.model( 'Users' ),
-	Log  = mongoose.model( 'Log' ),
+	server = require('../server'),
+	Groups = mongoose.model( 'Groups' ),
+	Formations = mongoose.model( 'GroupFormations' ),
+	Users = mongoose.model( 'Users' ),
+	Log = mongoose.model( 'Log' ),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -126,7 +127,24 @@ exports.csvImport = function ( req, res ){
 
 
 
+/**************************************************************************/
+/* GROUP FORMATION */
 
+
+/*
+ * Renders a form to create new group formations
+ **/
+exports.renderNewFormation = function ( req, res ){
+	Users.find().exec( function ( err, users ){
+		if(err){ 
+			console.log(err);
+			res.end('error'); 
+		}else{
+ 			res.render('admin/users-groups-formations-create', { items:users });
+ 			res.end();
+ 		}
+ 	});		
+} 
 
 /*
 Group formation
@@ -134,18 +152,24 @@ status: unfinished
 - seperate sub routines
 - treat special cases, e.g. when number of people can not be devided by the number of groups
 - implement Kohnert
-- formGroups per Phase ... consider merging or splitting groups
+- consider merging or splitting groups
 - save groups
 **/
-exports.renderGroupFormation = function ( req, res ){
-	Users.find().exec( function ( err, users ){
+exports.createFormation = function ( req, res ){
+	// exclude users
+	var query = {};
+	if( req.body.excluded_users !== undefined ){
+		query['id'] = { $nin: req.body.excluded_users }
+	}
+	
+	Users.find( query ).exec( function ( err, users ){
 		if(err){ 
 			console.log(err);
 			res.end('error'); 
-		}else{
+		}else{ 
 			var groups = [];
-			var n = req.query.group_algorithm_val;
-			var method = req.query.group_algorithm;
+			var n = req.body.group_algorithm_val;
+			var method = req.body.group_algorithm;
 			switch( method ){
 				case "method1" :
 					/**/// methode 1: divide users in n groups as they are
@@ -188,10 +212,11 @@ exports.renderGroupFormation = function ( req, res ){
 				case "method5" :
 					/**/// methode 5: distribute users in groups of n people by multiple (homogene or heterogene) crtierias
 					 // Kohnert2013
-			} 
+			}
+		
 			// save Groups
-			//res.type('application/json');
-			res.render('admin/users-groups-formation', {items: groups });
+			res.type('application/json');
+			res.jsonp( groups );
 			res.end()
 		}
 	});
@@ -212,6 +237,123 @@ shuffle = function (array) {
 /**************/
 splitGroups = function(){}
 joinGroups = function(){}
+
+
+/*
+ * Renders a list of all defined group formations
+ **/
+exports.renderFormationsIndex = function(req, res){
+	Formations.find({}).exec(function (err, formations) {
+		if(err){ 
+			console.log(err); 
+		}else{ console.log(formations)
+			res.render( 'admin/users-groups-formations-index', {
+				items : formations
+			});
+			res.end('done');
+		}	
+	});
+}
+
+/*
+ * Returns a JSON with all named group formations
+ **/
+exports.getFormations = function(req, res){
+	Formations.find({}).exec(function (err, formations) {
+		if(err){ 
+			console.log(err); 
+		}else{ console.log(formations)
+			res.type('application/json');
+			res.jsonp(formations);  
+			res.end('done');
+		}	
+	});
+}
+
+
+/*
+ * Get group formation by ID
+ * status: finished
+ **/
+exports.renderFormationByID = function(req, res) { 
+	Formations.find({_id: req.params.id}).lean().exec(function (err, formation) {
+		if(err){ 
+			console.log(err); 
+		}else{
+			res.render( 'admin/users-groups-formations-edit', {
+				items : formation[0]
+			});
+			res.end('done');
+		}	
+	});
+};
+
+
+/*
+ * Save formation to DB
+ **/
+exports.saveFormation = function(req, res) {
+	new Formations( req.body ).save(function(err, formation){
+		if(err){
+			console.log(err);
+		}else{
+			console.log('saved group formation')
+			//res.redirect( '/admin/users/groups/formations' );
+			res.send({ok:true});
+		}
+	});
+}
+
+/*
+* Removes a Formation
+* status: finished
+**/
+exports.destroyFormationByID = function(req, res) {
+	Formations.findById( req.params.id, function ( err, formation ){
+	  formation.remove( function ( err, form ){
+	    res.redirect( '/admin/users/groups/formations' );
+	    res.end('done');
+	 	});
+	});
+}
+
+
+
+/**************************************************************************/
+/* GROUPS */
+
+
+/*
+ * Renders a list of all groups in the admin area
+ **/
+exports.renderIndex = function(req, res) {
+  Groups.find().sort( 'id' ).lean().exec(function (err, items) {
+	  if(err){ 
+			console.log(err); 
+		}else{
+			res.render('admin/users-groups', {items: items}); 
+			res.end('done');
+		}	 
+  });
+};
+
+
+/*
+
+**/
+exports.getGroups = function(req, res) {
+	Groups.collection.find().sort( 'id' ).toArray(function(err, items) {
+		if(err){
+			console.log(err)
+		}else{
+      res.type('application/json');
+			res.jsonp(items);  
+			res.end('done');
+		}	
+  });
+};
+
+
 
 
 /*******************************************/
@@ -280,32 +422,4 @@ optimizer = function(){}
 
 
 
-/*
- * Renders a list of all groups in the admin area
- **/
-exports.renderIndex = function(req, res) {
-  Groups.find().sort( 'id' ).lean().exec(function (err, items) {
-	  if(err){ 
-			console.log(err); 
-		}else{
-			res.render('admin/users-groups', {items: items}); 
-			res.end('done');
-		}	 
-  });
-};
 
-
-/*
-
-**/
-exports.getGroups = function(req, res) {
-	Groups.collection.find().sort( 'id' ).toArray(function(err, items) {
-		if(err){
-			console.log(err)
-		}else{
-      res.type('application/json');
-			res.jsonp(items);  
-			res.end('done');
-		}	
-  });
-};

@@ -1,0 +1,24 @@
+<% layout( '../admin-layout' ) -%>
+
+<h2>Group formations</h2>
+<div id="tab"></div>
+
+<script>
+$(document).ready (function () { 
+	$('#tab').bootstrapTable({
+    data: JSON.parse('<%-JSON.stringify( items )%>'),
+    //showColumns : true,
+    checkboxHeader : true,
+   // cardView:true, // mobile view
+    columns: [
+		  { field: 'title', title: 'Formation', sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'method', title: 'Formation algorithm', visible:true, sortable : true,  searchable : true }, 
+		  { field: 'groups', title: 'Anzahl an Gruppen', visible:true, sortable : true,  searchable : true }, 
+			{ field: 'persons', title: 'Anzahl an Personen', visible:true, sortable : true, searchable : true } 
+    ]
+	});
+});
+
+
+</script>
+

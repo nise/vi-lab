@@ -1,0 +1,217 @@
+<% layout( '../admin-layout' ) -%>
+
+
+<div class="col-md-10">
+<h2>Group Formation</h2>
+	
+	<h4>Step 1: Choose group formation algorithm</h4>
+	<form id="group-form">
+	<div>
+	<input type="radio" name="form-algo" value="method1" aria-label="Distribute the selected users to n groups as they are.">
+	<span>Distribute the selected users to n groups as they are.</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method2" aria-label="Randomly distribute the selected users to n groups.">
+	<span>Randomly distribute the selected users to n groups.</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method3" aria-label="Distribute users in groups of n people as they are.">
+	<span>Distribute users in groups of n people as they are.</span>
+	</div>		
+	
+	<div>
+	<input type="radio" name="form-algo" value="method4" aria-label="Randomly distribute users in groups of n people.">
+	<span>Randomly distribute users in groups of n people.</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method5" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.</span>
+	</div>
+	<!--
+	Users gets an additional array with properties, such as 'nationality', 'gender', 'university', 'course', ...
+	This properties will be listed here. For each of them can be ignored or considered as homogeneous or heterogeneous criteria.
+	-->		
+	
+	<br>		 
+	<div class="input-group input-group-xs">
+  <span class="input-group-addon" id="n">Group size / number of groups</span>
+  <input type="text" class="form-control" id="number" placeholder="n" aria-describedby="sizing-addon3">
+	</div>
+	
+	<div>
+	<input disabled type="checkbox" checked value="limit" aria-label="Consider n as an strict upper limit.">
+	<span>Consider n as an strict upper limit.</span>
+	</div>
+	
+	<br><br>
+	<h4>Step 2: Select users
+	<a class="button" href="#" data-toggle="collapse" data-target="#userPanel" aria-expanded="false" aria-controls="collapseExample">
+		(<span class="glyphicon glyphicon-collapse-down"></span> optional)
+	</a></h4>
+	<div class="collapse" id="userPanel"></div>
+	
+	<br>
+	<button id="preview-btn" class="btn btn-secondary">Preview group formation</button>
+	</form>	 
+		 
+	
+	<div class="row formed-groups"></div>
+	<br><br>
+	<div hidden id="save-it" class="row">
+		<div class="input-group input-group-xs">
+			<span class="input-group-addon" id="formname">Identifier</span>
+			<input type="text" class="form-control" id="formationID" aria-describedby="Set an identifier for the group formation"  value="">
+		</div>
+		<button id="save-btn" class="btn btn-primary">Save formation</button>	
+	</div>	
+		 
+</div>
+
+
+<script>
+
+
+/*********************************************************/
+// render registered users
+$(document).ready (function () { 
+	$('#userPanel').bootstrapTable({
+    data: JSON.parse('<%-JSON.stringify( items )%>'),
+    //showColumns : true,
+    checkboxHeader : true,
+   // cardView:true, // mobile view
+    columns: [
+    	{ field: 'selected', title: '', formatter: selFormatter, sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'username', title: 'Username', formatter: userFormatter, sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'firstname', title: 'Firstname', visible:true, sortable : true,  searchable : true }, 
+			{ field: 'name', title: 'Surname', visible:true, sortable : true, searchable : true }, 
+		  { field: 'role', title: 'Role', visible:true, sortable : true,  order: 'asc',searchable : true }, 
+		  { field: 'groups', title: 'Groups', visible:true, sortable : true,  order: 'asc',searchable : true }, 
+    ]
+	});
+});
+
+function selFormatter(value, row, index) {
+	return '<input type="checkbox" name="selected-users" checked value="'+row.id+'" aria-label="Select user '+row.username+'">  ';
+}
+
+function userFormatter(value, row, index) {
+	return '<a class="" href="/admin/users/edit/'+row._id+'" title="Edit user"><img width="15" src="/static/img/user-icons/user-'+row.id+'.png" /> '+ row.username +'</a>  ';
+}
+
+
+
+
+/*********************************************************/
+
+$(document).ready (function () { 
+	$('.mark').each(function(i, val){
+		$(val).html(markdown.toHTML($(val).text()))
+	});
+
+	$("input[name=form-algo]").on("change", function () {
+    if(this.value == 'method1' || this.value == 'method2'){
+    	$('#n').text('Number of groups');
+    }else if (this.value == 'method5'){
+    	
+    }else{
+    	$('#n').text('Group size');
+    }
+	});
+	
+	// submited preview
+	$('#group-form').submit(function( event ) {
+		event.preventDefault();
+		var number = $("#number").val();
+		if(number == undefined){
+			console.log('no number');
+			return;
+		}
+		//$('.collapse').collapse('hide');
+		var excluded_users = [];
+		$("input[name='selected-users']").not(':checked').each(function(i, val){ 
+			excluded_users.push( $(this).val() );
+		});
+		//alert(JSON.stringify(excluded_users));
+  	getGroupFormation( $("input[name='form-algo']:checked").val(), number, excluded_users );
+  	$('#save-it').show();
+	});
+	
+	// submit formation to DB
+	$('#save-btn').click(function(event){
+		$.ajax({
+			type: "POST",
+			url: '/admin/users/groups/formations/save',
+			data: { 
+				title: $('#formationID').val(), 
+				formation: the_group_formation, 
+				groups: the_group_formation.length, 
+				persons: getNumberOfPersons(the_group_formation),
+				method: the_formation_method
+				},
+			success: function(res){ 
+				window.location.href = '/admin/users/groups/formations';
+			},
+			error : function(e){
+				console.log(JSON.stringify(e));
+			}	
+		});
+		
+	});
+	
+
+});
+
+
+function getNumberOfPersons(arr){
+	var sum = 0;
+	for(var i = 0; i < arr.length; i++){
+		sum += arr[i].length;
+	}
+	return sum;
+}
+
+
+var 
+	the_group_formation = [],
+	the_formation_method = ''
+	;
+
+
+/*
+
+**/
+function getGroupFormation(method, n, excludedUsers){  
+	$('.formed-groups').html('');
+	$.ajax({
+		type: "POST",
+		url: '/json/admin/users/groups/formations/create',//'/json/group-formation',
+		data: { group_algorithm_val: n, group_algorithm: method, excluded_users: excludedUsers},
+		success: function(groups){ 
+			formation = groups;
+			the_group_formation = groups; 
+			the_formation_method = method:
+			require(['text!../views/admin/users-groups-formations-overview.ejs', 'ejs'], function(thetemplate) {
+				var html = ejs.render( thetemplate, { items: groups }); 
+				$('.formed-groups').html( html );
+			}); // end require
+		},
+		errod : function(e){
+			console.log(JSON.stringify(e));
+		}	
+	});
+}
+
+/*
+save group formation to the users
+**/
+function saveGroupFormation(phase){
+	// save groups
+	
+	// update users
+	
+}
+
+</script>	

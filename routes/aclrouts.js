@@ -29,7 +29,6 @@ module.exports = function(db, app) {
 //if (req.isAuthenticated()) { return next(); }
 //res.redirect('/login')
 	
-/* define routes **/
 
 // routes for files
 app.get('/myfile', users.ensureAuthenticated, function(req, res){ 
@@ -37,15 +36,21 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
   var file = 'todo.md';//'public/vi-lab'+req.params.id;
   res.download(file); // Set disposition and send it.
 });
+app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' }); });
 
 
+
+
+
+
+	/************************************************************/
+	/* ADMIN  */
+
+	app.get(	'/admin', 	users.authCallback(['editor']),		admin.renderIndex )
+	app.get('/admin/dashboard', users.ensureAuthenticated, admin.renderDashboard );
 	app.get(	'/home',  users.ensureAuthenticated, function ( req, res ){
 		res.render( 'intro' );
 	});
-	
-		app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' }); });
-
-
 
 	
 
@@ -132,18 +137,26 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	/* SCRIPTS */
 	
 
-	// routes related to scripts	
-	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
-	
-	app.get(	'/admin', 	users.authCallback(['editor']),		admin.renderIndex )
-	app.get('/admin/dashboard', users.ensureAuthenticated, admin.renderDashboard );
+	// scripts general
 	app.get('/admin/scripts', users.ensureAuthenticated, scripts.renderIndex );
+	// script templates
 	app.get('/admin/scripts/templates', users.ensureAuthenticated, scripts.renderTemplates );
 	app.get('/admin/scripts/templates/edit/:id', users.ensureAuthenticated, scripts.renderTemplateByID );
 	app.get('/admin/scripts/templates/duplicate/:id', users.ensureAuthenticated, scripts.duplicateTemplateByID );
-	app.get('/admin/scripts/templates/remove/:id', users.ensureAuthenticated, scripts.removeTemplateByID );
+	app.get('/admin/scripts/templates/instantiate/:id', users.ensureAuthenticated, scripts.instantiateTemplateByID );
+	app.get('/admin/scripts/templates/destroy/:id', users.ensureAuthenticated, scripts.destroyTemplateByID );
+	// script instances
+	app.get('/admin/scripts/instances', users.ensureAuthenticated, scripts.renderInstances );
+	app.get('/admin/scripts/instances/edit/:id', users.ensureAuthenticated, scripts.renderInstanceByID );
+	app.post('/admin/scripts/instances/update/:id', users.ensureAuthenticated, scripts.updateInstanceByID );
+	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
+	
+	// ??
 	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
 	app.post('/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplate ); // xxx
+	
+	// json
+	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
 	app.get('/json/admin/script-info', users.ensureAuthenticated, scripts.getScriptInfo ); // xxx
 	
 	
@@ -152,21 +165,26 @@ app.get('/myfile', users.ensureAuthenticated, function(req, res){
 	/************************************************************/
 	/* USERS / Groups */
 		
-	app.get(	'/admin/users', users.authCallback(['editor']),	users.renderIndex );
-	app.get(	'/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
-	app.get(	'/admin/users/groups/formation', users.authCallback(['editor']),	groups.renderGroupFormation );
-	
-	
-	
-	app.get(	'/admin/users/new', users.authCallback(['editor']),	users.addUserForm ); // opens input form
-	app.post(	'/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
-	app.get(	'/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
-
-	// routes for user management
+	// groups
+	app.get('/admin/users', users.authCallback(['editor']),	users.renderIndex );
+	app.get('/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
 	app.get('/groups', groups.getGroups);
 	app.get('/json/groups', groups.getGroups);
-	//app.get('/json/group-formation', groups.formGroups);
 	app.get('/json/group-activity-log/', groups.getGroupActivityLog );
+
+	// formations
+	app.get('/admin/users/groups/formations', users.authCallback(['editor']),	groups.renderFormationsIndex );
+	app.get('/admin/users/groups/formations/create', users.authCallback(['editor']),	groups.renderNewFormation );
+	app.post('/json/admin/users/groups/formations/create', users.authCallback(['editor']),	groups.createFormation );
+	app.get('/admin/users/groups/formations/edit/:id', users.authCallback(['editor']),	groups.renderFormationByID );
+	app.post('/admin/users/groups/formations/save', users.authCallback(['editor']),	groups.saveFormation );
+	app.get('/admin/users/groups/formations/destroy/:id', users.authCallback(['editor']),	groups.destroyFormationByID );
+	app.get('/json/admin/groups/formations', users.authCallback(['editor']),	groups.getFormations );
+
+	// users	
+	app.get('/admin/users/new', users.authCallback(['editor']),	users.addUserForm ); // opens input form
+	app.post('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
+	app.get('/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
 	
 	
 	/**

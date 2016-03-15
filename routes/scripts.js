@@ -13,6 +13,7 @@ var
 	server =  require('../server'),
 	Scripts  = mongoose.model( 'Scripts' ),
 	Templates = mongoose.model('ScriptTemplate'),
+	Instances = mongoose.model('ScriptInstance'),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -25,6 +26,10 @@ exports.renderIndex = function(req, res) {
 	res.render( 'admin/scripts', { });
 	res.end('done');
 };
+
+
+
+
 
 
 /*******************************************************/
@@ -103,108 +108,212 @@ templateA.updated_at = t.getTime();
 
 
       
- /*
- 	* List all Templates
- 	* status: finished
- 	**/
- 	 exports.renderTemplates = function(req, res) { 
-		Templates.find({}).exec(function (err, templates) {
-			if(err){ 
-				console.log(err); 
-			}else{ console.log(templates)
-				res.render( 'admin/scripts-template-index', {
-					items : templates
-				});
-				//res.type('application/json');
-				//res.jsonp( templates );
-				res.end('done');
-			}	
-		});
-	};
-    
-    
- /*
- 	* Get Template by ID
- 	**/
- 	exports.renderTemplateByID = function(req, res) { 
-		Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
-			if(err){ 
-				console.log(err); 
-			}else{
-				res.render( 'admin/scripts-template-edit', {
-					items : template[0]
-				});
-				//res.type('application/json');
-				//res.jsonp( template[0] );
-				res.end('done');
-			}	
-		});
-	};
-
-	
- /*
- 	* Duplicates a Template
- 	**/
-	exports.duplicateTemplateByID = function(req, res) {
-		Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
-			if(err){ 
-				console.log(err); 
-			}else{
-				var template2 = template;//clone(template);
-				template2[0].title = template2[0].title + '-' + Math.floor(Math.random()*100);
-				delete template2[0]["_id"];
-				new Templates( template2[0] )
-					.save( function( err, newtemplate, count ){
-						if(err){ console.log(err); }
-						console.log( 'Duplicated Script Template ' + newtemplate.title )
-						res.redirect( '/admin/scripts/templates' );
-					});
-				
-			}	
-		});
-	}	
-
-
- 	/*
- 	* Add new Template
- 	**/
-	exports.addTemplate = function(req, res) { 
-		Templates.remove(function(err, o){
-    	if(err){
-    		console.log(err)
-    	}else{
-    	
-    	new Templates( templateA )
-			.save( function( err, template, count ){
-				console.log( 'eeeeeee '+template.title )
-				//res.redirect( '/temp' );
-				//res.end();
+/*
+ * List all script templates
+ * status: finished
+ **/
+exports.renderTemplates = function(req, res) { 
+	Templates.find({}).exec(function (err, templates) {
+		if(err){ 
+			console.log(err); 
+		}else{ console.log(templates)
+			res.render( 'admin/scripts-template-index', {
+				items : templates
 			});
+			res.end('done');
+		}	
+	});
+};
+    
+  
+/*
+ * Get script template by ID
+ * status: finished
+ **/
+exports.renderTemplateByID = function(req, res) { 
+	Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
+		if(err){ 
+			console.log(err); 
+		}else{
+			res.render( 'admin/scripts-template-edit', {
+				items : template[0]
+			});
+			res.end('done');
+		}	
+	});
+};
+
+	
+/*
+ * Duplicates a script template
+ * status: finished
+ **/
+exports.duplicateTemplateByID = function(req, res) {
+	Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
+		if(err){ 
+			console.log(err); 
+		}else{
+			var template2 = template;//clone(template);
+			template2[0].title = template2[0].title + '-' + Math.floor(Math.random()*100);
+			delete template2[0]["_id"];
+			new Templates( template2[0] )
+				.save( function( err, newtemplate, count ){
+					if(err){ console.log(err); }
+					console.log( 'Duplicated Script Template ' + newtemplate.title )
+					res.redirect( '/admin/scripts/templates' );
+				});
 			
-			}})
-	}
+		}	
+	});
+}	
 
 
- /*
- 	* Update Template
- 	**/
-	exports.updateTemplate = function(req, res) {
-	
-	}
-	
-	
-	/*
- 	* Removes a Template
- 	**/
-	exports.removeTemplateByID = function(req, res) {
-  	Templates.findById( req.params.id, function ( err, template ){
-		  template.remove( function ( err, template ){
-		    res.redirect( '/admin/scripts/templates' );
-		    res.end('done');
-		 	});
+/*
+* Add new Template as an example
+**/
+exports.addTemplate = function(req, res) { 
+	Templates.remove(function(err, o){
+  	if(err){
+  		console.log(err)
+  	}else{
+  	
+  	new Templates( templateA )
+		.save( function( err, template, count ){
+			console.log( 'eeeeeee '+template.title )
+			//res.redirect( '/temp' );
+			//res.end();
 		});
-	}
-	
+		
+		}})
+}	
+
+
+/*
+ * Update Template
+ * status: xxx
+ **/
+exports.updateTemplate = function(req, res) {
+
+}
+
+
+/*
+* Removes a Template
+* status: finished
+**/
+exports.destroyTemplateByID = function(req, res) {
+	Templates.findById( req.params.id, function ( err, template ){
+	  template.remove( function ( err, template ){
+	    res.redirect( '/admin/scripts/templates' );
+	    res.end('done');
+	 	});
+	});
+}
+
+
+/*
+ * Instatiates a script template for associating groups, times, etc.
+ **/	
+exports.instantiateTemplateByID = function(req, res) {
+	Templates.findById( req.params.id, function ( err, template ){
+		var 
+			t = new Date(),
+			script = {
+				title : template.title+'_instance',
+				template : template,
+				phases: [],
+				created_at 	: t.getTime(),
+				status : 'drafted',
+				current_phase : 0,
+			};
+	  // prepare phases
+	  for(var i = 0; i < template.phases.length; i++){
+	  		script.phases[i] = { 
+					start :  t.getTime(),
+					seq : i,
+    			groupindex: undefined,
+    			groupformation: undefined
+				};
+	  }
+	  new Instances( script ).save(function(err, instance){
+	    res.redirect( '/admin/scripts/instances' );
+	    res.end('done');
+	  });  
+	 	
+	});
+}
+
+
+
+
+/*************************************************/
+/* SCRIPT INSTANCES */
+
+/*
+ * List all script instances
+ * status: finished
+ **/
+exports.renderInstances = function(req, res) { 
+	Instances.find({}).exec(function (err, instances) {
+		if(err){ 
+			console.log(err); 
+		}else{ 
+			res.render( 'admin/scripts-instances-index', {
+				items : instances
+			});
+			res.end('done');
+		}	
+	});
+};
+
+
+/*
+ * Renders an instance of a script for editing
+ * status: finished
+ **/
+exports.renderInstanceByID = function(req, res) { 
+	Instances.find({_id: req.params.id}).lean().exec(function (err, instance) {
+		if(err){ 
+			console.log(err); 
+		}else{
+			res.render( 'admin/scripts-instances-edit', {
+				items : instance[0]
+			});
+			res.end('done');
+		}	
+	});
+};
+
+
+/*
+ * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
+ **/
+exports.updateInstanceByID = function(req, res){
+	// save instance
+	// define groups considering the video files and group formations
+		// build inverted index
+			var groups= [];
+			var index = {} 
+			for(var i=0; i < groups.length; i++){
+				for(var j=0; i < groups[i].length; j++){
+					index[groups[i]]
+				}
+			}
+}
+
+/*
+* Removes a script instance
+* status: finished
+**/
+exports.destroyInstanceByID = function(req, res) {
+	Instances.findById( req.params.id, function ( err, instance ){
+	  instance.remove( function ( err, instance ){
+	    res.redirect( '/admin/scripts/instances' );
+	    res.end('done');
+	 	});
+	});
+}
+
 
 
 /*************************************************/

@@ -11,7 +11,7 @@
 	<% items.phases.forEach(function( phase ){ 
 		phase_i++
 	%>
-		<% include scripts-phases %>
+		<% include scripts-template-phases %>
 	<% }) %>
 <% } %>
 </div>
@@ -20,7 +20,9 @@
 </button>
 <br><br><br>
 <div class="buttons">
-	<button type="submit" class="btn-default btn">save changes</button>  <a href="/admin/scripts/templates">cancel</a> <a class="alert-btn" href="/admin/scripts/templates/remove/<%= items._id %>" title="Delete this Template">delete</a>
+	<button type="submit" class="btn-default btn">save template</button>  
+	<a href="/admin/scripts/templates">cancel</a> 
+	<a class="alert-btn" href="/admin/scripts/templates/destroy/<%= items._id %>" title="Delete this Template">delete</a>
 </div>
 
 

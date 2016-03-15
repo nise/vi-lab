@@ -1,49 +1,86 @@
 <% layout( '../admin-layout' ) -%>
 
+<script type="text/javascript"> 
+$(document).ready (function () { 
+	$('#table1').bootstrapTable({
+    //url: '/data/json/modules',
+    data: JSON.parse('<%-JSON.stringify( items )%>'),
+    onLoadError : function(e){ console.log(JSON.stringify(e)); },
+    //    onLoadSuccess : function(e){ alert(JSON.stringify(e)); },
+    //height:'500',
+    showColumns : true,
+    checkboxHeader : true,
+   // cardView:true, // mobile view
+    showExport:true,
+    exportDataType:'selected',
+    exportOptions: {
+    	consoleLog: false,
+			csvEnclosure: '"',
+			csvSeparator: ',',
+			csvUseBOM: true,
+			displayTableName: false,
+			escape: false,
+			excelstyles: [ 'css','properties','to','export','to','excel' ],
+			fileName: 'tableExport',
+			htmlContent: false,
+			ignoreColumn: [],
+			ignoreRow: [],
+			onCellData: null,
+			outputMode: 'file',
+			tbodySelector: 'tr',
+			theadSelector: 'tr',
+			tableName: 'myTableName',
+			type: 'csv',
+			worksheetName: 'xlsWorksheetName'
+    },
+    // search
+    search: true,
+    strictSearch: true,
+    trimOnSearch:true,
+    columns: [
+	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'title', title: 'Template', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
+		  { field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'phases', title: 'Phases', visible:true, sortable : true, formatter: phaseFormatter, searchable : true }, 
+		  { field: 'created_at', title: 'Created', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
+		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
+		  { field: 'operate', title: '',  align: 'center', /*events: operateEvents,*/ formatter: operateFormatter }
+    ]
+	});
+});
 
+
+function operateFormatter(value, row, index) {
+	return [
+		'<a href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
+		'<i class="glyphicon glyphicon-duplicate"></i> duplicate',
+		'</a><br>',
+		'<a href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
+		'<i class="glyphicon glyphicon-export"></i> instantiate',
+		'</a>'
+	].join('');
+}
+
+function phaseFormatter(value, row, index) {
+	return row.phases.length; 
+}
+
+function titleFormatter(value, row, index) {
+	return '<a class="like" href="/admin/scripts/templates/edit/'+row._id+'" title="Edit script template">'+ row.title +'</a>  ';
+}
+
+function dateFormatter(value, row, index) {
+	var d = new Date( parseInt( value ) )
+	var month = d.getMonth()+1;
+	if(month < 10){
+		month = '0'+month;
+	}
+	return  moment( d.getFullYear()+''+month+''+d.getDate(), "YYYYMMDD").fromNow(); 
+}	
+
+</script>
 
 <h2>Script Templates</h2>
-	<table class="xtable">
-	<thead>
-		<th>Name</th>
-		<th>Description</th>
-		<th>Phases</th>
-		<th>Actions</th>
-		<th>Created</th>
-		<th>Updated</th>
-	</thead>
-	<tbody>
-		<% if ( items.length) { %>
-			<% i = 0 %>
-			<% items.forEach(function(item){ i++  %>
-				<tr class="meta" num="e<%= i %>">
-					<td><a href="/admin/scripts/templates/edit/<%= item._id %>"><%= item.title %></a>
-					</td>
-					<td><%= item.description %></td>
-					<td><%= item.phases.length %></td>
-					<td>
-						<a href="/admin/scripts/templates/duplicate/<%= item._id %>">duplicate</a>
-					</td>
-					<td class="date"><%= item.created_at %></td>
-					<td class="date"><%= item.updated_at %></td>
-			<% }) %>
-			<% }%>		
-			</tr>
-		</tbody>
-	</table>
 
-<script>
-$(document).ready(function() {
-	moment.locale('en');
-	$('.date').each(function(i, val){ //alert($(this).text()) 
-		var d = new Date( parseInt($(this).text()) )
-		var month = d.getMonth()+1;
-		if(month < 10){
-			month = '0'+month;
-		}
-		var t =  moment( d.getFullYear()+''+month+''+d.getDate(), "YYYYMMDD").fromNow(); 
-		$(this).html( t );
-	});
-});	
-</script>
+<div id="table1"></div>
 

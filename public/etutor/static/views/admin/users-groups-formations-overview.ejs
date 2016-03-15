@@ -1,0 +1,15 @@
+<br><br>
+<div class="">
+	<% i=1 %>
+	<% items.forEach(function(group){  %>
+		<div class="col-md-3">
+			Group <%= i %> (<%=: group | length %>)
+			<ul>
+			<% group.forEach(function(u){  %>
+				<li><img width="15" src="/static/img/user-icons/user-<%= u.id %>.png" /> <%= u.username %></li>
+			<% }) %>
+			</ul>
+		</div>
+		<% i++ %>		
+	<% }) %>
+</div>	

@@ -39,7 +39,6 @@
 <script src="/static/lib/holder.js" type="text/javascript"></script>
 <!--<script src="/static/lib/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>-->
 
-
 <script src="/static/lib/jquery.ui.core.js" type="text/javascript"></script> 
 <script src="/static/lib/jquery.ui.widget.js" type="text/javascript"></script> 
 <script src="/static/lib/jquery.ui.mouse.js" type="text/javascript"></script> 
@@ -84,11 +83,16 @@
 <script type='text/javascript' src="/static/lib/jquery-image-loader.js"></script>
 
 
+<!-- Date/Time Picker -->
+<script type="text/javascript" src="/static/lib/eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="/static/lib/eonasdan-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+
+<!--
 <link rel="stylesheet" href="/static/lib/wysihtml5/bootstrap-wysihtml5-0.0.2.css" />
 <script src="/static/lib/wysihtml5/wysihtml5-0.3.0.min.js" />
 <script src="/static/lib/wysihtml5/bootstrap-wysihtml5-0.0.2.min.js" />
 <script src="/static/lib/wysihtml5/wysihtml5.js" />
-
+-->
 
 <!--<script type='text/javascript' src='/static/lib/jquery-1.5.2.js'></script>-->
 
@@ -228,7 +232,8 @@ $(window).load(function () {
 								<li><a href="/admin/users">Users</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="/admin/users/groups">Groups</a></li>
-								<li><a href="/admin/users/groups/formation">Group Formation</a>
+								<li><a href="/admin/users/groups/formations">Group Formation</a>
+								<li><a href="/admin/users/groups/formations/create">Create Group Formation</a>
 								
 								
 								<!--<li><a href="javascript:render('admin-users-roles','/json/roles', false, '.admin-panel');">Roles/Permissions</a>
@@ -242,6 +247,7 @@ $(window).load(function () {
 							<ul class="dropdown-menu">
 								<li><a href="/admin/scripts">Scripts</a></li>
 								<li><a href="/admin/scripts/templates">Templates</a>
+								<li><a href="/admin/scripts/instances">Instances</a>
 								<!--<li><a href="javascript:render('admin-script-templates-new','/json/script-templaes-new', false, '.admin-panel');">New Template</a>-->
 							</ul>
 						

@@ -524,9 +524,9 @@ exports.createFileInstance = function ( req, res){
 				"hyperlinks": [],
 				"tags": [],
 				"toc": [],
-			},
+			};
 		  // save instance
-		  new Video( video ).save( function ( err, person ){
+		  new Videos( video ).save( function ( err, instance ){
 		    res.redirect( '/admin/videos/files' );
 		    res.end('done');
 		  });

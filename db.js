@@ -129,6 +129,18 @@ var Groups = new Schema({
 mongoose.model( 'Groups', Groups );
 
 
+//
+var GroupFormations = new Schema({
+	title : String,
+	persons: Number,
+	groups: Number,
+	method: String,
+	formation: Array,
+	created_at 	: Date,
+  updated_at 	: Date
+});
+mongoose.model( 'GroupFormations', GroupFormations );
+
 
 
 /*
@@ -189,9 +201,31 @@ var ScriptTemplate = new Schema({
 mongoose.model( 'ScriptTemplate', ScriptTemplate );
 
 
+var ScriptInstance = new Schema( {
+		title : String,
+		template : [ScriptTemplate],
+		phases : [ 
+			{ 
+				start : Date,
+				end: Date,
+				seq : Number,
+    		groupindex: Number,
+    		groupformation: Number
+			}
+		],
+		created_at 	: { type: Date },
+		updated_at 	: { type: Date, default: Date.now },
+		
+		// session
+		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
+		current_phase : Number,
+		results : [Schema.Types.Mixed]  // ?? Feedback, Task results, ...
+	});
+mongoose.model( 'ScriptInstance', ScriptInstance );
 
 
 
+// depricated? xx
 var ScriptSession = new Schema( {
 		// some meta data
 		title : { type: String, minlength: 3 },
@@ -217,16 +251,6 @@ mongoose.model( 'ScriptSession', ScriptSession );
 	
 	
 
-/* CHAT Messages */	
-var messageSchema = mongoose.Schema({
-    nickname: String,
-    message: String,
-    date: String
-})
-
-var Message = mongoose.model('messages', messageSchema);
-
-exports.message = Message;	
 	
 /* Log */
 var Log = new Schema({
@@ -300,9 +324,20 @@ mongoose.model( 'Written', Written );
 
 
 
+/* CHAT Messages */	
+var messageSchema = mongoose.Schema({
+    nickname: String,
+    message: String,
+    date: String
+})
+
+var Message = mongoose.model('messages', messageSchema);
+exports.message = Message;	
+
+
 
 /*
-Terzin Schemas
+Terezin Schemas
 */
 var Scenes = new Schema({
 		title				: String,

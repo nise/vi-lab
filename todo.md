@@ -3,12 +3,12 @@
 
 # VI-TWO
 ## urgent
-- Editierbare Themenblöcke = Phasen auf Level 1
 
+- Themenblöcke darstellen
+- Instanzen erzeugen
+- Video-Daten laden
+-  
 
- - Zeitrahmen
- - Video-Instanzen from video files
- 
 - player bug
 
 - Features
