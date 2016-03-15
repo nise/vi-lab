@@ -6,8 +6,7 @@
 
 - Themenblöcke darstellen
 - Instanzen erzeugen
-- Video-Daten laden
--  
+- db umbenennen ... clonen
 
 - player bug
 
