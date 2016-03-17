@@ -123,17 +123,7 @@ exports.getAllJSON = function(req, res) {
 	});
 };
 
-exports.getAllFilesJSON = function(req, res) { 
-	// get videos 
-	VideoFiles.find()
-		//.distinct('video', function ( err, videos ){
-		.exec( function ( err, videos ){
-		console.log(videos);
-		res.type('application/json');
-		res.jsonp(videos);  
-		res.end('done');
-	});
-};
+
 
 
 
@@ -532,6 +522,21 @@ exports.createFileInstance = function ( req, res){
 		 } 
   });
 }
+
+
+/*
+ * Returns JSON object of all video files
+ **/
+exports.getAllFilesJSON = function(req, res) { 
+	// get videos 
+	VideoFiles.find()
+		//.distinct('video', function ( err, videos ){
+		.exec( function ( err, videos ){
+			res.type('application/json');
+			res.jsonp(videos);  
+			res.end('done');
+		});
+};
 
 
 

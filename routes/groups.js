@@ -262,7 +262,7 @@ exports.getFormations = function(req, res){
 	Formations.find({}).exec(function (err, formations) {
 		if(err){ 
 			console.log(err); 
-		}else{ console.log(formations)
+		}else{ 
 			res.type('application/json');
 			res.jsonp(formations);  
 			res.end('done');

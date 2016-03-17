@@ -1,7 +1,7 @@
 <% layout( '../admin-layout' ) -%>
 
 
-<h2>Instance: <span id="instanceTitle" class="xeditable"><%= items.title %></span></h2>
+<h2>Instance: <span id="instanceTitle" class="str xeditable"><%= items.title %></span></h2>
 
 <!-- Phases -->
 <form id="instance-form">
@@ -12,8 +12,8 @@
 	<% items.phases.forEach(function( phase ){ 
 		phase_i++
 	%>
-		<div class="phase">
-			<h3 class="xeditable phase-title" id="phase-title_<%= phase_i %>" data-type="text" data-pk="1" data-url="" data-title="Phase Title">
+		<div class="phase" id="#phase_<%= phase_i %>">
+			<h3 class="xeditable phase-title str" id="phase-title_<%= phase_i %>" data-type="text" data-pk="1" data-url="" data-title="Phase Title">
 				<%= phase.title %>
 			</h3>
 			<div class="row">
@@ -23,13 +23,13 @@
 						<div class='col-sm-5'>
 							<div class="input-group input-group-xs">
 								<span class="input-group-addon" id="start_<%= phase_i %>">Start</span>
-								<input type="text" class="datetimepicker form-control" id="datetimepicker_<%= phase_i %>" aria-describedby="Select date and time when Phase should start"  value="">
+								<input type="text" class="datetimepicker form-control start" id="datetimepicker_start_<%= phase_i %>" aria-describedby="Select date and time when Phase should start"  value="<%- phase.start %>">
 							</div>
 						</div>
 						<div class='col-sm-5'>
 							<div class="input-group input-group-xs">
 								<span class="input-group-addon" id="start_<%= phase_i %>">End</span>
-								<input type="text" class="datetimepicker form-control" id="datetimepicker_<%= phase_i %>" aria-describedby="Select date and time when Phase should start"  value="">
+								<input type="text" class="datetimepicker form-control end" id="datetimepicker_end_<%= phase_i %>" aria-describedby="Select date and time when Phase should start"  value="<%= phase.end %>">
 							</div>
 						</div>
 					</div>
@@ -58,14 +58,33 @@
 
 /*
 todo
-- collected configured data
-- save data to DB
-- 
+- preview group formations
+- validation / optional values
 */
 
 
+/*
+require.config({
+  paths: {
+    // set the moment.js path
+    jquery: 'jquery-1.9.1.min',
+    moment: 'moment.min',
+    datetime: 'bootstrap-datetimepicker.min'
+  }
+});
+
+	require(['moment', 'jquery', 'datetime'], function(moment, jquery, datetimepicker) {
+  // test if moment is loaded
+  alert(moment().format('dddd, MMMM Do YYYY, h:mm:ss a'));
+});
+*/
+
 // make it editable
 $.fn.editable.defaults.mode = 'inline'; // popup
+
+$('.str').each(function(i, val){
+	$(this).text( decodeURIComponent($(this).text()) );
+})
 
 var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
 
@@ -76,60 +95,63 @@ $(document).ready(function() {
         alert($(this).attr('id') +'__'+value)   
    	}
 	});
-	
-	$('.datetimepicker').datetimepicker();
-	
+
 	// load group formations
 	$.each( data, function(i, phase){
 		// list available videos
-		$.get('/json/admin/groups/formations', function(data){ 
-			$.each(data, function(j, val){
-				$('#group_'+i).append( $('<label><input type="radio" aria-label="'+val.title+'"> '+val.title+'</label><br>' ) );
+		$.get('/json/admin/groups/formations', function(formations){ 
+			$.each(formations, function(j, val){
+				var check = phase.groupformation === formations[j]._id ? 'checked' : '';
+				$('#group_'+i).append( $('<label><input '+ check +' value="'+val._id+'" type="radio" name="grform_'+i+'" aria-label="'+val.title+'"> '+val.title+'</label><br>' ) );
 			});
 		});
+		// dates
+		$('#datetimepicker_start_'+i ).datetimepicker({ sideBySide: true }).data("DateTimePicker").date(moment(phase.start));
+		$('#datetimepicker_end_'+i).datetimepicker({ sideBySide: true }).data("DateTimePicker").date(moment(phase.end));
 	});
 	
-	/*
-		template : [ScriptTemplate],
-		phases : [ 
-			{ 
-				start : Date,
-				end: Date,
-				seq : Number,
-    		groupindex: Number,
-    		groupformation: Number
-			}
-		],
-		
-		updated_at 	: { type: Date, default: Date.now },
-	*/
-	
 	// save input
-	$('#instance-form').submit(function( event ) {
+	$('#instance-form').submit(function( event ) { 
 		event.preventDefault();	
 		// collect data from form
-		var res = data;
+		var res = JSON.parse('<%-JSON.stringify( items )%>');; // take initial instance
 		res.title = $('#instanceTitle').text();
-		res.title = 'ready';
+		res.status = 'ready';
 		
-		
-		$.each( data, function(i, phase){
-			
+		// collect phases
+		$.each( res.phases, function(i, phase){ 
+			// date
+			var
+				start = new Date( $('#datetimepicker_start_'+i).val() ),
+				end = new Date( $('#datetimepicker_end_'+i).val() )
+				; 
+			//if(moment(end).subtract(moment(start)).hours() > 0){
+				phase.start = start;
+				phase.end = end;
+			//}
+			// group formations
+			phase.seq = i;
+			phase.groupindex = i;
+			phase.groupformation = $('#group_'+i+' :checked').val();
+			$.extend(res.phases[i], phase) 
 		});
+		//alert(JSON.stringify(res))
 		// send it
 		$.ajax({
 			type: "POST",
-			url: '/admin/scripts/instances/update',
+			url: '/admin/scripts/instances/update/'+res._id,
 			data: res,
 			success: function(res){ 
 				window.location.href = '/admin/scripts/instances';
 			},
 			error : function(e){
-				console.log(JSON.stringify(e));
+				alert(JSON.stringify(e));
 			}	
 		});
 	});
 });
+
+
 
 
 </script>

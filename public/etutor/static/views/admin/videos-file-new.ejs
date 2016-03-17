@@ -92,7 +92,7 @@ $(document).ready(function() {
 				thumbnail: $('input[name=thumbnail]').val(),
 				institution: $('input[name=institution]').val(),
 				category: $('input[name=category]').val(),
-				tags: $('input[name=tags]').val()
+				tags: $('input[name=tags]').val().split(',') // Array
 			};
 			
 		$.ajax({
@@ -102,7 +102,7 @@ $(document).ready(function() {
 			error: function(xhr) {
 				console.log(xhr)
 			},
-			success: function(res) { alert(res)
+			success: function(res) { //alert(res)
 				// redirect 
 				window.location.href = '/admin/videos/files';
 			}

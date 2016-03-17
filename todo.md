@@ -6,7 +6,21 @@
 
 - Themenblöcke darstellen
 - Instanzen erzeugen
-- db umbenennen ... clonen
+
+- script templates 
+
+ 
+- script instance
+ - level 1 script erzeugen inkl. videoinstanzen und gruppenzuordnung
+ 
+- script instanz incl. supplement und video instanzen rendern
+ 
+- group activity Thread
+	- annotations
+	- messages
+	- viewing history
+	- chat / gruppen nachrichten
+
 
 - player bug
 
@@ -15,7 +29,7 @@
  - toc
  - hyperlinks
  
- - chat / gruppen nachrichten
+ 
  - user notes
  - playlist
  - lesezeichen
@@ -24,11 +38,7 @@
  - media fragments
  
 - thinkLets integrieren
-- activity Thread
-	- annotations
-	- messages
-	- viewing history
-	- ...
+
 - display comments / links animated 
 - test IE
 - test safari

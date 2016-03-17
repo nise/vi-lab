@@ -178,48 +178,88 @@ var ScriptTemplate = new Schema({
 	tags : [String], 
 	created_at 	: { type: Number },
 	updated_at 	: { type: Number },// default: Date.now },
-	
   slides : Boolean, // ???
-
   phases: [
-    		{ 
-    			title: String,
-    			instruction: String,
-    			supplements: String, 
-    			seq : Number,
-    			groupindex: Number, 
-    			widgets: [ 
-    				{ 
-    					name: String, 
-    					widget_options: [WidgetOptions],// [Schema.Types.Mixed], 
-    					canBeAnnotated: Boolean 
-    				}
-    			]	
-    		}
-    	]
+		{ 
+			title: String,
+			instruction: String,
+			supplements: String, 
+			seq : Number,
+			groupindex: Number,
+			video_files: [Schema.ObjectId],  
+			widgets:  
+				[{ 
+					label : String,
+					name: String, 
+					canBeAnnotated: Boolean, 
+					widget_options: {
+						hasTimelineMarker: Boolean,
+						timelineSelector : String, 
+						hasMenu : Boolean,
+						menuSelector: String,
+						allowReplies : Boolean, // tipical for comments
+						allowEditing : Boolean,
+						allowCreation : Boolean,
+						allowComments : Boolean,
+						allowReplies : Boolean,
+						allowEmoticons : Boolean,
+						label: String,
+						step : Number,
+						speed_step : Number,
+						minDuration : Number, 
+						path: String
+					}// end options 
+				}]// end widget		
+    }
+	] // end pahse
 });
 mongoose.model( 'ScriptTemplate', ScriptTemplate );
 
 
+//
 var ScriptInstance = new Schema( {
 		title : String,
-		template : [ScriptTemplate],
+		template : Schema.ObjectId,
+		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
+		current_phase : Number,
+		results : [Schema.Types.Mixed],  // ?? Feedback, Task results, ...
 		phases : [ 
 			{ 
 				start : Date,
 				end: Date,
+				title: String,
+				instruction: String,
+				supplements: String, 
 				seq : Number,
-    		groupindex: Number,
-    		groupformation: Number
+    		groupindex : Number,
+    		groupformation : Schema.ObjectId,
+    		widgets:  
+				[{ 
+					label : String,
+					name: String, 
+					canBeAnnotated: Boolean, 
+					widget_options: {
+						hasTimelineMarker: Boolean,
+						timelineSelector : String, 
+						hasMenu : Boolean,
+						menuSelector: String,
+						allowReplies : Boolean, // tipical for comments
+						allowEditing : Boolean,
+						allowCreation : Boolean,
+						allowComments : Boolean,
+						allowReplies : Boolean,
+						allowEmoticons : Boolean,
+						label: String,
+						step : Number,
+						speed_step : Number,
+						minDuration : Number, 
+						path: String
+					}// end options 
+				}]// end widget	
 			}
 		],
 		created_at 	: { type: Date },
-		updated_at 	: { type: Date, default: Date.now },
-		
-		// session
-		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
-		current_phase : Number,
-		results : [Schema.Types.Mixed]  // ?? Feedback, Task results, ...
+		updated_at 	: { type: Date, default: Date.now }
 	});
 mongoose.model( 'ScriptInstance', ScriptInstance );
 

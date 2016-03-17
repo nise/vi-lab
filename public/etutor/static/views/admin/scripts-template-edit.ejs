@@ -1,8 +1,14 @@
 <% layout( '../admin-layout' ) -%>
 
 
-<h2>Template: <span class="xeditable"><%= items.title %></span></h2>
+<h2>Template: <span id="templateTitle" class="xeditable str"><%=: items.title  %></span></h2>
 
+<form
+	id="scriptTemplateForm" 
+	action="/admin/scripts/templates/update/<%= items.id %>"
+	method="POST"
+	accept-charset="utf-8" 
+>
 <!-- Phases -->
 <div class="phases">
 <% if ( items.phases) { 
@@ -24,17 +30,95 @@
 	<a href="/admin/scripts/templates">cancel</a> 
 	<a class="alert-btn" href="/admin/scripts/templates/destroy/<%= items._id %>" title="Delete this Template">delete</a>
 </div>
+</form>
 
 
 <script>
 
 /*
 todo
-- collected configured data
-- save data to DB
+- bug: events in a popover are gone after second call
+- add widgets options other then Boolean
 - global widgets
 - 
 */
+
+/**/
+	var frmMeta = $('#scriptTemplateForm');
+	frmMeta.submit(function(e) { 
+		e.preventDefault();
+		var data = {
+			title: escapeSpecialChars($('#templateTitle').text()),
+			description: $('#templateDescription').val(),
+			tags : $('#templateTags').text().split(','),
+			phases: [] 
+		};
+		
+		$('.phase').each(function(i, val){
+			// collect phases
+			var phase = { 
+    			title: escapeSpecialChars($(this).find('.phase-title').text()),
+    			instruction: escapeSpecialChars($(this).find('textarea.task').val()),
+    			supplements: escapeSpecialChars($(this).find('textarea.supplements').val()),//'#phase-supplements_'+i, //  
+    			seq : i,
+    			groupindex: i,
+    			widgets: []
+    		};
+    	// collect widgets per phase	  
+    	$('#widgets-'+i+' button.the-widgets').each(function(j, widget){
+    		var w = $(this).data('widget');  
+    		var widget = {
+						label : w.label,
+						name: w.name,
+						widget_options: w.widget_options,// [Schema.Types.Mixed], 
+						canBeAnnotated: w.canBeAnnotated 
+					}; 
+ 				phase.widgets.push(widget);
+    	});
+    	// collect videos per phase
+  		var videos = $(this).find('.phase-video-list input:checkbox:checked').map(function() {
+  			return this.value;
+			}).get(); 
+			phase.video_files = videos;
+			data.phases.push(phase);
+		});
+		//return
+			
+		$.ajax({
+			type: "POST", 
+			url: frmMeta.attr('action'),
+			data: data,
+			error: function(xhr) {
+				console.log(xhr)
+			},
+			success: function(res) { 
+				// redirect 
+				window.location.href = '/admin/scripts	/templates';
+			}
+		});
+		return false;
+	});
+
+function escapeSpecialChars(s) { 
+    return encodeURIComponent(s);
+    return s.replace(/\n/g, "\\n")
+               .replace(/\'/g, "\\'")
+               .replace(/\"/g, '\\"')
+               .replace(/\&/g, "\\&")
+               .replace(/\r/g, "\\r")
+               .replace(/\t/g, "\\t")
+               .replace(/\b/g, "")
+               .replace(/\f/g, "\\f");
+};
+
+//
+$('textarea').each(function(i, val){
+	$(this).val( decodeURIComponent($(this).val()) );
+})
+$('.str').each(function(i, val){
+	$(this).text( decodeURIComponent($(this).text()) );
+})
+
 
 
 // make it editable
@@ -42,8 +126,9 @@ $.fn.editable.defaults.mode = 'inline'; // popup
 $(document).ready(function() {
 	// make text editable inline
 	$('.xeditable').editable({
+		//escape:true,
 		success: function(response, value) {
-        alert($(this).attr('id') +'__'+value)   
+        //alert($(this).attr('id') +'__'+value)   
    	}
 	});
 	
@@ -63,16 +148,18 @@ $(document).ready(function() {
 		}
 		// list available videos
 		$.get('/json/admin/video-files', function(data){ 
-			$.each(data, function(i, val){
-				$('#videos_'+i).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.contributor+')</label><br>' ) );
+			$.each(data, function(j, val){
+				$('#videos_'+i).append( $('<label><input type="checkbox" value="'+val._id+'" name="video-files-'+j+'" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
 			});
 		});
 		
 		// add widgets
-		$.each( phase.widgets, function(j, widget){ //alert(JSON.stringify(widget.widget_options[0]))
+		$.each( phase.widgets, function(j, widget){ //alert(JSON.stringify(widget.widget_options))
 			$('#widgets-'+i).prepend( buildWidget(widget, i) );
 		});		
 	});
+	
+
 	
 	// add a new phase
 	$('#add-phase').click(function(){
@@ -88,11 +175,13 @@ $(document).ready(function() {
 			// list available videos
 			$.get('/json/admin/video-files', function(data){ 
 				$.each(data, function(i, val){
-					$('#videos_'+pos).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.contributor+')</label><br>' ) );
+					$('#videos_'+pos).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
 				});
 			});
 			// make editable
-			$('.xeditable').editable();
+			$('.xeditable').editable({
+				//escape:true
+			});
 		}); // end require	
 	});
 
@@ -111,7 +200,7 @@ $('.date').each(function(i, val){
  *
  **/
 function handleDropdownClick(e) {
-	var widget = getWidgetByName( $(e.target).text() );
+	var widget = e.data.widget;//getWidgetByName( e.data.widget.name );
 	$('#widgets-'+e.data.phase).prepend( buildWidget( widget, e.data.phase) );
 	// remove entry
 	$(e.target).parent().remove();
@@ -132,8 +221,8 @@ function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
   	;
   link.appendChild(text);
   link.href = "#";
-  $(link).unbind('click', {phase: phase}, handleDropdownClick ); 
-	$(link).bind('click', {phase: phase}, handleDropdownClick ); 	
+  $(link).unbind('click', {phase: phase, widget: widget}, handleDropdownClick ); 
+	$(link).bind('click', {phase: phase, widget: widget}, handleDropdownClick ); 	
   li.appendChild(link);
   dropdown.appendChild(li);
 } 
@@ -141,36 +230,57 @@ function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
 /*
  **/
 function buildWidget(widget, phase){ 
-	return $('<button></button>')
+	var b = $('<button></button>')
 				.attr('id', 'widget-'+ phase +'-'+widget.name)
+				.attr('name', widget.name )
 				.attr('type',"button") 
-				.addClass("btn btn-sm btn-info widget-popover")
-				.text( widget.name )
+				.addClass("btn btn-sm btn-info widget-popover the-widgets")
+				.text( widget.label )
 				.data('widget', widget)
 				.popover({
-					title : widget.name,
+					title : '<b>Settings</b>',
 					html : true,
+					//container: 'body',
+					//trigger: 'focus',
 					placement: 'top',
 					content : renderWidgetOptions( widget, '#widget-'+ phase +'-'+widget.name, phase)
 				})
-				;			
+				;		
+	return b;						
 }
 
 
 // render widget options
 function renderWidgetOptions(widget, selector, phase){ 
 	var 
-	 keys = ['hasTimelineMarker','hasMenu','allowReplies','allowEditing','allowCreation' ],
+	 keys = ['hasTimelineMarker','hasMenu','allowReplies','allowEditing','allowCreation','allowEmoticons','allowComments' ],
 	 html = $('<div></div>')
-	 w = widget.widget_options[0]
-	 ; 
+	 w = widget.widget_options
+	 ;  
 	for (key in w ){ //alert(keys.indexOf( key ))
 		if( w.hasOwnProperty(key) && keys.indexOf( key ) !== -1 ){
-			html.append( $('<label><input type="checkbox" checked='+(w[key] ? true : false )+' aria-label="'+key+'"> '+key+'</label><br>' ) );
+			var check = $('<input />')
+				.attr('aria-label', key)
+				.attr('checked', w[key] ? true : false )
+				.attr('type', 'checkbox')
+				.attr('name', key)
+				//.attr('value', w[key])
+				//.unbind('change')
+				.bind('change', function(e){ //alert(2)
+					var data = $(selector).data('widget');
+					if($(this).not(':checked')){
+						data.widget_options[ $(this).attr('name') ] = false;
+					}else{
+						data.widget_options[ $(this).attr('name') ] = true;
+					}
+					$(selector).data('widget', data)
+				});
+			
+			html.append( $('<label></label>').text(key).prepend(check) ).append('<br>');
 		}
 	}
 	// add delte btn
-	var del = $('<span class="alert-btn">remove widget</span>')
+	var del = $('<span id="delete" class="alert-btn">remove widget</span>')
 		.click(function(){  //alert(JSON.stringify(widget))
 			// append removed widget as item to the dropdown
 			addWidgetDropDownItem( phase, widget);
@@ -186,18 +296,23 @@ function renderWidgetOptions(widget, selector, phase){
 	return html;
 }
 
-$('body').on('hidden.bs.popover', function() {
+
+
+$('body')
+	.on('hidden.bs.popover', function() {
     var tooltips = $('.popover').not('.in');
     if (tooltips) {
         tooltips.remove();
     }
-});
+	});
 
 
 defaultWidgets = [
-	{ name: 'toc', 
+	{ label : 'Table of Content',
+		name: 'toc', 
  		canBeAnnotated:true, 
- 		widget_options: [{
+ 		type : 'annotation',
+ 		widget_options: {
 			hasTimelineMarker: true, 
 			timelineSelector : '.vi2-timeline-main',
 			hasMenu : true,
@@ -205,33 +320,74 @@ defaultWidgets = [
 			allowEditing : true,
 			allowCreation : true,
 			path: '/static/img/user-icons/'
-		}] 
+		}
 	},
-	{ name: 'hyperlinks', 
+	{ label : 'Hyperlinks',
+		name: 'hyperlinks', 
  		canBeAnnotated:true, 
- 		widget_options: [{
+ 		type : 'annotation',
+ 		widget_options: {
+	 		displaySelector: '#seq',
 			hasTimelineMarker: true, 
 			timelineSelector : '.vi2-timeline-main',
 			hasMenu : true,
-			menuSelector: '#toc',
+			menuSelector: '#hyperlinks',
+			minDuration: 5, // seconds
 			allowEditing : true,
 			allowCreation : true,
 			path: '/static/img/user-icons/'
-		}] 
+		}
 	},
-	{ name: 'comments', 
+	{ label : 'Comments',
+		name: 'comments', 
 		canBeAnnotated:true, 
- 		widget_options: [{
+		type : 'annotation',
+ 		widget_options: {
  			hasTimelineMarker: true,
  			timelineSelector : '.vi2-timeline-bottom', 
 			hasMenu : true,
 			menuSelector: '#comments',
 			allowReplies : true, // tipical for comments
+			allowEmoticons : true, 
 			allowEditing : true,
 			allowCreation : true, 
 			path: '/static/img/user-icons/'
- 		}]
- 	}
+ 		}
+ 	},
+ 	{	label : 'Video Assessment',
+ 		name : 'assessment',
+	 	canBeAnnotated:true, 
+		type : 'annotation',
+		widget_options : { 
+			displaySelector: '#overlay',
+			hasTimelineMarker: true,
+		  timelineSelector : '.vi2-timeline-top', 
+			hasMenu : true,
+			menuSelector: '#assessment',
+			allowComments : true,
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+		 }
+	},{
+		label : 'Skip Back',
+		name : 'skipBack',
+		type : 'player-widget',
+		widget_options : {
+			selector : '.control-bar',
+			label : '',
+			step : 5 // in seconds
+		}
+	},{
+		label : 'Playback Speed',
+		name : 'playbackSpeed',
+		type : 'player-widget',
+		widget_options : {
+			selector: '.control-bar',
+			videoSelector : 'video1',
+			speed_steps: [0.3,0.5,0.7,1.0,1.5,1.7,2.0]//[0.3,0.5,0.8,1.0,1.5,2.0,3.0,4.0]	
+		}
+	}	
 ];
 
 
@@ -256,14 +412,6 @@ function getWidgetByName(name){
 	}
 	return undefined;
 } 
-
-
-
-
-
-
-
-
 
 </script>
 

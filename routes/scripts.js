@@ -48,9 +48,10 @@ var templateA = {
     			seq : 0,
     			groupindex: 0, 
     			widgets: [ 
-    				{ name: 'toc', 
+    				{ label: 'Table of Contents',
+    					name: 'toc', 
 		  		 		canBeAnnotated:true, 
-		  		 		widget_options: [{
+		  		 		widget_options: {
 								hasTimelineMarker: true, 
 								timelineSelector : '.vi2-timeline-main',
 								hasMenu : true,
@@ -58,11 +59,12 @@ var templateA = {
 								allowEditing : true,
 								allowCreation : true,
 								path: '/static/img/user-icons/'
-							}] 
+							} 
 						},
-						{ name: 'comments', 
+						{ label: 'Comments',
+							name: 'comments', 
 							canBeAnnotated:true, 
-		  		 		widget_options: [{
+		  		 		widget_options: {
 		  		 			hasTimelineMarker: true,
 		  		 			timelineSelector : '.vi2-timeline-bottom', 
 								hasMenu : true,
@@ -71,7 +73,7 @@ var templateA = {
 								allowEditing : true,
 								allowCreation : true, 
 								path: '/static/img/user-icons/'
-		  		 		}]
+		  		 		}
 		  		 	}
     			]	
     		}, // phase 2
@@ -82,9 +84,10 @@ var templateA = {
     			seq : 0,
     			groupindex: 0, 
     			widgets: [ 
-    				{ name: 'comments', 
+    				{ label: 'Comments',
+    					name: 'comments', 
 							canBeAnnotated:true, 
-		  		 		widget_options: [{
+		  		 		widget_options: {
 		  		 			hasTimelineMarker: true,
 		  		 			timelineSelector : '.vi2-timeline-bottom', 
 								hasMenu : true,
@@ -93,18 +96,37 @@ var templateA = {
 								allowEditing : true,
 								allowCreation : true, 
 								path: '/static/img/user-icons/'
-		  		 		}]
+		  		 		}
 		  		 	}
     			]	
     		}
     	]
 }
 
-
 //
 var t = new Date();
 templateA.created_at = t.getTime();
 templateA.updated_at = t.getTime();
+
+
+/*
+* Add new Template as an example
+**/
+exports.addTemplate = function(req, res) { 
+	Templates.remove(function(err, o){
+  	if(err){
+  		console.log(err)
+  	}else{
+  	
+  	new Templates( templateA )
+		.save( function( err, template, count ){
+			console.log( 'eeeeeee '+template.title )
+			//res.redirect( '/temp' );
+			//res.end();
+		});
+		
+		}})
+}	
 
 
       
@@ -116,7 +138,7 @@ exports.renderTemplates = function(req, res) {
 	Templates.find({}).exec(function (err, templates) {
 		if(err){ 
 			console.log(err); 
-		}else{ console.log(templates)
+		}else{ 
 			res.render( 'admin/scripts-template-index', {
 				items : templates
 			});
@@ -168,32 +190,17 @@ exports.duplicateTemplateByID = function(req, res) {
 }	
 
 
-/*
-* Add new Template as an example
-**/
-exports.addTemplate = function(req, res) { 
-	Templates.remove(function(err, o){
-  	if(err){
-  		console.log(err)
-  	}else{
-  	
-  	new Templates( templateA )
-		.save( function( err, template, count ){
-			console.log( 'eeeeeee '+template.title )
-			//res.redirect( '/temp' );
-			//res.end();
-		});
-		
-		}})
-}	
+
 
 
 /*
  * Update Template
- * status: xxx
+ * status: finished
  **/
-exports.updateTemplate = function(req, res) {
-
+exports.updateTemplateByID = function(req, res) { console.log(req.body.phases[0].video_files);
+	Templates.findOneAndUpdate(req.params.id, req.body, function ( err, template ){
+		res.end()
+	});
 }
 
 
@@ -220,7 +227,7 @@ exports.instantiateTemplateByID = function(req, res) {
 			t = new Date(),
 			script = {
 				title : template.title+'_instance',
-				template : template,
+				template : template._id,
 				phases: [],
 				created_at 	: t.getTime(),
 				status : 'drafted',
@@ -228,16 +235,23 @@ exports.instantiateTemplateByID = function(req, res) {
 			};
 	  // prepare phases
 	  for(var i = 0; i < template.phases.length; i++){
-	  		script.phases[i] = { 
-					start :  t.getTime(),
-					seq : i,
-    			groupindex: undefined,
-    			groupformation: undefined
-				};
+  		script.phases[i] = template.phases[i];
+  		script.phases[i].start = t.getTime();
+			script.phases[i].seq = i;
+  		script.phases[i].groupindex = undefined;
+  		script.phases[i].groupformation = undefined;
 	  }
+
+	  console.log(script);
 	  new Instances( script ).save(function(err, instance){
-	    res.redirect( '/admin/scripts/instances' );
-	    res.end('done');
+	  	if(err){ 
+	  		console.log(err)
+	  	}else{
+				console.log('-----------------')
+				console.log(instance)
+			  res.redirect( '/admin/scripts/instances' );
+			  res.end('done');
+	    }
 	  });  
 	 	
 	});
@@ -257,13 +271,24 @@ exports.renderInstances = function(req, res) {
 	Instances.find({}).exec(function (err, instances) {
 		if(err){ 
 			console.log(err); 
-		}else{ 
+		}else{  console.log(instances)
 			res.render( 'admin/scripts-instances-index', {
 				items : instances
 			});
 			res.end('done');
 		}	
 	});
+};
+
+
+/*
+ * Get JSON of all script instances
+ **/
+exports.getInstances = function(req, res) {
+	Instances.collection.find().toArray(function(err, items) {
+    	res.type('application/json');
+		 	res.jsonp(items); 
+		});
 };
 
 
@@ -287,21 +312,16 @@ exports.renderInstanceByID = function(req, res) {
 
 /*
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
+ * status
  **/
 exports.updateInstanceByID = function(req, res){
 	// save instance
-	Instances.findById( req.params.id, function ( err, instance ){
-		var instan = req.body;
-		var t = new Date();
-		instan.updated_at = t.getTime();
-		new Instances( instan ).save( function ( err, instance ){
-		  res.redirect( '/admin/scripts/instances' );
-		  res.end('done');
-	 	});
-	});
-
-	// xxx
-	// define groups considering the video files and group formations
+	delete req.body["_id"];
+	Instances.findOneAndUpdate(req.params.id, req.body, function ( err, instance ){
+		if(err){
+			console.log(err)
+		}
+		// define groups considering the video files and group formations
 		// build inverted index
 			var groups= [];
 			var index = {} 
@@ -310,6 +330,12 @@ exports.updateInstanceByID = function(req, res){
 					index[groups[i]]
 				}
 			}
+		
+		// fin
+		console.log('updated instance')
+		res.redirect( '/admin/scripts/instances' );
+		res.end()
+	});	
 }
 
 /*

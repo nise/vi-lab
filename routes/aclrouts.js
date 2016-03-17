@@ -145,15 +145,18 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/scripts/templates/duplicate/:id', users.ensureAuthenticated, scripts.duplicateTemplateByID );
 	app.get('/admin/scripts/templates/instantiate/:id', users.ensureAuthenticated, scripts.instantiateTemplateByID );
 	app.get('/admin/scripts/templates/destroy/:id', users.ensureAuthenticated, scripts.destroyTemplateByID );
+	app.post('/admin/scripts/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplateByID );
+	
 	// script instances
 	app.get('/admin/scripts/instances', users.ensureAuthenticated, scripts.renderInstances );
 	app.get('/admin/scripts/instances/edit/:id', users.ensureAuthenticated, scripts.renderInstanceByID );
 	app.post('/admin/scripts/instances/update/:id', users.ensureAuthenticated, scripts.updateInstanceByID );
 	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
+	app.get('/json/admin/scripts/instances', users.ensureAuthenticated, scripts.getInstances );
 	
 	// ??
 	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
-	app.post('/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplate ); // xxx
+
 	
 	// json
 	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
