@@ -20,7 +20,7 @@ var Videos = new Schema({
        length				: String,
        date					: String,
        weight				: Number,
-       thumbnail 		: String,
+       thumbnail 		: Array,
        source				: String
 		}],
     toc							: [Schema.Types.Mixed],
@@ -62,7 +62,7 @@ var VideoFile = new Schema({
 	video				: String, // url
 	length			: String,
 	size				: String, // file size
-	thumbnail 	: String, // url
+	thumbnail 	: Array, // [url]
 // additional semantic data	
 	institution	: String,
 	category		: String,

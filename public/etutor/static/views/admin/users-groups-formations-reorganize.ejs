@@ -1,0 +1,64 @@
+
+
+
+	<form id="group-form">
+	<h4>Step 1: Choose existing group formation</h4>
+	drop down
+	<h4>Step 2: Choose group formation algorithm</h4>
+	<div>
+	<input type="radio" name="form-algo" value="method6" aria-label="Distribute the selected users to n groups as they are.">
+	<span>Merge n groups as they are</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method7" aria-label="Randomly distribute the selected users to n groups.">
+	<span>Merge n groups randomly</span>
+	</div>
+	
+	<div>
+	<input type="radio" name="form-algo" value="method8" aria-label="Distribute users in groups of n people as they are.">
+	<span>Merge n groups customly</span>
+	</div>		
+	
+	<div>
+	<input type="radio" name="form-algo" value="method9" aria-label="Randomly distribute users in groups of n people.">
+	<span>Split each group into n groups as they are</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method10" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Split each group randomly into n groups</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method11" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Split each group into n custome groups</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method12" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Reorganize groups by puting n users of each group into a new group</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method13" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Reorganize groups by puting n random users of each group into a new group</span>
+	</div>
+	
+	<div>
+	<input disabled type="radio" name="form-algo" value="method14" aria-label="Distribute users in groups of n people by multiple (homogene or heterogene) crtieria.">
+	<span>Reorganize groups by puting n users of each group manually into a new group</span>
+	</div>
+	
+
+	
+	<br>		 
+	<div class="input-group input-group-xs">
+  <span class="input-group-addon" id="n2">Group size / number of groups</span>
+  <input type="text" class="form-control" id="number" placeholder="n" aria-describedby="sizing-addon3">
+	</div>
+	
+	
+	<br>
+	<button id="preview-btn2" class="btn btn-secondary">Preview group formation</button>
+	</form>	 

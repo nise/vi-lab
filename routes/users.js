@@ -7,7 +7,7 @@ var
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Users  = mongoose.model( 'Users'),
-	Script = mongoose.model('Scripts'),
+	ScriptInstance = mongoose.model('ScriptInstance'),
 	Groups = mongoose.model('Groups'),
 	fs = require('node-fs'),
 	csv = require('csv')
@@ -119,7 +119,7 @@ exports.getUserData = function(req, res, next) {
   if (req.user !== undefined) {
     res.type('application/json');
     	var t = -1;
-    	Script.collection.find().toArray(function(err, script) {
+    	ScriptInstance.find().exec(function(err, script) {
     	var phase = script[0].current_phase;
 				Groups.find({id: req.user.groups[phase]}).lean().exec(function(err, item) {
 					if(err){
@@ -149,7 +149,7 @@ Returns a jsonp object that contains all users that are in the same group as the
 exports.getGroupData = function(req, res, next) {  
   if (req.user !== undefined) {
     // get current script phase
-    Script.collection.find().toArray(function(err, script) {
+    ScriptInstance.find().exec(function(err, script) {
     	var phase = script[0].current_phase; 
     	// get group of current user
   	  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){

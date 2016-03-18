@@ -75,6 +75,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	// files
 	app.get(	'/admin/videos/files', videos.renderVideoFiles )
 	app.get(	'/admin/videos/files/create', users.authCallback(['user','editor']), videos.renderFileUpload );
+	app.get(	'/admin/videos/files/create-stills/:id', users.authCallback(['user','editor']), videos.generateStillImages );
 	app.get(	'/admin/videos/files/edit/:id', users.authCallback(['editor']), videos.renderFileEdit );
 	app.post(	'/admin/videos/files/update/:id', users.authCallback(['editor']), videos.updateFile );
 	app.get(	'/admin/videos/files/instantiate/:id', users.authCallback(['editor']), videos.createFileInstance );
@@ -100,7 +101,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		mime = require('mime')
 		;
 	var file_types = ['mp4','avi','webm','mov','ogv'];	//xxx part of a settings file/page
-	var upload_path = './public/etutor/static/uploads/';
+	var upload_path = './public/etutor/static/videos/';
 	
 	var storage = multer.diskStorage({
   destination: function (req, file, cb) {

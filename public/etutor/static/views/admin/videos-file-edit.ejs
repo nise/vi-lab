@@ -11,6 +11,27 @@ todo:
 - 
 */
 $(document).ready(function() {
+
+	$('#createStills').click(function(){
+		var id='<%= items._id %>';
+		$.get('/admin/videos/files/create-stills/'+id, function(d){
+			for(var i = 1; i < 9; i++){
+				var o = new Image(); 
+				// animate transition	if image is loaded				
+				$(o) // vi2.observer.current_stream
+					.attr('src', '/static/img/stills/still_'+id+'_'+i+'.png')
+					.addClass('slide ov-'+id)
+					.css({width:'50%'})
+					//.css({ height:'100vh' })
+					.unbind('load')
+					.bind('load', function(e){ //alert(JSON.stringify(t))
+						//$('.stills').append(o);
+					})
+					.appendTo('.stills');
+				//$('.stisls').find('img#id'+i).attr('src', '/static/img/stills/still_'+id+'_'+i+'.png');
+			}
+		})
+	})
 	   
 });
 </script>
@@ -142,8 +163,19 @@ $(document).ready(function() {
     </div>
   </form>
 </div>
+<div class="col-md-4">
+	<button class="btn btn-secondary" id="createStills">Generate Still Images</button><br>
+	<div class="stills"></div>
 </div>
-
+</div>
+<!--<img id="id1" />
+		<img id="id2" />
+		<img id="id3" />
+		<img id="id4" />
+		<img id="id5" />
+		<img id="id6" />
+		<img id="id7" />
+		<img id="id8" />-->
 
 
 

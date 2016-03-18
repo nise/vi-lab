@@ -97,10 +97,12 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 							//res.type('application/json');
 							//res.jsonp({});  
 							res.end('done');
-						} // end if	
+						}
 					});// end Groups
 				});// end Users
-			}// end if	
+			}else{ // end if	
+				res.end('done');
+			}
 		});// end ScriptInstance	
 	}		 
 }
@@ -540,6 +542,31 @@ exports.destroyFile = function ( req, res ){
 
 
 /*
+ * Generates 4 stillimages of the video
+ **/
+var ffmpeg = require('fluent-ffmpeg') 
+exports.generateStillImages = function(req, res){
+	VideoFiles.findById( req.params.id, function ( err, video ){
+		ffmpeg(__dirname+'/../public/etutor/'+video.video)
+			.on('filenames', function(filenames) {
+				console.log('Will generate ' + filenames.join(', '))
+			})
+			.on('end', function(err, data) {
+				//console.log(err, data);
+				res.end()
+			})
+			.screenshots({
+				// Will take screens at 20%, 40%, 60% and 80% of the video
+				count: 4,
+				//timestamps: [30.5, '50%', '01:10.123'],// alternative
+				filename: 'still_'+video.video.split('/').slice(-1)[0].replace('.mp4','')+'_%i.png',
+				folder: __dirname+'/../public/etutor/static/img/stills',
+				size: '320x240',
+			});
+	});			
+}
+
+/*
  * Creates an instance of a video file 
  * status: finished
  **/
@@ -586,6 +613,11 @@ exports.createMultipleFileInstance = function ( files, ids, cb ){
  * status: finished
  **/
 getInstanceFromFile = function(file, id){
+	// prep thumbnails
+	var arr = [];
+	for(var i = 1; i < 9; i++){
+		arr.push( 'still_'+file.video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
+	}
 	return {
 				"id": id === undefined ? Math.floor(Math.random()*1000) : id, 
 				"progress": '', // ?
@@ -600,7 +632,7 @@ getInstanceFromFile = function(file, id){
 				    "length": file.length,
 				    "date": file.date,
 				    "source": file.source,
-				    "thumbnail": "/static/img/video0_poster.jpg",
+				    "thumbnail": arr,
 				    "tags": file.tags
 				  }
 				], // need to become dynamic

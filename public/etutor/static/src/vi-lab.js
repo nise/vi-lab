@@ -183,7 +183,7 @@ var ViLab = $.inherit({
   setupVideo : function(has_parallel_media){  
   	var _this = this; 
 		var phaseHasSlides = _this.db.hasSlides( _this.currentVideo );//res[0].phases[_this.current_phase].slides;  
-		
+//		alert(_this.db.hasSlides( _this.currentVideo ))
 		var options = {
 			id : _this.currentVideo,
 			embed:false,
@@ -426,7 +426,7 @@ var ViLab = $.inherit({
 		if( widget !== ''){
 			this.observer.addWidget( widget ); 
 			this.loadedWidgets.push( widget_name );
-		}
+		} //alert(JSON.stringify(widget_options))
 		// add accordion elements
 		if( widget_options.widget_options.hasMenu && ! refresh ){ 
 			var h3 = $('<h3 class="ui-accordion-header ui-corner-all"></h3>')

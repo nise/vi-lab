@@ -1027,8 +1027,10 @@ exports.startScriptSession = function(){
 JSON
 */
 exports.getScript = function(req, res) {
-	Scripts.collection.find().toArray(function(err, items) {
+	Instances.find().exec(function(err, items) {
     	res.type('application/json');
+    	res.jsonp(items);  //items is the object
+    	
 		 	var 
 				date = new Date(), 
 				p = 1;
@@ -1047,7 +1049,7 @@ exports.getScript = function(req, res) {
 			}
       //items[0]['current_phase'] = p;
       console.log('PHASE == ' + p);
-    	res.jsonp(items);  //items is the object
+    	//res.jsonp(items);  //items is the object
 		});
 };
 
