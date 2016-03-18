@@ -13,11 +13,24 @@ $(document).ready (function () {
     columns: [
 		  { field: 'title', title: 'Formation', sortable : true, order: 'asc', searchable: true }, 
 		  { field: 'method', title: 'Formation algorithm', visible:true, sortable : true,  searchable : true }, 
-		  { field: 'groups', title: 'Anzahl an Gruppen', visible:true, sortable : true,  searchable : true }, 
-			{ field: 'persons', title: 'Anzahl an Personen', visible:true, sortable : true, searchable : true } 
+		  { field: 'groups', title: 'Number of groups', visible:true, sortable : true,  searchable : true }, 
+			{ field: 'persons', title: 'Number of users', visible:true, sortable : true, searchable : true },
+			{ field: 'operate', title: '', formatter: operateFormatter, visible:true, sortable : true, searchable : true }  
     ]
 	});
 });
+
+function operateFormatter(value, row, index) {
+	return '--';
+/*	return [
+		'<a href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
+		'<i class="glyphicon glyphicon-duplicate"></i> duplicate',
+		'</a><br>',
+		'<a href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
+		'<i class="glyphicon glyphicon-export"></i> instantiate',
+		'</a>'
+	].join(''); */
+}
 
 
 </script>

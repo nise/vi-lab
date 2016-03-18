@@ -33,7 +33,7 @@ var Videos = new Schema({
 		assessmentfillin		: [Schema.Types.Mixed],
 		assessmentwriting		: [Schema.Types.Mixed],
 		progress				: String,
-    updated_at 			: Date
+    updated_at 			: { type: Date, default: Date.now }
 });
 mongoose.model( 'Videos', Videos );
 
@@ -68,7 +68,7 @@ var VideoFile = new Schema({
 	category		: String,
 	tags				: Array,
 // misc
-	updated_at 	: Date
+	updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'VideoFiles', VideoFile );
 
@@ -80,7 +80,7 @@ var Images = new Schema({
 		url 				: String,
 		tags				: [Schema.Types.Mixed],
 		scene					: String,
-    updated_at 	: Date
+    updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Images', Images );
 
@@ -102,13 +102,13 @@ var Users = new Schema({
   status: {
   	online: Boolean,
   	location: String,
-  	updated_at: Date
+  	updated_at: { type: Date, default: Date.now }
   },
   icon: String,
   trace: Boolean,
   experimental: Boolean,
   groups: [Schema.Types.Mixed],
-  updated_at 	: Date
+  updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Users', Users );
 
@@ -124,7 +124,7 @@ var Groups = new Schema({
 	videos : Array,
 	ep_group_pad_id: String, 
 	ep_group_id: String,
-  updated_at 	: Date
+  updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Groups', Groups );
 
@@ -137,7 +137,7 @@ var GroupFormations = new Schema({
 	method: String,
 	formation: Array,
 	created_at 	: Date,
-  updated_at 	: Date
+  updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'GroupFormations', GroupFormations );
 
@@ -152,7 +152,7 @@ var Scripts = new Schema({
 	current_phase : Number,
   slides : Boolean,
   phases : [Schema.Types.Mixed],
-  updated_at 	: Date
+  updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Scripts', Scripts );
 
@@ -333,7 +333,7 @@ var Tests = new Schema({
   results : Array,
   user_results : [Schema.Types.Mixed],
   process_time: Number,
-  updated_at 	: Date
+  updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Tests', Tests );
 
@@ -344,7 +344,7 @@ var Fillin = new Schema({
   	username 	: String,
   	user_id		: Number,	
   	text 			: String,
-  	updated_at: Date
+  	updated_at: { type: Date, default: Date.now }
   }],
   correct : String
 });
@@ -357,7 +357,7 @@ var Written = new Schema({
   	username 	: String,
   	user_id		: Number,	
   	text 			: String,
-  	updated_at: Date
+  	updated_at: { type: Date, default: Date.now }
   }],
   correct : String
 });
@@ -393,7 +393,7 @@ var Scenes = new Schema({
     start				: Number,
     music				: String,
     images			: Array,
-    updated_at 	: Date
+    updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Scenes', Scenes );
 
@@ -410,7 +410,7 @@ var Persons = new Schema({
 		profession	: String,
     bio    			: String,
     images 			: Array,
-    updated_at 	: Date
+    updated_at 	: { type: Date, default: Date.now }
 });
 mongoose.model( 'Persons', Persons );
 

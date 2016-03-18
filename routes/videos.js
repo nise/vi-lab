@@ -5,8 +5,10 @@
 var 
 	mongoose = require( 'mongoose' ),
 	server =  require('./../server'),
-	Videos  = mongoose.model( 'Videos' )
-	VideoFiles  = mongoose.model( 'VideoFiles' )
+	Videos  = mongoose.model( 'Videos' ),
+	VideoFiles  = mongoose.model( 'VideoFiles' ),
+	ScriptInstance = mongoose.model( 'ScriptInstance' ),
+	Users = mongoose.model('Users'),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -60,56 +62,117 @@ exports.index = function ( req, res ){
 };
 
 
+exports.renderScriptVideo = function(req, res) { //console.log(88+'---------------------------')
+	if( req.user.username !== undefined ){
+		// get script phase 
+		ScriptInstance.find({ status: 'running' }).exec(function(err, script) {
+			if(err){ console.log(err); 
+			}else if(script[0] !== undefined){
+				var phase = script[0]['current_phase']; 
+				// get group of current user
+				console.log('phase: '+phase);
+				Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+					var group = users[0].groups[Number(phase)];  
+				console.log('group'+group)
+					// get video-ids of group
+					Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+						console.log(groups);
+						if(err){ 
+							console.log(err); 
+						}else if(groups[0] !== undefined){
+							var query = {};
+							query['id'] = { $in: groups[0].videos }; // 
+							console.log('#################################################');
+							// get videos 
+							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+								
+								for(var i = 0; i < videos.length; i++){
+									console.log('video '+videos[i].id)
+								}
+								//res.type('application/json');
+								res.render('videos', {items: {videos: videos, script: script[0] } });  
+								res.end('done');
+							});
+						}else{
+							//res.type('application/json');
+							//res.jsonp({});  
+							res.end('done');
+						} // end if	
+					});// end Groups
+				});// end Users
+			}// end if	
+		});// end ScriptInstance	
+	}		 
+}
+
+/*
+ * Returns the video instances that the user as part of his group is allowed to see in the current script phase
+ * status: functionable
+ **/
 exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
 	if( req.user.username !== undefined ){
 		// get script phase 
-		mongoose.model('Scripts').collection.find().toArray(function(err, script) {
-			var phase = script[0]['current_phase']; 
-			// get group of current user
-			
-			mongoose.model('Users').find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-				var group = users[0].groups[Number(phase)];  
-				
-				// get video-ids of group
-				mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-					var query = {};
-					query['id'] = { $in: groups[0].videos }; // 
-					console.log('#################################################');
-					// get videos 
-					Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
-						// calc status
-						/*for(var i = 0; i < videos.length; i++){ 
-							// calc duration in Minutes
-							duration = ( videos[i].metadata[0].length ).split(':');
-							duration = Number( Number(duration[0])*60 + Number(duration[1]) );
+		ScriptInstance.find({ status: 'running' }).exec(function(err, script) {
+			if(err){ console.log(err); 
+			}else if(script[0] !== undefined){
+				var phase = script[0]['current_phase']; 
+				// get group of current user
+				console.log('phase: '+phase);
+				Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+					var group = users[0].groups[Number(phase)];  
+				console.log('group'+group)
+					// get video-ids of group
+					Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+						console.log(groups);
+						if(err){ 
+							console.log(err); 
+						}else if(groups[0] !== undefined){
+							var query = {};
+							query['id'] = { $in: groups[0].videos }; // 
+							console.log('#################################################');
+							// get videos 
+							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+								// calc status
+								/*for(var i = 0; i < videos.length; i++){ 
+									// calc duration in Minutes
+									duration = ( videos[i].metadata[0].length ).split(':');
+									duration = Number( Number(duration[0])*60 + Number(duration[1]) );
 							
-							if( videos[i].comments !== null ){
-								videos[i].status += Number(videos[i].comments.length );
-							}else{
-								 videos[i].comments = {};
-							}	
+									if( videos[i].comments !== null ){
+										videos[i].status += Number(videos[i].comments.length );
+									}else{
+										 videos[i].comments = {};
+									}	
 							
-							if( videos[i].assessment !== null )
-							videos[i].status += Number(videos[i].assessment.length );
+									if( videos[i].assessment !== null )
+									videos[i].status += Number(videos[i].assessment.length );
 							
-							if( videos[i].toc !== null ) 
-							videos[i].status += Number(videos[i].toc.length );
+									if( videos[i].toc !== null ) 
+									videos[i].status += Number(videos[i].toc.length );
 							
-							if( videos[i].hyperlinks !== null ) 
-							videos[i].status += Number(videos[i].hyperlinks.length );
+									if( videos[i].hyperlinks !== null ) 
+									videos[i].status += Number(videos[i].hyperlinks.length );
 							
-							// normalize regarding video duration
-							videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
+									// normalize regarding video duration
+									videos[i].progress = Math.round(Number( videos[i].status/Math.round( duration / 10 ) ) * 1000);
 						
-						} */
-						console.log(videos)
-						res.type('application/json');
-						res.jsonp(videos);  
-						res.end('done');
-					});
-				});// end Groups
-			});// end Users
-		});// end Scripts	
+								} */
+								for(var i = 0; i < videos.length; i++){
+									console.log('video '+videos[i].id)
+								}
+								res.type('application/json');
+								res.jsonp( {items: {videos: videos, script: script[0] } });  
+								res.end('done');
+							});
+						}else{
+							res.type('application/json');
+							res.jsonp({});  
+							res.end('done');
+						} // end if	
+					});// end Groups
+				});// end Users
+			}// end if	
+		});// end ScriptInstance	
 	}		 
 }
 
@@ -150,37 +213,42 @@ exports.getOneJSON = function(req, res) {
 
 
 
-
+var 
+	Groups = mongoose.model('Groups')
+	;
 
 // query db for all video items
 exports.list = function ( req, res ){ console.log('#################################################');
-	// get script phase 
-	mongoose.model('Scripts').collection.find().toArray(function(err, script) {
-  	var phase = script[0]['current_phase']; 
-  	// get group of current user
-	  mongoose.model('Users').find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-	  	var group = users[0].groups[Number(phase)];  
-	  	
-			// get video-ids of group
-			mongoose.model('Groups').find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-				var query = {};
-				query['id'] = { $in: groups[0].videos }; // 
-				console.log('#################################################');
+	// get running script and the current phase 
+	ScriptInstance.find({  }).exec(function(err, script) {
+		if(err){ console.log(err); 
+		}else{
+			var phase = script[0]['current_phase']; console.log(phase)
+			// get group of current user
+			Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+				var group = users[0].groups[Number(phase)];  
+				console.log(group)
+				// get video-ids of group
+				Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+					var query = {};
+					query['id'] = { $in: groups[0].videos }; // 
+					console.log('#################################################');
 				
-				// get videos
-				var duration = 1; 
-				Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){  
+					// get videos
+					var duration = 1; 
+					Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){  
 						
-						res.render( 'videos', {
-							title : 'Express Videos Example',
-							group : group,
-							items : videos
+							res.render( 'videos', {
+								title : 'Express Videos Example',
+								group : group,
+								items : videos
+							});
+							res.end('done');
 						});
-						res.end('done');
-					});
-			});// end Groups
-		});// end Users
-	});// end Scripts				
+				});// end Groups
+			});// end Users
+		}// end if	
+	});// end ScriptInstances		
 };
 
 
@@ -491,36 +559,35 @@ exports.createFileInstance = function ( req, res){
 
 
 /*
- * xxx
+ * Creates video instances for given video files. The instance are defined with a give id.
+ * status: xxx
  **/
-createMultipleFileInstance = function ( files, ids, cb ){
-	VideoFiles.find( { '_id' : { $in: files } }, function ( err, files ){
-  	if(err){ console.log(err) }else{
+exports.createMultipleFileInstance = function ( files, ids, cb ){
+	VideoFiles.find( { '_id' : { $in: files } }).exec( function ( err, files ){ 
+  	if(err){ console.log(err) }else{ 
   		// iterate files
-		  for(var i = 0; i < files.length; i++){
+		  for(var i = 0; i < files.length; i++){ console.log(3);
 		  	// convert file to instance
 				video = getInstanceFromFile(files[i], ids[i]);
-				// save video instance
-				async.mapLimit(myArray, 10, function(document, next){
-					document.save(next);
-				}, done);
-				/*new Videos( video ).save( function ( err, instance ){
-				  res.redirect( '/admin/videos/files' );
-				  res.end('done');
+				// save it
+				new Videos( video ).save( function ( err, instance ){
+					if(err){ console.log(err); }
+					console.log('created video instance '+ instance.id+'__'+instance.id);
 				});
-				*/
-			 }
-			}  
-  });
+			}// end for
+		}// end if  
+  });// end find
 }
 
 
 /*
- *
+ * Converts a video file document into a video instance document.
+ * todo: - assign annotation types dynmically
+ * status: finished
  **/
 getInstanceFromFile = function(file, id){
 	return {
-				"id": id === undefined ? "1" : id, 
+				"id": id === undefined ? Math.floor(Math.random()*1000) : id, 
 				"progress": '', // ?
 				"video": file.video,
 				"metadata": [
@@ -548,6 +615,7 @@ getInstanceFromFile = function(file, id){
 				"toc": [],
 			};
 }
+
 
 /*
  * Returns JSON object of all video files

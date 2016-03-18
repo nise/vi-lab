@@ -314,10 +314,26 @@ exports.renderInstanceByID = function(req, res) {
 
 
 /*
+ *
+ **/
+exports.activateInstanceByID = function(req, res){
+	Instances.update({ '_id':req.params.id}, { status: 'running' }, function ( err, instance ){
+		if(err){
+			console.log(err)
+		}else{
+			console.log('set Instance active'); //console.log(instance);
+			res.redirect('/admin/scripts/instances');
+			res.end();
+		}
+	});	
+}
+
+/*
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
  * status
  **/
 exports.updateInstanceByID = function(req, res){
+	Groups.remove({}, function ( err, ggg ){});
 	// save instance
 	delete req.body["_id"];
 	Instances.findOneAndUpdate(req.params.id, req.body, function ( err, instance ){
@@ -336,73 +352,85 @@ exports.updateInstanceByID = function(req, res){
 		
 		var Formations = mongoose.model( 'GroupFormations' );		
 		Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
-			if(err){ console.log(err); }
-			console.log('------------------')
-			
-			var 
-				user_index = {},
-				group_id = 1,
-				video_id = 1
-				;
-			// iterate phases
-			for(var p=0; p < docs.length; p++){
-				var f = docs[p].formation;
-				// iterate groups 
-				for(var i=0; i < f.length; i++){
-					// generate video instances
-					var 
-						files = instance.phases[p].video_files,
-						video_ids = []
-						;
-					for(var l = 0; l < files.length; l++){
-						video_ids[l] = video_id;
-						video_id++;
-					}	
-					//xxx // videos.createMultipleFileInstance(files, video_ids);
-					// new group
-					var group = {
-						id: group_id,
-						description: 'phase_'+p+'__group_'+i,
-						phase: p,
-						persons: f[i].length, // number of persons
-						videos : video_ids
-					};
-					group_id++;
-					// save group
-					new Groups( group ).save();
-					// create index of users in a group
-					for(var j=0; j < f[i].length; j++){
-						if( f[i][j].id in user_index === false){
-							user_index[f[i][j].id] = [];
+			if(err){ console.log(err); 
+			}else{
+				var 
+					user_index = {},
+					video_id = 1,
+					getFormation = function(p){
+						for(var d=0; d < docs.length;d++){ 
+							if(String(docs[d]._id) === String(allFormations[p])){ 
+								return docs[d].formation;
+							}
 						}
-						user_index[f[i][j].id].push(i)  
 					}
-				}
-			}// end for phases
+					;	
+				Videos.remove({}, function ( err, ggg ){		
+				// iterate phases
+				for(var p=0; p < instance.phases.length; p++){
+					var f = getFormation(p);
+					//Groups.remove({}, function ( err, ggg ){
+					
+						// iterate groups 
+						var group_id = 1;
+						for(var i=0; i < f.length; i++){
+							// generate video instances
+							var 
+								files = instance.phases[p].video_files,
+								video_ids = []
+								;
+							for(var l = 0; l < files.length; l++){
+								video_ids[l] = video_id;
+								video_id++;
+							}	//console.log(video_ids)
+							videos.createMultipleFileInstance(files, video_ids);
+							// new group
+							var group = {
+								id: String.fromCharCode(96 + group_id)+''+p,
+								description: 'phase_'+p+'__group_'+i,
+								phase: p,
+								persons: f[i].length, // number of persons
+								videos : video_ids
+							};
+						
+							// save group
+							new Groups( group ).save();
+							// create index of users in a group
+							for(var j=0; j < f[i].length; j++){
+								if( f[i][j].id in user_index === false){
+									user_index[f[i][j].id] = []; // i=group; j=user
+								}
+								user_index[f[i][j].id].push( String.fromCharCode(96 + group_id)+''+p )  
+							}
+							group_id++;
+						}//end for groups
+				
+				}// end for phases
 		
-			// update users with the new group-indexs
-			// console.log(user_index);
-			var 
-				configs = {},
-				async = require('async')
-				;
-			async.forEachOf(user_index, function (value, key, callback) {
-					Users.find({_id: key}).lean().exec(function (err, user) {
-						if(err){ 
-							console.log(err); 
-						}else{
-							user.groups = value;
-							user.save();
-							//configs[key] = user; // collect results
-						}
-					});	
-				}, function (err) {
-						if (err) console.error(err.message);
-						//console.log(configs); // so something with the results
-						console.log('updated instance')
-						//res.redirect( '/admin/scripts/instances' );
-						res.end()
-			});// end async	
+				// update users with the new group-indexs
+				// console.log(user_index);
+				var 
+					configs = {},
+					async = require('async')
+					;
+				async.forEachOf(user_index, function (value, key, callback) {
+						Users.update({id: key}, {groups: value} ,function (err, user) {
+							if(err){ 
+								console.log('@user_update'); console.log(err); 
+							}else{
+								console.log('updated group for user')
+								//configs[key] = user; // collect results
+							}
+						});	
+					}, function (err) {
+							if (err){ console.log('@user_update2'); console.error(err.message); }
+							//console.log(configs); // so something with the results
+							console.log('updated instance')
+							res.redirect( '/admin/scripts/instances' );
+							res.end()
+				});// end async	
+			});// end videos remove	
+			}	
 		}); // end formations find
 	});	// end instance update
 }
@@ -426,6 +454,10 @@ exports.destroyInstanceByID = function(req, res) {
 /*************************************************/
 /* SCRIPT MODELING*/
 
+
+/*
+ * status: deprecated xxx
+ **/
 exports.getScriptInfo = function ( req, res ){ // xxx editor
 	Scripts.find({}).exec( function ( err, scripts ){
 		Groups.find({}).exec( function( err, groups){
@@ -472,6 +504,11 @@ exports.getScriptInfo = function ( req, res ){ // xxx editor
  **/
  exports.importScript = function(){
  
+ 
+ 
+ 		return;
+ 		
+ 		
     var script = 
     {
     	current_phase : 5,
@@ -946,17 +983,6 @@ exports.getScriptInfo = function ( req, res ){ // xxx editor
 				});;
      	}   
     });
-    
-    return;
-    
-    Scripts.insert(script, {safe:true}, function(err, result) {
-	  	if(err){
-    		console.log(err)
-    	}else{
-    		console.log("added script");
-    	}
-    });
-	 
 };
 
 

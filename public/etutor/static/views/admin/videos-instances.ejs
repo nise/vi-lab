@@ -24,107 +24,67 @@ jQuery(document).ready(function(e) {
 
 
 <h2>Video Instances</h2>
-<!--<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addVideoPanel" aria-expanded="false" aria-controls="collapseExample">add new video instance</a>
-
-
-<div id="addVideoPanel" class="edit-form collapse admin-edit-form">
-	<div class="panel-heading">Add new video instance</div>
-	<div class="panel-body">	 
-		<form action="/videos/create" method="post" accept-charset="utf-8">
-			
-			<div class="form-group">
-			<label for="sel1">Select video file</label>
-			<select class="form-control" id="sel1">
-				<option>lecture1</option>
-				<option>lecture2</option>
-				<option>lecture3</option>
-				<option>lecture4</option>
-			</select>
-		</div>
-			
-			
-			
-			<br>
-			<div class="form-element buttons">
-				<button class="btn btn-default" type="submit">Add video instance</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
-			</div>
-		</form>
-	</div>	
+<div id="table1"></div>
 </div>
--->
+<script type="text/javascript"> 
+$(document).ready (function () { 
+	$('#table1').bootstrapTable({
+    data: JSON.parse('<%-JSON.stringify( items )%>'),
+    //height:'500',
+    showColumns : true,
+    //checkboxHeader : true,
+    // search
+    search: true,
+    strictSearch: true,
+    trimOnSearch:true,
+    columns: [
+    	{ field: 'id', title: 'ID', sortable : true, order: 'asc', searchable: true },
+		  { field: 'title', title: 'Titel', formatter: titleFormatter, sortable : true, order: 'asc', searchable: true },
+		  { field: 'file', title: 'File', formatter: fileFormatter, sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'annotations', title: 'Annotationen',  formatter: annotationFormatter, sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'updated_at', title: 'last update', sortable : true, order: 'asc', searchable: true },
+		  { field: 'operators', title: '', formatter: operationsFormatter, visible:true, sortable : true, searchable : true }
+    ]
+	});
+});
 
-<table class="xtable">
-	<thead>
-		<th>Title</th>
-		<th>Annotations</th>
-		<th>Stats</th>
-	</thead>
-	<tbody>
-	
-	<% items.forEach(function(item){  %>
-	<tr class="table-row">
-		<td class="table-menu">
-			<%= item.metadata[0].title %><br>
-			<span class="table-detail">
-				id: <%= item.id %> | 
-				<a href="/videos/view/<%= item._id %>">view video</a> | 
-				<a href="javascript:render('admin-videos-edit','/admin/videos/metadata/edit/<%= item._id %>', true, '.admin-panel');">edit metadata</a>
-			</span>
-		</td>
-		<td>
-			<% if ( item.hyperlinks.length > 1) { %>hyperlinks (<%=item.hyperlinks.length%>), <%}%>
-			<% if ( item.toc.length > 1) { %>chaptes (<%=item.toc.length%>), <%}%>
-			<% if ( item.tags.length > 1) { %>tags (<%=item.tags.length%>), <%}%> 
-			<% if ( item.highlight.length > 1) { %>highlight (<%=item.highlight.length%>), <%}%>
-			<% if ( item.slides.length > 1) { %>slides (<%=item.slides.length%>), <%}%>
-			<% if ( item.comments !== null) { %>comments (<%=item.comments.length%>), <%}%>
-			<% if ( item.assessmentfillin.length > 1) { %>fill-in tasks (<%=item.assessmentfillin.length%>), <%}%>
-			<% if ( item.assessment.length > 1) { %>questions (<%=item.assessment.length%>), <%}%>
-			<% if ( item.assessmentwriting.length > 1) { %>on demand tasks (<%=item.assessmentwriting.length%>), <%}%>
-			<br>
-			<span class="table-detail">
-				<a href="/admin/videos/annotations/edit/<%= item._id %>">edit annotations</a> 
-			</span>
-		</td>
-		<td><% if ( item.updated_at !== undefined ){ %><%= item.updated_at %><%}%><br>
-			<span class="">
-				<a href="/analytics/videos/<%= item._id %>">show stats</a> 
-			</span>
-		</td>
-		
-	</tr>	
-<!--  
-<div class="scene-view">
-	<h3><a href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h3>
-  <div class="bim">
-  	<% if (item.thumbnail != "") { %> 
-  		<a href="/videos/view/<%= item._id %>">
-  			<img class="still-images" src="<%= item.metadata[0].thumbnail %>" width="180" />
-  		</a>	
-  	<% }else{ %>
-  		<a href="/videos/view/<%= item._id %>">
-	  		<img class="still-images" src="/static/img/placeholder.jpg" width="180" />
-	  	</a>	
-  	<% }%>	
-  </div>
-  <div class="bam">
-		<span class="lecturer">Dozentin: <%= item.metadata[0].author %></span><br>
-		<div class="description"><%= item.metadata[0].abstract %></div>
-		<div class="controls" hidden>
-			<a class="button" href="/videos/edit/<%= item._id %>" title="Update this item">edit</a>
-		</div>	
-		<span class="tags"><strong>Tags:</strong>
-		<% item.metadata[0].tags.forEach( function ( tag ){ %>
-			<%= tag.t %>,
-		<% }); %>
-		 </span>
-  </div> 
-</div>
--->
-<% if (items.length) { %><% } %>
-<% }); %>
-</tbody>
-</table>
+
+function titleFormatter(value, row, index) {
+	return '<a href="/admin/videos/instances/edit/'+row._id+'">'+row.metadata[0].title+'</a>'; 
+}
+
+function fileFormatter(value, row, index) {
+	return row.video.split('/').slice(-1)[0]; 
+}
+
+function annotationFormatter(value, row, index) {
+ var a = '';
+ a += row.toc.length > 1 ? 'chapter marks ('+row.toc.length+') <br/>' : '';
+ a += row.hyperlinks.length > 1 ? 'hyperlinks ('+row.hyperlinks.length+') <br/>' : '';
+ a += row.tags.length > 1 ? 'tags ('+row.tags.length+') <br/>' : '';
+ a += row.highlight.length > 1 ? 'hightlight ('+row.highlight.length+') <br/>' : '';
+ a += row.slides.length > 1 ? 'slides ('+row.slides.length+') <br/>' : '';
+ a += row.comments.length > 1 ? 'hyperlinks ('+row.comments.length+') <br/>' : '';
+ a += row.assessment.length > 1 ? 'hyperlinks ('+row.assessment.length+') <br/>' : '';
+//assessmentfillin, assessmentwriting
+	return a;
+}
+
+function operationsFormatter(value, row, index) {
+	return [
+		'<a href="/videos/view/'+row._id+'" title="View video instance">',
+		'<i class="glyphicon glyphicon-play"></i> view',
+		'</a><br>',
+		'<a href="/admin/videos/annotations/edit/'+row._id+'" title="Edit video annotations">',
+		'<i class="glyphicon glyphicon-pencil"></i> edit annotations',
+		'</a><br>',
+		'<a href="/admin/videos/metadata/edit/'+row._id+'" title="Edit meta data">',
+		'<i class="glyphicon glyphicon-pencil"></i> edit meta data',
+		'</a>'
+	].join('');
+}
+
+</script>
 
 
 

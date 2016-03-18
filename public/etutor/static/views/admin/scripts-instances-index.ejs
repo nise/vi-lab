@@ -3,47 +3,31 @@
 <script type="text/javascript"> 
 $(document).ready (function () { 
 	$('#table1').bootstrapTable({
-    //url: '/data/json/modules',
     data: JSON.parse('<%-JSON.stringify( items )%>'),
     onLoadError : function(e){ console.log(JSON.stringify(e)); },
-    //    onLoadSuccess : function(e){ alert(JSON.stringify(e)); },
-    //height:'500',
     showColumns : true,
     checkboxHeader : true,
-   // cardView:true, // mobile view
-    showExport:true,
-    exportDataType:'selected',
-    exportOptions: {
-    	consoleLog: false,
-			csvEnclosure: '"',
-			csvSeparator: ',',
-			csvUseBOM: true,
-			displayTableName: false,
-			escape: false,
-			excelstyles: [ 'css','properties','to','export','to','excel' ],
-			fileName: 'tableExport',
-			htmlContent: false,
-			ignoreColumn: [],
-			ignoreRow: [],
-			onCellData: null,
-			outputMode: 'file',
-			tbodySelector: 'tr',
-			theadSelector: 'tr',
-			tableName: 'myTableName',
-			type: 'csv',
-			worksheetName: 'xlsWorksheetName'
-    },
-    // search
     search: true,
     strictSearch: true,
     trimOnSearch:true,
+/*    rowStyle: function (value, row, index) {
+    	if( row.status === 'running'){
+				return {
+					//classes: 'text-nowrap another-class',
+					css: {"color": "red"}
+				};
+			}
+			return;	
+		},*/
     columns: [
 	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'title', title: 'Instance', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
 //		  { field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'phases', title: 'Phases', visible:true, sortable : true, formatter: phaseFormatter, searchable : true }, 
 			{ field: 'duration', title: 'Duration', visible:true, sortable : true, formatter: durationFormatter, searchable : true }, 
-		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
+		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true },
+		  { field: 'status', title: 'Status', visible:true, sortable : true, order: 'asc',searchable : true },
+		  { field: 'operate', title: '', visible:true, sortable : true, formatter: operateFormatter, order: 'asc',searchable : true }  
     ]
 	});
 });
@@ -55,22 +39,27 @@ function phaseFormatter(value, row, index) {
 }
 
 function durationFormatter(value, row, index) {
-	// incomplete xxx
-	return 'from-to'; 
+	return moment(row.phases[ row.phases.length-1 ].end).subtract( moment(row.phases[0].start) ).days() +' days'; 
 }
 
 function titleFormatter(value, row, index) {
 	return '<a class="like" href="/admin/scripts/instances/edit/'+row._id+'" title="Edit script instance">'+ row.title +'</a>  ';
 }
 
-function dateFormatter(value, row, index) {
-	var d = new Date( parseInt( value ) )
-	var month = d.getMonth()+1;
-	if(month < 10){
-		month = '0'+month;
-	}
-	return  moment( d.getFullYear()+''+month+''+d.getDate(), "YYYYMMDD").fromNow(); 
+function dateFormatter(value, row, index) { 
+	return moment(value).fromNow();
 }	
+
+function operateFormatter(value, row, index) {
+	return [
+		'<a href="/admin/scripts/instances/activate/'+row._id+'" title="Activate script instance">',
+		'<i class="glyphicon glyphicon-ok"></i> activate',
+		'</a><br>',
+		'<a href="/admin/scripts/instances/destroy/'+row._id+'" title="Remove script instance">',
+		'<i class="glyphicon glyphicon-remove"></i> remove',
+		'</a>'
+	].join('');
+}
 
 </script>
 

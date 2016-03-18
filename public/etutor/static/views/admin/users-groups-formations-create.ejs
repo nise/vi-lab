@@ -2,8 +2,12 @@
 
 
 <div class="col-md-10">
-<h2>Group Formation</h2>
-	
+<h2>Create Group Formations</h2>
+
+<!--
+<% include users-groups-formations-reorganize %>
+-->
+
 	<h4>Step 1: Choose group formation algorithm</h4>
 	<form id="group-form">
 	<div>
@@ -66,8 +70,7 @@
 			<input type="text" class="form-control" id="formationID" aria-describedby="Set an identifier for the group formation"  value="">
 		</div>
 		<button id="save-btn" class="btn btn-primary">Save formation</button>	
-	</div>	
-		 
+	</div>		 
 </div>
 
 
@@ -192,7 +195,7 @@ function getGroupFormation(method, n, excludedUsers){
 		success: function(groups){ 
 			formation = groups;
 			the_group_formation = groups; 
-			the_formation_method = method:
+			the_formation_method = method;
 			require(['text!../views/admin/users-groups-formations-overview.ejs', 'ejs'], function(thetemplate) {
 				var html = ejs.render( thetemplate, { items: groups }); 
 				$('.formed-groups').html( html );

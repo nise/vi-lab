@@ -4,17 +4,14 @@
 # VI-TWO
 ## urgent
 
-- Themenblöcke darstellen
-- Instanzen erzeugen
+- video lauffähig machen.
+- nachträgliche bearbeitung von phasen ermöglichen.
+-
 
-- script templates 
-
- 
 - script instance
- - level 1 script erzeugen inkl. videoinstanzen und gruppenzuordnung
+ - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
  
-- script instanz incl. supplement und video instanzen rendern
- 
+
 - group activity Thread
 	- annotations
 	- messages

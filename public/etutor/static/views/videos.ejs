@@ -1,3 +1,4 @@
+<% layout( 'layout' ) -%>
 
 <div class="jumbotron">
 	<div class="container">
@@ -6,43 +7,44 @@
 </div> 
 
 <div class="container">
+	
+	<% phase_i = 0 %>
+	<% items.script.phases.forEach(function(phase){ %>
+		<% if( phase_i <= items.script.current_phase ) {%>
 	<div class="row">
-	<% i=0 %>
-	<% if ( items.length > 0) { %>
-		<% items.forEach(function(item){  %>
-			<div class="col-sm-6 col-md-4" style="min-height:800px;">
-				<div class="thumbnail">
-					<a href="/videos/view/<%= item._id %>"><img width="100%" src="<%= item.metadata[0].thumbnail %>"  />
-					</a>
-					<div class="work-progress-bar progress-<%= item._id %>">
-							<div class="work-progress-status">Bearbeitungsstand: <%= item.progress %>%</div>
-							<div class="work-progress" style="width:<%= item.progress %>%"></div>
-						</div>
-					<div class="caption">	
-						
-						<h3><a href="/videos/view/<%= item._id %>">Video <%= i %>: <%= item.metadata[0].title %></a></h3>
-						<p class="lecturer"><span class="glyphicon glyphicon-user"></span> <b>Dozentin:</b> <%= item.metadata[0].author %></p>
-					
-						<p><%= item.metadata[0].abstract %></p>
-						
-						<p>
-							<span class="glyphicon glyphicon-tags"></span>
-							<% item.metadata[0].tags.forEach( function ( tag ){ %>
-								<%= tag.t %>,
-							<% }); %>
-							</span>
-						</p>
-					</div>	 
-				</div>
-			</div>
-			<% i=i+1 %>
-			<% }); %>
-		<% }else{ %>
-			<div class="col-sm-10 col-md-10 mark" style="min-height:800px;">
-			Derzeit sind noch keine Videos verfügbar. 
-			</div>
-		<% } %>	
+		<div class="col-md-6 phase">
+			<h3 class="str"><%= phase.title %></h3>
+			<div>Aufgabe:</div>
+			<div class="mark str"><%= phase.instruction %></div>
+			<div>Materialien:</div>
+			<div class="mark str"><%= phase.supplements %></div>
+		</div>
 	</div>
+	<div class="row">
+		<% items.videos.forEach(function(item){ %>
+		<div class="col-xs-6 col-md-3">
+			<div class="thumbnail">
+				<a class="thumbnail" href="/videos/view/<%= item._id %>"><img width="100%" src="<%= item.metadata[0].thumbnail %>" /></a>
+				<div class="caption">
+		      <h3><%= item.metadata[0].title %></h3>
+		      <p class="lecturer"><a href="<%= item.metadata[0].source %>"><span class="glyphicon glyphicon-user"></span> <b></b> <%= item.metadata[0].author %></a></p>
+					<p><%= item.metadata[0].abstract %></p>
+					<!--<p><span class="glyphicon glyphicon-globe"> <b>Quelle</b></span></p>	-->
+		     </div> 
+				</div>
+		</div>
+		<% }); %>
+	</div>
+		<% } %>	
+		<% phase_i++ %>
+	<% }); %>
+	
 </div>
 
+<script>
 
+$('.str').each(function(i, val){
+	$(this).text( decodeURIComponent($(this).text()) );
+})
+
+</script>

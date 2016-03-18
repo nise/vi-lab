@@ -383,23 +383,23 @@ var ViLab = $.inherit({
 		// invoke widgets
 		switch(widget_name){
 			case "toc" : 
-				widget = new Vi2.TableOfContents( widget_options.options ); 
+				widget = new Vi2.TableOfContents( widget_options.widget_options ); 
 				title = 'Kapitel'; // Szenen 
 				break
 			case "hyperlinks" :		
-				widget = new Vi2.Hyperlinks( widget_options.options );
+				widget = new Vi2.Hyperlinks( widget_options.widget_options );
 				title = 'Links';
 				break;	
 			case "comments" : 
-				widget = new Vi2.Comments( widget_options.options );  
+				widget = new Vi2.Comments( widget_options.widget_options );  
 				title = 'Kommentare';
 				break;
 			case "assessment" : 
-				widget = new Vi2.Assessment( widget_options.options );
+				widget = new Vi2.Assessment( widget_options.widget_options );
 				title = 'Testfragen';			
 				break;
 			case "syncMedia" : 
-				widget = new Vi2.SyncronizeMedia( widget_options.options );  
+				widget = new Vi2.SyncronizeMedia( widget_options.widget_options );  
 				title = 'Folien';
 				break;
 			case "tags" :
@@ -428,7 +428,7 @@ var ViLab = $.inherit({
 			this.loadedWidgets.push( widget_name );
 		}
 		// add accordion elements
-		if( widget_options.options.hasMenu && ! refresh ){ 
+		if( widget_options.widget_options.hasMenu && ! refresh ){ 
 			var h3 = $('<h3 class="ui-accordion-header ui-corner-all"></h3>')
 				.append('<a class="accordion-title" href="#">' + title + '</a>')
 				.appendTo('#accordion');

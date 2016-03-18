@@ -141,7 +141,7 @@ $(document).ready(function() {
 			type: "POST",
 			url: '/admin/scripts/instances/update/'+res._id,
 			data: res,
-			success: function(res){ 
+			success: function(res){ alert(22)
 				window.location.href = '/admin/scripts/instances';
 			},
 			error : function(e){

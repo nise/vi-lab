@@ -64,6 +64,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.post(	'/videos/annotate', 	users.ensureAuthenticated, videos.annotate);
 	
 	app.get( 	'/json/videos' , 	users.ensureAuthenticated,		videos.getJSON );
+	app.get( 	'/content' , 	users.ensureAuthenticated,		videos.renderScriptVideo );
 	app.get( 	'/json/admin/video-instances', users.authCallback(['editor']), videos.getAllJSON );
 	app.get( 	'/json/videos/:id' , 	videos.getOneJSON );
 	app.get( 	'/json/film' , 				videos.getJSON );
@@ -151,6 +152,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/scripts/instances', users.ensureAuthenticated, scripts.renderInstances );
 	app.get('/admin/scripts/instances/edit/:id', users.ensureAuthenticated, scripts.renderInstanceByID );
 	app.post('/admin/scripts/instances/update/:id', users.ensureAuthenticated, scripts.updateInstanceByID );
+	app.get('/admin/scripts/instances/activate/:id', users.ensureAuthenticated, scripts.activateInstanceByID );
 	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
 	app.get('/json/admin/scripts/instances', users.ensureAuthenticated, scripts.getInstances );
 	

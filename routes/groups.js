@@ -2,6 +2,7 @@
 var 
 	mongoose = require( 'mongoose' ),
 	server = require('../server'),
+	ScriptInstance = mongoose.model( 'ScriptInstance' ),
 	Groups = mongoose.model( 'Groups' ),
 	Formations = mongoose.model( 'GroupFormations' ),
 	Users = mongoose.model( 'Users' ),
@@ -37,6 +38,7 @@ exports.csvImportFromJSON = function ( req, res ){
 	
 	return;				
 };	
+
 
 /* Load groups data from csv file. Insert data into database **/
 exports.csvImport = function ( req, res ){
@@ -79,7 +81,7 @@ exports.csvImport = function ( req, res ){
 	exports.getGroupActivityLog = function(req, res) { // users.authCallback(['editor']), xxx
 		if (req.user !== undefined ) {
 		  // get current script phase
-		  Scripts.find().select('current_phase').exec(function(err, script) {
+		  ScriptInstance.find().select('current_phase').exec(function(err, script) {
 		  	var phase = script[0].current_phase; 
 		  	// get group of current user // req.user.username
 			  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){

@@ -76,9 +76,9 @@ todo
  				phase.widgets.push(widget);
     	});
     	// collect videos per phase
-  		var videos = $(this).find('.phase-video-list input:checkbox:checked').map(function() {
+  		var videos = $(this).find('.phase-video-list input:checked').map(function() {
   			return this.value;
-			}).get(); 
+			}).get(); alert(videos)
 			phase.video_files = videos;
 			data.phases.push(phase);
 		});
@@ -138,7 +138,7 @@ $(document).ready(function() {
 })
 	
 	// load widget options
-	var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
+	var data = JSON.parse('<%-JSON.stringify( items.phases )%>'); 
 	$.each( data, function(i, phase){
 		// fill dropdown for adding widgets
 		for (var ii = 0; ii < defaultWidgets.length; ii++){  
@@ -147,9 +147,10 @@ $(document).ready(function() {
 			} 
 		}
 		// list available videos
-		$.get('/json/admin/video-files', function(data){ 
-			$.each(data, function(j, val){
-				$('#videos_'+i).append( $('<label><input type="checkbox" value="'+val._id+'" name="video-files-'+j+'" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
+		$.get('/json/admin/video-files', function(files){ 
+			$.each(files, function(j, val){
+				var checked = data[i].video_files.indexOf( val._id ) === -1 ?  '' : 'checked'; 
+				$('#videos_'+i).append( $('<label><input type="checkbox"  '+ checked +' value="'+val._id+'" name="video-files-'+j+'" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
 			});
 		});
 		
@@ -171,11 +172,12 @@ $(document).ready(function() {
 			// init dropdown
 			for (var ii = 0; ii < defaultWidgets.length; ii++){  
 				addWidgetDropDownItem( pos, defaultWidgets[ii]);                
-			}
+			}  
 			// list available videos
-			$.get('/json/admin/video-files', function(data){ 
-				$.each(data, function(i, val){
-					$('#videos_'+pos).append( $('<label><input type="checkbox" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
+			$.get('/json/admin/video-files', function(files){ 
+				$.each(files, function(i, val){ 
+					var checked = '';//data[pos].video_files.indexOf( val._id ) ? 'checked' : ''; 
+					$('#videos_'+pos).append( $('<label><input type="checkbox" '+ checked +' aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
 				});
 			});
 			// make editable
