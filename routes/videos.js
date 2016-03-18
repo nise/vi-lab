@@ -454,13 +454,16 @@ exports.updateFile = function ( req, res ){ console.log(req.body)
 
 /*
  * Destroys a video file 
- * status: completed
+ * status: finished
  **/
 exports.destroyFile = function ( req, res ){
   VideoFiles.findById( req.params.id, function ( err, video ){
   	if(err){ console.log(err) }else{
 		  video.remove( function ( err, person ){
-		    res.redirect( '/admin/videos/files' );
+		  	if(err){ console.log(err) 
+		  	}else{
+		    	res.redirect( '/admin/videos/files' );
+		    }	
 		    res.end('done');
 		  });
 		 } 
@@ -470,15 +473,55 @@ exports.destroyFile = function ( req, res ){
 
 /*
  * Creates an instance of a video file 
- * status: xxx
+ * status: finished
  **/
 exports.createFileInstance = function ( req, res){
 	VideoFiles.findById( req.params.id, function ( err, file ){
   	if(err){ console.log(err) }else{
 		  // prepare instance
-		  var video = {
-				"id": "1", // ??
-				"progress": "3", // ?
+		  video = getInstanceFromFile(file)
+		  // save instance
+		  new Videos( video ).save( function ( err, instance ){
+		    res.redirect( '/admin/videos/files' );
+		    res.end('done');
+		  });
+		 } 
+  });
+}
+
+
+/*
+ * xxx
+ **/
+createMultipleFileInstance = function ( files, ids, cb ){
+	VideoFiles.find( { '_id' : { $in: files } }, function ( err, files ){
+  	if(err){ console.log(err) }else{
+  		// iterate files
+		  for(var i = 0; i < files.length; i++){
+		  	// convert file to instance
+				video = getInstanceFromFile(files[i], ids[i]);
+				// save video instance
+				async.mapLimit(myArray, 10, function(document, next){
+					document.save(next);
+				}, done);
+				/*new Videos( video ).save( function ( err, instance ){
+				  res.redirect( '/admin/videos/files' );
+				  res.end('done');
+				});
+				*/
+			 }
+			}  
+  });
+}
+
+
+/*
+ *
+ **/
+getInstanceFromFile = function(file, id){
+	return {
+				"id": id === undefined ? "1" : id, 
+				"progress": '', // ?
 				"video": file.video,
 				"metadata": [
 				  {
@@ -491,17 +534,7 @@ exports.createFileInstance = function ( req, res){
 				    "date": file.date,
 				    "source": file.source,
 				    "thumbnail": "/static/img/video0_poster.jpg",
-				    "tags": [
-				      {
-				        "t": "Standortübergreifende Lehrveranstaltung"
-				      },
-				      {
-				        "t": "Kickoff"
-				      },
-				      {
-				        "t": "E-Tutoren"
-				      }
-				    ]
+				    "tags": file.tags
 				  }
 				], // need to become dynamic
 				"assessmentwriting": [],
@@ -514,15 +547,7 @@ exports.createFileInstance = function ( req, res){
 				"tags": [],
 				"toc": [],
 			};
-		  // save instance
-		  new Videos( video ).save( function ( err, instance ){
-		    res.redirect( '/admin/videos/files' );
-		    res.end('done');
-		  });
-		 } 
-  });
 }
-
 
 /*
  * Returns JSON object of all video files

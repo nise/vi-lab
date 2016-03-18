@@ -92,7 +92,7 @@ $(document).ready(function() {
 	// make text editable inline
 	$('.xeditable').editable({
 		success: function(response, value) {
-        alert($(this).attr('id') +'__'+value)   
+       //alert($(this).attr('id') +'__'+value)   
    	}
 	});
 
@@ -145,7 +145,7 @@ $(document).ready(function() {
 				window.location.href = '/admin/scripts/instances';
 			},
 			error : function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}	
 		});
 	});

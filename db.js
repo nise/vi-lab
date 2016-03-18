@@ -233,6 +233,7 @@ var ScriptInstance = new Schema( {
 				seq : Number,
     		groupindex : Number,
     		groupformation : Schema.ObjectId,
+    		video_files: [Schema.ObjectId],
     		widgets:  
 				[{ 
 					label : String,

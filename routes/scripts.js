@@ -11,9 +11,12 @@ todo:
 var 
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
+	videos =  require('./videos'),
 	Scripts  = mongoose.model( 'Scripts' ),
 	Templates = mongoose.model('ScriptTemplate'),
 	Instances = mongoose.model('ScriptInstance'),
+	Groups = mongoose.model('Groups'),
+	Users = mongoose.model('Users'),
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
@@ -321,22 +324,89 @@ exports.updateInstanceByID = function(req, res){
 		if(err){
 			console.log(err)
 		}
+		
+		// get group formation
+		var allFormations = [];
+		for(var i = 0; i < instance.phases.length; i++){
+			allFormations.push( instance.phases[i].groupformation );
+		}
+		
 		// define groups considering the video files and group formations
 		// build inverted index
-			var groups= [];
-			var index = {} 
-			for(var i=0; i < groups.length; i++){
-				for(var j=0; i < groups[i].length; j++){
-					index[groups[i]]
-				}
-			}
 		
-		// fin
-		console.log('updated instance')
-		res.redirect( '/admin/scripts/instances' );
-		res.end()
-	});	
+		var Formations = mongoose.model( 'GroupFormations' );		
+		Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
+			if(err){ console.log(err); }
+			console.log('------------------')
+			
+			var 
+				user_index = {},
+				group_id = 1,
+				video_id = 1
+				;
+			// iterate phases
+			for(var p=0; p < docs.length; p++){
+				var f = docs[p].formation;
+				// iterate groups 
+				for(var i=0; i < f.length; i++){
+					// generate video instances
+					var 
+						files = instance.phases[p].video_files,
+						video_ids = []
+						;
+					for(var l = 0; l < files.length; l++){
+						video_ids[l] = video_id;
+						video_id++;
+					}	
+					//xxx // videos.createMultipleFileInstance(files, video_ids);
+					// new group
+					var group = {
+						id: group_id,
+						description: 'phase_'+p+'__group_'+i,
+						phase: p,
+						persons: f[i].length, // number of persons
+						videos : video_ids
+					};
+					group_id++;
+					// save group
+					new Groups( group ).save();
+					// create index of users in a group
+					for(var j=0; j < f[i].length; j++){
+						if( f[i][j].id in user_index === false){
+							user_index[f[i][j].id] = [];
+						}
+						user_index[f[i][j].id].push(i)  
+					}
+				}
+			}// end for phases
+		
+			// update users with the new group-indexs
+			// console.log(user_index);
+			var 
+				configs = {},
+				async = require('async')
+				;
+			async.forEachOf(user_index, function (value, key, callback) {
+					Users.find({_id: key}).lean().exec(function (err, user) {
+						if(err){ 
+							console.log(err); 
+						}else{
+							user.groups = value;
+							user.save();
+							//configs[key] = user; // collect results
+						}
+					});	
+				}, function (err) {
+						if (err) console.error(err.message);
+						//console.log(configs); // so something with the results
+						console.log('updated instance')
+						//res.redirect( '/admin/scripts/instances' );
+						res.end()
+			});// end async	
+		}); // end formations find
+	});	// end instance update
 }
+
 
 /*
 * Removes a script instance
