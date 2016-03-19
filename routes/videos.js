@@ -300,7 +300,9 @@ exports.editAnnotations = function ( req, res ){
 
 
 
-/***/ 
+/*
+ * @todo: Check wheter the user is allow to see this video instance!
+ **/ 
 exports.show = function ( req, res ){ 
   Videos.find({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, video ){
   	if(!err){ 
@@ -419,58 +421,30 @@ exports.renderVideoFiles = function(req, res){
  * status: xxx
  **/
 exports.createFile = function ( req, res ){ 
-
-	var video = {};
-	video.title				= req.body.title;
-	video.creator			= req.body.creator;
-	video.subject	    = req.body.subject;
-	video.description	= req.body.description;
-	video.publisher   = req.body.publisher;	
-	video.contributor = req.body.contributor;
-	//		video.date				= req.body.date; // cast error
-	video.type				= req.body.type;
-	video.mimetype 		= req.body.mimetype;
-	//		video.format			= req.body.format; // handle array
-	video.source			= req.body.source;
-	video.language		= req.body.language;
-	video.relation    = req.body.relation;
-	video.coverage    = req.body.coverage;
-	video.rights      = req.body.rights;
-	video.license     = req.body.license;
-	video.video				= req.body.video;
-	video.length			= req.body.length;
-	video.size				= req.body.size;
-	video.thumbnail 	= req.body.thumbnail; 
-	video.institution	= req.body.institution;
-	video.category		= req.body.category;
-	video.tags				= req.body.tags;
-	video.updated_at 	= Date.now();
-
-  // save it
-  new VideoFiles( video ).save( function( err, vid, count ){
-  	if(err) { res.send(err); }
-    res.redirect( '/admin/videos/files' );
-    console.log('saved video file')
-    res.end();
-  });
+	new VideoFiles( req.body ).save( function( err, vid, count ){
+		if(err) { res.send(err); }
+		res.redirect( '/admin/videos/files' );
+		console.log('saved video file')
+		res.end();
+	});
 };
 
 
 /*
  * Render dialog to upload videos and defining its meta data
- * status: done
+ * status: finished
  **/ 
 exports.renderFileUpload = function ( req, res ){
-		res.render( 'admin/videos-file-new', {});
-		res.end('done');
+	res.render( 'admin/videos-file-new', {});
+	res.end('done');
 };
 
 
 /*
  * Edit the meta data of an existing video file
- * status: done
+ * status: finished
  **/
- exports.renderFileEdit = function ( req, res ){
+exports.renderFileEdit = function ( req, res ){
  	VideoFiles.findById( req.params.id, function ( err, videos ){  		
 		if(err){ console.log(err) }else{
 			res.render( 'admin/videos-file-edit', {
@@ -543,6 +517,7 @@ exports.destroyFile = function ( req, res ){
 
 /*
  * Generates 4 stillimages of the video
+ * See: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
  **/
 var ffmpeg = require('fluent-ffmpeg') 
 exports.generateStillImages = function(req, res){
@@ -587,7 +562,7 @@ exports.createFileInstance = function ( req, res){
 
 /*
  * Creates video instances for given video files. The instance are defined with a give id.
- * status: xxx
+ * status: finished
  **/
 exports.createMultipleFileInstance = function ( files, ids, cb ){
 	VideoFiles.find( { '_id' : { $in: files } }).exec( function ( err, files ){ 
@@ -615,7 +590,7 @@ exports.createMultipleFileInstance = function ( files, ids, cb ){
 getInstanceFromFile = function(file, id){
 	// prep thumbnails
 	var arr = [];
-	for(var i = 1; i < 9; i++){
+	for(var i = 1; i < 5; i++){
 		arr.push( 'still_'+file.video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
 	}
 	return {
@@ -632,7 +607,7 @@ getInstanceFromFile = function(file, id){
 				    "length": file.length,
 				    "date": file.date,
 				    "source": file.source,
-				    "thumbnail": arr,
+				    "thumbnail": file.thumbnail === undefined ? arr : file.thumbnail,
 				    "tags": file.tags
 				  }
 				], // need to become dynamic

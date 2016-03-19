@@ -1,0 +1,67 @@
+{
+	"title": "New Template",
+	"description" : "This is an example of a script template.",
+	"tags" : ["E-Assessment","Tests","Video-Annotation","Video-Assessment"],
+  "slides" : true,
+	"phases": [
+    		{ 
+    			"title": "Phase 1",
+    			"instruction": "Legen Sie dies und das an",
+    			"supplements": "themenblock",
+    			"seq": 0,
+    			"groupindex": 0, 
+    			"widgets": [ 
+    				{ "label": "Table of Contents",
+    					"name": "toc", 
+		  		 		"canBeAnnotated":true, 
+		  		 		"widget_options": {
+								"hasTimelineMarker": true, 
+								"timelineSelector": ".vi2-timeline-main",
+								"hasMenu" : true,
+								"menuSelector": "#toc",
+								"allowEditing" : true,
+								"allowCreation" : true,
+								"path": "/static/img/user-icons/"
+							} 
+						},
+						{ "label": "Comments",
+							"name": "comments", 
+							"canBeAnnotated":true, 
+		  		 		"widget_options": {
+		  		 			"hasTimelineMarker": true,
+		  		 			"timelineSelector": ".vi2-timeline-bottom", 
+								"hasMenu" : true,
+								"menuSelector": "#comments",
+								"allowReplies" : true, 
+								"allowEditing" : true,
+								"allowCreation" : true, 
+								"path": "/static/img/user-icons/"
+		  		 		}
+		  		 	}
+    			]	
+    		},
+    		{ 
+    			"title": "Phase 2",
+    			"instruction": "Machen Sie mal was",
+    			"supplements": "This and that",
+    			"seq": 0,
+    			"groupindex": 0, 
+    			"widgets": [ 
+    				{ "label": "Comments",
+    					"name": "comments", 
+							"canBeAnnotated":true, 
+		  		 		"widget_options": {
+		  		 			"hasTimelineMarker": true,
+		  		 			"timelineSelector": ".vi2-timeline-bottom", 
+								"hasMenu" : true,
+								"menuSelector": "#comments",
+								"allowReplies" : true, 
+								"allowEditing" : true,
+								"allowCreation" : true, 
+								"path": "/static/img/user-icons/"
+		  		 		}
+		  		 	}
+    			]	
+    		}
+    	]
+}

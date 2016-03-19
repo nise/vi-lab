@@ -2,7 +2,7 @@
 
 
 <div class="col-md-10">
-<h2>Edit Video File</h2>
+<h2>Edit video file: <%= items.title %></h2>
 <br>
 
 <script>
@@ -12,14 +12,26 @@ todo:
 */
 $(document).ready(function() {
 
+	$('.datetimepicker').datetimepicker({
+      //viewMode: 'years',
+      format: 'YYYY'
+  });
+
+	var data = JSON.parse('<%-JSON.stringify( items )%>');
+	//alert(JSON.stringify(data))
+
+	/*
+	 * Call server to extract new still images from the video file
+	 * status: xxx
+	 */
 	$('#createStills').click(function(){
-		var id='<%= items._id %>';
+		var id= data._id;
 		$.get('/admin/videos/files/create-stills/'+id, function(d){
 			for(var i = 1; i < 9; i++){
 				var o = new Image(); 
 				// animate transition	if image is loaded				
-				$(o) // vi2.observer.current_stream
-					.attr('src', '/static/img/stills/still_'+id+'_'+i+'.png')
+				$(o) 
+					.attr('src', '/static/img/stills/still_'+data.video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png')
 					.addClass('slide ov-'+id)
 					.css({width:'50%'})
 					//.css({ height:'100vh' })
@@ -31,7 +43,60 @@ $(document).ready(function() {
 				//$('.stisls').find('img#id'+i).attr('src', '/static/img/stills/still_'+id+'_'+i+'.png');
 			}
 		})
-	})
+	});
+	
+	/*
+	 * Collect form data and POST it to the server
+	 */
+	var frmMeta = $('#metadataForm');
+	frmMeta.submit(function(e) { 
+		e.preventDefault(); 
+		var 
+			arr = [],
+			video = $('input[name=video]').val()
+			;
+		for(var i = 1; i < 5; i++){
+			arr.push( 'still_'+video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
+		}
+		var data = {
+				title: $('input[name=title]').val(),
+				creator: $('input[name=creator]').val(),
+				subject: $('input[name=subject]').val(),
+				description: $('textarea#description').val(),
+				publisher: $('input[name=publisher]').val(),
+				contributor: $('input[name=contributor]').val(),
+				type: $('input[name=type]').val(),
+				mimetype: $('input[name=mimetype]').val(),
+				source: $('input[name=source]').val(),
+				language: $('input[name=language]').val(),
+				relation: $('input[name=relation]').val(),
+				coverage: $('input[name=coverage]').val(),
+				rights: $('input[name=rights]').val(),
+				date: $('input[name=date]').val(),
+				license: $('select option:selected').val(),
+				video: video, // url
+				length: $('input[name=length]').val(),
+				size: $('input[name=size]').val(),
+				thumbnail: arr, // xxx
+				institution: $('input[name=institution]').val(),
+				category: $('input[name=category]').val(),
+				tags: $('input[name=tags]').val().split(',') // Array
+			};
+		
+		$.ajax({
+			type: frmMeta.attr('method'),
+			url: frmMeta.attr('action'),
+			data: data,
+			error: function(xhr) {
+				console.log(xhr)
+			},
+			success: function(res) { 
+				// redirect 
+				window.location.href = '/admin/videos/files';
+			}
+		});
+		return false;
+	});       
 	   
 });
 </script>
@@ -69,7 +134,7 @@ $(document).ready(function() {
     <br>
     <div class="form">
 			<span class="" id="sizing-addon1"><strong>Description</strong></span>
-			<textarea class="form-control" rows="4" id="" name="description"><%= items.description %></textarea>
+			<textarea class="form-control" rows="4" id="description" name="description"><%= items.description %></textarea>
     </div>
     <br>
     <div class="input-group input-group-xs">
@@ -84,14 +149,27 @@ $(document).ready(function() {
     <br>
      <div class="form">
 			<span class="" id="sizing-addon1"><strong>License</strong></span>
-			<select name="license">
-				<option value="cc-by">Creative Commons - attribution (cc-by)</option>
-				<option value="pd">Public Domain (pd)</option>
-				<option value="cr">Copy Right Restricted</option>
-				<option value="nn">Unknown</option>
+			<select id="license">
+				<option <%= items.license == 'cc-by' ? 'selected' : '' %> value="cc-by">Creative Commons - attribution (cc-by)</option>
+				<option <%= items.license == 'pd' ? 'selected' : '' %> value="pd">Public Domain (pd)</option>
+				<option <%= items.license == 'cr' ? 'selected' : '' %> value="cr">Copy Right Restricted</option>
+				<option <%= items.license == 'nn' ? 'selected' : '' %> value="nn">Unknown</option>
 			</select>
     </div>
     <br>
+    <div class="stills row">
+			<div class="col-xs-4 col-md-4">
+				<button class="btn btn-secondary" id="createStills">Generate thumbnails</button>
+			</div>	
+			<% items.thumbnail.forEach(function(item){ %>
+				<div class="col-xs-2 col-md-2">
+				<div class="thumbnail">
+					<img width="100%" height="100%" src="/static/img/stills/<%= item %>" />
+				</div>
+				</div>
+			<% })%>
+		</div>
+		<br/>
     <!-- Additional Meta Data -->
      
     <a class="" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -131,8 +209,8 @@ $(document).ready(function() {
 				</div>
 				<br>		
 				<div class="input-group input-group-xs">
-					<span class="input-group-addon" id="sizing-addon1">Date</span>
-					<input type="text" class="form-control" placeholder="date" aria-describedby="sizing-addon1" name="date" value="<%= items.date %>">
+					<span class="input-group-addon" id="sizing-addon1">Year of creation</span>
+					<input type="text" class="datetimepicker form-control" placeholder="date" aria-describedby="sizing-addon1" name="date" value="<%= items.date %>">
 				</div>
 				<br>
 				<div class="input-group input-group-xs">
@@ -164,8 +242,7 @@ $(document).ready(function() {
   </form>
 </div>
 <div class="col-md-4">
-	<button class="btn btn-secondary" id="createStills">Generate Still Images</button><br>
-	<div class="stills"></div>
+	
 </div>
 </div>
 <!--<img id="id1" />

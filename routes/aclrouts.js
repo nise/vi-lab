@@ -143,6 +143,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/scripts', users.ensureAuthenticated, scripts.renderIndex );
 	// script templates
 	app.get('/admin/scripts/templates', users.ensureAuthenticated, scripts.renderTemplates );
+	app.get('/admin/scripts/templates/create', users.ensureAuthenticated, scripts.renderNewTemplate );
 	app.get('/admin/scripts/templates/edit/:id', users.ensureAuthenticated, scripts.renderTemplateByID );
 	app.get('/admin/scripts/templates/duplicate/:id', users.ensureAuthenticated, scripts.duplicateTemplateByID );
 	app.get('/admin/scripts/templates/instantiate/:id', users.ensureAuthenticated, scripts.instantiateTemplateByID );
@@ -156,13 +157,14 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/scripts/instances/activate/:id', users.ensureAuthenticated, scripts.activateInstanceByID );
 	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
 	app.get('/json/admin/scripts/instances', users.ensureAuthenticated, scripts.getInstances );
-	
+	app.get('/json/admin/scripts/instances/:id', users.ensureAuthenticated, scripts.getInstanceByID );
+	app.get('/json/script', users.ensureAuthenticated, scripts.getInstances); // == alternative route
 	// ??
-	app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
+	//app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
 
 	
 	// json
-	app.get('/json/script', users.ensureAuthenticated, scripts.getScript);
+	
 	app.get('/json/admin/script-info', users.ensureAuthenticated, scripts.getScriptInfo ); // xxx
 	
 	

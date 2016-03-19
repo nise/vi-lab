@@ -1,29 +1,8 @@
 <% layout( '../admin-layout' ) -%>
 
 
-<script type="text/javascript"> 
-//
-var aAsc = [];
-function sortTable(e) { 
-
-	var nr = $(e.currentTarget).index(); 
-	aAsc[nr] = aAsc[nr]=='asc'?'desc':'asc';
-	$('.xtable > tbody > tr').tsort('tr["num"], td:eq('+nr+')',{order:aAsc[nr]});
-}
-
-jQuery(document).ready(function(e) { 
-	$('.xtable').find('thead th').siblings().bind('click', function(e){ 
-		//alert(99)
-		sortTable(e); 
-	});
-});	
-
-// javascript:render('admin-videos-new','/admin/videos/new', false, '.admin-panel');
-</script>
-
-
-
-<h2>Video Instances</h2>
+<h2>Video instances</h2>
+<a href="/json/admin/video-instances"><span class="glyphicon glyphicon-export"></span> export instances</a>
 <div id="table1"></div>
 </div>
 <script type="text/javascript"> 

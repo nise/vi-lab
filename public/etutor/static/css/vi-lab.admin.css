@@ -62,19 +62,25 @@ color: #959595;
 
 .alert-btn {
 	color:red;
-	float:right;
 	padding: 4px;
 }
 
 .btn-secondary{
-	background-color:#ddd;
+	background-color:#888;
+	font-weight:bold;
+	color:#fff;
 }
 .btn-secondary:hover{
-	background-color:#ccc;
+	background-color:#999;
+	color:#fff;
 }
 
 .right{
 	float:right;
+}
+
+.table-link{
+	margin-right:10px;
 }
 
 

@@ -1,11 +1,11 @@
 <% layout( '../admin-layout' ) -%>
 
 
-<h2>Template: <span id="templateTitle" class="xeditable str"><%=: items.title  %></span></h2>
+<h2>Edit template: <span id="templateTitle" class="xeditable str"><%=: items.title  %></span></h2>
 
 <form
 	id="scriptTemplateForm" 
-	action="/admin/scripts/templates/update/<%= items.id %>"
+	action="/admin/scripts/templates/update/<%= items._id %>"
 	method="POST"
 	accept-charset="utf-8" 
 >
@@ -78,7 +78,7 @@ todo
     	// collect videos per phase
   		var videos = $(this).find('.phase-video-list input:checked').map(function() {
   			return this.value;
-			}).get(); alert(videos)
+			}).get(); 
 			phase.video_files = videos;
 			data.phases.push(phase);
 		});
@@ -137,7 +137,7 @@ $(document).ready(function() {
     $(this).tab('show');
 })
 	
-	// load widget options
+	// load data to form
 	var data = JSON.parse('<%-JSON.stringify( items.phases )%>'); 
 	$.each( data, function(i, phase){
 		// fill dropdown for adding widgets

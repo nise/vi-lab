@@ -51,7 +51,7 @@ var VideoFile = new Schema({
 	date				: Date, // date of creation
 	type				: String,
 	mimetype 		: String,
-	format			: Array,
+	format			: Array, // available format / mime types?
 	source			: String,
 	language		: String,
 	relation    : String,
@@ -176,8 +176,8 @@ var ScriptTemplate = new Schema({
 	title: String,
 	description: String,
 	tags : [String], 
-	created_at 	: { type: Number },
-	updated_at 	: { type: Number },// default: Date.now },
+	created_at 	: { type: Date },
+	updated_at 	: { type: Date, default: Date.now },
   slides : Boolean, // ???
   phases: [
 		{ 

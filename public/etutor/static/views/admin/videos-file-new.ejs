@@ -2,119 +2,8 @@
 
 
 <div class="col-md-10">
-<h2>Add New Video File</h2>
-<br>
-
-<script>
-/*
-todo:
-- handle pasted external ressources inc. duration, size, ..., different formats (?)
-- start processing to generate different file types, 
-- extract thumbnails
-*/
-$(document).ready(function() {
-	$('#save-btn').prop('disabled', true);
-	var frm = $('#uploadForm');
-	function progress(e){
-	  if(e.lengthComputable){
-		  var max = e.total;
-		  var current = e.loaded;
-
-		  var Percentage = (current * 100)/max;
-		  $("#status").empty().text('Uploaded '+Percentage.toFixed(0)+' %');
-
-			if(Percentage >= 100)
-		  {
-		     $('#save-btn').prop('disabled', false);
-		  }
-	 	}  
-	}
-	frm.submit(function(e) {
-		$.ajax({
-			type: frm.attr('method'),
-			 url: frm.attr('action'),
-			data: new FormData( this ),
-			xhr: function() {
-				var myXhr = $.ajaxSettings.xhr();
-				if(myXhr.upload){
-				    myXhr.upload.addEventListener('progress',progress, false);
-				}
-				return myXhr;
-			},
-			cache:false,
-			processData: false,
-			contentType: false,
-			error: function(xhr) {
-				status('Error: ' + JSON.sringify(xhr.status));
-			},
-			success: function(res) { 
-				res =  JSON.parse(res);
-				//$("#status").empty().html('<a href="/static/uploads/'+res.file.filename+'">uploaded '+ res.file.filename +'</a>' );
-				var video = $('<video id="preview" width="100%" controls><source src="/static/uploads/'+ res.file.filename +'" type="'+ res.file.mimetype +'"/></video>');
-				$('#res').html(video);
-				var vid = document.getElementById("preview");
-				vid.ondurationchange = function() {
-    			$('form#metadataForm [name="length"]').val( vid.duration ); 
-				};
-				$('form#metadataForm [name="video"]').val('/static/uploads/'+res.file.filename);
-				$('form#metadataForm [name="mimetype"]').val( res.file.mimetype );
-				$('form#metadataForm [name="format"]').val( res.file.mimetype );
-				$('form#metadataForm [name="size"]').val( res.file.size ); 
-				
-				//$('<img src="/static/uploads/'+ res.file.filename +'" />').appendTo('#res');
-			}
-		});
-		return false;
-	});
-	
-	/**/
-	var frmMeta = $('#metadataForm');
-	frmMeta.submit(function(e) { 
-		
-		var data = {
-				title: $('input[name=title]').val(),
-				creator: $('input[name=creator]').val(),
-				subject: $('input[name=subject]').val(),
-				description: $('textarea#description]').val(),
-				publisher: $('input[name=publisher]').val(),
-				contributor: $('input[name=contributor]').val(),
-				type: $('input[name=type]').val(),
-				mimetype: $('input[name=mimetype]').val(),
-				source: $('input[name=source]').val(),
-				language: $('input[name=language]').val(),
-				relation: $('input[name=relation]').val(),
-				coverage: $('input[name=coverage]').val(),
-				rights: $('input[name=rights]').val(),
-				license: $('input[name=license]').val(),
-				video: $('input[name=video]').val(),
-				length: $('input[name=length]').val(),
-				size: $('input[name=size]').val(),
-				thumbnail: $('input[name=thumbnail]').val(), // xxx
-				institution: $('input[name=institution]').val(),
-				category: $('input[name=category]').val(),
-				tags: $('input[name=tags]').val().split(',') // Array
-			};
-			
-		$.ajax({
-			type: frmMeta.attr('method'),
-			url: frmMeta.attr('action'),
-			data: data,
-			error: function(xhr) {
-				console.log(xhr)
-			},
-			success: function(res) { //alert(res)
-				// redirect 
-				window.location.href = '/admin/videos/files';
-			}
-		});
-		return false;
-	});       
-});
-</script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-
-
-
+<h2>Create new video file</h2>
+<br/>
 <div class="row">
 	<div class="col-md-4">
 		<form id="uploadForm"
@@ -172,7 +61,7 @@ $(document).ready(function() {
     <br>
      <div class="form">
 			<span class="" id="sizing-addon1"><strong>License</strong></span>
-			<select name="license">
+			<select id="license" name="license">
 				<option value="cc-by">Creative Commons - attribution (cc-by)</option>
 				<option value="pd">Public Domain (pd)</option>
 				<option value="cr">Copy Right Restricted</option>
@@ -180,6 +69,13 @@ $(document).ready(function() {
 			</select>
     </div>
     <br>
+    <br>
+    <div class="stills row">
+			<div class="col-xs-4 col-md-4">
+				<button class="btn btn-secondary" id="createStills">Generate thumbnails</button>
+			</div>	
+		</div>
+		<br/>
     <!-- Additional Meta Data -->
      
     <a class="" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -219,8 +115,8 @@ $(document).ready(function() {
 				</div>
 				<br>		
 				<div class="input-group input-group-xs">
-					<span class="input-group-addon" id="sizing-addon1">Date</span>
-					<input type="text" class="form-control" placeholder="date" aria-describedby="sizing-addon1" name="date" value="">
+					<span class="input-group-addon" id="sizing-addon1">Year of creation</span>
+					<input type="text" class="datetimepicker form-control" placeholder="date" aria-describedby="sizing-addon1" name="date" value="">
 				</div>
 				<br>
 				<div class="input-group input-group-xs">
@@ -250,6 +146,128 @@ $(document).ready(function() {
   </form>
 </div>
 </div>
+
+
+<script>
+/*
+todo:
+- handle pasted external ressources inc. duration, size, ..., different formats (?)
+- start processing to generate different file types, 
+- extract thumbnails
+*/
+$(document).ready(function() {
+	
+	$('.datetimepicker').datetimepicker({
+      //viewMode: 'years',
+      format: 'YYYY'
+  });
+
+	$('#save-btn').prop('disabled', true);
+	var frm = $('#uploadForm');
+	function progress(e){
+	  if(e.lengthComputable){
+		  var max = e.total;
+		  var current = e.loaded;
+
+		  var Percentage = (current * 100)/max;
+		  $("#status").empty().text('Uploaded '+Percentage.toFixed(0)+' %');
+
+			if(Percentage >= 100)
+		  {
+		     $('#save-btn').prop('disabled', false);
+		  }
+	 	}  
+	}
+	frm.submit(function(e) {
+		$.ajax({
+			type: frm.attr('method'),
+			 url: frm.attr('action'),
+			data: new FormData( this ),
+			xhr: function() {
+				var myXhr = $.ajaxSettings.xhr();
+				if(myXhr.upload){
+				    myXhr.upload.addEventListener('progress',progress, false);
+				}
+				return myXhr;
+			},
+			cache:false,
+			processData: false,
+			contentType: false,
+			error: function(xhr) {
+				status('Error: ' + JSON.sringify(xhr.status));
+			},
+			success: function(res) { 
+				res =  JSON.parse(res);
+				//$("#status").empty().html('<a href="/static/videos/'+res.file.filename+'">uploaded '+ res.file.filename +'</a>' );
+				var video = $('<video id="preview" width="100%" controls><source src="/static/videos/'+ res.file.filename +'" type="'+ res.file.mimetype +'"/></video>');
+				$('#res').html(video);
+				var vid = document.getElementById("preview");
+				vid.ondurationchange = function() {
+    			$('form#metadataForm [name="length"]').val( vid.duration ); 
+				};
+				$('form#metadataForm [name="video"]').val('/static/videos/'+res.file.filename);
+				$('form#metadataForm [name="mimetype"]').val( res.file.mimetype );
+				$('form#metadataForm [name="format"]').val( res.file.mimetype );
+				$('form#metadataForm [name="size"]').val( res.file.size ); 
+				
+			}
+		});
+		return false;
+	});
+
+	/**/
+	var frmMeta = $('#metadataForm');
+	frmMeta.submit(function(e) {  
+		e.preventDefault(); 
+		var 
+			thumbs = [],
+			video = $('input[name=video]').val()
+			;
+		for(var i = 1; i < 5; i++){
+			thumbs.push( 'still_'+video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
+		}
+		var data = {
+			title: $('input[name=title]').val(),
+			creator: $('input[name=creator]').val(),
+			subject: $('input[name=subject]').val(),
+			description: $('textarea#description').val(),
+			publisher: $('input[name=publisher]').val(),
+			contributor: $('input[name=contributor]').val(),
+			type: $('input[name=type]').val(),
+			mimetype: $('input[name=mimetype]').val(),
+			source: $('input[name=source]').val(),
+			language: $('input[name=language]').val(),
+			relation: $('input[name=relation]').val(),
+			coverage: $('input[name=coverage]').val(),
+			rights: $('input[name=rights]').val(),
+			date: $('input[name=date]').val(),
+			license: $('select option:selected').val(),
+			video: video, // url
+			length: $('input[name=length]').val(),
+			size: $('input[name=size]').val(),
+			thumbnail: thumbs, 
+			institution: $('input[name=institution]').val(),
+			category: $('input[name=category]').val(),
+			tags: $('input[name=tags]').val().split(',') // Array
+		};
+			
+		$.ajax({
+			type: frmMeta.attr('method'),
+			url: frmMeta.attr('action'),
+			data: data,
+			error: function(xhr) {
+				console.log(xhr)
+			},
+			success: function(res) { //alert(res)
+				// redirect 
+				window.location.href = '/admin/videos/files';
+			}
+		});
+		return false;
+	});       
+});
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 
 
 

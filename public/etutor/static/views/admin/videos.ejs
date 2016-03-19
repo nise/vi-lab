@@ -1,5 +1,11 @@
 <% layout( '../admin-layout' ) -%>
 
+<h2>Video files</h2>
+<a href="/admin/videos/files/create" class="label label-primary"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+<br>
+<br>
+<div id="table1"></div>
+
 
 <script type="text/javascript"> 
 $(document).ready (function () { 
@@ -7,44 +13,23 @@ $(document).ready (function () {
     //url: '/data/json/modules',
     data: JSON.parse('<%-JSON.stringify( items )%>'),
     onLoadError : function(e){ console.log(JSON.stringify(e)); },
-    //    onLoadSuccess : function(e){ alert(JSON.stringify(e)); },
-    //height:'500',
     showColumns : true,
     checkboxHeader : true,
-   // cardView:true, // mobile view
-    showExport:true,
-    exportDataType:'selected',
-    exportOptions: {
-    	consoleLog: false,
-			csvEnclosure: '"',
-			csvSeparator: ',',
-			csvUseBOM: true,
-			displayTableName: false,
-			escape: false,
-			excelstyles: [ 'css','properties','to','export','to','excel' ],
-			fileName: 'tableExport',
-			htmlContent: false,
-			ignoreColumn: [],
-			ignoreRow: [],
-			onCellData: null,
-			outputMode: 'file',
-			tbodySelector: 'tr',
-			theadSelector: 'tr',
-			tableName: 'myTableName',
-			type: 'csv',
-			worksheetName: 'xlsWorksheetName'
-    },
     // search
     search: true,
     strictSearch: true,
     trimOnSearch:true,
-    
-    // details
     detailView : true,
-    detailFormatter : function(index, row) {
+    detailFormatter : function(index, row) { 
+    	return [
+					'<video width="320" height="240" controls>',
+				 	'<source src="'+row.video+'" type="'+row.mimetype+'">',
+					'Your browser does not support the video tag.',
+					'</video>'
+				].join('');
     	// add preview player
     	var 
-    		video = $('<video></video>'),
+    		video = $('<video height="200"></video>'),
     		source = $('<source></source>')
     			.attr('type', row.mimetype ) /// xxx: buggy
     			.attr('src', row.video )
@@ -60,16 +45,16 @@ $(document).ready (function () {
     },*/
     columns: [
 	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'title', title: 'Title', sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'creator', title: 'Creator',  sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'title', title: 'File', formatter:titleFormatter, sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'creator', title: 'Creator/Source', formatter: sourceFormatter, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'subject', title: 'Subject', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'description', title: 'Description', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'publisher', title: 'Publisher', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'contributor', title: 'Contributor', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'date', title: 'Date of Creation', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'type', title: 'Type', visible:false, sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'format', title: 'File Formats',sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'source', title: 'Source',sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'format', title: 'Formats',sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'source', title: 'Source', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'language', title: 'Language',sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'relation', title: 'Relation', visible:false, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'coverage', title: 'Coverage', visible:false, sortable : true, order: 'asc',searchable : true }, 
@@ -82,7 +67,7 @@ $(document).ready (function () {
 		  { field: 'institution', title: 'Institution',sortable : true, visible:false, order: 'asc',searchable : true }, 
 		  { field: 'category', title: 'Category',sortable : true, visible:false, order: 'asc',searchable : true }, 
 		  { field: 'weight', title: 'Rating', visible:false, sortable : true, visible:false, order: 'asc',searchable : true }, 
-		  { field: 'updated_at', title: 'Updated at',sortable : true, visible:false, order: 'asc',searchable : true },
+		  { field: 'updated_at', title: 'Updated at', formatter:dateFormatter, sortable : true, visible:true, order: 'asc',searchable : true },
     	{ field: 'operate', title: '',  align: 'center', /*events: operateEvents,*/ formatter: operateFormatter }
     ]
 	});
@@ -100,66 +85,34 @@ function operateFormatter(value, row, index) {
 		].join('');
 	}
 
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-        },
-        'click .remove': function (e, value, row, index) {
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-            });
-        }
-    };
+function dateFormatter(value, row, index) { 
+	return moment(value).fromNow();
+}
+
+function titleFormatter(value, row, index) { 
+	return [
+			'<img height="30px" src="/static/img/stills/'+ row.thumbnail[2] +'" />',
+			' '+row.title
+			].join('');
+}
+
+function sourceFormatter(value, row, index) {
+	if(row.source !== undefined){ 
+		return [
+			'<a class="like" href="'+row.source+'" title="See video source">',
+			'<i class="glyphicon glyphicon-link"></i> '+row.creator,
+			'</a>  '
+			].join('');
+	}else{
+		return row.creator;
+	}	
+}
 
 </script>
 
 
 
 
-<h2>Video Files</h2>
-<a class="btn btn-secondary btn-xs" href="/admin/videos/files/create" aria-expanded="false">add new video file</a>
-<!--<a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addVideoPanel" aria-expanded="false" aria-controls="collapseExample">add new video instance</a>
-
-
-<div id="addVideoPanel" class="edit-form collapse admin-edit-form">
-	<div class="panel-heading">Add new video</div>
-	<div class="panel-body">	 
-		<form action="/videos/create" method="post" accept-charset="utf-8">
-			
-			<div class="form-element input-group input-group-xs">
-				<span class="input-group-addon" id="sizing-addon1">Title</span>
-				<input type="text" class="form-control" placeholder="title" aria-describedby="sizing-addon1" name="title" value="">
-			</div>
-			<div class="form-element input-group input-group-xs">
-				<span class="input-group-addon" id="sizing-addon1">Source URL</span>
-				<input type="text" class="form-control" placeholder="video" aria-describedby="sizing-addon1" name="video" value="">
-			</div>
-			<div class="form-element input-group input-group-xs">
-				<span class="input-group-addon" id="sizing-addon1">Author/publisher</span>
-				<input type="text" class="form-control" placeholder="author" aria-describedby="sizing-addon1" name="author" value="">
-			</div>
-			<div class="form-element form-group-xs">
-				<span class="input-group-addon" id="sizing-addon1">Description</span>
-				<textarea class="form-control" rows="5" id="" name="abstract"></textarea>
-			</div>
-			<div class="form-element input-group input-group-xs">
-				<span class="input-group-addon" id="sizing-addon1">Category</span>
-				<input type="text" class="form-control" placeholder="category" aria-describedby="sizing-addon1" name="category" value="">
-			</div><% id = Math.random()*9999 %>
-			<input type="hidden" name="id" value="" />
-			
-			<br>
-			<div class="form-element buttons">
-				<button class="btn btn-default" type="submit">Add video</button>  <a href="javascript:render('admin-videos', '/json/videos', true, '.admin-panel');">cancel</a>
-			</div>
-		</form>
-	</div>	
-</div>
--->
-<div id="table1"></div>
-
-</table>
 
 
 

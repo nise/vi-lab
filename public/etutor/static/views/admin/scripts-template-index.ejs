@@ -1,38 +1,18 @@
 <% layout( '../admin-layout' ) -%>
 
+<h2>Script templates</h2>
+<a href="/admin/scripts/templates/create" class="label label-primary"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+<br>
+<br>
+<div id="table1"></div>
+
 <script type="text/javascript"> 
 $(document).ready (function () { 
 	$('#table1').bootstrapTable({
-    //url: '/data/json/modules',
     data: JSON.parse('<%-JSON.stringify( items )%>'),
     onLoadError : function(e){ console.log(JSON.stringify(e)); },
-    //    onLoadSuccess : function(e){ alert(JSON.stringify(e)); },
-    //height:'500',
     showColumns : true,
     checkboxHeader : true,
-   // cardView:true, // mobile view
-    showExport:true,
-    exportDataType:'selected',
-    exportOptions: {
-    	consoleLog: false,
-			csvEnclosure: '"',
-			csvSeparator: ',',
-			csvUseBOM: true,
-			displayTableName: false,
-			escape: false,
-			excelstyles: [ 'css','properties','to','export','to','excel' ],
-			fileName: 'tableExport',
-			htmlContent: false,
-			ignoreColumn: [],
-			ignoreRow: [],
-			onCellData: null,
-			outputMode: 'file',
-			tbodySelector: 'tr',
-			theadSelector: 'tr',
-			tableName: 'myTableName',
-			type: 'csv',
-			worksheetName: 'xlsWorksheetName'
-    },
     // search
     search: true,
     strictSearch: true,
@@ -52,16 +32,14 @@ $(document).ready (function () {
 
 function operateFormatter(value, row, index) {
 	return [
-		'<a href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
-		'<i class="glyphicon glyphicon-duplicate"></i> duplicate',
-		'</a><br>',
-		'<a href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
+		'<a class="table-link" href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
+		'<i class="glyphicon glyphicon-copy"></i> duplicate',
+		'</a>',
+		'<a class="table-link" href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
 		'<i class="glyphicon glyphicon-export"></i> instantiate',
 		'</a>'
 	].join('');
 }
-
-
 
 function phaseFormatter(value, row, index) {
 	return row.phases.length; 
@@ -71,18 +49,11 @@ function titleFormatter(value, row, index) {
 	return '<a class="like" href="/admin/scripts/templates/edit/'+row._id+'" title="Edit script template">'+ row.title +'</a>  ';
 }
 
-function dateFormatter(value, row, index) {
-	var d = new Date( parseInt( value ) )
-	var month = d.getMonth()+1;
-	if(month < 10){
-		month = '0'+month;
-	}
-	return  moment( d.getFullYear()+''+month+''+d.getDate(), "YYYYMMDD").fromNow(); 
+function dateFormatter(value, row, index) { 
+	return moment(value).fromNow();
 }	
 
 </script>
 
-<h2>Script Templates</h2>
 
-<div id="table1"></div>
 

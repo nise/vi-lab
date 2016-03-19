@@ -33,14 +33,36 @@
 							</div>
 						</div>
 					</div>
-				
+					<br/>
+					<ul class="nav nav-tabs nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#task_<%= phase_i %>" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>
+						<li role="presentation" ><a href="#supplements_<%= phase_i %>" aria-controls="supplements" role="tab" data-toggle="tab">Supplements</a></li>
+					</ul>	  
+					<div class="tab-content">
+						<div class="sec tab-pane active" id="task_<%= phase_i %>">
+							<textarea class="script-form task" id="phase-task_<%= phase_i %>"><%= phase.instruction %></textarea>
+						</div>
+						<div class="sec tab-pane" id="supplements_<%= phase_i %>">
+							<textarea class="script-form supplements" id="phase-supplements_<%= phase_i %>"><%= phase.supplements %></textarea>
+						</div>
+					</div>
+					
+					
+					
 				</div>
 				<!-- Select Groups -->
-				<div class="col-md-6 admin-panel">
+				<div class="col-md-3 admin-panel">
 					<h4>Group formations</h4>
 					<div id="group_<%= phase_i %>" class="phase-group-list"></div>
 				</div>
-			</div>	
+				<!-- Select Videos -->
+				<div class="col-md-3 admin-panel">
+					<h4>Video Files</h4>
+					<div id="videos_<%= phase_i %>" class="phase-video-list"></div>
+				</div>
+			</div>
+			
+				
 		</div>	
 	<% }) %>
 <% } %>
@@ -48,9 +70,11 @@
 
 <br><br><br>
 <div class="buttons">
+	<label class="alert-btn"><input type="checkbox" id="overwrite" /> Overwrite all video instances and groups?</label>
+	<br/>
 	<button type="submit" class="btn-default btn">save instance</button>  
 	<a href="/admin/scripts/instances">cancel</a> 
-	<a class="alert-btn" href="/admin/scripts/instances/destroy/<%= items._id %>" title="Delete this instance">delete</a>
+	<a class="alert-btn right" href="/admin/scripts/instances/destroy/<%= items._id %>" title="Delete this instance">delete</a>
 </div>
 </form>
 
@@ -82,10 +106,26 @@ require.config({
 // make it editable
 $.fn.editable.defaults.mode = 'inline'; // popup
 
+
+
+function escapeSpecialChars(s) { 
+    return encodeURIComponent(s);
+    return s.replace(/\n/g, "\\n")
+               .replace(/\'/g, "\\'")
+               .replace(/\"/g, '\\"')
+               .replace(/\&/g, "\\&")
+               .replace(/\r/g, "\\r")
+               .replace(/\t/g, "\\t")
+               .replace(/\b/g, "")
+               .replace(/\f/g, "\\f");
+};
+
+$('textarea').each(function(i, val){
+	$(this).val( decodeURIComponent($(this).val()) );
+})
 $('.str').each(function(i, val){
 	$(this).text( decodeURIComponent($(this).text()) );
 })
-
 var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
 
 $(document).ready(function() {
@@ -98,14 +138,21 @@ $(document).ready(function() {
 
 	// load group formations
 	$.each( data, function(i, phase){
-		// list available videos
+		// list available group formations
 		$.get('/json/admin/groups/formations', function(formations){ 
 			$.each(formations, function(j, val){
 				var check = phase.groupformation === formations[j]._id ? 'checked' : '';
 				$('#group_'+i).append( $('<label><input '+ check +' value="'+val._id+'" type="radio" name="grform_'+i+'" aria-label="'+val.title+'"> '+val.title+'</label><br>' ) );
 			});
 		});
-		// dates
+		// list available video files
+		$.get('/json/admin/video-files', function(files){ 
+			$.each(files, function(j, val){
+				var checked = data[i].video_files.indexOf( val._id ) === -1 ?  '' : 'checked'; 
+				$('#videos_'+i).append( $('<label><input type="checkbox"  '+ checked +' value="'+val._id+'" name="video-files-'+j+'" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
+			});
+		});
+		// list dates
 		$('#datetimepicker_start_'+i ).datetimepicker({ sideBySide: true }).data("DateTimePicker").date(moment(phase.start));
 		$('#datetimepicker_end_'+i).datetimepicker({ sideBySide: true }).data("DateTimePicker").date(moment(phase.end));
 	});
@@ -120,28 +167,39 @@ $(document).ready(function() {
 		
 		// collect phases
 		$.each( res.phases, function(i, phase){ 
-			// date
+			// collect date
 			var
 				start = new Date( $('#datetimepicker_start_'+i).val() ),
 				end = new Date( $('#datetimepicker_end_'+i).val() )
 				; 
 			//if(moment(end).subtract(moment(start)).hours() > 0){
-				phase.start = start;
-				phase.end = end;
-			//}
-			// group formations
+			phase.start = start;
+			phase.end = end; alert($('#phase_'+i).find('.task').val())
+			phase.title = escapeSpecialChars($('#phase_'+i).find('.phase-title').text()),
+    	phase.instruction = escapeSpecialChars($('#phase_'+i).find('textarea.task').val()),
+    	phase.supplements = escapeSpecialChars($('#phase_'+i).find('textarea.supplements').val()),//'#phase-supplements_'+i, //  
+    	// collect group formations
 			phase.seq = i;
 			phase.groupindex = i;
 			phase.groupformation = $('#group_'+i+' :checked').val();
+			// collect videos per phase
+  		var videos = $(this).find('.phase-video-list input:checked').map(function() {
+  			return this.value;
+			}).get(); 
+			phase.video_files = videos;
+			// store it
 			$.extend(res.phases[i], phase) 
 		});
+	
 		//alert(JSON.stringify(res))
+		
 		// send it
+		return
 		$.ajax({
 			type: "POST",
 			url: '/admin/scripts/instances/update/'+res._id,
-			data: res,
-			success: function(res){ alert(22)
+			data: { overwrite: $('#overwrite').prop( "checked" ), instance: res},
+			success: function(res){ //alert(22)
 				window.location.href = '/admin/scripts/instances';
 			},
 			error : function(e){
@@ -150,8 +208,6 @@ $(document).ready(function() {
 		});
 	});
 });
-
-
 
 
 </script>

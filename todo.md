@@ -6,7 +6,21 @@
 
 - video lauffähig machen.
 - nachträgliche bearbeitung von phasen ermöglichen.
--
+- cron: startScriptSession
+- script status page (which script runs at what phase ... when is the next on comeing)
+- @templates: create new template
+- @templates: add uses files and used widgets to table
+- @templates edit :: missing fields like descripts tags...
+- @instance: add used template to table
+- @video instance => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
+- @video instance: list group who is operation on the instance
+- @video instance: backup/download
+- @video files: handle different format/mimes/file extentions, incl. file conversion
+- @video files: automatic thumbnail creation
+- @groups: list group member in table
+- @user: change table format
+- @formation: preview, delete, edit?
+
 
 - script instance
  - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
@@ -45,6 +59,10 @@
 
 - suche
 - session mgmg?
+
+
+- extract more technical informations about teh vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+- use common metadata standard for video
 
 # For diss
 - caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}

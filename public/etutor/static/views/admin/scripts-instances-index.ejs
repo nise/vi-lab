@@ -1,5 +1,9 @@
 <% layout( '../admin-layout' ) -%>
 
+<h2>Script instances</h2>
+
+<div id="table1"></div>
+
 <script type="text/javascript"> 
 $(document).ready (function () { 
 	$('#table1').bootstrapTable({
@@ -10,15 +14,15 @@ $(document).ready (function () {
     search: true,
     strictSearch: true,
     trimOnSearch:true,
-/*    rowStyle: function (value, row, index) {
+    rowStyle: function (row, index) { 
     	if( row.status === 'running'){
 				return {
-					//classes: 'text-nowrap another-class',
+					classes: 'text-nowrap another-class',
 					css: {"color": "red"}
 				};
 			}
-			return;	
-		},*/
+			return {};	
+		},
     columns: [
 	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'title', title: 'Instance', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
@@ -27,7 +31,7 @@ $(document).ready (function () {
 			{ field: 'duration', title: 'Duration', visible:true, sortable : true, formatter: durationFormatter, searchable : true }, 
 		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true },
 		  { field: 'status', title: 'Status', visible:true, sortable : true, order: 'asc',searchable : true },
-		  { field: 'operate', title: '', visible:true, sortable : true, formatter: operateFormatter, order: 'asc',searchable : true }  
+		  { field: 'operate', title: '', visible:true, formatter: operateFormatter }  
     ]
 	});
 });
@@ -52,10 +56,13 @@ function dateFormatter(value, row, index) {
 
 function operateFormatter(value, row, index) {
 	return [
-		'<a href="/admin/scripts/instances/activate/'+row._id+'" title="Activate script instance">',
+		'<a class="table-link" href="/admin/scripts/instances/activate/'+row._id+'" title="Activate script instance">',
 		'<i class="glyphicon glyphicon-ok"></i> activate',
-		'</a><br>',
-		'<a href="/admin/scripts/instances/destroy/'+row._id+'" title="Remove script instance">',
+		'</a>  ',
+		'<a class="table-link" href="/json/admin/scripts/instances/'+row._id+'" title="Export script instance">',
+		'<i class="glyphicon glyphicon-export"></i> export',
+		'</a>  ',
+		'<a class="table-link" href="/admin/scripts/instances/destroy/'+row._id+'" title="Remove script instance">',
 		'<i class="glyphicon glyphicon-remove"></i> remove',
 		'</a>'
 	].join('');
@@ -63,7 +70,5 @@ function operateFormatter(value, row, index) {
 
 </script>
 
-<h2>Script Instances</h2>
 
-<div id="table1"></div>
 
