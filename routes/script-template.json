@@ -3,6 +3,7 @@
 	"description" : "This is an example of a script template.",
 	"tags" : ["E-Assessment","Tests","Video-Annotation","Video-Assessment"],
   "slides" : true,
+  "video_files": [],  
 	"phases": [
     		{ 
     			"title": "Phase 1",

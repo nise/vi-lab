@@ -1,8 +1,8 @@
 /*
-author: niels.seidel@nise81.com
-titel: Vi-Lal
-description: Video learning environment with support for real-time annotations and collaborative work structured by scripts.
-**/
+ * @author: niels.seidel@nise81.com
+ * @titel: Vi-Lab
+ * @description: Video learning environment with support for real-time annotations and collaborative work structured by scripts.
+ **/
 
 require( './db' );
 
@@ -30,9 +30,9 @@ var
 
 
 	/* 
-		* catch arguments 
-		* test: $ node process-2.js one two=three four
-		**/ 
+	 * catch arguments 
+	 * test: $ node process-2.js one two=three four
+	 **/ 
 	process.argv.forEach(function (val, index, array) {
 		if( array.length > 2 ){
 			application = array[3];
@@ -42,15 +42,15 @@ var
 
 
 	/* 
-		*	make it a plattform for multiple applications
-		**/
+	 *	make it a plattform for multiple applications
+	 **/
 	exports.application = function ( req, res ){
 			return application;
 	};
 
 	/*
-		*
-		**/
+	 *
+	 **/
 	exports.server = function ( req, res ){
 		return server;
 	};
@@ -112,28 +112,14 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			groups.csvImport();
 			//groups.csvImportFromJSON();
 			//require('./routes/etherpad').generatePadGroups(); // !!!
-			
-			/*var ffmpeg = require('fluent-ffmpeg');
-			var proc = new ffmpeg('/home/abb/Documents/www2/theresienstadt-explained/public/terezin/static/videos/theresienstadt.mp4')
-				.takeScreenshots({
-						count: 3,
-						timemarks: [ '100','300','400' ] // number of seconds
-				}, '/home/abb/Documents/www2/theresienstadt-explained/public/terezin/static/img/video-stills/theresienstadt', function(err) {
-						console.log('screenshots were saved')
-			});
-			*/
 		}
 		
 		if( application === 'etutor' ){	
 			//videos.csvImport(); // !!! caution
 			//users.csvImport();
-			
 			//groups.csvImport();
-			
 			//groups.csvImportFromJSON();
-			// 
 			//var lec = require('./utils/lecturnity');
-
 		}
 		
 		/* Access Control List */
@@ -170,10 +156,6 @@ va.init( {
 	});
 
 	**/
-
-
-
-
 
 
 
@@ -224,9 +206,9 @@ server.listen(port);
 server.setMaxListeners(0); // xxx: untested: unfinite number of listeners, default: 10;
 // http://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n
 	
-console.log('\n\n************************************************');
-console.log('Started server for application '+ application +' on port: '+ port);	
-console.log('************************************************\n\n');
+console.log('\n\n***********************************************************');
+console.log('Started server for application __'+ application +'__ on port: '+ port);	
+console.log('***********************************************************\n\n');
 	
 	
 

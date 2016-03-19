@@ -143,19 +143,9 @@ mongoose.model( 'GroupFormations', GroupFormations );
 
 
 
-/*
+/******************************************
 SCRIPTS
-**/
-
-// old schema
-var Scripts = new Schema({
-	current_phase : Number,
-  slides : Boolean,
-  phases : [Schema.Types.Mixed],
-  updated_at 	: { type: Date, default: Date.now }
-});
-mongoose.model( 'Scripts', Scripts );
-
+******************************************/
 
 //
 var WidgetOptions = new Schema({
@@ -266,31 +256,6 @@ mongoose.model( 'ScriptInstance', ScriptInstance );
 
 
 
-// depricated? xx
-var ScriptSession = new Schema( {
-		// some meta data
-		title : { type: String, minlength: 3 },
-		description : String,
-		tags : [String], 
-		created_at 	: { type: Date },
-		updated_at 	: { type: Date, default: Date.now },
-		
-		// session
-		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
-		current_phase : Number,
-		start : Date,
-		end : Date,
-		
-		// data
-		template : Number, // ScriptTemplate
-		
-		results : [Schema.Types.Mixed]  // Feedback, Task results, ...
-	});
-mongoose.model( 'ScriptSession', ScriptSession );
-	
-	
-	
-	
 
 	
 /* Log */

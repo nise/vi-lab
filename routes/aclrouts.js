@@ -21,7 +21,6 @@ module.exports = function(db, app) {
 	// mongoose models
 	Videos  = mongoose.model( 'Videos' ),
 	Users  = mongoose.model( 'Users' ),
-	Scripts  = mongoose.model( 'Scripts' ),
 	Groups  = mongoose.model( 'Groups' )
 	;
 	
@@ -400,13 +399,14 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/assessment/pre-post-results', users.authCallback(['editor']) , assess.getAllPrePostResult );
 	
 	// routes related to etherpad
+	/*
 	var etherpad = require('./etherpad');
 	
 	app.get('/collaborative-writing', users.ensureAuthenticated, etherpad.createSession )
 	app.get('/collaborative-writing2', users.ensureAuthenticated, etherpad.createSession2 )
 	app.get('/json/etherpad', etherpad.getJSON )
 	app.get('/admin/etherpad', users.ensureAuthenticated, etherpad.listPadInput )
-
+	*/
 
 
 
