@@ -125,7 +125,7 @@ exports.getUserData = function(req, res, next) {
 					if(err){
 						console.log(err);
 					}else if(item.length === 0){
-						console.log('ERROR: empty user @ getUserData');
+						//console.log('ERROR: empty user @ getUserData');
 						res.redirect('/login')
 					}else{	
 						
@@ -249,14 +249,35 @@ function findByUsername(username, fn) {
 }
 
 
+/*
+ * Handles redirects after authentication. Usually the user get redirected to the pager that he has requested befor the login.
+ **/
+exports.authenticate = function(req, res, next){
+  passport.authenticate('local', function(err, user, info){
+    var redirectUrl = '/home';
 
-exports.authenticate = passport.authenticate(
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/'); }
+    if (req.session.redirectUrl) {
+      redirectUrl = req.session.redirectUrl;
+      req.session.redirectUrl = null;
+    }
+    req.logIn(user, function(err){
+      if (err) { return next(err); }
+    });
+    res.redirect(redirectUrl);
+  })(req, res, next);
+  
+};
+
+/*passport.authenticate(
 		'local', 
 		{ 
-			successRedirect: '/home', 
+			//successRedirect: '/home', 
+			successRedirect : 'back',
 			failureRedirect: '/login', 
 			failureFlash: true 
-		});
+		});*/
 
 
 
@@ -272,7 +293,8 @@ exports.ensureAuthenticated = function(req, res, next) {
   	setOnlineStatus( req.user._id, { online: true, location:'video' }); 
   	return next(); 
   }else{
-  	console.log('Error: User tried to access contents that requires an authentication')
+  	//console.log('Error: User tried to access contents that requires an authentication')
+  	req.session.redirectUrl = req.url;
   	res.redirect('/login');
   }
 }

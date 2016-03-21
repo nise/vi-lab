@@ -2,3 +2,29 @@
 
 
 <h2>Analytics Dashboard</h2>
+<div class="row">
+	<div id="scripts" class="col-lg-6 col-md-6 col-sm-6"></div>
+	<div id="users" class="col-lg-6 col-md-6 col-sm-6"></div>
+</div>	
+
+<script>
+
+$.get('/json/admin/scripts/current-instances', function(data){
+	require(['text!../views/admin/dashboard-scripts.ejs', 'ejs'], function(thetemplate) {
+		var 
+			html = ejs.render(thetemplate, {items: data[0] })
+		;
+		$('#scripts').html( html );
+	});			
+});
+
+$.get('/json/users', function(data){
+	require(['text!../views/admin/dashboard-users.ejs', 'ejs'], function(thetemplate) {
+		var 
+			html = ejs.render(thetemplate, {items : data})
+		;
+		$('#users').html( html );
+	});			
+});
+
+</script>

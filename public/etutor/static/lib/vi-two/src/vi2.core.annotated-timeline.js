@@ -44,7 +44,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		},
 		video : null,
 		seek : 0,
-		seeksliding: true,
+		seeksliding: false,
 		video_seek: null,  
 		
 		video_loading_progress: null,
@@ -121,9 +121,9 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		createTimelineControl : function() { 
 			var _this = this;
 			//
-			if (this.video.readyState) {  
+			/*if (this.video.readyState) {  
 				clearInterval(this.interval);
-				clearInterval(this.interval);
+				clearInterval(this.interval);*/
 				//var video_duration = _this.video.duration; //$(this.options.selector).attr('duration');
 				this.video_seek.slider({
 					value: 0,
@@ -149,10 +149,10 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 					
 				});
 				
-			} else {
+			/*} else {
 				// try reinitiate the slider as long the ...? 
 				this.interval = setInterval(function() { _this.createTimelineControl(); }, 150);
-			}
+			}*/
 		
 		},
 		

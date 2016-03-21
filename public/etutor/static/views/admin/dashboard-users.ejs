@@ -1,0 +1,10 @@
+
+<h3>Users</h3>
+<% if( items !== undefined ){ %>
+	
+	<% onliner = 0 %>
+	<% items.forEach(function( item ){ %>
+		<% if( item.status.online ){ onliner++ }%>
+	<% }) %>
+	Users online: <%= onliner %>/<%= items.length %>
+<% } %>		

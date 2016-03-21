@@ -4,17 +4,24 @@
 # VI-TWO
 ## urgent
 
-- video lauffähig machen.
-- nachträgliche bearbeitung von phasen ermöglichen.
-- cron: startScriptSession
-- script status page (which script runs at what phase ... when is the next on comeing)
-- @templates: create new template
+- display comments / links animated 
+- test IE
+- test safari
+- css bugs in opera
+
+
 - @templates: add uses files and used widgets to table
 - @templates edit :: missing fields like descripts tags...
-- @instance: add used template to table
-- @video instance => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
-- @video instance: list group who is operation on the instance
-- @video instance: backup/download
+- @instance: 
+ - add used template to table
+ - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
+
+- @video instance 
+ - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
+ - list group who is operation on the instance
+ - backup/download
+ 
+
 - @video files: handle different format/mimes/file extentions, incl. file conversion
 - @video files: automatic thumbnail creation
 - @groups: list group member in table
@@ -22,21 +29,29 @@
 - @formation: preview, delete, edit?
 
 
-- script instance
- - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
- 
+## bugs
+- bson bug on certain instnces where new versions of mongodb can not be installed
+- logged out members are not gettng disabled in the peers client
+- fix some tooltip bugs (user-data, group-data)
+- Logs are not accessible, not even for an - activity log
+
+
+
 
 - group activity Thread
 	- annotations
 	- messages
 	- viewing history
 	- chat / gruppen nachrichten
+	
+- handle errors: 
+ - https://www.joyent.com/developers/node/design/errors
+ - http://stackoverflow.com/questions/14172455/get-name-and-line-of-calling-function-in-node-js
+ - console.error('There was an error reading the file!', err);
+- perfomance: console.time(label)   / console.timeEnd(label) 	
 
-
-- player bug
 
 - Features
- - comments
  - toc
  - hyperlinks
  
@@ -50,15 +65,8 @@
  
 - thinkLets integrieren
 
-- display comments / links animated 
-- test IE
-- test safari
-- css bugs in opera
-- guided tour
-
-
 - suche
-- session mgmg?
+
 
 
 - extract more technical informations about teh vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
@@ -70,23 +78,19 @@
 - maps
 - vi2.syncImgaes => conrete version of simultaneous Media
 
-## bugs
-- bson bug on certain instnces where new versions of mongodb can not be installed
-- logged out members are not gettng disabled in the peers client
-- fix some tooltip bugs (user-data, group-data)
-- Logs are not accessible, not even for an - activity log
 
 
 
 ## next release / nth
 
 - @script
- - script schedule
  - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
  - see bug @ aufgabe muss je video, statt je Phase angezeigt werden
-
+ - guided tour on how to define a script
 
 - fallback: load annotations from dom if DB is not available
+
+# Performance
 - fully use require.js to load files
 - gzip compression
 - usability: tooltip für Funktionen
@@ -127,12 +131,10 @@ if (screencheck.matches) {
  - distinguish applications
   - settings per appliction (e.g. terezin, etutor)
   - shared files, e.g. admin-templates, libs, css
- - placeholder definieren
  - @backend: let users register and communicate the princple of minimal data collection 
 
 - Awareness
  - chat oder komunikation zw. Gruppenmitgliedern
- - explizite Frage an Dozenten
  - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
  - bearbeitungsstand anzeigen
   - anzahl items je toc/tags/comments/...
@@ -144,6 +146,7 @@ if (screencheck.matches) {
  https://github.com/square/crossfilter
  http://dc-js.github.io/dc.js/
  found at: https://anmolkoul.wordpress.com/2015/06/05/interactive-data-visualization-using-d3-js-dc-js-nodejs-and-mongodb/
+
 - workflow für video upload
  1. select locale file
  2. convert different codecs & sizes
@@ -152,8 +155,7 @@ if (screencheck.matches) {
  5. extract text from stills
  5. select poster from stills
 
-- @ admin
- - number of currently online users (to prepare a restart)
+
 - @groups
  - group site ... description, tasks, log, progress, forum
  - popcorn-editor

@@ -91,7 +91,7 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 								}
 								//res.type('application/json');
 								res.render('videos', {items: {videos: videos, script: script[0] } });  
-								res.end('done');
+								
 							});
 						}else{
 							//res.type('application/json');

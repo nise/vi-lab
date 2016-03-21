@@ -27,6 +27,7 @@
 }
 
 .vi2-timeline-main .ui-slider-handle {
+		display:none;
 		position:absolute;
 		margin:0;
 		padding:0;

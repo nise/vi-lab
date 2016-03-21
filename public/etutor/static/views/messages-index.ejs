@@ -1,0 +1,23 @@
+
+<h4>My messages</h4>
+<% if( items !== undefined ){ %>
+<div class="box">	
+	<% items.forEach(function( mes ){ %>
+		<% if(myself === mes.author._id ){ %>
+		 <% classs='msg-out' %>
+		 <% }else{ %>
+		 <% classs='msg-in ' %>
+		 <% } %>
+
+		<div class="message <%= classs %> msg-<%= mes.type %> msg-<%= mes.phase %> msg-<%= mes.visibility %> ">
+			<div class="msg-head">
+			<b><%= mes.author.username %></b> <span class="glyphicon glyphicon-arrow-right"></span> 
+			<% mes.recipient.forEach(function( rec ){ %>
+				<%= rec.username %>, 
+			<%})%>	
+			</div>
+			<%= mes.message %>
+		</div>
+	<% }) %>
+</div>
+<% } %>		

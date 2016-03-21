@@ -183,7 +183,7 @@ var ViLab = $.inherit({
   setupVideo : function(has_parallel_media){  
   	var _this = this; 
 		var phaseHasSlides = _this.db.hasSlides( _this.currentVideo );//res[0].phases[_this.current_phase].slides;  
-//		alert(_this.db.hasSlides( _this.currentVideo ))
+
 		var options = {
 			id : _this.currentVideo,
 			embed:false,
@@ -191,7 +191,7 @@ var ViLab = $.inherit({
 			videoWidth:  phaseHasSlides === 1  ? 28 : 900,  // video größe hängt nicht von den angeschalteten widgets, sondern von den anotierten ressourcen ab
 			videoHeight: phaseHasSlides === 1  ? 15 : 450, 
 			markupType:'html',  
-			thumbnail: _this.db.getMetadataById(_this.currentVideo).thumbnail
+			thumbnail: _this.db.getMetadataById(_this.currentVideo).thumbnail[2]
 		};
 		// single solution for slide only presentations !!! xxx
 		$('#overlay').css('width', $( '.slide' ).width() );
@@ -214,13 +214,15 @@ var ViLab = $.inherit({
 		}
 		_this.observer = new Vi2.Observer( options ); 
 	 	_this.observer.init(seek);	 
+
+
 		
-		metadataa = new Vi2.Metadata( { metatags: true, render: false } );  
+		//metadataa = new Vi2.Metadata( { metatags: true, render: false } );  
+			
 		//_this.addEdit_btn(); 
 		_this.observer.addWidget(_this.viLog); 	 
 		//$('#screen').empty();
 		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
-		
 		
 		
 		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
@@ -238,12 +240,12 @@ var ViLab = $.inherit({
 		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
 		if( pp !== undefined ){
 			$('<div></div>')
-				.html( pp.instruction )
+				.html( decodeURIComponent(pp.instruction) )
 				.addClass('instructions')
 				.prependTo('#accordion');
 			$('<h3 class="ui-accordion-header ui-corner-all ui-helper-reset ui-state-default ui-accordion-icons"></h3>')
 					.css({'padding':'6px 10px', 'background-color':'#003366'})
-					.append('<a class="accordion-title" href="#">Aufgabe: ' + pp.title + '</a>')
+					.append('<a class="accordion-title" href="#">Aufgabe: ' + decodeURIComponent(pp.title) + '</a>')
 					.prependTo('#accordion');
 		}
 		// misc configurations	
@@ -251,7 +253,6 @@ var ViLab = $.inherit({
 			collapsible: false,
 			heightStyle: "fill" 
 		});
-		
 		
 		// setup modal dialog
 		var modal_settings = {
@@ -387,7 +388,7 @@ var ViLab = $.inherit({
 				title = 'Kapitel'; // Szenen 
 				break
 			case "hyperlinks" :		
-				widget = new Vi2.Hyperlinks( widget_options.widget_options );
+				//widget = new Vi2.Hyperlinks( widget_options.widget_options );
 				title = 'Links';
 				break;	
 			case "comments" : 

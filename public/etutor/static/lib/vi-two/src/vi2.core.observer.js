@@ -71,6 +71,7 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 		var metadata = new Vi2.Metadata(); 
 		// re-parse DOM
 		this.parse(vi2.dom, 'html'); 
+		
 	},
 
 
@@ -93,7 +94,8 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 		**/
 	init : function(seek){  
 		seek = seek === undefined ? 0 : seek;
-		var _this = this;  
+		var _this = this; 
+		// @todo remove this duplicated video 
 		var videoo = $('<video></video>')
 				.attr('controls', false)
 				.attr('autobuffer', true)
@@ -103,7 +105,8 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 				.text('Your Browser does not support either this video format or videos at all');
 		$(this.options.selector)
 			.addClass('embed-responsive embed-responsive-16by9')
-			.html(videoo); 
+		//	.html(videoo)
+			; 
 		this.player = new Video({
 				embed: this.options.embed, 
 				selector: this.options.videoSelector, 

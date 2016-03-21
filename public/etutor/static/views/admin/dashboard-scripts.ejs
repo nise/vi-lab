@@ -1,0 +1,21 @@
+
+
+<% if( items !== undefined ){ %>
+	<h3>Scripts</h3>
+	Currently running: <%= items.title %><br>
+	<% phase_i = 1 
+	 	items.phases.forEach(function( phase ){ %>
+	 	<% if( moment().diff(moment(phase.start), 'seconds') <= 0 ){ %>
+			<b>Phase <%= phase_i %></b> started <%= moment(phase.start).fromNow() %> (<%= moment(phase.start).format('YYYY/MM/DD hh:mm')  %>)<br>
+		<% }else if( moment().diff(moment(phase.end), 'seconds') > 0 ){ %>
+			<b>Phase <%= phase_i %></b> ended <%= moment(phase.end).fromNow() %> (<%= moment(phase.start).format('YYYY/MM/DD hh:mm')  %>)<br>	
+		<% }else{ %>
+			<div class="alert-btn">
+				<b>Phase <%= phase_i %></b> starts <%= moment(phase.start).fromNow() %> (<%= moment(phase.start).format('YYYY/MM/DD hh:mm')  %>)<br>	
+			</div>
+		<% } %>	
+		<% phase_i++ %>
+	<% }) %>
+<% }else{ %>
+	<h4>Currently no script is running</h4>
+<% } %>		

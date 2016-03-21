@@ -15,13 +15,15 @@ module.exports = function(db, app) {
 	images = require('./images'),	
 	users = require('./users'),
 	groups = require('./groups'),
+	communication = require('./communication'),
 	// terzin specific
 	scenes = require('./scenes'),
 	persons = require('./persons')
 	// mongoose models
 	Videos  = mongoose.model( 'Videos' ),
 	Users  = mongoose.model( 'Users' ),
-	Groups  = mongoose.model( 'Groups' )
+	Groups  = mongoose.model( 'Groups' ),
+	Messages  = mongoose.model( 'Messages' )
 	;
 	
 
@@ -45,9 +47,9 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	/************************************************************/
 	/* ADMIN  */
 
-	app.get(	'/admin', 	users.authCallback(['editor']),		admin.renderIndex )
+	app.get('/admin', 	users.authCallback(['editor']),		admin.renderIndex )
 	app.get('/admin/dashboard', users.ensureAuthenticated, admin.renderDashboard );
-	app.get(	'/home',  users.ensureAuthenticated, function ( req, res ){
+	app.get('/home',  users.ensureAuthenticated, function ( req, res ){
 		res.render( 'intro' );
 	});
 
@@ -64,6 +66,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	
 	app.get( 	'/json/videos' , 	users.ensureAuthenticated,		videos.getJSON );
 	app.get( 	'/content' , 	users.ensureAuthenticated,		videos.renderScriptVideo );
+	app.get( 	'/messages' , 	users.ensureAuthenticated,		communication.render );
 	app.get( 	'/json/admin/video-instances', users.authCallback(['editor']), videos.getAllJSON );
 	app.get( 	'/json/videos/:id' , 	videos.getOneJSON );
 	app.get( 	'/json/film' , 				videos.getJSON );
@@ -157,7 +160,8 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
 	app.get('/json/admin/scripts/instances', users.ensureAuthenticated, scripts.getInstances );
 	app.get('/json/admin/scripts/instances/:id', users.ensureAuthenticated, scripts.getInstanceByID );
-	app.get('/json/script', users.ensureAuthenticated, scripts.getInstances); // == alternative route
+	app.get('/json/admin/scripts/current-instances', users.ensureAuthenticated, scripts.getRunningInstance );
+	app.get('/json/script', users.ensureAuthenticated, scripts.getRunningInstance); // == alternative route
 	// ??
 	//app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
 
@@ -241,6 +245,14 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 
 
 
+/************************************************************/
+	/* Communication */
+	
+	
+	app.get('/json/com/messages', users.ensureAuthenticated, communication.getPersonalMessages );
+	app.get('/json/com/users', users.ensureAuthenticated, communication.getPossibleRecipients );
+	app.post('/com/message/create', users.ensureAuthenticated, communication.createMessage );
+
 
 	
 	/************************************************************/
@@ -253,7 +265,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	 	
-	app.post('/log', users.ensureAuthenticated, function(req, res) {
+	app.post('/log', users.ensureAuthenticated, function(req, res) { console.log(req.sessionID)
 		var 
 			d = req.param('data')
 			;
@@ -263,6 +275,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 			//date:  						String, 
 			//time:  						String, 
 			//group:  					d.group, 
+			session:					String(req.sessionID),
 			user:  						d.user, 
 			user_name:  			req.user.username,
 			//user_gender:			String,
@@ -416,8 +429,6 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	/************************************************************/
 	/* MISC */
 
-	//	app.get('/messages', users.ensureAuthenticated, wine.getMessages);
-	//	app.post('/messages', users.ensureAuthenticated, wine.addMessage);
 
 	// routes for images
 	app.get( '/json/images' , images.getJSON );

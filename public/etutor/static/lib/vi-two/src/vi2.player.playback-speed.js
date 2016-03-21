@@ -54,14 +54,14 @@ Vi2.PlaybackSpeed = $.inherit(/** @lends Vi2.PlaybackSpeed# */{
 			.bind('mouseleave', function(e){
 				$('.vi2-speed-controls > ul').css('display','none');
 			})
-			.tooltip({
+			/*.tooltip({
 				delay: 0, 
 				showURL: false, 
 				bodyHandler: function() { 
 					return $('<span></span>')
 						.text('Wiedergabegeschwindigkeit');
 				} 
-			})
+			})*/
 			.appendTo( this.options.selector );
 			
 		var options = $('<ul></ul>')

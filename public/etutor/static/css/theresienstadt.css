@@ -685,6 +685,7 @@ font-weight:bold;
 	height: calc( 100vh - 2px);
 	-webkit-transition-property: height, width;
   -webkit-transition-duration: 1s;*/
+  padding:0;
 }
 
 .split {	
@@ -704,9 +705,12 @@ font-weight:bold;
 #videowrapper{
 	height: auto ;
 	/*width: 75% !important;*/
+	top:50px;
 	background:#555;
 	display:block;
 	overflow:hidden;
+	border:0;
+	padding:0;
 }
 
 #seq {
@@ -722,7 +726,7 @@ font-weight:bold;
 #overlay {
 	background-color: none 0;
 	display: block;
-	opacity: 1;
+	opacity: .6;
 	width: 100%;
 	z-index: 200;
 	height: 100vh;
@@ -749,9 +753,10 @@ font-weight:bold;
 
 #accordion-resizer {
 	position:absolute;
-	padding:0;
-	margin:50px 0 50px 0;
-	height: 80vh;
+	padding:0 0 107px 0;
+	margin: 50px 0 0px 0;
+	height: 95vh;
+	background-color:#555;
 /*	width: 25% !important;*/
 	top:0px;
 	right:0 !important; /* -273px 
@@ -766,12 +771,12 @@ font-weight:bold;
 	padding-left:10px;
 	padding-bottom:5px;
 	margin:0;
+	border-bottom: 1px #ddd dotted;
 	border-radius:0px;
-	
 }
 
 #accordion-resizer h3.ui-state-default{
-	border-bottom: 1px #555 dotted;
+	border-bottom: 1px #ddd dotted;
 	font-weight:bold;
 	font-size:15px;
 }
@@ -912,6 +917,36 @@ p, div, textarea, input {
   margin: 20px 0;
 }
 
+/*****************************************/
+/* MESSAGES */
+
+textarea.message-content, .message-recipient, button.message-send{
+	width:100%;
+	font-size:14px;
+	margin-top:4px
+}
+
+.message{
+	width:95%;
+	border-radius: 3px;
+	padding:6px;
+	margin-bottom:10px;
+}
+
+.msg-head{
+	font-size:10px;
+	color:#777;
+}
+
+.msg-out{
+	float: right;
+	background-color:lightblue;
+}
+
+.msg-in{
+	float: left;
+	background-color:#eee;
+}
 
 
 /* FOOTER */

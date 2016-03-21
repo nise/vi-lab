@@ -210,19 +210,19 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 		/* ... */
 		begin : function(e, id, obj){ 
 
-			if(this.currImgId == obj.content.target){
-				return false;
-			}else{
-				// reset highlight
-				$(this.options.menuSelector+' li').each(function(i, val){ 
-					$(this).removeClass('highcomment'); 
-				});
-				// highlight comment entry
-				$(this.options.menuSelector+' li#t' + obj.displayPosition.t1 ).addClass('highcomments');
-			}
+			// reset highlight
+			$(this.options.menuSelector+' li').each(function(i, val){ 
+				$(this).removeClass('vi2-highlight'); 
+			});
+			// highlight comment entry
+			$(this.options.menuSelector+' li.t' + obj.displayPosition.t1 ).addClass('vi2-highlight');
+
 		},
 		
-		
+		end:function(e, id){
+			$(this.options.menuSelector+' li ').removeClass('vi2-highlight');
+		},
+			
 		/*
 		*
 		**/

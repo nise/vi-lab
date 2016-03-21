@@ -120,6 +120,8 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			//groups.csvImport();
 			//groups.csvImportFromJSON();
 			//var lec = require('./utils/lecturnity');
+			
+//			scripts.startScriptSession({})
 		}
 		
 		/* Access Control List */

@@ -163,15 +163,15 @@ exports.instantiateTemplateByID = function(req, res) {
 			script.phases[i].seq = i;
   		script.phases[i].groupindex = undefined;
   		script.phases[i].groupformation = undefined;
+  		script.phases[i].widgets = template.phases[i].widgets;
 	  }
 
-	  console.log(script);
 	  new Instances( script ).save(function(err, instance){
 	  	if(err){ 
 	  		console.log(err)
 	  	}else{
 				console.log('-----------------')
-				console.log(instance)
+				console.log(instance.phases[0].widgets[0])
 			  res.redirect( '/admin/scripts/instances' );
 			  res.end('done');
 	    }
@@ -226,6 +226,22 @@ exports.getInstanceByID = function(req, res) {
 		});
 };
 
+/*
+ * Get JSON of the running script instance
+ * status: finished
+ **/
+exports.getRunningInstance = function(req, res) {
+	Instances.collection.find().toArray(function(err, items) {
+    	res.type('application/json');
+    	for(var i = 0; i < items.length;i++){
+    		if(items[i].status === 'running'){
+    			res.jsonp( [ items[i] ]);
+    		}
+    	}
+    	//res.jsonp(items[0]);
+		});
+};
+
 
 /*
  * Renders an instance of a script for editing
@@ -246,14 +262,15 @@ exports.renderInstanceByID = function(req, res) {
 
 
 /*
- *
+ * Activates a give script instance by setting its status.
  **/
 exports.activateInstanceByID = function(req, res){
-	Instances.update({ '_id':req.params.id}, { status: 'running' }, function ( err, instance ){
+	Instances.update({ '_id':req.params.id}, { status: 'running', current_phase: 0 }, function ( err, instance ){
 		if(err){
 			console.log(err)
 		}else{
-			console.log('set Instance active'); //console.log(instance);
+			console.log('set Instance active'); 
+			startScriptSession();
 			res.redirect('/admin/scripts/instances');
 			res.end();
 		}
@@ -265,7 +282,51 @@ exports.activateInstanceByID = function(req, res){
 * 
 * see also https://github.com/ncb000gt/node-cron
 **/
-exports.startScriptSession = function(){
+var 
+		//CronJob = require('cron').CronJob, // not used
+		schedule = require('node-schedule'),
+		moment = require('moment')
+		;
+
+exports.startScriptSession = startScriptSession;
+
+function startScriptSession(){
+
+	//var date = new Date(2016, 2, 20, 12, 28, 0);
+	
+	Instances.find({ status:'running' }, function(err, instance){ 
+		instance = instance[0];
+		for(var phase = 0; phase < instance.phases.length; phase++){
+			console.log('Set schedule for '+phase);
+			if( instance.phases[phase] !== undefined){
+				var j = schedule.scheduleJob( instance.phases[phase].start , function(){
+					console.log('Phase '+phase+' started.');
+					// update current phase
+					Instances.findOneAndUpdate( {'_id': instance._id }, { $set: {current_phase: phase }}, function ( err, ins ){
+						if(err){ console.log(err); }else{
+							console.log('Updated current_phase for phase '+phase);
+						}
+					});
+				});	
+			}else{
+				console.log('ERRRRRO')
+				//console.log( instance.phases )
+			}	
+		}
+	});
+	
+	/*var job = new CronJob( 
+				new Date( ins.phases[i].start ), 
+				function() { 
+					console.log('start cron of phase '+i);
+					//job.stop();
+				}, 
+				function () {
+					console.log('fin cron');
+				},
+				true//, // Start the job right now /
+			//  timeZone // Time zone of this job. /
+			);
 	
 	// start cron jobs for each job
 	var now = new Date();
@@ -278,7 +339,7 @@ exports.startScriptSession = function(){
 	for(var i=0; i < inte.length; i++){ 
 		t.setSeconds(t.getSeconds() + inte[i]);
 	
-		var CronJob = require('cron').CronJob;
+		
 		var job = new CronJob( t, 
 			function() { 
 				tt++;
@@ -292,7 +353,7 @@ exports.startScriptSession = function(){
 		//  timeZone // Time zone of this job. /
 		);
 	}
-
+*/
 }
 
 
@@ -300,8 +361,7 @@ exports.startScriptSession = function(){
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
  * status
  **/
-exports.updateInstanceByID = function(req, res){  console.log(req.body)
-	Groups.remove({}, function ( err, ggg ){});
+exports.updateInstanceByID = function(req, res){ console.log(req.body)
 	// save instance
 	delete req.body.instance["_id"];
 	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
@@ -314,6 +374,7 @@ exports.updateInstanceByID = function(req, res){  console.log(req.body)
 				res.end(); 
 			}else{
 				// overwrite groups and generate new video instances
+				Groups.remove({}, function ( err, ggg ){});
 				// get group formation
 				var allFormations = [];
 				for(var i = 0; i < instance.phases.length; i++){
@@ -394,8 +455,9 @@ exports.updateInstanceByID = function(req, res){  console.log(req.body)
 										console.log('updated group for user')
 										//configs[key] = user; // collect results
 									}
+									res.end();
 								});	
-							}, function (err) {
+							}, function (err, e) {
 									if (err){ console.log('@user_update2'); console.error(err.message); }
 									//console.log(configs); // so something with the results
 									console.log('Updated instance and created new groups and video instances')

@@ -112,7 +112,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		seek:0, 
 		videoControlsSelector: '.video-controls', 
 		thumbnail:'/static/img/placeholder.jpg', 
-		defaultVolume : 0 // 0..1
+		defaultVolume : 1 // 0..1
 	},
 	video: null,
 	timeline : null,
@@ -167,7 +167,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 				.attr('autobuffer', true)
 				.attr('preload', "metadata")
 				.attr('id', 'video1')
-				.addClass('embed-responsive-item')
+				.addClass('embed-responsive-item col-md-12')
 				.text('Your Browser does not support either this video format or videos at all');
 		$('#seq')
 			.addClass('embed-responsive embed-responsive-16by9')
@@ -186,8 +186,8 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	  	preload: 'metadata', // 'metadata' | true ??
 	  	autoplay: this.videoIsPlaying,
 	  	controls: false,
-	  	poster: '/static/img/placeholder.jpg',
-	 		// 	width: this.options.width,
+	  	poster: '/static/img/stills/'+this.options.thumbnail,
+	 		 //	width: this.options.width,
 	  	//	height: this.options.height,
 	  	onerror: function(e) { _this.errorHandling(e); }
 		});
@@ -363,14 +363,14 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		
 		// show/hide video controls
 		$(_this.options.videoControlsSelector).addClass("open-controls");
-		$("#overlay, #seq, #video-controls").hover(
+		/*$("#overlay, #seq, #video1 #video-controls #accordion-resizer").hover(
 			function() {  
 		  	$(_this.options.videoControlsSelector).addClass("open-controls");
 			}, 
 			function() { 
 		  	$(_this.options.videoControlsSelector).removeClass("open-controls");
 			}
-		);
+		);*/
 		// ??
 		//$('#overlay').css('height', $('video').height() );
 		//$('#overlay').css('width', $('#video1').width() );
@@ -427,13 +427,13 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		});
 		
 		$(vi2.observer.player).bind('player.play', function(e, a, b) { 
-  			$('.navbar').hide();
+  			//$('.navbar').hide();
   	});
   	
   	$(vi2.observer.player).bind('player.pause', function(e, a, b) { 
-  			$('.navbar').show();
-  			
+  			//$('.navbar').show();	
   	});
+  	
 	},
 
 
@@ -451,7 +451,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 				range: 'min',
 				max: 1,
 				step: 0.05,
-				animate: true,
+				animate: false,
 				value : _this.options.defaultVolume,
 				slide: function(e,ui) { 
 					if(ui.value > 0 && ui.value < 0.5 ){ 
@@ -499,7 +499,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		});
 		
 		this.volume_btn
-			.bind('click', function(e) {
+			.bind('click', function(e) { 
 				_this.muteVolume();
 			})
 			;
@@ -574,12 +574,12 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	/* Creates controle element to hide/show the video frame 
 	*	xxx todo: this should be accomplished with a audio description and other accessibility assistance
 	*/
-	createVideoHiding: function(){
+	createVideoHiding: function(){		return;
 		
 		// hide moving picture in order limit visual cognition channel to one
 		// xxx: #screen should be replaced by an option
 		var o = new Image(); 
-		$(o).attr('src', this.options.thumbnail).addClass('toggle-pair').prependTo('#screen').hide();//.attr('src', 'img/thumbnails/iwrm_'++'.jpg')
+		$(o).attr('src', '/static/img/stills/'+this.options.thumbnail).addClass('toggle-pair').prependTo('#screen').hide();
 		$(this.video).addClass('toggle-pair');
 		var hidden = true;
 		var btn = $('<span></span>')
@@ -611,7 +611,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	* Stops the loading indicator 
 	**/
 	stopSpinning : function(){
-		this.spinner.stop();
+		this.spinner.stop(); 
 	},
 
 

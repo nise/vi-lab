@@ -156,7 +156,8 @@ var WidgetOptions = new Schema({
 	allowReplies : Boolean, // tipical for comments
 	allowEditing : Boolean,
 	allowCreation : Boolean, 
-	path: String
+	path: String,
+	_id: false
 });
 mongoose.model( 'WidgetOptions', WidgetOptions );
 
@@ -177,10 +178,11 @@ var ScriptTemplate = new Schema({
 			seq : Number,
 			groupindex: Number,
 			video_files: [Schema.ObjectId],  
-			widgets:  
+			widgets:   
 				[{ 
 					label : String,
 					name: String, 
+					_id: false,
 					canBeAnnotated: Boolean, 
 					widget_options: {
 						hasTimelineMarker: Boolean,
@@ -197,8 +199,9 @@ var ScriptTemplate = new Schema({
 						step : Number,
 						speed_step : Number,
 						minDuration : Number, 
-						path: String
-					}// end options 
+						path: String,
+						_id: false
+					}// end options /**/
 				}]// end widget		
     }
 	] // end pahse
@@ -263,7 +266,8 @@ var Log = new Schema({
 		utc: 							Number, 
 		phase: 						Number,
 		date:  						String, 
-		time:  						String, 
+		time:  						String,
+		session:  				String,
 		
 		group:  					String, 
 		user:  						Number, 
@@ -332,12 +336,17 @@ mongoose.model( 'Written', Written );
 
 /* CHAT Messages */	
 var messageSchema = mongoose.Schema({
-    nickname: String,
+    author: { type: Schema.Types.ObjectId, ref: 'Users' },
+    recipient: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
+    phase: Number,
+    visibility: { type: String, enum: [ 'personal', 'editor', 'group', 'all' ], default: 'group' },
+    subject: String,
+    type: { type: String, default: 'message',  enum: [ 'chat', 'tutor-question', 'feedback', 'message' ] }, 
     message: String,
-    date: String
+    updated_at: { type: Date, default: Date.now }
 })
 
-var Message = mongoose.model('messages', messageSchema);
+var Message = mongoose.model('Messages', messageSchema);
 exports.message = Message;	
 
 

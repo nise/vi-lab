@@ -148,7 +148,7 @@
 				.attr('target', obj.content.target)
 				.attr('description', decodeURIComponent( obj.content.description ))
 				.text( decodeURIComponent(obj.content.label) )
-				.appendTo( vi2.dom );
+				.appendTo( vi2.dom ); 
 		},
 		
 		
@@ -311,7 +311,7 @@
 		/** 
 				*
 				*/
-		clear : function(){
+		clear : function(){ 
 			$( this.options.displaySelector ).html('');
 			// xxx static, stands in relative with template of videoplayer
 			$('.vi2-video-seeklink').html('');

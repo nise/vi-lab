@@ -17,6 +17,9 @@
 			<div>Materialien:</div>
 			<div class="mark str"><%= phase.supplements %></div>
 		</div>
+		
+			
+		
 	</div>
 	<div class="row">
 		<% items.videos.forEach(function(item){ %>
@@ -45,8 +48,6 @@
 
 $('.str').each(function(i, val){
 	$(this).text( decodeURIComponent($(this).text()) );
-});;
-
-
+});
 
 </script>

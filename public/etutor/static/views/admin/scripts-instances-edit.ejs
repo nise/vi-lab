@@ -168,8 +168,8 @@ $(document).ready(function() {
 		event.preventDefault();	
 		// collect data from form
 		var 
-			res = JSON.parse('<%-JSON.stringify( items )%>')
-			overwrite = ( $('#overwrite').prop( "checked" ) === 'true' );
+			res = JSON.parse('<%-JSON.stringify( items )%>'),
+			overwrite = $('#overwrite').prop( "checked" )
 			;
 		res.title = $('#instanceTitle').text();
 		res.status = res.status === 'running' ? 'running' : 'ready';
