@@ -4,7 +4,6 @@
 # VI-TWO
 ## urgent
 
-- git: move to vi-lab
 - test upload
 - bug@video-instances annotationen werden nicht angezeigt
 - bug@dashboard keine scripts angezeigt
