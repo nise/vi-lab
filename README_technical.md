@@ -32,7 +32,7 @@ mongodb: mongodb://localhost/module-base
 **dump**
 mongodump --db <application name>
 **restore**
-mongorestore --db <application name> ./dump/module-base
+mongorestore --db <application name> ./dump/<application name>
 **convert database for inspection**
 bsondump collection.bson > collection.json
 

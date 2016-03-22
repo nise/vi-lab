@@ -4,11 +4,23 @@
 # VI-TWO
 ## urgent
 
-- bug @ maleous population
+- git: move to vi-lab
+- test upload
+- bug@video-instances annotationen werden nicht angezeigt
+- bug@dashboard keine scripts angezeigt
+- bug@user mgmt
+- additive scripts @video.ejs
 - display comments / links animated 
 - test IE
 - test safari
 - css bugs in opera
+
+- group activity Thread
+	- annotations
+	- messages
+	- viewing history
+	- chat / gruppen nachrichten
+	
 
 - @templates: add uses files and used widgets to table
 - @templates edit :: missing fields like descripts tags...
@@ -37,13 +49,6 @@
 
 
 
-
-- group activity Thread
-	- annotations
-	- messages
-	- viewing history
-	- chat / gruppen nachrichten
-	
 - handle errors: 
  - https://www.joyent.com/developers/node/design/errors
  - http://stackoverflow.com/questions/14172455/get-name-and-line-of-calling-function-in-node-js
@@ -52,9 +57,6 @@
 
 
 - Features
- - toc
- - hyperlinks
- 
  
  - user notes
  - playlist
