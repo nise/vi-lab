@@ -3,35 +3,34 @@
 <div class="jumbotron"></div> 
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 phase">
-			<h4>New message</h4>
+		<div class="col-md-3 phase">
+			<h4>Messages</h4>
 			<form
 				id="messageCreateForm" 
 				action="/com/message/create"
 				method="POST"
 				accept-charset="utf-8" 
 			> 
-			<select placeholder="Recipient" class="message-recipient" id="selectRecipients" multiple="multiple"></select>
-			<!--<br>
-			<b>Subject:</b>
-			<div class="sec tab-pane">
-			 <input type="text" class="message-subject" name="subject" />
-			</div>
-			-->
-			<br>
-			<div class="">
-			 <textarea class="message-content" placeholder="Your message" name="message" id=""></textarea>
-			</div>
-			<div class="buttons">
-				<button type="submit" class="message-send btn-primary btn-xs btn">send</button>  
-			</div>
+				<select placeholder="Recipient" class="message-recipient" id="selectRecipients" multiple="multiple"></select>
+				<!--<br>
+				<b>Subject:</b>
+				<div class="sec tab-pane">
+				 <input type="text" class="message-subject" name="subject" />
+				</div>
+				-->
+				<br>
+				<div class="">
+				 <textarea class="message-content" placeholder="Your message" name="message" id=""></textarea>
+				</div>
+				<div class="buttons">
+					<button type="submit" class="message-send btn-primary btn-xs btn">send</button>  
+				</div>
 			</form>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 phase" id="mymessages">	
-		<div>
-			<div class="col-md-6 phase" id="messages"></div>
+		<div class="col-md-3 phase" id="mymessages"></div>
+		<div class="col-md-3 phase" id="messages"></div>
 	</div>
 </div>		
 

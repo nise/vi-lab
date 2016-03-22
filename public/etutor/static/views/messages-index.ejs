@@ -1,5 +1,4 @@
-
-<h4>My messages</h4>
+<br>
 <% if( items !== undefined ){ %>
 <div class="box">	
 	<% items.forEach(function( mes ){ %>
@@ -8,13 +7,13 @@
 		 <% }else{ %>
 		 <% classs='msg-in ' %>
 		 <% } %>
-
 		<div class="message <%= classs %> msg-<%= mes.type %> msg-<%= mes.phase %> msg-<%= mes.visibility %> ">
 			<div class="msg-head">
-			<b><%= mes.author.username %></b> <span class="glyphicon glyphicon-arrow-right"></span> 
-			<% mes.recipient.forEach(function( rec ){ %>
-				<%= rec.username %>, 
-			<%})%>	
+				<b><%= mes.author.username %></b> <span class="glyphicon glyphicon-arrow-right"></span> 
+				<% mes.recipient.forEach(function( rec ){ %>
+					<%= rec.username %>, 
+				<%})%>	
+				<span class="right"><%= moment(mes.updated_at).fromNow() %></span>
 			</div>
 			<%= mes.message %>
 		</div>

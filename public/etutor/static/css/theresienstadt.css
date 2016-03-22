@@ -948,6 +948,10 @@ textarea.message-content, .message-recipient, button.message-send{
 	background-color:#eee;
 }
 
+.right {
+float:right;
+}
+
 
 /* FOOTER */
 footer {

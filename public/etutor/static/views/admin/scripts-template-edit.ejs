@@ -9,6 +9,17 @@
 	method="POST"
 	accept-charset="utf-8" 
 >
+<!-- Metadata -->
+<div class="row">
+	<div class="col-md-6">
+		<textarea class="script-form supplements form-control" id="templateDescription"><%= items.description %></textarea>
+		<br/>
+		<div class="input-group input-group-xs">
+			<span class="input-group-addon" id="tags">Tags</span>
+			<input type="text" id="templateTags" class="form-control" placeholder="tag1,tag2,..." aria-describedby="Tags describing the script template" name="name" value="<%= items.tags %>">
+		</div>
+	</div>	
+</div>		
 <!-- Phases -->
 <div class="phases">
 <% if ( items.phases) { 
@@ -50,7 +61,7 @@ todo
 		var data = {
 			title: escapeSpecialChars($('#templateTitle').text()),
 			description: $('#templateDescription').val(),
-			tags : $('#templateTags').text().split(','),
+			tags : $('#templateTags').val().split(','),
 			phases: [] 
 		};
 		
@@ -164,7 +175,7 @@ $(document).ready(function() {
 	
 	// add a new phase
 	$('#add-phase').click(function(){
-		require(['text!../views/admin/scripts-phases.ejs', 'ejs'], function(thetemplate) {
+		require(['text!../views/admin/scripts-template-phases.ejs', 'ejs'], function(thetemplate) {
 			var
 				pos = $('.phases > div').length; 
 				html = ejs.render(thetemplate, {phase: {title:'new phase', instruction:'', supplement:''}, phase_i: pos });

@@ -48,7 +48,7 @@ exports.getPersonalMessages = function(req, res) {
 		.find( query )
 		.populate('author')
 		.populate('recipient')
-		.sort('updated_at')
+		.sort('-updated_at')
 		.exec(function (err, msg) {
 			if(err){ 
 				console.log(err); 

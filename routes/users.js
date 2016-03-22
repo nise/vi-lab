@@ -419,7 +419,7 @@ exports.renderIndex = function(req, res) {
 //
 exports.create = function ( req, res ){
   new Users( req.body ).save( function( err, todo, count ){
-    res.redirect( '/users' );
+    res.redirect( '/admin/users' );
   });
 };
 
@@ -427,7 +427,7 @@ exports.create = function ( req, res ){
 /*
  * Renders date about a single user
  **/
-exports.show = function ( req, res ){ 
+exports.renderByUsername = function ( req, res ){ 
   Users.findOne({username: String(req.params.username)}, function ( err, persons ){
   	if(err){console.log(err)
   	}else{ 
@@ -449,12 +449,12 @@ exports.renderCreate = function ( req, res ){
 };
 
 
-// remove todo item by its id
+/*
+ * Remove the user with the given ID from database
+ **/
 exports.destroy = function ( req, res ){
-  Users.findById( req.params.id, function ( err, todo ){
-    todo.remove( function ( err, todo ){
-      res.redirect( '/users' );
-    });
+  Users.findByIdAndRemove( { '_id': req.params.id }, function ( err, user ){
+  	res.redirect( '/admin/users' );
   });
 };
 
@@ -462,12 +462,8 @@ exports.destroy = function ( req, res ){
 /*
  * xxx
  **/
-exports.edit = function ( req, res ){
+exports.renderEdit = function ( req, res ){
   Users.findOne({ '_id': req.params.id}, function ( err, item ){
-  	/*	res.type('application/json');
-			res.jsonp({item: item});
-			res.end('done')
-		*/	
     res.render( 'admin/users-edit', {
         title   : 'Express Users Example',
         item   : item,
@@ -482,7 +478,7 @@ exports.edit = function ( req, res ){
  * xxx
  **/
 exports.update = function ( req, res ){
-  Users.findById( {'_id': req.params.id }, function ( err, todo ){
+  Users.findOneAndUpdate( {'_id': req.params.id }, { upsert:true }, function ( err, todo ){
     todo.username    = req.body.username;
     todo.name = req.body.name; 
     todo.firstname = req.body.firstname; 

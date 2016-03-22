@@ -196,12 +196,29 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 
 	// users	
 	app.get('/admin/users', users.authCallback(['editor']),	users.renderIndex );
-	app.get('/admin/users/create', users.authCallback(['editor']),	users.renderCreate ); // opens input form
-
+	app.get('/admin/users/create', users.authCallback(['editor']), users.renderCreate );
+	app.post('/admin/users/create', users.authCallback(['editor']), users.create ); // opens input form
+	app.get('/admin/users/edit/:id', users.authCallback(['editor']), users.renderEdit );
+	app.post(	'/admin/users/update/:id', users.authCallback(['editor']), users.update );//users.updateUsers);	
 	app.post('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
-	//app.get('/admin/users/edit/:id', users.authCallback(['editor']),	users.renderEdit );
-	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
+	
+	
+	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.renderByUsername );// showAccountDetails);
+	app.get(	'/users/register', users.authCallback(['editor']), users.registrationForm ); // opens input form
+	app.post(	'/users/register', users.authCallback(['editor']), users.registerUser ); // saves user
+	app.post(	'/users/create', users.authCallback(['editor']), users.create ); // saves user
 
+//	app.post(	'/users/online/:username', 	users.setOnlineStatus );
+	app.get(	'/users/online/:username', 	users.getOnlineStatus );
+	
+	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
+	app.get('/json/user-data', users.getUserData );
+	app.get('/json/group-data', users.getGroupData );
+
+	// login
+	app.get('/logout', users.ensureAuthenticated, users.handleLogout );
+	app.get('/login',  users.openLoginPage ); //curl -v -d "username=bob&password=secret" http://localhost:3000/login
+	app.post('/login', users.authenticate );
 	
 	/**
 		* @todo need to distinguish the groups per phase
@@ -228,24 +245,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		}
 	});
 
-	// routes related to User Management and Passport - Local Authentication
-	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.show );// showAccountDetails);
-
-	app.get(	'/users/register', 	users.authCallback(['editor']),			users.registrationForm ); // opens input form
-	app.post(	'/users/register', 	users.authCallback(['editor']),			users.registerUser ); // saves user
-	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
-
-//	app.post(	'/users/online/:username', 	users.setOnlineStatus );
-	app.get(	'/users/online/:username', 	users.getOnlineStatus );
-	// api
-	app.get('/json/users', users.ensureAuthenticated, users.getJSON);
-	app.get('/json/user-data', users.getUserData );
-	app.get('/json/group-data', users.getGroupData );
-
-	// login
-	app.get('/logout', users.ensureAuthenticated, users.handleLogout );
-	app.get('/login',  users.openLoginPage ); //curl -v -d "username=bob&password=secret" http://localhost:3000/login
-	app.post('/login', users.authenticate );
+	
 
 
 

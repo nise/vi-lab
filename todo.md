@@ -4,15 +4,14 @@
 # VI-TWO
 ## urgent
 
-- test upload
-- bug@video-instances annotationen werden nicht angezeigt
-- bug@dashboard keine scripts angezeigt
 - bug@user mgmt
-- additive scripts @video.ejs
-- display comments / links animated 
 - test IE
 - test safari
 - css bugs in opera
+
+- additive scripts @video.ejs
+
+
 
 - group activity Thread
 	- annotations
@@ -20,23 +19,18 @@
 	- viewing history
 	- chat / gruppen nachrichten
 	
-
+- display comments / links animated 
+- test ffmpeg on server
 - @templates: add uses files and used widgets to table
-- @templates edit :: missing fields like descripts tags...
 - @instance: 
  - add used template to table
  - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
-
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operation on the instance
- - backup/download
- 
-
-- @video files: handle different format/mimes/file extentions, incl. file conversion
+ - @video files: handle different format/mimes/file extentions, incl. file conversion
 - @video files: automatic thumbnail creation
 - @groups: list group member in table
-- @user: missing edit form
 - @formation: preview, delete, edit?
 
 

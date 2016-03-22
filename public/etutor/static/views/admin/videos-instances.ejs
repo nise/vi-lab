@@ -2,7 +2,7 @@
 
 
 <h2>Video instances</h2>
-<a href="/json/admin/video-instances"><span class="glyphicon glyphicon-export"></span> export instances</a>
+<a href="/json/admin/video-instances" target="_blank"><span class="glyphicon glyphicon-export"></span> export instances as JSON</a>
 <div id="table1"></div>
 </div>
 <script type="text/javascript"> 
@@ -21,7 +21,7 @@ $(document).ready (function () {
 		  { field: 'title', title: 'Titel', formatter: titleFormatter, sortable : true, order: 'asc', searchable: true },
 		  { field: 'file', title: 'File', formatter: fileFormatter, sortable : true, order: 'asc', searchable: true }, 
 		  { field: 'annotations', title: 'Annotationen',  formatter: annotationFormatter, sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'updated_at', title: 'last update', sortable : true, order: 'asc', searchable: true },
+		  { field: 'updated_at', title: 'last update', formatter: dateFormatter, sortable : true, order: 'asc', searchable: true },
 		  { field: 'operators', title: '', formatter: operationsFormatter, visible:true, sortable : true, searchable : true }
     ]
 	});
@@ -33,21 +33,25 @@ function titleFormatter(value, row, index) {
 }
 
 function fileFormatter(value, row, index) {
-	return row.video.split('/').slice(-1)[0]; 
+	return '<a href="' + row.video.split('/').slice(-1)[0] +'">link</a>'; 
 }
 
-function annotationFormatter(value, row, index) {
+function annotationFormatter(value, row, index) { 
  var a = '';
- a += row.toc.length > 1 ? 'chapter marks ('+row.toc.length+') <br/>' : '';
- a += row.hyperlinks.length > 1 ? 'hyperlinks ('+row.hyperlinks.length+') <br/>' : '';
- a += row.tags.length > 1 ? 'tags ('+row.tags.length+') <br/>' : '';
- a += row.highlight.length > 1 ? 'hightlight ('+row.highlight.length+') <br/>' : '';
- a += row.slides.length > 1 ? 'slides ('+row.slides.length+') <br/>' : '';
- a += row.comments.length > 1 ? 'hyperlinks ('+row.comments.length+') <br/>' : '';
- a += row.assessment.length > 1 ? 'hyperlinks ('+row.assessment.length+') <br/>' : '';
+ a += row.toc.length > 0 ? 'chapter marks ('+row.toc.length+') <br/>' : '';
+ a += row.hyperlinks.length > 0 ? 'hyperlinks ('+row.hyperlinks.length+') <br/>' : '';
+ a += row.tags.length > 0 ? 'tags ('+row.tags.length+') <br/>' : '';
+ a += row.highlight.length > 0 ? 'hightlight ('+row.highlight.length+') <br/>' : '';
+ a += row.slides.length > 0 ? 'slides ('+row.slides.length+') <br/>' : '';
+ a += row.comments.length > 0 ? 'comments ('+row.comments.length+') <br/>' : '';
+ a += row.assessment.length > 0 ? 'assessment ('+row.assessment.length+') <br/>' : '';
 //assessmentfillin, assessmentwriting
 	return a;
 }
+
+function dateFormatter(value, row, index) { 
+	return moment(value).fromNow();
+}	
 
 function operationsFormatter(value, row, index) {
 	return [

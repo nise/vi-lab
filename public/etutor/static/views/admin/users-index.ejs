@@ -33,15 +33,16 @@ $(document).ready (function () {
 		  { field: 'username', title: 'Username', formatter: userFormatter, sortable : true, order: 'asc', searchable: true }, 
 		  { field: 'name', title: 'Name',  formatter: nameFormatter, sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'role', title: 'Role', visible:true, sortable : true, searchable : true }, 
-		  { field: 'groups', title: 'Videos', visible:true, sortable : true, /*formatter: videoFormatter,*/ order: 'asc',searchable : true }, 
-		//  { field: 'users', title: 'Users', visible:true, sortable : true, formatter: userFormatter, order: 'asc',searchable : true }, 
+		  { field: 'groups', title: 'Groups', visible:true, sortable : false, /*formatter: videoFormatter,*/ order: 'asc',searchable : true }, 
+		  { field: 'status', title: 'Status', visible:true, sortable : false, formatter: statusFormatter, order: 'asc',searchable : true }, 
+			{ field: 'operator', title: '', visible:true, sortable : false, formatter: operateFormatter, order: 'asc',searchable : false }, 
     ]
 	});
 });
 
 function userFormatter(value, row, index) {
 	return [
-		'<a class="table-link" href="/admin/users/edit/'+row._id+'" title="Edit user">',
+		'<a class="table-link" href="/users/view/'+row.username+'" title="View user profile page">',
 		'<img width="15" src="/static/img/user-icons/user-'+row.id+'.png" /> ',
 		row.username,
 		'</a>'
@@ -50,6 +51,25 @@ function userFormatter(value, row, index) {
 
 function nameFormatter(value, row, index) {
 	return row.firstname+' '+row.name;
+}
+
+function statusFormatter(value, row, index) {
+	if(row.status.online){
+		return '<span class="glyphicon glyphicon-heart" title="online"></span>';	
+	}else{
+		return '<span class="glyphicon glyphicon-heart-empty" title="offline"></span>';
+	}
+}
+
+function operateFormatter(value, row, index) {
+	return [
+		'<a class="table-link" href="/admin/users/edit/'+row._id+'" title="Edit user">',
+		'<i class="glyphicon glyphicon-pencil"></i> edit',
+		'</a><br/>',
+		'<a class="table-link" href="/admin/users/destroy/'+row._id+'" title="Remove user">',
+		'<i class="glyphicon glyphicon-remove"></i> remove',
+		'</a>'
+	].join('');
 }
 
 </script>

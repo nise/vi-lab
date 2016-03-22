@@ -10,18 +10,18 @@
 <script>
 
 $.get('/json/admin/scripts/current-instances', function(data){
-	require(['text!../views/admin/dashboard-scripts.ejs', 'ejs'], function(thetemplate) {
+	require(['text!../views/admin/dashboard-scripts.ejs', 'ejs'], function(thetemplate) { 
 		var 
-			html = ejs.render(thetemplate, {items: data[0] })
+			html = ejs.render(thetemplate, {items: data })
 		;
 		$('#scripts').html( html );
 	});			
 });
 
 $.get('/json/users', function(data){
-	require(['text!../views/admin/dashboard-users.ejs', 'ejs'], function(thetemplate) {
+	require(['text!../views/admin/dashboard-users.ejs', 'ejs'], function(thetemplate) { 
 		var 
-			html = ejs.render(thetemplate, {items : data})
+			html = ejs.render(thetemplate, {items : data })
 		;
 		$('#users').html( html );
 	});			
