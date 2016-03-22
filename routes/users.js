@@ -1,9 +1,6 @@
 
 
 var 
-	passport = require('passport'), 
-	flash = require('connect-flash'),
-	LocalStrategy = require('passport-local').Strategy,
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Users  = mongoose.model( 'Users'),
@@ -87,55 +84,41 @@ var generateIdenticon = function(name, id){
 
 
 
-exports.passport = passport;
-//
-exports.showAccountDetails = function(req, res){
-  res.render('user-account', { user: req.user });
-};
-
-exports.openLoginPage = function(req, res){
-  res.render('user-login', 
-  	{ 
-  		user: req.user, 
-  		username: false, 
-  		password: false, 
-  		message: req.flash('error') 
-  	});
-};
-
-exports.handleLogout = function(req, res){
-	req.session.regenerate(function(){
-    setOnlineStatus( req.user._id, { online: false, location:'video' } );
-    console.log('OK: User logged out: '+req.user._id);
-    req.logout();
-    res.redirect('/login');   
-  })
-}; 
-
-
 
 /* Check wether a user is logged in or not. If logged in give out the username. If not redirect to the login page. **/
 exports.getUserData = function(req, res, next) {  
+
+	
   if (req.user !== undefined) {
+  	res.type('application/json');
+		res.jsonp({user:true, username: req.user.username, role: req.user.role, id: req.user.id /*, videoid: item[0].videos */ });
+		res.end();
+				/*			
     res.type('application/json');
     	var t = -1;
     	ScriptInstance.find().exec(function(err, script) {
-    	var phase = script[0].current_phase;
-				Groups.find({id: req.user.groups[phase]}).lean().exec(function(err, item) {
-					if(err){
-						console.log(err);
-					}else if(item.length === 0){
-						//console.log('ERROR: empty user @ getUserData');
-						res.redirect('/login')
-					}else{	
-						
-						res.type('application/json');
-		  			res.jsonp({user:true, username: req.user.username, role: req.user.role, id: req.user.id, videoid: item[0].videos});
-		  			res.end();
-					}
-				});
+    		if(err){ 
+		  		console.log(err); 
+		  	}else if( script[0] !== undefined ){
+					var phase = script[0].current_phase;
+					Groups.find({id: req.user.groups[phase]}).lean().exec(function(err, item) {
+						if(err){
+							console.log(err);
+						}else if(item.length === 0){
+							//console.log('ERROR: empty user @ getUserData');
+							res.redirect('/login')
+						}else{	
+					
+							res.type('application/json');
+							res.jsonp({user:true, username: req.user.username, role: req.user.role, id: req.user.id, videoid: item[0].videos});
+							res.end();
+						}
+					});
+				}else{
+					res.end();
+				}	
 			});	
-    
+    */
   }else {
     res.type('application/json');
     res.jsonp({user:false, msg:'you are not logged in'});
@@ -150,26 +133,81 @@ exports.getGroupData = function(req, res, next) {
   if (req.user !== undefined) {
     // get current script phase
     ScriptInstance.find().exec(function(err, script) {
-    	var phase = script[0].current_phase; 
-    	// get group of current user
-  	  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){
-  	  	var group = groups[0].groups[Number(phase)]; 
-  	  	var query = {};
-				query['groups.'+phase] = group;
-  	  	// get users of group 
-				Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
-  	  		//for(var i = 0; i < users.length; i++){ console.log(users[i]); }
-  	  		res.type('application/json');
-    			res.jsonp({user:true, username: req.user.username, id: req.user.id, group: users } );
-    			res.end();
-  	  	});
-    	});
+    	if(err){ 
+    		console.log(err); 
+    	}else if( script[0] !== undefined ){
+		  	var phase = script[0].current_phase; 
+		  	// get group of current user
+			  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, groups ){
+			  	var group = groups[0].groups[Number(phase)]; 
+			  	var query = {};
+					query['groups.'+phase] = group;
+			  	// get users of group 
+					Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
+			  		//for(var i = 0; i < users.length; i++){ console.log(users[i]); }
+			  		res.type('application/json');
+		  			res.jsonp({user:true, username: req.user.username, id: req.user.id, group: users } );
+		  			res.end();
+			  	});
+		  	});
+		  }else{
+		  	res.end();
+		  }	
     });
   }else {
     res.type('application/json');
     res.jsonp({user:false, msg:'you are not logged in'});
     res.end();
   }
+}; 
+
+//
+exports.showAccountDetails = function(req, res){
+  res.render('user-account', { user: req.user });
+};
+
+
+
+
+
+/******************************************************/
+/* PASSPORT */
+/*****************************************************/
+
+
+var 
+	passport = require('passport'), 
+	flash = require('connect-flash'),
+	LocalStrategy = require('passport-local').Strategy
+	;
+	
+exports.passport = passport;
+
+
+/*
+ * Renders the loigin page
+ **/
+exports.openLoginPage = function(req, res){ 
+  res.render('user-login', 
+  	{ 
+  		user: req.user, 
+  		username: false, 
+  		password: false, 
+  		message: req.flash('error') 
+  	});
+};
+
+
+/*
+ * Handles logout and changes the online status of the user
+ **/
+exports.handleLogout = function(req, res){
+	req.session.regenerate(function(){
+    setOnlineStatus( req.user._id, { online: false, location:'video' } );
+    console.log('User logged out: '+req.user._id);
+    req.logout();
+    res.redirect('/login');   
+  })
 }; 
 
 
@@ -182,7 +220,7 @@ passport.serializeUser(function(user, done) {
   done(null, user._id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(id, done) { 
   Users.findById(id, function (err, user) {
   	if(err){
   		console.log(err)
@@ -193,15 +231,14 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-
 // Use the LocalStrategy within Passport.
 //   Strategies in passport require a `verify` function, which accept
 //   credentials (in this case, a username and password), and invoke a callback
 //   with a user object.  In the real world, this would query a database;
 //   however, in this example we are using a baked-in set of users.
 // xxxx this function needs to be improved!
-passport.use(new LocalStrategy(
-  function(username, password, done) {
+passport.use(new LocalStrategy( 
+  function(username, password, done) {   
     // asynchronous verification, for effect...
     process.nextTick(function () {
       
@@ -236,28 +273,15 @@ passport.use(new LocalStrategy(
   }
 ));
 
-function findByUsername(username, fn) {
-  Users.find({ username: username }).setOptions({lean:true}).exec(function ( err, user ){
-//  .findOne({username: username}, function ( err, user ){
-  	if(err){
-  		return fn(err, null);
-  	}else{ 
-      return fn(null, user);
-    }
-  });
-  
-}
-
 
 /*
- * Handles redirects after authentication. Usually the user get redirected to the pager that he has requested befor the login.
+ * Handles redirects after try to login
  **/
-exports.authenticate = function(req, res, next){
-  passport.authenticate('local', function(err, user, info){
+exports.authenticate = function(req, res, next){ 
+  passport.authenticate('local', function(err, user, info){ 
     var redirectUrl = '/home';
-
     if (err) { return next(err); }
-    if (!user) { return res.redirect('/'); }
+    if (!user) { console.log(user); return res.redirect('/login'); }
     if (req.session.redirectUrl) {
       redirectUrl = req.session.redirectUrl;
       req.session.redirectUrl = null;
@@ -280,15 +304,12 @@ exports.authenticate = function(req, res, next){
 		});*/
 
 
-
-
-
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-exports.ensureAuthenticated = function(req, res, next) {
+exports.ensureAuthenticated = function(req, res, next) {  
   if (req.isAuthenticated()) {
   	setOnlineStatus( req.user._id, { online: true, location:'video' }); 
   	return next(); 
@@ -299,27 +320,50 @@ exports.ensureAuthenticated = function(req, res, next) {
   }
 }
 
-// Middleware to check for multiple roles
-exports.authCallback = function(roles) {
+
+/*
+ * Middleware to check for multiple roles for its permission to access the requested route
+ **/
+exports.authCallback = function(roles) { 
 	return function (req, res, next) {
 		if (req.isAuthenticated()) {
 			//Check if the logged in user is an admin
 			Users.findOne( { username : req.user.username },function ( err, user, count ){
 				  if(!err && roles.indexOf(user.role) >= 0){
-				    next();
+				  	setOnlineStatus( req.user._id, { online: true, location:'video' }); 
+				  	next();
 				  }else{
 				  	res.send(403); 
 				  	//res.redirect('/videos')
 				  }
 			});
+		}else{
+			req.session.redirectUrl = req.url;
+  		res.redirect('/login');
 		}
 	}	
 }
 
 
+/*
+ * Helper for passport authentification
+ **/
+function findByUsername(username, fn) {
+  Users.find({ username: username }).setOptions({lean:true}).exec(function ( err, user ){
+//  .findOne({username: username}, function ( err, user ){
+  	if(err){
+  		return fn(err, null);
+  	}else{ 
+      return fn(null, user);
+    }
+  });
+  
+}
 
 
-
+/*
+ * Helper for passport authentification
+ **/
 function findById(id, fn) {
   Users.findOne({id: id}, function ( err, user ){ 
     if(err){
@@ -331,9 +375,8 @@ function findById(id, fn) {
 }
 
 
-
-
 /*
+ **/
 exports.updateUsers = function(req, res) {
   var id = req.params.id;
   var user = req.body;
@@ -347,12 +390,15 @@ exports.updateUsers = function(req, res) {
 	  }
   });
 }  
-*/
 
 
 
 
 
+
+/********************************************************/
+/* USERS */
+/********************************************************/
 
 
 /*
@@ -372,26 +418,119 @@ exports.renderIndex = function(req, res) {
 
 //
 exports.create = function ( req, res ){
-  new Users({
-    id: req.body.id,
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email,
-		name: req.body.name,
-		firstname: req.body.firstname,
-		hs: req.body.university,
-		role: req.body.role,
-		status: 'active', // users created by an editor are by default active
-	  icon: req.body.icon,
-  	trace: true,
-  	experimental: false,
-  	groups: [],//[Schema.Types.Mixed],
-    updated_at : Date.now()
-  }).save( function( err, todo, count ){
+  new Users( req.body ).save( function( err, todo, count ){
     res.redirect( '/users' );
   });
 };
 
+
+/*
+ * Renders date about a single user
+ **/
+exports.show = function ( req, res ){ 
+  Users.findOne({username: String(req.params.username)}, function ( err, persons ){
+  	if(err){console.log(err)
+  	}else{ 
+		  res.render( 'users-single', {
+		      title   : 'Express Users Example',
+		      item   : persons,
+		      current : req.params.username
+		  });
+		} 
+  });
+};
+
+
+/*
+ * Renders form to create a new user
+ **/
+exports.renderCreate = function ( req, res ){ 
+	res.render( 'admin/users-new', {});
+};
+
+
+// remove todo item by its id
+exports.destroy = function ( req, res ){
+  Users.findById( req.params.id, function ( err, todo ){
+    todo.remove( function ( err, todo ){
+      res.redirect( '/users' );
+    });
+  });
+};
+
+
+/*
+ * xxx
+ **/
+exports.edit = function ( req, res ){
+  Users.findOne({ '_id': req.params.id}, function ( err, item ){
+  	/*	res.type('application/json');
+			res.jsonp({item: item});
+			res.end('done')
+		*/	
+    res.render( 'admin/users-edit', {
+        title   : 'Express Users Example',
+        item   : item,
+        current : req.params.username
+    });
+    
+  });
+};
+
+
+/*
+ * xxx
+ **/
+exports.update = function ( req, res ){
+  Users.findById( {'_id': req.params.id }, function ( err, todo ){
+    todo.username    = req.body.username;
+    todo.name = req.body.name; 
+    todo.firstname = req.body.firstname; 
+    todo.email = req.body.email; 
+    todo.password = req.body.password;
+    todo.role = req.body.role;
+    todo.updated_at = Date.now();
+    todo.save( function ( err, todo, count ){
+      res.redirect( '/users' );
+    });
+  });
+};
+
+
+/*
+ * Returns JSON object containing data of all users. Password and email fields will be hidden.
+ * status: finished
+ **/
+exports.getJSON = function(req, res) {
+  Users.find().sort( 'username' ).lean().exec(function (err, items) {
+	  if(err){ 
+			console.log(err); 
+		}else{
+			if(req.user.role === 'student'){
+				for (var i = 0; i < items.length; i++){
+					items[i].email = '<hidden>';
+					items[i].password = '<hidden>';
+				}
+			}	  
+			res.type('application/json');
+			res.jsonp(items); 
+			res.end();
+		}	 
+  });
+};
+
+
+
+// register new user ... done by anonymous user
+exports.registrationForm = function ( req, res ){ 
+	res.render( 'user-register', {
+	  title : 'Express Users Example',
+	  errors : false,
+	  email: false,
+	  username: false,
+	  password: false,
+	});
+};
 
 //
 exports.registerUser = function ( req, res ){
@@ -448,94 +587,28 @@ exports.registerUser = function ( req, res ){
 
 
 
-// SHOW single users data
-exports.show = function ( req, res ){ 
-  Users.findOne({username: String(req.params.username)}, function ( err, persons ){ 
-    res.render( 'users-single', {
-        title   : 'Express Users Example',
-        item   : persons,
-        current : req.params.username
-    });
-  });
-};
-
-// add new user ... done by editor/admin
-exports.addUserForm = function ( req, res ){ 
-	res.render( 'users-new', {
-	  title : 'Express Users Example',
-	});
-};
-
-// register new user ... done by anonymous user
-exports.registrationForm = function ( req, res ){ 
-	res.render( 'user-register', {
-	  title : 'Express Users Example',
-	  errors : false,
-	  email: false,
-	  username: false,
-	  password: false,
-	});
-};
-
-// remove todo item by its id
-exports.destroy = function ( req, res ){
-  Users.findById( req.params.id, function ( err, todo ){
-    todo.remove( function ( err, todo ){
-      res.redirect( '/users' );
-    });
-  });
-};
-
-
-exports.edit = function ( req, res ){
-  Users.findOne({ _id: String(req.params.id)}, function ( err, item ){
-  		res.type('application/json');
-			res.jsonp({item: item});
-			res.end('done')
-		/*	
-    res.render( 'admin-users-edit', {
-        title   : 'Express Users Example',
-        item   : item,
-        current : req.params.username
-    });
-    */
-  });
-};
-
-
-// redirect to index when finish
-exports.update = function ( req, res ){
-  Users.findById( req.params.id, function ( err, todo ){
-    todo.username    = req.body.username;
-    todo.name = req.body.name; 
-    todo.firstname = req.body.firstname; 
-    todo.email = req.body.email; 
-    todo.password = req.body.password;
-    todo.role = req.body.role;
-    todo.updated_at = Date.now();
-    todo.save( function ( err, todo, count ){
-      res.redirect( '/users' );
-    });
-  });
-};
-
-
 
 /*
-Get and set online status
-**/
+ * Get user online status
+ **/
 exports.getOnlineStatus = function ( req, res ){
 	Users.find({ username: req.params.username }).exec( function ( err, user ){
 		if(err){ 
 			console.log(err);
 			res.end('error'); 
 		}else{
+			res.type('application/json');
 			res.jsonp( user );
+			res.end();
 		}
 	});
 }
 
 
+/*
+ * Set user online status
+ * @todo take care of 'location'
+ **/
 function setOnlineStatus( user_id, stat ){ 
   Users.findById( user_id ).select('id status').exec( function ( err, user ){
 		if(err){
@@ -566,23 +639,4 @@ function setOnlineStatus( user_id, stat ){
 
 
 
-/*
-REST API CALLS
-**/
-exports.getJSON = function(req, res) {
-  Users.find().sort( 'username' ).lean().exec(function (err, items) {
-	  if(err){ 
-			console.log(err); 
-		}else{
-			res.type('application/json');
-			if(req.user.role === 'student'){
-				for (var i = 0; i < items.length; i++){
-					items[i].email = '<hidden>';
-					items[i].password = '<hidden>';
-				}
-			}	  
-			res.jsonp(items); 
-		}	 
-  });
-};
 

@@ -15,6 +15,7 @@ var
 	Templates = mongoose.model('ScriptTemplate'),
 	Instances = mongoose.model('ScriptInstance'),
 	Groups = mongoose.model('Groups'),
+	Formations = mongoose.model( 'GroupFormations' ),	
 	Users = mongoose.model('Users'),
 	fs = require('node-fs'),
 	csv = require('csv')
@@ -88,6 +89,17 @@ exports.renderNewTemplate = function(req, res) {
 			res.end();
 		});
 }
+
+/*
+ * Get JSON of all script templates
+ * status: finished
+ **/
+exports.getTemplates = function(req, res) {
+	Templates.collection.find().toArray(function(err, items) {
+    	res.type('application/json');
+		 	res.jsonp(items); 
+		});
+};
 
 	
 /*
@@ -231,14 +243,13 @@ exports.getInstanceByID = function(req, res) {
  * status: finished
  **/
 exports.getRunningInstance = function(req, res) {
-	Instances.collection.find().toArray(function(err, items) {
+	Instances
+	 .findOne( { status: 'running' } )
+	 .lean()
+	 //.populate('widgets')
+	 .exec(function(err, items) {
     	res.type('application/json');
-    	for(var i = 0; i < items.length;i++){
-    		if(items[i].status === 'running'){
-    			res.jsonp( [ items[i] ]);
-    		}
-    	}
-    	//res.jsonp(items[0]);
+    	res.jsonp(items);
 		});
 };
 
@@ -290,7 +301,7 @@ var
 
 exports.startScriptSession = startScriptSession;
 
-function startScriptSession(){
+function startScriptSession(){ return;
 
 	//var date = new Date(2016, 2, 20, 12, 28, 0);
 	
@@ -357,117 +368,135 @@ function startScriptSession(){
 }
 
 
+
+
+
 /*
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
  * status
  **/
-exports.updateInstanceByID = function(req, res){ console.log(req.body)
+exports.updateInstanceByID = function(req, res){ //console.log(req.body.instance.phases[0].widgets)
 	// save instance
 	delete req.body.instance["_id"];
-	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
+	Instances.findOne( {'_id': req.params.id }, function ( err, instance ){
 		if(err){
 			console.log(err)
-		}else{ 
-			if( req.body.overwrite === 'false' ){	
-				console.log('Updated instance without changing groups and video instances');
-				//res.redirect( '/admin/scripts/instances' );
-				res.end(); 
-			}else{
-				// overwrite groups and generate new video instances
-				Groups.remove({}, function ( err, ggg ){});
-				// get group formation
-				var allFormations = [];
-				for(var i = 0; i < instance.phases.length; i++){
-					allFormations.push( instance.phases[i].groupformation );
-				}
-		
-				// define groups considering the video files and group formations
-				// build inverted index
-		
-				var Formations = mongoose.model( 'GroupFormations' );		
-				Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
-					if(err){ console.log(err); 
+		}else{
+				//update fields
+      	for (var field in Instances.schema.paths) {
+           if ((field !== '_id') && (field !== '__v')) {
+              if (req.body.instance[field] !== undefined) {
+                 instance[field] = req.body.instance[field];
+              }  
+           }  
+        }  
+        instance.save(function(err, result){
+        	console.log('+++++++++++++++++++++++++++++++++++++++++++++')
+					instance = result;
+					if( req.body.overwrite === 'false' ){	
+						console.log('Updated instance without changing groups and video instances');
+						//res.redirect( '/admin/scripts/instances' );
+						res.end(); 
 					}else{
-						var 
-							user_index = {},
-							video_id = 1,
-							getFormation = function(p){
-								for(var d=0; d < docs.length;d++){ 
-									if(String(docs[d]._id) === String(allFormations[p])){ 
-										return docs[d].formation;
-									}
-								}
-							}
-							;	
-						Videos.remove({}, function ( err, ggg ){		
-						// iterate phases
-						for(var p=0; p < instance.phases.length; p++){
-							var f = getFormation(p);
-							//Groups.remove({}, function ( err, ggg ){
-					
-								// iterate groups 
-								var group_id = 1;
-								for(var i=0; i < f.length; i++){
-									// generate video instances
-									var 
-										files = instance.phases[p].video_files,
-										video_ids = []
-										;
-									for(var l = 0; l < files.length; l++){
-										video_ids[l] = video_id;
-										video_id++;
-									}	//console.log(video_ids)
-									videos.createMultipleFileInstance(files, video_ids);
-									// new group
-									var group = {
-										id: String.fromCharCode(96 + group_id)+''+p,
-										description: 'phase_'+p+'__group_'+i,
-										phase: p,
-										persons: f[i].length, // number of persons
-										videos : video_ids
-									};
+						// overwrite groups and generate new video instances
+						Groups.remove({}, function ( err, ggg ){});
+						// get group formation
 						
-									// save group
-									new Groups( group ).save();
-									// create index of users in a group
-									for(var j=0; j < f[i].length; j++){
-										if( f[i][j].id in user_index === false){
-											user_index[f[i][j].id] = []; // i=group; j=user
-										}
-										user_index[f[i][j].id].push( String.fromCharCode(96 + group_id)+''+p )  
-									}
-									group_id++;
-								}//end for groups
-				
-						}// end for phases
+						var allFormations = [];
+						for(var i = 0; i < instance.phases.length; i++){
+							allFormations.push( instance.phases[i].groupformation );
+						}
 		
-						// update users with the new group-indexs
-						// console.log(user_index);
-						var 
-							configs = {},
-							async = require('async')
-							;
-						async.forEachOf(user_index, function (value, key, callback) {
-								Users.update({id: key}, {groups: value} ,function (err, user) {
-									if(err){ 
-										console.log('@user_update'); console.log(err); 
-									}else{
-										console.log('updated group for user')
-										//configs[key] = user; // collect results
+						// define groups considering the video files and group formations
+						// build inverted index
+						
+						
+						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
+							if(err){ console.log(err); 
+							}else{
+								var 
+									user_index = {},
+									video_id = 1,
+									getFormation = function(p){
+										for(var d=0; d < docs.length;d++){ 
+											if(String(docs[d]._id) === String(allFormations[p])){ 
+												return docs[d].formation;
+											}
+										}
 									}
-									res.end();
-								});	
-							}, function (err, e) {
-									if (err){ console.log('@user_update2'); console.error(err.message); }
-									//console.log(configs); // so something with the results
-									console.log('Updated instance and created new groups and video instances')
-									//res.redirect( '/admin/scripts/instances' );
-									res.end()
-						});// end async	
-					});// end videos remove	
-					}	
-				}); // end formations find
-			} // end if overwrite
+									;	
+								Videos.remove({}, function ( err, ggg ){		
+								// iterate phases
+								for(var p=0; p < instance.phases.length; p++){
+									var f = getFormation(p);
+									//Groups.remove({}, function ( err, ggg ){
+					
+										// iterate groups 
+										var group_id = 1;
+										for(var i=0; i < f.length; i++){
+											// generate video instances
+											var 
+												files = instance.phases[p].video_files,
+												video_ids = []
+												;
+											for(var l = 0; l < files.length; l++){
+												video_ids[l] = video_id;
+												video_id++;
+											}	
+											videos.createMultipleFileInstance(files, video_ids);
+											// new group
+											var group = {
+												id: String.fromCharCode(96 + group_id)+''+p,
+												description: 'phase_'+p+'__group_'+i,
+												phase: p,
+												persons: f[i].length, // number of persons
+												videos : video_ids
+											};
+						
+											// save group
+											new Groups( group ).save();
+											// create index of users in a group
+											for(var j=0; j < f[i].length; j++){
+												if( f[i][j].id in user_index === false){
+													user_index[f[i][j].id] = []; // i=group; j=user
+												}
+												user_index[f[i][j].id].push( String.fromCharCode(96 + group_id)+''+p )  
+											}
+											group_id++;
+										}//end for groups
+				
+								}// end for phases
+								// update users with the new group-indexs
+								var 
+									configs = {},
+									async = require('async')
+									;
+								async.forEachOf(
+									user_index, 
+									function (value, key, callback) {
+										Users.update({id: key}, {groups: value} ,function (err, user) {
+											if(err){ 
+												console.log(err); 
+											}else{
+												//console.log('updated group for user')
+												//configs[key] = user; // collect results
+											}
+										});	
+									}, 
+									function (err, e) {
+											if (err){ console.log( 'ERRRO '); console.log(err); }
+											//console.log(configs); // so something with the results
+											console.log( 'End');
+											console.log('Updated instance and created new groups and video instances')
+											res.end();
+									}
+								);// end async	
+							});// end videos remove	
+							res.end();
+							}	
+						}); // end formations find
+					} // end if overwrite
+			}); // end save instance	
 		}// end err			
 	});	// end instance update
 }

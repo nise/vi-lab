@@ -12,37 +12,52 @@ todo:
 
 -->
 
-<script type="text/javascript"> 
-//
-var aAsc = [];
-function sortTable(e) { 
 
-	var nr = $(e.currentTarget).index(); 
-	aAsc[nr] = aAsc[nr]=='asc'?'desc':'asc';
-	$('.xtable > tbody > tr').tsort('tr["num"], td:eq('+nr+')',{order:aAsc[nr]});
-}
-
-jQuery(document).ready(function(e) { 
-	$('.xtable').find('thead th').siblings().bind('click', function(e){ 
-		sortTable(e); 
-	});
-});	
-
-//
-var show_bio = function(cl){ 
-	$('.xtable').find('tr.bio').each(function(i, val){
-		$(this).hide(); 
-	});
-	$('tr.'+cl).show();
-}
-
-//alert(markdown.toHTML('# hrllo'));
-//$('#mark').html(markdown.toHTML($('#mark').text()));
-</script>
-
+<% layout( '../admin-layout' ) -%>
 
 <div class="col-md-10">
 <h2>Users</h2>
+<a href="/admin/users/create" class="label label-primary"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+<br>
+<br>
+<div id="table1"></div>
+</div>
+<script type="text/javascript"> 
+$(document).ready (function () { 
+	$('#table1').bootstrapTable({
+    data: JSON.parse('<%-JSON.stringify( items )%>'),
+    search: true,
+    strictSearch: true,
+    trimOnSearch:true,
+    columns: [
+		  { field: 'username', title: 'Username', formatter: userFormatter, sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'name', title: 'Name',  formatter: nameFormatter, sortable : true, order: 'asc',searchable : true }, 
+		  { field: 'role', title: 'Role', visible:true, sortable : true, searchable : true }, 
+		  { field: 'groups', title: 'Videos', visible:true, sortable : true, /*formatter: videoFormatter,*/ order: 'asc',searchable : true }, 
+		//  { field: 'users', title: 'Users', visible:true, sortable : true, formatter: userFormatter, order: 'asc',searchable : true }, 
+    ]
+	});
+});
+
+function userFormatter(value, row, index) {
+	return [
+		'<a class="table-link" href="/admin/users/edit/'+row._id+'" title="Edit user">',
+		'<img width="15" src="/static/img/user-icons/user-'+row.id+'.png" /> ',
+		row.username,
+		'</a>'
+	].join('');
+}
+
+function nameFormatter(value, row, index) {
+	return row.firstname+' '+row.name;
+}
+
+</script>
+
+
+
+
+<!---
 <a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#addUserPanel" aria-expanded="false" aria-controls="collapseExample">add new user</a>
 <a class="btn btn-default btn-xs" href="#" data-toggle="collapse" data-target="#importCsvPanel" aria-expanded="false" aria-controls="collapseExample2">import csv</a>
 
@@ -115,36 +130,6 @@ var show_bio = function(cl){
     </form>
 	</div>
 
+-->
 
-
-<table class="xtable">
-<thead>
-	<th></th>
-	<th>user name</th>
-	<th>surename</th>
-	<th>given name</th>
-	<th>role</th>
-	<th>groups</th>
-</thead>
-<tbody>
-	<% onliner = 0 %>
-	<% if (items.length) { %>
-	<% i=0 %>	
-		<% items.forEach(function(item){ i++ %>
-			<tr class="meta" num="e<%= i %>">
-				<td><img width="15" src="/static/img/user-icons/user-<%= item.id %>.png" /></td> 
-				<td><a href="javascript:render('admin-users-edit','/admin/users/edit/<%=: item._id %>', true, '.admin-panel');" title=""><%= item.username %></a></td>
-				<td><%=: item.name %></td>
-				<td><%= item.firstname %></td>
-				<td><%=: item.role %></td>
-				<td><%= item.groups %></td>
-		</tr>
-		<% if( item.status.online ){ onliner++ }%>
-     <% }) %>
- 	<% } %>
-      
-  </tbody>
-</table>
-ONLINE: <%= onliner %>
-</div> 
     

@@ -48,9 +48,12 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	/* ADMIN  */
 
 	app.get('/admin', 	users.authCallback(['editor']),		admin.renderIndex )
-	app.get('/admin/dashboard', users.ensureAuthenticated, admin.renderDashboard );
+	app.get('/admin/dashboard', users.authCallback(['editor']), admin.renderDashboard );
 	app.get('/home',  users.ensureAuthenticated, function ( req, res ){
 		res.render( 'intro' );
+	});
+	app.get('/about',  users.ensureAuthenticated, function ( req, res ){
+		res.render( 'about' );
 	});
 
 	
@@ -75,7 +78,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get(	'/admin/videos/instances', videos.renderVideoInstances )
 	
 	// files
-	app.get(	'/admin/videos/files', videos.renderVideoFiles )
+	app.get(	'/admin/videos/files', users.authCallback(['editor']), videos.renderVideoFiles )
 	app.get(	'/admin/videos/files/create', users.authCallback(['user','editor']), videos.renderFileUpload );
 	app.get(	'/admin/videos/files/create-stills/:id', users.authCallback(['user','editor']), videos.generateStillImages );
 	app.get(	'/admin/videos/files/edit/:id', users.authCallback(['editor']), videos.renderFileEdit );
@@ -85,11 +88,11 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get( 	'/json/admin/video-files', users.authCallback(['editor']), videos.getAllFilesJSON );
 	
 	// ??
-	app.post(	'/admin/videos/create-file',	 				videos.createFile );
-	app.get(	'/admin/videos/destroy/:id',					videos.destroy );
-	app.post(	'/admin/videos/update/:id',						videos.update );
-	app.get(	'/admin/videos/metadata/edit/:id',		videos.editMetadata ); // ??
-	app.get(	'/admin/videos/annotations/edit/:id', videos.editAnnotations );
+	app.post(	'/admin/videos/create-file', users.authCallback(['editor']), videos.createFile );
+	app.get(	'/admin/videos/destroy/:id', users.authCallback(['editor']), videos.destroy );
+	app.post(	'/admin/videos/update/:id', users.authCallback(['editor']), videos.update );
+	app.get(	'/admin/videos/metadata/edit/:id', users.authCallback(['editor']), videos.editMetadata ); // ??
+	app.get(	'/admin/videos/annotations/edit/:id', users.authCallback(['editor']), videos.editAnnotations );
 	
 	
 	
@@ -142,33 +145,33 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	
 
 	// scripts general
-	app.get('/admin/scripts', users.ensureAuthenticated, scripts.renderIndex );
+	app.get('/admin/scripts', users.authCallback(['editor']), scripts.renderIndex );
 	// script templates
-	app.get('/admin/scripts/templates', users.ensureAuthenticated, scripts.renderTemplates );
-	app.get('/admin/scripts/templates/create', users.ensureAuthenticated, scripts.renderNewTemplate );
-	app.get('/admin/scripts/templates/edit/:id', users.ensureAuthenticated, scripts.renderTemplateByID );
-	app.get('/admin/scripts/templates/duplicate/:id', users.ensureAuthenticated, scripts.duplicateTemplateByID );
-	app.get('/admin/scripts/templates/instantiate/:id', users.ensureAuthenticated, scripts.instantiateTemplateByID );
-	app.get('/admin/scripts/templates/destroy/:id', users.ensureAuthenticated, scripts.destroyTemplateByID );
-	app.post('/admin/scripts/templates/update/:id', users.ensureAuthenticated, scripts.updateTemplateByID );
-	
+	app.get('/admin/scripts/templates', users.authCallback(['editor']), scripts.renderTemplates );
+	app.get('/admin/scripts/templates/create', users.authCallback(['editor']), scripts.renderNewTemplate );
+	app.get('/admin/scripts/templates/edit/:id', users.authCallback(['editor']), scripts.renderTemplateByID );
+	app.get('/admin/scripts/templates/duplicate/:id', users.authCallback(['editor']), scripts.duplicateTemplateByID );
+	app.get('/admin/scripts/templates/instantiate/:id', users.authCallback(['editor']), scripts.instantiateTemplateByID );
+	app.get('/admin/scripts/templates/destroy/:id', users.authCallback(['editor']), scripts.destroyTemplateByID );
+	app.post('/admin/scripts/templates/update/:id', users.authCallback(['editor']), scripts.updateTemplateByID );
+	app.get('/json/admin/scripts/templates', users.authCallback(['editor']), scripts.getTemplates );	
+
 	// script instances
-	app.get('/admin/scripts/instances', users.ensureAuthenticated, scripts.renderInstances );
-	app.get('/admin/scripts/instances/edit/:id', users.ensureAuthenticated, scripts.renderInstanceByID );
-	app.post('/admin/scripts/instances/update/:id', users.ensureAuthenticated, scripts.updateInstanceByID );
-	app.get('/admin/scripts/instances/activate/:id', users.ensureAuthenticated, scripts.activateInstanceByID );
-	app.get('/admin/scripts/instances/destroy/:id', users.ensureAuthenticated, scripts.destroyInstanceByID );
-	app.get('/json/admin/scripts/instances', users.ensureAuthenticated, scripts.getInstances );
-	app.get('/json/admin/scripts/instances/:id', users.ensureAuthenticated, scripts.getInstanceByID );
-	app.get('/json/admin/scripts/current-instances', users.ensureAuthenticated, scripts.getRunningInstance );
+	app.get('/admin/scripts/instances', users.authCallback(['editor']), scripts.renderInstances );
+	app.get('/admin/scripts/instances/edit/:id', users.authCallback(['editor']), scripts.renderInstanceByID );
+	app.post('/admin/scripts/instances/update/:id', users.authCallback(['editor']), scripts.updateInstanceByID );
+	app.get('/admin/scripts/instances/activate/:id', users.authCallback(['editor']), scripts.activateInstanceByID );
+	app.get('/admin/scripts/instances/destroy/:id', users.authCallback(['editor']), scripts.destroyInstanceByID );
+	app.get('/json/admin/scripts/instances', users.authCallback(['editor']), scripts.getInstances );
+	app.get('/json/admin/scripts/instances/:id', users.authCallback(['editor']), scripts.getInstanceByID );
+	app.get('/json/admin/scripts/current-instances', users.authCallback(['editor']), scripts.getRunningInstance );
 	app.get('/json/script', users.ensureAuthenticated, scripts.getRunningInstance); // == alternative route
 	// ??
 	//app.post('/templates/add', users.ensureAuthenticated, scripts.addTemplate ); // xxx
 
 	
-	// json
-	
-	app.get('/json/admin/script-info', users.ensureAuthenticated, scripts.getScriptInfo ); // xxx
+	// level3 script
+	app.get('/json/admin/script-info', users.authCallback(['editor']), scripts.getScriptInfo ); // xxx
 	
 	
 
@@ -177,7 +180,6 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	/* USERS / Groups */
 		
 	// groups
-	app.get('/admin/users', users.authCallback(['editor']),	users.renderIndex );
 	app.get('/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
 	app.get('/groups', groups.getGroups);
 	app.get('/json/groups', groups.getGroups);
@@ -193,10 +195,13 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/json/admin/groups/formations', users.authCallback(['editor']),	groups.getFormations );
 
 	// users	
-	app.get('/admin/users/new', users.authCallback(['editor']),	users.addUserForm ); // opens input form
+	app.get('/admin/users', users.authCallback(['editor']),	users.renderIndex );
+	app.get('/admin/users/create', users.authCallback(['editor']),	users.renderCreate ); // opens input form
+
 	app.post('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
-	app.get('/admin/users/edit/:id', users.authCallback(['editor']),	users.edit );
-	
+	//app.get('/admin/users/edit/:id', users.authCallback(['editor']),	users.renderEdit );
+	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
+
 	
 	/**
 		* @todo need to distinguish the groups per phase
@@ -229,7 +234,6 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get(	'/users/register', 	users.authCallback(['editor']),			users.registrationForm ); // opens input form
 	app.post(	'/users/register', 	users.authCallback(['editor']),			users.registerUser ); // saves user
 	app.post(	'/users/create', 	users.authCallback(['editor']),				users.create ); // saves user
-	app.post(	'/users/update/:id', users.authCallback(['editor']),		users.update );//users.updateUsers);	
 
 //	app.post(	'/users/online/:username', 	users.setOnlineStatus );
 	app.get(	'/users/online/:username', 	users.getOnlineStatus );

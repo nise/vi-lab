@@ -191,6 +191,8 @@ $(document).ready(function() {
 			phase.seq = i;
 			phase.groupindex = i;
 			phase.groupformation = $('#group_'+i+' :checked').val();
+			//phase.widgtes = phase.widgets;
+			
 			// collect videos per phase
   		var videos = $('#phase_'+i).find('.phase-video-list input:checked').map(function() {
   			return this.value;
@@ -199,9 +201,9 @@ $(document).ready(function() {
 			// store it
 			$.extend(res.phases[i], phase) 
 		});
-	
-		//alert(JSON.stringify(res))
-		
+
+		//alert(JSON.stringify(res.phases[0].widgets))
+			//return;
 		// send it
 		$.ajax({
 			type: "POST",

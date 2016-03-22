@@ -31,8 +31,8 @@ var ViLab = $.inherit({
   		$.get('/json/user-data', function(data){  
   			$.get('/json/script', function(script) { 
   				_this.script = script;   
-  				_this.currentGroupVideoNum = script[0].phases[ script[0]['current_phase'] ].groupindex;
-  				_this.current_phase = script[0]['current_phase'];   
+  				_this.currentGroupVideoNum = script.phases[ script['current_phase'] ].groupindex;
+  				_this.current_phase = script['current_phase'];   
 					_this.wp_user = data.id;
 		 			_this.dom = vi2.dom;
 		 			_this.loadedWidgets = [];  
@@ -222,10 +222,10 @@ var ViLab = $.inherit({
 		//_this.addEdit_btn(); 
 		_this.observer.addWidget(_this.viLog); 	 
 		//$('#screen').empty();
-		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script[0]['current_phase'];
+		this.current_phase = _this.userData.experimental === "üüü" ? 4 : this.script['current_phase'];
 		
 		
-		$.each( this.script[0]['phases'][this.current_phase]['widgets'], function(i, widget){ 
+		$.each( this.script['phases'][this.current_phase]['widgets'], function(i, widget){ 
 			_this.enableWidget( widget.name, widget);
 			_this.widgetOptions[widget.name] = widget; 
 		});
@@ -237,7 +237,7 @@ var ViLab = $.inherit({
 		};	
 		
 		// set instruction menu
-		var pp = this.script[0]['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
+		var pp = this.script['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
 		if( pp !== undefined ){
 			$('<div></div>')
 				.html( decodeURIComponent(pp.instruction) )

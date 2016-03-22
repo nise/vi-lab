@@ -39,7 +39,7 @@ mongoose.model( 'Videos', Videos );
 
 
 // see dublin core: http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#
-var VideoFile = new Schema({
+var VideoFiles = new Schema({
 // dubline core meta data set v1.1
 // identifier : Number, // = _id
 	title				: String,
@@ -70,19 +70,8 @@ var VideoFile = new Schema({
 // misc
 	updated_at 	: { type: Date, default: Date.now }
 });
-mongoose.model( 'VideoFiles', VideoFile );
+mongoose.model( 'VideoFiles', VideoFiles );
 
-
-
-// 
-var Images = new Schema({
-		title				: String,
-		url 				: String,
-		tags				: [Schema.Types.Mixed],
-		scene					: String,
-    updated_at 	: { type: Date, default: Date.now }
-});
-mongoose.model( 'Images', Images );
 
 
 /*
@@ -148,18 +137,30 @@ SCRIPTS
 ******************************************/
 
 //
-var WidgetOptions = new Schema({
-	hasTimelineMarker: Boolean,
-	timelineSelector : String, 
-	hasMenu : Boolean,
-	menuSelector: String,
-	allowReplies : Boolean, // tipical for comments
-	allowEditing : Boolean,
-	allowCreation : Boolean, 
-	path: String,
-	_id: false
-});
-mongoose.model( 'WidgetOptions', WidgetOptions );
+var Widgets = new Schema({ 
+	label : String,
+	name: String, 
+	canBeAnnotated: Boolean, 
+	widget_options: {
+		hasTimelineMarker: Boolean,
+		timelineSelector : String, 
+		hasMenu : Boolean,
+		menuSelector: String,
+		allowReplies : Boolean, // tipical for comments
+		allowEditing : Boolean,
+		allowCreation : Boolean,
+		allowComments : Boolean,
+		allowReplies : Boolean,
+		allowEmoticons : Boolean,
+		label: String,
+		step : Number,
+		speed_step : Number,
+		minDuration : Number, 
+		path: String
+		}// end options 
+	}
+);
+mongoose.model( 'Widgets', Widgets );
 
 
 // minlength: 5
@@ -212,7 +213,7 @@ mongoose.model( 'ScriptTemplate', ScriptTemplate );
 //
 var ScriptInstance = new Schema( {
 		title : String,
-		template : Schema.ObjectId,
+		template : Schema.Types.ObjectId,//{ type: Schema.Types.ObjectId, ref: 'ScriptTemplate' },
 		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
 		current_phase : Number,
 		results : [Schema.Types.Mixed],  // ?? Feedback, Task results, ...
@@ -225,12 +226,14 @@ var ScriptInstance = new Schema( {
 				supplements: String, 
 				seq : Number,
     		groupindex : Number,
-    		groupformation : Schema.ObjectId,
-    		video_files: [Schema.ObjectId],
-    		widgets:  
+    		groupformation : { type: Schema.Types.ObjectId },//, ref: 'GroupFormations'
+    		video_files: [{ type: Schema.Types.ObjectId }], //, ref: 'VideoFiles'
+    		//widgets: [ { type: Schema.Types.ObjectId, ref: 'Widgets' } ] 
+    		widgets:   
 				[{ 
 					label : String,
 					name: String, 
+					_id: false,
 					canBeAnnotated: Boolean, 
 					widget_options: {
 						hasTimelineMarker: Boolean,
@@ -247,16 +250,22 @@ var ScriptInstance = new Schema( {
 						step : Number,
 						speed_step : Number,
 						minDuration : Number, 
-						path: String
-					}// end options 
-				}]// end widget	
+						path: String,
+						_id: false
+					}// end options /**/
+				}]// end widget		
 			}
 		],
 		created_at 	: { type: Date },
 		updated_at 	: { type: Date, default: Date.now }
 	});
-mongoose.model( 'ScriptInstance', ScriptInstance );
+/*
+var autoref = require('mongoose-autorefs');
 
+ScriptInstance.plugin(autoref, [
+    'phases.widgets'
+]);*/
+mongoose.model( 'ScriptInstance', ScriptInstance );
 
 
 
@@ -292,6 +301,26 @@ var Log = new Schema({
 		flag: 						Boolean
 }); 
 mongoose.model( 'Log', Log );		
+
+
+
+/*************************** 
+CHAT Messages 
+****************************/	
+var messageSchema = mongoose.Schema({
+    author: { type: Schema.Types.ObjectId, ref: 'Users' },
+    recipient: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
+    phase: Number,
+    visibility: { type: String, enum: [ 'personal', 'editor', 'group', 'all' ], default: 'group' },
+    subject: String,
+    type: { type: String, default: 'message',  enum: [ 'chat', 'tutor-question', 'feedback', 'message' ] }, 
+    message: String,
+    updated_at: { type: Date, default: Date.now }
+});
+var Message = mongoose.model('Messages', messageSchema);
+exports.message = Message;	
+
+
 
 /*
 Assessment
@@ -334,22 +363,20 @@ mongoose.model( 'Written', Written );
 
 
 
-/* CHAT Messages */	
-var messageSchema = mongoose.Schema({
-    author: { type: Schema.Types.ObjectId, ref: 'Users' },
-    recipient: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
-    phase: Number,
-    visibility: { type: String, enum: [ 'personal', 'editor', 'group', 'all' ], default: 'group' },
-    subject: String,
-    type: { type: String, default: 'message',  enum: [ 'chat', 'tutor-question', 'feedback', 'message' ] }, 
-    message: String,
-    updated_at: { type: Date, default: Date.now }
-})
-
-var Message = mongoose.model('Messages', messageSchema);
-exports.message = Message;	
 
 
+
+
+
+// 
+var Images = new Schema({
+		title				: String,
+		url 				: String,
+		tags				: [Schema.Types.Mixed],
+		scene					: String,
+    updated_at 	: { type: Date, default: Date.now }
+});
+mongoose.model( 'Images', Images );
 
 /*
 Terezin Schemas

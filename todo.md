@@ -4,11 +4,11 @@
 # VI-TWO
 ## urgent
 
+- bug @ maleous population
 - display comments / links animated 
 - test IE
 - test safari
 - css bugs in opera
-
 
 - @templates: add uses files and used widgets to table
 - @templates edit :: missing fields like descripts tags...
@@ -25,7 +25,7 @@
 - @video files: handle different format/mimes/file extentions, incl. file conversion
 - @video files: automatic thumbnail creation
 - @groups: list group member in table
-- @user: change table format
+- @user: missing edit form
 - @formation: preview, delete, edit?
 
 

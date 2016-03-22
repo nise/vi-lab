@@ -156,16 +156,6 @@ var render = function(template, path, remote, selector){
 };	// end render
 
 $(window).load(function () {
-	//render('user-data', true, '.user-area'); 
-	//render('admin-videos', true, '#cont');
-	
-	//render('home', false, '#page-intro')
-	//render('story', false, '#page-history')
-	//render('scenes', true, '#page')
-	//render('persons', true, '#page')
-	
-	//render('admin-scripts', '/json/scripts', false, '.admin-panel');
-	//render('admin-script-templates','/json/script-templates', true, '.admin-panel');
 	render('admin-user-data', '/json/user-data', true, '.user-area'); 
 }); 
 
@@ -235,6 +225,10 @@ $(window).load(function () {
 								<li><a href="/admin/results/peer-assessment">Peer Assessment</a>
 							</ul>
 						</li>
+						<li class="dropdown">
+							<a href="/admin/settings" class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown" role="button"></a>
+						</li>
+						
 						
 						<!--<li><a href="javascript:render('admin-settings', '', true, '.admin-panel');">Settings</a></li>
 						<li><a href="javascript:render('admin-analytics', '', false, '.admin-panel');">Analytics</a></li>-->

@@ -568,7 +568,7 @@ exports.createMultipleFileInstance = function ( files, ids, cb ){
 	VideoFiles.find( { '_id' : { $in: files } }).exec( function ( err, files ){ 
   	if(err){ console.log(err) }else{ 
   		// iterate files
-		  for(var i = 0; i < files.length; i++){ console.log(3);
+		  for(var i = 0; i < files.length; i++){ 
 		  	// convert file to instance
 				video = getInstanceFromFile(files[i], ids[i]);
 				// save it
