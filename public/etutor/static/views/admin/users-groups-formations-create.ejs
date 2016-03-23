@@ -191,7 +191,8 @@ function getGroupFormation(method, n, excludedUsers){
 	$.ajax({
 		type: "POST",
 		url: '/json/admin/users/groups/formations/create',//'/json/group-formation',
-		data: { group_algorithm_val: n, group_algorithm: method, excluded_users: excludedUsers},
+		contentType: "application/json",
+		data: JSON.stringify({ group_algorithm_val: n, group_algorithm: method, excluded_users: excludedUsers}),
 		success: function(groups){ 
 			formation = groups;
 			the_group_formation = groups; 

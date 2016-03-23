@@ -98,7 +98,8 @@ todo
 		$.ajax({
 			type: "POST", 
 			url: frmMeta.attr('action'),
-			data: data,
+			contentType: "application/json",
+			data: JSON.stringify(data),
 			error: function(xhr) {
 				console.log(xhr)
 			},

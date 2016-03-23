@@ -181,7 +181,7 @@ $(document).ready(function() {
 	frm.submit(function(e) {
 		$.ajax({
 			type: frm.attr('method'),
-			 url: frm.attr('action'),
+			url: frm.attr('action'),
 			data: new FormData( this ),
 			xhr: function() {
 				var myXhr = $.ajaxSettings.xhr();

@@ -86,7 +86,8 @@ $(document).ready(function() {
 		$.ajax({
 			type: frmMeta.attr('method'),
 			url: frmMeta.attr('action'),
-			data: data,
+			contentType: "application/json",
+			data: JSON.stringify(data),
 			error: function(xhr) {
 				console.log(xhr)
 			},

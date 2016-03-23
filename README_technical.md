@@ -23,7 +23,10 @@
 => auto update bei crah oder update: http://stackoverflow.com/questions/11084279/node-js-setup-for-easy-deployment-and-updating
 
 
-## Update from repo
+## Install on server
+git clone https://github.com/nise/vi-lab
+
+## Update from this repository
 git fetch --all
 git reset --hard origin/master
 
@@ -35,6 +38,7 @@ mongodump --db <application name>
 mongorestore --db <application name> ./dump/<application name>
 **convert database for inspection**
 bsondump collection.bson > collection.json
+
 
 # Install etherpad
 - git clone ...

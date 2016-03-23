@@ -171,6 +171,9 @@ $(document).ready(function() {
 			res = JSON.parse('<%-JSON.stringify( items )%>'),
 			overwrite = $('#overwrite').prop( "checked" )
 			;
+			
+//		alert(JSON.stringify(res.phases[0].widgets[0].widget_options))
+//		return;	
 		res.title = $('#instanceTitle').text();
 		res.status = res.status === 'running' ? 'running' : 'ready';
 
@@ -198,17 +201,19 @@ $(document).ready(function() {
   			return this.value;
 			}).get(); 
 			phase.video_files = videos;
+			//alert(JSON.stringify(phase))
 			// store it
 			$.extend(res.phases[i], phase) 
 		});
 
-		//alert(JSON.stringify(res.phases[0].widgets))
+		//alert(JSON.stringify(res.phases[1].widgets[0].widget_options))
 			//return;
 		// send it
 		$.ajax({
 			type: "POST",
 			url: '/admin/scripts/instances/update/'+res._id,
-			data: { overwrite: overwrite, instance: res},
+			contentType: "application/json",
+			data: JSON.stringify( { overwrite: overwrite, instance: res} ),
 			success: function(res){
 				window.location.href = '/admin/scripts/instances';
 			},

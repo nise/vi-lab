@@ -259,12 +259,12 @@ exports.getRunningInstance = function(req, res) {
  * status: finished
  **/
 exports.renderInstanceByID = function(req, res) { 
-	Instances.find({_id: req.params.id}).lean().exec(function (err, instance) {
+	Instances.findOne({_id: req.params.id}).lean().exec(function (err, instance) {
 		if(err){ 
 			console.log(err); 
 		}else{
 			res.render( 'admin/scripts-instances-edit', {
-				items : instance[0]
+				items : instance
 			});
 			res.end('done');
 		}	
@@ -375,24 +375,15 @@ function startScriptSession(){ return;
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
  * status
  **/
-exports.updateInstanceByID = function(req, res){ //console.log(req.body.instance.phases[0].widgets)
+exports.updateInstanceByID = function(req, res){ 
+	console.log('+++++++++++++++++++++++++++++++++++++++++++++')
 	// save instance
 	delete req.body.instance["_id"];
-	Instances.findOne( {'_id': req.params.id }, function ( err, instance ){
+	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
 		if(err){
 			console.log(err)
-		}else{
-				//update fields
-      	for (var field in Instances.schema.paths) {
-           if ((field !== '_id') && (field !== '__v')) {
-              if (req.body.instance[field] !== undefined) {
-                 instance[field] = req.body.instance[field];
-              }  
-           }  
-        }  
-        instance.save(function(err, result){
-        	console.log('+++++++++++++++++++++++++++++++++++++++++++++')
-					instance = result;
+		}else{	    
+		    instance.phases[0] = req.body.instance.phases[0];
 					if( req.body.overwrite === 'false' ){	
 						console.log('Updated instance without changing groups and video instances');
 						//res.redirect( '/admin/scripts/instances' );
@@ -409,8 +400,6 @@ exports.updateInstanceByID = function(req, res){ //console.log(req.body.instance
 		
 						// define groups considering the video files and group formations
 						// build inverted index
-						
-						
 						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
 							if(err){ console.log(err); 
 							}else{
@@ -496,7 +485,7 @@ exports.updateInstanceByID = function(req, res){ //console.log(req.body.instance
 							}	
 						}); // end formations find
 					} // end if overwrite
-			}); // end save instance	
+			//}); // end save instance	
 		}// end err			
 	});	// end instance update
 }
