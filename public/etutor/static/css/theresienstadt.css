@@ -103,7 +103,19 @@ background-image: linear-gradient(to bottom, #3c3c3c 0px, #111 100%);
 	
 }
 
+.group-area2{
+	padding:0;
+}
 
+.group-area2 ul{
+	padding:0;
+}
+
+.group-area2 ul li{
+	padding:0;
+	margin:0;
+	font-size:14px; list-style:none;
+}
 
 .op {
 opacity:0.4;

@@ -1,15 +1,15 @@
 <% layout('layout') -%>
 
 
- <div class="jumbotron">
+<div class="jumbotron">
 	<div class="container">
-  <h2><span class="glyphicon glyphicon-user"></span> <%= item.username %></h2>
-  <p>
-    <div class="edit-form">
-    	<label>Benutzername:</label> <%= item.username %> <img width="20" src="/static/img/user-icons/user-<%= item.id %>_big.png" /><br/>
-  	 	<label>Name:</label> <%= item.firstname %> <%= item.name %><br/>
-  	</div>
-  </p>
+		<h2><span class="glyphicon glyphicon-user"></span> <%= item.username %></h2>
+		<p>
+		  <div class="edit-form">
+		  	<label>Benutzername:</label> <%= item.username %> <img width="20" src="/static/img/user-icons/user-<%= item.id %>_big.png" /><br/>
+			 	<label>Name:</label> <%= item.firstname %> <%= item.name %><br/>
+			</div>
+		</p>
   </div>
 </div>  
 
@@ -17,11 +17,11 @@
 <div class="container" style="overflow:auto;">
 	<div class="row">
 		<div class="col-sm-6 col-md-4">
-			<label>Gruppemitglieder:</label>
+			<label>Group members</label><br/>
 			<div class="group-area2"></div>
 		</div>
 		<div class="col-sm-6 col-md-4">
-			<label>Aktivitäten:</label>
+			<label>Activities:</label>
 			<div class="activity-log">(comming soon)</div>
 		</div>	
 	</div>

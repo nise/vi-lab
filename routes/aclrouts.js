@@ -200,10 +200,10 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.post('/admin/users/create', users.authCallback(['editor']), users.create ); // opens input form
 	app.get('/admin/users/edit/:id', users.authCallback(['editor']), users.renderEdit );
 	app.post(	'/admin/users/update/:id', users.authCallback(['editor']), users.update );//users.updateUsers);	
-	app.post('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
+	app.get('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
 	
 	
-	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.renderByUsername );// showAccountDetails);
+	app.get(	'/users/view/:username', users.ensureAuthenticated,	users.renderByUsername );
 	app.get(	'/users/register', users.authCallback(['editor']), users.registrationForm ); // opens input form
 	app.post(	'/users/register', users.authCallback(['editor']), users.registerUser ); // saves user
 	app.post(	'/users/create', users.authCallback(['editor']), users.create ); // saves user

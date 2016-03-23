@@ -88,7 +88,6 @@ var generateIdenticon = function(name, id){
 /* Check wether a user is logged in or not. If logged in give out the username. If not redirect to the login page. **/
 exports.getUserData = function(req, res, next) {  
 
-	
   if (req.user !== undefined) {
   	res.type('application/json');
 		res.jsonp({user:true, username: req.user.username, role: req.user.role, id: req.user.id /*, videoid: item[0].videos */ });
@@ -122,7 +121,7 @@ exports.getUserData = function(req, res, next) {
   }else {
     res.type('application/json');
     res.jsonp({user:false, msg:'you are not logged in'});
-    res.end();//redirect('/login');
+    res.end();
   }
 };  
 
@@ -429,7 +428,8 @@ exports.create = function ( req, res ){
  **/
 exports.renderByUsername = function ( req, res ){ 
   Users.findOne({username: String(req.params.username)}, function ( err, persons ){
-  	if(err){console.log(err)
+  	if(err){
+  		console.log(err)
   	}else{ 
 		  res.render( 'users-single', {
 		      title   : 'Express Users Example',
@@ -453,20 +453,24 @@ exports.renderCreate = function ( req, res ){
  * Remove the user with the given ID from database
  **/
 exports.destroy = function ( req, res ){
-  Users.findByIdAndRemove( { '_id': req.params.id }, function ( err, user ){
-  	res.redirect( '/admin/users' );
+  Users.findByIdAndRemove( req.params.id, function ( err, user ){
+  	if(err){
+  		console.log(err)
+  	}else{
+	  	res.redirect( '/admin/users' );
+	  	res.end();
+	  }	
   });
 };
 
 
 /*
- * xxx
+ * Render the form to edit user data
  **/
 exports.renderEdit = function ( req, res ){
   Users.findOne({ '_id': req.params.id}, function ( err, item ){
     res.render( 'admin/users-edit', {
-        title   : 'Express Users Example',
-        item   : item,
+        items   : item,
         current : req.params.username
     });
     
@@ -475,27 +479,18 @@ exports.renderEdit = function ( req, res ){
 
 
 /*
- * xxx
+ * Updates user data send from form
  **/
 exports.update = function ( req, res ){
-  Users.findOneAndUpdate( {'_id': req.params.id }, { upsert:true }, function ( err, todo ){
-    todo.username    = req.body.username;
-    todo.name = req.body.name; 
-    todo.firstname = req.body.firstname; 
-    todo.email = req.body.email; 
-    todo.password = req.body.password;
-    todo.role = req.body.role;
-    todo.updated_at = Date.now();
-    todo.save( function ( err, todo, count ){
-      res.redirect( '/users' );
-    });
+  Users.findOneAndUpdate( {'_id': req.params.id }, req.body, { upsert:true }, function ( err, doc ){
+ 		res.redirect( '/admin/users' );
+ 		res.end()
   });
 };
 
 
 /*
  * Returns JSON object containing data of all users. Password and email fields will be hidden.
- * status: finished
  **/
 exports.getJSON = function(req, res) {
   Users.find().sort( 'username' ).lean().exec(function (err, items) {
@@ -578,10 +573,6 @@ exports.registerUser = function ( req, res ){
     //res.redirect( '/users/edit/'+uname );
   });
 };
-
-
-
-
 
 
 /*

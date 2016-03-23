@@ -11,7 +11,7 @@
 
 - additive scripts @video.ejs
 
-
+- bug@user :: online status does not change if browser window gets closed
 
 - group activity Thread
 	- annotations

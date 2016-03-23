@@ -14,20 +14,16 @@
 	<script>
 		// enable tooltips
 		$(window).load(function () {
-		
 			$('a#logoutbtn').click(function(e){
 				socket.disconnect();
 				//socket.emit('user.disconnected', {id: '<%= items.id %>'} );
 			});
-			
 		});
+		<% if (items.role === 'editor') { %>
+			$('.navbar-nav').append('<li><a href="/admin">Admin</a></li>');
+		<% } %>
 	</script>
 	
-	<% if (items.role === 'editor') { %>
-		<script>
-			$('.navbar-nav').append('<li><a href="/admin">Admin</a></li>');
-		</script>		
-			<% } %>
 <% } %>		
 
 
