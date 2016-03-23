@@ -87,13 +87,14 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST", 
 			url: frmMeta.attr('action'),
-			data: data,
+			contentType: "application/json",
+			data: JSON.stringify(data),
 			error: function(xhr) {
 				console.log(xhr)
 			},
 			success: function(res) { 
 				// redirect 
-				window.location.href = '/content';
+				window.location.href = '/messages';
 			}
 		});
 		return false;

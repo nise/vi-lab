@@ -5,7 +5,9 @@
 ## urgent
 
 
-- additive scripts @video.ejs
+- additive script phases @video.ejs
+- bug: gruppen weg nach neustart
+- bug: player: "online phase 3" als aufgabe
 
 - bug@user :: online status does not change if browser window gets closed
 

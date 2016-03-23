@@ -259,7 +259,7 @@ exports.getRunningInstance = function(req, res) {
  * status: finished
  **/
 exports.renderInstanceByID = function(req, res) { 
-	Instances.findOne({_id: req.params.id}).lean().exec(function (err, instance) {
+	Instances.findOne({'_id': req.params.id}).lean().exec(function (err, instance) {
 		if(err){ 
 			console.log(err); 
 		}else{
