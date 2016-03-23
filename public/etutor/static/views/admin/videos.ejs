@@ -31,10 +31,14 @@ $(document).ready (function () {
     	var 
     		video = $('<video height="200"></video>'),
     		source = $('<source></source>')
-    			.attr('type', row.mimetype ) /// xxx: buggy
+    			.attr('type',  'video/mp4') /// xxx: buggyrow.mimetype
     			.attr('src', row.video )
     		;
-    	video.html( source );
+    		source2 = $('<source></source>')
+    			.attr('type',  'video/mp4') /// xxx: buggyrow.mimetype
+    			.attr('src', row.video.replace('.mp4','.webm') )
+    		;
+    	video.html( source ).append( source2 );
 			return video.html();
 		},
 		//onClickRow : function(row, el){ alert(row._id); },

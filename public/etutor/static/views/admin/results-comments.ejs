@@ -33,7 +33,7 @@ var res = {}, flat = [], comment = {};
 								comment.video_category = meta.category;
 								comment.video_author = meta.author;
 								var file = ( data[i].video ).split('/');
-								comment.video_file = file[file.length-1];
+								comment.video_file = data[i].video;//file[file.length-1];
 								flat.push( comment );
 							}	
 						}
@@ -71,9 +71,9 @@ var res = {}, flat = [], comment = {};
 					strictSearch: true,
 					trimOnSearch:true,
 					columns: [
-					 	{ field: 'video_id', title: 'Video Id', sortable : true, order: 'asc',searchable : true },
-					 	{ field: 'video_file', title: 'File', sortable : true, order: 'asc',searchable : true },
-					 	{ field: 'video_title', title: 'Video Title', sortable : true, order: 'asc',searchable : true },
+					 	{ field: 'video_id', title: 'Video instance Id', sortable : true, order: 'asc',searchable : true },
+					 //	{ field: 'video_file', title: 'File', sortable : true, order: 'asc',searchable : true },
+					 	{ field: 'video_title', title: 'File', formatter: fileFormatter, sortable : true, order: 'asc',searchable : true },
 					 	{ field: 'author', title: 'Author', sortable : true, order: 'asc',searchable : true },
 					 	{ field: 'comment', title: 'Comment', sortable : true, order: 'asc',searchable : true },
 					 	{ field: 'start', title: 'Playback Time', sortable : true, order: 'asc',searchable : true },
@@ -92,10 +92,16 @@ var res = {}, flat = [], comment = {};
 				console.log(JSON.stringify(e))
 			}
 		}); // end ajax
-//	});// end onload	
+
+function titleFormatter(value, row, index) {
+	return '<a href="/admin/videos/instances/edit/'+row.video_file+'">'+row.metadata[0].title+'</a>'; 
+}
+
+function fileFormatter(value, row, index) {
+	return '<a href="' + row.video_file +'">'+row.video_title+'</a>'; 
+}
 
 	
-	//	}		
 </script>
 
 

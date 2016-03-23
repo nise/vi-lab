@@ -4,7 +4,6 @@
 # VI-TWO
 ## urgent
 
-- bug@user mgmt
 - test IE
 - test safari
 - css bugs in opera
@@ -28,8 +27,11 @@
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operation on the instance
- - @video files: handle different format/mimes/file extentions, incl. file conversion
-- @video files: automatic thumbnail creation
+- @video files: 
+ - handle different format/mimes/file extentions, incl. file conversion
+ - automatic conversion of file to mp4 and webm
+ - automatic thumbnail creation
+ 
 - @groups: list group member in table
 - @formation: preview, delete, edit?
 
