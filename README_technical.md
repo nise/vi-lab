@@ -31,7 +31,7 @@ git fetch --all
 git reset --hard origin/master
 
 ## dump and restore mongoDB
-mongodb: mongodb://localhost/module-base
+mongodb: mongodb://localhost/etutor
 **dump**
 mongodump --db <application name>
 **restore**

@@ -217,7 +217,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 		
 		this.video.addEventListener('play', function(e){ 
 			vi2.observer.clock.startClock();
-			$('header').hide();
+			//$('header').hide();
 			_this.play_btn.find('.glyphicon-pause').show();
 			_this.play_btn.find('.glyphicon-play').hide();
 		});

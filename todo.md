@@ -3,13 +3,10 @@
 
 # VI-TWO
 ## urgent
-
-
 - additive script phases @video.ejs
 - bug: gruppen weg nach neustart
 - bug: player: "online phase 3" als aufgabe
-
-- bug@user :: online status does not change if browser window gets closed
+- bug: hide navbar
 
 - group activity Thread
 	- annotations
@@ -18,7 +15,6 @@
 	- chat / gruppen nachrichten
 	
 - display comments / links animated 
-- bug: ffmpeg on server
 - @templates: add uses files and used widgets to table
 - @instance: 
  - add used template to table
@@ -31,34 +27,45 @@
  - handle different format/mimes/file extentions, incl. file conversion
  - automatic conversion of file to mp4 and webm
  - automatic thumbnail creation to enable scrubbing
-- @groups: list group member in table
+- @groups: 
+ - list group member in table
+ - group site ... description, tasks, log, progress, forum
+- @users
+ - let users register and communicate the princple of minimal data collection 
 - settings page
  - load balancing location for videos
  - page title
  - intro page
  - application etutor/terezin
  - supported mime-types for upload
- - 
+ 
+# Awareness
+ - chat zw. Gruppenmitgliedern
+ - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
+ - bearbeitungsstand anzeigen
+  - anzahl items je toc/tags/comments/...
+  - ?gesamtstand anhand von relativer metrik
+ - daily reports about group activity send by e-mail 
+
+- @popcorn-editor
+ - save popcorn slides to database
+ - open toc, tags, links, assessment
+ - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
 
 
 
 ## bugs
-- bson bug on certain instnces where new versions of mongodb can not be installed
+- bug: ffmpeg on server
+- bug@user :: online status does not change if browser window gets closed
+- bug: bson error on certain instnces where new versions of mongodb can not be installed
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
 - Logs are not accessible, not even for an - activity log
 - css bugs in opera / msie / safari
 
 
-- handle errors: 
- - https://www.joyent.com/developers/node/design/errors
- - http://stackoverflow.com/questions/14172455/get-name-and-line-of-calling-function-in-node-js
- - console.error('There was an error reading the file!', err);
-- perfomance: console.time(label)   / console.timeEnd(label) 	
-
 
 - Features
- 
  - user notes
  - playlist
  - lesezeichen
@@ -95,16 +102,21 @@
 
 # Performance
 - fully use require.js to load files
+- perfomance: console.time(label)   / console.timeEnd(label) 	
 - gzip compression
 - usability: tooltip für Funktionen
 
+- handle errors: 
+ - https://www.joyent.com/developers/node/design/errors
+ - http://stackoverflow.com/questions/14172455/get-name-and-line-of-calling-function-in-node-js
+ - console.error('There was an error reading the file!', err);
 
+
+# text analysis
 Required for text extraction (recommended):
 tesseract >= 3
-
 Required for hunspell based text filtering (optional):
 hunspell >= 1.2.8
-
 Required for audio normalization (optional):
 sox >= 14.4
 
@@ -134,15 +146,6 @@ if (screencheck.matches) {
  - distinguish applications
   - settings per appliction (e.g. terezin, etutor)
   - shared files, e.g. admin-templates, libs, css
- - @backend: let users register and communicate the princple of minimal data collection 
-
-- Awareness
- - chat oder komunikation zw. Gruppenmitgliedern
- - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
- - bearbeitungsstand anzeigen
-  - anzahl items je toc/tags/comments/...
-  - ?gesamtstand anhand von relativer metrik
- - daily reports about group activity send by e-mail 
 
 - Analytics
  http://stackoverflow.com/questions/21483530/dc-js-with-node-js-server-side
@@ -159,12 +162,6 @@ if (screencheck.matches) {
  5. select poster from stills
 
 
-- @groups
- - group site ... description, tasks, log, progress, forum
- - popcorn-editor
-  - save popcorn slides to database
-  - open toc, tags, links, assessment
-  - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
 
  
 - @timeline: 
