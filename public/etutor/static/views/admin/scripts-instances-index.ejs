@@ -28,7 +28,7 @@ $(document).ready (function () {
 		  { field: 'title', title: 'Instance', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
 //		  { field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'phases', title: 'Phases', visible:true, sortable : true, formatter: phaseFormatter, searchable : true }, 
-			{ field: 'duration', title: 'Duration', visible:true, sortable : true, formatter: durationFormatter, searchable : true }, 
+			{ field: 'duration', title: 'Duration', visible:true, sortable : true, formatter: durationFormatter, searchable : false }, 
 		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true },
 		  { field: 'status', title: 'Status', visible:true, sortable : true, order: 'asc',searchable : true },
 		  { field: 'operate', title: '', visible:true, formatter: operateFormatter }  
@@ -43,7 +43,11 @@ function phaseFormatter(value, row, index) {
 }
 
 function durationFormatter(value, row, index) {
-	return moment(row.phases[ row.phases.length-1 ].end).subtract( moment(row.phases[0].start) ).days() +' days'; 
+	var 
+		a = moment(row.phases[ row.phases.length-1 ].end),
+		b = moment(row.phases[0].start)
+	 
+	return a.diff(b, 'days') +' days'; 
 }
 
 function titleFormatter(value, row, index) {
