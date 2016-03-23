@@ -7,6 +7,7 @@ Vi-Lab is a state of the art video labratory and learning environment. It enable
 ## Installation
 
 **Install on server**
+
 1. Obtain code: `git clone https://github.com/nise/vi-lab`
 2. Install dependencies: `sudo npm update`
 3. Run the server: `node server`
@@ -15,12 +16,13 @@ Vi-Lab is a state of the art video labratory and learning environment. It enable
  - password: secret
 
 **Update from this repository**
+
 1. `git fetch --all`
 2. `git reset --hard origin/master`
 
 ## Use Cases
 * Flipped Classroom: Structure online learning a flipped/inverted classroom 
-* MOOC: Make you
+* MOOC: Define a MOOC-like course where learner are joining groups
 * Self-regulated learning:
 * Advanced scripted collaboration: Video Jigsaw, Video Peer Assessment, Video Peer Reflection
 
