@@ -275,7 +275,7 @@ exports.getFormations = function(req, res){
 
 /*
  * Get group formation by ID
- * status: finished
+ 
  **/
 exports.renderFormationByID = function(req, res) { 
 	Formations.find({_id: req.params.id}).lean().exec(function (err, formation) {
@@ -308,16 +308,17 @@ exports.saveFormation = function(req, res) {
 
 /*
 * Removes a Formation
-* status: finished
 **/
-exports.destroyFormationByID = function(req, res) {
-	Formations.findById( req.params.id, function ( err, formation ){
-	  formation.remove( function ( err, form ){
-	    res.redirect( '/admin/users/groups/formations' );
-	    res.end('done');
-	 	});
-	});
-}
+exports.destroyFormationByID = function ( req, res ){
+  Formations.findByIdAndRemove( req.params.id, function ( err, user ){
+  	if(err){
+  		console.log(err)
+  	}else{
+	  	res.redirect( '/admin/users/groups/formations' );
+	  	res.end();
+	  }	
+  });
+};
 
 
 

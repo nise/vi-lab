@@ -4,9 +4,6 @@
 # VI-TWO
 ## urgent
 
-- test IE
-- test safari
-- css bugs in opera
 
 - additive scripts @video.ejs
 
@@ -19,21 +16,28 @@
 	- chat / gruppen nachrichten
 	
 - display comments / links animated 
-- test ffmpeg on server
+- bug: ffmpeg on server
 - @templates: add uses files and used widgets to table
 - @instance: 
  - add used template to table
  - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
+ - only one instance should be active. 
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operation on the instance
 - @video files: 
  - handle different format/mimes/file extentions, incl. file conversion
  - automatic conversion of file to mp4 and webm
- - automatic thumbnail creation
- 
+ - automatic thumbnail creation to enable scrubbing
 - @groups: list group member in table
-- @formation: preview, delete, edit?
+- settings page
+ - load balancing location for videos
+ - page title
+ - intro page
+ - application etutor/terezin
+ - supported mime-types for upload
+ - 
+
 
 
 ## bugs
@@ -41,7 +45,7 @@
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
 - Logs are not accessible, not even for an - activity log
-
+- css bugs in opera / msie / safari
 
 
 - handle errors: 

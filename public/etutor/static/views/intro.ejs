@@ -21,7 +21,7 @@
 </div>	
 <script>
 $(document).ready(function() {
-	if ( $.browser.opera || $.browser.msie ) {
+	if ( $.browser.opera || $.browser.msie || $.browser.safari) {
     $('#warning').html('<b>Sie benutzen '+ ($.browser.msie ? 'Microsoft Internet Explorer' : 'Opera') +' als Browser.</b> <br/>Da es sich bei der Anwendung um einen Prototypen handelt, ist die Funktion in dem von Ihnen verwendeten Browser derzeit nur eingeschränkt möglich. <br> Wir bitten Sie daher Mozilla Firefox oder Google Chrome zu verwenden. <br/> Vielen Dank für Ihr Verständnis.')
   }
 });

@@ -116,12 +116,11 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 		
 		if( application === 'etutor' ){	
 			//videos.csvImport(); // !!! caution
-			//users.csvImport();
+			users.csvImport();
+			scripts.startScriptSession();
 			//groups.csvImport();
 			//groups.csvImportFromJSON();
-			//var lec = require('./utils/lecturnity');
-			
-//			scripts.startScriptSession({})
+			//var lec = require('./utils/lecturnity');			
 		}
 		
 		/* Access Control List */

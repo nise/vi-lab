@@ -5,6 +5,7 @@
 <br>
 <br>
 <div id="tab"></div>
+<div id="preview"></div>
 
 <script>
 $(document).ready (function () { 
@@ -14,26 +15,50 @@ $(document).ready (function () {
     checkboxHeader : true,
    // cardView:true, // mobile view
     columns: [
-		  { field: 'title', title: 'Formation', sortable : true, order: 'asc', searchable: true }, 
+		  { field: 'title', title: 'Formation', formatter: titleFormatter, sortable : true, order: 'asc', searchable: true }, 
 		  { field: 'method', title: 'Formation algorithm', visible:true, sortable : true,  searchable : true }, 
 		  { field: 'groups', title: 'Number of groups', visible:true, sortable : true,  searchable : true }, 
 			{ field: 'persons', title: 'Number of users', visible:true, sortable : true, searchable : true },
-			{ field: 'operate', title: '', formatter: operateFormatter, visible:true, sortable : true, searchable : true }  
+			{ field: 'updated_at', title: 'last update', formatter: dateFormatter, sortable : true, order: 'asc', searchable: true },
+			{ field: 'operate', title: '', formatter: operateFormatter, visible:true, sortable : false, searchable : false }  
     ]
 	});
 });
 
+
+function titleFormatter(value, row, index) { 
+	return '<a href="javascript:previewFormation('+index+');">'+row.title+'</a>';
+}	
+
 function operateFormatter(value, row, index) {
-	return '--';
-/*	return [
-		'<a href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
-		'<i class="glyphicon glyphicon-duplicate"></i> duplicate',
-		'</a><br>',
-		'<a href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
+	return [
+		/*'<a href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
 		'<i class="glyphicon glyphicon-export"></i> instantiate',
+		'</a><br>',*/
+		'<a href="/admin/users/groups/formations/destroy/'+row._id+'" title="Remove group formation">',
+		'<i class="glyphicon glyphicon-remove"></i> remove',
 		'</a>'
-	].join(''); */
+	].join(''); 
 }
+
+function dateFormatter(value, row, index) { 
+	return moment(value).fromNow();
+}	
+
+
+
+function previewFormation(index){
+	var data = { items: JSON.parse('<%-JSON.stringify( items )%>')[index].formation };
+//$.get('/json/admin/users/groups/', function(data){
+	require(['text!../views/admin/users-groups-formations-single.ejs', 'ejs'], function(thetemplate) { 
+		var 
+			html = ejs.render(thetemplate, data)
+		;
+		$('#preview').html( '<h4>Preview formation: '+JSON.parse('<%-JSON.stringify( items )%>')[index].title+'</h4>' ).append(html);
+	});			
+//});
+}
+
 
 
 </script>

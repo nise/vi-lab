@@ -187,7 +187,7 @@ var
 
 **/
 function getGroupFormation(method, n, excludedUsers){  
-	$('.formed-groups').html('');
+	$('.formed-groups').html('<br/><br/>');
 	$.ajax({
 		type: "POST",
 		url: '/json/admin/users/groups/formations/create',//'/json/group-formation',
@@ -196,7 +196,7 @@ function getGroupFormation(method, n, excludedUsers){
 			formation = groups;
 			the_group_formation = groups; 
 			the_formation_method = method;
-			require(['text!../views/admin/users-groups-formations-overview.ejs', 'ejs'], function(thetemplate) {
+			require(['text!../views/admin/users-groups-formations-single.ejs', 'ejs'], function(thetemplate) {
 				var html = ejs.render( thetemplate, { items: groups }); 
 				$('.formed-groups').html( html );
 			}); // end require
