@@ -100,11 +100,10 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 							// get videos 
 							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
 								
-								for(var i=0; i < groups.length; i++){
+								for(var i=0; i < group.length; i++){
 									script.phases[i].the_videos = []; console.log('gr'+i)
 									for(var j = 0; j < videos.length; j++){ 
 										if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
-											
 											script.phases[i].fuck.push( videos[j] ); 
 											console.log(script.phases[i])
 										}
