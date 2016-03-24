@@ -214,6 +214,13 @@ exports.createFormation = function ( req, res ){
 				case "method5" :
 					/**/// methode 5: distribute users in groups of n people by multiple (homogene or heterogene) crtierias
 					 // Kohnert2013
+					break;
+				case "method6" : // distribute by single criteria
+					for(var i = 0; i < users.length; i++){
+						var num = users[i].attribute; 
+						if ( num in groups == false){ groups[ num ] = []; }
+						groups[ num ].push(users[i]); 
+					} 
 			}
 		
 			// save Groups

@@ -52,7 +52,8 @@ exports.csvImport = function ( req, res ){
 							trace : 1,
 							status: { online:false, location:'default' },
 							experimental: '',
-							groups : [data[i][6], data[i][7], data[i][8],data[i][9], data[i][10], data[i][11]],	
+							attribute: Number( data[i][5] ),
+							groups : [],//[data[i][6], data[i][7], data[i][8],data[i][9], data[i][10], data[i][11]],	
 							updated_at : Date.now()
 						}).save( function( err, todo, count ){
 							//res.redirect( '/users' );

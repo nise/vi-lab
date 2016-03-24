@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-md-10 phase">
 			<h2 class="str"><%= phase.title %></h2>
-			<h3>Aufagbe:</h3>
+			<h3>Aufgabe:</h3>
 			<div class="mark str"><%= phase.instruction %></div>
 			<h3>Materialien:</h3>
 			<div class="mark str"><%= phase.supplements %></div>
@@ -22,7 +22,8 @@
 	<div class="row">
 		<div class="col-md-10 phase">
 			<b>Video(s):</b><br/><br/>
-			<% items.videos.forEach(function(item){ %>
+			
+			<% phase.fuck.forEach(function(item){ %>
 			<div class="col-xs-6 col-md-3">
 				<div class="thumbnail">
 					<a class="thumbnail fadein" href="/videos/view/<%= item._id %>">

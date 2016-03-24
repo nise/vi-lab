@@ -87,6 +87,7 @@ var Users = new Schema({
   hs: String,
   gender: String,
   culture: String,
+  attribute:Number,
   role: String,
   status: {
   	online: Boolean,
@@ -224,6 +225,7 @@ var ScriptInstance = new Schema( {
 				title: String,
 				instruction: String,
 				supplements: String, 
+				fuck:[Schema.Types.Mixed],
 				seq : Number,
     		groupindex : Number,
     		groupformation : { type: Schema.Types.ObjectId },//, ref: 'GroupFormations'

@@ -290,8 +290,9 @@ exports.activateInstanceByID = function(req, res){
 
 
 /*
-* 
-* see also https://github.com/ncb000gt/node-cron
+ * 
+ * see also https://github.com/ncb000gt/node-cron
+ * @todo failure when scheduling multiple dates
 **/
 var 
 		//CronJob = require('cron').CronJob, // not used
@@ -302,6 +303,15 @@ var
 exports.startScriptSession = startScriptSession;
 
 function startScriptSession(){ 
+	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 2 }}, function ( err, ins ){
+		if(err){ 
+			console.log(err); 
+		}else{
+			
+		}
+	});
+
+	/*
 
 	//var date = new Date(2016, 2, 20, 12, 28, 0);
 	
@@ -313,29 +323,39 @@ function startScriptSession(){
 				// change to now if ..
 				var 
 					a = moment(instance.phases[phase].start),
-					b = moment()
+					b = moment(),
+					the_phase = 0
 					;
 					console.log(a.diff(b, 'seconds'))
-				if( a.diff(b, 'seconds') > 0 ){
+				if( a.diff(b, 'seconds') < 0 ){
 					console.log('+++++++++++++++CURRENT++++'+phase+'+++++++++++');
+					the_phase = phase;
 				}
+				//console.log('start: '+instance.phases[phase].start+ '__' + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
+				var m = moment(instance.phases[phase].start);
+				var date = new Date(m.format('YYYY'), m.format('MM')-1, m.format('DD'), m.format('h'), m.format('mm'), 0);
+				console.log(date)
 				// start schedule
-				var j = schedule.scheduleJob( instance.phases[phase].start , function(){
-					console.log('Phase '+phase+' started.');
+				var j = schedule.scheduleJob( date , function(){
+					console.log('Phase '+phase+' started. ');
 					// update current phase
 					Instances.findOneAndUpdate( {'_id': instance._id }, { $set: {current_phase: phase }}, function ( err, ins ){
-						if(err){ console.log(err); }else{
-							console.log('Updated current_phase for phase '+phase);
+						if(err){ 
+							console.log(err); 
+						}else{
+							
 						}
-					});
-				});	
+					});// end instance
+					
+				});	// end schedule
+				
 			}else{
 				console.log('ERRRRRO')
 				//console.log( instance.phases )
 			}	
 		}
 	});
-	
+	*/
 	/*var job = new CronJob( 
 				new Date( ins.phases[i].start ), 
 				function() { 
