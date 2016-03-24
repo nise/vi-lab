@@ -303,7 +303,7 @@ var
 exports.startScriptSession = startScriptSession;
 
 function startScriptSession(){ 
-	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 2 }}, function ( err, ins ){
+	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 1 }}, function ( err, ins ){
 		if(err){ 
 			console.log(err); 
 		}else{
