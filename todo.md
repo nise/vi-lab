@@ -4,15 +4,17 @@
 # VI-TWO
 ## urgent
 - additive script phases @video.ejs
+- Einwilligungserklärung hochladen
+- videos hochladen
 - bug: gruppen weg nach neustart
 - bug: player: "online phase 3" als aufgabe
-- bug: hide navbar
 
 - group activity Thread
 	- annotations
 	- messages
 	- viewing history
 	- chat / gruppen nachrichten
+	- link2image: https://github.com/brenden/node-webshot
 	
 - display comments / links animated 
 - @templates: add uses files and used widgets to table

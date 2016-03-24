@@ -61,7 +61,7 @@ exports.index = function ( req, res ){
   res.render( 'videos', { title : 'Express Videos Example' });
 };
 
-
+// yyy
 exports.renderScriptVideo = function(req, res) { //console.log(88+'---------------------------')
 	if( req.user.username !== undefined ){
 		// get script phase 
@@ -72,16 +72,29 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 				// get group of current user
 				console.log('phase: '+phase);
 				Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-					var group = users[0].groups[Number(phase)];  
-				console.log('group'+group)
+					//var group = users[0].groups[Number(phase)];  
+					var group = users[0].groups.slice(0, Number(phase))
+					console.log(group)
 					// get video-ids of group
-					Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+					
+					var groupQuery = {};
+					groupQuery['id'] = { $in: group }; // { id: group }
+					
+					Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
 						console.log(groups);
 						if(err){ 
 							console.log(err); 
 						}else if(groups[0] !== undefined){
-							var query = {};
-							query['id'] = { $in: groups[0].videos }; // 
+							/**/
+							// collect video ids from the effected groups
+						var the_videos = [];
+						for(var i = 0; i < groups.length; i++){
+							the_videos.concat( groups[i].videos );
+						}
+						var query = {}
+						query['id'] = { $in: the_videos }; // groups[0].videos
+						
+							console.log(the_videos)
 							console.log('#################################################');
 							// get videos 
 							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
@@ -219,21 +232,32 @@ var
 	Groups = mongoose.model('Groups')
 	;
 
-// query db for all video items
+/* 
+ * query db for all video items
+ * @todo
+ **/
 exports.list = function ( req, res ){ console.log('#################################################');
 	// get running script and the current phase 
-	ScriptInstance.find({  }).exec(function(err, script) {
+	ScriptInstance.find({ status: 'running' }).exec(function(err, script) {
 		if(err){ console.log(err); 
 		}else{
 			var phase = script[0]['current_phase']; console.log(phase)
 			// get group of current user
 			Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-				var group = users[0].groups[Number(phase)];  
+				//old var group = users[0].groups[Number(phase)]; 
+				console.log('bam :: '+users[0].groups)
+				var group = users[0].groups.slice(0, Number(phase)) 
 				console.log(group)
 				// get video-ids of group
-				Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+				var groupQuery = { $in: group };// { id: group }
+				Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
 					var query = {};
-					query['id'] = { $in: groups[0].videos }; // 
+					// collect video ids from the effected groups
+					var the_videos = [];
+					for(var i = 0; i < groups.length; i++){
+						the_videos.concat( groups[i].videos );
+					}
+					query['id'] = { $in: the_videos }; // groups[0].videos
 					console.log('#################################################');
 				
 					// get videos

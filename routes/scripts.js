@@ -301,7 +301,7 @@ var
 
 exports.startScriptSession = startScriptSession;
 
-function startScriptSession(){ return;
+function startScriptSession(){ 
 
 	//var date = new Date(2016, 2, 20, 12, 28, 0);
 	
@@ -310,6 +310,16 @@ function startScriptSession(){ return;
 		for(var phase = 0; phase < instance.phases.length; phase++){
 			console.log('Set schedule for '+phase);
 			if( instance.phases[phase] !== undefined){
+				// change to now if ..
+				var 
+					a = moment(instance.phases[phase].start),
+					b = moment()
+					;
+					console.log(a.diff(b, 'seconds'))
+				if( a.diff(b, 'seconds') > 0 ){
+					console.log('+++++++++++++++CURRENT++++'+phase+'+++++++++++');
+				}
+				// start schedule
 				var j = schedule.scheduleJob( instance.phases[phase].start , function(){
 					console.log('Phase '+phase+' started.');
 					// update current phase
