@@ -148,6 +148,7 @@ exports.renderNewFormation = function ( req, res ){
  	});		
 } 
 
+
 /*
 Group formation
 status: unfinished

@@ -315,7 +315,7 @@ var messageSchema = mongoose.Schema({
     phase: Number,
     visibility: { type: String, enum: [ 'personal', 'editor', 'group', 'all' ], default: 'group' },
     subject: String,
-    type: { type: String, default: 'message',  enum: [ 'chat', 'tutor-question', 'feedback', 'message' ] }, 
+    type: { type: String, default: 'message',  enum: [ 'chat', 'tutor-question', 'feedback', 'message', 'group-message' ] }, 
     message: String,
     updated_at: { type: Date, default: Date.now }
 });

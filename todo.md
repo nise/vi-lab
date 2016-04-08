@@ -3,61 +3,16 @@
 
 # VI-TWO
 ## urgent
-- additive script phases @video.ejs
-- Einwilligungserklärung hochladen
-- videos hochladen
-- bug: gruppen weg nach neustart
+- monitor server, app, REST => site24x7
+
+## bugs by priority
+- bug: after importing users.csv the user-group relation will be lost
 - bug: player: "online phase 3" als aufgabe
-
-- group activity Thread
-	- annotations
-	- messages
-	- viewing history
-	- chat / gruppen nachrichten
-	- link2image: https://github.com/brenden/node-webshot
-	
-- display comments / links animated 
-- @templates: add uses files and used widgets to table
-- @instance: 
- - add used template to table
- - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
- - only one instance should be active. 
-- @video instance 
- - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
- - list group who is operation on the instance
-- @video files: 
- - handle different format/mimes/file extentions, incl. file conversion
- - automatic conversion of file to mp4 and webm
- - automatic thumbnail creation to enable scrubbing
-- @groups: 
- - list group member in table
- - group site ... description, tasks, log, progress, forum
-- @users
- - let users register and communicate the princple of minimal data collection 
-- settings page
- - load balancing location for videos
- - page title
- - intro page
- - application etutor/terezin
- - supported mime-types for upload
- 
-# Awareness
- - chat zw. Gruppenmitgliedern
- - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
- - bearbeitungsstand anzeigen
-  - anzahl items je toc/tags/comments/...
-  - ?gesamtstand anhand von relativer metrik
- - daily reports about group activity send by e-mail 
-
-- @popcorn-editor
- - save popcorn slides to database
- - open toc, tags, links, assessment
- - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
-
-
-
-## bugs
-- bug: ffmpeg on server
+- scenario: add user to existing group in a running script => edit group formation
+- scenario: add phase to running script => merge instance and template
+- scenario: add widget to a phase of a running script  => merge instance and template
+- scenario: add video to a phase of a running script
+- bug@aufgabe muss je video, statt je Phase angezeigt werden
 - bug@user :: online status does not change if browser window gets closed
 - bug: bson error on certain instnces where new versions of mongodb can not be installed
 - logged out members are not gettng disabled in the peers client
@@ -66,23 +21,19 @@
 - css bugs in opera / msie / safari
 
 
+# group page activity Thread
+- activity stream
+ - annotations
+ - messages
+  - del message
+  - reply message
+  - differentiate types
+  - message to instructor 
+ - viewing history
+- chat
+- integrate messaging system
+- @messages: link2image: https://github.com/brenden/node-webshot
 
-- Features
- - user notes
- - playlist
- - lesezeichen
- - search
- - user ratings
- - media fragments
- 
-- thinkLets integrieren
-
-- suche
-
-
-
-- extract more technical informations about teh vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
-- use common metadata standard for video
 
 # For diss
 - caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
@@ -90,28 +41,105 @@
 - maps
 - vi2.syncImgaes => conrete version of simultaneous Media
 
+# widgets
+ - user notes
+ - playlist
+ - lesezeichen
+ - search
+ - user ratings
+ - media fragments
+ - thinkLets integrieren
 
 
+# roadmap for next release
+- display comments / links animated 
+- @templates: 
+ - add uses files and used widgets to table
+ - drag'n drop order of phases
+ - cascade of settings for player widgets (einstellung f. ein Video überschreib globale Einstellung)
+- @instance: 
+ - add used template to table
+ - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
+ - only one instance should be active.
+ - drag'n drop order of phases 
+- @video instance 
+ - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
+ - list group who is operation on the instance
+- @video files:
+ - workflow für video upload
+	 1. select locale file
+	 2. convert different codecs & sizes
+	 3. define metadata
+	 4. extract stills
+	 5. extract text from stills
+	 5. select poster from stills
+ - handle different format/mimes/file extentions, incl. file conversion
+ - extract more technical informations about the vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+ - store annotation that instances inherit
+ - use common metadata standard for video
+ - automatic conversion of file to mp4 and webm
+ - automatic thumbnail creation to enable scrubbing
+ - hide files from beeing downloaded
+ - RESPONSIVE DESIGN
+			var screencheck = window.matchMedia("(min-width: 800px)");
+			if (screencheck.matches) {
+			<video controls>
+			<source src="the-sky-is-calling-large.mp4" media="screen and (min-device-width:801px)">
+			<source src="the-sky-is-calling-large.webm" media="screen and (min-device-width:801px)">
+			<source src="the-sky-is-calling-small.mp4" media="screen and (max-device-width:800px)">
+			<source src="the-sky-is-calling-small.webm" media="screen and (max-device-width:800px)">
+			</video>
+ - extend for other file types => images & PDFs
+- @groups: 
+ - list group member in table
+ - group site ... description, tasks, log, progress, forum
+- @users
+ - let users register and communicate the princple of minimal data collection 
+- settings page
+ - settings per appliction (e.g. terezin, etutor)
+ - include all markdown-pages (intr, about, footer, ...)
+ - load balancing location for videos / static contents
+ - page title
+ - application etutor/terezin
+ - supported mime-types for upload
+- REST API HATEOAS
+  -	https://tools.ietf.org/html/draft-kelly-json-hal-06#page-2
+  - https://en.wikipedia.org/wiki/HATEOAS
+  - https://github.com/hapijs/hapi
+  - http://fortunejs.com/api/#serializer
+- distinguish applications
+ - shared files, e.g. admin-templates, libs, css
+- popcorn-editor
+ - save popcorn slides to database
+ - open toc, tags, links, assessment
+ - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
+- guided tour on how to define a script
+   
+# Awareness
+ - chat zw. Gruppenmitgliedern
+ - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
+ - bearbeitungsstand anzeigen
+  - anzahl items je toc/tags/comments/...
+  - ?gesamtstand anhand von relativer metrik
+ - daily reports about group activity send by e-mail 
 
-## next release / nth
 
-- @script
- - cascade von settings für player widgets (einstellung f. ein Video überschreib globale Einstellung)
- - see bug @ aufgabe muss je video, statt je Phase angezeigt werden
- - guided tour on how to define a script
-
-- fallback: load annotations from dom if DB is not available
-
-# Performance
+# Performance & quality improvements
 - fully use require.js to load files
 - perfomance: console.time(label)   / console.timeEnd(label) 	
 - gzip compression
 - usability: tooltip für Funktionen
-
 - handle errors: 
  - https://www.joyent.com/developers/node/design/errors
  - http://stackoverflow.com/questions/14172455/get-name-and-line-of-calling-function-in-node-js
  - console.error('There was an error reading the file!', err);
+- testing
+		https://github.com/visionmedia/supertest
+		https://github.com/pgte/nock
+		http://visionmedia.github.io/mocha/#synchronous-code
+		https://github.com/visionmedia/should.js/
+
+ 
 
 
 # text analysis
@@ -123,49 +151,12 @@ Required for audio normalization (optional):
 sox >= 14.4
 
 
-RESPONSIVE DESIGN
-var screencheck = window.matchMedia("(min-width: 800px)");
-if (screencheck.matches) {
-<video controls>
-<source src="the-sky-is-calling-large.mp4" media="screen and (min-device-width:801px)">
-<source src="the-sky-is-calling-large.webm" media="screen and (min-device-width:801px)">
-<source src="the-sky-is-calling-small.mp4" media="screen and (max-device-width:800px)">
-<source src="the-sky-is-calling-small.webm" media="screen and (max-device-width:800px)">
-</video>
-
-- @VI-TWO 
+#VI-TWO 
  - Datenbank auf serverseite verschieben und db-Klasse als Schnittstelle umgestalten
  - make widgets independent from parser
  - mehrsprachigkeit / spracheinheitlichkeit: l('')
+ - fallback: load annotations from dom if DB is not available
 
-- @Vi-Lab
- - REST API
-  -	https://tools.ietf.org/html/draft-kelly-json-hal-06#page-2
-  - https://en.wikipedia.org/wiki/HATEOAS
-  - https://github.com/hapijs/hapi
-  - http://fortunejs.com/api/#serializer
-
- - distinguish applications
-  - settings per appliction (e.g. terezin, etutor)
-  - shared files, e.g. admin-templates, libs, css
-
-- Analytics
- http://stackoverflow.com/questions/21483530/dc-js-with-node-js-server-side
- https://github.com/square/crossfilter
- http://dc-js.github.io/dc.js/
- found at: https://anmolkoul.wordpress.com/2015/06/05/interactive-data-visualization-using-d3-js-dc-js-nodejs-and-mongodb/
-
-- workflow für video upload
- 1. select locale file
- 2. convert different codecs & sizes
- 3. define metadata
- 4. extract stills
- 5. extract text from stills
- 5. select poster from stills
-
-
-
- 
 - @timeline: 
  - zustand für inaktive marker
  - slide preview
@@ -202,15 +193,16 @@ if (screencheck.matches) {
   - remove require call for consistency
 
 
+# Analytics
+ http://stackoverflow.com/questions/21483530/dc-js-with-node-js-server-side
+ https://github.com/square/crossfilter
+ http://dc-js.github.io/dc.js/
+ found at: https://anmolkoul.wordpress.com/2015/06/05/interactive-data-visualization-using-d3-js-dc-js-nodejs-and-mongodb/
+
+
 
 # Cool stuff
 - farbe und transparanz von player controls ändert sich in abhängigkeit der gemittelten Helligkeit und Farbe des unmittelbaren Hintergrund. Die Änderungen unterscheiden sich in der vertikalen und in der Horizontalen. (Siehe Apple Player)
-
-### TEST
-https://github.com/visionmedia/supertest
-https://github.com/pgte/nock
-http://visionmedia.github.io/mocha/#synchronous-code
-https://github.com/visionmedia/should.js/
 
 
 

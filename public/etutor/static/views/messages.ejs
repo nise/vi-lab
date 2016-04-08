@@ -4,32 +4,38 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 phase">
-			<h4>Messages</h4>
-			<form
-				id="messageCreateForm" 
-				action="/com/message/create"
-				method="POST"
-				accept-charset="utf-8" 
-			> 
-				<select placeholder="Recipient" class="message-recipient" id="selectRecipients" multiple="multiple"></select>
-				<!--<br>
-				<b>Subject:</b>
-				<div class="sec tab-pane">
-				 <input type="text" class="message-subject" name="subject" />
-				</div>
-				-->
-				<br>
-				<div class="">
-				 <textarea class="message-content" placeholder="Your message" name="message" id=""></textarea>
-				</div>
-				<div class="buttons">
-					<button type="submit" class="message-send btn-primary btn-xs btn">send</button>  
-				</div>
-			</form>
+			<h4>Messages
+			<a class="" role="button" data-toggle="collapse" href="#collapseNewMessage" aria-expanded="false" aria-controls="collapseExample">
+			<button class="btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+			</a>
+			</h4>
+			<div class="collapse" id="collapseNewMessage">
+				<form
+					id="messageCreateForm" 
+					action="/com/message/create"
+					method="POST"
+					accept-charset="utf-8" 
+				> 
+					<select placeholder="Recipient" class="message-recipient" id="selectRecipients" multiple="multiple"></select>
+					<!--<br>
+					<b>Subject:</b>
+					<div class="sec tab-pane">
+					 <input type="text" class="message-subject" name="subject" />
+					</div>
+					-->
+					<br>
+					<div class="">
+					 <textarea class="message-content" placeholder="Your message" name="message" id=""></textarea>
+					</div>
+					<div class="buttons">
+						<button type="submit" class="message-send btn-primary btn-xs btn">send</button>  
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3 phase" id="mymessages"></div>
+		<div class="col-md-3 phase" id="mymessages">(keine Messages vorhanden)</div>
 		<div class="col-md-3 phase" id="messages"></div>
 	</div>
 </div>		
@@ -54,15 +60,30 @@ $(document).ready(function() {
 	});
 
 	$.get('/json/com/users', function(data){ 
+			var optgroup = $('<optgroup></optgroup>').attr('label','Personen');
 	 		for(var i = 0; i < data.length; i++){
 				var t = $('<option></option>')
 					.attr('value', data[i]._id )
 					.attr('name', 'recipient')
 					.text(  data[i].firstname+' '+data[i].name )
-					.appendTo( '#selectRecipients' )
+					.appendTo( optgroup )
 					;
-			} 
-			$('#selectRecipients').select2()
+			}
+			var optgroup2 = [
+				'<optgroup label="">',
+//					'<option vlaue="personal" name="recipient">persönliche Notiz</option>',
+					'<option value="instructor" name="recipient">Lehrenden</option>',
+					'<option value="admin" name="recipient">Admin</option>',
+				'</optgroup>',
+				'<optgroup label="Gruppen">',
+					'<option value="my-group" name="recipient">Meine Gruppe</option>',
+				'</optgroup>'				
+				].join(',');
+				
+			$('#selectRecipients')
+				.append(optgroup2)
+				.append(optgroup)
+				.select2()
 			 ;
 	});
 	

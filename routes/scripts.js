@@ -233,9 +233,9 @@ exports.getInstances = function(req, res) {
  **/
 exports.getInstanceByID = function(req, res) {
 	Instances.find({_id: req.params.id}).lean().exec(function(err, items) {
-    	res.type('application/json');
-		 	res.jsonp(items); 
-		});
+  	res.type('application/json');
+	 	res.jsonp(items); 
+	});
 };
 
 /*
