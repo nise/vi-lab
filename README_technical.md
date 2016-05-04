@@ -1,20 +1,56 @@
 # How to install and setup
-- node 
--- sudo apt-get install mongodb nodejs libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev
 
--- sudo npm install express-validator
--- npm install mongodb path express socket.io node-fs csv node-schedule ejs-locals passport passport-local connect-flash canvas identicon mongoose csv mv async cookie-parser express-json body-parser method-override express-session
-- nginx
--- apt-get install nginx
--- Einstellungen /etc/nginx/sites-available/default  (siehe unten)
--- sudo /etc/init.d/nginx restart
-- etherpad
+## Install node.js 
+-- sudo apt-get install mongodb nodejs libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev npm libav-tools git
+
+-- sudo npm install mongodb path express express-validator socket.io node-fs csv node-schedule ejs-locals passport passport-local connect-flash canvas identicon mongoose csv mv cookie-parser express-json body-parser method-override express-session mongoose fluent-ffmpeg moment depd bytes raw-body iconv-lite on-finished media-typer type-is multer ipware
+
+* Find out install location:
+ which nodejs
+
+async
+
+
+
+## Install additional applications
+
+### nginx
+#### install nginx
+sudo apt-get install nginx
+
+#### define config file
+
+**delete the old config**
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo vi /etc/nginx/sites-available/node
+
+server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://127.0.0.1:3033";
+    }
+}
+#### Set symlink to config file
+sudo ln -s /etc/nginx/sites-available/node /etc/nginx/sites-enabled/node
+
+#### Start nginx
+sudo service nginx restart
+
+
+
+**etherpad**
 -- über git in einen ordner installieren
 -- Datei settings.json mit port und vor allem mysql-verbindung anpassen
 -- starte: sh ./_tools/etherpad-lite/bin/run.sh -s settings.json
-- Betrieb
--- node server.js   oder auf dem Server: nodejs server.js  
---  sudo forever start -a -l forever.log -o out.log -e err.log server.js
+
+### Betrieb
+-- node server.js   oder sudo nodejs server
+-- sudo forever start -a -l forever.log -o out.log -e err.log server.js
 -- sudo forever stop server.js
 -- both: sudo forever stop server.js && sudo forever start -a -l forever.log -o out.log -e err.log server.js
 

@@ -6,6 +6,7 @@
 - monitor server, app, REST => site24x7
 
 ## bugs by priority
+- bug: no login possible!
 - bug: after importing users.csv the user-group relation will be lost
 - bug: player: "online phase 3" als aufgabe
 - scenario: add user to existing group in a running script => edit group formation
@@ -17,7 +18,6 @@
 - bug: bson error on certain instnces where new versions of mongodb can not be installed
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
-- Logs are not accessible, not even for an - activity log
 - css bugs in opera / msie / safari
 
 
@@ -52,6 +52,7 @@
 
 
 # roadmap for next release
+- S-BPM for node.js : https://github.com/e2ebridge/bpmn
 - display comments / links animated 
 - @templates: 
  - add uses files and used widgets to table
@@ -61,10 +62,12 @@
  - add used template to table
  - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
  - only one instance should be active.
- - drag'n drop order of phases 
+ - drag'n drop order of phases
+ - vizualize how users move from one group to another by using a sankey diagram (see data-viz folder at works)
+ - visualize script progress in a stacked-timline.html (see data-viz folder at works)
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
- - list group who is operation on the instance
+ - list group who is operating on the instance
 - @video files:
  - workflow für video upload
 	 1. select locale file
@@ -125,6 +128,8 @@
 
 
 # Performance & quality improvements
+- http://expressjs.com/en/advanced/best-practice-performance.html#env
+- fast logers: https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/?_ga=1.58848237.1719051603.1461595496
 - fully use require.js to load files
 - perfomance: console.time(label)   / console.timeEnd(label) 	
 - gzip compression

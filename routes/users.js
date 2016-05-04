@@ -274,14 +274,16 @@ passport.use(new LocalStrategy(
 ));
 
 
+
 /*
  * Handles redirects after try to login
  **/
 exports.authenticate = function(req, res, next){ 
-  passport.authenticate('local', function(err, user, info){ 
+  passport.authenticate( 'local', function(err, user, info){ 
     var redirectUrl = '/home';
     if (err) { return next(err); }
     if (!user) { console.log(user); return res.redirect('/login'); }
+    
     if (req.session.redirectUrl) {
       redirectUrl = req.session.redirectUrl;
       req.session.redirectUrl = null;
@@ -293,6 +295,24 @@ exports.authenticate = function(req, res, next){
   })(req, res, next);
   
 };
+
+
+/*
+ * Function that authenticates guest users when calling /login-guest
+ * In case there is no user called 'guest' in the datebase this functions will not work.
+ **/
+exports.authenticateGuest = function(req, res){
+	Users.findOne({ username : 'guest' }, function(err, user){
+		req.login(user, function (err) {
+			if( ! err ){
+				res.redirect('/videos/view/5729b52605aea1973113e8ba');
+				//res.redirect('/home');
+			}else {
+				res.redirect('/login');
+			}
+		});
+	});	
+} 
 
 /*passport.authenticate(
 		'local', 

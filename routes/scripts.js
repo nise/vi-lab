@@ -303,7 +303,7 @@ var
 exports.startScriptSession = startScriptSession;
 
 function startScriptSession(){ 
-	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 2 }}, function ( err, ins ){
+	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 0 }}, function ( err, ins ){
 		if(err){ 
 			console.log(err); 
 		}else{
@@ -494,9 +494,11 @@ exports.updateInstanceByID = function(req, res){
 									user_index, 
 									function (value, key, callback) {
 										Users.update({id: key}, {groups: value} ,function (err, user) {
+											console.log('try update user')
 											if(err){ 
 												console.log(err); 
 											}else{
+												console.log('try update user group '+value)
 												//console.log('updated group for user')
 												//configs[key] = user; // collect results
 											}

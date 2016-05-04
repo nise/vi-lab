@@ -219,6 +219,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/logout', users.ensureAuthenticated, users.handleLogout );
 	app.get('/login',  users.openLoginPage ); //curl -v -d "username=bob&password=secret" http://localhost:3000/login
 	app.post('/login', users.authenticate );
+	app.get('/login-guest', users.authenticateGuest );
 	
 	/**
 		* @todo need to distinguish the groups per phase

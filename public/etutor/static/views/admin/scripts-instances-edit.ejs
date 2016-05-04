@@ -1,8 +1,8 @@
 <% layout( '../admin-layout' ) -%>
 
-
+<% if ( items ) {  %>
 <h2>Instance: <span id="instanceTitle" class="str xeditable"><%= items.title %></span></h2>
-
+<% } %>
 <!-- Phases -->
 <form id="instance-form">
 <div class="phases">

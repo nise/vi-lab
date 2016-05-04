@@ -66,7 +66,8 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 	if( req.user.username !== undefined ){
 		// get script phase 
 		ScriptInstance.findOne({ status: 'running' }).exec(function(err, script) {
-			if(err){ console.log(err); 
+			if(err){ 
+				console.log(err); 
 			}else if(script !== undefined){
 				var phase = script['current_phase']; 
 				// get group of current user
@@ -87,39 +88,41 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 						}else if(groups[0] !== undefined){
 							/**/
 							// collect video ids from the effected groups
-						var the_videos = [], script_video = [];
-						for(var i = 0; i < groups.length; i++){
-							the_videos.push.apply( the_videos, groups[i].videos );
-							script_video[i] = groups[i].videos
-						}
-						var query = {}
-						query['id'] = { $in: the_videos }; // groups[0].videos
+							var the_videos = [], script_video = [];
+							for(var i = 0; i < groups.length; i++){
+								the_videos.push.apply( the_videos, groups[i].videos );
+								script_video[i] = groups[i].videos
+							}
+							var query = {}
+							query['id'] = { $in: the_videos }; // groups[0].videos
 						
-							console.log(script_video)
-							console.log('#################################################');
-							// get videos 
-							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+								console.log(script_video)
+								console.log('#################################################');
+								// get videos 
+								Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
 								
-								for(var i=0; i < group.length; i++){
-									script.phases[i].the_videos = []; console.log('gr'+i)
-									for(var j = 0; j < videos.length; j++){ 
-										if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
-											script.phases[i].fuck.push( videos[j] ); 
-											console.log(script.phases[i])
+									for(var i=0; i < group.length; i++){
+										script.phases[i].the_videos = []; console.log('gr'+i)
+										for(var j = 0; j < videos.length; j++){ 
+											if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
+												script.phases[i].fuck.push( videos[j] ); 
+												console.log(script.phases[i])
+											}
 										}
 									}
-								}
-								//console.log(script)
-								res.render('videos', {items: { script: script } });  								
-							});
+									//console.log(script)
+									res.render('videos', {items: { script: script } });  								
+								});
 						}else{
 							//res.type('application/json');
-							//res.jsonp({});  
+							//res.jsonp({}); 
+							console.log(3); 
 							res.end('done');
 						}
 					});// end Groups
 				});// end Users
-			}else{ // end if	
+			}else{ // end if
+					
 				res.end('done');
 			}
 		});// end ScriptInstance	
