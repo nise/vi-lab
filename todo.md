@@ -6,6 +6,9 @@
 - monitor server, app, REST => site24x7
 
 ## bugs by priority
+- ??? is it possible to assign more then one video to a group within one phase?
+- ??? how can I chose activities that corralte with the script task and widgets?
+- bug: @user::: when adding a new user there is no id assigned to them.
 - bug: no login possible!
 - bug: after importing users.csv the user-group relation will be lost
 - bug: player: "online phase 3" als aufgabe
@@ -19,6 +22,67 @@
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
 - css bugs in opera / msie / safari
+
+
+
+# metadata
+**Dublin Core**
+http://dublincore.org/documents/usageguide/elements.shtml
+
+{
+"_id": "572a1a6b7c5fdf281e0ae9e0",        
+"video": "/static/uploads/14d1023907b3a84dd276c5dd5a5268bf1458077766625.mp4",
+"updated_at": "2016-05-04T15:51:07.220Z",
+"created_at": "2016-04-04T16:13:17.410Z",
+        
+       
+			"metadata": 
+			{
+			"title": "B2B-Marketing",
+			"subject":"Marketing",
+			"description": "In der vorliegenden Videoaufzeichnung wird das Thema ...",
+			"type":"video",
+			"source": "https://www.youtube.com/watch?v=kQqktXqAqTE",
+			"coverage": "university lecture",
+			"creator": "Prof. Dr. Daniel Wentzel",
+			"publisher": "RWTH Aachen",
+			"contributor":"-",
+			"rights":"Creative Commons 2.0",
+			"date":"01-01-2014",
+			"format":"video/mp4",
+			"identifier":"/video/view/572a1a6b7c5fdf281e0ae9e0",
+			"Audience":"university students, Master-level",
+			"language":"German",
+			"length": "3240",
+			"thumbnail": [
+				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_1.png",
+				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_2.png"
+			],
+			"keywords": [
+				"B2B",
+				"Marketing"
+			]
+			},
+			"assessment": [],
+			"comments": [],
+			"hyperlinks": [],
+			"toc": [],
+			}
+
+**videoMD**
+https://www.loc.gov/standards/amdvmd/htmldoc/videoMD.html#id160
+https://www.loc.gov/standards/amdvmd/videoMD.xsd
+
+**METS**
+http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/default.html
+http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/mets.xml
+http://digitalassets.lib.berkeley.edu/jpnprints/ucm/mets/caawucm_7_1_00027801.xml
+
+**PBCore 2.1**
+http://pbcore.org/schema/
+https://github.com/WGBH/PBCore_2.1/
+
+
 
 
 # group page activity Thread
