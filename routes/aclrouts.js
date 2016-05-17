@@ -55,6 +55,9 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/about',  users.ensureAuthenticated, function ( req, res ){
 		res.render( 'about' );
 	});
+	app.get('/404',  users.ensureAuthenticated, function ( req, res ){
+		res.render( '404' );
+	});
 
 	
 
@@ -172,6 +175,9 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	
 	// level3 script
 	app.get('/json/admin/script-info', users.authCallback(['editor']), scripts.getScriptInfo ); // xxx
+	app.get('/admin/script-info', users.authCallback(['editor']), function(req,res){
+		res.render('admin/scripts-modeling-level3');
+	} );
 	
 	
 

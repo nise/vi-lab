@@ -1,0 +1,182 @@
+
+
+  <style type="text/css">
+  
+  	body {
+  	font-family: Lato; font-size:11px;
+  	}
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      font-family: Lato;
+      font-size: 10px;
+    }
+
+    .timeline-label {
+      font-family: Lato;
+      font-size: 12px;
+    }
+
+    #timeline2 .axis {
+      transform: translate(0px,40px);
+      -ms-transform: translate(0px,40px); /* IE 9 */
+      -webkit-transform: translate(0px,40px); /* Safari and Chrome */
+      -o-transform: translate(0px,40px); /* Opera */
+      -moz-transform: translate(0px,40px); /* Firefox */
+    }
+    
+    .coloredDiv {
+      height:20px; width:20px; float:left;
+    }
+  </style>
+  
+  <script type="text/javascript">
+		var 
+			videos = [],
+			formations = []
+		;
+
+		window.onload = function() { 
+		 
+			$.get('/json/admin/video-files', function(videos1){
+				$.get('/json/admin/groups/formations', function(formations2){
+					videos = videos1;
+					formations = formations2; 
+					loadChart();
+				});	
+			});
+		 
+		 	/*
+		 	 **/
+		 	function loadChart(){
+		 
+				 // data 
+				 var 
+				 	data = JSON.parse('<%-JSON.stringify( items )%>')[0],
+				 	labelColorTestData = [
+				 		{ "label": "Phases", "times": []}, 
+				 		{ "label": "", "times": []}
+				 	],
+				 	maxv = 1, 
+				 	maxf = 0,
+				 	width = 1100
+				 	;
+				// fill up video
+				
+				for(var i = 0; i < data.phases.length; i++){ 
+					if(data.phases[i].video_files.length > maxv){ 
+						maxv = data.phases[i].video_files.length;
+					}
+					if(data.phases[i].widgets.length > maxf){
+						maxf = data.phases[i].widgets.length
+					}	
+				}
+				for(var i = 0; i < maxv; i ++){ 
+					if(i==0){ 
+						labelColorTestData.push({ "label": "Videos", "times": []});
+					}else{ 
+						labelColorTestData.push({ "label": "", "times": []}); 
+					} 
+				}
+				for(var i = 0; i < maxf; i ++){ 
+					if(i==0){ 
+						labelColorTestData.push({ "label": "Features", "times": []});
+					}else{ 
+						labelColorTestData.push({ "label": "", "times": []}); 
+					} 
+				}
+		
+				// fill up groups
+				labelColorTestData.push({ "label": "Groups", "times": [] });
+			
+				 // label data
+				 for(var i = 0; i < data.phases.length; i++){ 
+				 		var m = +moment(data.phases[i].start);
+				 		var m2 = +moment(data.phases[i].end);
+
+						if( i % 2 === 0){
+							labelColorTestData[0].times.push({"label":decodeURIComponent( data.phases[i].title ), "starting_time": m, "ending_time": m2, "color":"lightgreen" });	 	
+						}else{
+							labelColorTestData[1].times.push({"label":decodeURIComponent( data.phases[i].title ), "starting_time": m, "ending_time": m2, "color":"lightgreen" });	 	
+						}	
+						// videos
+						for(var v = 0; v < data.phases[i].video_files.length; v++){ 
+							labelColorTestData[2+v].times.push({"label": getVideoName( data.phases[i].video_files[v] ), "starting_time": m, "ending_time": m2, "color":'#5588ee' });
+						}
+						// features
+						for(var v = 0; v < data.phases[i].widgets.length; v++){ 
+							labelColorTestData[2+maxv+v].times.push({"label": data.phases[i].widgets[v].label, "starting_time": m, "ending_time": m2, "color":"lightblue" });
+						}
+						// groups
+						var f = getFormation( data.phases[i].groupformation ).formation[0].length 
+						labelColorTestData[2+maxv+maxf].times.push({"label": f, "starting_time": m, "ending_time": m2, "color":"#ccc" });	
+				 }
+		
+		
+					/*
+					 **/
+					function timelineLabelColor() { 
+						var chart = d3.timeline()
+							.tickFormat( {
+								format: d3.time.format("%d/%m/%Y"),
+								tickTime: d3.time.day,
+								tickInterval: 2,
+								tickSize: 4
+							})
+							.relativeTime()
+							.showToday()
+							//.showTimeAxisTick() // vertical lines
+							.stack() // toggles graph stacking
+							.margin({left:70, right:30, top:0, bottom:10})
+							;
+						var svg = d3.select("#timeline6").append("svg").attr("width", width)
+							.datum(labelColorTestData).call(chart);
+					}
+
+				timelineLabelColor();
+			}// end loadChart
+
+
+			/*
+			 **/ 
+			function getVideoName(id){ 
+				for(video = 0; video < videos.length; video++){  //alert(videos[video]._id+'  '+id)
+					if(videos[video]._id === id){  
+						return str_shorten( videos[video].title );
+					}
+				}
+				return id;			
+			}
+	
+	
+			/*
+			 **/ 
+			function getFormation(id){ 
+				for(f = 0; f < formations.length; f++){  
+					if(formations[f]._id === id){  
+						return formations[f] ;
+					}
+				}
+				return id;			
+			}
+
+
+			/*
+			 **/ 
+			function str_shorten(str){
+				if(str.length > 50){
+					return str.slice(0,20) + " ... " + str.slice(str.length-5, str.length)
+				}
+				return str;
+			} 
+
+		}//end wondow load
+  </script>
+
+	<div id="timeline6"></div>
+

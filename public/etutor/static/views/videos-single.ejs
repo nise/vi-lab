@@ -73,12 +73,15 @@
 				vi2, 
 				ocr,
 				Vi2 = {}  // set the Namespace
-				; 
+				;
+			<% if(items[0] !== undefined ){ %>	 
 			$(document).ready(function(){ 
 				$('footer').hide(); 	//
 				vi2 = new ViLab(server, "<%= items[0]._id %>"); 
-				
 			});
+			<%}else{ %>
+				$('#page').html('VIDEO NOT FOUND').css({ 'margin':'200px'})
+			<%}%>
 			
 	</script>
 	<% test = 1 %>

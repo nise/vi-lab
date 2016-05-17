@@ -546,7 +546,7 @@ exports.destroyInstanceByID = function(req, res) {
  * @todo deprecated function xxx
  **/
 exports.getScriptInfo = function ( req, res ){ // xxx editor
-	Scripts.find({}).exec( function ( err, scripts ){
+	Instances.find({}).exec( function ( err, scripts ){
 		Groups.find({}).exec( function( err, groups){
 			Videos.find({}).select('id metadata video').exec( function( err, videos ){
 				if(err){ 

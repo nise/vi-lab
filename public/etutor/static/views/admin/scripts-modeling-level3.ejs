@@ -2,33 +2,6 @@
 
 <h2>Scripts</h2>
 
-<h3>Overview</h3>
-<label>Name:</label> <span class="xeditable" id="scriptname" data-type="text" data-pk="1" data-url="" data-title="Name of the script"></span>
-<br>
-<label>Description:</label> <span class="xeditable" id="scriptdesc" data-placement="bottom" data-type="textarea" data-pk="1" data-url="" data-title="Description of the script">hello</span>
-<br>
-<label>Tags:</label> <a href="#" class="xeditable" id="scripttags" data-type="text" data-pk="1" data-url="" data-title="Tags">hello</a>
-<br>
-<label>Created at:</label>
-<br>
-<label>Updated at:</label>
-<br>	
-  slides : Boolean,
-<br>
-<label>Phases:</label>
-<br>
-    			title: String,
-    			instruction: String,
-    			seq : Number,
-    			groupindex: Number, 
-    			widgets: [ 
-    				{ name: [String], widget_options: [Schema.Types.Mixed], accordion: [Boolean], annotate:[Boolean] }
-    			]	
-
-
-<!-- Details-->
-<h3>Group Access to Video Instances</h3>
-
 <span id="status"></span>
 <span class="btn btn-default btn-xs" id="add-instance">add new Video instance</span>
 <span class="btn btn-default btn-xs" id="add-group">add new Group</span>
@@ -131,6 +104,17 @@ $('#add-group').click(function(){
 			}
 		}); // end ajax
 
+
+/*
+**/
+function buildCell( cell, video ){
+	$(cell).click(function(){
+		alert(2)
+	});
+	return video.id;	
+}
+
+
 /*
 **/
 function buildNewColumn(){
@@ -156,14 +140,7 @@ function getEmptyCell(){
 	return $("<td></td>").append( ch );
 }
 
-/*
-**/
-function buildCell( cell, video ){
-	$(cell).click(function(){
-		alert(2)
-	});
-	return video.id;	
-}
+
 
 
 /*

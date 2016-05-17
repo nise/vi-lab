@@ -20,9 +20,9 @@ $(document).ready (function () {
     	{ field: 'id', title: 'ID', sortable : true, order: 'asc', searchable: true },
 		  { field: 'title', title: 'Titel', formatter: titleFormatter, sortable : true, order: 'asc', searchable: true },
 		  { field: 'file', title: 'File', formatter: fileFormatter, sortable : true, order: 'asc', searchable: true }, 
-		  { field: 'annotations', title: 'Annotationen',  formatter: annotationFormatter, sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'updated_at', title: 'last update', formatter: dateFormatter, sortable : true, order: 'asc', searchable: true },
-		  { field: 'operators', title: '', formatter: operationsFormatter, visible:true, sortable : true, searchable : true }
+		  { field: 'annotations', title: 'Annotations',  formatter: annotationFormatter, sortable : false, order: 'asc',searchable : true }, 
+		  { field: 'updated_at', title: 'Last Update', formatter: dateFormatter, sortable : true, order: 'asc', searchable: true },
+		  { field: 'operators', title: '', formatter: operationsFormatter, visible:true, sortable : false, searchable : false }
     ]
 	});
 });

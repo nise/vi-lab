@@ -46,23 +46,26 @@
 							<textarea class="script-form supplements" id="phase-supplements_<%= phase_i %>"><%= phase.supplements %></textarea>
 						</div>
 					</div>
-					
-					
-					
 				</div>
 				<!-- Select Groups -->
-				<div class="col-md-3 admin-panel">
-					<h4>Group formations</h4>
+				<div class="col-md-2 admin-panel">
+					<h4>Group Formations</h4>
 					<div id="group_<%= phase_i %>" class="phase-group-list"></div>
 				</div>
 				<!-- Select Videos -->
-				<div class="col-md-3 admin-panel">
+				<div class="col-md-4 admin-panel">
 					<h4>Video Files</h4>
 					<div id="videos_<%= phase_i %>" class="phase-video-list"></div>
 				</div>
 			</div>
-			
-				
+			<!-- Customize group / video instance permissions -->
+			<div class="col-md-12">
+				<a class="btn right" role="button" data-toggle="collapse" href="#collapseAccess_<%= phase_i %>" aria-expanded="false" aria-controls="collapseAccess_<%= phase_i %>">customize group permissions</a>
+				<div class="collapse" id="collapseAccess_<%= phase_i %>">
+					<table class="script-table" id="table1"></table>
+						sss
+				</div>
+			</div>	
 		</div>	
 	<% }) %>
 <% } %>
@@ -129,6 +132,12 @@ $('.str').each(function(i, val){
 var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
 
 $(document).ready(function() {
+
+	var 
+		the_formations = [],
+		the_files = []
+		;
+		
 	// make text editable inline
 	$('.xeditable').editable({
 		success: function(response, value) {
@@ -140,13 +149,15 @@ $(document).ready(function() {
 	$.each( data, function(i, phase){
 		// list available group formations
 		$.get('/json/admin/groups/formations', function(formations){ 
+			the_formations = formations;
 			$.each(formations, function(j, val){
 				var check = phase.groupformation === formations[j]._id ? 'checked' : '';
 				$('#group_'+i).append( $('<label><input '+ check +' value="'+val._id+'" type="radio" name="grform_'+i+'" aria-label="'+val.title+'"> '+val.title+'</label><br>' ) );
 			});
 		});
 		// list available video files
-		$.get('/json/admin/video-files', function(files){ 
+		$.get('/json/admin/video-files', function(files){
+			the_files = files; 
 			$.each(files, function(j, val){
 				var checked = phase.video_files.indexOf( val._id ) === -1 ?  '' : 'checked'; 
 				$('#videos_'+i).append( $('<label><input type="checkbox"  '+ checked +' value="'+val._id+'" name="video-files-'+j+'" aria-label="'+val.title+'"> '+val.title+' ('+val.creator+')</label><br>' ) );
@@ -222,6 +233,99 @@ $(document).ready(function() {
 			}	
 		});
 	});
+	
+
+	/*********************/
+	/* permission table */
+	function permissionTable(instance){
+		var 
+			phase = 1, 
+			val = {}, 
+			tab = '#table1', 
+			tab_cell, 
+			tab_row, 
+			tab_head,
+			sel_formation = $('#group_'+instance+' :checked').val(),
+			sel_files = $('#phase_'+instance).find('.phase-video-list input:checked').map(function() {
+  			return this.value;
+			}).get() 
+			data = {groups: getOf([ String( sel_formation ) ], the_formations) ) ], videos: getOf(sel_files, the_files) ) }
+			;
+			
+			var getOf = function(ids,obj){
+				var arr = [];
+				for (var i = 0; i < obj.length; i++){ 
+					if( ids.indexOf( String( obj[i]._id ) ) > -1){
+						arr.push( obj[i] );
+					}
+				}
+				return arr;
+			} 
+			
+  	// column header
+		tab_head = $('<thead></thead>')
+			.append( $('<td></td>').text( 'Video Instances') )
+			.appendTo( tab )
+			;
+		for(var j = 0; j < data.videos.length; j++){	
+			tab_cell = $('<td></td>')
+				.text( data.videos[j].id )
+				.addClass('xeditable')
+  			.data('type', 'text')
+  			.data('id', data.videos[j].id)
+  			.data('pk', data.videos[j].id)
+				.appendTo( tab_head );
+		}
+		// rows
+  	for(var i = 0; i < data.groups.formation.length; i++){
+  		// first column
+  		var row_label = $('<td></td>')
+  			.text( 'Group '+data.groups.formation[i].id )
+  			.addClass('xeditable')
+  			.data('type', 'text')
+  			.data('id', data.groups.formation[i].id)
+  			.data('pk', 1)
+  			;	
+  		tab_row = $('<tr></tr>')
+  			.append( row_label );
+  		// cells
+  		for(var j = 0; j < data.videos.length; j++){
+  			var tab_cell = getEmptyCell();
+				tab_cell.appendTo( tab_row );
+					
+  			if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
+  				tab_cell
+  					.html( buildCell( tab_cell, data.videos[j] ) )
+  					.addClass('visible-cell')
+  					;
+  			}
+  		}
+  		$(tab).append( tab_row );
+  		
+  	}
+
+	}// end permission table
+	
+	
+	/*
+	**/
+	function getEmptyCell(){
+		var ch = $('<input type="checkbox" value="1" />')
+		return $("<td></td>").append( ch );
+	}
+	
+	/*
+	 **/
+	function buildCell( cell, video ){
+		$(cell).click(function(){
+			alert(2)
+		});
+		return video.id;	
+	}
+	
+	
+	alert(3)
+		permissionTable(1)
 });
 
 

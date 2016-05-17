@@ -305,7 +305,11 @@ exports.authenticateGuest = function(req, res){
 	Users.findOne({ username : 'guest' }, function(err, user){
 		req.login(user, function (err) {
 			if( ! err ){
-				res.redirect('/videos/view/5729b52605aea1973113e8ba');
+				try{
+				 res.redirect('/videos/view/57317b7243717cbb3c9df9ed');
+				}catch(e){
+					console.log(e);
+				} 
 				//res.redirect('/home');
 			}else {
 				res.redirect('/login');

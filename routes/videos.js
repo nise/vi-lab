@@ -291,10 +291,14 @@ exports.list = function ( req, res ){ console.log('#############################
 // remove videos item by its id
 exports.destroy = function ( req, res ){
   Videos.findById( req.params.id, function ( err, video ){
-    video.remove( function ( err, person ){
-      res.redirect( '/videos' );
-      res.end('done');
-    });
+  	if(!err){
+		  video.remove( function ( err, person ){
+		    res.redirect( '/videos' );
+		    res.end('done');
+		  });
+    }else{
+    	console.log(err);
+    }
   });
 };
 
@@ -338,13 +342,16 @@ exports.editAnnotations = function ( req, res ){
  **/ 
 exports.show = function ( req, res ){ 
   Videos.find({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, video ){
-  	if(!err){ 
+  	if(!err && video[0] !== undefined ){ 
 		  res.render( 'videos-single', {
 		      title   : 'Express Videos Example',
 		      items   : video,
 		      current : req.params.id
 		  });
 		  res.end('done');
+    }else if(video[0] === undefined ){
+    	res.redirect('404')
+    	console.log('page not found')
     }else{
 				console.log('ERROR: '+err)
 			}
