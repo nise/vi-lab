@@ -183,7 +183,8 @@ var ScriptTemplate = new Schema({
 			widgets:   
 				[{ 
 					label : String,
-					name: String, 
+					name: String,
+					type: String, 
 					_id: false,
 					canBeAnnotated: Boolean, 
 					widget_options: {
@@ -235,6 +236,7 @@ var ScriptInstance = new Schema( {
 				[{ 
 					label : String,
 					name: String, 
+					type: String,
 					_id: false,
 					canBeAnnotated: Boolean, 
 					widget_options: {

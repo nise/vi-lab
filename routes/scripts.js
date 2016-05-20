@@ -95,7 +95,7 @@ exports.renderNewTemplate = function(req, res) {
  * status: finished
  **/
 exports.getTemplates = function(req, res) {
-	Templates.collection.find().toArray(function(err, items) {
+	Templates.find().exec(function(err, items) {
     	res.type('application/json');
 		 	res.jsonp(items); 
 		});
@@ -131,10 +131,63 @@ exports.duplicateTemplateByID = function(req, res) {
  * status: finished
  **/
 exports.updateTemplateByID = function(req, res) { console.log(req.params.id);
-	//delete req.body['_id'];
-	Templates.findOneAndUpdate( {"_id": req.params.id}, req.body, function ( err, template ){
-		console.log('Updated script instance '+template._id)
-		res.end()
+	console.log(req.body.phases[0].widgets )
+	
+	/*Templates.collection.update( { "_id": req.params.id }, req.body , function(err, bla){
+		if(err){
+			console.log(err)
+		}else{
+			console.log(bla)
+			res.end();
+		}
+	});
+	
+	Templates.findOneAndUpdate( {"_id": req.params.id}, req.body, {upsert:true }, function ( err, template ){
+		if(err){
+			console.log(err)
+		}else{
+			console.log('Updated script instance '+template._id)
+			res.end()
+		}
+	});
+	*/
+	
+	
+	Templates.findOne( {"_id": req.params.id}, function ( err, template ){
+		if(err){
+			console.log(err)
+		}else{
+			function MergeRecursive(obj1, obj2) {
+
+  for (var p in obj2) {
+    try {
+      // Property in destination object set; update its value.
+      if ( obj2[p].constructor==Object ) {
+        obj1[p] = MergeRecursive(obj1[p], obj2[p]);
+
+      } else {
+        obj1[p] = obj2[p];
+
+      }
+
+    } catch(e) {
+      // Property in destination object not set; create it and set its value.
+      obj1[p] = obj2[p];
+
+    }
+  }
+
+  return obj1;
+}
+
+	var t = MergeRecursive(template,req.body);
+
+t.phases = req.body.phases
+console.log(t.phases[0].widgets )	
+	t.save()
+
+			res.end()
+		}
 	});
 }
 
@@ -221,7 +274,7 @@ exports.renderInstances = function(req, res) {
  * status: finished
  **/
 exports.getInstances = function(req, res) {
-	Instances.collection.find().toArray(function(err, items) {
+	Instances.find().exec(function(err, items) {
     	res.type('application/json');
 		 	res.jsonp(items); 
 		});
@@ -232,7 +285,7 @@ exports.getInstances = function(req, res) {
  * status: finished
  **/
 exports.getInstanceByID = function(req, res) {
-	Instances.find({_id: req.params.id}).lean().exec(function(err, items) {
+	Instances.find({_id: req.params.id}).exec(function(err, items) {
   	res.type('application/json');
 	 	res.jsonp(items); 
 	});

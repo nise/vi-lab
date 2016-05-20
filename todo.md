@@ -6,6 +6,7 @@
 - monitor server, app, REST => site24x7
 
 ## bugs by priority
+- bug: widgets at template don't get stored. Instead "[ObjectObject]" appears in mongoDB
 - ??? is it possible to assign more then one video to a group within one phase?
 - ??? how can I chose activities that corralte with the script task and widgets?
 - bug: @user::: when adding a new user there is no id assigned to them.

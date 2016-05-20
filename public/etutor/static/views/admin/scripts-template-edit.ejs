@@ -93,6 +93,7 @@ todo
 			phase.video_files = videos;
 			data.phases.push(phase);
 		});
+		alert(JSON.stringify(data))
 		//return
 			
 		$.ajax({
@@ -167,7 +168,7 @@ $(document).ready(function() {
 		});
 		
 		// add widgets
-		$.each( phase.widgets, function(j, widget){ //alert(JSON.stringify(widget.widget_options))
+		$.each( phase.widgets, function(j, widget){ //alert( JSON.stringify(widget))
 			$('#widgets-'+i).prepend( buildWidget(widget, i) );
 		});		
 	});
@@ -243,12 +244,12 @@ function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
 
 /*
  **/
-function buildWidget(widget, phase){ 
+function buildWidget(widget, phase){ //alert(JSON.stringify(widget))
 	var b = $('<button></button>')
 				.attr('id', 'widget-'+ phase +'-'+widget.name)
 				.attr('name', widget.name )
 				.attr('type',"button") 
-				.addClass("btn btn-sm btn-info widget-popover the-widgets")
+				.addClass("btn btn-sm btn-info widget-popover the-widgets widget-type-"+widget.type)
 				.text( widget.label )
 				.data('widget', widget)
 				.popover({
@@ -322,6 +323,22 @@ $('body')
 
 
 defaultWidgets = [
+	{ label : 'StrawPoll',
+		name: 'strawpoll', 
+ 		canBeAnnotated:true, 
+ 		type : 'thinkLet',
+ 		widget_options: {
+			path: '/static/img/user-icons/'
+		}
+	},
+	{ label : 'BucketSchuffel',
+		name: 'bucketshuffel', 
+ 		canBeAnnotated:true, 
+ 		type : 'thinkLet',
+ 		widget_options: {
+			path: '/static/img/user-icons/'
+		}
+	},
 	{ label : 'Table of Content',
 		name: 'toc', 
  		canBeAnnotated:true, 
