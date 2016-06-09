@@ -70,8 +70,10 @@ git reset --hard origin/master
 mongodb: mongodb://localhost/etutor
 **dump**
 mongodump --db <application name>
+mongodump --db etutor
 **restore**
 mongorestore --db <application name> ./dump/<application name>
+mongorestore --db etutor ./dump/etutor
 **convert database for inspection**
 bsondump collection.bson > collection.json
 

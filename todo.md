@@ -25,6 +25,9 @@
 - css bugs in opera / msie / safari
 
 
+- writ conversion scripts including presets
+
+
 
 # metadata
 **Dublin Core**
