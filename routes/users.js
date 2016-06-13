@@ -306,7 +306,7 @@ exports.authenticateGuest = function(req, res){
 		req.login(user, function (err) {
 			if( ! err ){
 				try{
-				 res.redirect('/videos/view/57317b7243717cbb3c9df9ed'); // bad static hack xxx
+				 res.redirect('/videos/view/5759e54be2f7db7a131c6680'); // bad static hack xxx
 				}catch(e){
 					console.log(e);
 				} 
