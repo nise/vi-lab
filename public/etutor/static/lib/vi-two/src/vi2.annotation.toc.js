@@ -129,6 +129,7 @@ Vi2.TableOfContents = $.inherit( Vi2.Annotation, /** @lends Vi2.TableOfContents#
 				.appendTo( vi2.dom );
 		},				
 				
+				
 		/** 
 		* During the playback corresponding toc entries will be highlighted.
 		*/

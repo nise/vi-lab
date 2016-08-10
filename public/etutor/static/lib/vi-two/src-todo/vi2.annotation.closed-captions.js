@@ -2,7 +2,7 @@
 * name: Vi2.ClosedCaptions 
 *	author: niels.seidel@nise81.com
 * license: MIT License
-* description: 
+* description: displays captions in a layer on top of the video
 * dependencies:
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
@@ -65,26 +65,27 @@ Vi2.ClosedCaptions = $.inherit(Annotation, /** @lends Vi2.SyncMedia# */{
 		},
 		
 		
-		/* -- */
-		// <div type="syncMedia" starttime=1344 duration=165 id=hello>hydro_graefe-11.jpg</div>
+		/* 
+		 * Converts subtitle formats like SubRip, W3C WEBVVT, W3C TTML into the internal representation
+		 * todo: optain data form subtitle files & convert to the following format:
+		 * output: <div type="closedCaptions" starttime=1344 duration="165"></div>
+		 **/
 		appendToDOM : function(id){ 
 			$(vi2.dom).find('[type="closedCaptions"]').each(function(i,val){ $(this).remove(); });
 			$.each(	vi2.db.getSlidesById(id), function(i, val){  //alert(JSON.stringify(val))
 				var slides = $('<div></div>')
-				.attr('type',"syncMedia")
-				.attr('starttime', val.starttime )//this.occ[0].start )
-				.attr('duration', val.duration )//this.occ[0].duration)
-				//.attr('seek', this.seek != null ? deci2seconds(this.seek) : 0)
-				//.attr('duration2', this.duration2 != null ? this.duration2 : 0)
+				.attr('type',"closedCaptions")
+				.attr('starttime', val.starttime )
+				.attr('duration', val.duration )
 				.attr('id', val.id)
-				.attr('path', val.img ) // val.path
 				.text(this.tagname )
 				.appendTo( vi2.dom );
 			}); 
 			
 		},
 
-		/* -- */
+		/* Append caption content to _this.options.selector
+		 **/
 		begin : function(e, id, obj){ 
 			if(this.currImgId == obj.content.target){
 				return false;
@@ -104,8 +105,10 @@ Vi2.ClosedCaptions = $.inherit(Annotation, /** @lends Vi2.SyncMedia# */{
 		},
 
 
-		/* ... */
-		end : function(e, id){  //alert(id)
+		/*
+		 * Remove caption content from _this.options.selector
+		 **/
+		end : function(e, id){
 			$(this.options.selector+' .ov-'+id).remove();
 		},
   	

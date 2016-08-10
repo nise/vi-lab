@@ -19,7 +19,7 @@
 - user notes
 - media fragments 
 - object tracking
-- add video
+- add video => server
 
 
 ## contribute examples

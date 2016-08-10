@@ -207,7 +207,9 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 				.appendTo( vi2.dom );
 		},			
 				
-		/* ... */
+		/*
+		 *
+		 **/
 		begin : function(e, id, obj){ 
 
 			// reset highlight
@@ -219,9 +221,12 @@ Vi2.Comments = $.inherit( Vi2.Annotation, /** @lends Comments# */{
 
 		},
 		
+		/*
+		 **/
 		end:function(e, id){
 			$(this.options.menuSelector+' li ').removeClass('vi2-highlight');
 		},
+			
 			
 		/*
 		*
