@@ -206,7 +206,7 @@ $(document).ready(function() {
 
 // convert dates
 $('.date').each(function(i, val){ 
-	var t =  moment($(this).text(), "YYYYMMDD").fromNow(); 
+	var t =  moment().format(); 
 	$(this).html( t );
 });
 

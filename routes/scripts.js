@@ -159,33 +159,30 @@ exports.updateTemplateByID = function(req, res) { console.log(req.params.id);
 		}else{
 			function MergeRecursive(obj1, obj2) {
 
-  for (var p in obj2) {
-    try {
-      // Property in destination object set; update its value.
-      if ( obj2[p].constructor==Object ) {
-        obj1[p] = MergeRecursive(obj1[p], obj2[p]);
+				for (var p in obj2) {
+					try {
+						// Property in destination object set; update its value.
+						if ( obj2[p].constructor==Object ) {
+						  obj1[p] = MergeRecursive(obj1[p], obj2[p]);
 
-      } else {
-        obj1[p] = obj2[p];
+						} else {
+						  obj1[p] = obj2[p];
 
-      }
+						}
 
-    } catch(e) {
-      // Property in destination object not set; create it and set its value.
-      obj1[p] = obj2[p];
+					} catch(e) {
+						// Property in destination object not set; create it and set its value.
+						obj1[p] = obj2[p];
 
-    }
-  }
+					}
+				}
+				return obj1;
+			}// end fn MergeRecursive
 
-  return obj1;
-}
-
-	var t = MergeRecursive(template,req.body);
-
-t.phases = req.body.phases
-console.log(t.phases[0].widgets )	
-	t.save()
-
+			var t = MergeRecursive(template,req.body);
+			t.phases = req.body.phases
+			console.log(t.phases[0].widgets )	
+			t.save()
 			res.end()
 		}
 	});

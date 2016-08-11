@@ -25,7 +25,7 @@
 - css bugs in opera / msie / safari
 
 
-- writ conversion scripts including presets
+- write conversion scripts including presets
 
 
 
@@ -107,7 +107,7 @@ https://github.com/WGBH/PBCore_2.1/
 - caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
 - transcript
 - maps
-- vi2.syncImgaes => conrete version of simultaneous Media
+- vi2.syncImages => conrete version of simultaneous Media
 
 # widgets
  - user notes
@@ -200,7 +200,7 @@ https://github.com/WGBH/PBCore_2.1/
 - fast logers: https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/?_ga=1.58848237.1719051603.1461595496
 - fully use require.js to load files
 - perfomance: console.time(label)   / console.timeEnd(label) 	
-- gzip compression
+- gzip compression => via express.js  siehe doku
 - usability: tooltip für Funktionen
 - handle errors: 
  - https://www.joyent.com/developers/node/design/errors
@@ -239,7 +239,6 @@ sox >= 14.4
  - switch favicon.ico when playing a video == Pattern
  - enable youTube / vimeo / ...
  - vollbild / split screen
- - idee: "turn lights off" ... siehe videlectures.NET
  - placeholder @ videoplayer in css einbinden
 - @zoom: 
  - zoom log
@@ -264,6 +263,10 @@ sox >= 14.4
 - @highlight => overlay
   - refactor
   - remove require call for consistency
+  
+## nicetohave
+ - idee: "turn lights off" ... siehe videlectures.NET
+
 
 
 # Analytics
