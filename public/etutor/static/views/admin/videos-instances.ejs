@@ -63,7 +63,11 @@ function operationsFormatter(value, row, index) {
 		'</a><br>',
 		'<a href="/admin/videos/metadata/edit/'+row._id+'" title="Edit meta data">',
 		'<i class="glyphicon glyphicon-pencil"></i> edit meta data',
+		'</a><br>',
+		'<a href="/admin/videos/destroy/'+row._id+'" title="remove video instance">',
+		'<i class="glyphicon glyphicon-remove"></i> remove video instance',
 		'</a>'
+		
 	].join('');
 }
 

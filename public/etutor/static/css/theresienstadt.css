@@ -17,6 +17,10 @@ blockquote p{
 	color:#fff;
 }
 
+.mark{
+	background-color:#fff;
+}
+
 /* USER MANAGEMENT / AWARENESS */
 
 #userpanel{
@@ -233,6 +237,7 @@ margin-bottom:0;
 #page {
 	display:block;
 	position:relative;
+	overflow: scroll;
 }
 
 .move-top{
@@ -242,6 +247,7 @@ margin-bottom:0;
 .content{
 	display:block;
 	height:80%;
+	overflow: scroll;
 }
 
 .highlight {
@@ -967,7 +973,7 @@ float:right;
 
 /* FOOTER */
 footer {
-  position:relative;
+  position:fixed;
   clear:both;
   bottom:0 !important;
 	left:0;

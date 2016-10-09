@@ -292,8 +292,8 @@ exports.list = function ( req, res ){ console.log('#############################
 exports.destroy = function ( req, res ){
   Videos.findById( req.params.id, function ( err, video ){
   	if(!err){
-		  video.remove( function ( err, person ){
-		    res.redirect( '/videos' );
+		  video.remove( function ( err, video2 ){
+		    res.redirect( '/admin/videos/instances' );
 		    res.end('done');
 		  });
     }else{
@@ -305,17 +305,17 @@ exports.destroy = function ( req, res ){
 /// xxxx? löschen
 exports.editMetadata = function ( req, res ){
   Videos.find( function ( err, videos ){
-  	res.type('application/json');
+  	/*res.type('application/json');
 			res.jsonp(videos);
 			res.end('done');
-		/*	
+		*//*	*/  // xxx for debug
     res.render( 'admin-videos-edit', {
         title   : 'Express Videos Example',
         items   : videos,
         current : req.params.id
     });
     res.end('done');
-    */
+    
   });
 };
 

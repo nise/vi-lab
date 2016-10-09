@@ -6,8 +6,8 @@
 
 <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
 <link rel="icon" href="/static/img/favicon.ico">
-<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap-theme.min.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' type='text/css'>
 <link rel="stylesheet" href="/static/css/jquery-ui-1.10.3.custom.css">
 <link rel="stylesheet" href="/static/css/select2.css">
@@ -16,7 +16,7 @@
 
 <script src="/static/lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/static/lib/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-<script src="/static/lib/bootstrap.js" type="text/javascript"></script>
+<script src="/static/css/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
 <script src="/static/lib/bootstrap-switch.min.js"></script>
 <script src='/static/lib/moment.min.js'></script>
 <script src="/static/lib/markdown.min.js"></script>
@@ -38,7 +38,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
+<body>
 <div id="xxxwrapper"></div>
 
 <!-- Navigation
@@ -47,10 +47,11 @@
 
 <!-- Container
 ================================================== -->
-	<div id="page" style="overflow:visible;">
+	<content>
+	<div id="page" style="overflow:scroll;">
 	<%- body %>
 	</div>
-
+	</content>
 
 
 <!-- Footer

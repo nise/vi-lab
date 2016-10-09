@@ -163,6 +163,22 @@ var Widgets = new Schema({
 );
 mongoose.model( 'Widgets', Widgets );
 
+var Phases = new Schema({
+	start : Date,
+	end: Date,
+	title: String,
+	instruction: String,
+	supplements: String, 
+	fuck:[Schema.Types.Mixed],
+	seq : Number,
+	groupindex : Number,
+	groupformation : { type: Schema.Types.ObjectId },//, ref: 'GroupFormations'
+	video_files: [{ type: Schema.Types.ObjectId }], //, ref: 'VideoFiles'
+	//widgets: [ { type: Schema.Types.ObjectId, ref: 'Widgets' } ] 
+	widgets: [Widgets]
+});
+mongoose.model( 'Phases', Phases );
+
 
 // minlength: 5
 var ScriptTemplate = new Schema({
@@ -172,8 +188,8 @@ var ScriptTemplate = new Schema({
 	created_at 	: { type: Date },
 	updated_at 	: { type: Date, default: Date.now },
   slides : Boolean, // ???
-  phases: [
-		{ 
+  phases: [ Phases ]
+	/*	{ 
 			title: String,
 			instruction: String,
 			supplements: String, 
@@ -204,12 +220,20 @@ var ScriptTemplate = new Schema({
 						minDuration : Number, 
 						path: String,
 						_id: false
-					}// end options /**/
+					}// end options 
 				}]// end widget		
     }
-	] // end pahse
+	] // end pahse */
 });
 mongoose.model( 'ScriptTemplate', ScriptTemplate );
+
+
+/*
+var autoref = require('mongoose-autorefs');
+
+ScriptInstance.plugin(autoref, [
+    'phases.widgets'
+]);*/
 
 
 //
@@ -219,7 +243,8 @@ var ScriptInstance = new Schema( {
 		status : { type: String, enum: [ 'drafted', 'ready', 'running', 'finished' ] },
 		current_phase : Number,
 		results : [Schema.Types.Mixed],  // ?? Feedback, Task results, ...
-		phases : [ 
+		phases : [ Phases ],
+		/* 
 			{ 
 				start : Date,
 				end: Date,
@@ -256,19 +281,14 @@ var ScriptInstance = new Schema( {
 						minDuration : Number, 
 						path: String,
 						_id: false
-					}// end options /**/
+					}// end options
 				}]// end widget		
 			}
-		],
+		],*/
 		created_at 	: { type: Date },
 		updated_at 	: { type: Date, default: Date.now }
 	});
-/*
-var autoref = require('mongoose-autorefs');
 
-ScriptInstance.plugin(autoref, [
-    'phases.widgets'
-]);*/
 mongoose.model( 'ScriptInstance', ScriptInstance );
 
 

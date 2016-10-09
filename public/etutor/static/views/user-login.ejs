@@ -1,15 +1,16 @@
 <% layout('layout-blank') -%>
 
 
+
 <div class="col-md-6">
 	<h3>Login</h3> 
 	<% if (message.length > 0) { %>
 	<p class="warning"><%= message %></p>
 	<% } %>
-
+	<p class="warning">Um diese Seite nutzen zu können, müssen die Cookies in Ihrem Browser aktivieren.</p>
   <p>
     <div class="edit-form">
-			<form action="/login" method="post">
+			<form id="form" action="/login" method="post">
 				<div class="input-group input-group-xs">
 					<span class="input-group-addon" id="sizing-addon1">Benutzernamen</span>
 					<input type="input" class="form-control" placeholder="Benutzername" aria-describedby="Username" name="username" value="<% if (username) { %><%= username %><% } %>">
@@ -27,3 +28,15 @@
 		</div>
 	</p>	
 </div>
+
+<script>
+$( document ).ready(function(){ 
+	if(navigator.cookieEnabled === true){	
+		$('.warning').hide();
+		$('.edit-form').show();
+	}else{
+		$('#form').hide();
+		$('.warning').show();
+	}
+});	
+</script>

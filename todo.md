@@ -6,11 +6,10 @@
 - monitor server, app, REST => site24x7
 
 ## bugs by priorities
-- bug: widgets at template don't get stored. Instead "[ObjectObject]" appears in mongoDB
-- ??? is it possible to assign more then one video to a group within one phase?
-- ??? how can I chose activities that corralte with the script task and widgets?
+- bug: no login possible! 
+- css bugs in opera / msie / safari
+
 - bug: @user::: when adding a new user there is no id assigned to them.
-- bug: no login possible!
 - bug: after importing users.csv the user-group relation will be lost
 - bug: player: "online phase 3" als aufgabe
 - scenario: add user to existing group in a running script => edit group formation
@@ -19,13 +18,20 @@
 - scenario: add video to a phase of a running script
 - bug@aufgabe muss je video, statt je Phase angezeigt werden
 - bug@user :: online status does not change if browser window gets closed
-- bug: bson error on certain instnces where new versions of mongodb can not be installed
+
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
-- css bugs in opera / msie / safari
-
+- missing template :: /admin/videos/metadata/edit/<id>
+- ??? is it possible to assign more then one video to a group within one phase?
+- ??? how can I chose activities that corralte with the script task and widgets?
 
 - write conversion scripts including presets
+
+# fixed
+- fixed:bug: bson error on certain instnces where new versions of mongodb can not be installed
+	npm uninstall -g node-gyp
+	sudo npm install -g node-gyp@3.4.0 --save
+	sudo npm install -g canvas --save
 
 
 
@@ -104,10 +110,11 @@ https://github.com/WGBH/PBCore_2.1/
 
 
 # For diss
-- caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
-- transcript
+- done: caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
+- done: transcript
 - maps
 - vi2.syncImages => conrete version of simultaneous Media
+
 
 # widgets
  - user notes
@@ -115,11 +122,16 @@ https://github.com/WGBH/PBCore_2.1/
  - lesezeichen
  - search
  - user ratings
- - media fragments
+ - media fragments, see http://stackoverflow.com/questions/32548253/streaming-part-of-a-video-in-node-js
  - thinkLets integrieren
 
+# technologies to use for better development
+- https://github.com/mynyml/watchr
+- less
+- grunt
 
 # roadmap for next release
+- https://github.com/systemjs/systemjs
 - S-BPM for node.js : https://github.com/e2ebridge/bpmn
 - display comments / links animated 
 - @templates: 
@@ -144,6 +156,7 @@ https://github.com/WGBH/PBCore_2.1/
 	 4. extract stills
 	 5. extract text from stills
 	 5. select poster from stills
+	 see https://github.com/bgrins/videoconverter.js 
  - handle different format/mimes/file extentions, incl. file conversion
  - extract more technical informations about the vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
  - store annotation that instances inherit
@@ -211,8 +224,15 @@ https://github.com/WGBH/PBCore_2.1/
 		https://github.com/pgte/nock
 		http://visionmedia.github.io/mocha/#synchronous-code
 		https://github.com/visionmedia/should.js/
+- testing user activity
+	https://github.com/marmelab/gremlins.js/		
 
- 
+
+# multi angle
+http://evelyn-interactive.searchingforabby.com/
+
+# nice
+https://github.com/angular-fullstack/generator-angular-fullstack 
 
 
 # text analysis
@@ -238,6 +258,21 @@ sox >= 14.4
  - feedback für keyboard commands : insb. playback speed, zoom
  - switch favicon.ico when playing a video == Pattern
  - enable youTube / vimeo / ...
+	var request = require('request');
+	var http = require('http');
+	var fs = require('fs');
+
+	http.createServer(function(req,res)
+	{
+		  var x = request('http://www.youtube.com/embed/XGSy3_Czz8k')
+		  req.pipe(x)
+		  x.pipe(res)
+	}).listen(1337, '127.0.0.1');
+	console.log('Server running at http://127.0.0.1:1337/');
+
+ - node.js streaming: http://stackoverflow.com/questions/33008951/video-streaming-in-node-js
+ 											http://stackoverflow.com/questions/4360060/video-streaming-with-html-5-via-node-js
+ 											https://github.com/meloncholy/vid-streamer
  - vollbild / split screen
  - placeholder @ videoplayer in css einbinden
 - @zoom: 
@@ -266,7 +301,7 @@ sox >= 14.4
   
 ## nicetohave
  - idee: "turn lights off" ... siehe videlectures.NET
-
+ - visualize audio waveform inorder to estimate audio quality in terms of low or high altitude / capturing volume: http://stackoverflow.com/questions/38727741/play-a-moving-waveform-for-wav-audio-file-in-html/39019842#39019842
 
 
 # Analytics
