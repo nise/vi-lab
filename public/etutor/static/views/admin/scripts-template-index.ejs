@@ -7,34 +7,40 @@
 <div id="table1"></div>
 
 <script type="text/javascript"> 
+var video_data = [];
 $(document).ready (function () { 
-	$('#table1').bootstrapTable({
-    data: JSON.parse('<%-JSON.stringify( items )%>'),
-    onLoadError : function(e){ console.log(JSON.stringify(e)); },
-    showColumns : true,
-    checkboxHeader : true,
-    // search
-    search: true,
-    strictSearch: true,
-    trimOnSearch:true,
-    columns: [
-	   // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'title', title: 'Template', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
-		  { field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
-		  { field: 'phases', title: 'Phases', visible:true, sortable : true, formatter: phaseFormatter, searchable : true }, 
-		  { field: 'created_at', title: 'Created', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
-		  { field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
-		  { field: 'operate', title: '',  align: 'center', /*events: operateEvents,*/ formatter: operateFormatter }
-    ]
+	$.get('/json/admin/video-files', function(data){
+		video_data = data;
+		$('#table1').bootstrapTable({
+		  data: JSON.parse('<%-JSON.stringify( items )%>'),
+		  onLoadError : function(e){ console.log(JSON.stringify(e)); },
+		  showColumns : true,
+		  checkboxHeader : true,
+		  // search
+		  search: true,
+		  strictSearch: true,
+		  trimOnSearch:true,
+		  columns: [
+			 // { field: '_id', title: 'ID', sortable : true, order: 'asc',searchable : true }, 
+				{ field: 'title', title: 'Template', sortable : true, order: 'asc', formatter: titleFormatter, searchable: true }, 
+				{ field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
+				{ field: 'phases', title: 'Phases', visible:true, sortable : true, formatter: phaseFormatter, searchable : true }, 
+				{ field: 'video_files', title: 'Videos', visible:true, sortable : true, formatter: videoFormatter, searchable : true }, 
+				{ field: 'widgets', title: 'Widgets', visible:true, sortable : true, formatter: widgetFormatter, searchable : true }, 
+				{ field: 'created_at', title: 'Created', visible:false, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
+				{ field: 'updated_at', title: 'Updated', visible:true, sortable : true, formatter: dateFormatter, order: 'asc',searchable : true }, 
+				{ field: 'operate', title: '',  align: 'left', width:'150',/*events: operateEvents,*/ formatter: operateFormatter }
+		  ]
+			});
+		});
 	});
-});
-
 
 function operateFormatter(value, row, index) {
 	return [
 		'<a class="table-link" href="/admin/scripts/templates/duplicate/'+row._id+'" title="Duplicate script template">',
-		'<i class="glyphicon glyphicon-copy"></i> duplicate',
+		'<i class="glyphicon glyphicon-duplicate"></i> duplicate',
 		'</a>',
+		'<br>',
 		'<a class="table-link" href="/admin/scripts/templates/instantiate/'+row._id+'" title="Create instance of script template">',
 		'<i class="glyphicon glyphicon-export"></i> instantiate',
 		'</a>'
@@ -45,6 +51,38 @@ function phaseFormatter(value, row, index) {
 	return row.phases.length; 
 }
 
+function videoFormatter(value, row, index) {
+		var 
+			arr = [],
+			out = []
+			;
+		for(var i = 0; i < row.phases.length; i++){
+			for(var key in row.phases[i].video_files){
+				arr.push(row.phases[i].video_files[key]);
+			}
+		}
+		// make unique
+		arr = uniq(arr);
+		// obtain video titles and links
+		for(var j = 0; j < video_data.length; j++){
+			if(arr.indexOf(video_data[j]._id)){
+				out.push('<a href="'+video_data[j].video+'"><span class="glyphicon glyphicon-facetime-video"></span> '+video_data[j].title+'</a>');
+				out.push('<br>');
+			}
+		}
+	return out.join(''); 
+}
+
+function widgetFormatter(value, row, index) {
+	var arr = [];
+	for(var i = 0; i < row.phases.length; i++){
+		for(var key in row.phases[i].widgets){
+			arr.push(row.phases[i].widgets[key].label);
+		}
+	}
+	return uniq(arr).join(', ');
+}
+
 function titleFormatter(value, row, index) {
 	return '<a class="like" href="/admin/scripts/templates/edit/'+row._id+'" title="Edit script template">'+ row.title +'</a>  ';
 }
@@ -52,6 +90,13 @@ function titleFormatter(value, row, index) {
 function dateFormatter(value, row, index) { 
 	return moment(value).fromNow();
 }	
+
+
+function uniq(a) {
+    return a.sort().filter(function(item, pos, ary) {
+        return !pos || item != ary[pos - 1];
+    })
+}
 
 </script>
 

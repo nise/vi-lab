@@ -27,71 +27,11 @@
 
 - write conversion scripts including presets
 
-# fixed
+# fixed bugs
 - fixed:bug: bson error on certain instnces where new versions of mongodb can not be installed
 	npm uninstall -g node-gyp
 	sudo npm install -g node-gyp@3.4.0 --save
 	sudo npm install -g canvas --save
-
-
-
-# metadata
-**Dublin Core**
-http://dublincore.org/documents/usageguide/elements.shtml
-
-{
-"_id": "572a1a6b7c5fdf281e0ae9e0",        
-"video": "/static/uploads/14d1023907b3a84dd276c5dd5a5268bf1458077766625.mp4",
-"updated_at": "2016-05-04T15:51:07.220Z",
-"created_at": "2016-04-04T16:13:17.410Z",
-        
-       
-			"metadata": 
-			{
-			"title": "B2B-Marketing",
-			"subject":"Marketing",
-			"description": "In der vorliegenden Videoaufzeichnung wird das Thema ...",
-			"type":"video",
-			"source": "https://www.youtube.com/watch?v=kQqktXqAqTE",
-			"coverage": "university lecture",
-			"creator": "Prof. Dr. Daniel Wentzel",
-			"publisher": "RWTH Aachen",
-			"contributor":"-",
-			"rights":"Creative Commons 2.0",
-			"date":"01-01-2014",
-			"format":"video/mp4",
-			"identifier":"/video/view/572a1a6b7c5fdf281e0ae9e0",
-			"Audience":"university students, Master-level",
-			"language":"German",
-			"length": "3240",
-			"thumbnail": [
-				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_1.png",
-				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_2.png"
-			],
-			"keywords": [
-				"B2B",
-				"Marketing"
-			]
-			},
-			"assessment": [],
-			"comments": [],
-			"hyperlinks": [],
-			"toc": [],
-			}
-
-**videoMD**
-https://www.loc.gov/standards/amdvmd/htmldoc/videoMD.html#id160
-https://www.loc.gov/standards/amdvmd/videoMD.xsd
-
-**METS**
-http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/default.html
-http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/mets.xml
-http://digitalassets.lib.berkeley.edu/jpnprints/ucm/mets/caawucm_7_1_00027801.xml
-
-**PBCore 2.1**
-http://pbcore.org/schema/
-https://github.com/WGBH/PBCore_2.1/
-
 
 
 
@@ -131,12 +71,17 @@ https://github.com/WGBH/PBCore_2.1/
 - grunt
 
 # roadmap for next release
-- https://github.com/systemjs/systemjs
+- settings page
+	 - settings per appliction (e.g. terezin, etutor)
+	 - include all markdown-pages (intr, about, footer, ...)
+	 - load balancing location for videos / static contents
+	 - page title
+	 - application etutor/terezin
+	 - supported mime-types for upload
+- AMD / commonjs : https://github.com/systemjs/systemjs
 - S-BPM for node.js : https://github.com/e2ebridge/bpmn
 - display comments / links animated 
 - @templates: 
- - add uses files and used widgets to table
- - drag'n drop order of phases
  - cascade of settings for player widgets (einstellung f. ein Video überschreib globale Einstellung)
 - @instance: 
  - add used template to table
@@ -173,19 +118,12 @@ https://github.com/WGBH/PBCore_2.1/
 			<source src="the-sky-is-calling-small.mp4" media="screen and (max-device-width:800px)">
 			<source src="the-sky-is-calling-small.webm" media="screen and (max-device-width:800px)">
 			</video>
- - extend for other file types => images & PDFs
+ - extend upload for other file types => images & PDFs
 - @groups: 
  - list group member in table
  - group site ... description, tasks, log, progress, forum
 - @users
  - let users register and communicate the princple of minimal data collection 
-- settings page
- - settings per appliction (e.g. terezin, etutor)
- - include all markdown-pages (intr, about, footer, ...)
- - load balancing location for videos / static contents
- - page title
- - application etutor/terezin
- - supported mime-types for upload
 - REST API HATEOAS
   -	https://tools.ietf.org/html/draft-kelly-json-hal-06#page-2
   - https://en.wikipedia.org/wiki/HATEOAS
@@ -316,7 +254,62 @@ sox >= 14.4
 - farbe und transparanz von player controls ändert sich in abhängigkeit der gemittelten Helligkeit und Farbe des unmittelbaren Hintergrund. Die Änderungen unterscheiden sich in der vertikalen und in der Horizontalen. (Siehe Apple Player)
 
 
+# metadata
+**Dublin Core**
+http://dublincore.org/documents/usageguide/elements.shtml
 
+{
+"_id": "572a1a6b7c5fdf281e0ae9e0",        
+"video": "/static/uploads/14d1023907b3a84dd276c5dd5a5268bf1458077766625.mp4",
+"updated_at": "2016-05-04T15:51:07.220Z",
+"created_at": "2016-04-04T16:13:17.410Z",
+        
+       
+			"metadata": 
+			{
+			"title": "B2B-Marketing",
+			"subject":"Marketing",
+			"description": "In der vorliegenden Videoaufzeichnung wird das Thema ...",
+			"type":"video",
+			"source": "https://www.youtube.com/watch?v=kQqktXqAqTE",
+			"coverage": "university lecture",
+			"creator": "Prof. Dr. Daniel Wentzel",
+			"publisher": "RWTH Aachen",
+			"contributor":"-",
+			"rights":"Creative Commons 2.0",
+			"date":"01-01-2014",
+			"format":"video/mp4",
+			"identifier":"/video/view/572a1a6b7c5fdf281e0ae9e0",
+			"Audience":"university students, Master-level",
+			"language":"German",
+			"length": "3240",
+			"thumbnail": [
+				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_1.png",
+				"still_14d1023907b3a84dd276c5dd5a5268bf1458077766625_2.png"
+			],
+			"keywords": [
+				"B2B",
+				"Marketing"
+			]
+			},
+			"assessment": [],
+			"comments": [],
+			"hyperlinks": [],
+			"toc": [],
+			}
+
+**videoMD**
+https://www.loc.gov/standards/amdvmd/htmldoc/videoMD.html#id160
+https://www.loc.gov/standards/amdvmd/videoMD.xsd
+
+**METS**
+http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/default.html
+http://memory.loc.gov/diglib/ihas/loc.natlib.ihas.200031106/mets.xml
+http://digitalassets.lib.berkeley.edu/jpnprints/ucm/mets/caawucm_7_1_00027801.xml
+
+**PBCore 2.1**
+http://pbcore.org/schema/
+https://github.com/WGBH/PBCore_2.1/
 
 
 

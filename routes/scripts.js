@@ -131,49 +131,19 @@ exports.duplicateTemplateByID = function(req, res) {
  * status: finished
  **/
 exports.updateTemplateByID = function(req, res) { 
-	console.log(req.params.id);
-	console.log(req.body.phases[0].widgets )
-	
 	Templates.findOne( {"_id": req.params.id}, function ( err, template ){
 		if(err){
-			console.log('-------Err----------')
 			console.log(err);
 		}else{
 
 			var template = MergeRecursive(template,req.body);
-			//template.phases = req.body.phases;
-			console.log('-------before----------')
-			console.log(req.body.phases[0].widgets );
-			console.log(template.phases[0].widgets);
-			
-			
-			//console.log(t.phases[0].widgets )	
 			template.markModified('phases');
+			var now = new Date();
+			template.updated_at = now;
 			template.save();
 			res.end()
 		}
 	});
-	
-	/*Templates.collection.update( { "_id": req.params.id }, req.body , function(err, bla){
-		if(err){
-			console.log(err)
-		}else{
-			console.log(bla)
-			res.end();
-		}
-	});
-	
-	Templates.findOneAndUpdate( {"_id": req.params.id}, req.body, {upsert:true }, function ( err, template ){
-		if(err){
-			console.log(err)
-		}else{
-			console.log('Updated script instance '+template._id)
-			res.end()
-		}
-	});
-	*/
-	
-	
 }
 
 

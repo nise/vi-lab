@@ -27,7 +27,7 @@ $(document).ready (function () {
 
 
 function titleFormatter(value, row, index) { 
-	return '<a href="javascript:previewFormation('+index+');">'+row.title+'</a>';
+	return '<a href="javascript:previewFormation('+index+');"><span class="glyphicon glyphicon-plus"></span> '+row.title+'</a>';
 }	
 
 function operateFormatter(value, row, index) {

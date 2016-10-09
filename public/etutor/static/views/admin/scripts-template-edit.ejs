@@ -21,7 +21,7 @@
 	</div>	
 </div>		
 <!-- Phases -->
-<div class="phases">
+<div class="phases" id="sortable">
 <% if ( items.phases) { 
 	phase_i = -1
 %>
@@ -50,9 +50,19 @@
 todo
 - bug: events in a popover are gone after second call
 - add widgets options other then Boolean
-- global widgets
+- consider global widgets that cover multiple phases
 - 
 */
+
+/* make phases sortable */
+	$( function() {
+    $( "#sortable" ).sortable({
+			//containment: "parent"
+    	placeholder: "highlight"
+    	
+    });
+    $( "#sortable" ).disableSelection();
+  } );
 
 /**/
 	var frmMeta = $('#scriptTemplateForm');
@@ -93,7 +103,7 @@ todo
 			phase.video_files = videos;
 			data.phases.push(phase);
 		});
-		alert(JSON.stringify(data))
+		//alert(JSON.stringify(data))
 		//return
 			
 		$.ajax({

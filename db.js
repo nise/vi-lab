@@ -185,7 +185,7 @@ var ScriptTemplate = new Schema({
 	title: String,
 	description: String,
 	tags : [String], 
-	created_at 	: { type: Date },
+	created_at 	: { type: Date, default: Date.now },
 	updated_at 	: { type: Date, default: Date.now },
   slides : Boolean, // ???
   phases: [ Phases ]
@@ -227,6 +227,17 @@ var ScriptTemplate = new Schema({
 });
 mongoose.model( 'ScriptTemplate', ScriptTemplate );
 
+/*
+// not working
+ScriptTemplate.pre('save', function(next){
+  now = new Date();
+  this.updated_at = now;
+  if ( !this.created_at ) {
+    this.created_at = now;
+  }
+  next();
+});
+*/
 
 /*
 var autoref = require('mongoose-autorefs');

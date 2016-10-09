@@ -189,7 +189,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get('/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
 	app.get('/groups', groups.getGroups);
 	app.get('/json/groups', groups.getGroups);
-	app.get('/json/group-activity-log/', groups.getGroupActivityLog );
+	app.get('/json/group-activity-log/', users.ensureAuthenticated, groups.getGroupActivityLog );
 
 	// formations
 	app.get('/admin/users/groups/formations', users.authCallback(['editor']),	groups.renderFormationsIndex );
@@ -232,10 +232,12 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		* log per current group
 		* log per group over all phases, if group constellation does not change
 		*/
-	app.get('/json/user-activity-log', users.ensureAuthenticated, function(req, res) { // users.authCallback(['editor']), xxx
-		if (req.user !== undefined ) {
-		  // filt log for entries of the given user	
-			Log.find( { user: req.user.id } ).select('action utc user').sort( 'utc' ).exec(function (err, logs) {
+	app.get('/json/user-activity-log', users.ensureAuthenticated, function(req, res) { 
+		Log
+			.find( { user: req.user.id } )
+			.select('action utc user')
+			.sort( 'utc' )
+			.exec(function (err, logs) {
 				if(err){ 
 					console.log(err); 
 				}else{
@@ -243,13 +245,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 					res.jsonp( logs );
 					res.end('done');
 				}	
-			});
-
-		}else {
-		  res.type('application/json');
-		  res.jsonp({user:false, msg:'you are not logged in'});
-		  res.end();
-		}
+		});
 	});
 
 	
