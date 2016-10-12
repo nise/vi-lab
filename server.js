@@ -10,6 +10,7 @@ var
 	express = require('express'),
 	expressValidator = require('express-validator'),
 	app = express(),
+	compression = require('compression'),
 	path = require('path'),
 	flash = require('connect-flash'),
 	server = require('http').createServer(app),
@@ -59,6 +60,7 @@ var
 /* configure application **/
  	app.set('port', process.env.PORT || port);
  	app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
+ 	app.use(compression())
   app.use(express.static(path.join(__dirname, 'public/'+ application)));
  	app.set('views', __dirname + '/public/' + application + '/static/views');
 	app.set('view engine', 'ejs');

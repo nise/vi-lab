@@ -7,6 +7,7 @@
 
 ## bugs by priorities
 - bug: no login possible! 
+- store annotation that instances inherit
 - css bugs in opera / msie / safari
 
 - bug: @user::: when adding a new user there is no id assigned to them.
@@ -45,9 +46,71 @@
   - message to instructor 
  - viewing history
 - chat
-- integrate messaging system
 - @messages: link2image: https://github.com/brenden/node-webshot
+ - chat zw. Gruppenmitgliedern
+ - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
+ - bearbeitungsstand anzeigen
+  - anzahl items je toc/tags/comments/...
+  - ?gesamtstand anhand von relativer metrik
+ - daily reports about group activity send by e-mail 
 
+
+#VI-TWO 
+ - Datenbank auf serverseite verschieben und db-Klasse als Schnittstelle umgestalten
+ - make widgets independent from parser
+ - mehrsprachigkeit / spracheinheitlichkeit: l('')
+ - fallback: load annotations from dom if DB is not available
+
+- @timeline: 
+ - zustand für inaktive marker
+ - slide preview
+- @player 
+ - space == pause
+ - handle 'video end' event 
+ - feedback für keyboard commands : insb. playback speed, zoom
+ - switch favicon.ico when playing a video == Pattern
+ - enable youTube / vimeo / ...
+	var request = require('request');
+	var http = require('http');
+	var fs = require('fs');
+
+	http.createServer(function(req,res)
+	{
+		  var x = request('http://www.youtube.com/embed/XGSy3_Czz8k')
+		  req.pipe(x)
+		  x.pipe(res)
+	}).listen(1337, '127.0.0.1');
+	console.log('Server running at http://127.0.0.1:1337/');
+
+ - node.js streaming: http://stackoverflow.com/questions/33008951/video-streaming-in-node-js
+ 											http://stackoverflow.com/questions/4360060/video-streaming-with-html-5-via-node-js
+ 											https://github.com/meloncholy/vid-streamer
+ - vollbild / split screen
+ - placeholder @ videoplayer in css einbinden
+- @zoom: 
+ - zoom log
+ - relative zoom/pan position ... in a box window
+- @assesment
+ - comment assessment
+ - statistics
+ - inform users about submitted tasks
+- @other AS
+ - ass-fillin: semantische Nähe zw. Feedback und Aufgabe
+ - ass-ondemand: scrollbares feld bei aufgabenbearbeitung
+ 	
+
+- @ bookmark 
+ - url fehler
+
+- @tags 
+ - refactor code
+ - include
+ - automatische Verlinkung via tags
+
+- @highlight => overlay
+  - refactor
+  - remove require call for consistency
+  
 
 # For diss
 - done: caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
@@ -104,7 +167,6 @@
 	 see https://github.com/bgrins/videoconverter.js 
  - handle different format/mimes/file extentions, incl. file conversion
  - extract more technical informations about the vide files: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
- - store annotation that instances inherit
  - use common metadata standard for video
  - automatic conversion of file to mp4 and webm
  - automatic thumbnail creation to enable scrubbing
@@ -137,21 +199,12 @@
  - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
 - guided tour on how to define a script
    
-# Awareness
- - chat zw. Gruppenmitgliedern
- - Anzahl der seit dem pageload neu hinzugekommenen Annotationen anzeigen
- - bearbeitungsstand anzeigen
-  - anzahl items je toc/tags/comments/...
-  - ?gesamtstand anhand von relativer metrik
- - daily reports about group activity send by e-mail 
-
 
 # Performance & quality improvements
 - http://expressjs.com/en/advanced/best-practice-performance.html#env
 - fast logers: https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/?_ga=1.58848237.1719051603.1461595496
 - fully use require.js to load files
 - perfomance: console.time(label)   / console.timeEnd(label) 	
-- gzip compression => via express.js  siehe doku
 - usability: tooltip für Funktionen
 - handle errors: 
  - https://www.joyent.com/developers/node/design/errors
@@ -182,61 +235,7 @@ Required for audio normalization (optional):
 sox >= 14.4
 
 
-#VI-TWO 
- - Datenbank auf serverseite verschieben und db-Klasse als Schnittstelle umgestalten
- - make widgets independent from parser
- - mehrsprachigkeit / spracheinheitlichkeit: l('')
- - fallback: load annotations from dom if DB is not available
 
-- @timeline: 
- - zustand für inaktive marker
- - slide preview
-- @player 
- - handle video end event 
- - feedback für keyboard commands : insb. playback speed, zoom
- - switch favicon.ico when playing a video == Pattern
- - enable youTube / vimeo / ...
-	var request = require('request');
-	var http = require('http');
-	var fs = require('fs');
-
-	http.createServer(function(req,res)
-	{
-		  var x = request('http://www.youtube.com/embed/XGSy3_Czz8k')
-		  req.pipe(x)
-		  x.pipe(res)
-	}).listen(1337, '127.0.0.1');
-	console.log('Server running at http://127.0.0.1:1337/');
-
- - node.js streaming: http://stackoverflow.com/questions/33008951/video-streaming-in-node-js
- 											http://stackoverflow.com/questions/4360060/video-streaming-with-html-5-via-node-js
- 											https://github.com/meloncholy/vid-streamer
- - vollbild / split screen
- - placeholder @ videoplayer in css einbinden
-- @zoom: 
- - zoom log
- - relative zoom/pan position ... in a box window
-- @assesment
- - comment assessment
- - statistics
- - inform users about submitted tasks
-- @other AS
- - ass-fillin: semantische Nähe zw. Feedback und Aufgabe
- - ass-ondemand: scrollbares feld bei aufgabenbearbeitung
- 	
-
-- @ bookmark 
- - url fehler
-
-- @tags 
- - refactor code
- - include
- - automatische Verlinkung via tags
-
-- @highlight => overlay
-  - refactor
-  - remove require call for consistency
-  
 ## nicetohave
  - idee: "turn lights off" ... siehe videlectures.NET
  - visualize audio waveform inorder to estimate audio quality in terms of low or high altitude / capturing volume: http://stackoverflow.com/questions/38727741/play-a-moving-waveform-for-wav-audio-file-in-html/39019842#39019842

@@ -46,17 +46,17 @@ function dateFormatter(value, row, index) {
 }	
 
 
-
+/*
+ * Displays a group formation with all groups and its members
+ **/
 function previewFormation(index){
 	var data = { items: JSON.parse('<%-JSON.stringify( items )%>')[index].formation };
-//$.get('/json/admin/users/groups/', function(data){
 	require(['text!../views/admin/users-groups-formations-single.ejs', 'ejs'], function(thetemplate) { 
 		var 
 			html = ejs.render(thetemplate, data)
 		;
 		$('#preview').html( '<h4>Preview formation: '+JSON.parse('<%-JSON.stringify( items )%>')[index].title+'</h4>' ).append(html);
 	});			
-//});
 }
 
 

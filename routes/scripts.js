@@ -464,17 +464,19 @@ exports.updateInstanceByID = function(req, res){
 						// define groups considering the video files and group formations
 						// build inverted index
 						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
-							if(err){ console.log(err); 
+							if(err){ 
+								console.log(err); 
 							}else{
 								var 
 									user_index = {},
 									video_id = 1,
 									getFormation = function(p){
 										for(var d=0; d < docs.length;d++){ 
-											if(String(docs[d]._id) === String(allFormations[p])){ 
+											if(String(docs[d]._id) === String(allFormations[p])){ console.log(docs[d].formation)
 												return docs[d].formation;
 											}
 										}
+										return false;
 									}
 									;	
 								Videos.remove({}, function ( err, ggg ){		
@@ -482,7 +484,7 @@ exports.updateInstanceByID = function(req, res){
 								for(var p=0; p < instance.phases.length; p++){
 									var f = getFormation(p);
 									//Groups.remove({}, function ( err, ggg ){
-					
+									if(f !== false || f === undefined){
 										// iterate groups 
 										var group_id = 1;
 										for(var i=0; i < f.length; i++){
@@ -516,7 +518,7 @@ exports.updateInstanceByID = function(req, res){
 											}
 											group_id++;
 										}//end for groups
-				
+									}
 								}// end for phases
 								// update users with the new group-indexs
 								var 

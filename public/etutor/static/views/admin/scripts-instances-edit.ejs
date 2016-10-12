@@ -5,7 +5,7 @@
 <% } %>
 <!-- Phases -->
 <form id="instance-form">
-<div class="phases">
+<div class="phases"  id="sortable">
 <% if ( items.phases) { 
 	phase_i = -1
 %>
@@ -13,6 +13,7 @@
 		phase_i++
 	%>
 		<div class="phase" id="phase_<%= phase_i %>">
+			<span class="glyphicon glyphicon-sort right"></span>
 			<h3 class="xeditable phase-title str" id="phase-title_<%= phase_i %>" data-type="text" data-pk="1" data-url="" data-title="Phase Title">
 				<%= phase.title %>
 			</h3>
@@ -105,11 +106,26 @@ require.config({
 });
 */
 
-// make it editable
-$.fn.editable.defaults.mode = 'inline'; // popup
+/*
+ * make it editable
+ **/
+	$.fn.editable.defaults.mode = 'inline'; // popup
 
 
+/*
+ * make phases sortable 
+ **/
+	$( function() {
+		$( "#sortable" ).sortable({
+			//containment: "parent",
+			placeholder: "highlight"  	
+		});
+		$( "#sortable" ).disableSelection();
+	});
 
+
+/*
+ **/
 function escapeSpecialChars(s) { 
     return encodeURIComponent(s);
     return s.replace(/\n/g, "\\n")
@@ -130,8 +146,10 @@ $('.str').each(function(i, val){
 })
 var data = JSON.parse('<%-JSON.stringify( items.phases )%>');
 
-$(document).ready(function() {
 
+
+
+$(document).ready(function() {
 	var 
 		the_formations = [],
 		the_files = []
@@ -151,7 +169,29 @@ $(document).ready(function() {
 			the_formations = formations;
 			$.each(formations, function(j, val){
 				var check = phase.groupformation === formations[j]._id ? 'checked' : '';
-				$('#group_'+i).append( $('<label><input '+ check +' value="'+val._id+'" type="radio" name="grform_'+i+'" aria-label="'+val.title+'"> '+val.title+'</label><br>' ) );
+			
+				var label = $('<label><input '+ check +' value="'+val._id+'" type="radio" name="grform_'+i+'" aria-label="'+val.title+'"> '+val.title+'</label>');
+				var preview = $('<span class="glyphicon glyphicon-asterisk"></span>')
+					.attr('id','formation-preview-'+j)
+					/*.popover({
+						title : previewGroupFormation(j, '#formation-preview-'+i),//'<b>Formation</b>',
+						html : true,
+						//container: 'body',
+						//trigger: 'focus',
+						placement: 'right',//,
+						content : null//( widget, '#widget-'+ phase +'-'+widget.name, phase)
+					})*/
+				$('#group_'+i)
+					.append(label)
+					.append(preview)
+					.append('<br>')
+					;
+					
+				$('#formation-preview-'+i).on('show.bs.popover', function () {
+ 					
+				})	
+				
+					
 			});
 		});
 		// list available video files
@@ -168,7 +208,23 @@ $(document).ready(function() {
 	});
 	
 	
-	
+	/*
+	 * Displays a group formation with all groups and its members
+	 * status: not working xxx
+	 **/
+	function previewGroupFormation(index, selector){ 		 	
+		var data = the_formations[index].formation ;
+		require(['text!../views/admin/users-groups-formations-single.ejs', 'ejs'], function(thetemplate) { 
+			alert(JSON.stringify(data))
+			var 
+				html = ejs.render(thetemplate, data)
+				;
+			
+			$(selector).append(html);
+		});	
+		return '<h4>Preview formation: '+ the_formations[index].title+'</h4>';
+	}
+
 	
 	
 	
@@ -238,6 +294,9 @@ $(document).ready(function() {
 		permissionTable(0);
 	})
 
+
+
+
 	/*********************/
 	/* permission table */
 	function permissionTable(instance){
@@ -265,49 +324,53 @@ $(document).ready(function() {
 				groups: getOf([ String( sel_formation ) ], the_formations), 
 				videos: getOf(sel_files, the_files)  
 			}
+			if(data.groups[0] === undefined){ return; }
 			;
-			
+			// reset
+			$(tab).empty();
 			
 			//alert(JSON.stringify(the_files))
-			//alert(JSON.stringify(data.videos))
+			//alert(JSON.stringify(data.groups))
 			
-  	// column header
+  	// column header ~ videos
 		tab_head = $('<thead></thead>')
-			.append( $('<td></td>').text( 'Video Instances') )
+			.append( $('<td></td>').text( '') )
 			.appendTo( tab )
 			; 
 		for(var j = 0; j < data.videos.length; j++){	
 			tab_cell = $('<td></td>')
-				.text( data.videos[j]._id )
+				.text( data.videos[j].title )
 				.addClass('xeditable')
   			.data('type', 'text')
   			.data('id', data.videos[j].id)
   			.data('pk', data.videos[j].id)
 				.appendTo( tab_head );
-		}
-		// rows
-  	for(var i = 0; i < data.groups.length; i++){
+		} 
+		// rows ~ groups
+  	for(var i = 0; i < data.groups[0].formation.length; i++){  //alert(JSON.stringify(data.groups[0]))
   		// first column
   		var row_label = $('<td></td>')
-  			.text( 'Group '+data.groups[i].id )
-  			.addClass('xeditable')
+  			.text( 'Group '+i )
+  			//.addClass('xeditable')
   			.data('type', 'text')
-  			.data('id', data.groups[i].id)
+  			//.data('id', data.groups[0].formation[i].id)
   			.data('pk', 1)
   			;	
   		tab_row = $('<tr></tr>')
   			.append( row_label );
   		// cells
   		for(var j = 0; j < data.videos.length; j++){
-  			var tab_cell = getEmptyCell();
+  			var tab_cell = getEmptyCell(data.videos[j], data.groups[0].formation[i], i);
 				tab_cell.appendTo( tab_row );
-					
-  			/*if( data.groups[i].videos.indexOf( data.videos[j].id ) >= 0 ){
+				/*
+				if( data.groups[0].formation[i].videos.indexOf( data.videos[j].id ) >= 0 ){
   				tab_cell
   					.html( buildCell( tab_cell, data.videos[j] ) )
   					.addClass('visible-cell')
   					;
-  			}*/
+  			}
+  			*/	
+  			
   		}
   		$(tab).append( tab_row );
   		
@@ -318,9 +381,38 @@ $(document).ready(function() {
 	
 	/*
 	**/
-	function getEmptyCell(){
-		var ch = $('<input type="checkbox" value="1" />')
-		return $("<td></td>").append( ch );
+	function getEmptyCell(video, group, group_index){
+		var ch = $('<input type="checkbox" value="1" />');
+		
+		phase = 0;
+		for (var ii = 0; ii < defaultWidgets.length; ii++){  
+			if( getExistingWidgets( phase.widgets ).indexOf(defaultWidgets[ii].name) === -1){ 
+				addWidgetDropDownItem(phase, defaultWidgets[ii]);                
+			} 
+		}
+		var arr = [
+			'<!-- Widgets -->',
+			'<div  class="sec" id="widgets-'+phase+'">	',
+				'<div class="btn-group">',
+				'	<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
+				'		<span class="glyphicon glyphicon-plus"> <span class="caret"></span>',
+				'	</button>',
+				'	<ul class="dropdown-menu" id="widgetSelectorDropdown-'+phase+'">',
+				'	</ul>',
+				'</div>',
+			'</div>'
+		];
+		return $("<td></td>")
+			.append(arr.join(''))
+			/*.popover({
+						title : '<b>Instance of Video "'+video.title+'" for group '+group_index+'</b>',
+						html : true,
+						container: 'body',
+						//trigger: 'focus',
+						placement: 'right',//,
+						content : 'hello'//( widget, '#widget-'+ phase +'-'+widget.name, phase)
+					})*/
+			.append( ch );
 	}
 	
 	/*
@@ -332,9 +424,164 @@ $(document).ready(function() {
 		return video.id;	
 	}
 	
-	alert(3)
+	//alert(3)
 	permissionTable(1)
 });
+
+
+/*
+ *
+ **/
+function handleDropdownClick(e) {
+	var widget = e.data.widget;//getWidgetByName( e.data.widget.name );
+	$('#widgets-'+e.data.phase).prepend( buildWidget( widget, e.data.phase) );
+	// remove entry
+	$(e.target).parent().remove();
+	// toggle
+	$('#widgetSelectorDropdown-'+e.data.phase).dropdown('toggle'); 
+	e.preventDefault();
+	return false;
+};
+
+
+/***/
+function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
+	var 
+		dropdown = document.getElementById('widgetSelectorDropdown-' + phase),
+  	li = document.createElement("li"),
+  	link = document.createElement("a"),             
+  	text = document.createTextNode( widget.name )
+  	;
+  link.appendChild(text);
+  link.href = "#";
+  $(link).unbind('click', {phase: phase, widget: widget}, handleDropdownClick ); 
+	$(link).bind('click', {phase: phase, widget: widget}, handleDropdownClick ); 	
+  li.appendChild(link);
+  dropdown.appendChild(li);
+} 
+
+
+defaultWidgets = [
+	{ label : 'StrawPoll',
+		name: 'strawpoll', 
+ 		canBeAnnotated:true, 
+ 		type : 'thinkLet',
+ 		widget_options: {
+			path: '/static/img/user-icons/'
+		}
+	},
+	{ label : 'BucketSchuffel',
+		name: 'bucketshuffel', 
+ 		canBeAnnotated:true, 
+ 		type : 'thinkLet',
+ 		widget_options: {
+			path: '/static/img/user-icons/'
+		}
+	},
+	{ label : 'Table of Content',
+		name: 'toc', 
+ 		canBeAnnotated:true, 
+ 		type : 'annotation',
+ 		widget_options: {
+			hasTimelineMarker: true, 
+			timelineSelector : '.vi2-timeline-main',
+			hasMenu : true,
+			menuSelector: '#toc',
+			allowEditing : true,
+			allowCreation : true,
+			path: '/static/img/user-icons/'
+		}
+	},
+	{ label : 'Hyperlinks',
+		name: 'hyperlinks', 
+ 		canBeAnnotated:true, 
+ 		type : 'annotation',
+ 		widget_options: {
+	 		displaySelector: '#seq',
+			hasTimelineMarker: true, 
+			timelineSelector : '.vi2-timeline-main',
+			hasMenu : true,
+			menuSelector: '#hyperlinks',
+			minDuration: 5, // seconds
+			allowEditing : true,
+			allowCreation : true,
+			path: '/static/img/user-icons/'
+		}
+	},
+	{ label : 'Comments',
+		name: 'comments', 
+		canBeAnnotated:true, 
+		type : 'annotation',
+ 		widget_options: {
+ 			hasTimelineMarker: true,
+ 			timelineSelector : '.vi2-timeline-bottom', 
+			hasMenu : true,
+			menuSelector: '#comments',
+			allowReplies : true, // tipical for comments
+			allowEmoticons : true, 
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+ 		}
+ 	},
+ 	{	label : 'Video Assessment',
+ 		name : 'assessment',
+	 	canBeAnnotated:true, 
+		type : 'annotation',
+		widget_options : { 
+			displaySelector: '#overlay',
+			hasTimelineMarker: true,
+		  timelineSelector : '.vi2-timeline-top', 
+			hasMenu : true,
+			menuSelector: '#assessment',
+			allowComments : true,
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+		 }
+	},{
+		label : 'Skip Back',
+		name : 'skipBack',
+		type : 'player-widget',
+		widget_options : {
+			selector : '.control-bar',
+			label : '',
+			step : 5 // in seconds
+		}
+	},{
+		label : 'Playback Speed',
+		name : 'playbackSpeed',
+		type : 'player-widget',
+		widget_options : {
+			selector: '.control-bar',
+			videoSelector : 'video1',
+			speed_steps: [0.3,0.5,0.7,1.0,1.5,1.7,2.0]//[0.3,0.5,0.8,1.0,1.5,2.0,3.0,4.0]	
+		}
+	}	
+];
+
+
+function getExistingWidgets(arr){
+	var s = [];
+	for(w in arr){
+		if( arr.hasOwnProperty(w) ){ 
+			s.push( arr[w].name )		
+		}
+	}
+	return s;
+}
+
+/*
+ **/
+function getWidgetByName(name){
+	var len = defaultWidgets.length
+	for(var i=0; i < len; i++){
+		if(defaultWidgets[i].name === name){
+			return defaultWidgets[i];
+		}
+	}
+	return undefined;
+} 
 
 
 </script>

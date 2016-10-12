@@ -59,7 +59,7 @@
 			<input type="text" class="form-control" placeholder="tags1, tags2, ..." aria-describedby="sizing-addon1" name="tags" value="">
     </div>
     <br>
-     <div class="form">
+    <div class="form">
 			<span class="" id="sizing-addon1"><strong>License</strong></span>
 			<select id="license" name="license">
 				<option value="cc-by">Creative Commons - attribution (cc-by)</option>
@@ -67,6 +67,22 @@
 				<option value="cr">Copy Right Restricted</option>
 				<option value="nn">(unknown)</option>
 			</select>
+    </div>
+    <br>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Presentation</strong></span>
+			<select id="presentation-type" name="presentation-type">
+				<option value="video-only">Video only</option>
+				<option value="video-slides">Vudio and slides</option>
+				<option value="audio-only">Audio only</option>
+				<option value="audio-slides">Audio and slides</option>			
+			</select>
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Data for Slides</strong></span>
+			<textarea class="form-control" rows="4" id="slides" name="slides"></textarea>
     </div>
     <br>
     <br>
@@ -241,7 +257,9 @@ $(document).ready(function() {
 			coverage: $('input[name=coverage]').val(),
 			rights: $('input[name=rights]').val(),
 			date: $('input[name=date]').val(),
-			license: $('select option:selected').val(),
+			license: $('select[name=license] option:selected').val(),
+			presentation_type: $('select[name=presentation-type] option:selected').val(),
+			annotations [ slides: $('textarea#slides').val(), ],
 			video: video, // url
 			length: $('input[name=length]').val(),
 			size: $('input[name=size]').val(),

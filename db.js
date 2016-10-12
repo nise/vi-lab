@@ -4,7 +4,8 @@
 var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
  
- 
+
+/****** VIDEOS ******************************************/ 
 
 var Videos = new Schema({
 		video		: String,
@@ -67,6 +68,17 @@ var VideoFiles = new Schema({
 	institution	: String,
 	category		: String,
 	tags				: Array,
+// annotations
+	presentation_type :  { type: String, enum: [ 'video-only', 'audio-only', 'audio-slides', 'video-slides' ] }, // 'multi-angle', '360'
+	annotations : {
+		toc							: [Schema.Types.Mixed],
+		tags						: [Schema.Types.Mixed],
+		hyperlinks			: [Schema.Types.Mixed],
+		highlight				: [Schema.Types.Mixed],
+		slides					: [Schema.Types.Mixed],
+		comments				: [Schema.Types.Mixed],
+		assessment			: [Schema.Types.Mixed],
+	},	
 // misc
 	updated_at 	: { type: Date, default: Date.now }
 });
@@ -74,9 +86,9 @@ mongoose.model( 'VideoFiles', VideoFiles );
 
 
 
-/*
-User management
-**/
+
+/****** USER MANAGEMENT ******************************************/
+
 var Users = new Schema({
 	id: Number,
   username: String,
@@ -133,10 +145,7 @@ mongoose.model( 'GroupFormations', GroupFormations );
 
 
 
-/******************************************
-SCRIPTS
-******************************************/
-
+/****** SCRIPTS ******************************************/
 //
 var Widgets = new Schema({ 
 	label : String,
