@@ -352,7 +352,7 @@ exports.renderIndex = function(req, res) {
 
 **/
 exports.getGroups = function(req, res) {
-	Groups.collection.find().sort( 'id' ).toArray(function(err, items) {
+	Groups.find().sort( 'id' ).lean().exec(function(err, items) {
 		if(err){
 			console.log(err)
 		}else{

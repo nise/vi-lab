@@ -7,7 +7,6 @@
 
 ## bugs by priorities
 - bug: no login possible! 
-- store annotation that instances inherit
 - css bugs in opera / msie / safari
 
 - bug: @user::: when adding a new user there is no id assigned to them.
@@ -19,6 +18,7 @@
 - scenario: add video to a phase of a running script
 - bug@aufgabe muss je video, statt je Phase angezeigt werden
 - bug@user :: online status does not change if browser window gets closed
+- @script-instances indes => timeline dates 1970
 
 - logged out members are not gettng disabled in the peers client
 - fix some tooltip bugs (user-data, group-data)
@@ -134,6 +134,7 @@
 - grunt
 
 # roadmap for next release
+- install script including demo data
 - settings page
 	 - settings per appliction (e.g. terezin, etutor)
 	 - include all markdown-pages (intr, about, footer, ...)
@@ -157,6 +158,8 @@
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operating on the instance
 - @video files:
+ - make it nicer to predefine annotations other then slides
+ - upload and manage slides
  - workflow für video upload
 	 1. select locale file
 	 2. convert different codecs & sizes

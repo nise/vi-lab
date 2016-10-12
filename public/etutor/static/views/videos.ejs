@@ -5,10 +5,10 @@
 </div> 
 
 <div class="container">
-	
+	<%= JSON.stringify(items) %>
 	<% phase_i = 0 %>
 	<% items.script.phases.forEach(function(phase){ %>
-		<% if( phase_i < items.script.current_phase ) {%>
+		<% if( phase_i <= items.script.current_phase ) {%> 
 	<div class="row">
 		<div class="col-md-10 phase">
 			<h2 class="str"><%= phase.title %></h2>

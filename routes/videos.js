@@ -58,75 +58,75 @@ decimal2float = function(time){
 REST API CALL
 **/
 exports.index = function ( req, res ){ 
-  res.render( 'videos', { title : 'Express Videos Example' });
+  res.render( 'videos', { title : '' });
 };
 
-// yyy
+// xxx
 exports.renderScriptVideo = function(req, res) { //console.log(88+'---------------------------')
-	if( req.user.username !== undefined ){
-		// get script phase 
-		ScriptInstance.findOne({ status: 'running' }).exec(function(err, script) {
-			if(err){ 
-				console.log(err); 
-			}else if(script !== undefined){
-				var phase = script['current_phase']; 
-				// get group of current user
-				console.log('phase: '+phase);
-				Users.findOne({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
-					//var group = users[0].groups[Number(phase)];  
-					var group = phase === 0 ? [ users.groups[0] ] : users.groups.slice(0, Number(phase));
-					console.log(group)
-					// get video-ids of group
+
+	// get script phase 
+	ScriptInstance.findOne({ status: 'running' }).exec(function(err, script) {
+		if(err){ 
+			console.log(err); 
+		}else if(script !== undefined){
+			var phase = script['current_phase']; 
+			// get group of current user
+			console.log('phase: '+phase);
+			Users.findOne({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
+				//var group = users[0].groups[Number(phase)];  
+				var group = phase === 0 ? [ users.groups[0] ] : users.groups.slice(0, Number(phase));
+				console.log(group)
+				// get video-ids of group
+				
+				var groupQuery = {};
+				groupQuery['id'] = { $in: group }; // { id: group }
+				
+				Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
+					console.log(groups);
+					if(err){ 
+						console.log(err); 
+					}else if(groups[0] !== undefined){
+						/**/
+						// collect video ids from the effected groups
+						var the_videos = [], script_video = [];
+						for(var i = 0; i < groups.length; i++){
+							the_videos.push.apply( the_videos, groups[i].videos );
+							script_video[i] = groups[i].videos
+						}
+						var query = {}
+						query['id'] = { $in: the_videos }; // groups[0].videos
 					
-					var groupQuery = {};
-					groupQuery['id'] = { $in: group }; // { id: group }
-					
-					Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-						console.log(groups);
-						if(err){ 
-							console.log(err); 
-						}else if(groups[0] !== undefined){
-							/**/
-							// collect video ids from the effected groups
-							var the_videos = [], script_video = [];
-							for(var i = 0; i < groups.length; i++){
-								the_videos.push.apply( the_videos, groups[i].videos );
-								script_video[i] = groups[i].videos
-							}
-							var query = {}
-							query['id'] = { $in: the_videos }; // groups[0].videos
-						
-								console.log(script_video)
-								console.log('#################################################');
-								// get videos 
-								Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
-								
-									for(var i=0; i < group.length; i++){
-										script.phases[i].the_videos = []; console.log('gr'+i)
-										for(var j = 0; j < videos.length; j++){ 
-											if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
-												script.phases[i].fuck.push( videos[j] ); 
-												console.log(script.phases[i])
-											}
+							console.log(script_video)
+							console.log('#################################################');
+							// get videos 
+							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
+							
+								for(var i=0; i < group.length; i++){
+									script.phases[i].the_videos = []; console.log('gr'+i)
+									for(var j = 0; j < videos.length; j++){ 
+										if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
+											script.phases[i].fuck.push( videos[j] ); 
+											console.log(script.phases[i])
 										}
 									}
-									//console.log(script)
-									res.render('videos', {items: { script: script } });  								
-								});
-						}else{
-							//res.type('application/json');
-							//res.jsonp({}); 
-							console.log(3); 
-							res.end('done');
-						}
-					});// end Groups
-				});// end Users
-			}else{ // end if
-					
-				res.end('done');
-			}
-		});// end ScriptInstance	
-	}		 
+								}
+								//console.log(script)
+								res.render('videos', {items: { script: script } });  								
+							});
+					}else{
+						//res.type('application/json');
+						//res.jsonp({}); 
+						console.log(3); 
+						res.end('done');
+					}
+				});// end Groups
+			});// end Users
+		}else{ // end if
+				
+			res.end('done');
+		}
+	});// end ScriptInstance	
+		 
 }
 
 /*
@@ -344,7 +344,7 @@ exports.show = function ( req, res ){
   Videos.find({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, video ){
   	if(!err && video[0] !== undefined ){ 
 		  res.render( 'videos-single', {
-		      title   : 'Express Videos Example',
+		      title   : '',
 		      items   : video,
 		      current : req.params.id
 		  });
@@ -443,7 +443,7 @@ exports.renderVideoInstances = function(req, res){
 
 /*
  * Renders a template where all video files are listed 
- * status: done
+ * status: finished
  **/
 exports.renderVideoFiles = function(req, res){
 	VideoFiles.find( ).sort( 'id' ).exec( function ( err, videos ){
@@ -498,7 +498,7 @@ exports.renderFileEdit = function ( req, res ){
 
 /*
  * Updates the metadate of a video file.
- * status: xxx
+ * status: xxx, needs improvement
  **/
 exports.updateFile = function ( req, res ){ console.log(req.body)
   VideoFiles.findById( req.params.id, function ( err, video ){ 
@@ -518,6 +518,8 @@ exports.updateFile = function ( req, res ){ console.log(req.body)
 		video.coverage    = req.body.coverage;
 		video.rights      = req.body.rights;
 		video.license     = req.body.license;
+		video.presentation_type = req.body.presentation_type;
+		video.annotations = req.body.annotations;
 		video.video				= req.body.video;
 		video.length			= req.body.length;
 		video.size				= req.body.size;
@@ -581,6 +583,7 @@ exports.generateStillImages = function(req, res){
 	});			
 }
 
+
 /*
  * Creates an instance of a video file 
  * status: finished
@@ -628,11 +631,17 @@ exports.createMultipleFileInstance = function ( files, ids, cb ){
  * status: finished
  **/
 getInstanceFromFile = function(file, id){
-	// prep thumbnails
+	// prepare thumbnails
 	var arr = [];
 	for(var i = 1; i < 5; i++){
 		arr.push( 'still_'+file.video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
 	}
+	// prepare slides 
+	var slides = [];
+	if( file.annotations !== undefined && file.annotations.slides !== undefined ){
+		slides = file.annotations.slides;
+	}
+	
 	return {
 				"id": id === undefined ? Math.floor(Math.random()*1000) : id, 
 				"progress": '', // ?
@@ -655,7 +664,7 @@ getInstanceFromFile = function(file, id){
 				"assessmentfillin": [],
 				"assessment": [],
 				"comments": [],
-				"slides": [],
+				"slides": slides,
 				"highlight": [],
 				"hyperlinks": [],
 				"tags": [],

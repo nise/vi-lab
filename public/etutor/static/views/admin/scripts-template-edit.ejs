@@ -349,6 +349,22 @@ defaultWidgets = [
 			path: '/static/img/user-icons/'
 		}
 	},
+	{ label : 'Synchronized Slides',
+		name: 'syncMedia', 
+ 		canBeAnnotated:false, 
+ 		type : 'annotation',
+ 		widget_options: {
+			selector: '.syncMedia', 
+			hasTimelineMarker: true, 
+			controls: true, 
+			timelineSelector : '.vi2-timeline-main',
+			hasMenu: false,
+			menuSelector:'.synMediaMenu',
+			prefix_path: '/static/img/slides/', 
+			sync: true, 
+			placeholder:'/static/img/placeholder.jpg'
+		}
+	},
 	{ label : 'Table of Content',
 		name: 'toc', 
  		canBeAnnotated:true, 

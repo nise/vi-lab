@@ -74,14 +74,14 @@
 			<span class="" id="sizing-addon1"><strong>Presentation</strong></span>
 			<select id="presentation-type" name="presentation-type">
 				<option value="video-only">Video only</option>
-				<option value="video-slides">Vudio and slides</option>
+				<option value="video-slides">Video and slides</option>
 				<option value="audio-only">Audio only</option>
 				<option value="audio-slides">Audio and slides</option>			
 			</select>
     </div>
     <br>
     <div class="form">
-			<span class="" id="sizing-addon1"><strong>Data for Slides</strong></span>
+			<span class="" id="sizing-addon1"><strong>JSON-Data for Slides</strong></span>
 			<textarea class="form-control" rows="4" id="slides" name="slides"></textarea>
     </div>
     <br>
@@ -259,7 +259,7 @@ $(document).ready(function() {
 			date: $('input[name=date]').val(),
 			license: $('select[name=license] option:selected').val(),
 			presentation_type: $('select[name=presentation-type] option:selected').val(),
-			annotations [ slides: $('textarea#slides').val(), ],
+			annotations: [ slides: $('textarea#slides').val(), ],
 			video: video, // url
 			length: $('input[name=length]').val(),
 			size: $('input[name=size]').val(),

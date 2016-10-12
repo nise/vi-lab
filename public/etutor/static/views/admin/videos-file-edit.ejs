@@ -57,7 +57,9 @@ $(document).ready(function() {
 			;
 		for(var i = 1; i < 5; i++){
 			arr.push( 'still_'+video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
-		}
+		} 
+		var annotations = {};
+		annotations.slides = JSON.parse( $('textarea#slides').val() );
 		var data = {
 				title: $('input[name=title]').val(),
 				creator: $('input[name=creator]').val(),
@@ -74,6 +76,8 @@ $(document).ready(function() {
 				rights: $('input[name=rights]').val(),
 				date: $('input[name=date]').val(),
 				license: $('select option:selected').val(),
+				presentation_type: $('select[name=presentation-type] option:selected').val(),
+				annotations: annotations,
 				video: video, // url
 				length: $('input[name=length]').val(),
 				size: $('input[name=size]').val(),
@@ -156,6 +160,23 @@ $(document).ready(function() {
 				<option <%= items.license == 'cr' ? 'selected' : '' %> value="cr">Copy Right Restricted</option>
 				<option <%= items.license == 'nn' ? 'selected' : '' %> value="nn">Unknown</option>
 			</select>
+    </div>
+    <br>
+    <br>
+    <%= items.presentation_type %>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>Presentation</strong></span>
+			<select id="presentation-type" name="presentation-type">
+				<option <%= items.presentation_type == 'video-only' ? 'selected' : '' %> value="video-only">Video only</option>
+				<option <%= items.presentation_type == 'video-slides' ? 'selected' : '' %> value="video-slides">Video and slides</option>
+				<option <%= items.presentation_type == 'audio-only' ? 'selected' : '' %> value="audio-only">Audio only</option>
+				<option <%= items.presentation_type == 'audio-slides' ? 'selected' : '' %> value="audio-slides">Audio and slides</option>			
+			</select>
+    </div>
+    <br>
+    <div class="form">
+			<span class="" id="sizing-addon1"><strong>JSON-Data for Slides</strong></span>
+			<textarea class="form-control" rows="4" id="slides" name="slides"><%= JSON.stringify( items.annotations.slides ) %></textarea>
     </div>
     <br>
     <div class="stills row">

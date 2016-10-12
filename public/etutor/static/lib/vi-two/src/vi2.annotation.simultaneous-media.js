@@ -34,13 +34,13 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		type : 'annotation',
 		// defaults
 		options : {    //hasTimelineMarker: true, hasMenu: true, menuSelector:'.toc'
-			selector: '.syncMedia', 
+			selector: '#seq',//.syncMedia', 
 			hasTimelineMarker: true, 
 			controls: true, 
 			timelineSelector : '.vi2-timeline-main',
 			hasMenu: false,
 			menuSelector:'.synMediaMenu',
-			prefix_path: 'slides/', 
+			prefix_path: '/static/img/slides/', 
 			sync: true, 
 			placeholder:'/static/img/placeholder.jpg'
 		},
@@ -51,7 +51,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		/*
 		* Initialize 
 		**/
-		init : function(ann){ // 	alert(33);
+		init : function(ann){  	
   		var _this = this; 
 			this.tag_obj = [];
 			$.each(ann, function(i, val){  
