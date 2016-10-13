@@ -975,7 +975,7 @@ float:right;
 
 /* FOOTER */
 footer {
-  position:fixed;
+  position:relative;
   clear:both;
   bottom:0 !important;
 	left:0;

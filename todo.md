@@ -135,6 +135,10 @@
 
 # roadmap for next release
 - install script including demo data
+- AMD / commonjs : https://github.com/systemjs/systemjs
+- S-BPM for node.js : https://github.com/e2ebridge/bpmn
+- display comments / links animated 
+- strict templating, e.g. page-title as <%= page.title %>
 - settings page
 	 - settings per appliction (e.g. terezin, etutor)
 	 - include all markdown-pages (intr, about, footer, ...)
@@ -142,28 +146,30 @@
 	 - page title
 	 - application etutor/terezin
 	 - supported mime-types for upload
-- AMD / commonjs : https://github.com/systemjs/systemjs
-- S-BPM for node.js : https://github.com/e2ebridge/bpmn
-- display comments / links animated 
+
+
 - @templates: 
+ - duplicate phase
  - cascade of settings for player widgets (einstellung f. ein Video überschreib globale Einstellung)
+
 - @instance: 
  - add used template to table
  - level 3 script erzeugen inkl. videoinstanzen und gruppenzuordnung
  - only one instance should be active.
- - drag'n drop order of phases
  - vizualize how users move from one group to another by using a sankey diagram (see data-viz folder at works)
- - visualize script progress in a stacked-timline.html (see data-viz folder at works)
+
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operating on the instance
+
 - @video files:
  - make it nicer to predefine annotations other then slides
  - upload and manage slides
+ - import/export metadata
  - workflow für video upload
 	 1. select locale file
 	 2. convert different codecs & sizes
-	 3. define metadata
+	 3. define metadata (done)
 	 4. extract stills
 	 5. extract text from stills
 	 5. select poster from stills

@@ -242,6 +242,8 @@ $(document).ready(function() {
 		for(var i = 1; i < 5; i++){
 			thumbs.push( 'still_'+video.split('/').splice(-1)[0].replace('.mp4','')+'_'+i+'.png' );
 		}
+		var annotations = {};
+		annotations.slides = JSON.parse( $('textarea#slides').val() );
 		var data = {
 			title: $('input[name=title]').val(),
 			creator: $('input[name=creator]').val(),
@@ -259,7 +261,7 @@ $(document).ready(function() {
 			date: $('input[name=date]').val(),
 			license: $('select[name=license] option:selected').val(),
 			presentation_type: $('select[name=presentation-type] option:selected').val(),
-			annotations: [ slides: $('textarea#slides').val(), ],
+			annotations: annotations,
 			video: video, // url
 			length: $('input[name=length]').val(),
 			size: $('input[name=size]').val(),

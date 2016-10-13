@@ -5,17 +5,16 @@
 </div> 
 
 <div class="container">
-	<%= JSON.stringify(items) %>
 	<% phase_i = 0 %>
 	<% items.script.phases.forEach(function(phase){ %>
 		<% if( phase_i <= items.script.current_phase ) {%> 
 	<div class="row">
 		<div class="col-md-10 phase">
 			<h2 class="str"><%= phase.title %></h2>
-			<h3>Aufgabe:</h3>
+			<b>Aufgabe:</b>
 			<div class="mark str"><%= phase.instruction %></div>
-			<h3>Materialien:</h3>
-			<div class="mark str"><%= phase.supplements %></div>
+			<!--<h3>Materialien:</h3>
+			<div class="mark str"><%= phase.supplements %></div>-->
 			<br/>
 		</div>
 	</div>
@@ -30,7 +29,7 @@
 							<img width="100%" height="100%" src="/static/img/stills/<%= item.metadata[0].thumbnail[1] %>" />
 					</a>
 					<div class="caption">
-				    <h5><%= item.metadata[0].title %></h5>
+				    <h5><a class="thumbnail fadein" href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h5>
 				    <p class="lecturer"><a href="<%= item.metadata[0].source %>"><span class="glyphicon glyphicon-user"></span> <b></b> <%= item.metadata[0].author %></a></p>
 						<p><%= item.metadata[0].abstract %></p>
 						<!--<p><span class="glyphicon glyphicon-globe"> <b>Quelle</b></span></p>	-->

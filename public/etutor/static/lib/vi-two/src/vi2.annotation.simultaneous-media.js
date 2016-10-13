@@ -51,7 +51,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		/*
 		* Initialize 
 		**/
-		init : function(ann){  	
+		init : function(ann){  
   		var _this = this; 
 			this.tag_obj = [];
 			$.each(ann, function(i, val){  
@@ -86,7 +86,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		
 		/* 
 		* Creates menu of slides
-		* todo: has not been tested 
+		* todo: xxx has not been tested 
 		**/
 		createMenu : function(){  
 			$(this.options.selector).empty();

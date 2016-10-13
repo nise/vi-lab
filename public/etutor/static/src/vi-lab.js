@@ -287,7 +287,7 @@ var ViLab = $.inherit({
 					var type = button.data('annotationtype'); 
 					var data = button.data('annotationdata'); 
 					var modal = $(this);  
-					var widget = vi2.observer.widget_list[ type ]; 
+					var widget = vi2.observer.widget_list[ type ];  
 					modal.find('.modal-title').html( modal_settings[ type ].title );
 					modal.find('.modal-validation').empty();
 					
@@ -387,8 +387,8 @@ var ViLab = $.inherit({
 				widget = new Vi2.TableOfContents( widget_options.widget_options ); 
 				title = 'Kapitel'; // Szenen 
 				break
-			case "hyperlinks" :		
-				//widget = new Vi2.Hyperlinks( widget_options.widget_options );
+			case "hyperlinks" :		//alert(JSON.stringify(widget_options.widget_options))
+				widget = new Vi2.Hyperlinks( widget_options.widget_options );
 				title = 'Links';
 				break;	
 			case "comments" : 
