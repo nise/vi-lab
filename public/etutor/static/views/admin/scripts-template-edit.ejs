@@ -426,7 +426,24 @@ defaultWidgets = [
 			allowCreation : true, 
 			path: '/static/img/user-icons/'
 		 }
-	},{
+	},
+	{	label : 'Video Analysis',
+ 		name : 'assessmentanalysis',
+	 	canBeAnnotated:true, 
+		type : 'annotation',
+		widget_options : { 
+			displaySelector: '#overlay',
+			hasTimelineMarker: true,
+		  timelineSelector : '.vi2-timeline-top', 
+			hasMenu : true,
+			menuSelector: '#assessment2',
+			allowComments : true,
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+		 }
+	},
+	{
 		label : 'Skip Back',
 		name : 'skipBack',
 		type : 'player-widget',

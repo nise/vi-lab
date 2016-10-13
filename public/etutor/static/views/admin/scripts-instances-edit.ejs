@@ -425,7 +425,7 @@ $(document).ready(function() {
 	}
 	
 	//alert(3)
-	permissionTable(1)
+	//permissionTable(1)
 });
 
 
@@ -539,7 +539,24 @@ defaultWidgets = [
 			allowCreation : true, 
 			path: '/static/img/user-icons/'
 		 }
-	},{
+	},
+	{	label : 'Video Analysis',
+ 		name : 'assessmentanalysis',
+	 	canBeAnnotated:true, 
+		type : 'annotation',
+		widget_options : { 
+			displaySelector: '#overlay',
+			hasTimelineMarker: true,
+		  timelineSelector : '.vi2-timeline-top', 
+			hasMenu : true,
+			menuSelector: '#assessment2',
+			allowComments : true,
+			allowEditing : true,
+			allowCreation : true, 
+			path: '/static/img/user-icons/'
+		 }
+	},
+	{
 		label : 'Skip Back',
 		name : 'skipBack',
 		type : 'player-widget',
@@ -548,7 +565,8 @@ defaultWidgets = [
 			label : '',
 			step : 5 // in seconds
 		}
-	},{
+	},
+	{
 		label : 'Playback Speed',
 		name : 'playbackSpeed',
 		type : 'player-widget',
