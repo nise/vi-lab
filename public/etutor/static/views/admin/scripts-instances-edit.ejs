@@ -284,7 +284,7 @@ $(document).ready(function() {
 			success: function(res){
 				window.location.href = '/admin/scripts/instances';
 			},
-			error : function(e){
+			error : function(e){ //alert(JSON.stringify(e))
 				console.log(JSON.stringify(e));
 			}	
 		});

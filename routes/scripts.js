@@ -439,22 +439,22 @@ function startScriptSession(){
  * Saves an script instance to the database. Furthermore it prepares the script for being interpretet in the run-time environment
  * status
  **/
-exports.updateInstanceByID = function(req, res){ 
-	//l.log('info', '+++++++++++++++++++++++++++++++++++++++++++++')
+exports.updateInstanceByID = function(req, res){  
 	// save instance
 	delete req.body.instance["_id"];
 	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
-		if(err){
-			//l.log('info', err)
-		}else{	    
+		if(err){ 
+			l.log('info', err)
+		}else{	
 		    instance.phases[0] = req.body.instance.phases[0];
 					if( req.body.overwrite === 'false' ){	
-						//l.log('info', 'Updated instance without changing groups and video instances');
+						l.log('info', 'Updated instance without changing groups and video instances');
 						//res.redirect( '/admin/scripts/instances' );
+
 						res.end(); 
 					}else{
 						// overwrite groups and generate new video instances
-						Groups.remove({}, function ( err, ggg ){});
+						Groups.remove({}, function ( err, ggg ){ });
 						// get group formation
 						
 						var allFormations = [];
@@ -466,8 +466,8 @@ exports.updateInstanceByID = function(req, res){
 						// build inverted index
 						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
 							if(err){ 
-								//l.log('info', err); 
-							}else{
+								l.log('info', err); 
+							}else{ 
 								var 
 									user_index = {},
 									video_id = 1,
@@ -482,19 +482,19 @@ exports.updateInstanceByID = function(req, res){
 									;	
 								Videos.remove({}, function ( err, ggg ){		
 								// iterate phases
-								for(var p=0; p < instance.phases.length; p++){
+								for(var p=0; p < instance.phases.length; p++){ 
 									var f = getFormation(p);
 									//Groups.remove({}, function ( err, ggg ){
 									if(f !== false || f === undefined){
 										// iterate groups 
 										var group_id = 1;
-										for(var i=0; i < f.length; i++){
+										for(var i=0; i < f.length; i++){ 
 											// generate video instances
 											var 
 												files = instance.phases[p].video_files,
 												video_ids = []
 												;
-											for(var lll = 0; lll < files.length; l++){
+											for(var lll = 0; lll < files.length; lll++){ 
 												video_ids[lll] = video_id;
 												video_id++;
 											}	
@@ -509,7 +509,7 @@ exports.updateInstanceByID = function(req, res){
 											};
 						
 											// save group
-											new Groups( group ).save();
+											new Groups( group ).save(); 
 											// create index of users in a group
 											for(var j=0; j < f[i].length; j++){
 												if( f[i][j].id in user_index === false){

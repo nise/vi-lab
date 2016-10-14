@@ -81,8 +81,8 @@ git reset --hard origin/master
 ## dump and restore mongoDB
 mongodb: mongodb://localhost/etutor
 **dump**
-mongodump --db <application name>
-mongodump --db etutor
+mongodump --forceTableScan --db <application name>
+mongodump --forceTableScan --db etutor
 **restore**
 mongorestore --db <application name> ./dump/<application name>
 mongorestore --db etutor ./dump/etutor
