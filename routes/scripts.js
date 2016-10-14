@@ -440,16 +440,16 @@ function startScriptSession(){
  * status
  **/
 exports.updateInstanceByID = function(req, res){ 
-	l.log('info', '+++++++++++++++++++++++++++++++++++++++++++++')
+	//l.log('info', '+++++++++++++++++++++++++++++++++++++++++++++')
 	// save instance
 	delete req.body.instance["_id"];
 	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
 		if(err){
-			l.log('info', err)
+			//l.log('info', err)
 		}else{	    
 		    instance.phases[0] = req.body.instance.phases[0];
 					if( req.body.overwrite === 'false' ){	
-						l.log('info', 'Updated instance without changing groups and video instances');
+						//l.log('info', 'Updated instance without changing groups and video instances');
 						//res.redirect( '/admin/scripts/instances' );
 						res.end(); 
 					}else{
@@ -466,14 +466,14 @@ exports.updateInstanceByID = function(req, res){
 						// build inverted index
 						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
 							if(err){ 
-								l.log('info', err); 
+								//l.log('info', err); 
 							}else{
 								var 
 									user_index = {},
 									video_id = 1,
 									getFormation = function(p){
 										for(var d=0; d < docs.length;d++){ 
-											if(String(docs[d]._id) === String(allFormations[p])){ l.log('info', docs[d].formation)
+											if(String(docs[d]._id) === String(allFormations[p])){ //l.log('info', docs[d].formation)
 												return docs[d].formation;
 											}
 										}
@@ -494,8 +494,8 @@ exports.updateInstanceByID = function(req, res){
 												files = instance.phases[p].video_files,
 												video_ids = []
 												;
-											for(var l = 0; l < files.length; l++){
-												video_ids[l] = video_id;
+											for(var lll = 0; lll < files.length; l++){
+												video_ids[lll] = video_id;
 												video_id++;
 											}	
 											videos.createMultipleFileInstance(files, video_ids);
@@ -530,21 +530,23 @@ exports.updateInstanceByID = function(req, res){
 									user_index, 
 									function (value, key, callback) {
 										Users.update({id: key}, {groups: value} ,function (err, user) {
-											l.log('info', 'try update user')
+											console.log('try update user');
 											if(err){ 
-												l.log('info', err); 
+												console.log( err); 
 											}else{
-												l.log('info', 'try update user group '+value)
-												//l.log('info', 'updated group for user')
+												console.log('try update user group '+value)
+												console.log('updated group for user')
 												//configs[key] = user; // collect results
 											}
 										});	
 									}, 
 									function (err, e) {
-											if (err){ l.log('info',  'ERRRO '); l.log('info', err); }
+											if (err){ 
+												//l.log('info',  'ERRRO '); l.log('info', err); 
+											}
 											//l.log('info', configs); // so something with the results
-											l.log('info',  'End');
-											l.log('info', 'Updated instance and created new groups and video instances')
+											//l.log('info',  'End');
+											//l.log('info', 'Updated instance and created new groups and video instances')
 											res.end();
 									}
 								);// end async	
