@@ -27,12 +27,16 @@ sudo vi /etc/nginx/sites-available/node
 
 server {
     listen 80;
+
     server_name example.com;
 
     location / {
-        proxy_set_header   X-Forwarded-For $remote_addr;
-        proxy_set_header   Host $http_host;
-        proxy_pass         "http://127.0.0.1:3033";
+        proxy_pass http://127.0.0.1:3033;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 #### Set symlink to config file
