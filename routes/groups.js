@@ -1,5 +1,6 @@
 
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server = require('../server'),
 	ScriptInstance = mongoose.model( 'ScriptInstance' ),
@@ -20,16 +21,16 @@ var
 exports.csvImportFromJSON = function ( req, res ){
 	// destroy dataset first
 	Groups.remove({}, function ( err, docs ){
-		console.log('Removed all groups to replace them by a JSON file.');
+		l.log('info', 'Removed all groups to replace them by a JSON file.');
 		var vi = require('../data/' + server.application() + '/groups.json');
 
 		for(var j = 0; j < vi.length; j++){
 			var t = new Groups(vi[j])
 				.save( function( err, video, count ){
 					if(err){
-						console.log(err)
+						l.log('info', err)
 					}else{
-						console.log('Imported group '+video.id+' '+video.id);
+						l.log('info', 'Imported group '+video.id+' '+video.id);
 					}	
 				});
 		}	
@@ -44,7 +45,7 @@ exports.csvImport = function ( req, res ){
 	// read file
 	fs.readFile(__dirname+'/../data/' + server.application() + '/groups.csv', function read(err, data) {
 		Groups.remove({}, function(err) { 
-			console.log('Removed Groups from DB') 
+			l.log('info', 'Removed Groups from DB') 
 			csv().from.string(data, {comment: '#'} )
 				.to.array( function(data){
 				// define group for each line
@@ -58,11 +59,11 @@ exports.csvImport = function ( req, res ){
 					})
 					.save( function( err, videos, count ){
 						if(err){
-							console.log(err)
+							l.log('info', err)
 						}
 					});	
 				}
-				console.log('Imported Groups from data/groups.js to DB');
+				l.log('info', 'Imported Groups from data/groups.js to DB');
 			});// end read
 		});// end csv	
 	}); // end remove
@@ -99,7 +100,7 @@ exports.csvImport = function ( req, res ){
 		  				.sort( 'utc' )
 		  				.exec(function (err, logs) {
 							if(err){ 
-								console.log(err); 
+								l.log('info', err); 
 							}else{
 								res.type('application/json');
 								res.jsonp( logs );
@@ -138,7 +139,7 @@ exports.csvImport = function ( req, res ){
 exports.renderNewFormation = function ( req, res ){
 	Users.find().exec( function ( err, users ){
 		if(err){ 
-			console.log(err);
+			l.log('info', err);
 			res.end('error'); 
 		}else{
  			res.render('admin/users-groups-formations-create', { items:users });
@@ -166,7 +167,7 @@ exports.createFormation = function ( req, res ){
 	
 	Users.find( query ).exec( function ( err, users ){
 		if(err){ 
-			console.log(err);
+			l.log('info', err);
 			res.end('error'); 
 		}else{ 
 			var groups = [];
@@ -254,8 +255,8 @@ joinGroups = function(){}
 exports.renderFormationsIndex = function(req, res){
 	Formations.find({}).exec(function (err, formations) {
 		if(err){ 
-			console.log(err); 
-		}else{ console.log(formations)
+			l.log('info', err); 
+		}else{ l.log('info', formations)
 			res.render( 'admin/users-groups-formations-index', {
 				items : formations
 			});
@@ -270,7 +271,7 @@ exports.renderFormationsIndex = function(req, res){
 exports.getFormations = function(req, res){
 	Formations.find({}).exec(function (err, formations) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{ 
 			res.type('application/json');
 			res.jsonp(formations);  
@@ -287,7 +288,7 @@ exports.getFormations = function(req, res){
 exports.renderFormationByID = function(req, res) { 
 	Formations.find({_id: req.params.id}).lean().exec(function (err, formation) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.render( 'admin/users-groups-formations-edit', {
 				items : formation[0]
@@ -304,9 +305,9 @@ exports.renderFormationByID = function(req, res) {
 exports.saveFormation = function(req, res) {
 	new Formations( req.body ).save(function(err, formation){
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}else{
-			console.log('saved group formation')
+			l.log('info', 'saved group formation')
 			//res.redirect( '/admin/users/groups/formations' );
 			res.send({ok:true});
 		}
@@ -319,7 +320,7 @@ exports.saveFormation = function(req, res) {
 exports.destroyFormationByID = function ( req, res ){
   Formations.findByIdAndRemove( req.params.id, function ( err, user ){
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{
 	  	res.redirect( '/admin/users/groups/formations' );
 	  	res.end();
@@ -339,7 +340,7 @@ exports.destroyFormationByID = function ( req, res ){
 exports.renderIndex = function(req, res) {
   Groups.find().sort( 'id' ).lean().exec(function (err, items) {
 	  if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.render('admin/users-groups', {items: items}); 
 			res.end('done');
@@ -354,7 +355,7 @@ exports.renderIndex = function(req, res) {
 exports.getGroups = function(req, res) {
 	Groups.find().sort( 'id' ).lean().exec(function(err, items) {
 		if(err){
-			console.log(err)
+			l.log('info', err)
 		}else{
       res.type('application/json');
 			res.jsonp(items);  

@@ -1,6 +1,7 @@
 
 
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Users  = mongoose.model( 'Users'),
@@ -22,7 +23,7 @@ exports.csvImport = function ( req, res ){
 	// load data
 	fs.readFile(__dirname+'/../data/' + server.application() + '/users.csv', function read(err, data) {
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}
 		// get Video dataset in order to extract toc data
 		/*
@@ -34,35 +35,36 @@ exports.csvImport = function ( req, res ){
 			}
 			*/
 			// destroy dataset first
-			Users.remove({}, function(err) { console.log('Removed Users from DB') });
-			csv().from.string(data, {comment: '#'} )
-				.to.array( function(data){
-					// define scene for each line
-					for(var i = 1; i < data.length; i++){
-						new Users({
-							id: i,
-							firstname: data[i][0],
-							name : data[i][1],
-							password: data[i][2],
-							hs: data[i][3],
-							email: data[i][12],
-							role: data[i][13],
-							username: data[i][14] === '' ? (data[i][0]).replace(/\ /g,'.').toLowerCase() + '.' + (data[i][1]).toLowerCase() : data[i][14],//data[i][13], 
-							icon : 'img/usericons/user-'+i+'.png', 
-							trace : 1,
-							status: { online:false, location:'default' },
-							experimental: '',
-							attribute: Number( data[i][5] ),
-							groups : [],//[data[i][6], data[i][7], data[i][8],data[i][9], data[i][10], data[i][11]],	
-							updated_at : Date.now()
-						}).save( function( err, todo, count ){
-							//res.redirect( '/users' );
-						});
-						generateIdenticon((data[i][1]).toLowerCase(), i);
-					}
-				});// end array()
-			//});// end video call	
-			console.log('Imported Users from data/users.csv to DB');
+			Users.remove({}, function(err) { 
+				l.log('info', 'Removed Users from DB') 
+					csv().from.string(data, {comment: '#'} )
+						.to.array( function(data){
+							// define scene for each line
+							for(var i = 1; i < data.length; i++){
+								new Users({
+									id: i,
+									firstname: data[i][0],
+									name : data[i][1],
+									password: data[i][2],
+									hs: data[i][3],
+									email: data[i][12],
+									role: data[i][13],
+									username: data[i][14] === '' ? (data[i][0]).replace(/\ /g,'.').toLowerCase() + '.' + (data[i][1]).toLowerCase() : data[i][14],//data[i][13], 
+									icon : 'img/usericons/user-'+i+'.png', 
+									trace : 1,
+									status: { online:false, location:'default' },
+									experimental: '',
+									attribute: Number( data[i][5] ),
+									groups : [],//[data[i][6], data[i][7], data[i][8],data[i][9], data[i][10], data[i][11]],	
+									updated_at : Date.now()
+								}).save( function( err, todo, count ){
+									//res.redirect( '/users' );
+								});
+								generateIdenticon((data[i][1]).toLowerCase(), i);
+							}
+						});// end array()
+					}); // delete users
+			l.log('info', 'Imported Users from data/users.csv to DB');
 	});// end fs				
 };
 
@@ -73,12 +75,12 @@ var generateIdenticon = function(name, id){
 	 // can't be installed on ubuntu 10.04 server
 	/*
 	identicon.generate(name, 10, function(err, buffer) {
-		 if(err){ console.log('## ERROR while generating identicon')}
+		 if(err){ l.log('info', '## ERROR while generating identicon')}
 			fs.writeFileSync(__dirname+'/../public/' + server.application() + '/static/img/user-icons/user-'+id+'.png', buffer);
 	});
 	
 	identicon.generate(name, 40, function(err, buffer) {
-		 if(err){ console.log('## ERROR while generating identicon')}
+		 if(err){ l.log('info', '## ERROR while generating identicon')}
 			fs.writeFileSync(__dirname+'/../public/' + server.application() + '/static/img/user-icons/user-'+id+'_big.png', buffer);
 	});*/
 };
@@ -98,14 +100,14 @@ exports.getUserData = function(req, res, next) {
     	var t = -1;
     	ScriptInstance.find().exec(function(err, script) {
     		if(err){ 
-		  		console.log(err); 
+		  		l.log('info', err); 
 		  	}else if( script[0] !== undefined ){
 					var phase = script[0].current_phase;
 					Groups.find({id: req.user.groups[phase]}).lean().exec(function(err, item) {
 						if(err){
-							console.log(err);
+							l.log('info', err);
 						}else if(item.length === 0){
-							//console.log('ERROR: empty user @ getUserData');
+							//l.log('info', 'ERROR: empty user @ getUserData');
 							res.redirect('/login')
 						}else{	
 					
@@ -134,7 +136,7 @@ exports.getGroupData = function(req, res, next) {
     // get current script phase
     ScriptInstance.find().exec(function(err, script) {
     	if(err){ 
-    		console.log(err); 
+    		l.log('info', err); 
     	}else if( script[0] !== undefined ){
 		  	var phase = script[0].current_phase; 
 		  	// get group of current user
@@ -144,7 +146,7 @@ exports.getGroupData = function(req, res, next) {
 					query['groups.'+phase] = group;
 			  	// get users of group 
 					Users.find( query ).select('groups username id firstname name status').exec(function ( err, users ){  	  	
-			  		//for(var i = 0; i < users.length; i++){ console.log(users[i]); }
+			  		//for(var i = 0; i < users.length; i++){ l.log('info', users[i]); }
 			  		res.type('application/json');
 		  			res.jsonp({user:true, username: req.user.username, id: req.user.id, group: users } );
 		  			res.end();
@@ -204,7 +206,7 @@ exports.openLoginPage = function(req, res){
 exports.handleLogout = function(req, res){
 	req.session.regenerate(function(){
     setOnlineStatus( req.user._id, { online: false, location:'video' } );
-    console.log('User logged out: '+req.user._id);
+    l.log('info', 'User logged out: '+req.user._id);
     req.logout();
     res.redirect('/login');   
   })
@@ -223,7 +225,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) { 
   Users.findById(id, function (err, user) {
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{
     	done(err, user);
     }
@@ -247,7 +249,7 @@ passport.use(new LocalStrategy(
       // indicate failure and set a flash message.  Otherwise, return the
       // authenticated `user`.
       findByUsername(username, function(err, user) { 
-      	//console.log(require('../server').getServer())
+      	//l.log('info', require('../server').getServer())
         if (err) { return done(err); }
         
         if(user[0] !== undefined){
@@ -282,7 +284,7 @@ exports.authenticate = function(req, res, next){
   passport.authenticate( 'local', function(err, user, info){ 
     var redirectUrl = '/home';
     if (err) { return next(err); }
-    if (!user) { console.log(user); return res.redirect('/login'); }
+    if (!user) { l.log('info', user); return res.redirect('/login'); }
     
     if (req.session.redirectUrl) {
       redirectUrl = req.session.redirectUrl;
@@ -308,7 +310,7 @@ exports.authenticateGuest = function(req, res){
 				try{
 				 res.redirect('/videos/view/5759e54be2f7db7a131c6680'); // bad static hack xxx
 				}catch(e){
-					console.log(e);
+					l.log('info', e);
 				} 
 				//res.redirect('/home');
 			}else {
@@ -338,7 +340,7 @@ exports.ensureAuthenticated = function(req, res, next) {
   	setOnlineStatus( req.user._id, { online: true, location:'video' }); 
   	return next(); 
   }else{
-  	//console.log('Error: User tried to access contents that requires an authentication')
+  	//l.log('info', 'Error: User tried to access contents that requires an authentication')
   	req.session.redirectUrl = req.url;
   	res.redirect('/login');
   }
@@ -406,10 +408,10 @@ exports.updateUsers = function(req, res) {
   var user = req.body;
   Users.update({'_id':new BSON.ObjectID(id)}, {$set:{trace:user.data}}, {safe:true}, function(err, result) {
 	  if (err) {
-	      console.log('Error updating user: ' + err);
+	      l.log('info', 'Error updating user: ' + err);
 	      res.send({'error':'An error has occurred'});
 	  } else {
-	      console.log('' + result + ' document(s) updated');
+	      l.log('info', '' + result + ' document(s) updated');
 	      res.send(user);
 	  }
   });
@@ -431,7 +433,7 @@ exports.updateUsers = function(req, res) {
 exports.renderIndex = function(req, res) {
   Users.find().sort( 'username' ).lean().exec(function (err, items) {
 	  if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.render('admin/users-index', {items: items}); 
 			res.end('done');
@@ -454,7 +456,7 @@ exports.create = function ( req, res ){
 exports.renderByUsername = function ( req, res ){ 
   Users.findOne({username: String(req.params.username)}, function ( err, persons ){
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{ 
 		  res.render( 'users-single', {
 		      title   : 'Express Users Example',
@@ -480,7 +482,7 @@ exports.renderCreate = function ( req, res ){
 exports.destroy = function ( req, res ){
   Users.findByIdAndRemove( req.params.id, function ( err, user ){
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{
 	  	res.redirect( '/admin/users' );
 	  	res.end();
@@ -520,7 +522,7 @@ exports.update = function ( req, res ){
 exports.getJSON = function(req, res) {
   Users.find().sort( 'username' ).lean().exec(function (err, items) {
 	  if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			if(req.user.role === 'student'){
 				for (var i = 0; i < items.length; i++){
@@ -589,9 +591,9 @@ exports.registerUser = function ( req, res ){
     updated_at : Date.now()
   }).save( function( err, todo, count ){
   	if(err){
-  		console.log('ERROR: could not register user')
+  		l.log('info', 'ERROR: could not register user')
   	}else{
-  		console.log('Saved user')
+  		l.log('info', 'Saved user')
   		res.render('user-login', { user: req.user, username: req.body.username, password: req.body.password, message: 'Ihre Registrierung war erfolgreich. Sie können sich jetzt einloggen.' });
     	//res.redirect('/login');
     }
@@ -606,7 +608,7 @@ exports.registerUser = function ( req, res ){
 exports.getOnlineStatus = function ( req, res ){
 	Users.find({ username: req.params.username }).exec( function ( err, user ){
 		if(err){ 
-			console.log(err);
+			l.log('info', err);
 			res.end('error'); 
 		}else{
 			res.type('application/json');
@@ -624,7 +626,7 @@ exports.getOnlineStatus = function ( req, res ){
 function setOnlineStatus( user_id, stat ){ 
   Users.findById( user_id ).select('id status').exec( function ( err, user ){
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}
 		if( user ){
 		  user.status.online = stat.online;
@@ -634,17 +636,17 @@ function setOnlineStatus( user_id, stat ){
 		   	// emit
 		 		
 					if( stat.online === true){
-						console.log('# Online: ' + user_id)
+						l.log('info', '# Online: ' + user_id)
 						require('../server').serverEmitter().emit('user.connected', { id: user.id });
 					}else{
-						console.log('# Offline: ' + user_id)
+						l.log('info', '# Offline: ' + user_id)
 						require('../server').serverEmitter().emit('user.disconnected', { id: user.id });
 					}	
 				
 		  });
     }else{
-    	console.log( 'ERROR @ user.setOnlineStatus');
-    	//console.log( user );
+    	l.log('info',  'ERROR @ user.setOnlineStatus');
+    	//l.log('info',  user );
     }
   });
 }

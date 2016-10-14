@@ -7,6 +7,7 @@
 require( './db' );
 
 var 
+	l = require('winston'),
 	express = require('express'),
 	expressValidator = require('express-validator'),
 	app = express(),
@@ -38,7 +39,7 @@ var
 		if( array.length > 2 ){
 			application = array[3];
 		}
-		//console.log(index + ': ' + val);
+		//l.log('info', index + ': ' + val);
 	});
 
 
@@ -101,7 +102,7 @@ var
 	**/
 var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err, db){
 	if(err){
-		console.log(err);
+		l.log('info', err);
 	}else{
 		/* Import data */
 		
@@ -122,7 +123,7 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			scripts.startScriptSession();
 			//groups.csvImport();
 			//groups.csvImportFromJSON();
-			//var lec = require('./utils/lecturnity');			
+			//var lec = require('./utils/lecturnity');		
 		}
 		
 		/* Access Control List */
@@ -133,10 +134,10 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 		var e =	require('exec');
 		exec('sh ./utils/ocr.sh',
 				function (error, stdout, stderr) {
-					console.log('stdout: ' + stdout);
-					console.log('stderr: ' + stderr);
+					l.log('info', 'stdout: ' + stdout);
+					l.log('info', 'stderr: ' + stderr);
 					if (error !== null) {
-						console.log('exec error: ' + error);
+						l.log('info', 'exec error: ' + error);
 					}
 		});
 		*/			
@@ -155,7 +156,7 @@ va.init( {
 		app: app, 
 		path:'/analytics/perception-per-video'
 	}, null, function(data){
-		console.log( data ); 	
+		l.log('info',  data ); 	
 	});
 
 	**/
@@ -180,23 +181,23 @@ io.sockets.on('connection', function (client) {
 	if( ! ioConnected ){
 	ioConnected=true;
 	serverEmitter.on('user.connected', function (data) {
-    console.log('++ user.connected ' + data.id );
+    l.log('info', '++ user.connected ' + data.id );
     client.broadcast.emit( 'user.goes.online', {user: data.id, online:true } );
   });
 	
 	serverEmitter.on('user.disconnected', function (data) { 
-		console.log('++ user.disconnected ' + data.id );
+		l.log('info', '++ user.disconnected ' + data.id );
 		client.broadcast.emit( 'user.goes.offline', {user: data.id, online:false } );
 	});
 	
 	serverEmitter.on('video.updated', function (data) {
-    console.log('++ video.updated ' + data.videoid);
+    l.log('info', '++ video.updated ' + data.videoid);
     client.broadcast.emit('video.refresh.annotations',{ video: data.videoid });
   });
 	
 	// not working ?
-	client.on('video.updated', function (data) { console.log(data)
-		console.log('+++++ video.updated ' + data.videoid +'__received by the client');
+	client.on('video.updated', function (data) { l.log('info', data)
+		l.log('info', '+++++ video.updated ' + data.videoid +'__received by the client');
 		client.broadcast.emit('video.refresh.annotations',{ video: data.videoid }); 
 	});	
 	}
@@ -209,9 +210,9 @@ server.listen(port);
 server.setMaxListeners(0); // xxx: untested: unfinite number of listeners, default: 10;
 // http://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n
 	
-console.log('\n\n***********************************************************');
-console.log('Started server for application __'+ application +'__ on port: '+ port);	
-console.log('***********************************************************\n\n');
+l.log('info', '\n\n***********************************************************');
+l.log('info', 'Started server for application __'+ application +'__ on port: '+ port);	
+l.log('info', '***********************************************************\n\n');
 	
 	
 
@@ -238,7 +239,7 @@ var fs = require("fs");
 function main() {
   fs.readdir("./node_modules", function (err, dirs) {
     if (err) {
-      console.log(err);
+      l.log('info', err);
       return;
     }
     dirs.forEach(function(dir){
@@ -247,11 +248,11 @@ function main() {
         if (fs.existsSync(packageJsonFile)) {
           fs.readFile(packageJsonFile, function (err, data) {
             if (err) {
-              console.log(err);
+              l.log('info', err);
             }
             else {
               var json = JSON.parse(data);
-              console.log('"'+json.name+'": "' + json.version + '",');
+              l.log('info', '"'+json.name+'": "' + json.version + '",');
             }
           });
         }

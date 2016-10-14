@@ -9,6 +9,7 @@
 */
 
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	videos =  require('./videos'),
@@ -43,7 +44,7 @@ exports.renderIndex = function(req, res) {
 exports.renderTemplates = function(req, res) { 
 	Templates.find({}).exec(function (err, templates) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{ 
 			res.render( 'admin/scripts-template-index', {
 				items : templates
@@ -61,7 +62,7 @@ exports.renderTemplates = function(req, res) {
 exports.renderTemplateByID = function(req, res) { 
 	Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.render( 'admin/scripts-template-edit', {
 				items : template[0]
@@ -84,7 +85,7 @@ exports.renderNewTemplate = function(req, res) {
 		tmp.created_at = t.getTime();
   new Templates( tmp )
 		.save( function( err, template, count ){
-			console.log( 'Created empty template '+template.title )
+			l.log('info',  'Created empty template '+template.title )
 			res.render('admin/scripts-template-edit', { items: template });//'/admin/scripts/templates/edit/'+template._id );
 			res.end();
 		});
@@ -109,15 +110,15 @@ exports.getTemplates = function(req, res) {
 exports.duplicateTemplateByID = function(req, res) {
 	Templates.find({_id: req.params.id}).lean().exec(function (err, template) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			var template2 = template;
 			template2[0].title = template2[0].title + '-' + Math.floor(Math.random()*100);
 			delete template2[0]["_id"];
 			new Templates( template2[0] )
 				.save( function( err, newtemplate, count ){
-					if(err){ console.log(err); }
-					console.log( 'Duplicated Script Template ' + newtemplate.title )
+					if(err){ l.log('info', err); }
+					l.log('info',  'Duplicated Script Template ' + newtemplate.title )
 					res.redirect( '/admin/scripts/templates' );
 				});
 			
@@ -133,7 +134,7 @@ exports.duplicateTemplateByID = function(req, res) {
 exports.updateTemplateByID = function(req, res) { 
 	Templates.findOne( {"_id": req.params.id}, function ( err, template ){
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}else{
 
 			var template = MergeRecursive(template,req.body);
@@ -213,10 +214,10 @@ exports.instantiateTemplateByID = function(req, res) {
 
 	  new Instances( script ).save(function(err, instance){
 	  	if(err){ 
-	  		console.log(err)
+	  		l.log('info', err)
 	  	}else{
-				console.log('-----------------')
-				console.log(instance.phases[0].widgets[0])
+				l.log('info', '-----------------')
+				l.log('info', instance.phases[0].widgets[0])
 			  res.redirect( '/admin/scripts/instances' );
 			  res.end('done');
 	    }
@@ -238,7 +239,7 @@ exports.instantiateTemplateByID = function(req, res) {
 exports.renderInstances = function(req, res) { 
 	Instances.find({}).exec(function (err, instances) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{  
 			res.render( 'admin/scripts-instances-index', {
 				items : instances
@@ -294,7 +295,7 @@ exports.getRunningInstance = function(req, res) {
 exports.renderInstanceByID = function(req, res) { 
 	Instances.findOne({'_id': req.params.id}).lean().exec(function (err, instance) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.render( 'admin/scripts-instances-edit', {
 				items : instance
@@ -311,9 +312,9 @@ exports.renderInstanceByID = function(req, res) {
 exports.activateInstanceByID = function(req, res){
 	Instances.update({ '_id':req.params.id}, { status: 'running', current_phase: 0 }, function ( err, instance ){
 		if(err){
-			console.log(err)
+			l.log('info', err)
 		}else{
-			console.log('set Instance active'); 
+			l.log('info', 'set Instance active'); 
 			startScriptSession();
 			res.redirect('/admin/scripts/instances');
 			res.end();
@@ -338,7 +339,7 @@ exports.startScriptSession = startScriptSession;
 function startScriptSession(){ 
 	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 0 }}, function ( err, ins ){
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			
 		}
@@ -351,7 +352,7 @@ function startScriptSession(){
 	Instances.find({ status:'running' }, function(err, instance){ 
 		instance = instance[0];
 		for(var phase = 0; phase < instance.phases.length; phase++){
-			console.log('Set schedule for '+phase);
+			l.log('info', 'Set schedule for '+phase);
 			if( instance.phases[phase] !== undefined){
 				// change to now if ..
 				var 
@@ -359,22 +360,22 @@ function startScriptSession(){
 					b = moment(),
 					the_phase = 0
 					;
-					console.log(a.diff(b, 'seconds'))
+					l.log('info', a.diff(b, 'seconds'))
 				if( a.diff(b, 'seconds') < 0 ){
-					console.log('+++++++++++++++CURRENT++++'+phase+'+++++++++++');
+					l.log('info', '+++++++++++++++CURRENT++++'+phase+'+++++++++++');
 					the_phase = phase;
 				}
-				//console.log('start: '+instance.phases[phase].start+ '__' + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
+				//l.log('info', 'start: '+instance.phases[phase].start+ '__' + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
 				var m = moment(instance.phases[phase].start);
 				var date = new Date(m.format('YYYY'), m.format('MM')-1, m.format('DD'), m.format('h'), m.format('mm'), 0);
-				console.log(date)
+				l.log('info', date)
 				// start schedule
 				var j = schedule.scheduleJob( date , function(){
-					console.log('Phase '+phase+' started. ');
+					l.log('info', 'Phase '+phase+' started. ');
 					// update current phase
 					Instances.findOneAndUpdate( {'_id': instance._id }, { $set: {current_phase: phase }}, function ( err, ins ){
 						if(err){ 
-							console.log(err); 
+							l.log('info', err); 
 						}else{
 							
 						}
@@ -383,8 +384,8 @@ function startScriptSession(){
 				});	// end schedule
 				
 			}else{
-				console.log('ERRRRRO')
-				//console.log( instance.phases )
+				l.log('info', 'ERRRRRO')
+				//l.log('info',  instance.phases )
 			}	
 		}
 	});
@@ -392,11 +393,11 @@ function startScriptSession(){
 	/*var job = new CronJob( 
 				new Date( ins.phases[i].start ), 
 				function() { 
-					console.log('start cron of phase '+i);
+					l.log('info', 'start cron of phase '+i);
 					//job.stop();
 				}, 
 				function () {
-					console.log('fin cron');
+					l.log('info', 'fin cron');
 				},
 				true//, // Start the job right now /
 			//  timeZone // Time zone of this job. /
@@ -417,11 +418,11 @@ function startScriptSession(){
 		var job = new CronJob( t, 
 			function() { 
 				tt++;
-				console.log('start cron '+tt);
+				l.log('info', 'start cron '+tt);
 				//job.stop();
 			}, 
 			function () {
-				console.log('fin cron');
+				l.log('info', 'fin cron');
 			},
 			true//, // Start the job right now /
 		//  timeZone // Time zone of this job. /
@@ -439,16 +440,16 @@ function startScriptSession(){
  * status
  **/
 exports.updateInstanceByID = function(req, res){ 
-	console.log('+++++++++++++++++++++++++++++++++++++++++++++')
+	l.log('info', '+++++++++++++++++++++++++++++++++++++++++++++')
 	// save instance
 	delete req.body.instance["_id"];
 	Instances.findOneAndUpdate( {'_id': req.params.id }, req.body.instance, function ( err, instance ){
 		if(err){
-			console.log(err)
+			l.log('info', err)
 		}else{	    
 		    instance.phases[0] = req.body.instance.phases[0];
 					if( req.body.overwrite === 'false' ){	
-						console.log('Updated instance without changing groups and video instances');
+						l.log('info', 'Updated instance without changing groups and video instances');
 						//res.redirect( '/admin/scripts/instances' );
 						res.end(); 
 					}else{
@@ -465,14 +466,14 @@ exports.updateInstanceByID = function(req, res){
 						// build inverted index
 						Formations.find( {'_id': { $in: allFormations }}, function ( err, docs ){
 							if(err){ 
-								console.log(err); 
+								l.log('info', err); 
 							}else{
 								var 
 									user_index = {},
 									video_id = 1,
 									getFormation = function(p){
 										for(var d=0; d < docs.length;d++){ 
-											if(String(docs[d]._id) === String(allFormations[p])){ console.log(docs[d].formation)
+											if(String(docs[d]._id) === String(allFormations[p])){ l.log('info', docs[d].formation)
 												return docs[d].formation;
 											}
 										}
@@ -529,21 +530,21 @@ exports.updateInstanceByID = function(req, res){
 									user_index, 
 									function (value, key, callback) {
 										Users.update({id: key}, {groups: value} ,function (err, user) {
-											console.log('try update user')
+											l.log('info', 'try update user')
 											if(err){ 
-												console.log(err); 
+												l.log('info', err); 
 											}else{
-												console.log('try update user group '+value)
-												//console.log('updated group for user')
+												l.log('info', 'try update user group '+value)
+												//l.log('info', 'updated group for user')
 												//configs[key] = user; // collect results
 											}
 										});	
 									}, 
 									function (err, e) {
-											if (err){ console.log( 'ERRRO '); console.log(err); }
-											//console.log(configs); // so something with the results
-											console.log( 'End');
-											console.log('Updated instance and created new groups and video instances')
+											if (err){ l.log('info',  'ERRRO '); l.log('info', err); }
+											//l.log('info', configs); // so something with the results
+											l.log('info',  'End');
+											l.log('info', 'Updated instance and created new groups and video instances')
 											res.end();
 									}
 								);// end async	
@@ -585,7 +586,7 @@ exports.getScriptInfo = function ( req, res ){ // xxx editor
 		Groups.find({}).exec( function( err, groups){
 			Videos.find({}).select('id metadata video').exec( function( err, videos ){
 				if(err){ 
-					console.log(err); 
+					l.log('info', err); 
 				}else{
 					res.type('application/json');
 					res.jsonp( {

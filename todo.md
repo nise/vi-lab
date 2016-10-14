@@ -163,8 +163,10 @@
  - list group who is operating on the instance
 
 - @video files:
+ - make file names more readable
  - make it nicer to predefine annotations other then slides
- - upload and manage slides
+ - upload and manage slides -> use popcorn maker
+ - list presentation-type and annotations in the table
  - import/export metadata
  - workflow für video upload
 	 1. select locale file

@@ -10,6 +10,7 @@ exports.index = function ( req, res ){
 
 //var utils    = require( '../utils' );
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Scenes  = mongoose.model( 'Scenes' ),

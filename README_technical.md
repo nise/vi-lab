@@ -50,11 +50,19 @@ sudo service nginx restart
 
 ### Betrieb
 -- node server.js   oder sudo nodejs server
--- sudo forever start -a -l forever.log -o out.log -e err.log server.js
+IS_PROD=1 forever start -a -l forever.log -o out.log -e err.log server.js
+or
+NODE_ENV=production forever start -a -l forever.log -o out.log -e err.log server.js
 -- sudo forever stop server.js
 -- both: sudo forever stop server.js && sudo forever start -a -l forever.log -o out.log -e err.log server.js
 
 -- run etherpad: sh ./_tools/etherpad-lite/bin/run.sh -s settings.json &
+
+
+sudo /home/niels/.nvm/versions/node/v5.0.0/bin/forever-service install vi-lab --nologrotate --script server.js
+sudo /home/niels/.nvm/versions/node/v5.0.0/bin/forever-service delete vi-lab
+sudo /home/niels/.nvm/versions/node/v5.0.0/bin/forever list
+
 
 => auto update bei crah oder update: http://stackoverflow.com/questions/11084279/node-js-setup-for-easy-deployment-and-updating
 

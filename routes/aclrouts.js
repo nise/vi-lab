@@ -8,6 +8,7 @@ description:
 module.exports = function(db, app) {
 	var module = {};
 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	admin = require('./admin'),
 	scripts = require('./scripts'),
@@ -33,7 +34,7 @@ module.exports = function(db, app) {
 
 // routes for files
 app.get('/myfile', users.ensureAuthenticated, function(req, res){ 
-	//console.log('öööööööööööö'+'___public/vi-lab'+req.params.id)
+	//l.log('info', 'öööööööööööö'+'___public/vi-lab'+req.params.id)
   var file = 'todo.md';//'public/vi-lab'+req.params.id;
   res.download(file); // Set disposition and send it.
 });
@@ -127,8 +128,8 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	var upload = multer({ storage: storage });
 	// rout
 	app.post('/admin/videos/upload', upload.single('uservideo'), function(req,res){
-    console.log(req.body); // log other form data
-  	console.log( req.file ); // log file data
+    l.log('info', req.body); // log other form data
+  	l.log('info',  req.file ); // log file data
   	// processing: geneate thumbnails
   	// processing: generate differen formats
   	// respons
@@ -239,7 +240,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 			.sort( 'utc' )
 			.exec(function (err, logs) {
 				if(err){ 
-					console.log(err); 
+					l.log('info', err); 
 				}else{
 					res.type('application/json');
 					res.jsonp( logs );
@@ -272,7 +273,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	 	
-	app.post('/log', users.ensureAuthenticated, function(req, res) { console.log(req.sessionID)
+	app.post('/log', users.ensureAuthenticated, function(req, res) { l.log('info', req.sessionID)
 		var 
 			d = req.param('data')
 			;
@@ -307,7 +308,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		// save it
 		//log2.write( JSON.stringify(req.param('data')) );	
 		new Log(entry).save( function( err, logs, count ){
-			console.log(logs);
+			l.log('info', logs);
 			res.end('done');
 		} );
 		// write to logfile
@@ -332,19 +333,19 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		
 		var query = Log.find({}).stream();
 		query.on('data', function (doc) {
-				console.log(doc)
+				l.log('info', doc)
 				//log.write( JSON.stringify( doc ) );
 		}).on('error', function (err) {
-				console.log(err);
+				l.log('info', err);
 		}).on('close', function () {
-				console.log('@Log :: closed stream');
+				l.log('info', '@Log :: closed stream');
 				res.send('streams data');
 		});
 		return;
 		
 		Log.find().exec(function (err, logs) {
 			if(err){ 
-				console.log(err); 
+				l.log('info', err); 
 			}else{
 				require('jsonfile').writeFile( './log.json', logs, function (err) {
 					console.error(err)
@@ -386,7 +387,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 				query['action.context'] = { $in: ['player','assessment'] }; // 
 				Log.find( query ).select('utc user user_name video_id playback_time action').exec(function (err, logs) {
 					if(err){ 
-						console.log(err); 
+						l.log('info', err); 
 					}else{
 						res.type('application/json');
 						res.jsonp( {

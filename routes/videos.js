@@ -3,6 +3,7 @@
 
 //var utils    = require( '../utils' );
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('./../server'),
 	Videos  = mongoose.model( 'Videos' ),
@@ -27,9 +28,9 @@ exports.csvImport = function ( req, res ){
 			var t = new Videos(vi[j])
 				.save( function( err, video, count ){
 					if(err){
-						console.log(err)
+						l.log('info', err)
 					}else{
-						console.log('Imported video '+video.id);
+						l.log('info', 'Imported video '+video.id);
 					}	
 				});
 		}	
@@ -62,29 +63,29 @@ exports.index = function ( req, res ){
 };
 
 // xxx
-exports.renderScriptVideo = function(req, res) { //console.log(88+'---------------------------')
+exports.renderScriptVideo = function(req, res) { //l.log('info', 88+'---------------------------')
 
 	// get script phase 
 	ScriptInstance.findOne({ status: 'running' }).exec(function(err, script) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else if(script !== undefined){
 			var phase = script['current_phase']; 
 			// get group of current user
-			console.log('phase: '+phase);
+			l.log('info', 'phase: '+phase);
 			Users.findOne({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
 				//var group = users[0].groups[Number(phase)];  
 				var group = phase === 0 ? [ users.groups[0] ] : users.groups.slice(0, Number(phase));
-				console.log(group)
+				l.log('info', group)
 				// get video-ids of group
 				
 				var groupQuery = {};
 				groupQuery['id'] = { $in: group }; // { id: group }
 				
 				Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-					console.log(groups);
+					l.log('info', groups);
 					if(err){ 
-						console.log(err); 
+						l.log('info', err); 
 					}else if(groups[0] !== undefined){
 						/**/
 						// collect video ids from the effected groups
@@ -96,27 +97,27 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
 						var query = {}
 						query['id'] = { $in: the_videos }; // groups[0].videos
 					
-							console.log(script_video)
-							console.log('#################################################');
+							l.log('info', script_video)
+							l.log('info', '#################################################');
 							// get videos 
 							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
 							
 								for(var i=0; i < group.length; i++){
-									script.phases[i].the_videos = []; console.log('gr'+i)
+									script.phases[i].the_videos = []; l.log('info', 'gr'+i)
 									for(var j = 0; j < videos.length; j++){ 
 										if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
 											script.phases[i].fuck.push( videos[j] ); 
-											console.log(script.phases[i])
+											l.log('info', script.phases[i])
 										}
 									}
 								}
-								//console.log(script)
+								//l.log('info', script)
 								res.render('videos', {items: { script: script } });  								
 							});
 					}else{
 						//res.type('application/json');
 						//res.jsonp({}); 
-						console.log(3); 
+						l.log('info', 3); 
 						res.end('done');
 					}
 				});// end Groups
@@ -133,27 +134,27 @@ exports.renderScriptVideo = function(req, res) { //console.log(88+'-------------
  * Returns the video instances that the user as part of his group is allowed to see in the current script phase
  * status: functionable
  **/
-exports.getJSON = function(req, res) { //console.log(88+'---------------------------')
+exports.getJSON = function(req, res) { //l.log('info', 88+'---------------------------')
 	if( req.user.username !== undefined ){
 		// get script phase 
 		ScriptInstance.find({ status: 'running' }).exec(function(err, script) {
-			if(err){ console.log(err); 
+			if(err){ l.log('info', err); 
 			}else if(script[0] !== undefined){
 				var phase = script[0]['current_phase']; 
 				// get group of current user
-				console.log('phase: '+phase);
+				l.log('info', 'phase: '+phase);
 				Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
 					var group = users[0].groups[Number(phase)];  
-				console.log('group'+group)
+				l.log('info', 'group'+group)
 					// get video-ids of group
 					Groups.find( { id: group }).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
-						console.log(groups);
+						l.log('info', groups);
 						if(err){ 
-							console.log(err); 
+							l.log('info', err); 
 						}else if(groups[0] !== undefined){
 							var query = {};
 							query['id'] = { $in: groups[0].videos }; // 
-							console.log('#################################################');
+							l.log('info', '#################################################');
 							// get videos 
 							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
 								// calc status
@@ -182,7 +183,7 @@ exports.getJSON = function(req, res) { //console.log(88+'-----------------------
 						
 								} */
 								for(var i = 0; i < videos.length; i++){
-									console.log('video '+videos[i].id)
+									l.log('info', 'video '+videos[i].id)
 								}
 								res.type('application/json');
 								res.jsonp( {items: {videos: videos, script: script[0] } });  
@@ -219,7 +220,7 @@ exports.getOneJSON = function(req, res) {
 	
 	Videos.find({_id: req.params.id}).lean().exec(function (err, video) {
 		if(err){ 
-			console.log(err); 
+			l.log('info', err); 
 		}else{
 			res.type('application/json');
 			res.jsonp(video[0]);
@@ -245,18 +246,18 @@ var
  * query db for all video items
  * @todo
  **/
-exports.list = function ( req, res ){ console.log('#################################################');
+exports.list = function ( req, res ){ l.log('info', '#################################################');
 	// get running script and the current phase 
 	ScriptInstance.find({ status: 'running' }).exec(function(err, script) {
-		if(err){ console.log(err); 
+		if(err){ l.log('info', err); 
 		}else{
-			var phase = script[0]['current_phase']; console.log(phase)
+			var phase = script[0]['current_phase']; l.log('info', phase)
 			// get group of current user
 			Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
 				//old var group = users[0].groups[Number(phase)]; 
-				console.log('bam :: '+users[0].groups)
+				l.log('info', 'bam :: '+users[0].groups)
 				var group = users[0].groups.slice(0, Number(phase)) 
-				console.log(group)
+				l.log('info', group)
 				// get video-ids of group
 				var groupQuery = { $in: group };// { id: group }
 				Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
@@ -267,7 +268,7 @@ exports.list = function ( req, res ){ console.log('#############################
 						the_videos.concat( groups[i].videos );
 					}
 					query['id'] = { $in: the_videos }; // groups[0].videos
-					console.log('#################################################');
+					l.log('info', '#################################################');
 				
 					// get videos
 					var duration = 1; 
@@ -297,7 +298,7 @@ exports.destroy = function ( req, res ){
 		    res.end('done');
 		  });
     }else{
-    	console.log(err);
+    	l.log('info', err);
     }
   });
 };
@@ -351,9 +352,9 @@ exports.show = function ( req, res ){
 		  res.end('done');
     }else if(video[0] === undefined ){
     	res.redirect('404')
-    	console.log('page not found')
+    	l.log('info', 'page not found')
     }else{
-				console.log('ERROR: '+err)
+				l.log('info', 'ERROR: '+err)
 			}
   });
 };
@@ -380,7 +381,7 @@ exports.update = function ( req, res ){
 // annotate toc
 exports.annotate = function(req, res) {
 
-	console.log('..........................start saving: ')
+	l.log('info', '..........................start saving: ')
 	var query = {'_id':req.body.videoid};
 	var update = {};
 	switch(req.body.annotationtype){
@@ -393,16 +394,16 @@ exports.annotate = function(req, res) {
 	}
 	update.updated_at = Date.now();
 	
-	console.log('start saving: '+req.body.annotationtype +' '+req.body.videoid);
+	l.log('info', 'start saving: '+req.body.annotationtype +' '+req.body.videoid);
 	
 	Videos.findOneAndUpdate(query, update, function(err, doc){
 		  if (err){
-		  	console.log('****************** ERROR')
-		  	console.log(err);
+		  	l.log('info', '****************** ERROR')
+		  	l.log('info', err);
 		  	res.send({"msg":"error"});
 		  }else{
 		  	require('../server').serverEmitter().emit('video.updated', { videoid: req.body.videoid }); 
-		  	console.log('@Videos: Updated annotation '+req.body.annotationtype+ ' of video '+req.body.videoid );
+		  	l.log('info', '@Videos: Updated annotation '+req.body.annotationtype+ ' of video '+req.body.videoid );
 	  		res.send({"msg":"succesfully saved"});
 	  	}
 	});
@@ -422,7 +423,7 @@ exports.annotate = function(req, res) {
  **/
 exports.renderVideoInstances = function(req, res){
 	Videos.find( ).sort( 'id' ).exec( function ( err, videos ){  					
-		if(err){ console.log(err) }else{
+		if(err){ l.log('info', err) }else{
 			res.render( 'admin/videos-instances', {
 				items : videos
 			});
@@ -447,7 +448,7 @@ exports.renderVideoInstances = function(req, res){
  **/
 exports.renderVideoFiles = function(req, res){
 	VideoFiles.find( ).sort( 'id' ).exec( function ( err, videos ){
-		if(err){ console.log(err) }else{  					
+		if(err){ l.log('info', err) }else{  					
 			res.render( 'admin/videos', {
 				items : videos
 			});
@@ -464,7 +465,7 @@ exports.createFile = function ( req, res ){
 	new VideoFiles( req.body ).save( function( err, vid, count ){
 		if(err) { res.send(err); }
 		res.redirect( '/admin/videos/files' );
-		console.log('saved video file')
+		l.log('info', 'saved video file')
 		res.end();
 	});
 };
@@ -486,7 +487,7 @@ exports.renderFileUpload = function ( req, res ){
  **/
 exports.renderFileEdit = function ( req, res ){
  	VideoFiles.findById( req.params.id, function ( err, videos ){  		
-		if(err){ console.log(err) }else{
+		if(err){ l.log('info', err) }else{
 			res.render( 'admin/videos-file-edit', {
 				items : videos
 			});
@@ -500,7 +501,7 @@ exports.renderFileEdit = function ( req, res ){
  * Updates the metadate of a video file.
  * status: xxx, needs improvement
  **/
-exports.updateFile = function ( req, res ){ console.log(req.body)
+exports.updateFile = function ( req, res ){ l.log('info', req.body)
   VideoFiles.findById( req.params.id, function ( err, video ){ 
 		video.title				= req.body.title;
 		video.creator			= req.body.creator;
@@ -529,7 +530,7 @@ exports.updateFile = function ( req, res ){ console.log(req.body)
 		video.tags				= req.body.tags;
 		video.updated_at 	= Date.now();
     video.save( function ( err, video, count ){
-    	if(err){ console.log(err); } else{
+    	if(err){ l.log('info', err); } else{
     		res.redirect( '/admin/videos/files' );
 				res.end('done');
       }
@@ -544,9 +545,9 @@ exports.updateFile = function ( req, res ){ console.log(req.body)
  **/
 exports.destroyFile = function ( req, res ){
   VideoFiles.findById( req.params.id, function ( err, video ){
-  	if(err){ console.log(err) }else{
+  	if(err){ l.log('info', err) }else{
 		  video.remove( function ( err, person ){
-		  	if(err){ console.log(err) 
+		  	if(err){ l.log('info', err) 
 		  	}else{
 		    	res.redirect( '/admin/videos/files' );
 		    }	
@@ -566,10 +567,10 @@ exports.generateStillImages = function(req, res){
 	VideoFiles.findById( req.params.id, function ( err, video ){
 		ffmpeg(__dirname+'/../public/etutor/'+video.video)
 			.on('filenames', function(filenames) {
-				console.log('Will generate ' + filenames.join(', '))
+				l.log('info', 'Will generate ' + filenames.join(', '))
 			})
 			.on('end', function(err, data) {
-				//console.log(err, data);
+				//l.log('info', err, data);
 				res.end()
 			})
 			.screenshots({
@@ -590,7 +591,7 @@ exports.generateStillImages = function(req, res){
  **/
 exports.createFileInstance = function ( req, res){
 	VideoFiles.findById( req.params.id, function ( err, file ){
-  	if(err){ console.log(err) }else{
+  	if(err){ l.log('info', err) }else{
 		  // prepare instance
 		  video = getInstanceFromFile(file)
 		  // save instance
@@ -609,15 +610,15 @@ exports.createFileInstance = function ( req, res){
  **/
 exports.createMultipleFileInstance = function ( files, ids, cb ){
 	VideoFiles.find( { '_id' : { $in: files } }).exec( function ( err, files ){ 
-  	if(err){ console.log(err) }else{ 
+  	if(err){ l.log('info', err) }else{ 
   		// iterate files
 		  for(var i = 0; i < files.length; i++){ 
 		  	// convert file to instance
 				video = getInstanceFromFile(files[i], ids[i]);
 				// save it
 				new Videos( video ).save( function ( err, instance ){
-					if(err){ console.log(err); }
-					console.log('created video instance '+ instance.id+'__'+instance.id);
+					if(err){ l.log('info', err); }
+					l.log('info', 'created video instance '+ instance.id+'__'+instance.id);
 				});
 			}// end for
 		}// end if  

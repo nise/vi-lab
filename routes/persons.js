@@ -10,6 +10,7 @@ exports.index = function ( req, res ){
 
 //var utils    = require( '../utils' );
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Persons  = mongoose.model( 'Persons' )
@@ -25,10 +26,10 @@ exports.csvImport = function ( req, res ){
 	// load data
 	fs.readFile(__dirname+'/../data/' + server.application() + '/persons.csv', function read(err, data) { 
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}
 		// destroy dataset first
-		Persons.remove({}, function(err) { console.log('collection removed') });
+		Persons.remove({}, function(err) { l.log('info', 'collection removed') });
 		// reload it
 		csv().from.string(data, {comment: '#'} )
 			.to.array( function(data){ 
@@ -54,8 +55,8 @@ exports.csvImport = function ( req, res ){
 					});
 				}
 			});// end array()
-			console.log('Imported perons.csv');
-			console.log('......................')
+			l.log('info', 'Imported perons.csv');
+			l.log('info', '......................')
 	});// end fs				
 };
 
@@ -74,11 +75,11 @@ exports.getJSON = function(req, res) {
 /*
 
 **/
-exports.getOneJSON = function(req, res) {  console.log(9999999999999999999999999999);
+exports.getOneJSON = function(req, res) {  l.log('info', 9999999999999999999999999999);
 	// ).lean().exec(
 	var dd = String(req.params.shortname).replace(/\_/,' ');
 	Persons.findOne({shortname: dd}, function (err, docs) {
-		if(err){ console.log(err); }
+		if(err){ l.log('info', err); }
 		res.type('application/json');
 		res.jsonp(docs);
 	});
@@ -146,7 +147,7 @@ exports.edit = function ( req, res ){
 };
 
 exports.show = function ( req, res ){ 
-	console.log(req.p)
+	l.log('info', req.p)
   Persons.findOne({shortname: String(req.params.shortname).replace(/\_/,' ')}, function ( err, persons ){ 
     res.render( 'persons-single', {
         title   : 'Express Persons Example',

@@ -9,6 +9,7 @@ Etherpad
 
 
 var
+	l = require('winston'),
 	api = require('etherpad-lite-client'),
 	async = require('async'), 
 	mongoose = require( 'mongoose' ),
@@ -34,17 +35,17 @@ create etherpad groups
 exports.generatePadGroups = function (prefix){
 	Groups.find().exec(function(err, items) {
 		if(err){
-			console.log(err)
+			l.log('info', err)
 		}else{ 
-			console.log(items)
+			l.log('info', items)
 			for(i in items){
 				(function(item) {
 					if( Number(item.id) >= 500 ){   
 						etherpad.createGroup(function(err, data) { 
 							if( err || data.code === 0){ 
-								console.log('Error creating group: ' + err.message);
+								l.log('info', 'Error creating group: ' + err.message);
 							}else{
-								console.log(item.id+'__created group '+data.groupID); 
+								l.log('info', item.id+'__created group '+data.groupID); 
 						
 								// create pad per group
 								//var groupPadID = data.groupID;//+'$pad-'+Math.random()*1000;
@@ -57,17 +58,17 @@ exports.generatePadGroups = function (prefix){
 								
 									if(err){
 											//etherpad.deletePad(groupPadID, function(res){
-											console.log('Error '+err.message);
+											l.log('info', 'Error '+err.message);
 										//});
 									}else{
 										Groups.findById( item._id, function ( err, updatedGroup ){
 											if(err){
-												console.log(err);
+												l.log('info', err);
 											}else{
 												updatedGroup.ep_group_pad_id = groupPad.padID;
 												updatedGroup.ep_group_id = data.groupID;
 												updatedGroup.save(function ( err, todo, count ){
-													console.log('SAVED:: For group '+item.id+' '+data.groupID+'EP group+pad created: ' + groupPad.padID);	
+													l.log('info', 'SAVED:: For group '+item.id+' '+data.groupID+'EP group+pad created: ' + groupPad.padID);	
 												});//end save
 											}
 										});//end Groups.findByID	
@@ -87,7 +88,7 @@ exports.generatePadGroups = function (prefix){
 create session between user and his group pad
 */
 exports.createSession = function(req, res){ 
-	//console.log(req.protocol + '://' + req.get('host') + req.originalUrl)
+	//l.log('info', req.protocol + '://' + req.get('host') + req.originalUrl)
 	if (req.user !== undefined) {
     // get current script phase
     Scripts.collection.find().toArray(function(err, script) {
@@ -95,17 +96,17 @@ exports.createSession = function(req, res){
     	// get group of current user
   	  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, user ){
   	  	var currentGroup = user[0].groups[Number(phase)];
-  	  	//console.log(currentGroup);
+  	  	//l.log('info', currentGroup);
   	  	var validUntil = 60*60*6; // 6hours
   	  	Groups.find({ id: currentGroup }).select('ep_group_id ep_group_pad_id').setOptions({lean:true}).exec(function ( err, group ){	
 			  	if(err){
-			  		console.log(err);
+			  		l.log('info', err);
 			  	}
 			  	the_group = group[0]; 
 			  	//(function(group){
 						etherpad.createAuthor( req.user.username, function(err, author){
 							if(err || the_group.ep_group_id === undefined){
-								console.log(err);
+								l.log('info', err);
 								res.render('group-etherpad2', {
 									error: true,
 									solution: false
@@ -117,20 +118,20 @@ exports.createSession = function(req, res){
 									authorID: author.authorID, 
 									validUntil: Date.now()+4*60*60*1000
 								}; 
-								console.log(args)
+								l.log('info', args)
 								etherpad.createSession(args, function(err, data){ 
 									if(err){ 
-										console.log(err); 
+										l.log('info', err); 
 									}else{
 										etherpad.getSessionInfo({sessionID: data.sessionID}, function(err, d){ 
-											console.log(err, d);
+											l.log('info', err, d);
 										});
 										etherpad.getText({ padID: the_group.ep_group_pad_id}, function(err, text){
 											if(err){
-												console.log(err);
+												l.log('info', err);
 											}else{
 												var solution = text.text.length > 200 ? true : false;
-												console.log(text, text.text.length, solution);
+												l.log('info', text, text.text.length, solution);
 												req.session.etherpad_session_id = data.sessionID
 												res.cookie("sessionID", data.sessionID, {
 													maxAge: 24 * 60 * 60
@@ -171,7 +172,7 @@ exports.createSession = function(req, res){
 create session between user and his group pad
 */
 exports.createSession2 = function(req, res){ 
-	//console.log(req.protocol + '://' + req.get('host') + req.originalUrl)
+	//l.log('info', req.protocol + '://' + req.get('host') + req.originalUrl)
 	if (req.user !== undefined) {
     // get current script phase
     Scripts.collection.find().toArray(function(err, script) {
@@ -179,17 +180,17 @@ exports.createSession2 = function(req, res){
     	// get group of current user
   	  Users.find({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, user ){
   	  	var currentGroup = user[0].groups[Number(phase)];
-  	  	//console.log(currentGroup);
+  	  	//l.log('info', currentGroup);
   	  	var validUntil = 60*60*6; // 6hours
   	  	Groups.find({ id: currentGroup }).select('ep_group_id ep_group_pad_id').setOptions({lean:true}).exec(function ( err, group ){	
 			  	if(err){
-			  		console.log(err);
+			  		l.log('info', err);
 			  	}
 			  	the_group = group[0]; 
 			  	//(function(group){
 						etherpad.createAuthor( req.user.username, function(err, author){
 							if(err || the_group.ep_group_id === undefined){
-								console.log(err);
+								l.log('info', err);
 								res.render('group-etherpad2', {
 									error: true,
 									solution: false
@@ -201,20 +202,20 @@ exports.createSession2 = function(req, res){
 									authorID: author.authorID, 
 									validUntil: Date.now()+4*60*60*1000
 								}; 
-								console.log(args)
+								l.log('info', args)
 								etherpad.createSession(args, function(err, data){ 
 									if(err){ 
-										console.log(err); 
+										l.log('info', err); 
 									}else{
 										etherpad.getSessionInfo({sessionID: data.sessionID}, function(err, d){ 
-											console.log(err, d);
+											l.log('info', err, d);
 										});
 										etherpad.getText({ padID: the_group.ep_group_pad_id}, function(err, text){
 											if(err){
-												console.log(err);
+												l.log('info', err);
 											}else{
 												var solution = text.text.length > 200 ? true : false;
-												console.log(text, text.text.length, solution);
+												l.log('info', text, text.text.length, solution);
 												req.session.etherpad_session_id = data.sessionID
 												res.cookie("sessionID", data.sessionID, {
 													maxAge: 24 * 60 * 60
@@ -271,10 +272,10 @@ exports.getJSON = function(req, res){
 				if( group.ep_group_pad_id ){
 					etherpad.getHTML({ padID: group.ep_group_pad_id }, function(err, data){
 						if(err){ 
-							console.log(err.message);
+							l.log('info', err.message);
 						}else{ 
 							text.push({group: group.id, padID: group.ep_group_pad_id, text: data});
-							//console.log(data.text);	
+							//l.log('info', data.text);	
 						}
 						callback();
 					});
@@ -285,9 +286,9 @@ exports.getJSON = function(req, res){
 			},
 			function(err){
 				if( err ) {
-				  console.log('A file failed to process');
+				  l.log('info', 'A file failed to process');
 				} else {
-				  console.log('All files have been processed successfully');
+				  l.log('info', 'All files have been processed successfully');
 				  res.type('application/json');
 					res.jsonp({etherpad: text });
 					res.end('done');	
@@ -316,12 +317,12 @@ var args = {
 }
 etherpad.createGroup(function(error, data) {
   if(error) console.error('Error creating group: ' + error.message)
-  else console.log('New group created: ' + data.groupID)
+  else l.log('info', 'New group created: ' + data.groupID)
 });
 
 etherpad.getHTML({padID:'ieQLpz8D30jeL7Yo'}, function(err, data){
 	if(err){ console.warn(err.message); }
-	else{ console.log(data) }
+	else{ l.log('info', data) }
 })
 **/
 

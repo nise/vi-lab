@@ -3,15 +3,17 @@
  * @param socket.io io An socket.io instance
  */
 module.exports.ping = function(io){
+		var l = require('winston');
+		
     io.of("/ping").on("connection", function(socket){
         /* ***************************
         EVENT FROM socket.io
         *****************************/
         socket.on("connect", function(){
-            console.log("ping : user connect");
+            l.log('info', "ping : user connect");
         });
         socket.on("disconnect", function(){
-            console.log("ping : user disconnect");
+            l.log('info', "ping : user disconnect");
         });
     });
 };

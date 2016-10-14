@@ -3,6 +3,7 @@
 
 
 var 
+	l = require('winston'),
 	mongoose = require( 'mongoose' ),
 	server =  require('../server'),
 	Images  = mongoose.model( 'Images' )
@@ -18,7 +19,7 @@ Import Scene data from csv
 exports.folderImport = function ( req, res ){	
 
 	// flush database in order to reload the images later on
-	Images.remove({}, function(err) { console.log('collection removed') });
+	Images.remove({}, function(err) { l.log('info', 'collection removed') });
 	
 	// 
 	var dir = './public/' + server.application() + '/static/img/stills';
@@ -44,7 +45,7 @@ getFiles = function(dir, folder){
 	      	scene : folder,
 					updated_at : Date.now()
 	      }).save( function( err, todo, count ){
-	      	//console.log('saved: '+ dir.slice(1) + '/' + folder + '/' + files[i] );
+	      	//l.log('info', 'saved: '+ dir.slice(1) + '/' + folder + '/' + files[i] );
 				});
 		}// end for
 	}// end getFiles
