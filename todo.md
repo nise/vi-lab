@@ -110,16 +110,10 @@
 - @highlight => overlay
   - refactor
   - remove require call for consistency
-  
 
-# For diss
-- done: caption: \textit{SubRip, W3C WEBVVT} und \textit{W3C TTML}
-- done: transcript
-- maps
-- vi2.syncImages => conrete version of simultaneous Media
-
-
-# widgets
+**new widgets**
+ - maps
+ - vi2.syncImages => conrete version of simultaneous Media
  - user notes
  - playlist
  - lesezeichen
@@ -127,6 +121,7 @@
  - user ratings
  - media fragments, see http://stackoverflow.com/questions/32548253/streaming-part-of-a-video-in-node-js
  - thinkLets integrieren
+  
 
 # technologies to use for better development
 - https://github.com/mynyml/watchr
@@ -161,6 +156,7 @@
 - @video instance 
  - => /admin/videos/view/:id => admin darf in alle instanzen reinschauen
  - list group who is operating on the instance
+ - bulk-editing of multiple instances that rely on the same file (e.g. change title)
 
 - @video files:
  - make file names more readable

@@ -49,10 +49,10 @@ exports.setPrePostResults = function ( req, res ){
     updated_at : Date.now()
   }).save( function( err, person, count ){
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{
-  		console.log('SAVED test results');
-  		console.log();
+  		l.log('info', 'SAVED test results');
+  		l.log('info', );
   	}
     //res.redirect( '/assessment' );
     res.send({done:true});
@@ -97,10 +97,10 @@ exports.setResults = function ( req, res ){
     updated_at : Date.now()
   }).save( function( err, person, count ){
   	if(err){
-  		console.log(err)
+  		l.log('info', err)
   	}else{
-  		console.log('SAVED test results');
-  		console.log();
+  		l.log('info', 'SAVED test results');
+  		l.log('info', );
   	}
     //res.redirect( '/assessment' );
     res.send({done:true});
@@ -113,11 +113,11 @@ exports.setResults = function ( req, res ){
 FILL-IN Tasks
 **/
 exports.getFillins = function(req, res){
-	//Fillin.remove({}, function(err) { console.log('removed fill-ins'); });
+	//Fillin.remove({}, function(err) { l.log('info', 'removed fill-ins'); });
 	// req.params.field consists of video-id and field-id
 	Fillin.find({ field: req.params.field }).sort( { updated_at:'asc'} ).exec(function(err, items) { 
 		if( err ){
-			console.log(err);
+			l.log('info', err);
 			res.type('application/json');
 			res.jsonp({empty:true});  
 			res.end('done');
@@ -152,9 +152,9 @@ exports.setFillins = function ( req, res ){
     {safe: true, upsert: true},
     function(err, model) {
     	if(err){
-      	console.log(err);
+      	l.log('info', err);
       }else{
-      	//console.log(model);
+      	//l.log('info', model);
       } 
     }
 	);
@@ -169,12 +169,12 @@ exports.setFillins = function ( req, res ){
 FILL-IN Tasks
 **/
 exports.getWrittenAssessment = function(req, res){
-	//Fillin.remove({}, function(err) { console.log('removed fill-ins'); });
+	//Fillin.remove({}, function(err) { l.log('info', 'removed fill-ins'); });
 	// req.params.field consists of video-id and field-id
 	Written.find({ field: req.params.field }).sort( { updated_at:'asc'} ).exec(function(err, items) { 
 
 		if( err ){
-			console.log(err);
+			l.log('info', err);
 			res.type('application/json');
 			res.jsonp({empty:true});  
 			res.end('done');
@@ -209,9 +209,9 @@ exports.setWrittenAssessment = function ( req, res ){
     {safe: true, upsert: true},
     function(err, model) {
     	if(err){
-      	console.log(err);
+      	l.log('info', err);
       }else{
-      	//console.log(model);
+      	//l.log('info', model);
       } 
     }
 	);

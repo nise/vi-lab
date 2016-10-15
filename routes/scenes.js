@@ -27,7 +27,7 @@ exports.csvImport = function ( req, res ){
 	// load data
 	fs.readFile(__dirname+'/../data/' + server.application() + '/scenes.csv', function read(err, data) {
 		if(err){
-			console.log(err);
+			l.log('info', err);
 		}
 		// get Video dataset in order to extract toc data
 		var toc = [];
@@ -38,7 +38,7 @@ exports.csvImport = function ( req, res ){
 			}
 			
 			// destroy dataset first
-			Scenes.remove({}, function(err) { console.log('collection removed') });
+			Scenes.remove({}, function(err) { l.log('info', 'collection removed') });
 			csv().from.string(data, {comment: '#'} )
 				.to.array( function(data){
 					// define scene for each line
@@ -65,8 +65,8 @@ exports.csvImport = function ( req, res ){
 					}
 				});// end array()
 			});// end video call	
-			console.log('Imported scenes.csv');
-			console.log('......................')
+			l.log('info', 'Imported scenes.csv');
+			l.log('info', '......................')
 	});// end fs				
 };
 

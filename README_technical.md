@@ -75,8 +75,7 @@ sudo /home/niels/.nvm/versions/node/v5.0.0/bin/forever list
 git clone https://github.com/nise/vi-lab
 
 ## Update from this repository
-git fetch --all
-git reset --hard origin/master
+git fetch --all && git reset --hard origin/master
 
 ## dump and restore mongoDB
 mongodb: mongodb://localhost/etutor
