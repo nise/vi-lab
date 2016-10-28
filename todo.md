@@ -6,8 +6,10 @@
 - monitor server, app, REST => site24x7
 
 ## bugs by priorities
-- bug: no login possible! 
 - css bugs in opera / msie / safari
+- script scheduler not working
+- bug: no login possible! => could not be reproduced
+
 
 - bug: @user::: when adding a new user there is no id assigned to them.
 - bug: after importing users.csv the user-group relation will be lost
@@ -25,8 +27,6 @@
 - missing template :: /admin/videos/metadata/edit/<id>
 - ??? is it possible to assign more then one video to a group within one phase?
 - ??? how can I chose activities that corralte with the script task and widgets?
-
-- write conversion scripts including presets
 
 # fixed bugs
 - fixed:bug: bson error on certain instnces where new versions of mongodb can not be installed
@@ -121,7 +121,33 @@
  - user ratings
  - media fragments, see http://stackoverflow.com/questions/32548253/streaming-part-of-a-video-in-node-js
  - thinkLets integrieren
-  
+ 
+# scripts alternatives:
+http://link.springer.com/chapter/10.1007/978-0-387-36949-5_16
+http://dl.acm.org/citation.cfm?id=1599570
+http://dl.acm.org/citation.cfm?id=1599577
+http://dl.acm.org/citation.cfm?id=1599583
+http://dl.acm.org/citation.cfm?id=2723611
+https://www.w3.org/TR/scxml/#overview
+https://en.wikipedia.org/wiki/SCXML
+http://www.sciencedirect.com/science/article/pii/S0378720605000170
+http://link.springer.com/chapter/10.1007/978-3-658-04986-7_8
+http://www.tandfonline.com/doi/abs/10.1080/00219266.2014.1002518
+
+# Technische Analyse
+http://katalogbeta.slub-dresden.de/id/0009106337/#detail
+http://katalogbeta.slub-dresden.de/id/0015308426/#detail
+http://katalogbeta.slub-dresden.de/id/0009124387/#detail
+http://katalogbeta.slub-dresden.de/id/0013772960/#detail
+katalogbeta.slub-dresden.de/id/0003963083/#detail
+http://katalogbeta.slub-dresden.de/id/ai-48-SUFfX0lBMzMxNTI2MTg/#detail
+http://katalogbeta.slub-dresden.de/id/ai-48-UUVfX1FFMTk5ODExMDEyMjE4MjkxNzE4MTYxNzI4MjUxNDE0MTMzMTE4MTMxNDI0MTAyMzEw/#detail
+http://katalogbeta.slub-dresden.de/id/ai-48-U09TSV9fMjdFMTI1NzM3NUJENjUyMkI2NEY0NzkyN0YyNDQ1RjU/#detail
+http://katalogbeta.slub-dresden.de/id/ai-49-aHR0cDovL2R4LmRvaS5vcmcvMTAuMTAwNy9zMTMyMTgtMDEzLTAyMzctNA/#detail
+http://katalogbeta.slub-dresden.de/id/ai-49-aHR0cDovL2R4LmRvaS5vcmcvMTAuMTA1NS9zLTIwMDQtODEzMDMx/#detail
+http://katalogbeta.slub-dresden.de/id/ai-48-TUFNQV9fMDUwNTAyMDE4/#detail
+katalogbeta.slub-dresden.de/id/0011344924/#detail
+http://www.eltro.de/videoanalyse.html  
 
 # technologies to use for better development
 - https://github.com/mynyml/watchr
@@ -205,6 +231,8 @@
  - open toc, tags, links, assessment
  - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
 - guided tour on how to define a script
+
+- wiki? https://github.com/Jermolene/TiddlyWiki5
    
 
 # Performance & quality improvements
@@ -222,6 +250,7 @@
 		https://github.com/pgte/nock
 		http://visionmedia.github.io/mocha/#synchronous-code
 		https://github.com/visionmedia/should.js/
+		http://docs.casperjs.org/en/latest/modules/clientutils.html
 - testing user activity
 	https://github.com/marmelab/gremlins.js/		
 

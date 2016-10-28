@@ -21,7 +21,7 @@ var
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
-
+mongoose.Promise = require('bluebird');
 
 /*
  * Simply renders a template that introduced the scripts
@@ -315,7 +315,7 @@ exports.activateInstanceByID = function(req, res){
 			l.log('info', err)
 		}else{
 			l.log('info', 'set Instance active'); 
-			startScriptSession();
+			startScriptSession(); // xxx
 			res.redirect('/admin/scripts/instances');
 			res.end();
 		}
@@ -337,7 +337,7 @@ var
 exports.startScriptSession = startScriptSession;
 
 function startScriptSession(){ 
-	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 0 }}, function ( err, ins ){
+	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 1 }}, function ( err, ins ){
 		if(err){ 
 			l.log('info', err); 
 		}else{
@@ -581,7 +581,7 @@ exports.destroyInstanceByID = function(req, res) {
 
 
 /*
- * @todo deprecated function xxx
+ * @todo xxx deprecated function xxx
  **/
 exports.getScriptInfo = function ( req, res ){ // xxx editor
 	Instances.find({}).exec( function ( err, scripts ){
@@ -602,32 +602,6 @@ exports.getScriptInfo = function ( req, res ){ // xxx editor
 		});// end group
 	});//end script	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

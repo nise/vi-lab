@@ -29,7 +29,7 @@ var
 	scenes = require('./routes/scenes'),
 	persons = require('./routes/persons')
 	;
-
+mongoose.Promise = require('bluebird');
 
 	/* 
 	 * catch arguments 

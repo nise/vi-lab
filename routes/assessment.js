@@ -52,7 +52,6 @@ exports.setPrePostResults = function ( req, res ){
   		l.log('info', err)
   	}else{
   		l.log('info', 'SAVED test results');
-  		l.log('info', );
   	}
     //res.redirect( '/assessment' );
     res.send({done:true});
@@ -100,7 +99,6 @@ exports.setResults = function ( req, res ){
   		l.log('info', err)
   	}else{
   		l.log('info', 'SAVED test results');
-  		l.log('info', );
   	}
     //res.redirect( '/assessment' );
     res.send({done:true});

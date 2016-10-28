@@ -1,8 +1,11 @@
 /*
 
 **/
-var mongoose = require( 'mongoose' );
-var Schema   = mongoose.Schema;
+var 
+	mongoose = require( 'mongoose' ),
+	Schema   = mongoose.Schema
+	;
+mongoose.Promise = require('bluebird');	
  
 
 /****** VIDEOS ******************************************/ 
@@ -123,7 +126,7 @@ var Groups = new Schema({
 	phase: Number,
 	persons: Number,
 	hs: String, 
-	videos : Array,
+	videos : Array, // video instances
 	ep_group_pad_id: String, 
 	ep_group_id: String,
   updated_at 	: { type: Date, default: Date.now }

@@ -13,7 +13,7 @@ var
 	fs = require('node-fs'),
 	csv = require('csv')
 	;
-
+mongoose.Promise = require('bluebird');
 
 /*
 Import Videos data from csv
@@ -62,17 +62,23 @@ exports.index = function ( req, res ){
   res.render( 'videos', { title : '' });
 };
 
+
+/*
+ * 
+ **/
 // xxx
-exports.renderScriptVideo = function(req, res) { //l.log('info', 88+'---------------------------')
+exports.renderScriptVideo = function(req, res) { 
 
 	// get script phase 
 	ScriptInstance.findOne({ status: 'running' }).exec(function(err, script) {
-		if(err){ 
-			l.log('info', err); 
-		}else if(script !== undefined){
+		if(err){
+			console.log(1);		 
+			//console.error('There was an error', err);
+		}else if(script !== undefined){ 
 			var phase = script['current_phase']; 
 			// get group of current user
 			l.log('info', 'phase: '+phase);
+			l.log('info', 'user: '+req.user);
 			Users.findOne({ username: req.user.username }).select('groups').setOptions({lean:true}).exec(function ( err, users ){
 				//var group = users[0].groups[Number(phase)];  
 				var group = phase === 0 ? [ users.groups[0] ] : users.groups.slice(0, Number(phase));
@@ -85,10 +91,12 @@ exports.renderScriptVideo = function(req, res) { //l.log('info', 88+'-----------
 				Groups.find( groupQuery ).select('id videos').setOptions({lean:true}).exec(function ( err, groups ){
 					l.log('info', groups);
 					if(err){ 
-						l.log('info', err); 
+						console.log(1);
+						//console.error('There was an error', err);
+   					
 					}else if(groups[0] !== undefined){
 						/**/
-						// collect video ids from the effected groups
+						// collect the IDs of video instance from the effected groups
 						var the_videos = [], script_video = [];
 						for(var i = 0; i < groups.length; i++){
 							the_videos.push.apply( the_videos, groups[i].videos );
@@ -97,17 +105,21 @@ exports.renderScriptVideo = function(req, res) { //l.log('info', 88+'-----------
 						var query = {}
 						query['id'] = { $in: the_videos }; // groups[0].videos
 					
-							l.log('info', script_video)
+							//l.log('info', script_video)
 							l.log('info', '#################################################');
 							// get videos 
 							Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
-							
+								if(err){
+									console.log(1);
+									//console.error('There was an error', err);
+   								
+								}
 								for(var i=0; i < group.length; i++){
-									script.phases[i].the_videos = []; l.log('info', 'gr'+i)
+									script.phases[i].the_videos = []; //l.log('info', 'gr'+i)
 									for(var j = 0; j < videos.length; j++){ 
 										if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
 											script.phases[i].fuck.push( videos[j] ); 
-											l.log('info', script.phases[i])
+											//l.log('info', script.phases[i])
 										}
 									}
 								}
