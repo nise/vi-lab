@@ -123,7 +123,9 @@ var conn = mongoose.connect( 'mongodb://localhost/' + application , function(err
 			scripts.startScriptSession();
 			//groups.csvImport();
 			//groups.csvImportFromJSON();
-			//var lec = require('./utils/lecturnity');		
+			//var lec = require('./utils/lecturnity');	
+			
+			
 		}
 		
 		/* Access Control List */
