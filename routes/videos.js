@@ -80,7 +80,8 @@ exports.renderScriptVideo = function(req, res) {
 			
 			// 
 			var previous_groups = phase === 0 ? [ req.user.groups[0] ] : req.user.groups.slice(0, Number(phase)+1);
-			l.log('info', 'previous groups '+previous_groups)
+			previous_groups = previous_groups.toString().split(',');
+			l.log('info', 'previous groups '+previous_groups + '(type: '+ ( typeof previous_groups ) +')')
 			// get video-ids of group
 			
 			var groupQuery = {};
@@ -90,19 +91,23 @@ exports.renderScriptVideo = function(req, res) {
 				l.log('info', groups);
 				if(err){ 
 					console.error('There was an error', err);
- 					
-				}else if(groups[0] !== undefined){
+ 				}else if(groups[0] !== undefined){
 					/**/
 					// collect the IDs of video instance from the effected groups
-					var the_videos = [], script_video = [];
+					var 
+						the_videos = [], 
+						script_video = []
+						;
 					for(var i = 0; i < groups.length; i++){
 						the_videos.push.apply( the_videos, groups[i].videos );
-						script_video[i] = groups[i].videos
+						script_video[i] = groups[i].videos.map(Number);
 					}
 					var query = {}
 					query['id'] = { $in: the_videos }; // groups[0].videos
-				
-						//l.log('info', script_video)
+						console.log('++++++++')
+						l.log('info', script_video)
+						console.log('++++++++')
+						l.log('info', the_videos)
 						l.log('info', '#################################################');
 						// get videos 
 						Videos.find( query ).sort( 'id' ).exec( function ( err, videos ){
@@ -110,11 +115,14 @@ exports.renderScriptVideo = function(req, res) {
 								console.error('There was an error', err);
  							}
 							for(var i=0; i < previous_groups.length; i++){
-								script.phases[i].the_videos = []; //l.log('info', 'gr'+i)
+								//script.phases[i].the_videos = []; //l.log('info', 'gr'+i)
+								l.log('info', 'p_'+i+' = '+script.phases[i].seq )
+								console.log( script_video[ script.phases[i].seq ] );
+								console.log('.......................')
 								for(var j = 0; j < videos.length; j++){ 
-									if( script_video[i].indexOf( Number(videos[j].id) ) !== -1){  
-										script.phases[i].fuck.push( videos[j] ); 
-										//l.log('info', script.phases[i])
+									if( script_video[ script.phases[i].seq ].indexOf( Number(videos[j].id ) ) !== -1){  
+										script.phases[ script.phases[i].seq ].fuck.push( videos[j] ); 
+										l.log('info', script.phases[i].seq +'__'+ videos[j].id )
 									}
 								}
 							}
@@ -122,7 +130,7 @@ exports.renderScriptVideo = function(req, res) {
 							res.render('videos', {items: { script: script } });  								
 						});
 				}else{
-					l.log('info', 3); 
+					l.log('info', 'Some error occured: could not find any groups');
 					res.end('done');
 				}
 			});// end Groups

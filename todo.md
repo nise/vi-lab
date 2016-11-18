@@ -1,7 +1,8 @@
 
 https://github.com/integrations
 
-1. rename phases at script instance
+1. rename and re-order phases at script instance
+2. change order of groups at admin/users/edit/:_id
 
 
 

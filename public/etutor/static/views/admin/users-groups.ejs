@@ -19,11 +19,21 @@ $(document).ready (function () {
 		  { field: 'id', title: 'Group-ID', sortable : true, order: 'asc', searchable: true }, 
 		  { field: 'description', title: 'Description',  sortable : true, order: 'asc',searchable : true }, 
 		  { field: 'persons', title: 'Group size', visible:true, sortable : true, searchable : true }, 
-		  { field: 'videos', title: 'Videos', visible:true, sortable : true, /*formatter: videoFormatter,*/ order: 'asc',searchable : true }, 
-		//  { field: 'users', title: 'Users', visible:true, sortable : true, formatter: userFormatter, order: 'asc',searchable : true }, 
+		  { field: 'videos', title: 'Videos', visible:true, sortable : true, /*formatter: videoFormatter,*/ order: 'asc',searchable : true },
+		  { field: 'operator', title: '', visible:true, sortable : false, formatter: operateFormatter, order: 'asc',searchable : false }  	
     ]
 	});
 });
+
+function operateFormatter(value, row, index) {
+	return [
+		'<a class="table-link" href="/admin/users/groups/edit/'+row._id+'" title="Edit group">',
+		'<i class="glyphicon glyphicon-pencil"></i> edit',
+		'</a>'
+	].join('');
+}
+
+
 </script>
 	
 	

@@ -189,6 +189,8 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		
 	// groups
 	app.get('/admin/users/groups', users.authCallback(['editor']),	groups.renderIndex );
+	app.get('/admin/users/groups/edit/:id', users.authCallback(['editor']),	groups.renderEdit );
+	app.post('/admin/users/groups/update/:id', users.authCallback(['editor']),	groups.update );
 	app.get('/groups', groups.getGroups);
 	app.get('/json/groups', groups.getGroups);
 	app.get('/json/group-activity-log/', users.ensureAuthenticated, groups.getGroupActivityLog );

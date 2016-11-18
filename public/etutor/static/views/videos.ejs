@@ -8,7 +8,6 @@
 
 <div class="container">
 	<div class="col-md-10">
-	<% phase_i = 0 %>
 	<% items.script.phases.forEach(function(phase){ %>
 		
 		<% if( phase.seq <= items.script.current_phase ) {%> 
@@ -27,10 +26,10 @@
 			<b>Video(s):</b><br/><br/>
 			
 			<% phase.fuck.forEach(function(item){ %>
-				
+				<% if( item.metadata[0].title !== 'Videoanalyse' ) {%>
 			<div class="col-xs-6 col-md-6">
 				<div class="thumbnail">
-					<h4><a class="fadein" href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h4>
+					<h4><a class="fadein" href="/videos/view/<%= item._id %>"><%=: item.metadata[0].title | replace:'Video 5: Konflik','	Video 4: Konflik' %></a></h4>
 				    <p class="lecturer">
 				    	<a href="<%= item.metadata[0].source %>">
 				    		<span class="glyphicon glyphicon-user"></span> 
@@ -42,12 +41,11 @@
 					<div class="caption"></div> 
 				</div>
 			</div>
-				<% if( item.metadata[0].title !== 'Videoanalyse' ) {%> <% } %>	
+				 <% } %>	
 			<% }); %>
 		</div>	
 	</div>
 		<% } %>	
-		<% phase_i++ %>
 	<% }); %>
 	</div>	
 </div>

@@ -350,6 +350,31 @@ exports.renderIndex = function(req, res) {
 
 
 /*
+ * Render the form to edit group data
+ **/
+exports.renderEdit = function ( req, res ){
+  Groups.findOne({ '_id': req.params.id}, function ( err, item ){
+    res.render( 'admin/users-groups-edit', {
+        items   : item,
+        current : req.params.username
+    });
+  });
+};
+
+
+/*
+ * Updates group data send from form
+ **/
+exports.update = function ( req, res ){
+	req.body.videos = req.body.videos.toString().split(',');
+  Groups.findOneAndUpdate( {'_id': req.params.id }, req.body, { upsert:true }, function ( err, doc ){
+ 		res.redirect( '/admin/users/groups' );
+ 		res.end()
+  });
+};
+
+
+/*
 
 **/
 exports.getGroups = function(req, res) {

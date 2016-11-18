@@ -402,9 +402,11 @@ function findById(id, fn) {
 
 
 /*
+ * Updates user data that has been changed in the user edit page (/admin/users/edit/<user_id>)
  **/
 exports.updateUsers = function(req, res) {
   var id = req.params.id;
+  	req.body.groups = req.body.groups.toString().split(',');
   var user = req.body;
   Users.update({'_id':new BSON.ObjectID(id)}, {$set:{trace:user.data}}, {safe:true}, function(err, result) {
 	  if (err) {
@@ -500,7 +502,6 @@ exports.renderEdit = function ( req, res ){
         items   : item,
         current : req.params.username
     });
-    
   });
 };
 
