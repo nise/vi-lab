@@ -230,10 +230,10 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
   			return Number(a.time) > Number(b.time) ? 1 : -1;
 			});
 			moment.locale('de');
-			$.each( analysisData, function(i, val){   
+			$.each( analysisData, function(i, val){  // alert(val)
 				//alert(val)
 				var a = $('<a></a>')
-					.text(val.markerlabel+'') 
+					.text(val.data.markerlabel+'') 
 					.addClass('id-'+ val.time+' analysis-menu-question' )
 					//.attr('href', '#'+vi2.options.id)
 					.click(function(){  

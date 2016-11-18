@@ -407,7 +407,7 @@ var ViLab = $.inherit({
 				break;	
 			case "syncMedia" :
 				var rr = vi2.db.getStreamById(_this.currentVideo).id;  
-				var ee = [20,22,24,26,28,30]; alert( rr)
+				var ee = [20,22,24,26,28,30]; 
 				if( ee.indexOf( Number(rr) ) === -1 ){ // bad hack
 				widget = new Vi2.SyncronizeMedia( widget_options.widget_options );  
 				title = 'Folien';
