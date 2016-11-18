@@ -1,0 +1,26 @@
+<% layout( '../admin-layout' ) -%>
+
+<div class="col-md-10">
+	<h2>
+		Edit group: <%= items.id %>
+	</h2> 
+  <div class="edit-form">
+    <form action="/admin/users/groups/update/<%= items._id %>" method="post" accept-charset="utf-8">
+			
+      <div class="input-group input-group-xs">
+				<span class="input-group-addon" id="sizing-addon1">Description</span>
+				<input type="text" class="form-control" placeholder="description" aria-describedby="sizing-addon1" name="description" value="<%= items.description %>">
+      </div>
+      <br> 
+      <div class="input-group input-group-xs">
+				<span class="input-group-addon" id="sizing-addon1">Videos</span>
+				<input type="text" class="form-control" placeholder="videos" aria-describedby="sizing-addon1" name="videos" value="<%= items.videos %>">
+      </div>
+      <br>
+      
+			<div class="buttons">
+				<button type="submit" class="btn-primary btn">update</button>  <a href="/admin/users/groups">cancel</a> <a class="alert-btn right" href="/admin/users/destroy/<%= items._id %>" title="Delete this item item">delete</a>
+			</div>
+    </form>
+	</div>
+</div>
