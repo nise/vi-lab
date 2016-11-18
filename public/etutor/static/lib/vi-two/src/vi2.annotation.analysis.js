@@ -7,10 +7,8 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
- - second field
  - design input fields
- - 
- 
+ - save btn @begin marker
  - use data-attribute for storing 
  - drop-down for different types / option for enabled types
  - re-comment binding
@@ -162,8 +160,8 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 					});
 					var fill = '<span class="analysis-marker-annotate-fill"></span>';
 					var label = '<input type="text" placeholder="Label" class="marker-text-label marker-element" title="Label" />';
-					var description = '<textarea class="marker-element" placeholder="Beschreibung" title="Beschreibung der Markierung"></textarea>';
-					var intervention = '<textarea class="marker-element" placeholder="Beurteilung" title="Beurteilung"></textarea>';
+					var description = '<textarea class="marker-element marker-description" placeholder="Beschreibung" title="Beschreibung der Markierung"></textarea>';
+					var intervention = '<textarea class="marker-element marker-description2" placeholder="Beurteilung" title="Beurteilung"></textarea>';
 					
 					
 				var newMarker = $('<a></a>')
@@ -472,7 +470,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 								
 								
 								}	
-						alert(obj)
+						
 								// marker + label
 								if( _this.options.hasMarkerLabel && ( obj.data.markertype === 'marker-label' || obj.data.markertype === 'marker-label-desc') ){ 
 									var input = $('<input />')
