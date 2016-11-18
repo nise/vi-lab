@@ -7,8 +7,7 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
- - delete btn
- - markertype @ begin was not saved
+ - second field
  - design input fields
  - 
  
@@ -43,6 +42,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 			hasMarkerLabel:true,
 			hasMarkerComment:true,
 			hasMarkerDescription:true,
+			hasMarkerDescription2:true,
 			allowEmoticons : true, 
 			allowReplies : false,
 			allowEditing : false,
@@ -72,10 +72,11 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 						y:val.y,
 						date: val.date, 
 						author: val.author,
-						markertype: val.data === undefined ? '' : val.data.markertype,
-						markerlabel: val.data === undefined ? '' : val.data.markerlabel,
-						markerselectoption: val.data === undefined ? '' : val.data.markerselectoption, 
-						markerdescription: val.data === undefined ? '' : val.data.markerdescription,
+						markertype: val.markertype,
+						markerlabel: val.markerlabel,
+						markerselectoption: val.markerselectoption, 
+						markerdescription: val.markerdescription,
+						markerdescription2: val.markerdescription2,
 						id: val.id
 					}); 
 				}
@@ -129,6 +130,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 						var label = $(this).parent().find('.marker-text-label').val();
 						_this.annotation_flag = false; 
 						// add new annotation to the DOM
+						
 						_this.addDOMElement( {
 							"type": _this.name,
 							"id": Math.ceil( Math.random() * 1000 ),
@@ -142,56 +144,26 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 							"markerlabel": label === undefined ? '?' : label,
 							"markerselectoption":"cat a",
 							"markerdescription": $(this).parent().find('.marker-description').val(),
+							"markerdescription2": $(this).parent().find('.marker-description2').val(),
 							"analysis": $(this).parent().find('.marker-analysis').val()
 						});
 
-						// fetch all data from DOM
-						var data = [];
-						
-						$(vi2.dom).find("div[type='"+ _this.name +"']").each(function(i, val){
-							var obj = {};
-							obj.title = $(val).text();
-							obj.target = $(val).attr('starttime') === undefined ? 0 : $(val).attr('starttime');
-							obj.linktype = '';
-							obj.x = $(val).attr('x');
-							obj.y = $(val).attr('y');
-							obj.t1 = $(val).attr('starttime') === undefined ? 0 : $(val).attr('starttime');
-							obj.t2 = $(val).attr('duration') === undefined ? 1 : $(val).attr('duration');
-							obj.marker = $(val).data('marker');
-							obj.markertype = $(val).attr('markertype');
-							obj.markerlabel = $(val).attr('markerlabel');
-							obj.markerdescription = $(val).attr('markerdescription');
-							obj.markerselectoption = $(val).attr('markerselectoption');
-							obj.id = $(val).attr('id');
-							data.push( obj );
-						});
-
-						// store DOM data at the server / db 
-				 		$.post('/videos/annotate', {"data":data, annotationtype: _this.name, videoid: vi2.videoData._id}, function( res ){ 
-				 			console.log('saved '+ _this.name );
-				 			//socket.emit('video.updated', { videoid: _this.videoData._id });
-				 			// refresh annotations
-				 			vi2.observer.setAnnotations();
-							// continue playback
-							
-							vi2.observer.player.play();
-						});
+						// save DOM to DB		
+						_this.saveDOM();
+						$(newMarker).hide();
 						
 					});
 					var remove = $('<span></span>')
-					.addClass('remove-btn vi2-analysis-btn glyphicon glyphicon-close')
+					.addClass('remove-btn vi2-analysis-btn glyphicon glyphicon-remove')
 					.click(function(e){
 						_annotation_flag = false;
 						$(newMarker).hide();
 						vi2.observer.player.play();
 					});
 					var fill = '<span class="analysis-marker-annotate-fill"></span>';
-					var label = '<input type="text" value="'+ '<label>' +'" class="marker-text-label marker-element" title="Label the marker" />';
-					var description = [
-						'<textarea class="marker-element" title="Describe what you have marked and why">',
-						'<description>',
-						'</textarea>'
-						].join(',');
+					var label = '<input type="text" placeholder="Label" class="marker-text-label marker-element" title="Label" />';
+					var description = '<textarea class="marker-element" placeholder="Beschreibung" title="Beschreibung der Markierung"></textarea>';
+					var intervention = '<textarea class="marker-element" placeholder="Beurteilung" title="Beurteilung"></textarea>';
 					
 					
 				var newMarker = $('<a></a>')
@@ -207,6 +179,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 					.append( fill )
 					.append( label )
 					.append( description )
+					.append( intervention )
 					.append( save )
 					.append( remove )
 					.appendTo( _this.options.displaySelector )
@@ -230,10 +203,10 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
   			return Number(a.time) > Number(b.time) ? 1 : -1;
 			});
 			moment.locale('de');
-			$.each( analysisData, function(i, val){  // alert(val)
+			$.each( analysisData, function(i, val){  //alert(val.markertype)
 				//alert(val)
 				var a = $('<a></a>')
-					.text(val.data.markerlabel+'') 
+					.text(val.markerlabel+'') 
 					.addClass('id-'+ val.time+' analysis-menu-question' )
 					//.attr('href', '#'+vi2.options.id)
 					.click(function(){  
@@ -279,23 +252,17 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 					//comments.find('.t'+val.time).tsort({ attr:"date", order:'asc'}); 
 				}	
 
-				// edit
-				/*if( _this.options.allowEditing && Number(val.author) === Number(vi2.wp_user) ){	 
+				// remove marker
+				//if( _this.options.allowEditing && Number(val.author) === Number(vi2.wp_user) ){	 
 					var edit_btn = $('<a></a>')
-						.addClass('tiny-edit-btn glyphicon glyphicon-pencil' )
-						.attr('data-toggle', "modal")
-						.attr('data-target', "#myModal")
-						.attr('data-annotationtype', 'analysis')
-						.data('annotationdata', { 
-							content: val.name, 
-							time: val.time, 
-							date: val.date,
-							author: val.author 
-						} )
+						.addClass('tiny-edit-btn glyphicon glyphicon-remove' )
+						.bind('click', function(){  
+							_this.removeDOMElement( val.time );
+						})
 						.appendTo( header )
 						;
-				}		
-				// re-analysis
+				//}		
+				/*// re-analysis
 				if( _this.options.allowReplies ){		
 					var reply_btn = $('<a></a>')
 						.addClass('tiny-edit-btn glyphicon glyphicon-arrow-right' )
@@ -310,7 +277,45 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				tmp_t = val.time;		
 			}); // end each
 		},
+		
+		
+		/*
+		 **/
+		saveDOM : function(){ 
+			var _this = this;
+			// fetch all data from DOM
+			var data = [];
 			
+			$(vi2.dom).find("div[type='"+ _this.name +"']").each(function(i, val){
+				var obj = {};
+				obj.title = $(val).text();
+				obj.target = $(val).attr('starttime') === undefined ? 0 : $(val).attr('starttime');
+				obj.linktype = '';
+				obj.x = $(val).attr('x');
+				obj.y = $(val).attr('y');
+				obj.t1 = $(val).attr('starttime') === undefined ? 0 : $(val).attr('starttime');
+				obj.t2 = $(val).attr('duration') === undefined ? 1 : $(val).attr('duration');
+				obj.marker = $(val).data('marker');
+				obj.markertype = $(val).attr('markertype');
+				obj.markerlabel = $(val).attr('markerlabel');
+				obj.markerdescription = $(val).attr('markerdescription');
+				obj.markerdescription2 = $(val).attr('markerdescription2');
+				obj.markerselectoption = $(val).attr('markerselectoption');
+				obj.id = $(val).attr('id');
+				data.push( obj );
+			});
+
+			// store DOM data at the server / db 
+	 		$.post('/videos/annotate', {"data":data, annotationtype: _this.name, videoid: vi2.videoData._id}, function( res ){ 
+	 			console.log('saved '+ _this.name );
+	 			//socket.emit('video.updated', { videoid: _this.videoData._id });
+	 			// refresh annotations
+	 			vi2.observer.setAnnotations();
+				// continue playback
+				
+				vi2.observer.player.play();
+			});
+		},	
 			
 		/*
 		 * appends all annotations to the DOM model, e.g.
@@ -332,6 +337,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 					.attr('markerlabel', val.markerlabel)
 					.attr('markerselectoption', val.markerselectoption) 
 					.attr('markerdescription', val.markerdescription)
+					.attr('markerdescription2', val.markerdescription2)
 					.attr('id', val.id)
 					.text( decodeURIComponent(val.analysis))
 					.appendTo( vi2.dom )
@@ -370,11 +376,21 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				.attr('markerlabel', obj.markerlabel)
 				.attr('markerselect_option', obj.markerselectoption)
 				.attr('markerdescription', obj.markerdescription)
+				.attr('markerdescription2', obj.markerdescription2)
 				.data('marker', obj)
 				.text( obj.markerlabel )
 				.appendTo( vi2.dom );
-		},			
+		},		
 		
+		
+		/*
+		 **/	
+		removeDOMElement : function( time ){ 
+			$(vi2.dom).find("div[starttime='"+ time +"']").each(function(i, val){ 
+				$(this).remove();
+			});	
+			this.saveDOM();
+		},
 				
 		/*
 		 *
@@ -456,7 +472,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 								
 								
 								}	
-						
+						alert(obj)
 								// marker + label
 								if( _this.options.hasMarkerLabel && ( obj.data.markertype === 'marker-label' || obj.data.markertype === 'marker-label-desc') ){ 
 									var input = $('<input />')
@@ -468,11 +484,17 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 								}
 							// marker + text
 								if( _this.options.hasMarkerDescription && ( obj.data.markertype === 'marker-desc' || obj.data.markertype === 'marker-label-desc' || obj.data.markertype === 'marker-select-desc') ){ 
-									var text = $('<textarea></textarea>')
-										.attr('title','Describe what you have marked and why')
-										.text( obj.data.markerdescription )
+									var text = $('<textarea placeholder="Beschreibung"></textarea>')
+										.attr('title','Beschreiben Sie was und warum Sie etwas im Video markiert haben')
+										.val( obj.data.markerdescription )
 										.addClass('marker-element');//.attr('type','text');
 									$( input_fields ).append( text );
+					
+									var text2 = $('<textarea placeholder="Beurteilung"></textarea>')
+										.attr('title','Beurteilen Sie den Konflikt')
+										.val( obj.data.markerdescription2 )
+										.addClass('marker-element');//.attr('type','text');
+									$( input_fields ).append( text2 );
 								}
 							}						
 							// remove link ancshor after click 

@@ -202,7 +202,7 @@ var Parser = $.inherit(/** @lends Parser# */
   					_this.vid_arr[v_id]['annotation'].push(obj);
 
   				}else if($(this).attr('type') === "assessmentanalysis"){ 
-						// comments
+						// analysis
 						obj.title = $(this).text();
 						obj.target = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');
 						obj.linktype = '';
@@ -214,6 +214,7 @@ var Parser = $.inherit(/** @lends Parser# */
 						obj.markertype = $(this).attr('markertype');
 						obj.markerlabel = $(this).attr('markerlabel');
 						obj.markerdescription = $(this).attr('markerdescription');
+						obj.markerdescription2 = $(this).attr('markerdescription2');
 						obj.markerselect_option = $(this).attr('markerselectoption');
 						obj.id = $(this).attr('id')
   					_this.vid_arr[v_id]['annotation'].push(obj);
