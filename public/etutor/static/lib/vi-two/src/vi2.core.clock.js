@@ -31,19 +31,21 @@ https://en.wikipedia.org/wiki/Index#Computer_science
 
 Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 	{
-			/** 
-			*		@constructs 
-			*		@param {Videoplayer} player Related video player 
-			*		@param {Number} clockInterval Interval of clock granularity in milliseconds
-			*/
-  		__constructor : function(player, clockInterval) { 
-  			this.player = player;
+		/** 
+		*		@constructs 
+		*		@param {Videoplayer} player Related video player 
+		*		@param {Number} clockInterval Interval of clock granularity in milliseconds
+		*/
+		__constructor : function(clockInterval) {
+			if ( clockInterval > 20 && clockInterval < 5000 ){
   			this.clockInterval = clockInterval;  		
-  		},
+  		}else{
+  			console.log('Error')
+  		}	
+		},
   		
 		
 		name : 'clock',
-		player : null,
 		clockInterval : 500, // = default
 		isRunning : false,
 		interval : -1,	
@@ -59,11 +61,18 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
   		return this.hooks[type] !== null;	
   	},
   	
-  	/* should be replaced by some isWidget inside the observer */
-  	addHook : function(type, fn){
-  		this.hooks[type] = fn;
+  	
+  	/*
+  	 * Registers a type of annotation as a hook for later use
+  	 * @param {String} name Name of the widget
+  	 * @param {object} data Annotation-related data 
+		 * @return {boolean} 
+  	 **/
+  	addHook : function( name, data){
+  		this.hooks[ name ] = data;
   		return true;
   	},
+	
 	
 		/* 
 		 * push annotations on their stack by mapping the parser object to the specific annotation object structure 
@@ -89,25 +98,26 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 						t2: obj.t2
 					},
 					seek : obj.seek,
-					duration : obj.duration
+					duration : obj.duration,
+					data : obj
 				});
 			}	
 		},
 	
 		/* Trivial */
 		checkAnnotation : 	function() {
-			var iTime = this.parseTime( this.player.currentTime() );
+			var iTime = this.parseTime( vi2.observer.player.currentTime() );
 			var annoLength = this.annotations.length;
 			for (var i=0; i < annoLength; i++ ){ 
 				var oAnn = this.annotations[i];
 				if(iTime >= oAnn.displayPosition.t1 && iTime < (Number(oAnn.displayPosition.t1) + Number(oAnn.displayPosition.t2))) {
 					if(!oAnn.active){
 						oAnn.active = true; 
-	  				$(this.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
+	  				$( vi2.observer.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
 					}
 				}else {
 					oAnn.active = false;
-	  			$(this.player).trigger('annotation.end.'+oAnn.type, [i]);
+	  			$( vi2.observer.player).trigger('annotation.end.'+oAnn.type, [i]);
 				}
 			}
 		},
@@ -135,19 +145,19 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		
 		checkAnnotation_new : 	function() {
 			var _this = this;
-			var iTime = this.parseTime( this.player.currentTime() ); // returns time in decimal 
-			var x = this.player.currentTime() < 1 ? 0 : Math.ceil(iTime / 100); 
+			var iTime = this.parseTime( vi2.observer.player.currentTime() ); // returns time in decimal 
+			var x = vi2.observer.player.currentTime() < 1 ? 0 : Math.ceil(iTime / 100); 
 			//$('#debug').val(_this.prepAnno[x].length);	
 			$.each(_this.prepAnno[x], function(i, oAnn){  
 				
 				if(iTime >= oAnn.displayPosition.t1 && iTime < (Number(oAnn.displayPosition.t1) + Number(oAnn.displayPosition.t2))) {
 					if(!oAnn.active){
 						oAnn.active = true; //alert(oAnn.type);
-	  				$(_this.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
+	  				$( vi2.observer.player).trigger('annotation.begin.'+oAnn.type, [i, oAnn]); 
 					}
 				}else {
 					oAnn.active = false;
-	  			$(_this.player).trigger('annotation.end.'+oAnn.type, [i]);
+	  			$( vi2.observer.player).trigger('annotation.end.'+oAnn.type, [i]);
 				}
 			});
 		},
@@ -162,7 +172,9 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 		*/
 		
 							
-		/* ... */
+		/*
+		 * Starts the clock interval counter
+		 **/
 		startClock : function(){  
 			//this.buildAnnotationIndex();
 			if(this.isRunning){ return;}
@@ -171,20 +183,27 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 			this.interval = setInterval(function() { _this.checkAnnotation();  }, this.clockInterval);		
 		},
 		
-		/* ... */
+		
+		/*
+		 * Stops the clock interval counter
+		 **/
 		stopClock : function(){
 			clearInterval(this.interval);
 			clearInterval(this.interval);
 			this.isRunning = false;
 		},
 
-		/* ... */		
+
+		/*
+		 * Resets all annotations and its overlays.
+		 **/		
 		reset : function(){
 			$('#overlay').html('');
 			this.annotations = [];
 		},
+
 	
-		/* ... */
+		/* xxxx */
 		parseTime : function (strTime) { 
 			return strTime;
 			//var aTime = strTime.toString().split(":");
@@ -193,5 +212,3 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 	
 	
 }); // end class Clock 
-	
-

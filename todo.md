@@ -23,7 +23,6 @@ nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargest
 ## bugs by priorities
 - css bugs in opera / msie / safari
 - script scheduler not working
-- bug: no login possible! => could not be reproduced
 
 - bug: @messages:: can send message without recipient
 - bug: @messages:: footer is not aligned at the bottom
@@ -43,6 +42,7 @@ nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargest
 - missing template :: /admin/videos/metadata/edit/<id>
 - ??? is it possible to assign more then one video to a group within one phase?
 - ??? how can I chose activities that corralte with the script task and widgets?
+- ??? how to change phase order during run time?
 
 # fixed bugs
 - fixed:bug: bson error on certain instnces where new versions of mongodb can not be installed
@@ -80,6 +80,7 @@ nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargest
 - @timeline: 
  - zustand für inaktive marker
  - slide preview
+ 
 - @player 
  - space == pause
  - handle 'video end' event 
@@ -171,18 +172,12 @@ http://katalogbeta.slub-dresden.de/id/ai-48-TUFNQV9fMDUwNTAyMDE4/#detail
 katalogbeta.slub-dresden.de/id/0011344924/#detail
 http://www.eltro.de/videoanalyse.html  
 
-# technologies to use for better development
-- https://github.com/mynyml/watchr
-- less
 
 
-# roadmap for next release
+# admin features
 - install script including demo data
-- make a nice http://127.0.0.1:3033/admin that shows starting points, include a tour
-- AMD / commonjs : https://github.com/systemjs/systemjs
-- S-BPM for node.js : https://github.com/e2ebridge/bpmn
+- include a tour
 - display comments / links animated 
-- strict templating, e.g. page-title as <%= page.title %>
 - settings page
 	 - settings per appliction (e.g. terezin, etutor)
 	 - include all markdown-pages (intr, about, footer, ...)
@@ -191,7 +186,30 @@ http://www.eltro.de/videoanalyse.html
 	 - application etutor/terezin
 	 - supported mime-types for upload
 
+# code and architecture
+- AMD / commonjs : https://github.com/systemjs/systemjs
+- S-BPM for node.js : https://github.com/e2ebridge/bpmn
+- strict templating, e.g. page-title as <%= page.title %>
+- REST API HATEOAS
+  -	https://tools.ietf.org/html/draft-kelly-json-hal-06#page-2
+  - https://en.wikipedia.org/wiki/HATEOAS
+  - https://github.com/hapijs/hapi
+  - http://fortunejs.com/api/#serializer
+- distinguish applications
+ - shared files, e.g. admin-templates, libs, css
+- internationalisation
+- popcorn-editor
+ - save popcorn slides to database
+ - open toc, tags, links, assessment
+ - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
+- guided tour on how to define a script
+- https://github.com/mynyml/watchr
+- less
+- wiki? https://github.com/Jermolene/TiddlyWiki5
 
+
+
+# component features
 - @templates: 
  - duplicate phase
  - cascade of settings for player widgets (einstellung f. ein Video überschreib globale Einstellung)
@@ -240,22 +258,12 @@ http://www.eltro.de/videoanalyse.html
 - @groups: 
  - list group member in table
  - group site ... description, tasks, log, progress, forum
+ 
 - @users
  - let users register and communicate the princple of minimal data collection 
-- REST API HATEOAS
-  -	https://tools.ietf.org/html/draft-kelly-json-hal-06#page-2
-  - https://en.wikipedia.org/wiki/HATEOAS
-  - https://github.com/hapijs/hapi
-  - http://fortunejs.com/api/#serializer
-- distinguish applications
- - shared files, e.g. admin-templates, libs, css
-- popcorn-editor
- - save popcorn slides to database
- - open toc, tags, links, assessment
- - popcorn-plugin en-/disable via Widget Editor (??? Wie soll das gehen)
-- guided tour on how to define a script
 
-- wiki? https://github.com/Jermolene/TiddlyWiki5
+
+
    
 
 # Performance & quality improvements

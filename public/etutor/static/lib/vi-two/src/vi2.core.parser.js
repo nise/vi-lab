@@ -211,10 +211,10 @@ var Parser = $.inherit(/** @lends Parser# */
 						obj.t1 = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');
 						obj.t2 = $(this).attr('duration') === undefined ? 1 : $(this).attr('duration');
 						obj.marker = $(this).data('marker');
-						obj.marker_type = $(this).attr('markertype');
-						obj.marker_label = $(this).attr('markerlabel');
-						obj.marker_description = $(this).attr('markerdescription');
-						obj.marker_select_option = $(this).attr('markerselectoption');
+						obj.markertype = $(this).attr('markertype');
+						obj.markerlabel = $(this).attr('markerlabel');
+						obj.markerdescription = $(this).attr('markerdescription');
+						obj.markerselect_option = $(this).attr('markerselectoption');
 						obj.id = $(this).attr('id')
   					_this.vid_arr[v_id]['annotation'].push(obj);
   					

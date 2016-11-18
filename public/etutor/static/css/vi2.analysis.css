@@ -24,8 +24,8 @@
 
 .analysis-marker-wraper{
 	display:inline-block;
-	width:300px;
 	min-height:14px;
+	border:solid 1px blue;
 }
 
 .analysis-marker{
@@ -105,6 +105,28 @@
 .marker-element{
 	top:0;
 	border:none;
+}
+
+.analysis-input-fields{
+	display:block;
+	position:absolute;
+	border:red solid 1px;
+}
+
+.left{
+ left: -260px;
+} 
+
+.right{
+ left: 20px;
+}
+
+.top{
+ top: -200px;
+}
+
+.bottom{
+ bottom: 20px;
 }
 
 .analysis-marker-wraper select, .analysis-marker-wraper input, .analysis-marker-wraper textarea{

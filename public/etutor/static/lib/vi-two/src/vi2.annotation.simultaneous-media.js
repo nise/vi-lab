@@ -209,7 +209,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 				var o = new Image(); 
 				// animate transition	if image is loaded				
 				$(o) // vi2.observer.current_stream
-					.attr('src', this.options.prefix_path+'/'+obj.content.target)
+					.attr('src', this.options.prefix_path+'/' + obj.content.target.replace('700/','video5/') )
 					.addClass('slide ov-'+id)
 					//.css({ height:'100vh' })
 					.unbind('load')

@@ -23,8 +23,7 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 		vi2.observer = this; 
 		this.options = $.extend(this.options, options); 
 		this.widget_list = {}; // Assoc Array is an Object // Object.size(this.widget_list)
-		this.clock = new Vi2.Clock({}, this.options.clockInterval);
-		vi2.observer.clock = this.clock; 
+		this.clock = new Vi2.Clock(this.options.clockInterval);
 	},
 	
 	// defaults
@@ -112,7 +111,6 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 				thumbnail: this.options.thumbnail, 
 				seek: seek === undefined ? 0 : seek
 			}, this); 
-		this.clock.player = this.player; 
 		
 		 
 		// some event bindings hooks

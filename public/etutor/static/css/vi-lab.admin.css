@@ -60,6 +60,34 @@ color: #959595;
 }
 
 
+.large {
+	font-size:80px;
+	text-align:center;
+	color:#555;
+	display:block;
+	margin: 20px 0;
+}
+
+.admin-face{
+	text-align:center;
+	margin-bottom:20px;
+	height:280px;
+}
+
+.admin-face h3{
+	font-weight:bold;
+	color:#555;
+}
+
+.admin-face ul{
+	text-align:left;
+	margin-left:15%;
+	list-style:none;
+}
+.admin-face ul li{
+	margin-bottom: 10px;
+}
+
 .alert-btn {
 	color:red;
 }
