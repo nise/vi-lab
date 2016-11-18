@@ -56,8 +56,8 @@
 	</div>
 	<script>
 		/*
-		* Little helper 
-		**/
+		 * Little helper 
+		 **/
 		(function(proxied) {
 			window.alert = function() {
 				// do something here
@@ -67,16 +67,18 @@
 				return proxied.apply(this, arguments);
 			};
 			})(window.alert);
-	
+			
+			/*
+			 * Initialize Vi-Lab including VI-TWO
+			 **/
 			var 
 				observer, 
-				vi2, 
+				vi2, // global variable
 				ocr,
-				Vi2 = {}  // set the Namespace
+				Vi2 = {}  // set the Namespace for the classes
 				;
 			<% if(items[0] !== undefined ){ %>	 
 			$(document).ready(function(){ 
-				$('footer').hide(); 	//
 				vi2 = new ViLab(server, "<%= items[0]._id %>"); 
 			});
 			<%}else{ %>
@@ -84,12 +86,12 @@
 			<%}%>
 			
 	</script>
-	<% test = 1 %>
-	<% if(test){ %>
-	<!-- vi-two core -->
+
+<% dev_mode = 1 %>
+<% if( dev_mode ){ %>
+	<script src="/static/lib/vi-two/src/vi2.core.observer.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.log.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.database.js"></script>
-	<script src="/static/lib/vi-two/src/vi2.core.observer.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.parser.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.videoplayer.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.annotated-timeline.js"></script>
@@ -99,30 +101,23 @@
 	<script src="/static/lib/vi-two/src/vi2.core.video-manager.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.utils.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.utils.maintanance.js"></script>
-	
-	<!-- vi-two player-widgets	-->
 	<script src="/static/lib/vi-two/src/vi2.player.playback-speed.js"></script>
-	<!--<script src="/static/lib/vi-two/src/vi2.player.zoom.js"></script>
-	<script src="/static/lib/vi-two/src/vi2.player.sharing.js"></script>-->
-	<script src="/static/lib/vi-two/src/vi2.player.skip-back.js"></script>		
-	<!-- vi-two portal-widgets -->
-	
-	<!--<script src="/static/lib/vi-two/src/vi2.related-videos.js"></script>
-	<script src="/static/lib/vi-two/src/vi2.player.temporal-bookmarks.js"></script>
-	<script src="/static/lib/vi-two/src/vi2.viewing-history.js"></script>
-	<script src="/static/lib/vi-two/src/vi2.search.js"></script>-->
-	<!-- vi-two annotation-widgets -->
+	<script src="/static/lib/vi-two/src/vi2.player.skip-back.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.annotation.toc.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.annotation.hyperlinks.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.annotation.comments.js"></script>
-
 	<script src="/static/lib/vi-two/src/vi2.annotation.simultaneous-media.js"></script>
-
-	<!-- [unfinished] vi-two annotation-widgets -->
-	<!--<script src="/static/lib/vi-two/src/vi2.annotation.visual-highlighting.js"></script>-->
 	<script src="/static/lib/vi-two/src/vi2.annotation.assessment.js"></script>
-
-<!--		
+	<script src="/static/lib/vi-two/src/vi2.annotation.analysis.js"></script>
+	<script src="/static/src/vi-lab.js"></script>
+	<!--
+	<script src="/static/lib/vi-two/src/vi2.player.zoom.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.player.sharing.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.related-videos.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.player.temporal-bookmarks.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.viewing-history.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.search.js"></script>
+	<script src="/static/lib/vi-two/src/vi2.annotation.visual-highlighting.js"></script>
 	<script src="/static/src/vi2.annotation.user-notes.js"></script>
 	<script src="/static/src/vi2.annotation.closed-captions.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.annotation.assessment.fill-in.js"></script>
@@ -132,9 +127,10 @@
 	<script src="/static/src/main.js"></script>
 	-->
 	<% }else{ %>
-	<script src="/static/js/vi-two.min.js"></script>
+	<script src="/static/dist/vi-two.min.js"></script>
 	<% } %>
-	<script src="/static/src/vi-lab.js"></script>
+
+	
 
 
 

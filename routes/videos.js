@@ -56,17 +56,17 @@ decimal2float = function(time){
 
 
 /*
-REST API CALL
-**/
+ * REST API CALL
+ **/
 exports.index = function ( req, res ){ 
-  res.render( 'videos', { title : '' });
+  res.render( 'videos', {});
 };
 
 
 /*
- * 
+ * Provides necessary data for an overview page with the current / accessible script phases and its video instances
+ * status: xxx experimental
  **/
-// xxx
 exports.renderScriptVideo = function(req, res) { 
 
 	// get script phase 
@@ -122,8 +122,6 @@ exports.renderScriptVideo = function(req, res) {
 							res.render('videos', {items: { script: script } });  								
 						});
 				}else{
-					//res.type('application/json');
-					//res.jsonp({}); 
 					l.log('info', 3); 
 					res.end('done');
 				}
@@ -136,6 +134,7 @@ exports.renderScriptVideo = function(req, res) {
 	});// end ScriptInstance	
 		 
 }
+
 
 /*
  * Returns the video instances that the user as part of his group is allowed to see in the current script phase
@@ -346,7 +345,7 @@ exports.editAnnotations = function ( req, res ){
 
 
 /*
- * @todo: Check wheter the user is allow to see this video instance!
+ * @todo: Check wheter the user is allowed to see this video instance!
  **/ 
 exports.show = function ( req, res ){ 
   Videos.find({ _id: req.params.id}).setOptions({lean:true}).exec(function ( err, video ){
@@ -357,6 +356,9 @@ exports.show = function ( req, res ){
 		      current : req.params.id
 		  });
 		  res.end('done');
+		}else if(video === undefined ){
+    	res.redirect('404')
+    	l.log('info', 'page not found')
     }else if(video.length > 0 ){
     	res.redirect('404')
     	l.log('info', 'page not found')
@@ -391,15 +393,8 @@ exports.annotate = function(req, res) {
 	l.log('info', '..........................start saving: ')
 	var query = {'_id':req.body.videoid};
 	var update = {};
-	switch(req.body.annotationtype){
-		case "toc" : update = { toc: req.body.data}; break;
-		case "tags" : update = { tags: req.body.data}; break;
-		case "assessment" : update = { assessment: req.body.data}; break;
-		case "comments" : update = { comments: req.body.data}; break;
-		case "hyperlinks" : update = { hyperlinks: req.body.data}; break;
-		case "hightlight" : update = { hightlight: req.body.data}; break;
-	}
 	update.updated_at = Date.now();
+	update[ req.body.annotationtype ] = req.body.data;
 	
 	l.log('info', 'start saving: '+req.body.annotationtype +' '+req.body.videoid);
 	

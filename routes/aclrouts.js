@@ -1,9 +1,10 @@
 /*
-author: niels.seidel@nise81.com
-module:
-description: 
-
-**/
+ * author: niels.seidel@nise81.com
+ * module: Access Control List (ACL) Routes
+ * description: 
+ * todo:
+ * - define ACL-array and include it into the admin area 
+ **/
 
 module.exports = function(db, app) {
 	var module = {};
@@ -272,7 +273,9 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	 	;
 	var log = fs.createWriteStream('logfile.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
 	var log2 = fs.createWriteStream('logfile2.debug', {'flags': 'a'}); // use {'flags': 'a'} to append and {'flags': 'w'} to erase and write a new file
-	 	
+	 
+	app.get('/log', function(req, res) { res.end(); }); // quick fix for jquery requests
+	
 	app.post('/log', users.ensureAuthenticated, function(req, res) { l.log('info', req.sessionID)
 		var 
 			d = req.param('data')
@@ -308,7 +311,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		// save it
 		//log2.write( JSON.stringify(req.param('data')) );	
 		new Log(entry).save( function( err, logs, count ){
-			l.log('info', logs);
+			//l.log('info', logs);
 			res.end('done');
 		} );
 		// write to logfile

@@ -42,8 +42,8 @@
   			var _this = this;
   			this.options = $.extend(this.options, options); 
   			this.userAgent = this.getUserAgent();
-  			// get client IP
-  			if(this.options.logger_path !== '-1'){ 
+  			// get client IP xxx 
+  			/*if(this.options.logger_path !== '-1'){ 
 					$.ajax({
 						url: this.options.logger_path,
 		 				success: function(res){ 
@@ -53,7 +53,7 @@
 					});
 				}				
 				// clear
-				$('#debug').html('');
+				$('#debug').html('');*/
 		},
 		
 		name : 'log',

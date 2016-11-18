@@ -307,6 +307,11 @@
 		}
 	},
 	
+	/* returns all comments related to an video **/
+	getAnalysisById : function(id){  
+		return this.getStreamById(id).assessmentanalysis === null ? {} : this.getStreamById(id).assessmentanalysis;
+	},
+	
 	
 	/* returns table of content of the requested video */
 	getTocById : function(id){

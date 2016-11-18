@@ -199,8 +199,6 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 		},
 		
 		
-		
-		
 		/* */
 		placeMedia: function( e, id, obj ){ 
 			if(this.currImgId == obj.content.target){
@@ -221,6 +219,7 @@ Vi2.SyncronizeMedia = $.inherit( Vi2.Annotation, /** @lends Vi2.SyncMedia# */{
 					});
 			}
 		},	
+		
 		
 		/** -- */
 		get_tag_by_name : function(name){  

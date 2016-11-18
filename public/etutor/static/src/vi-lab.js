@@ -123,6 +123,7 @@ var ViLab = $.inherit({
   	*/
   	startApp : function(){ 
 	  	var _this = this;
+	  	// clear containers
   		$(vi2.dom).empty(); 
   		$('#seq').empty();
 			$('#screen').empty();
@@ -190,9 +191,10 @@ var ViLab = $.inherit({
 			selector :   phaseHasSlides === 0  ? '#seq' : '#screen',
 			videoWidth:  phaseHasSlides === 1  ? 28 : 900,  // video größe hängt nicht von den angeschalteten widgets, sondern von den anotierten ressourcen ab
 			videoHeight: phaseHasSlides === 1  ? 15 : 450, 
-			markupType:'html',  
+			markupType:'html', 
 			thumbnail: _this.db.getMetadataById(_this.currentVideo).thumbnail[2]
-		};
+		}; 
+		
 		// single solution for slide only presentations !!! xxx
 		$('#overlay').css('width', $( '.slide' ).width() );
 		$('#overlay').css('height', $( '.slide' ).height() );
@@ -239,14 +241,14 @@ var ViLab = $.inherit({
 		// set instruction menu
 		var pp = this.script['phases'][ (''+_this.db.getStreamById(_this.currentVideo).id)[0] ]//[this.current_phase]; // xxx bad hack
 		if( pp !== undefined ){
-			$('<div></div>')
+			/*$('<div></div>')
 				.html( decodeURIComponent(pp.instruction) )
 				.addClass('instructions')
 				.prependTo('#accordion');
 			$('<h3 class="ui-accordion-header ui-corner-all ui-helper-reset ui-state-default ui-accordion-icons"></h3>')
 					.css({'padding':'6px 10px', 'background-color':'#003366'})
 					.append('<a class="accordion-title" href="#">Aufgabe: ' + decodeURIComponent(pp.title) + '</a>')
-					.prependTo('#accordion');
+					.prependTo('#accordion');*/
 		}
 		// misc configurations	
 		$('#accordion').accordion({
@@ -374,7 +376,7 @@ var ViLab = $.inherit({
 	/* 
 	* build player dialog by widget definitions 
 	**/
-	enableWidget : function(widget_name, widget_options, refresh ){ 
+	enableWidget : function(widget_name, widget_options, refresh ){  
 		var _this = this; 
 		var widget = '';
 		var title = widget_name; 
@@ -387,7 +389,7 @@ var ViLab = $.inherit({
 				widget = new Vi2.TableOfContents( widget_options.widget_options ); 
 				title = 'Kapitel'; // Szenen 
 				break
-			case "hyperlinks" :		//alert(JSON.stringify(widget_options.widget_options))
+			case "hyperlinks" :		
 				widget = new Vi2.Hyperlinks( widget_options.widget_options );
 				title = 'Links';
 				break;	
@@ -399,8 +401,12 @@ var ViLab = $.inherit({
 				widget = new Vi2.Assessment( widget_options.widget_options );
 				title = 'Testfragen';			
 				break;
+			case "assessmentanalysis" : 
+				widget = new Vi2.Analysis( widget_options.widget_options );
+				title = 'Analyse';			
+				break;	
 			case "syncMedia" : 
-				widget = new Vi2.SyncronizeMedia( widget_options.widget_options );  
+				//widget = new Vi2.SyncronizeMedia( widget_options.widget_options );  
 				title = 'Folien';
 				break;
 			case "tags" :
@@ -424,11 +430,13 @@ var ViLab = $.inherit({
 				break;		
 			default : return;			
 		}
+					
 		if( widget !== ''){
-			this.observer.addWidget( widget ); 
+			this.observer.addWidget( widget );  
 			this.loadedWidgets.push( widget_name );
 		} //alert(JSON.stringify(widget_options))
 		// add accordion elements
+
 		if( widget_options.widget_options.hasMenu && ! refresh ){ 
 			var h3 = $('<h3 class="ui-accordion-header ui-corner-all"></h3>')
 				.append('<a class="accordion-title" href="#">' + title + '</a>')
@@ -447,7 +455,8 @@ var ViLab = $.inherit({
 			$('<div></div>')
 				.attr('id', widget_name)
 				.appendTo('#accordion');		
-		}				
+		}	
+					
 	},
 	
 	

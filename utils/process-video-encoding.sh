@@ -8,7 +8,7 @@ options="-vcodec libx264 -b 384k -flags +loop+mv4 -cmp 256 -partitions +parti4x4
 #1280x768
 
 options="-vcodec libx264 -b 384k"
-options="-codec:v libx264 -preset fast -b:v 300k -movflags +faststart -bufsize 1000k -threads 0 -codec:a libfdk_aac -b:a 256k"
+options="-codec:v libx264 -preset fast -b:v 450k -movflags +faststart -bufsize 1000k -threads 0 -codec:a libfdk_aac -b:a 256k"
 
 # croping : -vf "crop=640:256:0:36"
 
@@ -20,13 +20,13 @@ options="-codec:v libx264 -preset fast -b:v 300k -movflags +faststart -bufsize 1
 
 # ffmpeg -i MasterMOOC1.avi -codec:v libx264 -preset slow -b:v 500k   -bufsize 1000k -threads 0 -codec:a libfdk_aac -b:a 128k output_file.mp4
 
-file_type="flv"
+file_type="mov"
 
 target="mp4"
 
 
 # iterate files
-for file in ../public/vi-lab/videos/t/*.${file_type}
+for file in ../public/etutor/static/videos/t/*.${file_type}
 do
 	# mp4/h264
 	#if [ "${target}" == "mp4" ]

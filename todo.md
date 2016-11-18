@@ -1,16 +1,31 @@
 
+https://github.com/integrations
+
+1. rename phases at script instance
+
 
 
 # VI-TWO
 ## urgent
-- monitor server, app, REST => site24x7
+- video-patterns database
+- vi-lab: script level 3 matrix
+- vi2.traces: Analysiert erhobene Logdaten der Videonutzung und stellt diese in einer heat- map parallel zur Zeitleiste dar (siehe U SER T RACES ).
+- vi.scrubber: Vorschaubild der Videoszenen beim Überstreichen der Zeitleiste (siehe V ISU -
+AL S UMMARY )
+- vi2.SynchronizedMaps: Zu einem gegebenen Zeitpunkt werden Koordinaten oder Polygo-
+nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargestellt.
+- sequentielle medien
+- fin: fragments
+- fin: subtitles
+
 
 ## bugs by priorities
 - css bugs in opera / msie / safari
 - script scheduler not working
 - bug: no login possible! => could not be reproduced
 
-
+- bug: @messages:: can send message without recipient
+- bug: @messages:: footer is not aligned at the bottom
 - bug: @user::: when adding a new user there is no id assigned to them.
 - bug: after importing users.csv the user-group relation will be lost
 - bug: player: "online phase 3" als aufgabe
@@ -85,6 +100,12 @@
  - node.js streaming: http://stackoverflow.com/questions/33008951/video-streaming-in-node-js
  											http://stackoverflow.com/questions/4360060/video-streaming-with-html-5-via-node-js
  											https://github.com/meloncholy/vid-streamer
+https://gist.github.com/psi-4ward/7099001
+https://github.com/aheckmann/gridfs-stream
+https://gist.github.com/pos1tron/094ac862c9d116096572
+https://gist.github.com/derMani/218bd18cc926d85a57a1
+http://stackoverflow.com/questions/37408227/how-to-read-a-video-with-gridfs-stream
+ 											http://stackoverflow.com/questions/24976123/streaming-a-video-file-to-an-html5-video-player-with-node-js-so-that-the-video-c
  - vollbild / split screen
  - placeholder @ videoplayer in css einbinden
 - @zoom: 
@@ -152,10 +173,11 @@ http://www.eltro.de/videoanalyse.html
 # technologies to use for better development
 - https://github.com/mynyml/watchr
 - less
-- grunt
+
 
 # roadmap for next release
 - install script including demo data
+- make a nice http://127.0.0.1:3033/admin that shows starting points, include a tour
 - AMD / commonjs : https://github.com/systemjs/systemjs
 - S-BPM for node.js : https://github.com/e2ebridge/bpmn
 - display comments / links animated 

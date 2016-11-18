@@ -68,7 +68,10 @@
     "start": "node server.js"
   },
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nise/vi-theresienstadt.git"

@@ -250,6 +250,7 @@ $(document).ready(function() {
 				start = new Date( $('#datetimepicker_start_'+i).val() ),
 				end = new Date( $('#datetimepicker_end_'+i).val() )
 				; 
+
 			//if(moment(end).subtract(moment(start)).hours() > 0){
 			phase.start = start;
 			phase.end = end; 
@@ -257,7 +258,7 @@ $(document).ready(function() {
     	phase.instruction = escapeSpecialChars( $('#phase-task_'+i).val() ),
     	phase.supplements = escapeSpecialChars( $('#phase-supplements_'+i).val()),//'#phase-supplements_'+i, //  
     	// collect group formations
-			phase.seq = i;
+			phase.seq = $('#phase_'+i).index();
 			phase.groupindex = i;
 			phase.groupformation = $('#group_'+i+' :checked').val();
 			//phase.widgtes = phase.widgets;
@@ -271,7 +272,6 @@ $(document).ready(function() {
 			// store it
 			$.extend(res.phases[i], phase) 
 		});
-
 		//alert(JSON.stringify(res.phases[1].widgets[0].widget_options))
 			//return;
 		// send it
@@ -388,7 +388,7 @@ $(document).ready(function() {
 		phase = 0;
 		for (var ii = 0; ii < defaultWidgets.length; ii++){  
 			if( getExistingWidgets( phase.widgets ).indexOf(defaultWidgets[ii].name) === -1){ 
-				addWidgetDropDownItem(phase, defaultWidgets[ii]);                
+				addWidgetDropDownItem(phase, group_index, video, defaultWidgets[ii]);                
 			} 
 		}
 		var arr = [
@@ -398,7 +398,7 @@ $(document).ready(function() {
 				'	<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
 				'		<span class="glyphicon glyphicon-plus"> <span class="caret"></span>',
 				'	</button>',
-				'	<ul class="dropdown-menu" id="widgetSelectorDropdown-'+phase+'">',
+				'	<ul class="dropdown-menu" id="widgetSelectorDropdown-'+phase+'-'+group_index+'-'+video._id+'">',
 				'	</ul>',
 				'</div>',
 			'</div>'
@@ -446,9 +446,9 @@ function handleDropdownClick(e) {
 
 
 /***/
-function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
+function addWidgetDropDownItem(phase, group_index, video_id, widget){ // alert(JSON.stringify(widget))
 	var 
-		dropdown = document.getElementById('widgetSelectorDropdown-' + phase),
+		dropdown = $('widgetSelectorDropdown-' + phase+'-'+group_index+'-'+video_id),
   	li = document.createElement("li"),
   	link = document.createElement("a"),             
   	text = document.createTextNode( widget.name )
@@ -458,7 +458,7 @@ function addWidgetDropDownItem(phase, widget){ //alert(JSON.stringify(widget))
   $(link).unbind('click', {phase: phase, widget: widget}, handleDropdownClick ); 
 	$(link).bind('click', {phase: phase, widget: widget}, handleDropdownClick ); 	
   li.appendChild(link);
-  dropdown.appendChild(li);
+  $(dropdown).append(li);
 } 
 
 

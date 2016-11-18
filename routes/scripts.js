@@ -337,7 +337,7 @@ var
 exports.startScriptSession = startScriptSession;
 
 function startScriptSession(){ 
-	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 1 }}, function ( err, ins ){
+	Instances.findOneAndUpdate( {'status': 'running' }, { $set: {current_phase: 3 }}, function ( err, ins ){
 		if(err){ 
 			l.log('info', err); 
 		}else{

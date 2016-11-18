@@ -200,8 +200,25 @@ var Parser = $.inherit(/** @lends Parser# */
 						obj.t1 = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');
 						obj.t2 = 1;// default // $(this).attr('duration') === undefined ? 1 : $(this).attr('duration');
   					_this.vid_arr[v_id]['annotation'].push(obj);
+
+  				}else if($(this).attr('type') === "assessmentanalysis"){ 
+						// comments
+						obj.title = $(this).text();
+						obj.target = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');
+						obj.linktype = '';
+						obj.x = $(this).attr('x');
+						obj.y = $(this).attr('y');
+						obj.t1 = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');
+						obj.t2 = $(this).attr('duration') === undefined ? 1 : $(this).attr('duration');
+						obj.marker = $(this).data('marker');
+						obj.marker_type = $(this).attr('markertype');
+						obj.marker_label = $(this).attr('markerlabel');
+						obj.marker_description = $(this).attr('markerdescription');
+						obj.marker_select_option = $(this).attr('markerselectoption');
+						obj.id = $(this).attr('id')
+  					_this.vid_arr[v_id]['annotation'].push(obj);
   					
-					}else if($(this).attr('type') === "assessment"){ 
+  				}else if($(this).attr('type') === "assessment"){ 
 						// assessment
 						obj.title = $(this).data('task');
 						obj.target = $(this).attr('starttime') === undefined ? 0 : $(this).attr('starttime');

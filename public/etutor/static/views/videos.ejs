@@ -1,16 +1,20 @@
 <% layout( 'layout' ) -%>
 
 <div class="jumbotron">
-	
+	<div class="container">
+		<h2>Übersicht über die Lernressourcen und Aufgaben</h2>
+	</div>
 </div> 
 
-<div class="container"><%= items.script.current_phase %>
+<div class="container">
+	<div class="col-md-10">
 	<% phase_i = 0 %>
 	<% items.script.phases.forEach(function(phase){ %>
-		<% if( phase_i <= items.script.current_phase ) {%> 
+		
+		<% if( phase.seq <= items.script.current_phase ) {%> 
 	<div class="row">
 		<div class="col-md-10 phase">
-			<h2 class="str"><%= phase.title %></h2>
+			<h3 class="str"><%= phase.title %></h3>
 			<b>Aufgabe zum Video:</b>
 			<div class="mark str"><%= phase.instruction %></div>
 			<!--<h3>Materialien:</h3>
@@ -23,6 +27,7 @@
 			<b>Video(s):</b><br/><br/>
 			
 			<% phase.fuck.forEach(function(item){ %>
+				
 			<div class="col-xs-6 col-md-6">
 				<div class="thumbnail">
 					<h4><a class="fadein" href="/videos/view/<%= item._id %>"><%= item.metadata[0].title %></a></h4>
@@ -34,16 +39,17 @@
 				    </p>
 						<p><%= item.metadata[0].abstract %></p>
 						<!--<p><span class="glyphicon glyphicon-globe"> <b>Quelle</b></span></p>	-->
-				   <div class="caption"></div> 
-					</div>
+					<div class="caption"></div> 
+				</div>
 			</div>
+				<% if( item.metadata[0].title !== 'Videoanalyse' ) {%> <% } %>	
 			<% }); %>
 		</div>	
 	</div>
 		<% } %>	
 		<% phase_i++ %>
 	<% }); %>
-	
+	</div>	
 </div>
 
 <script>
