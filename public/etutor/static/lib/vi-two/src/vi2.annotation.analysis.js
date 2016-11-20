@@ -53,6 +53,18 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		player : null,
 		currentMarker : -1,
 		annotation_flag : false,
+		marker_template : [	
+					'<div class="analysis-marker-annotate">',
+						'<span class="analysis-marker-annotate-fill"></span>',
+						'<span class="input-wraper right top">',
+							 '<input id="marker-text-label" type="text" placeholder="Label" class="marker-element" title="Label" />',
+							 '<textarea id="marker-description" class="marker-element" placeholder="Beschreibung" title="Beschreibung der Markierung"></textarea>',
+							 '<textarea id="marker-description2" class="marker-element" placeholder="Beurteilung" title="Beurteilung"></textarea>',
+							 '<a class="save-btn vi2-analysis-btn">speichern</a>',
+							 '<a class="remove-btn vi2-analysis-btn glyphicon glyphicon-remove"></a>',				
+						'</span>',
+					'</div>'
+				].join(''),
 
 
 		/* ... */
@@ -98,11 +110,10 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				// add button to player control bar
 				var container = $('<div></div>')
 					.append($('<div></div>')
-//						.text( 'A' )
-						.addClass('vi2-analysis-label glyphicon glyphicon-plus')//glyphicon glyphicon-step-backward
+										.addClass('vi2-analysis-label glyphicon glyphicon-plus')//glyphicon glyphicon-step-backward
 					)
 					.addClass('vi2-analysis-controls vi2-btn')
-					.attr('title', 'add marker')
+					.attr('title', 'Markierung hinzufügen')
 					.bind('click', {}, function(e){		
 						_this.addMarker();
 					})
@@ -116,81 +127,74 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		 **/
 		addMarker : function(){
 			var _this = this;
-				; 
 			if( ! _this.annotation_flag ){
+				$('.analysis-marker-annotate').remove();	
 				_this.annotation_flag = true;
 				vi2.observer.player.pause();
-				var save = $('<a></a>')
-					.text('speichern')
-					.addClass('save-btn vi2-analysis-btn')
-					.bind('click', {}, function(ee){ 
-						var xx = ( $(this).parent().offset().left - $('video').offset().left ) / $('video').height() * 100;
-						var yy = ( $(this).parent().offset().top - $('video').offset().top ) / $('video').width() * 100;
-						
-						var label = $(this).parent().find('.marker-text-label').val();
-						_this.annotation_flag = false; 
-						// add new annotation to the DOM
-						
-						_this.addDOMElement( {
-							"type": _this.name,
-							"id": Math.ceil( Math.random() * 1000 ),
-							"date": (new Date().getTime()),
-							"author": vi2.wp_user,
-							"y": yy,
-							"x": xx,
-							"starttime":  vi2.observer.player.currentTime(),
-							"duration":"10",
-							"markertype":"marker-label-desc",
-							"markerlabel": label === undefined ? '?' : label,
-							"markerselectoption":"cat a",
-							"markerdescription": $(this).parent().find('.marker-description').val(),
-							"markerdescription2": $(this).parent().find('.marker-description2').val(),
-							"analysis": $(this).parent().find('.marker-analysis').val()
-						});
-
-						// save DOM to DB		
-						_this.saveDOM();
-						$(newMarker).hide();
-						
-					});
-					var remove = $('<span></span>')
-					.addClass('remove-btn vi2-analysis-btn glyphicon glyphicon-remove')
+				
+				// append the marker template
+				$( _this.options.displaySelector ).append( _this.marker_template );
+				
+				// define events for the control and input element that belong to the marker template
+				var remove = $('.remove-btn')
 					.click(function(e){
-						_annotation_flag = false;
+						_this.annotation_flag = false;
 						$(newMarker).hide();
 						vi2.observer.player.play();
 					});
-					var fill = '<span class="analysis-marker-annotate-fill"></span>';
-					var label = '<input type="text" placeholder="Label" class="marker-text-label marker-element" title="Label" />';
-					var description = '<textarea class="marker-element marker-description" placeholder="Beschreibung" title="Beschreibung der Markierung"></textarea>';
-					var intervention = '<textarea class="marker-element marker-description2" placeholder="Beurteilung" title="Beurteilung"></textarea>';
 					
+				var save = $('.save-btn')
+					.bind('click', {}, function(ee){ 
+						_this.annotation_flag = false; 
+						// add new annotation to the DOM
+						_this.addDOMElement({
+							"type": _this.name,
+							"id": 'markerid'+Math.ceil( Math.random() * 1000 ),
+							"date": (new Date().getTime()),
+							"author": vi2.wp_user,
+							"y": ( ( $(this).parent().offset().top - $('video').offset().top ) / $('video').height() * 100 ).toFixed(0),
+							"x": ( ( $(this).parent().offset().left - $('video').offset().left ) / $('video').width() * 100 ).toFixed(0),
+							"starttime":  vi2.observer.player.currentTime(),
+							"duration":"10",
+							"markertype":"marker-label-desc",
+							"markerlabel": $(this).parent().find('#marker-text-label').val(),
+							"markerselectoption":"cat a",
+							"markerdescription": $(this).parent().find('#marker-description').val(),
+							"markerdescription2": $(this).parent().find('#marker-description2').val()
+							//"analysis": $(this).parent().find('.marker-analysis').val()
+						});
+						// save DOM to DB		
+						_this.saveDOM();
+						$(newMarker).hide();
+					});// end save
 					
-				var newMarker = $('<a></a>')
-					.addClass('analysis-marker-annotate')
-					.draggable({ containment: "parent" })
-					.resizable({
+				var newMarker = $('.analysis-marker-annotate')
+					.css({left: '49%', top: '20%', position:'absolute'})
+					.show()
+					.draggable({ 
+						containment: "parent",
+						drag: function(e){
+							var x = ( $(this).offset().left - $('video').offset().left ) / $('video').width() * 100;
+							var y = ( $(this).offset().top - $('video').offset().top ) / $('video').height() * 100;
+							//$('.analysis-marker-annotate-fill').text(x.toFixed(1)+'__'+y.toFixed(1));
+							if( x > 50 ){ $('.input-wraper').addClass('left').removeClass('right'); }else{ $('.input-wraper').addClass('right').removeClass('left'); }
+							if( y > 50 ){ $('.input-wraper').addClass('bottom').removeClass('top'); }else{ $('.input-wraper').addClass('top').removeClass('bottom'); }
+						} 
+					})
+					/*.resizable({ // needs to be considered to find the right position for the input wraper
 						containment: "parent",
 						maxHeight: 800,
 						maxWidth: 800,
 						minHeight: 50,
 						minWidth: 50
-					})
-					.append( fill )
-					.append( label )
-					.append( description )
-					.append( intervention )
-					.append( save )
-					.append( remove )
-					.appendTo( _this.options.displaySelector )
-					.css({left: '50%', top: '50%', position:'absolute'})
-					;
+					})*/
+					;			
 				}// end if annotation_flag
 		}, 	
 		
 		
 		/*
-		* xxx: needs to be replaced by a 
+		* xxx: needs to be replaced by a template
 		**/
 		createMenu : function(analysisData){ 
 			var _this = this;
@@ -288,7 +292,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 			
 			$(vi2.dom).find("div[type='"+ _this.name +"']").each(function(i, val){
 				var obj = {};
-				obj.title = $(val).text();
+				//obj.title = $(val).text();
 				obj.target = $(val).attr('starttime') === undefined ? 0 : $(val).attr('starttime');
 				obj.linktype = '';
 				obj.x = $(val).attr('x');
@@ -304,16 +308,15 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				obj.id = $(val).attr('id');
 				data.push( obj );
 			});
-
+			
 			// store DOM data at the server / db 
 	 		$.post('/videos/annotate', {"data":data, annotationtype: _this.name, videoid: vi2.videoData._id}, function( res ){ 
 	 			console.log('saved '+ _this.name );
 	 			//socket.emit('video.updated', { videoid: _this.videoData._id });
 	 			// refresh annotations
+	 			alert(3)
 	 			vi2.observer.setAnnotations();
-				// continue playback
-				
-				vi2.observer.player.play();
+	 			alert(4)
 			});
 		},	
 			
@@ -327,12 +330,12 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 			$.each(	vi2.db.getAnalysisById(id), function( i, val ){ 
 				var comm = $('<div></div>')
 					.attr('type', _this.name)
+					.attr('author', val.author)
+					.attr('date', val.date)
 					.attr('starttime', val.t1)
 					.attr('duration', 10)
-					.attr('author', val.author)
 					.attr('x', val.x)
 					.attr('y', val.y)
-					.attr('date', val.date)
 					.attr('markertype', val.markertype)
 					.attr('markerlabel', val.markerlabel)
 					.attr('markerselectoption', val.markerselectoption) 
@@ -349,13 +352,30 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		
 		/*
 		**/
-		updateDOMElement : function( obj ){ //alert('called updazte dom')
-			$(vi2.dom)
-				.find('[date="'+ obj.date +'"]')
+		updateDOMElement : function( val ){ 
+			$(vi2.dom).find("div[id='"+ val.id +"']").each(function(i, val){ 
+				$(this).remove();
+			});	
+			
+			$('<div></div>')	
+				.attr('type', val.type)	
 				.attr('author', vi2.wp_user )
-				.attr('date', obj.date)  // its the creation date
-				.attr('starttime', obj.starttime )
-				.text( obj.content ); 
+				.attr('date', val.date)  // its the creation date
+				.attr('starttime', val.starttime )
+				.attr('duration', val.duration )
+				.attr('x', val.x)
+				.attr('y', val.y)
+				.attr('markertype', val.markertype)
+				.attr('markerlabel', val.markerlabel)
+				.attr('markerselectoption', val.markerselectoption) 
+				.attr('markerdescription', val.markerdescription)
+				.attr('markerdescription2', val.markerdescription2)
+				.attr('id', val.id)
+				.text( val.markerlabel )
+				.appendTo(vi2.dom)
+				;
+		
+			this.saveDOM();	
 		},	
 		
 		
@@ -367,7 +387,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				.attr('id', obj.id)
 				.attr('type', obj.type)
 				.attr('author', vi2.wp_user )
-				.attr('date', new Date().getTime())
+				.attr('date', obj.date)
 				.attr('x', obj.x)
 				.attr('y', obj.y)
 				.attr('starttime', obj.starttime)
@@ -395,145 +415,82 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		/*
 		 *
 		 **/ 
-		begin : function(e, id, obj){ 
-			if( this.currentMarker !== id ){
+		begin : function(e, id, obj){	 
+			var _this = this; 
+			if( this.currentMarker !== id ){ 
 				this.currentMarker = id;
-				var 
-					_this = this,
-					wraper = $('<span></span>'),
-					marker = $('<span></span>'),
-					input_fields = $('<span></span>')
-					;
-				$( wraper )
-					.addClass('analysis-marker-wraper marker-id-' + id )
-					.html( marker )
-					.append( input_fields )
-					.appendTo( this.options.displaySelector )
-					.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'})
-					;	
-				$( input_fields )
-					.addClass('analysis-input-fields')
-					.addClass( obj.displayPosition.x > 50 ? ' left':' right' )
-					.addClass( obj.displayPosition.y > 50 ? ' bottom':' top' )
-					;
-					
-				$( this.options.displaySelector ).find( 'analysis-marker-wraper' ).each(function(i, val){ $(val).remove(); });
-				var open = false;
+				$('.marker-id-' + id ).remove();	
+				vi2.observer.player.pause();
+				//alert(this.currentMarker +'________'+obj.data.markerlabel)
+				// append the marker template
+				//$( _this.options.displaySelector ).append( _this.marker_template );
 				
-				$( marker )
-					//.text(' ' +( decodeURIComponent( obj.content.title ) ) )
-					.attr('id', 'ov'+id)
+				// set data
+				var tt = $.parseHTML( _this.marker_template ).find('.analysis-marker-annotate').first()
 					.attr('title', ( obj.data.markerlabel ) )
-					.addClass('ov-'+id+' analysis-marker')
-					.bind('click', function(data){
-						if(open){
-							open = false;
-							$('.marker-element').remove();
-							vi2.observer.player.play();
-						}else{
-								open = true; 
-							// pause the video
-							vi2.observer.player.pause();
-
-							// reset elements
-							$('.marker-element').remove();
-											
-							// marker + option select
-							if( _this.options.hasMarkerSelect && ( obj.data.markertype === 'marker-select' || obj.data.markertype === 'marker-select-desc') ){ 
-								/*var btn =$('<button></button>').html('Action <span class="caret"></span>')
-									.attr('type',"button")
-									.data('toggle',"dropdown") 
-									.attr('aria-haspopup',"true")
-									.attr('aria-expanded',"false")
-									.addClass('btn btn-default dropdown-toggle')
-									;
-		    				var ul = $('<ul></ul>').addClass('dropdown-menu');
-		      			for( var i=0; i < _this.options.selectData.length; i++){
-									var opt = $('<li></li>')
-										.html( _this.options.selectData[i] )
-										//.attr('value', _this.options.selectData[i].toLowerCase() )
-										;
-									ul.append( opt );
-								}
-								$(this).parent().append( btn ).append( ul );
-								*/
-								var select = $('<select></select>')
-									.addClass('marker-element')
-									.attr('title','Select a category')
-									;
-								for( var i=0; i < _this.options.selectData.length; i++){
-									var opt = $('<option></option>')
-										.html( _this.options.selectData[i] )
-										.attr('value', _this.options.selectData[i].toLowerCase() )
-										;
-									select.append( opt );
-								}
-								$( input_fields ).append( select );
-						
-						
-							}	
+					.addClass('marker-id-' + id)
+					.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'});
+					alert($(tt).html())
+				$( _this.options.displaySelector ).append( tt );	
+				$('.marker-id-' + id+' #marker-text-label').val( obj.data.markerlabel );
+				$('.marker-id-' + id+' #marker-description').val( obj.data.markerdescription );
+				$('.marker-id-' + id+' #marker-description2').val( obj.data.markerdescription2 );
 				
-							// marker + label
-							if( _this.options.hasMarkerLabel && ( obj.data.markertype === 'marker-label' || obj.data.markertype === 'marker-label-desc') ){ 
-								var input = $('<input />')
-									.attr('type','text')
-									.attr('title','Label the marker')
-									.val( obj.data.markerlabel )
-									.addClass('marker-text-label marker-element');
-								$( input_fields ).append( input );
-							}
-						// marker + text
-							if( _this.options.hasMarkerDescription && ( obj.data.markertype === 'marker-desc' || obj.data.markertype === 'marker-label-desc' || obj.data.markertype === 'marker-select-desc') ){ 
-								var text = $('<textarea placeholder="Beschreibung"></textarea>')
-									.attr('title','Beschreiben Sie was und warum Sie etwas im Video markiert haben')
-									.val( obj.data.markerdescription )
-									.addClass('marker-element');//.attr('type','text');
-								$( input_fields ).append( text );
-			
-								var text2 = $('<textarea placeholder="Beurteilung"></textarea>')
-									.attr('title','Beurteilen Sie den Konflikt')
-									.val( obj.data.markerdescription2 )
-									.addClass('marker-element');//.attr('type','text');
-								$( input_fields ).append( text2 );
-							}
-						}						
-						
-						// save btn
-						var save = $('<a></a>')
-							.text('speichern')
-							.addClass('save-btn vi2-analysis-btn')
-							.appendTo( input_fields ) 
-							.bind('click', {}, function(ee){ 
-								var xx = ( $(this).parent().offset().left - $('video').offset().left ) / $('video').height() * 100;
-								var yy = ( $(this).parent().offset().top - $('video').offset().top ) / $('video').width() * 100;
-						
-								var label = $(this).parent().find('.marker-text-label').val();
-								_this.annotation_flag = false; 
-								// add new annotation to the DOM
-						
-								_this.addDOMElement( {
-									"type": _this.name,
-									"id": Math.ceil( Math.random() * 1000 ),
-									"date": (new Date().getTime()),
-									"author": vi2.wp_user,
-									"y": yy,
-									"x": xx,
-									"starttime":  vi2.observer.player.currentTime(),
-									"duration":"10",
-									"markertype":"marker-label-desc",
-									"markerlabel": label === undefined ? '?' : label,
-									"markerselectoption":"cat a",
-									"markerdescription": $(this).parent().find('.marker-description').val(),
-									"markerdescription2": $(this).parent().find('.marker-description2').val(),
-									//"analysis": $(this).parent().find('.marker-analysis').val()
-								});
-
-								// save DOM to DB		
-								_this.saveDOM();
-								$( marker ).hide();
-							});
+				// define events for the control and input element that belong to the marker template
+				var remove = $('.remove-btn')
+					.click(function(e){
+						$('.input-wraper').hide();
+						vi2.observer.player.play();
 					});
-		
+					
+				var save = $('.save-btn')
+					.bind('click', {}, function(ee){  
+						// add new annotation to the DOM
+						var data = {
+							"type": _this.name,
+							"id": obj.data.id,//Math.ceil( Math.random() * 1000 ),
+							"date": obj.data.date,//(new Date().getTime()),
+							"author": vi2.wp_user,
+							"y": ( $(this).parent().offset().top - $('video').offset().top ) / $('video').height() * 100,
+							"x": ( $(this).parent().offset().left - $('video').offset().left ) / $('video').width() * 100,
+							"starttime":  vi2.observer.player.currentTime(),
+							"duration":"10",
+							"markertype":"marker-label-desc",
+							"markerlabel": $(this).parent().find('#marker-text-label').val(),
+							"markerselectoption":"cat a",
+							"markerdescription": $(this).parent().find('#marker-description').val(),
+							"markerdescription2": $(this).parent().find('#marker-description2').val()
+							//"analysis": $(this).parent().find('.marker-analysis').val()
+						}
+						//
+						_this.updateDOMElement( data );
+						
+						$('.input-wraper').hide();
+						vi2.observer.player.play();
+					});// end save
+					
+				var newMarker = $('.marker-id-' + id )
+					.css({left: obj.displayPosition.x+'%', top: obj.displayPosition.y+'%', position:'absolute'})
+					.show()
+					/*.draggable({ 
+						containment: "parent",
+						drag: function(e){
+							var x = ( $(this).offset().left - $('video').offset().left ) / $('video').width() * 100;
+							var y = ( $(this).offset().top - $('video').offset().top ) / $('video').height() * 100;
+							//$('.analysis-marker-annotate-fill').text(x.toFixed(1)+'__'+y.toFixed(1));
+							if( x > 50 ){ $('.input-wraper').addClass('left').removeClass('right'); }else{ $('.input-wraper').addClass('right').removeClass('left'); }
+							if( y > 50 ){ $('.input-wraper').addClass('bottom').removeClass('top'); }else{ $('.input-wraper').addClass('top').removeClass('bottom'); }
+						} 
+					})
+					.resizable({ // needs to be considered to find the right position for the input wraper
+						containment: "parent",
+						maxHeight: 800,
+						maxWidth: 800,
+						minHeight: 50,
+						minWidth: 50
+					})*/
+					;		
+				
 				// reset highlight
 				$(_this.options.menuSelector+' li').each(function(i, val){ 
 					$(this).removeClass('vi2-highlight'); 
@@ -546,8 +503,9 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		
 		/*
 		 **/
-		end:function(e, id){ //alert(id)
+		end:function(e, id){ 
 			$('.marker-id-'+id).hide();
+			this.currentMarker = -1;
 			// xxx does it work?
 			//$(this.options.menuSelector+' li ').removeClass('vi2-highlight');
 		},

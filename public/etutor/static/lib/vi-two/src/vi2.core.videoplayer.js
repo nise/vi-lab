@@ -95,6 +95,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	*		@param {Observer} observer Observer of VI-TWO
 	*/
   __constructor: function(options) { 
+  	vi2.observer.player = this;
 		this.options = $.extend(this.options, options); 
 		// init spinner
 		this.spinner = new Spinner(this.spinner_options); //this.stopSpinning();

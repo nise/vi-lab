@@ -1,5 +1,5 @@
 <% layout( 'video-layout' ) -%>
-
+<% dev_mode = 1 %>
 	<!-- Storage -->
 	<div style="display:none; visibility:hidden;" id="vi2"></div>
 	<!-- Main -->
@@ -55,6 +55,7 @@
 		</div>
 	</div>
 	<script>
+	<% if( dev_mode ){ %>
 		/*
 		 * Little helper 
 		 **/
@@ -67,27 +68,25 @@
 				return proxied.apply(this, arguments);
 			};
 			})(window.alert);
-			
-			/*
-			 * Initialize Vi-Lab including VI-TWO
-			 **/
-			var 
-				observer, 
-				vi2, // global variable
-				ocr,
-				Vi2 = {}  // set the Namespace for the classes
-				;
-			<% if(items[0] !== undefined ){ %>	 
-			$(document).ready(function(){ 
-				vi2 = new ViLab(server, "<%= items[0]._id %>"); 
-			});
-			<%}else{ %>
-				$('#page').html('VIDEO NOT FOUND').css({ 'margin':'200px'})
-			<%}%>
-			
+	<% } %>			
+		/*
+		 * Initialize Vi-Lab including VI-TWO
+		 **/
+		var 
+			observer, 
+			vi2, // global variable
+			ocr,
+			Vi2 = {}  // set the Namespace for the classes
+			;
+		<% if(items[0] !== undefined ){ %>	 
+		$(document).ready(function(){ 
+			vi2 = new ViLab(server, "<%= items[0]._id %>"); 
+		});
+		<%}else{ %>
+			$('#page').html('VIDEO NOT FOUND').css({ 'margin':'200px'})
+		<%}%>		
 	</script>
-
-<% dev_mode = 1 %>
+	
 <% if( dev_mode ){ %>
 	<script src="/static/lib/vi-two/src/vi2.core.observer.js"></script>
 	<script src="/static/lib/vi-two/src/vi2.core.log.js"></script>
@@ -129,8 +128,5 @@
 	<% }else{ %>
 	<script src="/static/dist/vi-two.min.js"></script>
 	<% } %>
-
-	
-
 
 

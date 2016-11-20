@@ -328,7 +328,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		* Event is called every time when the playback time changes
 		**/
 		handleTimeupdate : function(e) { 
-			if (!this.seeksliding) {
+			if (!this.seeksliding & vi2.observer.player !== undefined ) {
 				this.video_seek.slider('value', vi2.observer.player.currentTime() ); // / vi2.observer.player.duration()
 			}
 			//this.video_timer.text( vi2.utils.seconds2decimal( vi2.observer.player.currentTime() ) + ' / ' + vi2.utils.seconds2decimal( vi2.observer.player.duration() ));

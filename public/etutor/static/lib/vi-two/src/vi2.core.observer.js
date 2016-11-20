@@ -243,7 +243,7 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 	 *
 	 **/
 	play : function(){ 
-		this.clock.startClock();
+		//this.clock.startClock();
 	},
 
 
