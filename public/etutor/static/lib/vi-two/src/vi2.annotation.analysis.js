@@ -395,7 +395,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		/*
 		 * Adds a new DOM elemnt
 		 **/
-		addDOMElement : function( obj ){  alert(obj.x)
+		addDOMElement : function( obj ){  
 			$('<div></div>')
 				.attr('id', obj.id)
 				.attr('type', obj.type)
@@ -453,20 +453,20 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 				$('.'+obj.data.id + ' #marker-description2').val( obj.data.markerdescription2 );
 
 				// set position of input elements
-				var x = ( $('.analysis-marker-annotate').offset().left - $('video').offset().left ) / $('video').width() * 100;
-				var y = ( $('.analysis-marker-annotate').offset().top - $('video').offset().top ) / $('video').height() * 100;
+				var x = ( $('.'+obj.data.id ).offset().left - $('video').offset().left ) / $('video').width() * 100;
+				var y = ( $('.'+obj.data.id ).offset().top - $('video').offset().top ) / $('video').height() * 100;
 				//$('.analysis-marker-annotate-fill').text(x.toFixed(1)+'__'+y.toFixed(1));
-				if( x > 50 ){ $('.input-wraper').addClass('left').removeClass('right'); }else{ $('.input-wraper').addClass('right').removeClass('left'); }
-				if( y > 50 ){ $('.input-wraper').addClass('bottom').removeClass('top'); }else{ $('.input-wraper').addClass('top').removeClass('bottom'); }				
+				if( x > 50 ){ $('.'+obj.data.id +' .input-wraper').addClass('left').removeClass('right'); }else{ $('.'+obj.data.id +' .input-wraper').addClass('right').removeClass('left'); }
+				if( y > 50 ){ $('.'+obj.data.id +' .input-wraper').addClass('bottom').removeClass('top'); }else{ $('.'+obj.data.id +' .input-wraper').addClass('top').removeClass('bottom'); }				
 				
 				// define events for the control and input element that belong to the marker template
-				var remove = $('.remove-btn').hide()
+				var remove = $('.'+obj.data.id + ' .remove-btn').hide()
 					.click(function(e){
-						$('.input-wraper').hide();
+						$('.'+obj.data.id + ' .input-wraper').hide();
 						vi2.observer.player.play();
 					});
 					
-				var save = $('.save-btn')
+				var save = $('.'+obj.data.id + ' .save-btn')
 					.bind('click', {}, function(ee){  
 						// add new annotation to the DOM
 						var data = {
