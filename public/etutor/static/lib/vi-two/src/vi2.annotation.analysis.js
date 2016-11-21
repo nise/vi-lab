@@ -7,6 +7,7 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
+ - minor bug: an open input filed doesn't get updated if a peer client changes data
  - refactor menu
  - use data-attribute for storing 
  - drop-down for different types / option for enabled types
