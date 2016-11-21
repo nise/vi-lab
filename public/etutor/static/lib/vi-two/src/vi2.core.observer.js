@@ -7,6 +7,7 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
+* - bug: current_stream / video is wrong
 * - complete interfaces for the player
 *	- clear overlay-container and other at updateVideo()
 *	- allow page back, offer bread crumb menu, ...

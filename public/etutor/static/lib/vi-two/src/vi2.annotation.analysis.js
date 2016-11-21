@@ -7,14 +7,10 @@
 *  - jquery-1.11.2.min.js
 *  - jquery.inherit-1.1.1.js
 *	todo:
- - design input fields
- - save btn @begin marker
- - recall marker 
- - save changes to existing marker
+ - refactor menu
  - use data-attribute for storing 
  - drop-down for different types / option for enabled types
  - re-comment binding
- - editable / not editable
 */
 
 
@@ -68,7 +64,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 
 
 		/* ... */
-		init : function(ann){ 
+		init : function(ann){  
 			if( ann === null ){
 				ann = {};
 			} 
@@ -125,7 +121,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		/*
 		 * Add a new marker to the video
 		 **/
-		addMarker : function(){
+		addMarker : function(){ 
 			var 
 				_this = this,
 				time = vi2.observer.player.currentTime(),
@@ -216,8 +212,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
   			return Number(a.time) > Number(b.time) ? 1 : -1;
 			});
 			moment.locale('de');
-			$.each( analysisData, function(i, val){  //alert(val.markertype)
-				//alert(val)
+			$.each( analysisData, function(i, val){  
 				var a = $('<a></a>')
 					.text(val.markerlabel+'') 
 					.addClass('id-'+ val.time+' analysis-menu-question' )
@@ -324,7 +319,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 			// store DOM data at the server / db 
 	 		$.post('/videos/annotate', {"data":data, annotationtype: _this.name, videoid: vi2.videoData._id}, function( res ){ 
 	 			// tell the other clients that some annotations habe been changed
-	 			//socket.emit('video.updated', { videoid: vi2.observer.currentVideo }); // xxx bug
+	 			socket.emit('video.updated', { videoid: vi2.currentVideo }); // xxx bug
 	 			// refresh annotations
 	 			vi2.observer.setAnnotations();
 	 			
@@ -365,7 +360,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		/*
 		 * Updates a single DOM element
 		 **/
-		updateDOMElement : function( val ){   alert(val.x)
+		updateDOMElement : function( val ){   
 			$(vi2.dom).find("div[id='"+ val.id +"']").each(function(i, val){ 
 				$(this).remove();
 			});	
@@ -435,7 +430,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
 		 **/ 
 		begin : function(e, id, obj){	  
 			var _this = this; 
-			if( this.currentMarker !== obj.data.id ){ //alert('.'+obj.data.id)
+			if( this.currentMarker !== obj.data.id ){ 
 				this.currentMarker = obj.data.id;
 				$('.'+obj.data.id).remove();	
 				vi2.observer.player.pause();
