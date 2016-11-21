@@ -466,9 +466,6 @@ var ViLab = $.inherit({
 	},
 	
 	
-	
-
-  
   /** 
   * Saves Popcorn data to mongoDB via node.js
   */

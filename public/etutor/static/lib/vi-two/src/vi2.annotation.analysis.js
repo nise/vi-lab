@@ -25,6 +25,7 @@ Vi2.Analysis = $.inherit( Vi2.Annotation, /** @lends Analysis# */{
   			this.options = $.extend(this.options, options); 
 		},
 		
+		
 		name : 'assessmentanalysis',
 		type : 'annotation',
 		options : {
