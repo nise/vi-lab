@@ -17,8 +17,7 @@ Vi-Lab is a state of the art video labratory and learning environment. It enable
 
 **Update from this repository**
 
-1. `git fetch --all`
-2. `git reset --hard origin/master`
+1. `git fetch --all && git reset --hard origin/master`
 
 ## Use Cases
 * Flipped Classroom: Structure online learning a flipped/inverted classroom 
