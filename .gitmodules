@@ -11,3 +11,6 @@
 	path = public/vi-lab/views/popcorn-maker
 	url = https://nise:qwertz12@github.com/nise/vi-two
 	ignore = all	
+[submodule "public/etutor/static/lib/vi-two"]
+	path = public/etutor/static/lib/vi-two
+	url = git://github.com/nise/vi-two.git
