@@ -57,7 +57,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		/**
 		Initializes the table of content and handles options
 		*/
-		init : function(annotations){
+		init : function(annotations){ 
 			var _this = this;
 			// init
 			this.video_seek = $( this.options.timelineSelector );
@@ -65,11 +65,11 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 			this.video_timer = $('.vi2-video-timer'); // could become an option
 		
 			if( this.options.hasPreview ){
-				this.createTimelineVideoPreview();
+				//this.createTimelineVideoPreview();
 			}
 			
 			if( this.options.hasSlidePreview ){
-				this.createTimelineSlidePreview();
+				//this.createTimelineSlidePreview();
 			}		
 		
 			// initiate event listeners, vi2.observer.log('loadingtime--video:'+url);
@@ -276,7 +276,7 @@ Vi2.AnnotatedTimeline = $.inherit(/** @lends Vi2.TableOfContents# */{ //
 		/*
 		* Event is called when the total playback time has been determined
 		**/
-		handleDurationChange : function(e) { 
+		handleDurationChange : function(e) {  
 			this.createTimelineControl(); 
 			//if( $(_this.options.selector).attr('duration') != undefined )  
 			 

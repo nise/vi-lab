@@ -216,8 +216,9 @@ exports.getJSON = function(req, res) { //l.log('info', 88+'---------------------
 }
 
 
-exports.getAllJSON = function(req, res) { 
-	// get videos 
+/*
+ **/
+exports.getAllJSON = function(req, res) {  
 	Videos.find().sort( 'id' ).exec( function ( err, videos ){
 		res.type('application/json');
 		res.jsonp(videos);  
@@ -226,20 +227,23 @@ exports.getAllJSON = function(req, res) {
 };
 
 
-
-
-
-//
+/*
+ * status: throws error in chrome. xxx
+ **/
 exports.getOneJSON = function(req, res) { 
 	
 	Videos.find({_id: req.params.id}).lean().exec(function (err, video) {
 		if(err){ 
 			l.log('info', err); 
+			res.end('done');
 		}else{
+			if(video.length > 0){
 			res.type('application/json');
 			res.jsonp(video[0]);
-			res.end('done');
-		}	
+			
+			}
+		}
+		res.end('done');	
 	});
 };
 

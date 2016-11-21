@@ -193,7 +193,7 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	  	preload: 'metadata', // 'metadata' | true ??
 	  	autoplay: this.videoIsPlaying,
 	  	controls: false,
-	  	poster: '/static/img/stills/'+this.options.thumbnail,
+	 // 	poster: '/static/img/stills/'+this.options.thumbnail, // xxx wrong path !!
 	 		 //	width: this.options.width,
 	  	//	height: this.options.height,
 	  	onerror: function(e) { _this.errorHandling(e); }
@@ -341,11 +341,11 @@ var Video = $.inherit(/** @lends VideoPlayer# */
 	*/
 	createSource: function(src, mime_type) { 
   	var
-  		ext, 
+  		ext = '.mp4',
   		source = document.createElement('source'); 
   	if( this.detectBrowser() === 'Firefox'){
-  		ext = '.mp4';
-  		mime_type = "video/mp4";
+  		ext = '.webm';
+  		mime_type = "video/webm";
   	}else if( this.detectBrowser() === 'Chrome'){
   		ext = '.webm';
   		mime_type = "video/webm";

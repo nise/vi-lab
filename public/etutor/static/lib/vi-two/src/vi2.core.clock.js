@@ -117,7 +117,7 @@ Vi2.Clock = $.inherit(/** @lends vi2.core.Clock# */
 					}
 				}else {
 					oAnn.active = false;
-	  			$( vi2.observer.player).trigger('annotation.end.'+oAnn.type, [i]);
+	  			$( vi2.observer.player).trigger('annotation.end.'+oAnn.type, [i, oAnn]);
 				}
 			}
 		},

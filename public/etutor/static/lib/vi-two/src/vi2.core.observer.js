@@ -112,7 +112,6 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 				seek: seek === undefined ? 0 : seek
 			}, this); 
 		
-		 
 		// some event bindings hooks
 		$(this).bind('player.ready', function(e, id, i){  
 			_this.setAnnotations(); 
@@ -165,7 +164,7 @@ Vi2.Observer = $.inherit(/* @lends Observer# **/{
 			obj.appendToDOM( this.current_stream );
 			// bind time-depending events for begin and end of an annotation to the player
 			$(this.player).bind('annotation.begin.'+obj.name, function(e, a, b){ obj.begin(e, a, b);});
-			$(this.player).bind('annotation.end.'+obj.name, function(e, a){ obj.end(e, a);});
+			$(this.player).bind('annotation.end.'+obj.name, function(e, a, b){ obj.end(e, a, b);});
 		}	
 
 		// xxx: needs to be put into widgets
