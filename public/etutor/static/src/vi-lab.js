@@ -447,6 +447,7 @@ var ViLab = $.inherit({
 				.appendTo('#accordion');
 			if( widget_options.canBeAnnotated ){
 				// define 'add'-link
+				if( widget_name != 'assessmentanalysis'){
 				var link = $('<span></span>')
 					.addClass('glyphicon glyphicon-plus add-btn add-btn-'+widget_name )
 					.attr('data-toggle', "modal")
@@ -455,6 +456,7 @@ var ViLab = $.inherit({
 					.attr('title', 'Neu hinzufügen' )
 					.appendTo(h3)	
 					;
+					}
 			}
 			$('<div></div>')
 				.attr('id', widget_name)
