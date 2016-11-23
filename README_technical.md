@@ -9,7 +9,7 @@
     - In the end you have to be able to run mongod.exe and mongo.exe from your command line
 
 ## Start working with vi-lab
-1. Go to Github and fork this repository
+1. Fork this repository
 2. Go to your command line and clone your fork to your local machine: `$ git clone https://github.com/YOUR_USERNAME/vi-lab`
 3. In you command prompt go to vi-lab folder. You can use cd command to navigate to vi-lab directory: 
     - For Windows: `$ cd C:\path\to\vi-lab`
