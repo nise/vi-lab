@@ -9,20 +9,21 @@
     - In the end you have to be able to run mongod.exe and mongo.exe from your command line
 
 ## Start working with vi-lab
-1. Go to your command line and obtain code: `$ git clone https://github.com/nise/vi-lab`
-2. Go to vi-lab folder. You can use cd command to navigate to vi-lab directory: 
+1. Go to Github and fork this repository
+2. Go to your command line and clone your fork to your local machine: `$ git clone https://github.com/YOUR_USERNAME/vi-lab`
+3. In you command prompt go to vi-lab folder. You can use cd command to navigate to vi-lab directory: 
     - For Windows: `$ cd C:\path\to\vi-lab`
     - For MacOS and Linux: `$ cd \path\to\vi-lab`
-3. Restore the data from the dump `$ mongorestore --db etutor ./dump/etutor` 
+4. Restore the data from the dump `$ mongorestore --db etutor ./dump/etutor` 
     - Make sure that you defined the right path to your database in MongoDB:
         - For Windows: `$ mongod.exe --dbpath C:\path\to\db`
         - For MacOS: `$ mongod.exe --dbpath \path\to\db`
-4. Install updates:
+5. Install updates:
     - For Windows: `$ npm update`
     - For MacOS and Linux: `$ sudo npm update`
-5. Run the node server: `$ node server`
-6. Open the following page in your browser: http://localhost:3033/login (you can replace 'localhost' with the name of your server)
-7. Login:
+6. Run the node server: `$ node server`
+7. Open the following page in your browser: http://localhost:3033/login (you can replace 'localhost' with the name of your server)
+8. Login:
     - user: bob
     - password: secret
 
