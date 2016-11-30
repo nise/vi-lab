@@ -51,6 +51,9 @@ nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargest
 	sudo npm install -g canvas --save
 
 
+# self assessment
+Nguyen-Thinh Le, Niels Pinkwart: Ein adaptierbares Fragengenerierungs-Framework zur Unterrichtsvorbereitung
+
 
 # group page activity Thread
 - activity stream

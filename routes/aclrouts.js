@@ -313,7 +313,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 		// save it
 		//log2.write( JSON.stringify(req.param('data')) );	
 		new Log(entry).save( function( err, logs, count ){
-			//l.log('info', logs);
+			//l.log('info', entry);
 			res.end('done');
 		} );
 		// write to logfile
