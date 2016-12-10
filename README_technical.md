@@ -3,10 +3,14 @@
 ## Prerequisites
 1. Install [node.js](https://nodejs.org/en/download/current/) version > 5
     - The latest version of npm is installed automatically with node.js installer. Additional information [here](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
-2. Install Python between > 2.5 and < 3.0
+2. Install other dependencies
+    - Windows: Python between > 2.5 and < 3.0
+    - Linux: `sudo apt-get install python3 libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev npm libav-tools git`
 3. Install [MongoDB latest version](https://www.mongodb.com/download-center)
     - [Instructions](https://docs.mongodb.com/manual/administration/install-community/) for installation and Setup of MongoDB
     - In the end you have to be able to run mongod.exe and mongo.exe from your command line
+4. For production mode we recomment installing 'forever' globaly on you system
+    - For MacOS and Linux: `$ sudo npm install forever -g`
 
 ## Start working with vi-lab
 1. Fork this repository
@@ -17,25 +21,31 @@
 4. Restore the data from the dump `$ mongorestore --db etutor ./dump/etutor` 
     - Make sure that you defined the right path to your database in MongoDB:
         - For Windows: `$ mongod.exe --dbpath C:\path\to\db`
-        - For MacOS: `$ mongod.exe --dbpath \path\to\db`
-5. Install updates:
+5. Install the required node modules:
     - For Windows: `$ npm update`
     - For MacOS and Linux: `$ sudo npm update`
 6. Run the node server: `$ node server`
 7. Open the following page in your browser: http://localhost:3033/login (you can replace 'localhost' with the name of your server)
-8. Login:
+8. Check the demo login:
     - user: bob
     - password: secret
 
-## Install node.js 
--- sudo apt-get install mongodb nodejs libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev npm libav-tools git
 
--- sudo npm install mongodb path express express-validator socket.io node-fs csv node-schedule ejs-locals passport passport-local connect-flash canvas identicon mongoose csv mv cookie-parser express-json body-parser method-override express-session mongoose fluent-ffmpeg moment depd bytes raw-body iconv-lite on-finished media-typer type-is multer ipware
 
-* Find out install location:
- which nodejs
 
-async
+## Update from this repository
+git fetch --all && git reset --hard origin/master
+
+## dump and restore mongoDB
+mongodb: mongodb://localhost/etutor
+**dump**
+mongodump --forceTableScan --db <application name>
+mongodump --forceTableScan --db etutor
+**restore**
+mongorestore --db <application name> ./dump/<application name>
+mongorestore --db etutor ./dump/etutor
+**convert database for inspection**
+bsondump collection.bson > collection.json
 
 
 
@@ -98,22 +108,6 @@ sudo /home/niels/.nvm/versions/node/v5.0.0/bin/forever list
 => auto update bei crah oder update: http://stackoverflow.com/questions/11084279/node-js-setup-for-easy-deployment-and-updating
 
 
-## Install on server
-git clone https://github.com/nise/vi-lab
-
-## Update from this repository
-git fetch --all && git reset --hard origin/master
-
-## dump and restore mongoDB
-mongodb: mongodb://localhost/etutor
-**dump**
-mongodump --forceTableScan --db <application name>
-mongodump --forceTableScan --db etutor
-**restore**
-mongorestore --db <application name> ./dump/<application name>
-mongorestore --db etutor ./dump/etutor
-**convert database for inspection**
-bsondump collection.bson > collection.json
 
 
 # Install etherpad
