@@ -1,5 +1,32 @@
 # How to install and setup
 
+## Prerequisites
+1. Install [node.js](https://nodejs.org/en/download/current/) version > 5
+    - The latest version of npm is installed automatically with node.js installer. Additional information [here](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+2. Install Python between > 2.5 and < 3.0
+3. Install [MongoDB latest version](https://www.mongodb.com/download-center)
+    - [Instructions](https://docs.mongodb.com/manual/administration/install-community/) for installation and Setup of MongoDB
+    - In the end you have to be able to run mongod.exe and mongo.exe from your command line
+
+## Start working with vi-lab
+1. Fork this repository
+2. Go to your command line and clone your fork to your local machine: `$ git clone https://github.com/YOUR_USERNAME/vi-lab`
+3. In you command prompt go to vi-lab folder. You can use cd command to navigate to vi-lab directory: 
+    - For Windows: `$ cd C:\path\to\vi-lab`
+    - For MacOS and Linux: `$ cd \path\to\vi-lab`
+4. Restore the data from the dump `$ mongorestore --db etutor ./dump/etutor` 
+    - Make sure that you defined the right path to your database in MongoDB:
+        - For Windows: `$ mongod.exe --dbpath C:\path\to\db`
+        - For MacOS: `$ mongod.exe --dbpath \path\to\db`
+5. Install updates:
+    - For Windows: `$ npm update`
+    - For MacOS and Linux: `$ sudo npm update`
+6. Run the node server: `$ node server`
+7. Open the following page in your browser: http://localhost:3033/login (you can replace 'localhost' with the name of your server)
+8. Login:
+    - user: bob
+    - password: secret
+
 ## Install node.js 
 -- sudo apt-get install mongodb nodejs libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev npm libav-tools git
 
