@@ -18,6 +18,7 @@ nen von Koordinaten auf einer Karte (hier OpenStreetMap) neben dem Video dargest
 - sequentielle medien
 - fin: fragments
 - fin: subtitles
+- add Download as a widget
 
 
 ## bugs by priorities
