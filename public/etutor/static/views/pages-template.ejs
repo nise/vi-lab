@@ -1,0 +1,29 @@
+<% layout('layout') -%>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h2><%= items.title %></h2>
+    </div>
+</div>
+
+<div class="container">
+    <div id="warning" class="col-md-8 mark" style="color:red"></div>
+    <!--<div class="row">-->
+    <div class="col-md-8 page-content">
+        <%= items.content %>
+    </div>
+    <!--</div>-->
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    if ($.browser.opera || $.browser.msie || $.browser.safari) {
+      $('#warning').html('<b>Sie benutzen ' + ($.browser.msie ? 'Microsoft Internet Explorer' : 'Opera') + ' als Browser.</b> <br/>Da es sich bei der Anwendung um einen Prototypen handelt, ist die Funktion in dem von Ihnen verwendeten Browser derzeit nur eingeschränkt möglich. <br> Wir bitten Sie daher Mozilla Firefox oder Google Chrome zu verwenden. <br/> Vielen Dank für Ihr Verständnis.')
+    }
+  });
+</script>
+
+
+

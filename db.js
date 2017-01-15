@@ -464,6 +464,11 @@ var Persons = new Schema({
 });
 mongoose.model( 'Persons', Persons );
 
-
-
+//  static pages schema
+var StaticPage = new Schema({
+	title					:	String,
+	content				: String,
+	root					:	String
+});
+mongoose.model('StaticPage', StaticPage);
 

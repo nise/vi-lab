@@ -1,0 +1,33 @@
+<% layout( '../admin-layout' ) -%>
+
+
+<div class="col-md-10">
+    <h2>Add new page</h2>
+    <div class="edit-form">
+        <form action="/admin/pages/create" method="post" accept-charset="utf-8">
+            <div class="input-group input-group-xs">
+                <span class="input-group-addon" id="sizing-addon1">Page title</span>
+                <input type="text" class="form-control" placeholder="Page title" aria-describedby="sizing-addon1" name="title" value="">
+            </div>
+            <br>
+            <div class="input-group input-group-xs">
+                <span class="input-group-addon" id="sizing-addon1">Path to the page</span>
+                <input type="text" class="form-control" placeholder="Path" aria-describedby="sizing-addon1" name="root" value="">
+            </div>
+            <br>
+            <div class="input-group input-group-xs">
+                <span class="input-group-addon" id="sizing-addon1">Content</span>
+                <textarea class="form-control" id="md-editor-textarea" name="content" cols="120" rows="10" placeholder="Type in something here"></textarea>
+                <textarea></textarea>
+            </div>
+            <br>
+
+
+            <div class="buttons">
+                <button type="submit" class="btn-primary btn">save</button>  <a href="/admin/pages">cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -4,6 +4,7 @@
 1. Install [node.js](https://nodejs.org/en/download/current/) version > 5
     - The latest version of npm is installed automatically with node.js installer. Additional information [here](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 2. Install Python between > 2.5 and < 3.0
+    - If it is necessary - define the path to the right version of Python by installation `npm install --python=python2.7\python.exe`
 3. Install [MongoDB latest version](https://www.mongodb.com/download-center)
     - [Instructions](https://docs.mongodb.com/manual/administration/install-community/) for installation and Setup of MongoDB
     - In the end you have to be able to run mongod.exe and mongo.exe from your command line

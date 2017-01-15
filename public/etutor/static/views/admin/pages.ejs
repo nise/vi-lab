@@ -1,0 +1,51 @@
+<% layout( '../admin-layout' ) -%>
+
+<div class="col-md-10">
+  <h2>Pages</h2>
+  <a href="/admin/pages/create" class="label label-primary"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+  <br>
+  <br>
+
+  <div id="table1"></div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready (function () {
+    $('#table1').bootstrapTable({
+      data: JSON.parse('<%-JSON.stringify( items )%>'),
+      search: true,
+      strictSearch: true,
+      trimOnSearch:true,
+      columns: [
+        { field: 'title', title: 'Page name', formatter: pageFormatter, sortable: true, order: 'asc', searchable: true },
+        { field: 'root', title: 'Path to the page', formatter: pathFormatter, sortable: true, order: 'asc', searchable: true },
+        { field: 'operator', title: 'Edit', visible:true, sortable : false, formatter: operateFormatter, order: 'asc', searchable : false }
+      ]
+    });
+  });
+
+  function pageFormatter(value, row, index) {
+    var pageTitle = [
+      '<a class="table-link" href="/pages/view/' + row._id + '" title="View a page">',
+      row.title,
+      '</a>'
+    ].join('');
+    return pageTitle;
+  }
+
+  function pathFormatter(value, row, index) {
+    return row.root;
+  }
+
+  function operateFormatter(value, row, index) {
+    return [
+      '<a class="table-link" href="/admin/pages/edit/' + row._id + '" title="Edit page">',
+      '<i class="glyphicon glyphicon-pencil"></i> edit',
+      '</a><br/>',
+      '<a class="table-link" href="/admin/pages/destroy/' + row._id + '" title="Remove page">',
+      '<i class="glyphicon glyphicon-remove"></i> remove',
+      '</a>'
+    ].join('');
+  }
+
+</script>

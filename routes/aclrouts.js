@@ -17,10 +17,11 @@ module.exports = function(db, app) {
 	images = require('./images'),	
 	users = require('./users'),
 	groups = require('./groups'),
+	pages = require('./pages'),
 	communication = require('./communication'),
 	// terzin specific
 	scenes = require('./scenes'),
-	persons = require('./persons')
+	persons = require('./persons'),
 	// mongoose models
 	Videos  = mongoose.model( 'Videos' ),
 	Users  = mongoose.model( 'Users' ),
@@ -31,7 +32,7 @@ module.exports = function(db, app) {
 
 //if (req.isAuthenticated()) { return next(); }
 //res.redirect('/login')
-	
+
 
 // routes for files
 app.get('/myfile', users.ensureAuthenticated, function(req, res){ 
@@ -98,9 +99,9 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.post(	'/admin/videos/update/:id', users.authCallback(['editor']), videos.update );
 	app.get(	'/admin/videos/metadata/edit/:id', users.authCallback(['editor']), videos.editMetadata ); // ??
 	app.get(	'/admin/videos/annotations/edit/:id', users.authCallback(['editor']), videos.editAnnotations );
-	
-	
-	
+
+
+
 	
 	/************************************************************/
 	/* VIDEO UPLOAD */
@@ -207,7 +208,7 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	// users	
 	app.get('/admin/users', users.authCallback(['editor']),	users.renderIndex );
 	app.get('/admin/users/create', users.authCallback(['editor']), users.renderCreate );
-	app.post('/admin/users/create', users.authCallback(['editor']), users.create ); // opens input form
+	app.post('/admin/users/create', users.authCallback(['editor']), users.create ); // submit input form
 	app.get('/admin/users/edit/:id', users.authCallback(['editor']), users.renderEdit );
 	app.post(	'/admin/users/update/:id', users.authCallback(['editor']), users.update );//users.updateUsers);	
 	app.get('/admin/users/destroy/:id',	users.authCallback(['editor']),	users.destroy );
@@ -469,4 +470,17 @@ app.get(	'/test', function ( req, res ){ res.render( 'test', { title : 'Test' })
 	app.get( '/json/persons/:shortname',users.ensureAuthenticated, persons.getOneJSON );
 
 
-} // end module
+	/************************************************************/
+	/* Static pages */
+  app.get( '/admin/pages', 							pages.renderIndex);
+  app.get( '/admin/pages/create', 			pages.renderCreate ); // renders the input form
+  app.post( '/admin/pages/create', 			pages.create); // sends data
+  app.get( '/admin/pages/edit/:id', 		pages.renderEdit); // renders data we want to update
+  app.post( '/admin/pages/update/:id', 	pages.update); // updates data
+  app.get( '/admin/pages/destroy/:id', 	pages.destroy);
+
+  app.get( '/pages/view/:id', pages.renderPageById);
+
+
+
+}; // end module
