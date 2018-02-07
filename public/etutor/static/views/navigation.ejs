@@ -1,116 +1,118 @@
 <!-- Navbar
   ================================================== -->
-	<header>
-		<div class="row">
-			<nav class="navbar navbar-inverse navbar-fixed-top col-md-9">
-				<div class="container">
+<header>
+	<div class="row">
+		<nav class="navbar navbar-inverse navbar-fixed-top col-md-9">
+			<div class="container">
 
-					<div class="navbar-header">
-						<a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<div class="navbar-header">
+					<a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
 							<span class="mobile-icon glyphicon glyphicon-menu-hamburger"></span>
 						</a>
-						<a class="navbar-brand vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/home">e-Tutoren-Qualifikation</a>
-		      </div>
-				
-					 <!-- Collect the nav links, forms, and other content for toggling -->
-		      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-		        <ul class="nav navbar-nav navbar">
-		          <li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/content">Content</a></li>
-		          <!--<li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="javascript:render('video-assessment', true, '#page', 'videos');">Gruppenbeiträge</a></li>-->
-							<li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/messages">Messages</span></a></li>            
-							<li><a data-toggle="tooltip" data-placement="right" href="/about" class="">About</a></li>
-							<!--<li style="display:none;"><a href="/videos/view/52a13d2e2aa9d35f24000074" class="sr-only">Film</a></li>-->
-		      </div><!-- /.navbar-collapse -->
-				
-				</div><!-- end container-->
-			</nav>
-			<div id="userpanel" class="col-md-3">
-				<span class="group-area hidden-xs"></span>
-				<span class="user-area visible-md-block"></span>
+					<a class="navbar-brand vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/home">e-Tutoren-Qualifikation</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbar-collapse-1">
+					<ul class="nav navbar-nav navbar">
+						<li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/content">Content</a></li>
+						<!--<li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="javascript:render('video-assessment', true, '#page', 'videos');">Gruppenbeiträge</a></li>-->
+						<li><a class="vi-lab-tooltip" title="" data-toggle="tooltip" data-placement="right" href="/messages">Messages</span></a></li>
+						<li><a data-toggle="tooltip" data-placement="right" href="/about" class="">About</a></li>
+						<!--<li style="display:none;"><a href="/videos/view/52a13d2e2aa9d35f24000074" class="sr-only">Film</a></li>-->
+				</div>
+				<!-- /.navbar-collapse -->
+
 			</div>
-		</div>	
-	</header>
-	<script type="text/javascript"> 
-	
-	var 
+			<!-- end container-->
+		</nav>
+		<div id="userpanel" class="col-md-3">
+			<span class="group-area hidden-xs"></span>
+			<span class="user-area visible-md-block"></span>
+		</div>
+	</div>
+</header>
+<script type="text/javascript">
+	var
 		socket = {}
-		server = ''
-			;
-	
+	server = ''
+		;
+
 	$(window).load(function () {
-		
+
 		/*
 		* Load user and group ware components
 		**/
 		render('group-data', true, '.group-area');
-		render('user-data', true, '.user-area'); 
-		
+		render('user-data', true, '.user-area');
+
 		/*
 		* Tooltip enabler
 		**/
-		$(document).on('mouseenter','[data-toggle="tooltip"]', function(){
-				$(this).tooltip('show');
+		$(document).on('mouseenter', '[data-toggle="tooltip"]', function () {
+			$(this).tooltip('show');
 		});
 
-		$(document).on('mouseleave','[data-toggle="tooltip"]', function(){
-				$(this).tooltip('hide');
+		$(document).on('mouseleave', '[data-toggle="tooltip"]', function () {
+			$(this).tooltip('hide');
 		});
-		
+
 		/*
 		* Socket event handling
-		**/	
-		socket = io( window.location.host ); // http://185.25.252.55:3033 http://127.0.0.1:3033
-			
+		**/
+		socket = io(window.location.host); // http://185.25.252.55:3033 http://127.0.0.1:3033
+
 		// recognize user that just logged in
-		socket.on('user.goes.online', function(data){ //alert('conn'+data.user)
-			$('#user'+data.user).addClass('online');
+		socket.on('user.goes.online', function (data) { //alert('conn'+data.user)
+			$('#user' + data.user).addClass('online');
 		});
-	
-		socket.on('user.goes.offline', function(data){ //alert('disconn'+data.user)
-			$('#user'+data.user).removeClass('online');
+
+		socket.on('user.goes.offline', function (data) { //alert('disconn'+data.user)
+			$('#user' + data.user).removeClass('online');
 		});
-			
-	}); 
+
+	});
 
 
 	/*
 		*
 		**/
-	$(window).on('beforeunload', function(){ 
-		  //socket.close();
-	}); 
+	$(window).on('beforeunload', function () {
+		//socket.close();
+	});
 
 
 	/*
 		*
 		**/
-	var render = function(template, remote, selector, json){
-			if( json === undefined){ json = template; } 
-			require(['text!../views/'+template+'.ejs', 'ejs'], function(thetemplate) {  
-				if(remote){        
-					$.ajax({
-				    type: "get",
-				    beforeSend: function(xhr){  
-								if (xhr.overrideMimeType){
-								  xhr.overrideMimeType("application/json");
-								}
-						},
-				    url: server+'/json/'+json,
-				    dataType: 'json',
-				    success: function(data){   //alert( JSON.stringify(data))
-							var html = ejs.render(thetemplate, { items: data });
-							$(selector).html(html);
-						
-						},
-						error : function(e){ 
-							console.error('ERROR at '+template+':'+JSON.stringify(e)); }		  
-					});
-			
-				}else{ 
-					var html = ejs.render(thetemplate, {items:0});
-					$(selector).html(html);
-				}	
+	var render = function (template, remote, selector, json) {
+		if (json === undefined) { json = template; }
+		require(['text!../views/' + template + '.ejs', 'ejs'], function (thetemplate) {
+			if (remote) {
+				$.ajax({
+					type: "get",
+					beforeSend: function (xhr) {
+						if (xhr.overrideMimeType) {
+							xhr.overrideMimeType("application/json");
+						}
+					},
+					url: server + '/json/' + json,
+					dataType: 'json',
+					success: function (data) {   //alert( JSON.stringify(data))
+						var html = ejs.render(thetemplate, { items: data });
+						$(selector).html(html);
+
+					},
+					error: function (e) {
+						console.error('ERROR at ' + template + ':' + JSON.stringify(e));
+					}
+				});
+
+			} else {
+				var html = ejs.render(thetemplate, { items: 0 });
+				$(selector).html(html);
+			}
 		}); // end require
 	};	// end render
 	
-	</script> 
+</script>

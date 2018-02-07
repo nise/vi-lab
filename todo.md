@@ -76,6 +76,7 @@ Nguyen-Thinh Le, Niels Pinkwart: Ein adaptierbares Fragengenerierungs-Framework 
 
 
 #VI-TWO 
+ - accessible player: https://ds.gpii.net/content/accessible-html5-video-player-0
  - Datenbank auf serverseite verschieben und db-Klasse als Schnittstelle umgestalten
  - make widgets independent from parser
  - mehrsprachigkeit / spracheinheitlichkeit: l('')
@@ -199,8 +200,6 @@ http://www.eltro.de/videoanalyse.html
   - https://en.wikipedia.org/wiki/HATEOAS
   - https://github.com/hapijs/hapi
   - http://fortunejs.com/api/#serializer
-- distinguish applications
- - shared files, e.g. admin-templates, libs, css
 - internationalisation
 - popcorn-editor
  - save popcorn slides to database
@@ -319,9 +318,6 @@ sox >= 14.4
  found at: https://anmolkoul.wordpress.com/2015/06/05/interactive-data-visualization-using-d3-js-dc-js-nodejs-and-mongodb/
 
 
-
-# Cool stuff
-- farbe und transparanz von player controls ändert sich in abhängigkeit der gemittelten Helligkeit und Farbe des unmittelbaren Hintergrund. Die Änderungen unterscheiden sich in der vertikalen und in der Horizontalen. (Siehe Apple Player)
 
 
 # metadata

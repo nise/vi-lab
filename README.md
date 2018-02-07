@@ -9,7 +9,8 @@ Vi-Lab is a state of the art video labratory and learning environment. It enable
 **Install on server**
 
 1. Obtain code: `git clone https://github.com/nise/vi-lab`
-2. Install dependencies: `sudo npm update`
+2. Enter directory `cd vi-lab`
+2. Install dependencies: `sudo npm install`
 3. Run the server: `node server`
 4. Login: `http://<your-server>:3033/login`
  - user: bob

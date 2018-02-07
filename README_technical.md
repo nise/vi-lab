@@ -90,6 +90,7 @@ sudo service nginx restart
 -- starte: sh ./_tools/etherpad-lite/bin/run.sh -s settings.json
 
 ### Betrieb
+-- LINUX: export NODE_ENV=development
 -- node server.js   oder sudo nodejs server
 IS_PROD=1 forever start -a -l forever.log -o out.log -e err.log server.js
 or
